@@ -1,0 +1,722 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CUSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ClaimType" Type="nvarchar(max)" />
+    <Property Name="ClaimValue" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="datetime" />
+    <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="Name" Type="text" />
+    <Property Name="Area" Type="int" />
+    <Property Name="Unidad" Type="int" />
+  </EntityType>
+  <EntityType Name="hc_alimentacion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TipoLactancia" Type="varchar" MaxLength="30" />
+    <Property Name="TiempoLactancia" Type="varchar" MaxLength="30" />
+    <Property Name="EdadAblactacion" Type="varchar" MaxLength="30" />
+    <Property Name="AlimentosInicio" Type="varchar" MaxLength="200" />
+    <Property Name="EdadIntegracion" Type="varchar" MaxLength="30" />
+    <Property Name="Id_Paciente" Type="int" Nullable="false" />
+    <Property Name="Id_HistoriaClinica" Type="int" />
+    <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="hc_antecedentes_desarrollo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SostuvoCabeza" Type="varchar" MaxLength="20" />
+    <Property Name="EspecifiqueSostuvoCabeza" Type="varchar" MaxLength="30" />
+    <Property Name="SeSento" Type="varchar" MaxLength="20" />
+    <Property Name="EspecifiqueSeSento" Type="varchar" MaxLength="30" />
+    <Property Name="Camino" Type="varchar" MaxLength="20" />
+    <Property Name="EspecifiqueCamino" Type="varchar" MaxLength="30" />
+    <Property Name="Habla" Type="varchar" MaxLength="20" />
+    <Property Name="EspecifiqueHabla" Type="varchar" MaxLength="30" />
+    <Property Name="ControlEsfinteres" Type="varchar" MaxLength="20" />
+    <Property Name="EspecifiqueControlEsf" Type="varchar" MaxLength="30" />
+    <Property Name="PruebaEDI" Type="varchar" MaxLength="20" />
+    <Property Name="EspecifiquePruebaEDI" Type="varchar" MaxLength="30" />
+    <Property Name="Id_Paciente" Type="int" Nullable="false" />
+    <Property Name="Id_HistoriaClinica" Type="int" />
+    <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="hc_antecedentes_ginecoobstetricos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Menarquia" Type="varchar" MaxLength="5" />
+    <Property Name="MotivoMenarquia" Type="varchar" MaxLength="200" />
+    <Property Name="RitmoMenarquia" Type="varchar" MaxLength="20" />
+    <Property Name="CantidadMenarquia" Type="varchar" MaxLength="20" />
+    <Property Name="ColoracionMenarquia" Type="varchar" MaxLength="20" />
+    <Property Name="EspecifiqueColoracionMenarquia" Type="varchar" MaxLength="200" />
+    <Property Name="VidaSexual" Type="varchar" MaxLength="5" />
+    <Property Name="NumeroParejasSexuales" Type="varchar" MaxLength="30" />
+    <Property Name="Id_Paciente" Type="int" Nullable="false" />
+    <Property Name="TipoMenarquia" Type="varchar" MaxLength="30" />
+    <Property Name="Id_HistoriaClinica" Type="int" />
+    <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="hc_antecedentes_patologicos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Antecedentes" Type="varchar" MaxLength="30" />
+    <Property Name="PxHospitalizado" Type="varchar" MaxLength="5" />
+    <Property Name="EspecifiqueHospitalizado" Type="varchar" MaxLength="200" />
+    <Property Name="RealizadoCirugia" Type="varchar" MaxLength="5" />
+    <Property Name="EspecifiqueCirugia" Type="varchar" MaxLength="200" />
+    <Property Name="Id_Paciente" Type="int" Nullable="false" />
+    <Property Name="CheckRespiratorios" Type="bit" />
+    <Property Name="CheckEndocrinologicos" Type="bit" />
+    <Property Name="CheckCardiovasculares" Type="bit" />
+    <Property Name="CheckOncologicos" Type="bit" />
+    <Property Name="CheckSaludMental" Type="bit" />
+    <Property Name="CheckNeurologicos" Type="bit" />
+    <Property Name="CheckInfectoContagiosos" Type="bit" />
+    <Property Name="CheckProblemasAparatoR" Type="bit" />
+    <Property Name="CheckProblemasGastro" Type="bit" />
+    <Property Name="CheckReumatologicos" Type="bit" />
+    <Property Name="CheckNinguna" Type="bit" />
+    <Property Name="Id_HistoriaClinica" Type="int" />
+    <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="hc_antecedentes_perinatales">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NumeroEmbarazo" Type="int" />
+    <Property Name="EnfermedadEmbarazo" Type="varchar" MaxLength="5" />
+    <Property Name="EspecifiqueEnfermedadEmbarazo" Type="varchar" MaxLength="200" />
+    <Property Name="TratamientoEmbarazo" Type="varchar" MaxLength="5" />
+    <Property Name="EspecifiqueTratamientoEmbarazo" Type="varchar" MaxLength="5" />
+    <Property Name="LugarParto" Type="varchar" MaxLength="20" />
+    <Property Name="EspecifiqueLugarParto" Type="varchar" MaxLength="20" />
+    <Property Name="EdadGestional" Type="varchar" MaxLength="20" />
+    <Property Name="EspecifiqueEdadGestional" Type="varchar" MaxLength="50" />
+    <Property Name="Apgar" Type="varchar" MaxLength="20" />
+    <Property Name="EspecifiqueApgar" Type="varchar" MaxLength="20" />
+    <Property Name="TipoParto" Type="varchar" MaxLength="20" />
+    <Property Name="PartoFue" Type="varchar" MaxLength="20" />
+    <Property Name="EspecifiquePartoFue" Type="varchar" MaxLength="20" />
+    <Property Name="EspecifiqueMotivoCesarea" Type="varchar" MaxLength="20" />
+    <Property Name="ComplicacionObs" Type="varchar" MaxLength="5" />
+    <Property Name="EspecifiqueComplicacionObs" Type="varchar" MaxLength="20" />
+    <Property Name="TamizMetabolico" Type="varchar" MaxLength="5" />
+    <Property Name="TamizMetabolicoOpciones" Type="varchar" MaxLength="20" />
+    <Property Name="TamizAuditivo" Type="varchar" MaxLength="5" />
+    <Property Name="TamizAuditivoOpciones" Type="varchar" MaxLength="20" />
+    <Property Name="Id_Paciente" Type="int" Nullable="false" />
+    <Property Name="Id_HistoriaClinica" Type="int" />
+    <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="hc_evaluacion_economica">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="beneficiarioPrograma" Type="varchar" MaxLength="5" />
+    <Property Name="EspecifiqueBeneficiario" Type="varchar" MaxLength="30" />
+    <Property Name="rolEconimico" Type="varchar" MaxLength="20" />
+    <Property Name="EspecifiqueRol" Type="varchar" MaxLength="20" />
+    <Property Name="riesgoEconomico" Type="varchar" MaxLength="5" />
+    <Property Name="Id_Paciente" Type="int" Nullable="false" />
+    <Property Name="Id_HistoriaClinica" Type="int" />
+    <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="hc_evaluacion_social">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="estadocivil" Type="varchar" MaxLength="30" />
+    <Property Name="numeropersonas" Type="varchar" MaxLength="30" />
+    <Property Name="numerohabitaciones" Type="int" />
+    <Property Name="hacinamiento" Type="varchar" MaxLength="5" />
+    <Property Name="escolaridad" Type="varchar" MaxLength="25" />
+    <Property Name="GradoEsc" Type="varchar" MaxLength="20" />
+    <Property Name="PromedioEsc" Type="varchar" MaxLength="10" />
+    <Property Name="reprobado" Type="varchar" MaxLength="5" />
+    <Property Name="EspecifiqueReprobado" Type="varchar" MaxLength="50" />
+    <Property Name="Desercion" Type="varchar" MaxLength="5" />
+    <Property Name="Guarderia" Type="varchar" MaxLength="5" />
+    <Property Name="Cuidador" Type="varchar" MaxLength="20" />
+    <Property Name="Problemas" Type="varchar" MaxLength="5" />
+    <Property Name="ProblemasMaestros" Type="varchar" MaxLength="5" />
+    <Property Name="Ocupacio" Type="varchar" MaxLength="50" />
+    <Property Name="TipoTrab" Type="varchar" MaxLength="20" />
+    <Property Name="RiesgoSos" Type="varchar" MaxLength="5" />
+    <Property Name="Id_Paciente" Type="int" Nullable="false" />
+    <Property Name="ServicioSal" Type="varchar" MaxLength="30" />
+    <Property Name="Id_HistoriaClinica" Type="int" />
+    <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="hc_factores_riesgo_psicologicos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CambiosSueño" Type="varchar" MaxLength="5" />
+    <Property Name="CambiosEnergia" Type="varchar" MaxLength="5" />
+    <Property Name="CambiosApetito" Type="varchar" MaxLength="5" />
+    <Property Name="Pesimismo" Type="varchar" MaxLength="5" />
+    <Property Name="Irritabilidad" Type="varchar" MaxLength="5" />
+    <Property Name="PerdidaPlacer" Type="varchar" MaxLength="5" />
+    <Property Name="PalpitacionesFuertes" Type="varchar" MaxLength="5" />
+    <Property Name="SensacionAahogo" Type="varchar" MaxLength="5" />
+    <Property Name="MiedoPreocupacion" Type="varchar" MaxLength="5" />
+    <Property Name="IdeacionSuicida" Type="varchar" MaxLength="5" />
+    <Property Name="Id_Paciente" Type="int" Nullable="false" />
+    <Property Name="Id_HistoriaClinica" Type="int" />
+    <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="hc_ficha_identificacion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="acompanante" Type="varchar" MaxLength="5" />
+    <Property Name="NombreAcompa" Type="varchar" MaxLength="20" />
+    <Property Name="alergia" Type="varchar" MaxLength="5" />
+    <Property Name="NombreAlergia" Type="varchar" MaxLength="50" />
+    <Property Name="MotivoCons" Type="varchar" MaxLength="500" />
+    <Property Name="Id_Paciente" Type="int" Nullable="false" />
+    <Property Name="Id_HistoriaClinica" Type="int" />
+    <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="hc_habitos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HorasSueño" Type="varchar" MaxLength="20" />
+    <Property Name="TieneInsomnio" Type="varchar" MaxLength="5" />
+    <Property Name="TieneEnuresis" Type="varchar" MaxLength="5" />
+    <Property Name="TienePesadillas" Type="varchar" MaxLength="5" />
+    <Property Name="HorasOcio" Type="varchar" MaxLength="20" />
+    <Property Name="ActividadFisica" Type="varchar" MaxLength="5" />
+    <Property Name="TiempoActividadFisica" Type="varchar" MaxLength="20" />
+    <Property Name="FrecuenciaActividadFisica" Type="varchar" MaxLength="20" />
+    <Property Name="Id_Paciente" Type="int" Nullable="false" />
+    <Property Name="Check_Adicciones_Padre" Type="bit" />
+    <Property Name="Check_Adicciones_Madre" Type="bit" />
+    <Property Name="Check_Adicciones_Ambas" Type="bit" />
+    <Property Name="Check_Adicciones_NA" Type="bit" />
+    <Property Name="Check_Cardiopatia_Padre" Type="bit" />
+    <Property Name="Check_Cardiopatia_Madre" Type="bit" />
+    <Property Name="Check_Cardiopatia_Ambas" Type="bit" />
+    <Property Name="Check_Cardiopatia_NA" Type="bit" />
+    <Property Name="Check_Diabetes_Padre" Type="bit" />
+    <Property Name="Check_Diabetes_Madre" Type="bit" />
+    <Property Name="Check_Diabetes_Ambas" Type="bit" />
+    <Property Name="Check_Diabetes_NA" Type="bit" />
+    <Property Name="Check_Dislipidemias_Padre" Type="bit" />
+    <Property Name="Check_Dislipidemias_Madre" Type="bit" />
+    <Property Name="Check_Dislipidemias_Ambas" Type="bit" />
+    <Property Name="Check_Dislipidemias_NA" Type="bit" />
+    <Property Name="Check_Epilepsia_Padre" Type="bit" />
+    <Property Name="Check_Epilepsia_Madre" Type="bit" />
+    <Property Name="Check_Epilepsia_Ambas" Type="bit" />
+    <Property Name="Check_Epilepsia_NA" Type="bit" />
+    <Property Name="Check_Hipertension_Padre" Type="bit" />
+    <Property Name="Check_Hipertension_Madre" Type="bit" />
+    <Property Name="Check_Hipertension_Ambas" Type="bit" />
+    <Property Name="Check_Hipertension_NA" Type="bit" />
+    <Property Name="Check_Infectocontagiosas_Padre" Type="bit" />
+    <Property Name="Check_Infectocontagiosas_Madre" Type="bit" />
+    <Property Name="Check_Infectocontagiosas_Ambas" Type="bit" />
+    <Property Name="Check_Infectocontagiosas_NA" Type="bit" />
+    <Property Name="Check_Malformaciones_Padre" Type="bit" />
+    <Property Name="Check_Malformaciones_Madre" Type="bit" />
+    <Property Name="Check_Malformaciones_Ambas" Type="bit" />
+    <Property Name="Check_Malformaciones_NA" Type="bit" />
+    <Property Name="Check_Nefropatias_Padre" Type="bit" />
+    <Property Name="Check_Nefropatias_Madre" Type="bit" />
+    <Property Name="Check_Nefropatias_Ambas" Type="bit" />
+    <Property Name="Check_Nefropatias_NA" Type="bit" />
+    <Property Name="Check_Obesidad_Padre" Type="bit" />
+    <Property Name="Check_Obesidad_Madre" Type="bit" />
+    <Property Name="Check_Obesidad_Ambas" Type="bit" />
+    <Property Name="Check_Obesidad_NA" Type="bit" />
+    <Property Name="Check_Oncologicos_Padre" Type="bit" />
+    <Property Name="Check_Oncologicos_Madre" Type="bit" />
+    <Property Name="Check_Oncologicos_Ambas" Type="bit" />
+    <Property Name="Check_Oncologicos_NA" Type="bit" />
+    <Property Name="Id_HistoriaClinica" Type="int" />
+    <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="hc_historial_consumo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TomaAlcohol" Type="varchar" MaxLength="5" />
+    <Property Name="TomaAlcoholFrecuencia" Type="varchar" MaxLength="20" />
+    <Property Name="CantidadAlcohol" Type="varchar" MaxLength="20" />
+    <Property Name="Fuma" Type="varchar" MaxLength="5" />
+    <Property Name="EdadInicio" Type="varchar" MaxLength="20" />
+    <Property Name="ActualmenteFuma" Type="varchar" MaxLength="5" />
+    <Property Name="TiempoInactividadFuma" Type="varchar" MaxLength="20" />
+    <Property Name="TipoFuma" Type="varchar" MaxLength="20" />
+    <Property Name="FrecuenciaFuma" Type="varchar" MaxLength="30" />
+    <Property Name="CantidadFuma" Type="varchar" MaxLength="20" />
+    <Property Name="ConsumeDroga" Type="varchar" MaxLength="5" />
+    <Property Name="TipoDrogaConsume" Type="varchar" MaxLength="30" />
+    <Property Name="FrecuenciaDroga" Type="varchar" MaxLength="30" />
+    <Property Name="CantidadDrogaConsume" Type="varchar" MaxLength="30" />
+    <Property Name="TipoLactancia" Type="varchar" MaxLength="30" />
+    <Property Name="TiempoLactancia" Type="varchar" MaxLength="30" />
+    <Property Name="EdadAblactacion" Type="varchar" MaxLength="30" />
+    <Property Name="AlimentosInicio" Type="varchar" MaxLength="200" />
+    <Property Name="EdadIntegracion" Type="varchar" MaxLength="30" />
+    <Property Name="Id_Paciente" Type="int" Nullable="false" />
+    <Property Name="Id_HistoriaClinica" Type="int" />
+    <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="hc_inmunizaciones">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CartillaVacunacion" Type="varchar" MaxLength="5" />
+    <Property Name="EsquemaVacunacion" Type="varchar" MaxLength="5" />
+    <Property Name="EspecifiqueVacuna" Type="varchar" MaxLength="200" />
+    <Property Name="Id_Paciente" Type="int" Nullable="false" />
+    <Property Name="Id_HistoriaClinica" Type="int" />
+    <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="hc_valoracion_familiar">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="mamaPaciente" Type="varchar" MaxLength="15" />
+    <Property Name="EdadMama" Type="varchar" MaxLength="15" />
+    <Property Name="GradoMama" Type="varchar" MaxLength="25" />
+    <Property Name="OcupacionMama" Type="varchar" MaxLength="25" />
+    <Property Name="TipoTrabajoMama" Type="varchar" MaxLength="20" />
+    <Property Name="papaPaciente" Type="varchar" MaxLength="15" />
+    <Property Name="EdadPapa" Type="varchar" MaxLength="15" />
+    <Property Name="GradoPapa" Type="varchar" MaxLength="25" />
+    <Property Name="OcupacionPapa" Type="varchar" MaxLength="25" />
+    <Property Name="TipoTrabajoPapa" Type="varchar" MaxLength="20" />
+    <Property Name="ViveCon" Type="varchar" MaxLength="20" />
+    <Property Name="tieneHermanos" Type="varchar" MaxLength="5" />
+    <Property Name="CuantosHermanos" Type="int" />
+    <Property Name="EspecifiqueEnf" Type="varchar" MaxLength="50" />
+    <Property Name="involucraTratamiento" Type="varchar" MaxLength="5" />
+    <Property Name="EspecifiqueInvol" Type="varchar" MaxLength="50" />
+    <Property Name="riesgoSocial" Type="varchar" MaxLength="5" />
+    <Property Name="Id_Paciente" Type="int" Nullable="false" />
+    <Property Name="Id_HistoriaClinica" Type="int" />
+    <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="hc_valores_creencias">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="perteneceReligion" Type="varchar" MaxLength="5" />
+    <Property Name="religion" Type="varchar" MaxLength="30" />
+    <Property Name="EspecifiqueReligion" Type="varchar" MaxLength="30" />
+    <Property Name="creenciaReligiosa" Type="varchar" MaxLength="5" />
+    <Property Name="EspecifiqueCreencia" Type="varchar" MaxLength="30" />
+    <Property Name="costumbreValores" Type="varchar" MaxLength="5" />
+    <Property Name="EspecifiqueCostumbres" Type="varchar" MaxLength="30" />
+    <Property Name="Id_Paciente" Type="int" Nullable="false" />
+    <Property Name="Id_HistoriaClinica" Type="int" />
+    <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="HistoriaClinica">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Clave_hc_px" Type="varchar" MaxLength="20" />
+    <Property Name="Medico" Type="varchar" MaxLength="50" />
+    <Property Name="FechaRegistroHC" Type="datetime" />
+    <Property Name="Id_Paciente" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Paciente">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UnidadAfiliacion" Type="int" Nullable="false" />
+    <Property Name="CURP" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="PrimerApellido" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="SegundoApellido" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Sexo" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="FechaNacimiento" Type="datetime" Nullable="false" />
+    <Property Name="Nacionalidad" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="EntidadNacimiento" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Edad" Type="int" Nullable="false" />
+    <Property Name="Expediente" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Dir_Calle" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="Dir_Numero" Type="int" Nullable="false" />
+    <Property Name="Dir_CP" Type="int" Nullable="false" />
+    <Property Name="Dir_Colonia" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Dir_Municipio" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="Dir_EntidadFed" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="Telefono1" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Telefono2" Type="nvarchar" MaxLength="30" />
+    <Property Name="Email" Type="nvarchar" MaxLength="30" />
+    <Property Name="RFC" Type="nvarchar" MaxLength="30" />
+    <Property Name="EstadoCivil" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Escolaridad" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Ocupacion" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="ServicioSalud" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="ServicioSalud_Extra" Type="nvarchar" MaxLength="20" />
+    <Property Name="DE_Indigena" Type="bit" Nullable="false" />
+    <Property Name="DE_Migrante" Type="bit" Nullable="false" />
+    <Property Name="DE_Afroamericano" Type="bit" Nullable="false" />
+    <Property Name="BA_Visual" Type="bit" Nullable="false" />
+    <Property Name="BA_Auditiva" Type="bit" Nullable="false" />
+    <Property Name="BA_Fisica" Type="bit" Nullable="false" />
+    <Property Name="BA_Mental" Type="bit" Nullable="false" />
+    <Property Name="BA_Idioma" Type="bit" Nullable="false" />
+    <Property Name="BA_Idioma_Nombre" Type="nvarchar" MaxLength="20" />
+    <Property Name="BA_Analfabeta" Type="bit" Nullable="false" />
+    <Property Name="CE_Nombre" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="CE_Calle" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="CE_Numero" Type="int" Nullable="false" />
+    <Property Name="CE_CP" Type="int" Nullable="false" />
+    <Property Name="CE_Colonia" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="CE_Municipio" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="CE_EntidadFed" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="CE_Telefono" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Nombre_Tutor" Type="varchar" MaxLength="30" />
+    <Property Name="PrimerApellido_Tutor" Type="varchar" MaxLength="20" />
+    <Property Name="SegundoApellido_Tutor" Type="varchar" MaxLength="20" />
+    <Property Name="FechaRegistro" Type="datetime" />
+    <Property Name="Curp_Calculado" Type="varchar" MaxLength="30" />
+    <Property Name="Curp_CalculadoMotivo" Type="varchar" MaxLength="500" />
+    <Property Name="NA_DE" Type="bit" />
+    <Property Name="NA_BA" Type="bit" />
+  </EntityType>
+  <EntityType Name="UnidadAfiliacion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NombreUnidad" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="Prefijo" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <Association Name="FK__hc_alimen__Id_Pa__4F47C5E3">
+    <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+    <End Role="hc_alimentacion" Type="Self.hc_alimentacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paciente">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="hc_alimentacion">
+        <PropertyRef Name="Id_Paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__hc_antece__Id_Pa__05D8E0BE">
+    <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+    <End Role="hc_antecedentes_perinatales" Type="Self.hc_antecedentes_perinatales" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paciente">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="hc_antecedentes_perinatales">
+        <PropertyRef Name="Id_Paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__hc_antece__Id_Pa__08B54D69">
+    <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+    <End Role="hc_antecedentes_patologicos" Type="Self.hc_antecedentes_patologicos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paciente">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="hc_antecedentes_patologicos">
+        <PropertyRef Name="Id_Paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__hc_antece__Id_Pa__2645B050">
+    <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+    <End Role="hc_antecedentes_desarrollo" Type="Self.hc_antecedentes_desarrollo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paciente">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="hc_antecedentes_desarrollo">
+        <PropertyRef Name="Id_Paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__hc_antece__Id_Pa__29221CFB">
+    <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+    <End Role="hc_antecedentes_ginecoobstetricos" Type="Self.hc_antecedentes_ginecoobstetricos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paciente">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="hc_antecedentes_ginecoobstetricos">
+        <PropertyRef Name="Id_Paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__hc_evalua__Id_Pa__72C60C4A">
+    <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+    <End Role="hc_evaluacion_social" Type="Self.hc_evaluacion_social" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paciente">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="hc_evaluacion_social">
+        <PropertyRef Name="Id_Paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__hc_evalua__Id_Pa__787EE5A0">
+    <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+    <End Role="hc_evaluacion_economica" Type="Self.hc_evaluacion_economica" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paciente">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="hc_evaluacion_economica">
+        <PropertyRef Name="Id_Paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__hc_factor__Id_Pa__7E37BEF6">
+    <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+    <End Role="hc_factores_riesgo_psicologicos" Type="Self.hc_factores_riesgo_psicologicos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paciente">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="hc_factores_riesgo_psicologicos">
+        <PropertyRef Name="Id_Paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__hc_ficha___Id_Pa__6FE99F9F">
+    <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+    <End Role="hc_ficha_identificacion" Type="Self.hc_ficha_identificacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paciente">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="hc_ficha_identificacion">
+        <PropertyRef Name="Id_Paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__hc_habito__Id_Pa__02FC7413">
+    <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+    <End Role="hc_habitos" Type="Self.hc_habitos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paciente">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="hc_habitos">
+        <PropertyRef Name="Id_Paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__hc_histor__Id_Pa__236943A5">
+    <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+    <End Role="hc_historial_consumo" Type="Self.hc_historial_consumo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paciente">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="hc_historial_consumo">
+        <PropertyRef Name="Id_Paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__hc_inmuni__Id_Pa__208CD6FA">
+    <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+    <End Role="hc_inmunizaciones" Type="Self.hc_inmunizaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paciente">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="hc_inmunizaciones">
+        <PropertyRef Name="Id_Paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__hc_valora__Id_Pa__75A278F5">
+    <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+    <End Role="hc_valoracion_familiar" Type="Self.hc_valoracion_familiar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paciente">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="hc_valoracion_familiar">
+        <PropertyRef Name="Id_Paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__hc_valore__Id_Pa__7B5B524B">
+    <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+    <End Role="hc_valores_creencias" Type="Self.hc_valores_creencias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paciente">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="hc_valores_creencias">
+        <PropertyRef Name="Id_Paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HistoriaC__Id_Pa__3C34F16F">
+    <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+    <End Role="HistoriaClinica" Type="Self.HistoriaClinica" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paciente">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HistoriaClinica">
+        <PropertyRef Name="Id_Paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CUSModelStoreContainer">
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="hc_alimentacion" EntityType="Self.hc_alimentacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="hc_antecedentes_desarrollo" EntityType="Self.hc_antecedentes_desarrollo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="hc_antecedentes_ginecoobstetricos" EntityType="Self.hc_antecedentes_ginecoobstetricos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="hc_antecedentes_patologicos" EntityType="Self.hc_antecedentes_patologicos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="hc_antecedentes_perinatales" EntityType="Self.hc_antecedentes_perinatales" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="hc_evaluacion_economica" EntityType="Self.hc_evaluacion_economica" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="hc_evaluacion_social" EntityType="Self.hc_evaluacion_social" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="hc_factores_riesgo_psicologicos" EntityType="Self.hc_factores_riesgo_psicologicos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="hc_ficha_identificacion" EntityType="Self.hc_ficha_identificacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="hc_habitos" EntityType="Self.hc_habitos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="hc_historial_consumo" EntityType="Self.hc_historial_consumo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="hc_inmunizaciones" EntityType="Self.hc_inmunizaciones" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="hc_valoracion_familiar" EntityType="Self.hc_valoracion_familiar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="hc_valores_creencias" EntityType="Self.hc_valores_creencias" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HistoriaClinica" EntityType="Self.HistoriaClinica" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Paciente" EntityType="Self.Paciente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UnidadAfiliacion" EntityType="Self.UnidadAfiliacion" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__hc_alimen__Id_Pa__4F47C5E3" Association="Self.FK__hc_alimen__Id_Pa__4F47C5E3">
+      <End Role="Paciente" EntitySet="Paciente" />
+      <End Role="hc_alimentacion" EntitySet="hc_alimentacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__hc_antece__Id_Pa__05D8E0BE" Association="Self.FK__hc_antece__Id_Pa__05D8E0BE">
+      <End Role="Paciente" EntitySet="Paciente" />
+      <End Role="hc_antecedentes_perinatales" EntitySet="hc_antecedentes_perinatales" />
+    </AssociationSet>
+    <AssociationSet Name="FK__hc_antece__Id_Pa__08B54D69" Association="Self.FK__hc_antece__Id_Pa__08B54D69">
+      <End Role="Paciente" EntitySet="Paciente" />
+      <End Role="hc_antecedentes_patologicos" EntitySet="hc_antecedentes_patologicos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__hc_antece__Id_Pa__2645B050" Association="Self.FK__hc_antece__Id_Pa__2645B050">
+      <End Role="Paciente" EntitySet="Paciente" />
+      <End Role="hc_antecedentes_desarrollo" EntitySet="hc_antecedentes_desarrollo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__hc_antece__Id_Pa__29221CFB" Association="Self.FK__hc_antece__Id_Pa__29221CFB">
+      <End Role="Paciente" EntitySet="Paciente" />
+      <End Role="hc_antecedentes_ginecoobstetricos" EntitySet="hc_antecedentes_ginecoobstetricos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__hc_evalua__Id_Pa__72C60C4A" Association="Self.FK__hc_evalua__Id_Pa__72C60C4A">
+      <End Role="Paciente" EntitySet="Paciente" />
+      <End Role="hc_evaluacion_social" EntitySet="hc_evaluacion_social" />
+    </AssociationSet>
+    <AssociationSet Name="FK__hc_evalua__Id_Pa__787EE5A0" Association="Self.FK__hc_evalua__Id_Pa__787EE5A0">
+      <End Role="Paciente" EntitySet="Paciente" />
+      <End Role="hc_evaluacion_economica" EntitySet="hc_evaluacion_economica" />
+    </AssociationSet>
+    <AssociationSet Name="FK__hc_factor__Id_Pa__7E37BEF6" Association="Self.FK__hc_factor__Id_Pa__7E37BEF6">
+      <End Role="Paciente" EntitySet="Paciente" />
+      <End Role="hc_factores_riesgo_psicologicos" EntitySet="hc_factores_riesgo_psicologicos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__hc_ficha___Id_Pa__6FE99F9F" Association="Self.FK__hc_ficha___Id_Pa__6FE99F9F">
+      <End Role="Paciente" EntitySet="Paciente" />
+      <End Role="hc_ficha_identificacion" EntitySet="hc_ficha_identificacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__hc_habito__Id_Pa__02FC7413" Association="Self.FK__hc_habito__Id_Pa__02FC7413">
+      <End Role="Paciente" EntitySet="Paciente" />
+      <End Role="hc_habitos" EntitySet="hc_habitos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__hc_histor__Id_Pa__236943A5" Association="Self.FK__hc_histor__Id_Pa__236943A5">
+      <End Role="Paciente" EntitySet="Paciente" />
+      <End Role="hc_historial_consumo" EntitySet="hc_historial_consumo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__hc_inmuni__Id_Pa__208CD6FA" Association="Self.FK__hc_inmuni__Id_Pa__208CD6FA">
+      <End Role="Paciente" EntitySet="Paciente" />
+      <End Role="hc_inmunizaciones" EntitySet="hc_inmunizaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK__hc_valora__Id_Pa__75A278F5" Association="Self.FK__hc_valora__Id_Pa__75A278F5">
+      <End Role="Paciente" EntitySet="Paciente" />
+      <End Role="hc_valoracion_familiar" EntitySet="hc_valoracion_familiar" />
+    </AssociationSet>
+    <AssociationSet Name="FK__hc_valore__Id_Pa__7B5B524B" Association="Self.FK__hc_valore__Id_Pa__7B5B524B">
+      <End Role="Paciente" EntitySet="Paciente" />
+      <End Role="hc_valores_creencias" EntitySet="hc_valores_creencias" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HistoriaC__Id_Pa__3C34F16F" Association="Self.FK__HistoriaC__Id_Pa__3C34F16F">
+      <End Role="Paciente" EntitySet="Paciente" />
+      <End Role="HistoriaClinica" EntitySet="HistoriaClinica" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

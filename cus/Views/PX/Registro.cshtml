@@ -1,0 +1,450 @@
+﻿
+<div>
+    @*<div class="row">
+            <div class="col-md-12">
+                <div class="card bg-success-light">
+                    <div class="card-header bg-primary">
+                        <h4 class="card-title">Basic Form</h4>
+                    </div>
+                    <div class="card-body">
+                        <form action="#">
+                            <div class="form-group">
+                                <label>First Name</label>
+                                <input type="text" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <input type="text" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Email Address</label>
+                                <input type="email" class="form-control">
+                            </div>
+
+                            <div class="text-right">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+
+    <div class="row justify-content-center">
+        <div class="success-cont">
+            <h3>REGISTRO DEL PX.</h3>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="card bg-success-light">
+                    <div class="card-header bg-info">
+                        <h4 class="card-title">Datos del PX.</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row form-row">
+                            <div class="col-md-6">
+                                <div class="form-group card-label">
+                                    <label>Unidad de Afiliación</label>
+                                    <select class="form-control select">
+                                        <option>Seleccione</option>
+                                        <option>Unidad habitacional Independencia</option>
+                                        <option>Módulo dental Apodaca</option>
+                                        <option>Pueblo Nuevo</option>
+                                        <option>Vicente Guerrero</option>
+                                        <option>San Rafael</option>
+                                        <option>21 de enero</option>
+                                        <option>Clínica de atención int. para adolecentes y jóvenes</option>
+                                        <option>Módulo dental Guadalupe</option>
+                                        <option>Ciénega de Flores</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group card-label">
+                                    <label>CURP</label>
+                                    <input class="form-control" type="text" id="InCurp">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group card-label">
+                                    <label>Nombre(s)</label>
+                                    <input class="form-control" type="text" id="InNombre">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group card-label">
+                                    <label>Primer Apellido</label>
+                                    <input class="form-control" type="text" id="InPrimerA">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group card-label">
+                                    <label>Segundo Apellido</label>
+                                    <input class="form-control" type="text" id="InSegundoA">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group card-label">
+                                    <label>Sexo</label>
+                                    <input class="form-control" type="text" id="InSexo">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group card-label">
+                                    <label>Fecha de Nacimiento</label>
+                                    <div class="cal-icon">
+                                        <input type="text" class="form-control datetimepicker" value="01-01-2000" id="InFechaNac">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group card-label">
+                                    <label>Nacionalidad</label>
+                                    <input class="form-control" type="text" id="InNacionalidad">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group card-label">
+                                    <label>Entidad de Nacimiento</label>
+                                    <input class="form-control" type="text" id="InEntidadNac">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group card-label">
+                                    <label>Edad</label>
+                                    <input class="form-control" type="text" id="InEdad">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group card-label">
+                                    <label>No. Expediente</label>
+                                    <input class="form-control" type="text" id="InExpediente">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group card-label">
+                                    <label>Calle</label>
+                                    <input class="form-control" type="text" id="InCalle">
+                                </div>
+                            </div>
+                            <div class="col-md-1">
+                                <div class="form-group card-label">
+                                    <label>Número</label>
+                                    <input class="form-control" type="text" id="InNumero">
+                                </div>
+                            </div>
+                            <div class="col-md-1">
+                                <div class="form-group card-label">
+                                    <label>C.P.</label>
+                                    <input class="form-control" type="text" id="InCp">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group card-label">
+                                    <label>Colonia</label>
+                                    <input class="form-control" type="text" id="InColonia">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group card-label">
+                                    <label>Municipio</label>
+                                    <input class="form-control" type="text" id="InMunicipio">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group card-label">
+                                    <label>Entidad Fed.</label>
+                                    <input class="form-control" type="text" id="InEntidadF">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group card-label">
+                                    <label>Teléfono 1</label>
+                                    <input class="form-control" type="text" id="InTel1">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group card-label">
+                                    <label>Teléfono 2</label>
+                                    <input class="form-control" type="text" id="InTel2">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group card-label">
+                                    <label>E-mail</label>
+                                    <input class="form-control" type="text" id="InEmail">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group card-label">
+                                    <label>RFC</label>
+                                    <input class="form-control" type="text" id="InRfc">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group card-label">
+                                    <label>Estado Civil</label>
+                                    <select class="form-control select">
+                                        <option>Seleccione</option>
+                                        <option>Soltero</option>
+                                        <option>Casado</option>
+                                        <option>Divorciado</option>
+                                        <option>Separación</option>
+                                        <option>Judicial</option>
+                                        <option>Viudo</option>
+                                        <option>Cuncubinato</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group card-label">
+                                    <label>Escolaridad</label>
+                                    <select class="form-control select">
+                                        <option>Seleccione</option>
+                                        <option>Básica</option>
+                                        <option>Media Sup/Téc</option>
+                                        <option>Superior</option>
+                                        <option>No Escolarizado</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group card-label">
+                                    <label>Ocupación</label>
+                                    <select class="form-control select">
+                                        <option>Seleccione</option>
+                                        <option>Act Empresarial/Profesional</option>
+                                        <option>Empleado</option>
+                                        <option>Estudiante Sup/Téc</option>
+                                        <option>Hogar</option>
+                                        <option>Desempleado</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group card-label">
+                                    <label>Servicio de Salud</label>
+                                    <select class="form-control select">
+                                        <option>Seleccione</option>
+                                        <option>SSA</option>
+                                        <option>IMSS</option>
+                                        <option>ISSSTE</option>
+                                        <option>PEMEX</option>
+                                        <option>SEDENA</option>
+                                        <option>MARINA</option>
+                                        <option>NINGUNA</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group card-label">
+                                    <label>Serv. Salud Extra</label>
+                                    <input class="form-control" type="text" id="InServicioSE">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="card bg-success-light">
+                    <div class="card-header bg-info">
+                        <h4 class="card-title">Datos Étnicos</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row form-row">
+                            <div class="col-md-4">
+                                <div class="form-group card-label">
+                                    <label>Indigena</label>
+                                    <select class="form-control select">
+                                        <option>Seleccione</option>
+                                        <option>Si</option>
+                                        <option>No</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group card-label">
+                                    <label>Migrante</label>
+                                    <select class="form-control select">
+                                        <option>Seleccione</option>
+                                        <option>Si</option>
+                                        <option>No</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group card-label">
+                                    <label>Afroamericano</label>
+                                    <select class="form-control select">
+                                        <option>Seleccione</option>
+                                        <option>Si</option>
+                                        <option>No</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="card bg-success-light">
+                    <div class="card-header bg-info">
+                        <h4 class="card-title">Barrera de Atención</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row form-row">
+                            <div class="col-md-2">
+                                <div class="form-group card-label">
+                                    <label>Disc. Visual</label>
+                                    <select class="form-control select">
+                                        <option>Seleccione</option>
+                                        <option>Si</option>
+                                        <option>No</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group card-label">
+                                    <label>Disc. Auditiva</label>
+                                    <select class="form-control select">
+                                        <option>Seleccione</option>
+                                        <option>Si</option>
+                                        <option>No</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group card-label">
+                                    <label>Disc. Física</label>
+                                    <select class="form-control select">
+                                        <option>Seleccione</option>
+                                        <option>Si</option>
+                                        <option>No</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group card-label">
+                                    <label>Disc. Mental</label>
+                                    <select class="form-control select">
+                                        <option>Seleccione</option>
+                                        <option>Si</option>
+                                        <option>No</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group card-label">
+                                    <label>Idioma ó Dialecto</label>
+                                    <select class="form-control select">
+                                        <option>Seleccione</option>
+                                        <option>Si</option>
+                                        <option>No</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group card-label">
+                                    <label>Analfabeta</label>
+                                    <select class="form-control select">
+                                        <option>Seleccione</option>
+                                        <option>Si</option>
+                                        <option>No</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="card bg-success-light">
+                    <div class="card-header bg-info">
+                        <h4 class="card-title">Contacto</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row form-row">
+                            <div class="col-md-2">
+                                <div class="form-group card-label">
+                                    <label>Cont. Emergencia. Nombre</label>
+                                    <input class="form-control" type="text" id="InCENombre">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group card-label">
+                                    <label>Calle</label>
+                                    <input class="form-control" type="text" id="InCECalle">
+                                </div>
+                            </div>
+                            <div class="col-md-1">
+                                <div class="form-group card-label">
+                                    <label>Número</label>
+                                    <input class="form-control" type="text" id="InCENumero">
+                                </div>
+                            </div>
+                            <div class="col-md-1">
+                                <div class="form-group card-label">
+                                    <label>C.P.</label>
+                                    <input class="form-control" type="text" id="InCECp">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group card-label">
+                                    <label>Colonia</label>
+                                    <input class="form-control" type="text" id="InCEColonia">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group card-label">
+                                    <label>Municipio</label>
+                                    <input class="form-control" type="text" id="InCEMunicipio">
+                                </div>
+                            </div>
+                            <div class="col-md-1">
+                                <div class="form-group card-label">
+                                    <label>Entidad Fed.</label>
+                                    <input class="form-control" type="text" id="InCEEntidadF">
+                                </div>
+                            </div>
+                            <div class="col-md-1">
+                                <div class="form-group card-label">
+                                    <label>Teléfono</label>
+                                    <input class="form-control" type="text" id="InCETel">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="submit-section submit-btn-bottom">
+                    <button type="submit" class="btn bg-success submit-btn">Guardar Registro</button>
+                    <button onclick="BtnCancelarRegistro()" type="submit" class="btn btn-danger submit-btn">Cancelar</button>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    function BtnCancelarRegistro() {
+        location.reload();
+    }
+
+</script>

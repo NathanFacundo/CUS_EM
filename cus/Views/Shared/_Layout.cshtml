@@ -1,0 +1,160 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <title>CUS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <!-- Favicons -->
+    <link href="~/Content/assets/img/favicon.png" rel="icon">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/Content/assets/css/bootstrap.min.css">
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="~/Content/assets/plugins/fontawesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="~/Content/assets/plugins/fontawesome/css/all.min.css">
+    <!-- Datetimepicker CSS -->
+    <link rel="stylesheet" href="~/Content/assets/css/bootstrap-datetimepicker.min.css">
+    <!-- Select2 CSS -->
+    <link rel="stylesheet" href="~/Content/assets/plugins/select2/css/select2.min.css">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="~/Content/assets/css/style.css">
+
+</head>
+<body>
+    <div class="main-wrapper">
+        <header class="header">
+            <nav class="navbar navbar-expand-lg header-nav">
+                <div class="navbar-header">
+                    <a id="mobile_btn" href="javascript:void(0);">
+                        <span class="bar-icon">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+                    </a>
+                    <a class="navbar-brand logo" href="#" onclick="location.href='@Url.Action("Index", "Home")'">
+                        <img src="~/Content/assets/img/Inicio/logoUANL.png" class="img-fluid" alt="Logo">
+                    </a>
+                </div>
+                <div class="main-menu-wrapper">
+                    <div class="menu-header">
+                        <a href="index-2.html" class="menu-logo">
+                            <img src="~/Content/assets/img/logo.png" class="img-fluid" alt="Logo">
+                        </a>
+                        <a id="menu_close" class="menu-close" href="javascript:void(0);">
+                            <i class="fas fa-times"></i>
+                        </a>
+                    </div>
+                    <ul class="main-nav">
+                        <li>
+                            <a href="#" onclick="location.href='@Url.Action("Index", "Home")'">Inicio</a>
+                        </li>
+                        <li class="has-submenu @*active*@">
+                            <a href="#">Clínicas Univeristarias<i class="fas fa-chevron-down"></i></a>
+                            <ul class="submenu">
+                                <li class="active"><a href="doctor-dashboard.html">Unidad habitacional Independencia</a></li>
+                                <li><a href="appointments.html">Módulo dental Apodaca</a></li>
+                                <li><a href="schedule-timings.html">Pueblo Nuevo</a></li>
+                                <li><a href="my-patients.html">Vicente Guerrero</a></li>
+                                <li><a href="patient-profile.html">San Rafael</a></li>
+                                <li><a href="chat-doctor.html">21 de enero</a></li>
+                                <li><a href="invoices.html">Clínica de atención int. para adolecentes y jóvenes</a></li>
+                                <li><a href="doctor-profile-settings.html">Módulo dental Guadalupe</a></li>
+                                <li><a href="reviews.html">Ciénega de Flores</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-submenu">
+                            <a href="#">Servicios <i class="fas fa-chevron-down"></i></a>
+                            <ul class="submenu">
+                                <li><a href="search.html">Medicina</a></li>
+                                <li><a href="doctor-profile.html">Enfermería</a></li>
+                                <li><a href="booking.html">Laboratorio de análisis clínicos</a></li>
+                                <li><a href="checkout.html">Odontología</a></li>
+                                <li><a href="booking-success.html">Nutrición</a></li>
+                                <li><a href="patient-dashboard.html">Psicología</a></li>
+                                <li><a href="favourites.html">Trabajo social</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" onclick="location.href='@Url.Action("Contact", "Home")'">Contacto</a>
+                        </li>
+                    </ul>
+                </div>
+                <ul class="nav header-navbar-rht">
+                    @*<li>
+                        <a class="login-link" href="@Url.Action("Registro", "PX")">
+                            Registro PX.
+                        </a>
+                    </li>*@
+                    <li class="nav-item dropdown has-arrow logged-item">
+                        <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                            <span class="user-img">
+                                <img class="rounded-circle" src="~/Content/assets/img/doctors/doctor-thumb-02.jpg" width="31" alt="Darren Elder">
+                            </span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            @*<div class="user-header">
+                                <div class="avatar avatar-sm">
+                                    <img src="~/Content/assets/img/doctors/doctor-thumb-02.jpg" alt="User Image" class="avatar-img rounded-circle">
+                                </div>
+                                <div class="user-text">
+                                        <h6>Darren Elder</h6>
+                                        <p class="text-muted mb-0">Doctor</p>
+                                    </div>
+                            </div>*@
+                            <a class="dropdown-item" href="@Url.Action("Login", "Account")">Iniciar Sesión</a>
+                            @*<a class="dropdown-item" href="doctor-profile-settings.html">Cerrar Sesión</a>*@
+                            @*<a class="dropdown-item" href="login.html">Logout</a>*@
+                        </div>
+                    </li>
+                </ul>
+
+                @*@Html.Partial("_LoginPartial")*@
+
+            </nav>
+        </header>
+
+
+        @RenderBody()
+
+
+        <footer class="footer">
+            <div class="footer-top">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6">
+                            <div class="footer-widget footer-about">
+                                <div class="footer-logo">
+                                    @*<img src="~/Content/assets/img/Inicio/logoUANL.png" alt="logo">*@
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </footer>
+    </div>
+
+    <!-- jQuery -->
+    <script src="~/Content/assets/js/jquery.min.js"></script>
+    <!-- Bootstrap Core JS -->
+    <script src="~/Content/assets/js/popper.min.js"></script>
+    <script src="~/Content/assets/js/bootstrap.min.js"></script>
+    <!-- Select2 JS -->
+    <script src="~/Content/assets/plugins/select2/js/select2.min.js"></script>
+    <!-- Datetimepicker JS -->
+    <script src="~/Content/assets/js/moment.min.js"></script>
+    <script src="~/Content/assets/js/bootstrap-datetimepicker.min.js"></script>
+    <!-- Sticky Sidebar JS -->
+    <script src="~/Content/assets/plugins/theia-sticky-sidebar/ResizeSensor.js"></script>
+    <script src="~/Content/assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js"></script>
+    <!-- Circle Progress JS -->
+    <script src="~/Content/assets/js/circle-progress.min.js"></script>
+    <!-- Custom JS -->
+    <script src="~/Content/assets/js/script.js"></script>
+
+</body>
+</html>

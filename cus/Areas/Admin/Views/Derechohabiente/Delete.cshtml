@@ -1,0 +1,376 @@
+﻿@model CUS.Models.Paciente
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Paciente</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UnidadAfiliacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UnidadAfiliacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CURP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CURP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrimerApellido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrimerApellido)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SegundoApellido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SegundoApellido)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sexo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sexo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaNacimiento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaNacimiento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nacionalidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nacionalidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EntidadNacimiento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EntidadNacimiento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Edad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Edad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Expediente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Expediente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dir_Calle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dir_Calle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dir_Numero)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dir_Numero)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dir_CP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dir_CP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dir_Colonia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dir_Colonia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dir_Municipio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dir_Municipio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dir_EntidadFed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dir_EntidadFed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefono1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefono1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefono2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefono2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RFC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RFC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EstadoCivil)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EstadoCivil)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Escolaridad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Escolaridad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ocupacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ocupacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ServicioSalud)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServicioSalud)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ServicioSalud_Extra)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServicioSalud_Extra)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DE_Indigena)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DE_Indigena)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DE_Migrante)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DE_Migrante)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DE_Afroamericano)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DE_Afroamericano)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BA_Visual)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BA_Visual)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BA_Auditiva)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BA_Auditiva)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BA_Fisica)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BA_Fisica)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BA_Mental)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BA_Mental)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BA_Idioma)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BA_Idioma)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BA_Idioma_Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BA_Idioma_Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BA_Analfabeta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BA_Analfabeta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CE_Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CE_Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CE_Calle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CE_Calle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CE_Numero)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CE_Numero)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CE_CP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CE_CP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CE_Colonia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CE_Colonia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CE_Municipio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CE_Municipio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CE_EntidadFed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CE_EntidadFed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CE_Telefono)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CE_Telefono)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

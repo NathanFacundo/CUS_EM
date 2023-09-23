@@ -1,0 +1,599 @@
+﻿@model CUS.Models.Paciente
+
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div>
+            <div class="row justify-content-center">
+                <div class="success-cont">
+                    <h3>DETALLE DEL PX</h3>
+                </div>
+            </div>
+            <div class="content">
+                <div class="container-fluid">
+
+                    <div class="row">
+                        <button onclick="BtnRegresar()" class="btn btn-success">Regresar</button>
+                    </div>
+
+                    <div class="row">
+                        <div class="card bg-success-light">
+                            <div class="card-header bg-info">
+                                <h4 class="card-title">Datos del PX</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="row form-row">
+                                    <div class="col-md-4">
+                                        <div class="form-group card-label">
+                                            <dt style="color:black">
+                                                Unidad Afiliación
+                                            </dt>
+                                            <dd>
+                                                @*@Html.DisplayFor(model => model.UnidadAfiliacion)*@
+                                                @Html.DropDownListFor(model => model.UnidadAfiliacion, (IEnumerable<SelectListItem>)ViewBag.UNIDADES, null, new { @class = "form-control", @disabled = "disabled" })
+                                            </dd>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group card-label">
+                                            <dt style="color:black">
+                                                @Html.DisplayNameFor(model => model.CURP)
+                                            </dt>
+                                            <dd>
+                                                @Html.DisplayFor(model => model.CURP)
+                                            </dd>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group card-label">
+                                            <dt style="color:black">
+                                                Curp Provisional
+                                            </dt>
+                                            <dd>
+                                                @Html.DisplayFor(model => model.Curp_Calculado)
+                                            </dd>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group card-label">
+                                            <dt style="color:black">
+                                                Curp Provisional Motivo
+                                            </dt>
+                                            <dd>
+                                                @Html.DisplayFor(model => model.Curp_CalculadoMotivo)
+                                            </dd>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group card-label">
+                                            <dt style="color:black">
+                                                @Html.DisplayNameFor(model => model.Nombre)
+                                            </dt>
+                                            <dd>
+                                                @Html.DisplayFor(model => model.Nombre)
+                                            </dd>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group card-label">
+                                            <dt style="color:black">
+                                                Primer Apellido
+                                            </dt>
+                                            <dd>
+                                                @Html.DisplayFor(model => model.PrimerApellido)
+                                            </dd>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group card-label">
+                                            <dt style="color:black">
+                                                Segundo Apellido
+                                            </dt>
+                                            <dd>
+                                                @Html.DisplayFor(model => model.SegundoApellido)
+                                            </dd>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group card-label">
+                                            <dt style="color:black">
+                                                @Html.DisplayNameFor(model => model.Sexo)
+                                            </dt>
+                                            <dd>
+                                                @Html.DisplayFor(model => model.Sexo)
+                                            </dd>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group card-label">
+                                            <dt style="color:black">
+                                                Fecha Nacimiento
+                                            </dt>
+                                            <dd>
+                                                @Html.DisplayFor(model => model.FechaNacimiento)
+                                            </dd>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group card-label">
+                                            <dt style="color:black">
+                                                @Html.DisplayNameFor(model => model.Nacionalidad)
+                                            </dt>
+                                            <dd>
+                                                @Html.DisplayFor(model => model.Nacionalidad)
+                                            </dd>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group card-label">
+                                            <dt style="color:black">
+                                                Entidad Nacimiento
+                                            </dt>
+                                            <dd>
+                                                @Html.DisplayFor(model => model.EntidadNacimiento)
+                                            </dd>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group card-label">
+                                            <dt style="color:black">
+                                                @Html.DisplayNameFor(model => model.Edad)
+                                            </dt>
+                                            <dd>
+                                                @Html.DisplayFor(model => model.Edad)
+                                            </dd>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group card-label">
+                                            <dt style="color:black">
+                                                Nombre Tutor
+                                            </dt>
+                                            <dd>
+                                                @Html.DisplayFor(model => model.Nombre_Tutor)
+                                            </dd>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group card-label">
+                                            <dt style="color:black">
+                                                Primer A. Tutor
+                                            </dt>
+                                            <dd>
+                                                @Html.DisplayFor(model => model.PrimerApellido_Tutor)
+                                            </dd>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group card-label">
+                                            <dt style="color:black">
+                                                Segundo A. Tutor
+                                            </dt>
+                                            <dd>
+                                                @Html.DisplayFor(model => model.SegundoApellido_Tutor)
+                                            </dd>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group card-label">
+                                            <dt style="color:black">
+                                                @Html.DisplayNameFor(model => model.Expediente)
+                                            </dt>
+                                            <dd>
+                                                @Html.DisplayFor(model => model.Expediente)
+                                            </dd>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group card-label">
+                                            <dt style="color:black">
+                                                Calle
+                                            </dt>
+                                            <dd>
+                                                @Html.DisplayFor(model => model.Dir_Calle)
+                                            </dd>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <div class="form-group card-label">
+                                            <dt style="color:black">
+                                                Número
+                                            </dt>
+                                            <dd>
+                                                @Html.DisplayFor(model => model.Dir_Numero)
+                                            </dd>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <div class="form-group card-label">
+                                            <dt style="color:black">
+                                                C.P.
+                                            </dt>
+                                            <dd>
+                                                @Html.DisplayFor(model => model.Dir_CP)
+                                            </dd>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group card-label">
+                                            <dt style="color:black">
+                                                Colonia
+                                            </dt>
+                                            <dd>
+                                                @Html.DisplayFor(model => model.Dir_Colonia)
+                                            </dd>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group card-label">
+                                            <dt style="color:black">
+                                                Municipio
+                                            </dt>
+                                            <dd>
+                                                @Html.DisplayFor(model => model.Dir_Municipio)
+                                            </dd>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group card-label">
+                                            <dt style="color:black">
+                                                Entidad Fed.
+                                            </dt>
+                                            <dd>
+                                                @Html.DisplayFor(model => model.Dir_EntidadFed)
+                                            </dd>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group card-label">
+                                            <dt style="color:black">
+                                                Teléfono 1
+                                            </dt>
+                                            <dd>
+                                                @Html.DisplayFor(model => model.Telefono1)
+                                            </dd>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group card-label">
+                                            <dt style="color:black">
+                                                Teléfono 2
+                                            </dt>
+                                            <dd>
+                                                @Html.DisplayFor(model => model.Telefono2)
+                                            </dd>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group card-label">
+                                            <dt style="color:black">
+                                                Email
+                                            </dt>
+                                            <dd>
+                                                @Html.DisplayFor(model => model.Email)
+                                            </dd>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group card-label">
+                                            <dt style="color:black">
+                                                @Html.DisplayNameFor(model => model.RFC)
+                                            </dt>
+                                            <dd>
+                                                @Html.DisplayFor(model => model.RFC)
+                                            </dd>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group card-label">
+                                            <dt style="color:black">
+                                                Estado Civil
+                                            </dt>
+                                            <dd>
+                                                @Html.DisplayFor(model => model.EstadoCivil)
+                                            </dd>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group card-label">
+                                            <dt style="color:black">
+                                                @Html.DisplayNameFor(model => model.Escolaridad)
+                                            </dt>
+                                            <dd>
+                                                @Html.DisplayFor(model => model.Escolaridad)
+                                            </dd>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group card-label">
+                                            <dt style="color:black">
+                                                Ocupación
+                                            </dt>
+                                            <dd>
+                                                @Html.DisplayFor(model => model.Ocupacion)
+                                            </dd>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group card-label">
+                                            <dt style="color:black">
+                                                Servicio Salud
+                                            </dt>
+                                            <dd>
+                                                @Html.DisplayFor(model => model.ServicioSalud)
+                                            </dd>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group card-label">
+                                            <dt style="color:black">
+                                                Servicio Salud Extra
+                                            </dt>
+                                            <dd>
+                                                @Html.DisplayFor(model => model.ServicioSalud_Extra)
+                                            </dd>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 p-0">
+                            <div class="card bg-success-light">
+                                <div class="card-header bg-info">
+                                    <h4 class="card-title">Datos Étnicos</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row form-row">
+                                        <div class="col-md-3">
+                                            <div class="form-group card-label">
+                                                <dt style="color:black">
+                                                    Indigena
+                                                </dt>
+                                                <dd>
+                                                    @Html.DisplayFor(model => model.DE_Indigena)
+                                                </dd>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group card-label">
+                                                <dt style="color:black">
+                                                    Migrante
+                                                </dt>
+                                                <dd>
+                                                    @Html.DisplayFor(model => model.DE_Migrante)
+                                                </dd>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group card-label">
+                                                <dt style="color:black">
+                                                    Afroamexicano
+                                                </dt>
+                                                <dd>
+                                                    @Html.DisplayFor(model => model.DE_Afroamericano)
+                                                </dd>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group card-label">
+                                                <dt style="color:black">
+                                                    N/A
+                                                </dt>
+                                                <dd>
+                                                    @Html.DisplayFor(model => model.NA_DE)
+                                                </dd>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 p-0">
+                            <div class="card bg-success-light">
+                                <div class="card-header bg-info">
+                                    <h4 class="card-title">Barrera de Atención</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row form-row">
+                                        <div class="col-md-1">
+                                            <div class="form-group card-label">
+                                                <dt style="color:black">
+                                                    Visual
+                                                </dt>
+                                                <dd>
+                                                    @Html.DisplayFor(model => model.BA_Visual)
+                                                </dd>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <div class="form-group card-label">
+                                                <dt style="color:black">
+                                                    Auditiva
+                                                </dt>
+                                                <dd>
+                                                    @Html.DisplayFor(model => model.BA_Auditiva)
+                                                </dd>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group card-label">
+                                                <dt style="color:black">
+                                                    Fisica
+                                                </dt>
+                                                <dd>
+                                                    @Html.DisplayFor(model => model.BA_Fisica)
+                                                </dd>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group card-label">
+                                                <dt style="color:black">
+                                                    Mental
+                                                </dt>
+                                                <dd>
+                                                    @Html.DisplayFor(model => model.BA_Mental)
+                                                </dd>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group card-label">
+                                                <dt style="color:black">
+                                                    Idioma
+                                                </dt>
+                                                <dd>
+                                                    @Html.DisplayFor(model => model.BA_Idioma)
+                                                </dd>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group card-label">
+                                                <dt style="color:black">
+                                                    Analfabeta
+                                                </dt>
+                                                <dd>
+                                                    @Html.DisplayFor(model => model.BA_Analfabeta)
+                                                </dd>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group card-label">
+                                                <dt style="color:black">
+                                                    N/A
+                                                </dt>
+                                                <dd>
+                                                    @Html.DisplayFor(model => model.NA_BA)
+                                                </dd>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 p-0">
+                            <div class="card bg-success-light">
+                                <div class="card-header bg-info">
+                                    <h4 class="card-title">Contacto</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row form-row">
+                                        <div class="col-md-3">
+                                            <div class="form-group card-label">
+                                                <dt style="color:black">
+                                                    Nombre
+                                                </dt>
+                                                <dd>
+                                                    @Html.DisplayFor(model => model.CE_Nombre)
+                                                </dd>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group card-label">
+                                                <dt style="color:black">
+                                                    Calle
+                                                </dt>
+                                                <dd>
+                                                    @Html.DisplayFor(model => model.CE_Calle)
+                                                </dd>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group card-label">
+                                                <dt style="color:black">
+                                                    Número
+                                                </dt>
+                                                <dd>
+                                                    @Html.DisplayFor(model => model.CE_Numero)
+                                                </dd>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group card-label">
+                                                <dt style="color:black">
+                                                    C.P.
+                                                </dt>
+                                                <dd>
+                                                    @Html.DisplayFor(model => model.CE_CP)
+                                                </dd>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group card-label">
+                                                <dt style="color:black">
+                                                    Colonia
+                                                </dt>
+                                                <dd>
+                                                    @Html.DisplayFor(model => model.CE_Colonia)
+                                                </dd>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group card-label">
+                                                <dt style="color:black">
+                                                    Municipio
+                                                </dt>
+                                                <dd>
+                                                    @Html.DisplayFor(model => model.CE_Municipio)
+                                                </dd>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group card-label">
+                                                <dt style="color:black">
+                                                    Entidad Fed.
+                                                </dt>
+                                                <dd>
+                                                    @Html.DisplayFor(model => model.CE_EntidadFed)
+                                                </dd>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group card-label">
+                                                <dt style="color:black">
+                                                    Teléfono
+                                                </dt>
+                                                <dd>
+                                                    @Html.DisplayFor(model => model.CE_Telefono)
+                                                </dd>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    @*<div class="row">
+                        <div class="submit-section submit-btn-bottom">
+                            <button onclick="BtnRegresar()" type="submit" class="btn btn-success submit-btn">Regresar</button>
+                        </div>
+                    </div>*@
+                    <div class="row">
+                        <button onclick="BtnRegresar()" class="btn btn-success">Regresar</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    function BtnRegresar() {
+        window.location = encodeURI('@Url.Action("Index", "Derechohabiente")')
+    }
+
+</script>
+
+
+

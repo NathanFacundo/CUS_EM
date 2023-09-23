@@ -1,0 +1,752 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CUSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RoleId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Area" Type="Int32" />
+    <Property Name="Unidad" Type="Int32" />
+  </EntityType>
+  <EntityContainer Name="CUS" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" />
+    <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
+    <EntitySet Name="UnidadAfiliacion" EntityType="CUSModel.UnidadAfiliacion" />
+    <EntitySet Name="Paciente" EntityType="CUSModel.Paciente" />
+    <EntitySet Name="hc_antecedentes_desarrollo" EntityType="CUSModel.hc_antecedentes_desarrollo" />
+    <EntitySet Name="hc_antecedentes_ginecoobstetricos" EntityType="CUSModel.hc_antecedentes_ginecoobstetricos" />
+    <EntitySet Name="hc_antecedentes_patologicos" EntityType="CUSModel.hc_antecedentes_patologicos" />
+    <EntitySet Name="hc_antecedentes_perinatales" EntityType="CUSModel.hc_antecedentes_perinatales" />
+    <EntitySet Name="hc_evaluacion_economica" EntityType="CUSModel.hc_evaluacion_economica" />
+    <EntitySet Name="hc_evaluacion_social" EntityType="CUSModel.hc_evaluacion_social" />
+    <EntitySet Name="hc_factores_riesgo_psicologicos" EntityType="CUSModel.hc_factores_riesgo_psicologicos" />
+    <EntitySet Name="hc_ficha_identificacion" EntityType="CUSModel.hc_ficha_identificacion" />
+    <EntitySet Name="hc_habitos" EntityType="CUSModel.hc_habitos" />
+    <EntitySet Name="hc_historial_consumo" EntityType="CUSModel.hc_historial_consumo" />
+    <EntitySet Name="hc_inmunizaciones" EntityType="CUSModel.hc_inmunizaciones" />
+    <EntitySet Name="hc_valoracion_familiar" EntityType="CUSModel.hc_valoracion_familiar" />
+    <EntitySet Name="hc_valores_creencias" EntityType="CUSModel.hc_valores_creencias" />
+    <EntitySet Name="HistoriaClinica" EntityType="CUSModel.HistoriaClinica" />
+    <AssociationSet Name="FK__hc_antece__Id_Pa__2645B050" Association="CUSModel.FK__hc_antece__Id_Pa__2645B050">
+      <End Role="Paciente" EntitySet="Paciente" />
+      <End Role="hc_antecedentes_desarrollo" EntitySet="hc_antecedentes_desarrollo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__hc_antece__Id_Pa__29221CFB" Association="CUSModel.FK__hc_antece__Id_Pa__29221CFB">
+      <End Role="Paciente" EntitySet="Paciente" />
+      <End Role="hc_antecedentes_ginecoobstetricos" EntitySet="hc_antecedentes_ginecoobstetricos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__hc_antece__Id_Pa__08B54D69" Association="CUSModel.FK__hc_antece__Id_Pa__08B54D69">
+      <End Role="Paciente" EntitySet="Paciente" />
+      <End Role="hc_antecedentes_patologicos" EntitySet="hc_antecedentes_patologicos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__hc_antece__Id_Pa__05D8E0BE" Association="CUSModel.FK__hc_antece__Id_Pa__05D8E0BE">
+      <End Role="Paciente" EntitySet="Paciente" />
+      <End Role="hc_antecedentes_perinatales" EntitySet="hc_antecedentes_perinatales" />
+    </AssociationSet>
+    <AssociationSet Name="FK__hc_evalua__Id_Pa__787EE5A0" Association="CUSModel.FK__hc_evalua__Id_Pa__787EE5A0">
+      <End Role="Paciente" EntitySet="Paciente" />
+      <End Role="hc_evaluacion_economica" EntitySet="hc_evaluacion_economica" />
+    </AssociationSet>
+    <AssociationSet Name="FK__hc_evalua__Id_Pa__72C60C4A" Association="CUSModel.FK__hc_evalua__Id_Pa__72C60C4A">
+      <End Role="Paciente" EntitySet="Paciente" />
+      <End Role="hc_evaluacion_social" EntitySet="hc_evaluacion_social" />
+    </AssociationSet>
+    <AssociationSet Name="FK__hc_factor__Id_Pa__7E37BEF6" Association="CUSModel.FK__hc_factor__Id_Pa__7E37BEF6">
+      <End Role="Paciente" EntitySet="Paciente" />
+      <End Role="hc_factores_riesgo_psicologicos" EntitySet="hc_factores_riesgo_psicologicos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__hc_ficha___Id_Pa__6FE99F9F" Association="CUSModel.FK__hc_ficha___Id_Pa__6FE99F9F">
+      <End Role="Paciente" EntitySet="Paciente" />
+      <End Role="hc_ficha_identificacion" EntitySet="hc_ficha_identificacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__hc_habito__Id_Pa__02FC7413" Association="CUSModel.FK__hc_habito__Id_Pa__02FC7413">
+      <End Role="Paciente" EntitySet="Paciente" />
+      <End Role="hc_habitos" EntitySet="hc_habitos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__hc_histor__Id_Pa__236943A5" Association="CUSModel.FK__hc_histor__Id_Pa__236943A5">
+      <End Role="Paciente" EntitySet="Paciente" />
+      <End Role="hc_historial_consumo" EntitySet="hc_historial_consumo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__hc_inmuni__Id_Pa__208CD6FA" Association="CUSModel.FK__hc_inmuni__Id_Pa__208CD6FA">
+      <End Role="Paciente" EntitySet="Paciente" />
+      <End Role="hc_inmunizaciones" EntitySet="hc_inmunizaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK__hc_valora__Id_Pa__75A278F5" Association="CUSModel.FK__hc_valora__Id_Pa__75A278F5">
+      <End Role="Paciente" EntitySet="Paciente" />
+      <End Role="hc_valoracion_familiar" EntitySet="hc_valoracion_familiar" />
+    </AssociationSet>
+    <AssociationSet Name="FK__hc_valore__Id_Pa__7B5B524B" Association="CUSModel.FK__hc_valore__Id_Pa__7B5B524B">
+      <End Role="Paciente" EntitySet="Paciente" />
+      <End Role="hc_valores_creencias" EntitySet="hc_valores_creencias" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HistoriaC__Id_Pa__3C34F16F" Association="CUSModel.FK__HistoriaC__Id_Pa__3C34F16F">
+      <End Role="Paciente" EntitySet="Paciente" />
+      <End Role="HistoriaClinica" EntitySet="HistoriaClinica" />
+    </AssociationSet>
+    <EntitySet Name="hc_alimentacion" EntityType="CUSModel.hc_alimentacion" />
+    <AssociationSet Name="FK__hc_alimen__Id_Pa__4F47C5E3" Association="CUSModel.FK__hc_alimen__Id_Pa__4F47C5E3">
+      <End Role="Paciente" EntitySet="Paciente" />
+      <End Role="hc_alimentacion" EntitySet="hc_alimentacion" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="UnidadAfiliacion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NombreUnidad" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Prefijo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Paciente">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UnidadAfiliacion" Type="Int32" Nullable="false" />
+    <Property Name="CURP" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="PrimerApellido" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="SegundoApellido" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Sexo" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Nacionalidad" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="EntidadNacimiento" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Edad" Type="Int32" Nullable="false" />
+    <Property Name="Expediente" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Dir_Calle" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Dir_Numero" Type="Int32" Nullable="false" />
+    <Property Name="Dir_CP" Type="Int32" Nullable="false" />
+    <Property Name="Dir_Colonia" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Dir_Municipio" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Dir_EntidadFed" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Telefono1" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Telefono2" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="RFC" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="EstadoCivil" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Escolaridad" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Ocupacion" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="ServicioSalud" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="ServicioSalud_Extra" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="DE_Indigena" Type="Boolean" Nullable="false" />
+    <Property Name="DE_Migrante" Type="Boolean" Nullable="false" />
+    <Property Name="DE_Afroamericano" Type="Boolean" Nullable="false" />
+    <Property Name="BA_Visual" Type="Boolean" Nullable="false" />
+    <Property Name="BA_Auditiva" Type="Boolean" Nullable="false" />
+    <Property Name="BA_Fisica" Type="Boolean" Nullable="false" />
+    <Property Name="BA_Mental" Type="Boolean" Nullable="false" />
+    <Property Name="BA_Idioma" Type="Boolean" Nullable="false" />
+    <Property Name="BA_Idioma_Nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="BA_Analfabeta" Type="Boolean" Nullable="false" />
+    <Property Name="CE_Nombre" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="CE_Calle" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="CE_Numero" Type="Int32" Nullable="false" />
+    <Property Name="CE_CP" Type="Int32" Nullable="false" />
+    <Property Name="CE_Colonia" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="CE_Municipio" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="CE_EntidadFed" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="CE_Telefono" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Nombre_Tutor" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="PrimerApellido_Tutor" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="SegundoApellido_Tutor" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="FechaRegistro" Type="DateTime" Precision="3" />
+    <Property Name="Curp_Calculado" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Curp_CalculadoMotivo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="NA_DE" Type="Boolean" />
+    <Property Name="NA_BA" Type="Boolean" />
+    <NavigationProperty Name="hc_antecedentes_desarrollo" Relationship="CUSModel.FK__hc_antece__Id_Pa__2645B050" FromRole="Paciente" ToRole="hc_antecedentes_desarrollo" />
+    <NavigationProperty Name="hc_antecedentes_ginecoobstetricos" Relationship="CUSModel.FK__hc_antece__Id_Pa__29221CFB" FromRole="Paciente" ToRole="hc_antecedentes_ginecoobstetricos" />
+    <NavigationProperty Name="hc_antecedentes_patologicos" Relationship="CUSModel.FK__hc_antece__Id_Pa__08B54D69" FromRole="Paciente" ToRole="hc_antecedentes_patologicos" />
+    <NavigationProperty Name="hc_antecedentes_perinatales" Relationship="CUSModel.FK__hc_antece__Id_Pa__05D8E0BE" FromRole="Paciente" ToRole="hc_antecedentes_perinatales" />
+    <NavigationProperty Name="hc_evaluacion_economica" Relationship="CUSModel.FK__hc_evalua__Id_Pa__787EE5A0" FromRole="Paciente" ToRole="hc_evaluacion_economica" />
+    <NavigationProperty Name="hc_evaluacion_social" Relationship="CUSModel.FK__hc_evalua__Id_Pa__72C60C4A" FromRole="Paciente" ToRole="hc_evaluacion_social" />
+    <NavigationProperty Name="hc_factores_riesgo_psicologicos" Relationship="CUSModel.FK__hc_factor__Id_Pa__7E37BEF6" FromRole="Paciente" ToRole="hc_factores_riesgo_psicologicos" />
+    <NavigationProperty Name="hc_ficha_identificacion" Relationship="CUSModel.FK__hc_ficha___Id_Pa__6FE99F9F" FromRole="Paciente" ToRole="hc_ficha_identificacion" />
+    <NavigationProperty Name="hc_habitos" Relationship="CUSModel.FK__hc_habito__Id_Pa__02FC7413" FromRole="Paciente" ToRole="hc_habitos" />
+    <NavigationProperty Name="hc_historial_consumo" Relationship="CUSModel.FK__hc_histor__Id_Pa__236943A5" FromRole="Paciente" ToRole="hc_historial_consumo" />
+    <NavigationProperty Name="hc_inmunizaciones" Relationship="CUSModel.FK__hc_inmuni__Id_Pa__208CD6FA" FromRole="Paciente" ToRole="hc_inmunizaciones" />
+    <NavigationProperty Name="hc_valoracion_familiar" Relationship="CUSModel.FK__hc_valora__Id_Pa__75A278F5" FromRole="Paciente" ToRole="hc_valoracion_familiar" />
+    <NavigationProperty Name="hc_valores_creencias" Relationship="CUSModel.FK__hc_valore__Id_Pa__7B5B524B" FromRole="Paciente" ToRole="hc_valores_creencias" />
+    <NavigationProperty Name="HistoriaClinica" Relationship="CUSModel.FK__HistoriaC__Id_Pa__3C34F16F" FromRole="Paciente" ToRole="HistoriaClinica" />
+    <NavigationProperty Name="hc_alimentacion" Relationship="CUSModel.FK__hc_alimen__Id_Pa__4F47C5E3" FromRole="Paciente" ToRole="hc_alimentacion" />
+  </EntityType>
+  <EntityType Name="hc_antecedentes_desarrollo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SostuvoCabeza" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="EspecifiqueSostuvoCabeza" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="SeSento" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="EspecifiqueSeSento" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Camino" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="EspecifiqueCamino" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Habla" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="EspecifiqueHabla" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="ControlEsfinteres" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="EspecifiqueControlEsf" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="PruebaEDI" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="EspecifiquePruebaEDI" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+    <Property Name="Id_HistoriaClinica" Type="Int32" />
+    <NavigationProperty Name="Paciente" Relationship="CUSModel.FK__hc_antece__Id_Pa__2645B050" FromRole="hc_antecedentes_desarrollo" ToRole="Paciente" />
+    <Property Name="Clave_hc_px" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="hc_antecedentes_ginecoobstetricos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Menarquia" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="MotivoMenarquia" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="RitmoMenarquia" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="CantidadMenarquia" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ColoracionMenarquia" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="EspecifiqueColoracionMenarquia" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="VidaSexual" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="NumeroParejasSexuales" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+    <Property Name="TipoMenarquia" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Id_HistoriaClinica" Type="Int32" />
+    <NavigationProperty Name="Paciente" Relationship="CUSModel.FK__hc_antece__Id_Pa__29221CFB" FromRole="hc_antecedentes_ginecoobstetricos" ToRole="Paciente" />
+    <Property Name="Clave_hc_px" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="hc_antecedentes_patologicos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Antecedentes" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="PxHospitalizado" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="EspecifiqueHospitalizado" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="RealizadoCirugia" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="EspecifiqueCirugia" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+    <Property Name="CheckRespiratorios" Type="Boolean" />
+    <Property Name="CheckEndocrinologicos" Type="Boolean" />
+    <Property Name="CheckCardiovasculares" Type="Boolean" />
+    <Property Name="CheckOncologicos" Type="Boolean" />
+    <Property Name="CheckSaludMental" Type="Boolean" />
+    <Property Name="CheckNeurologicos" Type="Boolean" />
+    <Property Name="CheckInfectoContagiosos" Type="Boolean" />
+    <Property Name="CheckProblemasAparatoR" Type="Boolean" />
+    <Property Name="CheckProblemasGastro" Type="Boolean" />
+    <Property Name="CheckReumatologicos" Type="Boolean" />
+    <Property Name="CheckNinguna" Type="Boolean" />
+    <Property Name="Id_HistoriaClinica" Type="Int32" />
+    <NavigationProperty Name="Paciente" Relationship="CUSModel.FK__hc_antece__Id_Pa__08B54D69" FromRole="hc_antecedentes_patologicos" ToRole="Paciente" />
+    <Property Name="Clave_hc_px" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="hc_antecedentes_perinatales">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NumeroEmbarazo" Type="Int32" />
+    <Property Name="EnfermedadEmbarazo" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="EspecifiqueEnfermedadEmbarazo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="TratamientoEmbarazo" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="EspecifiqueTratamientoEmbarazo" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="LugarParto" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="EspecifiqueLugarParto" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="EdadGestional" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="EspecifiqueEdadGestional" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Apgar" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="EspecifiqueApgar" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="TipoParto" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="PartoFue" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="EspecifiquePartoFue" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="EspecifiqueMotivoCesarea" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ComplicacionObs" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="EspecifiqueComplicacionObs" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="TamizMetabolico" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="TamizMetabolicoOpciones" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="TamizAuditivo" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="TamizAuditivoOpciones" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+    <Property Name="Id_HistoriaClinica" Type="Int32" />
+    <NavigationProperty Name="Paciente" Relationship="CUSModel.FK__hc_antece__Id_Pa__05D8E0BE" FromRole="hc_antecedentes_perinatales" ToRole="Paciente" />
+    <Property Name="Clave_hc_px" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="hc_evaluacion_economica">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="beneficiarioPrograma" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="EspecifiqueBeneficiario" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="rolEconimico" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="EspecifiqueRol" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="riesgoEconomico" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+    <Property Name="Id_HistoriaClinica" Type="Int32" />
+    <NavigationProperty Name="Paciente" Relationship="CUSModel.FK__hc_evalua__Id_Pa__787EE5A0" FromRole="hc_evaluacion_economica" ToRole="Paciente" />
+    <Property Name="Clave_hc_px" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="hc_evaluacion_social">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="estadocivil" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="numeropersonas" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="numerohabitaciones" Type="Int32" />
+    <Property Name="hacinamiento" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="escolaridad" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="GradoEsc" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="PromedioEsc" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="reprobado" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="EspecifiqueReprobado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Desercion" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="Guarderia" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="Cuidador" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Problemas" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="ProblemasMaestros" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="Ocupacio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TipoTrab" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="RiesgoSos" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+    <Property Name="ServicioSal" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Id_HistoriaClinica" Type="Int32" />
+    <NavigationProperty Name="Paciente" Relationship="CUSModel.FK__hc_evalua__Id_Pa__72C60C4A" FromRole="hc_evaluacion_social" ToRole="Paciente" />
+    <Property Name="Clave_hc_px" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="hc_factores_riesgo_psicologicos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CambiosSueño" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="CambiosEnergia" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="CambiosApetito" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="Pesimismo" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="Irritabilidad" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="PerdidaPlacer" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="PalpitacionesFuertes" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="SensacionAahogo" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="MiedoPreocupacion" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="IdeacionSuicida" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+    <Property Name="Id_HistoriaClinica" Type="Int32" />
+    <NavigationProperty Name="Paciente" Relationship="CUSModel.FK__hc_factor__Id_Pa__7E37BEF6" FromRole="hc_factores_riesgo_psicologicos" ToRole="Paciente" />
+    <Property Name="Clave_hc_px" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="hc_ficha_identificacion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="acompanante" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="NombreAcompa" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="alergia" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="NombreAlergia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MotivoCons" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+    <Property Name="Id_HistoriaClinica" Type="Int32" />
+    <NavigationProperty Name="Paciente" Relationship="CUSModel.FK__hc_ficha___Id_Pa__6FE99F9F" FromRole="hc_ficha_identificacion" ToRole="Paciente" />
+    <Property Name="Clave_hc_px" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="hc_habitos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HorasSueño" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="TieneInsomnio" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="TieneEnuresis" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="TienePesadillas" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="HorasOcio" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ActividadFisica" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="TiempoActividadFisica" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="FrecuenciaActividadFisica" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+    <Property Name="Check_Adicciones_Padre" Type="Boolean" />
+    <Property Name="Check_Adicciones_Madre" Type="Boolean" />
+    <Property Name="Check_Adicciones_Ambas" Type="Boolean" />
+    <Property Name="Check_Adicciones_NA" Type="Boolean" />
+    <Property Name="Check_Cardiopatia_Padre" Type="Boolean" />
+    <Property Name="Check_Cardiopatia_Madre" Type="Boolean" />
+    <Property Name="Check_Cardiopatia_Ambas" Type="Boolean" />
+    <Property Name="Check_Cardiopatia_NA" Type="Boolean" />
+    <Property Name="Check_Diabetes_Padre" Type="Boolean" />
+    <Property Name="Check_Diabetes_Madre" Type="Boolean" />
+    <Property Name="Check_Diabetes_Ambas" Type="Boolean" />
+    <Property Name="Check_Diabetes_NA" Type="Boolean" />
+    <Property Name="Check_Dislipidemias_Padre" Type="Boolean" />
+    <Property Name="Check_Dislipidemias_Madre" Type="Boolean" />
+    <Property Name="Check_Dislipidemias_Ambas" Type="Boolean" />
+    <Property Name="Check_Dislipidemias_NA" Type="Boolean" />
+    <Property Name="Check_Epilepsia_Padre" Type="Boolean" />
+    <Property Name="Check_Epilepsia_Madre" Type="Boolean" />
+    <Property Name="Check_Epilepsia_Ambas" Type="Boolean" />
+    <Property Name="Check_Epilepsia_NA" Type="Boolean" />
+    <Property Name="Check_Hipertension_Padre" Type="Boolean" />
+    <Property Name="Check_Hipertension_Madre" Type="Boolean" />
+    <Property Name="Check_Hipertension_Ambas" Type="Boolean" />
+    <Property Name="Check_Hipertension_NA" Type="Boolean" />
+    <Property Name="Check_Infectocontagiosas_Padre" Type="Boolean" />
+    <Property Name="Check_Infectocontagiosas_Madre" Type="Boolean" />
+    <Property Name="Check_Infectocontagiosas_Ambas" Type="Boolean" />
+    <Property Name="Check_Infectocontagiosas_NA" Type="Boolean" />
+    <Property Name="Check_Malformaciones_Padre" Type="Boolean" />
+    <Property Name="Check_Malformaciones_Madre" Type="Boolean" />
+    <Property Name="Check_Malformaciones_Ambas" Type="Boolean" />
+    <Property Name="Check_Malformaciones_NA" Type="Boolean" />
+    <Property Name="Check_Nefropatias_Padre" Type="Boolean" />
+    <Property Name="Check_Nefropatias_Madre" Type="Boolean" />
+    <Property Name="Check_Nefropatias_Ambas" Type="Boolean" />
+    <Property Name="Check_Nefropatias_NA" Type="Boolean" />
+    <Property Name="Check_Obesidad_Padre" Type="Boolean" />
+    <Property Name="Check_Obesidad_Madre" Type="Boolean" />
+    <Property Name="Check_Obesidad_Ambas" Type="Boolean" />
+    <Property Name="Check_Obesidad_NA" Type="Boolean" />
+    <Property Name="Check_Oncologicos_Padre" Type="Boolean" />
+    <Property Name="Check_Oncologicos_Madre" Type="Boolean" />
+    <Property Name="Check_Oncologicos_Ambas" Type="Boolean" />
+    <Property Name="Check_Oncologicos_NA" Type="Boolean" />
+    <Property Name="Id_HistoriaClinica" Type="Int32" />
+    <NavigationProperty Name="Paciente" Relationship="CUSModel.FK__hc_habito__Id_Pa__02FC7413" FromRole="hc_habitos" ToRole="Paciente" />
+    <Property Name="Clave_hc_px" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="hc_historial_consumo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TomaAlcohol" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="TomaAlcoholFrecuencia" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="CantidadAlcohol" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Fuma" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="EdadInicio" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ActualmenteFuma" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="TiempoInactividadFuma" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="TipoFuma" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="FrecuenciaFuma" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="CantidadFuma" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ConsumeDroga" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="TipoDrogaConsume" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="FrecuenciaDroga" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="CantidadDrogaConsume" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="TipoLactancia" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="TiempoLactancia" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="EdadAblactacion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="AlimentosInicio" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="EdadIntegracion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+    <Property Name="Id_HistoriaClinica" Type="Int32" />
+    <NavigationProperty Name="Paciente" Relationship="CUSModel.FK__hc_histor__Id_Pa__236943A5" FromRole="hc_historial_consumo" ToRole="Paciente" />
+    <Property Name="Clave_hc_px" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="hc_inmunizaciones">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CartillaVacunacion" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="EsquemaVacunacion" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="EspecifiqueVacuna" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+    <Property Name="Id_HistoriaClinica" Type="Int32" />
+    <NavigationProperty Name="Paciente" Relationship="CUSModel.FK__hc_inmuni__Id_Pa__208CD6FA" FromRole="hc_inmunizaciones" ToRole="Paciente" />
+    <Property Name="Clave_hc_px" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="hc_valoracion_familiar">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="mamaPaciente" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="EdadMama" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="GradoMama" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="OcupacionMama" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="TipoTrabajoMama" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="papaPaciente" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="EdadPapa" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="GradoPapa" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="OcupacionPapa" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="TipoTrabajoPapa" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ViveCon" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="tieneHermanos" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="CuantosHermanos" Type="Int32" />
+    <Property Name="EspecifiqueEnf" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="involucraTratamiento" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="EspecifiqueInvol" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="riesgoSocial" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+    <Property Name="Id_HistoriaClinica" Type="Int32" />
+    <NavigationProperty Name="Paciente" Relationship="CUSModel.FK__hc_valora__Id_Pa__75A278F5" FromRole="hc_valoracion_familiar" ToRole="Paciente" />
+    <Property Name="Clave_hc_px" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="hc_valores_creencias">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="perteneceReligion" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="religion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="EspecifiqueReligion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="creenciaReligiosa" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="EspecifiqueCreencia" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="costumbreValores" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="EspecifiqueCostumbres" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+    <Property Name="Id_HistoriaClinica" Type="Int32" />
+    <NavigationProperty Name="Paciente" Relationship="CUSModel.FK__hc_valore__Id_Pa__7B5B524B" FromRole="hc_valores_creencias" ToRole="Paciente" />
+    <Property Name="Clave_hc_px" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="HistoriaClinica">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Clave_hc_px" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Medico" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FechaRegistroHC" Type="DateTime" Precision="3" />
+    <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Paciente" Relationship="CUSModel.FK__HistoriaC__Id_Pa__3C34F16F" FromRole="HistoriaClinica" ToRole="Paciente" />
+  </EntityType>
+  <Association Name="FK__hc_antece__Id_Pa__2645B050">
+    <End Type="CUSModel.Paciente" Role="Paciente" Multiplicity="1" />
+    <End Type="CUSModel.hc_antecedentes_desarrollo" Role="hc_antecedentes_desarrollo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paciente">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="hc_antecedentes_desarrollo">
+        <PropertyRef Name="Id_Paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__hc_antece__Id_Pa__29221CFB">
+    <End Type="CUSModel.Paciente" Role="Paciente" Multiplicity="1" />
+    <End Type="CUSModel.hc_antecedentes_ginecoobstetricos" Role="hc_antecedentes_ginecoobstetricos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paciente">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="hc_antecedentes_ginecoobstetricos">
+        <PropertyRef Name="Id_Paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__hc_antece__Id_Pa__08B54D69">
+    <End Type="CUSModel.Paciente" Role="Paciente" Multiplicity="1" />
+    <End Type="CUSModel.hc_antecedentes_patologicos" Role="hc_antecedentes_patologicos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paciente">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="hc_antecedentes_patologicos">
+        <PropertyRef Name="Id_Paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__hc_antece__Id_Pa__05D8E0BE">
+    <End Type="CUSModel.Paciente" Role="Paciente" Multiplicity="1" />
+    <End Type="CUSModel.hc_antecedentes_perinatales" Role="hc_antecedentes_perinatales" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paciente">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="hc_antecedentes_perinatales">
+        <PropertyRef Name="Id_Paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__hc_evalua__Id_Pa__787EE5A0">
+    <End Type="CUSModel.Paciente" Role="Paciente" Multiplicity="1" />
+    <End Type="CUSModel.hc_evaluacion_economica" Role="hc_evaluacion_economica" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paciente">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="hc_evaluacion_economica">
+        <PropertyRef Name="Id_Paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__hc_evalua__Id_Pa__72C60C4A">
+    <End Type="CUSModel.Paciente" Role="Paciente" Multiplicity="1" />
+    <End Type="CUSModel.hc_evaluacion_social" Role="hc_evaluacion_social" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paciente">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="hc_evaluacion_social">
+        <PropertyRef Name="Id_Paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__hc_factor__Id_Pa__7E37BEF6">
+    <End Type="CUSModel.Paciente" Role="Paciente" Multiplicity="1" />
+    <End Type="CUSModel.hc_factores_riesgo_psicologicos" Role="hc_factores_riesgo_psicologicos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paciente">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="hc_factores_riesgo_psicologicos">
+        <PropertyRef Name="Id_Paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__hc_ficha___Id_Pa__6FE99F9F">
+    <End Type="CUSModel.Paciente" Role="Paciente" Multiplicity="1" />
+    <End Type="CUSModel.hc_ficha_identificacion" Role="hc_ficha_identificacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paciente">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="hc_ficha_identificacion">
+        <PropertyRef Name="Id_Paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__hc_habito__Id_Pa__02FC7413">
+    <End Type="CUSModel.Paciente" Role="Paciente" Multiplicity="1" />
+    <End Type="CUSModel.hc_habitos" Role="hc_habitos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paciente">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="hc_habitos">
+        <PropertyRef Name="Id_Paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__hc_histor__Id_Pa__236943A5">
+    <End Type="CUSModel.Paciente" Role="Paciente" Multiplicity="1" />
+    <End Type="CUSModel.hc_historial_consumo" Role="hc_historial_consumo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paciente">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="hc_historial_consumo">
+        <PropertyRef Name="Id_Paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__hc_inmuni__Id_Pa__208CD6FA">
+    <End Type="CUSModel.Paciente" Role="Paciente" Multiplicity="1" />
+    <End Type="CUSModel.hc_inmunizaciones" Role="hc_inmunizaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paciente">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="hc_inmunizaciones">
+        <PropertyRef Name="Id_Paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__hc_valora__Id_Pa__75A278F5">
+    <End Type="CUSModel.Paciente" Role="Paciente" Multiplicity="1" />
+    <End Type="CUSModel.hc_valoracion_familiar" Role="hc_valoracion_familiar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paciente">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="hc_valoracion_familiar">
+        <PropertyRef Name="Id_Paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__hc_valore__Id_Pa__7B5B524B">
+    <End Type="CUSModel.Paciente" Role="Paciente" Multiplicity="1" />
+    <End Type="CUSModel.hc_valores_creencias" Role="hc_valores_creencias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paciente">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="hc_valores_creencias">
+        <PropertyRef Name="Id_Paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HistoriaC__Id_Pa__3C34F16F">
+    <End Type="CUSModel.Paciente" Role="Paciente" Multiplicity="1" />
+    <End Type="CUSModel.HistoriaClinica" Role="HistoriaClinica" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paciente">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HistoriaClinica">
+        <PropertyRef Name="Id_Paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="hc_alimentacion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TipoLactancia" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="TiempoLactancia" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="EdadAblactacion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="AlimentosInicio" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="EdadIntegracion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+    <Property Name="Id_HistoriaClinica" Type="Int32" />
+    <Property Name="Clave_hc_px" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Paciente" Relationship="CUSModel.FK__hc_alimen__Id_Pa__4F47C5E3" FromRole="hc_alimentacion" ToRole="Paciente" />
+  </EntityType>
+  <Association Name="FK__hc_alimen__Id_Pa__4F47C5E3">
+    <End Type="CUSModel.Paciente" Role="Paciente" Multiplicity="1" />
+    <End Type="CUSModel.hc_alimentacion" Role="hc_alimentacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paciente">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="hc_alimentacion">
+        <PropertyRef Name="Id_Paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

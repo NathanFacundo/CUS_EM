@@ -1,0 +1,479 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CUSModelStoreContainer" CdmEntityContainer="CUS">
+    <EntitySetMapping Name="AspNetRoles">
+      <EntityTypeMapping TypeName="CUSModel.AspNetRoles">
+        <MappingFragment StoreEntitySet="AspNetRoles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserClaims">
+      <EntityTypeMapping TypeName="CUSModel.AspNetUserClaims">
+        <MappingFragment StoreEntitySet="AspNetUserClaims">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserLogins">
+      <EntityTypeMapping TypeName="CUSModel.AspNetUserLogins">
+        <MappingFragment StoreEntitySet="AspNetUserLogins">
+          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserRoles">
+      <EntityTypeMapping TypeName="CUSModel.AspNetUserRoles">
+        <MappingFragment StoreEntitySet="AspNetUserRoles">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="CUSModel.AspNetUsers">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="Unidad" ColumnName="Unidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UnidadAfiliacion">
+      <EntityTypeMapping TypeName="CUSModel.UnidadAfiliacion">
+        <MappingFragment StoreEntitySet="UnidadAfiliacion">
+          <ScalarProperty Name="Prefijo" ColumnName="Prefijo" />
+          <ScalarProperty Name="NombreUnidad" ColumnName="NombreUnidad" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Paciente">
+      <EntityTypeMapping TypeName="CUSModel.Paciente">
+        <MappingFragment StoreEntitySet="Paciente">
+          <ScalarProperty Name="NA_BA" ColumnName="NA_BA" />
+          <ScalarProperty Name="NA_DE" ColumnName="NA_DE" />
+          <ScalarProperty Name="Curp_CalculadoMotivo" ColumnName="Curp_CalculadoMotivo" />
+          <ScalarProperty Name="Curp_Calculado" ColumnName="Curp_Calculado" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="SegundoApellido_Tutor" ColumnName="SegundoApellido_Tutor" />
+          <ScalarProperty Name="PrimerApellido_Tutor" ColumnName="PrimerApellido_Tutor" />
+          <ScalarProperty Name="Nombre_Tutor" ColumnName="Nombre_Tutor" />
+          <ScalarProperty Name="CE_Telefono" ColumnName="CE_Telefono" />
+          <ScalarProperty Name="CE_EntidadFed" ColumnName="CE_EntidadFed" />
+          <ScalarProperty Name="CE_Municipio" ColumnName="CE_Municipio" />
+          <ScalarProperty Name="CE_Colonia" ColumnName="CE_Colonia" />
+          <ScalarProperty Name="CE_CP" ColumnName="CE_CP" />
+          <ScalarProperty Name="CE_Numero" ColumnName="CE_Numero" />
+          <ScalarProperty Name="CE_Calle" ColumnName="CE_Calle" />
+          <ScalarProperty Name="CE_Nombre" ColumnName="CE_Nombre" />
+          <ScalarProperty Name="BA_Analfabeta" ColumnName="BA_Analfabeta" />
+          <ScalarProperty Name="BA_Idioma_Nombre" ColumnName="BA_Idioma_Nombre" />
+          <ScalarProperty Name="BA_Idioma" ColumnName="BA_Idioma" />
+          <ScalarProperty Name="BA_Mental" ColumnName="BA_Mental" />
+          <ScalarProperty Name="BA_Fisica" ColumnName="BA_Fisica" />
+          <ScalarProperty Name="BA_Auditiva" ColumnName="BA_Auditiva" />
+          <ScalarProperty Name="BA_Visual" ColumnName="BA_Visual" />
+          <ScalarProperty Name="DE_Afroamericano" ColumnName="DE_Afroamericano" />
+          <ScalarProperty Name="DE_Migrante" ColumnName="DE_Migrante" />
+          <ScalarProperty Name="DE_Indigena" ColumnName="DE_Indigena" />
+          <ScalarProperty Name="ServicioSalud_Extra" ColumnName="ServicioSalud_Extra" />
+          <ScalarProperty Name="ServicioSalud" ColumnName="ServicioSalud" />
+          <ScalarProperty Name="Ocupacion" ColumnName="Ocupacion" />
+          <ScalarProperty Name="Escolaridad" ColumnName="Escolaridad" />
+          <ScalarProperty Name="EstadoCivil" ColumnName="EstadoCivil" />
+          <ScalarProperty Name="RFC" ColumnName="RFC" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Telefono2" ColumnName="Telefono2" />
+          <ScalarProperty Name="Telefono1" ColumnName="Telefono1" />
+          <ScalarProperty Name="Dir_EntidadFed" ColumnName="Dir_EntidadFed" />
+          <ScalarProperty Name="Dir_Municipio" ColumnName="Dir_Municipio" />
+          <ScalarProperty Name="Dir_Colonia" ColumnName="Dir_Colonia" />
+          <ScalarProperty Name="Dir_CP" ColumnName="Dir_CP" />
+          <ScalarProperty Name="Dir_Numero" ColumnName="Dir_Numero" />
+          <ScalarProperty Name="Dir_Calle" ColumnName="Dir_Calle" />
+          <ScalarProperty Name="Expediente" ColumnName="Expediente" />
+          <ScalarProperty Name="Edad" ColumnName="Edad" />
+          <ScalarProperty Name="EntidadNacimiento" ColumnName="EntidadNacimiento" />
+          <ScalarProperty Name="Nacionalidad" ColumnName="Nacionalidad" />
+          <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+          <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+          <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
+          <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="CURP" ColumnName="CURP" />
+          <ScalarProperty Name="UnidadAfiliacion" ColumnName="UnidadAfiliacion" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="hc_antecedentes_desarrollo">
+      <EntityTypeMapping TypeName="CUSModel.hc_antecedentes_desarrollo">
+        <MappingFragment StoreEntitySet="hc_antecedentes_desarrollo">
+          <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+          <ScalarProperty Name="Id_HistoriaClinica" ColumnName="Id_HistoriaClinica" />
+          <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+          <ScalarProperty Name="EspecifiquePruebaEDI" ColumnName="EspecifiquePruebaEDI" />
+          <ScalarProperty Name="PruebaEDI" ColumnName="PruebaEDI" />
+          <ScalarProperty Name="EspecifiqueControlEsf" ColumnName="EspecifiqueControlEsf" />
+          <ScalarProperty Name="ControlEsfinteres" ColumnName="ControlEsfinteres" />
+          <ScalarProperty Name="EspecifiqueHabla" ColumnName="EspecifiqueHabla" />
+          <ScalarProperty Name="Habla" ColumnName="Habla" />
+          <ScalarProperty Name="EspecifiqueCamino" ColumnName="EspecifiqueCamino" />
+          <ScalarProperty Name="Camino" ColumnName="Camino" />
+          <ScalarProperty Name="EspecifiqueSeSento" ColumnName="EspecifiqueSeSento" />
+          <ScalarProperty Name="SeSento" ColumnName="SeSento" />
+          <ScalarProperty Name="EspecifiqueSostuvoCabeza" ColumnName="EspecifiqueSostuvoCabeza" />
+          <ScalarProperty Name="SostuvoCabeza" ColumnName="SostuvoCabeza" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="hc_antecedentes_ginecoobstetricos">
+      <EntityTypeMapping TypeName="CUSModel.hc_antecedentes_ginecoobstetricos">
+        <MappingFragment StoreEntitySet="hc_antecedentes_ginecoobstetricos">
+          <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+          <ScalarProperty Name="Id_HistoriaClinica" ColumnName="Id_HistoriaClinica" />
+          <ScalarProperty Name="TipoMenarquia" ColumnName="TipoMenarquia" />
+          <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+          <ScalarProperty Name="NumeroParejasSexuales" ColumnName="NumeroParejasSexuales" />
+          <ScalarProperty Name="VidaSexual" ColumnName="VidaSexual" />
+          <ScalarProperty Name="EspecifiqueColoracionMenarquia" ColumnName="EspecifiqueColoracionMenarquia" />
+          <ScalarProperty Name="ColoracionMenarquia" ColumnName="ColoracionMenarquia" />
+          <ScalarProperty Name="CantidadMenarquia" ColumnName="CantidadMenarquia" />
+          <ScalarProperty Name="RitmoMenarquia" ColumnName="RitmoMenarquia" />
+          <ScalarProperty Name="MotivoMenarquia" ColumnName="MotivoMenarquia" />
+          <ScalarProperty Name="Menarquia" ColumnName="Menarquia" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="hc_antecedentes_patologicos">
+      <EntityTypeMapping TypeName="CUSModel.hc_antecedentes_patologicos">
+        <MappingFragment StoreEntitySet="hc_antecedentes_patologicos">
+          <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+          <ScalarProperty Name="Id_HistoriaClinica" ColumnName="Id_HistoriaClinica" />
+          <ScalarProperty Name="CheckNinguna" ColumnName="CheckNinguna" />
+          <ScalarProperty Name="CheckReumatologicos" ColumnName="CheckReumatologicos" />
+          <ScalarProperty Name="CheckProblemasGastro" ColumnName="CheckProblemasGastro" />
+          <ScalarProperty Name="CheckProblemasAparatoR" ColumnName="CheckProblemasAparatoR" />
+          <ScalarProperty Name="CheckInfectoContagiosos" ColumnName="CheckInfectoContagiosos" />
+          <ScalarProperty Name="CheckNeurologicos" ColumnName="CheckNeurologicos" />
+          <ScalarProperty Name="CheckSaludMental" ColumnName="CheckSaludMental" />
+          <ScalarProperty Name="CheckOncologicos" ColumnName="CheckOncologicos" />
+          <ScalarProperty Name="CheckCardiovasculares" ColumnName="CheckCardiovasculares" />
+          <ScalarProperty Name="CheckEndocrinologicos" ColumnName="CheckEndocrinologicos" />
+          <ScalarProperty Name="CheckRespiratorios" ColumnName="CheckRespiratorios" />
+          <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+          <ScalarProperty Name="EspecifiqueCirugia" ColumnName="EspecifiqueCirugia" />
+          <ScalarProperty Name="RealizadoCirugia" ColumnName="RealizadoCirugia" />
+          <ScalarProperty Name="EspecifiqueHospitalizado" ColumnName="EspecifiqueHospitalizado" />
+          <ScalarProperty Name="PxHospitalizado" ColumnName="PxHospitalizado" />
+          <ScalarProperty Name="Antecedentes" ColumnName="Antecedentes" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="hc_antecedentes_perinatales">
+      <EntityTypeMapping TypeName="CUSModel.hc_antecedentes_perinatales">
+        <MappingFragment StoreEntitySet="hc_antecedentes_perinatales">
+          <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+          <ScalarProperty Name="Id_HistoriaClinica" ColumnName="Id_HistoriaClinica" />
+          <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+          <ScalarProperty Name="TamizAuditivoOpciones" ColumnName="TamizAuditivoOpciones" />
+          <ScalarProperty Name="TamizAuditivo" ColumnName="TamizAuditivo" />
+          <ScalarProperty Name="TamizMetabolicoOpciones" ColumnName="TamizMetabolicoOpciones" />
+          <ScalarProperty Name="TamizMetabolico" ColumnName="TamizMetabolico" />
+          <ScalarProperty Name="EspecifiqueComplicacionObs" ColumnName="EspecifiqueComplicacionObs" />
+          <ScalarProperty Name="ComplicacionObs" ColumnName="ComplicacionObs" />
+          <ScalarProperty Name="EspecifiqueMotivoCesarea" ColumnName="EspecifiqueMotivoCesarea" />
+          <ScalarProperty Name="EspecifiquePartoFue" ColumnName="EspecifiquePartoFue" />
+          <ScalarProperty Name="PartoFue" ColumnName="PartoFue" />
+          <ScalarProperty Name="TipoParto" ColumnName="TipoParto" />
+          <ScalarProperty Name="EspecifiqueApgar" ColumnName="EspecifiqueApgar" />
+          <ScalarProperty Name="Apgar" ColumnName="Apgar" />
+          <ScalarProperty Name="EspecifiqueEdadGestional" ColumnName="EspecifiqueEdadGestional" />
+          <ScalarProperty Name="EdadGestional" ColumnName="EdadGestional" />
+          <ScalarProperty Name="EspecifiqueLugarParto" ColumnName="EspecifiqueLugarParto" />
+          <ScalarProperty Name="LugarParto" ColumnName="LugarParto" />
+          <ScalarProperty Name="EspecifiqueTratamientoEmbarazo" ColumnName="EspecifiqueTratamientoEmbarazo" />
+          <ScalarProperty Name="TratamientoEmbarazo" ColumnName="TratamientoEmbarazo" />
+          <ScalarProperty Name="EspecifiqueEnfermedadEmbarazo" ColumnName="EspecifiqueEnfermedadEmbarazo" />
+          <ScalarProperty Name="EnfermedadEmbarazo" ColumnName="EnfermedadEmbarazo" />
+          <ScalarProperty Name="NumeroEmbarazo" ColumnName="NumeroEmbarazo" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="hc_evaluacion_economica">
+      <EntityTypeMapping TypeName="CUSModel.hc_evaluacion_economica">
+        <MappingFragment StoreEntitySet="hc_evaluacion_economica">
+          <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+          <ScalarProperty Name="Id_HistoriaClinica" ColumnName="Id_HistoriaClinica" />
+          <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+          <ScalarProperty Name="riesgoEconomico" ColumnName="riesgoEconomico" />
+          <ScalarProperty Name="EspecifiqueRol" ColumnName="EspecifiqueRol" />
+          <ScalarProperty Name="rolEconimico" ColumnName="rolEconimico" />
+          <ScalarProperty Name="EspecifiqueBeneficiario" ColumnName="EspecifiqueBeneficiario" />
+          <ScalarProperty Name="beneficiarioPrograma" ColumnName="beneficiarioPrograma" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="hc_evaluacion_social">
+      <EntityTypeMapping TypeName="CUSModel.hc_evaluacion_social">
+        <MappingFragment StoreEntitySet="hc_evaluacion_social">
+          <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+          <ScalarProperty Name="Id_HistoriaClinica" ColumnName="Id_HistoriaClinica" />
+          <ScalarProperty Name="ServicioSal" ColumnName="ServicioSal" />
+          <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+          <ScalarProperty Name="RiesgoSos" ColumnName="RiesgoSos" />
+          <ScalarProperty Name="TipoTrab" ColumnName="TipoTrab" />
+          <ScalarProperty Name="Ocupacio" ColumnName="Ocupacio" />
+          <ScalarProperty Name="ProblemasMaestros" ColumnName="ProblemasMaestros" />
+          <ScalarProperty Name="Problemas" ColumnName="Problemas" />
+          <ScalarProperty Name="Cuidador" ColumnName="Cuidador" />
+          <ScalarProperty Name="Guarderia" ColumnName="Guarderia" />
+          <ScalarProperty Name="Desercion" ColumnName="Desercion" />
+          <ScalarProperty Name="EspecifiqueReprobado" ColumnName="EspecifiqueReprobado" />
+          <ScalarProperty Name="reprobado" ColumnName="reprobado" />
+          <ScalarProperty Name="PromedioEsc" ColumnName="PromedioEsc" />
+          <ScalarProperty Name="GradoEsc" ColumnName="GradoEsc" />
+          <ScalarProperty Name="escolaridad" ColumnName="escolaridad" />
+          <ScalarProperty Name="hacinamiento" ColumnName="hacinamiento" />
+          <ScalarProperty Name="numerohabitaciones" ColumnName="numerohabitaciones" />
+          <ScalarProperty Name="numeropersonas" ColumnName="numeropersonas" />
+          <ScalarProperty Name="estadocivil" ColumnName="estadocivil" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="hc_factores_riesgo_psicologicos">
+      <EntityTypeMapping TypeName="CUSModel.hc_factores_riesgo_psicologicos">
+        <MappingFragment StoreEntitySet="hc_factores_riesgo_psicologicos">
+          <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+          <ScalarProperty Name="Id_HistoriaClinica" ColumnName="Id_HistoriaClinica" />
+          <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+          <ScalarProperty Name="IdeacionSuicida" ColumnName="IdeacionSuicida" />
+          <ScalarProperty Name="MiedoPreocupacion" ColumnName="MiedoPreocupacion" />
+          <ScalarProperty Name="SensacionAahogo" ColumnName="SensacionAahogo" />
+          <ScalarProperty Name="PalpitacionesFuertes" ColumnName="PalpitacionesFuertes" />
+          <ScalarProperty Name="PerdidaPlacer" ColumnName="PerdidaPlacer" />
+          <ScalarProperty Name="Irritabilidad" ColumnName="Irritabilidad" />
+          <ScalarProperty Name="Pesimismo" ColumnName="Pesimismo" />
+          <ScalarProperty Name="CambiosApetito" ColumnName="CambiosApetito" />
+          <ScalarProperty Name="CambiosEnergia" ColumnName="CambiosEnergia" />
+          <ScalarProperty Name="CambiosSueño" ColumnName="CambiosSueño" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="hc_ficha_identificacion">
+      <EntityTypeMapping TypeName="CUSModel.hc_ficha_identificacion">
+        <MappingFragment StoreEntitySet="hc_ficha_identificacion">
+          <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+          <ScalarProperty Name="Id_HistoriaClinica" ColumnName="Id_HistoriaClinica" />
+          <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+          <ScalarProperty Name="MotivoCons" ColumnName="MotivoCons" />
+          <ScalarProperty Name="NombreAlergia" ColumnName="NombreAlergia" />
+          <ScalarProperty Name="alergia" ColumnName="alergia" />
+          <ScalarProperty Name="NombreAcompa" ColumnName="NombreAcompa" />
+          <ScalarProperty Name="acompanante" ColumnName="acompanante" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="hc_habitos">
+      <EntityTypeMapping TypeName="CUSModel.hc_habitos">
+        <MappingFragment StoreEntitySet="hc_habitos">
+          <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+          <ScalarProperty Name="Id_HistoriaClinica" ColumnName="Id_HistoriaClinica" />
+          <ScalarProperty Name="Check_Oncologicos_NA" ColumnName="Check_Oncologicos_NA" />
+          <ScalarProperty Name="Check_Oncologicos_Ambas" ColumnName="Check_Oncologicos_Ambas" />
+          <ScalarProperty Name="Check_Oncologicos_Madre" ColumnName="Check_Oncologicos_Madre" />
+          <ScalarProperty Name="Check_Oncologicos_Padre" ColumnName="Check_Oncologicos_Padre" />
+          <ScalarProperty Name="Check_Obesidad_NA" ColumnName="Check_Obesidad_NA" />
+          <ScalarProperty Name="Check_Obesidad_Ambas" ColumnName="Check_Obesidad_Ambas" />
+          <ScalarProperty Name="Check_Obesidad_Madre" ColumnName="Check_Obesidad_Madre" />
+          <ScalarProperty Name="Check_Obesidad_Padre" ColumnName="Check_Obesidad_Padre" />
+          <ScalarProperty Name="Check_Nefropatias_NA" ColumnName="Check_Nefropatias_NA" />
+          <ScalarProperty Name="Check_Nefropatias_Ambas" ColumnName="Check_Nefropatias_Ambas" />
+          <ScalarProperty Name="Check_Nefropatias_Madre" ColumnName="Check_Nefropatias_Madre" />
+          <ScalarProperty Name="Check_Nefropatias_Padre" ColumnName="Check_Nefropatias_Padre" />
+          <ScalarProperty Name="Check_Malformaciones_NA" ColumnName="Check_Malformaciones_NA" />
+          <ScalarProperty Name="Check_Malformaciones_Ambas" ColumnName="Check_Malformaciones_Ambas" />
+          <ScalarProperty Name="Check_Malformaciones_Madre" ColumnName="Check_Malformaciones_Madre" />
+          <ScalarProperty Name="Check_Malformaciones_Padre" ColumnName="Check_Malformaciones_Padre" />
+          <ScalarProperty Name="Check_Infectocontagiosas_NA" ColumnName="Check_Infectocontagiosas_NA" />
+          <ScalarProperty Name="Check_Infectocontagiosas_Ambas" ColumnName="Check_Infectocontagiosas_Ambas" />
+          <ScalarProperty Name="Check_Infectocontagiosas_Madre" ColumnName="Check_Infectocontagiosas_Madre" />
+          <ScalarProperty Name="Check_Infectocontagiosas_Padre" ColumnName="Check_Infectocontagiosas_Padre" />
+          <ScalarProperty Name="Check_Hipertension_NA" ColumnName="Check_Hipertension_NA" />
+          <ScalarProperty Name="Check_Hipertension_Ambas" ColumnName="Check_Hipertension_Ambas" />
+          <ScalarProperty Name="Check_Hipertension_Madre" ColumnName="Check_Hipertension_Madre" />
+          <ScalarProperty Name="Check_Hipertension_Padre" ColumnName="Check_Hipertension_Padre" />
+          <ScalarProperty Name="Check_Epilepsia_NA" ColumnName="Check_Epilepsia_NA" />
+          <ScalarProperty Name="Check_Epilepsia_Ambas" ColumnName="Check_Epilepsia_Ambas" />
+          <ScalarProperty Name="Check_Epilepsia_Madre" ColumnName="Check_Epilepsia_Madre" />
+          <ScalarProperty Name="Check_Epilepsia_Padre" ColumnName="Check_Epilepsia_Padre" />
+          <ScalarProperty Name="Check_Dislipidemias_NA" ColumnName="Check_Dislipidemias_NA" />
+          <ScalarProperty Name="Check_Dislipidemias_Ambas" ColumnName="Check_Dislipidemias_Ambas" />
+          <ScalarProperty Name="Check_Dislipidemias_Madre" ColumnName="Check_Dislipidemias_Madre" />
+          <ScalarProperty Name="Check_Dislipidemias_Padre" ColumnName="Check_Dislipidemias_Padre" />
+          <ScalarProperty Name="Check_Diabetes_NA" ColumnName="Check_Diabetes_NA" />
+          <ScalarProperty Name="Check_Diabetes_Ambas" ColumnName="Check_Diabetes_Ambas" />
+          <ScalarProperty Name="Check_Diabetes_Madre" ColumnName="Check_Diabetes_Madre" />
+          <ScalarProperty Name="Check_Diabetes_Padre" ColumnName="Check_Diabetes_Padre" />
+          <ScalarProperty Name="Check_Cardiopatia_NA" ColumnName="Check_Cardiopatia_NA" />
+          <ScalarProperty Name="Check_Cardiopatia_Ambas" ColumnName="Check_Cardiopatia_Ambas" />
+          <ScalarProperty Name="Check_Cardiopatia_Madre" ColumnName="Check_Cardiopatia_Madre" />
+          <ScalarProperty Name="Check_Cardiopatia_Padre" ColumnName="Check_Cardiopatia_Padre" />
+          <ScalarProperty Name="Check_Adicciones_NA" ColumnName="Check_Adicciones_NA" />
+          <ScalarProperty Name="Check_Adicciones_Ambas" ColumnName="Check_Adicciones_Ambas" />
+          <ScalarProperty Name="Check_Adicciones_Madre" ColumnName="Check_Adicciones_Madre" />
+          <ScalarProperty Name="Check_Adicciones_Padre" ColumnName="Check_Adicciones_Padre" />
+          <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+          <ScalarProperty Name="FrecuenciaActividadFisica" ColumnName="FrecuenciaActividadFisica" />
+          <ScalarProperty Name="TiempoActividadFisica" ColumnName="TiempoActividadFisica" />
+          <ScalarProperty Name="ActividadFisica" ColumnName="ActividadFisica" />
+          <ScalarProperty Name="HorasOcio" ColumnName="HorasOcio" />
+          <ScalarProperty Name="TienePesadillas" ColumnName="TienePesadillas" />
+          <ScalarProperty Name="TieneEnuresis" ColumnName="TieneEnuresis" />
+          <ScalarProperty Name="TieneInsomnio" ColumnName="TieneInsomnio" />
+          <ScalarProperty Name="HorasSueño" ColumnName="HorasSueño" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="hc_historial_consumo">
+      <EntityTypeMapping TypeName="CUSModel.hc_historial_consumo">
+        <MappingFragment StoreEntitySet="hc_historial_consumo">
+          <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+          <ScalarProperty Name="Id_HistoriaClinica" ColumnName="Id_HistoriaClinica" />
+          <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+          <ScalarProperty Name="EdadIntegracion" ColumnName="EdadIntegracion" />
+          <ScalarProperty Name="AlimentosInicio" ColumnName="AlimentosInicio" />
+          <ScalarProperty Name="EdadAblactacion" ColumnName="EdadAblactacion" />
+          <ScalarProperty Name="TiempoLactancia" ColumnName="TiempoLactancia" />
+          <ScalarProperty Name="TipoLactancia" ColumnName="TipoLactancia" />
+          <ScalarProperty Name="CantidadDrogaConsume" ColumnName="CantidadDrogaConsume" />
+          <ScalarProperty Name="FrecuenciaDroga" ColumnName="FrecuenciaDroga" />
+          <ScalarProperty Name="TipoDrogaConsume" ColumnName="TipoDrogaConsume" />
+          <ScalarProperty Name="ConsumeDroga" ColumnName="ConsumeDroga" />
+          <ScalarProperty Name="CantidadFuma" ColumnName="CantidadFuma" />
+          <ScalarProperty Name="FrecuenciaFuma" ColumnName="FrecuenciaFuma" />
+          <ScalarProperty Name="TipoFuma" ColumnName="TipoFuma" />
+          <ScalarProperty Name="TiempoInactividadFuma" ColumnName="TiempoInactividadFuma" />
+          <ScalarProperty Name="ActualmenteFuma" ColumnName="ActualmenteFuma" />
+          <ScalarProperty Name="EdadInicio" ColumnName="EdadInicio" />
+          <ScalarProperty Name="Fuma" ColumnName="Fuma" />
+          <ScalarProperty Name="CantidadAlcohol" ColumnName="CantidadAlcohol" />
+          <ScalarProperty Name="TomaAlcoholFrecuencia" ColumnName="TomaAlcoholFrecuencia" />
+          <ScalarProperty Name="TomaAlcohol" ColumnName="TomaAlcohol" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="hc_inmunizaciones">
+      <EntityTypeMapping TypeName="CUSModel.hc_inmunizaciones">
+        <MappingFragment StoreEntitySet="hc_inmunizaciones">
+          <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+          <ScalarProperty Name="Id_HistoriaClinica" ColumnName="Id_HistoriaClinica" />
+          <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+          <ScalarProperty Name="EspecifiqueVacuna" ColumnName="EspecifiqueVacuna" />
+          <ScalarProperty Name="EsquemaVacunacion" ColumnName="EsquemaVacunacion" />
+          <ScalarProperty Name="CartillaVacunacion" ColumnName="CartillaVacunacion" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="hc_valoracion_familiar">
+      <EntityTypeMapping TypeName="CUSModel.hc_valoracion_familiar">
+        <MappingFragment StoreEntitySet="hc_valoracion_familiar">
+          <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+          <ScalarProperty Name="Id_HistoriaClinica" ColumnName="Id_HistoriaClinica" />
+          <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+          <ScalarProperty Name="riesgoSocial" ColumnName="riesgoSocial" />
+          <ScalarProperty Name="EspecifiqueInvol" ColumnName="EspecifiqueInvol" />
+          <ScalarProperty Name="involucraTratamiento" ColumnName="involucraTratamiento" />
+          <ScalarProperty Name="EspecifiqueEnf" ColumnName="EspecifiqueEnf" />
+          <ScalarProperty Name="CuantosHermanos" ColumnName="CuantosHermanos" />
+          <ScalarProperty Name="tieneHermanos" ColumnName="tieneHermanos" />
+          <ScalarProperty Name="ViveCon" ColumnName="ViveCon" />
+          <ScalarProperty Name="TipoTrabajoPapa" ColumnName="TipoTrabajoPapa" />
+          <ScalarProperty Name="OcupacionPapa" ColumnName="OcupacionPapa" />
+          <ScalarProperty Name="GradoPapa" ColumnName="GradoPapa" />
+          <ScalarProperty Name="EdadPapa" ColumnName="EdadPapa" />
+          <ScalarProperty Name="papaPaciente" ColumnName="papaPaciente" />
+          <ScalarProperty Name="TipoTrabajoMama" ColumnName="TipoTrabajoMama" />
+          <ScalarProperty Name="OcupacionMama" ColumnName="OcupacionMama" />
+          <ScalarProperty Name="GradoMama" ColumnName="GradoMama" />
+          <ScalarProperty Name="EdadMama" ColumnName="EdadMama" />
+          <ScalarProperty Name="mamaPaciente" ColumnName="mamaPaciente" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="hc_valores_creencias">
+      <EntityTypeMapping TypeName="CUSModel.hc_valores_creencias">
+        <MappingFragment StoreEntitySet="hc_valores_creencias">
+          <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+          <ScalarProperty Name="Id_HistoriaClinica" ColumnName="Id_HistoriaClinica" />
+          <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+          <ScalarProperty Name="EspecifiqueCostumbres" ColumnName="EspecifiqueCostumbres" />
+          <ScalarProperty Name="costumbreValores" ColumnName="costumbreValores" />
+          <ScalarProperty Name="EspecifiqueCreencia" ColumnName="EspecifiqueCreencia" />
+          <ScalarProperty Name="creenciaReligiosa" ColumnName="creenciaReligiosa" />
+          <ScalarProperty Name="EspecifiqueReligion" ColumnName="EspecifiqueReligion" />
+          <ScalarProperty Name="religion" ColumnName="religion" />
+          <ScalarProperty Name="perteneceReligion" ColumnName="perteneceReligion" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HistoriaClinica">
+      <EntityTypeMapping TypeName="CUSModel.HistoriaClinica">
+        <MappingFragment StoreEntitySet="HistoriaClinica">
+          <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+          <ScalarProperty Name="FechaRegistroHC" ColumnName="FechaRegistroHC" />
+          <ScalarProperty Name="Medico" ColumnName="Medico" />
+          <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="hc_alimentacion">
+      <EntityTypeMapping TypeName="CUSModel.hc_alimentacion">
+        <MappingFragment StoreEntitySet="hc_alimentacion">
+          <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+          <ScalarProperty Name="Id_HistoriaClinica" ColumnName="Id_HistoriaClinica" />
+          <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+          <ScalarProperty Name="EdadIntegracion" ColumnName="EdadIntegracion" />
+          <ScalarProperty Name="AlimentosInicio" ColumnName="AlimentosInicio" />
+          <ScalarProperty Name="EdadAblactacion" ColumnName="EdadAblactacion" />
+          <ScalarProperty Name="TiempoLactancia" ColumnName="TiempoLactancia" />
+          <ScalarProperty Name="TipoLactancia" ColumnName="TipoLactancia" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,1364 @@
+﻿@model CUS.Models.Paciente
+
+<style>
+    /*QUITAR FLECHITAS A LOS INPUT QUE SON NUMERO*/
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
+</style>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="page-wrapper">
+        <div class="content container-fluid">
+            <div>
+                <div class="row justify-content-center">
+                    <div class="success-cont">
+                        <h3>REGISTRO DEL PACIENTE</h3>
+                    </div>
+                </div>
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="content">
+                    <div class="container-fluid">
+                            <div class="row">
+                                <div class="card bg-success-light">
+                                    <div class="card-header bg-info">
+                                        <h4 class="card-title">Datos del Paciente</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row form-row">
+                                            @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
+                                            <div class="col-md-5">
+                                                <div class="form-group card-label">
+                                                    @Html.LabelFor(model => model.UnidadAfiliacion, "Unidad de Afiliación", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
+
+                                                    @*@Html.EditorFor(model => model.UnidadAfiliacion, new { htmlAttributes = new { @class = "form-control" } })*@
+
+                                                    @Html.DropDownListFor(model => model.UnidadAfiliacion, (IEnumerable
+                                                    <SelectListItem>
+                                                    )ViewBag.UNIDADES, "Seleccione", new { @class = "form-control", id = "IdUnidad", required = "required" })
+
+                                                    @Html.ValidationMessageFor(model => model.UnidadAfiliacion, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group card-label">
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input id="CheckCURP" type="checkbox" name="checkbox"> Sin CURP
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5" id="curpLabel">
+                                                <div class="form-group card-label">
+                                                    @Html.LabelFor(model => model.CURP, htmlAttributes: new { @class = "control-label", style = "color:#000000" })
+                                                    @Html.EditorFor(model => model.CURP, new
+                                                    {
+                                                        htmlAttributes = new
+                                                        {
+                                                            @class = "form-control",@*required = "required",*@@id = "curp",
+@oninput = "validarInput(this)",
+@pattern = "^[A-Z]{1}[AEIOU]{1}[A-Z]{2}[0-9]{2}(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])[HM]{1}(AS|BC|BS|CC|CS|CH|CL|CM|DF|DG|GT|GR|HG|JC|MC|MN|MS|NT|NL|OC|PL|QT|QR|SP|SL|SR|TC|TS|TL|VZ|YN|ZS|NE)[B-DF-HJ-NP-TV-Z]{3}[0-9A-Z]{1}[0-9]{1}$"
+}
+})
+                                                    @Html.ValidationMessageFor(model => model.CURP, "", new { @class = "text-danger" })
+                                                    @*Validacion de CUPR*@
+                                                    <pre id="resultado2"></pre>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5" id="curpLabelCalculado">
+                                                <div class="form-group card-label">
+                                                    @Html.LabelFor(model => model.Curp_Calculado, "CURP Provisional", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
+                                                    @Html.EditorFor(model => model.Curp_Calculado, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Curp_Calculado, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12" id="curpLabelCalculadoMotivo">
+                                                <div class="form-group card-label">
+                                                    @Html.LabelFor(model => model.Curp_CalculadoMotivo, "Motivo", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
+                                                    @Html.DropDownListFor(model => model.Curp_CalculadoMotivo, new List
+                                                    <SelectListItem>
+                                                    {
+                                                    new SelectListItem { Text = "Recién Nacido", Value = "Recién Nacido"},
+                                                    new SelectListItem { Text = "Inmigrante", Value = "Inmigrante"},
+                                                    new SelectListItem { Text = "No Registrado", Value = "No Registrado"},
+                                                    new SelectListItem { Text = "Otro", Value = "Otro"}
+                                                    }, "Seleccione",
+                                                    new
+                                                    {
+                                                    @class = "form-control llenarcurp"
+                                                    })
+                                                    @Html.ValidationMessageFor(model => model.Curp_CalculadoMotivo, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group card-label">
+                                                    @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label", style = "color:#000000" })
+                                                    @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control llenarcurp", @id = "nombre", required = "required" } })
+                                                    @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group card-label">
+                                                    @Html.LabelFor(model => model.PrimerApellido, "Primer Apellido", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
+                                                    @Html.EditorFor(model => model.PrimerApellido, new { htmlAttributes = new { @class = "form-control llenarcurp", @id = "primerapellido", required = "required" } })
+                                                    @Html.ValidationMessageFor(model => model.PrimerApellido, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group card-label">
+                                                    @Html.LabelFor(model => model.SegundoApellido, "Segundo Apellido", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
+                                                    @Html.EditorFor(model => model.SegundoApellido, new { htmlAttributes = new { @class = "form-control llenarcurp", @id = "segundoapellido", required = "required" } })
+                                                    @Html.ValidationMessageFor(model => model.SegundoApellido, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group card-label">
+                                                    @Html.LabelFor(model => model.Sexo, htmlAttributes: new { @class = "control-label", style = "color:#000000" })
+                                                    @*@Html.EditorFor(model => model.Sexo, new { htmlAttributes = new { @class = "form-control" } })*@
+                                                    @Html.DropDownListFor(model => model.Sexo, new List
+                                                    <SelectListItem>
+                                                    {
+                                                    new SelectListItem { Text = "Hombre", Value = "H"},
+                                                    new SelectListItem { Text = "Mujer", Value = "M"},
+                                                    }, "Seleccione",
+                                                    new
+                                                    {
+                                                    @class = "form-control llenarcurp",
+                                                    @id = "sexo",
+                                                    @name = "sexo",
+                                                    required = "required"
+                                                    })
+                                                    @Html.ValidationMessageFor(model => model.Sexo, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            @*<div class="col-md-4">
+                                                <div class="form-group card-label">
+                                                    @Html.LabelFor(model => model.FechaNacimiento, "Fecha de Nacimiento", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
+                                                    @Html.EditorFor(model => model.FechaNacimiento, new { htmlAttributes = new { @class = "form-control", @type = "hidden", @id = "FechaNacimiento" } })
+                                                    <select name="dia" id="dia" class="form-control llenarcurp fnac">
+                                                        <option disabled selected>Día</option>
+                                                        @for (int i = 1; i <= 31; i++)
+                                                        {
+                                                            if (i < 10)
+                                                            {
+                                                                var num = "0" + i;
+                                                                <option value="@num">@num</option>
+                                                            }
+                                                            else
+                                                            {
+                                                                <option value="@i">@i</option>
+                                                            }
+
+                                                        }
+                                                    </select>
+                                                    <select name="mes" id="mes" class="form-control llenarcurp fnac">
+                                                        <option disabled selected>Mes</option>
+                                                        @for (int i = 1; i <= 12; i++)
+                                                        {
+                                                            if (i < 10)
+                                                            {
+                                                                var num = "0" + i;
+                                                                <option value="@num">@num</option>
+                                                            }
+                                                            else
+                                                            {
+                                                                <option value="@i">@i</option>
+                                                            }
+
+                                                        }
+                                                    </select>
+                                                    <select name="anio" id="anio" class="form-control llenarcurp fnac">
+                                                        <option disabled selected>Año</option>
+                                                        @for (int i = 1900; i <= 2024; i++)
+                                                        {
+                                                            <option value="@i">@i</option>
+                                                        }
+                                                    </select>
+                                                    @Html.ValidationMessageFor(model => model.FechaNacimiento, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>*@
+
+                                            <div class="col-md-4">
+                                                <div class="form-group card-label">
+                                                    @Html.LabelFor(model => model.FechaNacimiento, "Fecha de Nacimiento", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
+                                                    @Html.EditorFor(model => model.FechaNacimiento, new { htmlAttributes = new { @class = "form-control", @type = "hidden", @id = "FechaNacimiento" } })
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <select name="dia" id="dia" class="form-control llenarcurp fnac">
+                                                                <option disabled selected>Día</option>
+                                                                @for (int i = 1; i <= 31; i++)
+                                                                {
+                                                                    if (i < 10)
+                                                                    {
+                                                                        var num = "0" + i;
+                                                                        <option value="@num">@num</option>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <option value="@i">@i</option>
+                                                                    }
+
+                                                                }
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <select name="mes" id="mes" class="form-control llenarcurp fnac">
+                                                                <option disabled selected>Mes</option>
+                                                                @for (int i = 1; i <= 12; i++)
+                                                                {
+                                                                    if (i < 10)
+                                                                    {
+                                                                        var num = "0" + i;
+                                                                        <option value="@num">@num</option>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <option value="@i">@i</option>
+                                                                    }
+
+                                                                }
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <select name="anio" id="anio" class="form-control llenarcurp fnac">
+                                                                <option disabled selected>Año</option>
+                                                                @for (int i = 1900; i <= 2024; i++)
+                                                                {
+                                                                    <option value="@i">@i</option>
+                                                                }
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    @Html.ValidationMessageFor(model => model.FechaNacimiento, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="col-md-4">
+                                                <div class="form-group card-label">
+                                                    @Html.LabelFor(model => model.Nacionalidad, htmlAttributes: new { @class = "control-label", style = "color:#000000" })
+                                                    @Html.EditorFor(model => model.Nacionalidad, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                                                    @Html.ValidationMessageFor(model => model.Nacionalidad, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                @*<div class="form-group card-label">
+                                                    @Html.LabelFor(model => model.EntidadNacimiento, "Entidad de Nacimiento", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
+                                                    @Html.EditorFor(model => model.EntidadNacimiento, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                                                    @Html.ValidationMessageFor(model => model.EntidadNacimiento, "", new { @class = "text-danger" })
+                                                </div>*@
+
+                                                <div class="form-group card-label">
+                                                    @Html.LabelFor(model => model.EntidadNacimiento, "Entidad Nacimiento", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
+                                                    @Html.DropDownListFor(model => model.EntidadNacimiento, new List
+                                                    <SelectListItem>
+                                                    {
+                                                    new SelectListItem { Text = "AGUASCALIENTES", Value = "AGUASCALIENTES"},
+                                                    new SelectListItem { Text = "BAJA CALIFORNIA", Value = "BAJA CALIFORNIA"},
+                                                    new SelectListItem { Text = "BAJA CALIFORNIA SUR", Value = "BAJA CALIFORNIA SUR"},
+                                                    new SelectListItem { Text = "CAMPECHE", Value = "CAMPECHE"},
+                                                    new SelectListItem { Text = "COAHULIA", Value = "COAHULIA"},
+                                                    new SelectListItem { Text = "COLIMA", Value = "COLIMA"},
+                                                    new SelectListItem { Text = "CHIAPAS", Value = "CHIAPAS"},
+                                                    new SelectListItem { Text = "CHIHUAHUA", Value = "CHIHUAHUA"},
+                                                    new SelectListItem { Text = "CD. MÉXICO", Value = "CD. MÉXICO"},
+                                                    new SelectListItem { Text = "DURANGO", Value = "DURANGO"},
+                                                    new SelectListItem { Text = "GUANAJUATO", Value = "GUANAJUATO"},
+                                                    new SelectListItem { Text = "GUERRERO", Value = "GUERRERO"},
+                                                    new SelectListItem { Text = "HIDALGO", Value = "HIDALGO"},
+                                                    new SelectListItem { Text = "JALISCO", Value = "JALISCO"},
+                                                    new SelectListItem { Text = "MÉXICO", Value = "MÉXICO"},
+                                                    new SelectListItem { Text = "MICHOACAN DE OCAMPO", Value = "MICHOACAN DE OCAMPO"},
+                                                    new SelectListItem { Text = "MORELOS", Value = "MORELOS"},
+                                                    new SelectListItem { Text = "NAYARIT", Value = "NAYARIT"},
+                                                    new SelectListItem { Text = "NUEVO LEÓN", Value = "NUEVO LÉON"},
+                                                    new SelectListItem { Text = "OAXACA", Value = "OAXACA"},
+                                                    new SelectListItem { Text = "PUEBLA", Value = "PUEBLA"},
+                                                    new SelectListItem { Text = "QUERETARO DE ARTEAGA", Value = "QUERETARO DE ARTEAGA"},
+                                                    new SelectListItem { Text = "QUINTANA ROO", Value = "QUINTANA ROO"},
+                                                    new SelectListItem { Text = "SAN LUIS POTOSÍ", Value = "SAN LUIS POTOSÍ"},
+                                                    new SelectListItem { Text = "SINALOA", Value = "SINALOA"},
+                                                    new SelectListItem { Text = "TABASCO", Value = "TABASCO"},
+                                                    new SelectListItem { Text = "TAMAULIPAS", Value = "TAMAULIPAS"},
+                                                    new SelectListItem { Text = "TLAXCALA", Value = "TLAXCALA"},
+                                                    new SelectListItem { Text = "VERACRUZ", Value = "VERACRUZ"},
+                                                    new SelectListItem { Text = "YUCATÁN", Value = "YUCATÁN"},
+                                                    new SelectListItem { Text = "ZACATECAS", Value = "ZACATECAS"},
+                                                    }, "Seleccione",
+                                                    new
+                                                    {
+                                                    @class = "form-control"
+                                                    })
+                                                    @Html.ValidationMessageFor(model => model.EntidadNacimiento, "", new { @class = "text-danger" })
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group card-label">
+                                                    @Html.LabelFor(model => model.Edad, htmlAttributes: new { @class = "control-label", style = "color:#000000" })
+                                                    @Html.EditorFor(model => model.Edad, new { htmlAttributes = new { @class = "form-control EdadInput", required = "required", id = "Edad" } })
+                                                    @Html.ValidationMessageFor(model => model.Edad, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4" @*style="display: none"*@ id="Tutor1">
+                                                <div class="form-group card-label">
+                                                    @Html.LabelFor(model => model.Nombre_Tutor, "Nombre Tutor", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
+                                                    @Html.EditorFor(model => model.Nombre_Tutor, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Nombre_Tutor, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4" id="Tutor2">
+                                                <div class="form-group card-label">
+                                                    @Html.LabelFor(model => model.PrimerApellido_Tutor, "Primer A. Tutor", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
+                                                    @Html.EditorFor(model => model.PrimerApellido_Tutor, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.PrimerApellido_Tutor, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4" id="Tutor3">
+                                                <div class="form-group card-label">
+                                                    @Html.LabelFor(model => model.SegundoApellido_Tutor, "Segundo A. Tutor", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
+                                                    @Html.EditorFor(model => model.SegundoApellido_Tutor, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.SegundoApellido_Tutor, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group card-label">
+                                                    @Html.LabelFor(model => model.Expediente, htmlAttributes: new { @class = "control-label", style = "color:#000000" })
+                                                    @Html.EditorFor(model => model.Expediente, new { htmlAttributes = new { @class = "form-control", id = "ID", @readonly = "readonly" } })
+                                                    @*@Html.TextBoxFor(model => model.Expediente, new { @Value = ViewBag.id })*@
+                                                    @Html.ValidationMessageFor(model => model.Expediente, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12" style="border-top:solid;">
+                                                <br />
+                                                <h4 class="card-title">Datos del domicilio</h4>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group card-label">
+                                                    @Html.LabelFor(model => model.Dir_Calle, "Calle", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
+                                                    @Html.EditorFor(model => model.Dir_Calle, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                                                    @Html.ValidationMessageFor(model => model.Dir_Calle, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <div class="form-group card-label">
+                                                    @Html.LabelFor(model => model.Dir_Numero, "Número", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
+                                                    @Html.EditorFor(model => model.Dir_Numero, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Dir_Numero, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <div class="form-group card-label">
+                                                    @Html.LabelFor(model => model.Dir_CP, "C.P.", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
+                                                    @Html.EditorFor(model => model.Dir_CP, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Dir_CP, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group card-label">
+                                                    @Html.LabelFor(model => model.Dir_Colonia, "Colonia", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
+                                                    @Html.EditorFor(model => model.Dir_Colonia, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Dir_Colonia, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group card-label">
+                                                    @Html.LabelFor(model => model.Dir_Municipio, "Municipio", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
+                                                    @Html.EditorFor(model => model.Dir_Municipio, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Dir_Municipio, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group card-label">
+                                                    @Html.LabelFor(model => model.Dir_EntidadFed, "Entidad Fed.", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
+                                                    @*Html.EditorFor(model => model.Dir_EntidadFed, new { htmlAttributes = new { @class = "form-control" } })*@
+                                                    @Html.DropDownListFor(model => model.Dir_EntidadFed, new List
+                                                    <SelectListItem>
+                                                    {
+                                                    new SelectListItem { Text = "AGUASCALIENTES", Value = "AC"},
+                                                    new SelectListItem { Text = "BAJA CALIFORNIA", Value = "BC"},
+                                                    new SelectListItem { Text = "BAJA CALIFORNIA SUR", Value = "BCS"},
+                                                    new SelectListItem { Text = "CAMPECHE", Value = "CE"},
+                                                    new SelectListItem { Text = "COAHULIA", Value = "CH"},
+                                                    new SelectListItem { Text = "COLIMA", Value = "CO"},
+                                                    new SelectListItem { Text = "CHIAPAS", Value = "CS"},
+                                                    new SelectListItem { Text = "CHIHUAHUA", Value = "CH"},
+                                                    new SelectListItem { Text = "CD. MÉXICO", Value = "CDMX"},
+                                                    new SelectListItem { Text = "DURANGO", Value = "DG"},
+                                                    new SelectListItem { Text = "GUANAJUATO", Value = "GT"},
+                                                    new SelectListItem { Text = "GUERRERO", Value = "GR"},
+                                                    new SelectListItem { Text = "HIDALGO", Value = "HG"},
+                                                    new SelectListItem { Text = "JALISCO", Value = "JC"},
+                                                    new SelectListItem { Text = "MÉXICO", Value = "MX"},
+                                                    new SelectListItem { Text = "MICHOACAN DE OCAMPO", Value = "MN"},
+                                                    new SelectListItem { Text = "MORELOS", Value = "MS"},
+                                                    new SelectListItem { Text = "NAYARIT", Value = "NT"},
+                                                    new SelectListItem { Text = "NUEVO LEÓN", Value = "NL"},
+                                                    new SelectListItem { Text = "OAXACA", Value = "OC"},
+                                                    new SelectListItem { Text = "PUEBLA", Value = "PL"},
+                                                    new SelectListItem { Text = "QUERETARO DE ARTEAGA", Value = "QT"},
+                                                    new SelectListItem { Text = "QUINTANA ROO", Value = "QR"},
+                                                    new SelectListItem { Text = "SAN LUIS POTOSÍ", Value = "SP"},
+                                                    new SelectListItem { Text = "SINALOA", Value = "SL"},
+                                                    new SelectListItem { Text = "TABASCO", Value = "TC"},
+                                                    new SelectListItem { Text = "TAMAULIPAS", Value = "TS"},
+                                                    new SelectListItem { Text = "TLAXCALA", Value = "TL"},
+                                                    new SelectListItem { Text = "VERACRUZ", Value = "VZ"},
+                                                    new SelectListItem { Text = "YUCATÁN", Value = "YN"},
+                                                    new SelectListItem { Text = "ZACATECAS", Value = "ZS"},
+                                                    }, "Seleccione",
+                                                    new
+                                                    {
+                                                    @class = "form-control llenarcurp",
+                                                    @id = "estado",
+                                                    @name = "estado",
+                                                    })
+                                                    @Html.ValidationMessageFor(model => model.Dir_EntidadFed, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group card-label">
+                                                    @Html.LabelFor(model => model.Telefono1, "Telefono 1", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
+                                                    @Html.EditorFor(model => model.Telefono1, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                                                    @Html.ValidationMessageFor(model => model.Telefono1, " ", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group card-label">
+                                                    @Html.LabelFor(model => model.Telefono2, "Telefono 2", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
+                                                    @Html.EditorFor(model => model.Telefono2, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Telefono2, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group card-label">
+                                                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label", style = "color:#000000" })
+                                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group card-label">
+                                                    @Html.LabelFor(model => model.RFC, htmlAttributes: new { @class = "control-label", style = "color:#000000" })
+                                                    @Html.EditorFor(model => model.RFC, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.RFC, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group card-label">
+                                                    @Html.LabelFor(model => model.EstadoCivil, "Estado Civil", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
+                                                    @*@Html.EditorFor(model => model.EstadoCivil, new { htmlAttributes = new { @class = "form-control" } })*@
+                                                    @Html.DropDownListFor(model => model.EstadoCivil, new List
+                                                    <SelectListItem>
+                                                    {
+                                                    new SelectListItem { Text = "Soltero", Value = "Soltero"},
+                                                    new SelectListItem { Text = "Casado", Value = "Casado"},
+                                                    new SelectListItem { Text = "Divorciado", Value = "Divorciado"},
+                                                    new SelectListItem { Text = "Separación", Value = "Separación"},
+                                                    new SelectListItem { Text = "Viudo", Value = "Viudo"},
+                                                    new SelectListItem { Text = "Concubinato", Value = "Concubinato"},
+                                                    }, "Seleccione",
+                                                    new
+                                                    {
+                                                    @class = "form-control input-lg",
+                                                    required = "required"
+                                                    })
+                                                    @Html.ValidationMessageFor(model => model.EstadoCivil, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group card-label">
+                                                    @Html.LabelFor(model => model.Escolaridad, htmlAttributes: new { @class = "control-label", style = "color:#000000" })
+                                                    @*@Html.EditorFor(model => model.Escolaridad, new { htmlAttributes = new { @class = "form-control" } })*@
+                                                    @Html.DropDownListFor(model => model.Escolaridad, new List
+                                                    <SelectListItem>
+                                                    {
+                                                    new SelectListItem { Text = "Básica", Value = "Básica"},
+                                                    new SelectListItem { Text = "Medio superior", Value = "Medio superior"},
+                                                    new SelectListItem { Text = "Superior", Value = "Superior"},
+                                                    new SelectListItem { Text = "No escolarizado", Value = "No escolarizado"},
+                                                    }, "Seleccione",
+                                                    new
+                                                    {
+                                                    @class = "form-control input-lg",
+                                                    required = "required"
+                                                    })
+                                                    @Html.ValidationMessageFor(model => model.Escolaridad, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group card-label">
+                                                    @Html.LabelFor(model => model.Ocupacion, "Ocupación", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
+                                                    @*@Html.EditorFor(model => model.Ocupacion, new { htmlAttributes = new { @class = "form-control" } })*@
+                                                    @Html.DropDownListFor(model => model.Ocupacion, new List
+                                                    <SelectListItem>
+                                                    {
+                                                    new SelectListItem { Text = "Actividad empresarial", Value = "Actividad empresarial"},
+                                                    new SelectListItem { Text = "Empleado", Value = "Empleado"},
+                                                    new SelectListItem { Text = "Estudiante", Value = "Estudiante"},
+                                                    new SelectListItem { Text = "Labores del hogar", Value = "Labores del hogar"},
+                                                    new SelectListItem { Text = "Desempleado", Value = "Desempleado"},
+                                                    }, "Seleccione",
+                                                    new
+                                                    {
+                                                    @class = "form-control input-lg",
+                                                    required = "required"
+                                                    })
+                                                    @Html.ValidationMessageFor(model => model.Ocupacion, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group card-label">
+                                                    @Html.LabelFor(model => model.ServicioSalud, "Servicio de Salud", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
+                                                    @*@Html.EditorFor(model => model.ServicioSalud, new { htmlAttributes = new { @class = "form-control" } })*@
+                                                    @Html.DropDownListFor(model => model.ServicioSalud, new List
+                                                    <SelectListItem>
+                                                    {
+                                                    new SelectListItem { Text = "SSA", Value = "SSA"},
+                                                    new SelectListItem { Text = "IMSS", Value = "IMSS"},
+                                                    new SelectListItem { Text = "ISSSTE", Value = "ISSSTE"},
+                                                    new SelectListItem { Text = "PEMEX", Value = "PEMEX"},
+                                                    new SelectListItem { Text = "SEDENA", Value = "SEDENA"},
+                                                    new SelectListItem { Text = "MARINA", Value = "MARINA"},
+                                                    new SelectListItem { Text = "OTRA", Value = "OTRA"},
+                                                    new SelectListItem { Text = "NINGUNA", Value = "NINGUNA"},
+                                                    }, "Seleccione",
+                                                    new
+                                                    {
+                                                    @class = "form-control input-lg",
+                                                             id = "SS"
+                                                    })
+                                                    @Html.ValidationMessageFor(model => model.ServicioSalud, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4" id="ServSaludExtra">
+                                                <div class="form-group card-label">
+                                                    @Html.LabelFor(model => model.ServicioSalud_Extra, "Servicio Salud Extra", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
+                                                    @Html.EditorFor(model => model.ServicioSalud_Extra, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.ServicioSalud_Extra, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12 p-0">
+                                    <div class="card bg-success-light">
+                                        <div class="card-header bg-info">
+                                            <h4 class="card-title">Datos Étnicos</h4>
+                                        </div>
+                                        <div class="card-body">
+                                                <div class="row form-row" >
+                                                    <div class="col-md-3">
+                                                        <div class="form-group card-label">
+                                                            @Html.LabelFor(model => model.DE_Indigena, "Indigena", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
+                                                            @Html.EditorFor(model => model.DE_Indigena, new { htmlAttributes = new { style = "transform: scale(0.5);", id = "DE_1" } })
+                                                            @Html.ValidationMessageFor(model => model.DE_Indigena, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group card-label">
+                                                            @Html.LabelFor(model => model.DE_Migrante, "Migrante", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
+                                                            @Html.EditorFor(model => model.DE_Migrante, new { htmlAttributes = new { style = "transform: scale(0.5);", id = "DE_2" } })
+                                                            @Html.ValidationMessageFor(model => model.DE_Migrante, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group card-label">
+                                                            @Html.LabelFor(model => model.DE_Afroamericano, "Afroamexicano", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
+                                                            @Html.EditorFor(model => model.DE_Afroamericano, new { htmlAttributes = new { style = "transform: scale(0.5);", id = "DE_3" } })
+                                                            @Html.ValidationMessageFor(model => model.DE_Afroamericano, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group card-label">
+                                                            @Html.LabelFor(model => model.NA_DE, "N/A", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
+                                                            @Html.EditorFor(model => model.NA_DE, new { htmlAttributes = new { style = "transform: scale(0.5);", id = "DE_NA" } })
+                                                            @Html.ValidationMessageFor(model => model.NA_DE, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12 p-0">
+                                    <div class="card bg-success-light">
+                                        <div class="card-header bg-info">
+                                            <h4 class="card-title">Barrera de Atención</h4>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row form-row">
+                                                <div class="col-md-1">
+                                                    <div class="form-group card-label">
+                                                        @Html.LabelFor(model => model.BA_Visual, "Visual", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
+                                                        @Html.EditorFor(model => model.BA_Visual, new { htmlAttributes = new { style = "transform: scale(0.5);", id = "BA_1" } })
+                                                        @Html.ValidationMessageFor(model => model.BA_Visual, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-1">
+                                                    <div class="form-group card-label">
+                                                        @Html.LabelFor(model => model.BA_Auditiva, "Auditiva", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
+                                                        @Html.EditorFor(model => model.BA_Auditiva, new { htmlAttributes = new { style = "transform: scale(0.5);", id = "BA_2" } })
+                                                        @Html.ValidationMessageFor(model => model.BA_Auditiva, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group card-label">
+                                                        @Html.LabelFor(model => model.BA_Fisica, "Física", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
+                                                        @Html.EditorFor(model => model.BA_Fisica, new { htmlAttributes = new { style = "transform: scale(0.5);", id = "BA_3" } })
+                                                        @Html.ValidationMessageFor(model => model.BA_Fisica, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group card-label">
+                                                        @Html.LabelFor(model => model.BA_Mental, "Mental", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
+                                                        @Html.EditorFor(model => model.BA_Mental, new { htmlAttributes = new { style = "transform: scale(0.5);", id = "BA_4" } })
+                                                        @Html.ValidationMessageFor(model => model.BA_Mental, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group card-label">
+                                                        @Html.LabelFor(model => model.BA_Idioma, "Idioma/Dialecto", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
+                                                        @Html.EditorFor(model => model.BA_Idioma, new { htmlAttributes = new { style = "transform: scale(0.5);", id = "BA_5" } })
+                                                        @Html.ValidationMessageFor(model => model.BA_Idioma, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group card-label">
+                                                        @Html.LabelFor(model => model.BA_Analfabeta, "Analfabeta", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
+                                                        @Html.EditorFor(model => model.BA_Analfabeta, new { htmlAttributes = new { style = "transform: scale(0.5);", id = "BA_6" } })
+                                                        @Html.ValidationMessageFor(model => model.BA_Analfabeta, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group card-label">
+                                                        @Html.LabelFor(model => model.NA_BA, "N/A", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
+                                                        @Html.EditorFor(model => model.NA_BA, new { htmlAttributes = new { style = "transform: scale(0.5);", id = "BA_NA" } })
+                                                        @Html.ValidationMessageFor(model => model.NA_BA, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="card bg-success-light">
+                                    <div class="card-header bg-info">
+                                        <h4 class="card-title">Contacto de Emergencia</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row form-row">
+                                            <div class="col-md-3">
+                                                <div class="form-group card-label">
+                                                    @Html.LabelFor(model => model.CE_Nombre, "Nombre", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
+                                                    @Html.EditorFor(model => model.CE_Nombre, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                                                    @Html.ValidationMessageFor(model => model.CE_Nombre, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group card-label">
+                                                    @Html.LabelFor(model => model.CE_Calle, "Calle", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
+                                                    @Html.EditorFor(model => model.CE_Calle, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.CE_Calle, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group card-label">
+                                                    @Html.LabelFor(model => model.CE_Numero, "Número", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
+                                                    @Html.EditorFor(model => model.CE_Numero, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                                                    @Html.ValidationMessageFor(model => model.CE_Numero, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group card-label">
+                                                    @Html.LabelFor(model => model.CE_CP, "C.P.", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
+                                                    @Html.EditorFor(model => model.CE_CP, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.CE_CP, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group card-label">
+                                                    @Html.LabelFor(model => model.CE_Colonia, "Colonia", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
+                                                    @Html.EditorFor(model => model.CE_Colonia, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.CE_Colonia, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group card-label">
+                                                    @Html.LabelFor(model => model.CE_Municipio, "Municipio", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
+                                                    @Html.EditorFor(model => model.CE_Municipio, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.CE_Municipio, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group card-label">
+                                                    @Html.LabelFor(model => model.CE_EntidadFed, "Entidad Fed.", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
+                                                    @Html.EditorFor(model => model.CE_EntidadFed, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.CE_EntidadFed, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group card-label">
+                                                    @Html.LabelFor(model => model.CE_Telefono, "Teléfono", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
+                                                    @Html.EditorFor(model => model.CE_Telefono, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.CE_Telefono, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="submit-section submit-btn-bottom">
+                        <button type="submit" class="btn bg-success submit-btn" id="BtnGuardar">Guardar Registro</button>
+                        @*<button onclick="BtnCancelarRegistro()" type="submit" class="btn btn-danger submit-btn">Cancelar</button>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<script src="~/Content/assets/js/jquery.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+@if (TempData["Error"] != null)
+{
+    var mensaje = TempData["Error"];
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: '@mensaje',
+        });
+    </script>
+}
+
+<script>
+    $(document).ready(function () {
+        $(".fnac").change(function () {
+            var dia = $('#dia').val();
+            var mes = $('#mes').val();
+            var anio = $('#anio').val();
+
+            $('#FechaNacimiento').val(anio + '-' + mes + '-' + dia);
+
+        });
+    });
+</script>
+
+<script>
+
+   $(document).ready(function () {
+
+       $("#IdUnidad").change(function () {
+           var Unidad = document.getElementById("IdUnidad");
+           var UA = Unidad.value
+
+           $.ajax({
+               url: '@Url.Action("GenerarExpediente", "Derechohabiente")',
+               method: 'POST',
+               dataType: 'json',
+               data: { UnidadAfi: UA },
+               success: function (data) {
+                   if (data.MENSAJE.substring(0, 6) == "Error:")
+                   {
+                       Swal.fire({
+                           icon: 'error',
+                           title: '¡Error!',
+                           text: data.MENSAJE.substring(7)
+                       });
+                   }
+                   else {
+                       //alert(data.Exp);
+                       document.getElementById("ID").value = data.Exp;
+                   }
+               },
+               error: function (ex) {
+                   Swal.fire({
+                       icon: 'error',
+                       title: 'Error',
+                   });
+               }
+           });
+       });
+
+       //Los Inputs para el Tutor cuando el px es menor de edad NACEN ocultos, solo se muestran cuando la Edad que ingresan es -18
+       $("#Tutor1").css("display", "none");
+       $("#Tutor2").css("display", "none");
+       $("#Tutor3").css("display", "none");
+
+       //El input del CURP Calculado NACE oculto, solo se muestra cuando checkeen 'Sin Curp'
+       $("#curpLabelCalculado").css("display", "none");
+       $("#curpLabelCalculadoMotivo").css("display", "none");
+
+       $("#ServSaludExtra").css("display", "none");
+
+   });
+
+    $("form").submit(function (e) {
+        e.preventDefault();
+
+        if ((document.getElementById('DE_1').checked || document.getElementById('DE_2').checked || document.getElementById('DE_3').checked || document.getElementById('DE_NA').checked) && (document.getElementById('BA_1').checked || document.getElementById('BA_2').checked || document.getElementById('BA_3').checked || document.getElementById('BA_4').checked || document.getElementById('BA_5').checked || document.getElementById('BA_6').checked || document.getElementById('BA_NA').checked)) {
+
+            $("#BtnGuardar").click(function (event) {
+                event.preventDefault();
+                $("#BtnGuardar").prop('disabled', true)
+
+                return false;
+            })
+
+            let data = $(this).serialize();
+            $.post("@Url.Action("Create", "Derechohabiente")", data).done(function (response) {
+
+                @*Swal.fire({
+                    icon: 'success',
+                    title: '¡Éxito!',
+                    text: "El px se registro correctamente",
+                    showConfirmButton: true,
+                    willClose: () => {
+                        window.location = encodeURI('@Url.Action("Index", "Derechohabiente")')
+                    }
+                })*@
+
+                if (response.MENSAJE.substring(0, 6) == "Succe1") {
+                    Swal.fire({
+                        icon: 'success',
+                        title: '¡Éxito!',
+                        text: "El px se registro correctamente",
+                        showConfirmButton: true,
+                        willClose: () => {
+                            window.location = encodeURI('@Url.Action("Index", "Derechohabiente")')
+                        }
+                    });
+                }
+                if (response.MENSAJE.substring(0, 6) == "Succe2") {
+                    Swal.fire({
+                        icon: 'info',
+                        title: '',
+                        text: "El px ya se encuentra registrado",
+                        showConfirmButton: true,
+                        willClose: () => {
+                            window.location = encodeURI('@Url.Action("Index", "Derechohabiente")')
+                        }
+                    });
+                }
+
+            }).fail(function (response) {
+                Swal.fire({
+                    icon: 'error',
+                    title: '¡Error!'
+                });
+            });
+
+        } else
+        {
+            Swal.fire({
+                icon: 'error',
+                title: '¡Error!',
+                text: "Si no selecciona ninguna opción debe seleccionar 'N/A' "
+            });
+        }
+    });
+
+    $("#SS").change(function () {
+        var combo = document.getElementById("SS");
+        var selected = combo.options[combo.selectedIndex].text;
+
+        if (selected == "OTRA") {
+            $("#ServSaludExtra").css("display", "");
+        } else
+        {
+            $("#ServSaludExtra").css("display", "none");
+        }
+    });
+
+    //Cachar evento del Checkbox **SIN CURP**
+    $("input[type=checkbox]").click(function (event) {
+
+        $('#CheckCURP').change(function () {
+            if (document.getElementById('CheckCURP').checked) { //Si checkean SIN CURP el input del Curp1 se oculta y el input del CurpCalculado se muestra
+                $("#curpLabel").css("display", "none");
+                $("#curpLabelCalculado").css("display", "");
+                $("#curpLabelCalculadoMotivo").css("display", "");
+            } else {    //Si Des-checkean SIN CURP el input del Curp1 vuelve a mostrarse y el input del CurpCalculado se oculta
+                $("#curpLabel").css("display", "");
+                $("#curpLabelCalculado").css("display", "none");
+                $("#curpLabelCalculadoMotivo").css("display", "none");
+            }
+        });
+
+    });
+
+   //function BtnCancelarRegistro() {
+   //    location.reload();
+   //}
+
+    //Cachar el valor de la Edad cuando se ingrese para MOSTRAR inputs si el px es MENOR DE EDAD
+    $(".EdadInput").keyup(function () {
+
+        var Edad = $('#Edad').val();
+
+        if (Edad < 18) {
+            $("#Tutor1").css("display", "");
+            $("#Tutor2").css("display", "");
+            $("#Tutor3").css("display", "");
+        } else {
+            $("#Tutor1").css("display", "none");
+            $("#Tutor2").css("display", "none");
+            $("#Tutor3").css("display", "none");
+        }
+
+    });
+
+</script>
+
+<script>
+    //Función para validar una CURP
+
+    function curpValida(curp) {
+
+        var re = /^([A-Z][AEIOUX][A-Z]{2}\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\d])(\d)$/,
+
+            validado = curp.match(re);
+
+
+
+        if (!validado)  //Coincide con el formato general?
+
+            return false;
+
+
+
+        //Validar que coincida el dígito verificador
+
+        function digitoVerificador(curp17) {
+
+            //Fuente https://consultas.curp.gob.mx/CurpSP/
+
+            var diccionario = "0123456789ABCDEFGHIJKLMNÑOPQRSTUVWXYZ",
+
+                lngSuma = 0.0,
+
+                lngDigito = 0.0;
+
+            for (var i = 0; i < 17; i++)
+
+                lngSuma = lngSuma + diccionario.indexOf(curp17.charAt(i)) * (18 - i);
+
+            lngDigito = 10 - lngSuma % 10;
+
+            if (lngDigito == 10) return 0;
+
+            return lngDigito;
+
+        }
+
+
+
+        if (validado[2] != digitoVerificador(validado[1]))
+
+            return false;
+
+
+
+        return true; //Validado
+
+    }
+
+    //CURP a mayúsculas para validarlo
+
+    function validarInput(input) {
+
+        //alert(input);
+
+        var curp = input.value.toUpperCase(),
+
+            resultado = document.getElementById("resultado2"),
+
+            valido = "No válido";
+
+
+
+        if (curpValida(curp)) { // ⬅️ Acá se comprueba
+
+            valido = "Válido";
+
+            resultado.classList.add("ok");
+
+        } else {
+
+            resultado.classList.remove("ok");
+
+        }
+
+
+
+        resultado.innerText = "CURP: " + curp + "\nFormato: " + valido;
+
+    }
+
+
+</script>
+
+<script>
+    $(".llenarcurp").on("keyup change", function (e) {
+        if ($('#nombre').val() && $('#primerapellido').val() && $('#segundoapellido').val() && $('#dia').val() && $('#mes').val() && $('#anio').val()) {
+            if (!$('#sexo option:first-child').prop('selected') && !$('#estado option:first-child').prop('selected')) {
+                calcularCurp();
+            }
+        }
+    });
+
+
+
+    (function (global) {
+        'use strict';
+        var comunes = ['MARIA', 'MA', 'MA.', 'JOSE', 'J', 'J.'];
+
+        function filtraInconvenientes(str) {
+            var inconvenientes = ['BACA', 'LOCO', 'BUEI', 'BUEY', 'MAME', 'CACA', 'MAMO',
+                'CACO', 'MEAR', 'CAGA', 'MEAS', 'CAGO', 'MEON', 'CAKA', 'MIAR', 'CAKO', 'MION',
+                'COGE', 'MOCO', 'COGI', 'MOKO', 'COJA', 'MULA', 'COJE', 'MULO', 'COJI', 'NACA',
+                'COJO', 'NACO', 'COLA', 'PEDA', 'CULO', 'PEDO', 'FALO', 'PENE', 'FETO', 'PIPI',
+                'GETA', 'PITO', 'GUEI', 'POPO', 'GUEY', 'PUTA', 'JETA', 'PUTO', 'JOTO', 'QULO',
+                'KACA', 'RATA', 'KACO', 'ROBA', 'KAGA', 'ROBE', 'KAGO', 'ROBO', 'KAKA', 'RUIN',
+                'KAKO', 'SENO', 'KOGE', 'TETA', 'KOGI', 'VACA', 'KOJA', 'VAGA', 'KOJE', 'VAGO',
+                'KOJI', 'VAKA', 'KOJO', 'VUEI', 'KOLA', 'VUEY', 'KULO', 'WUEI', 'LILO', 'WUEY',
+                'LOCA'];
+
+            if (inconvenientes.indexOf(str) > -1) {
+                str = str.replace(/^(\w)\w/, '$1X');
+            }
+
+            return str;
+        }
+
+        /**
+         * ajustaCompuesto()
+         * Cuando el nombre o los apellidos son compuestos y tienen
+         * proposiciones, contracciones o conjunciones, se deben eliminar esas palabras
+         * a la hora de calcular el CURP.
+         * @@param {string} str - String donde se eliminarán las partes que lo hacen compuesto
+         */
+        function ajustaCompuesto(str) {
+            var compuestos = [/\bDA\b/, /\bDAS\b/, /\bDE\b/, /\bDEL\b/, /\bDER\b/, /\bDI\b/,
+                /\bDIE\b/, /\bDD\b/, /\bEL\b/, /\bLA\b/, /\bLOS\b/, /\bLAS\b/, /\bLE\b/,
+                /\bLES\b/, /\bMAC\b/, /\bMC\b/, /\bVAN\b/, /\bVON\b/, /\bY\b/];
+
+            compuestos.forEach(function (compuesto) {
+                if (compuesto.test(str)) {
+                    str = str.replace(compuesto, '');
+                }
+            });
+
+            return str;
+        }
+
+        /**
+        * zeropad()
+        * Rellena con ceros un string, para que quede de un ancho determinado.
+        * @@param {number} ancho - Ancho deseado.
+        * @@param {number} num - Numero que sera procesado.
+        */
+        function zeropad(ancho, num) {
+            var pad = Array.apply(0, Array.call(0, ancho)).map(function () { return 0; }).join('');
+
+            return (pad + num).replace(new RegExp('^.*([0-9]{' + ancho + '})$'), '$1');
+        }
+        /**
+        * primerConsonante()
+        * Saca la primer consonante interna del string, y la devuelve.
+        * Si no hay una consonante interna, devuelve X.
+        * @@param {string} str - String del cual se va a sacar la primer consonante.
+        */
+        function primerConsonante(str) {
+            str = str.trim().substring(1).replace(/[AEIOU]/ig, '').substring(0, 1);
+            return (str === '' || str === 'Ñ') ? 'X' : str;
+        }
+
+        /**
+        * filtraCaracteres()
+        * Filtra convirtiendo todos los caracteres no alfabeticos a X.
+        * @@param {string} str - String el cual sera convertido.
+        */
+        function filtraCaracteres(str) {
+            return str.toUpperCase().replace(/[\d_\-\.\/\\,]/g, 'X');
+        }
+
+        /**
+        * estadoValido()
+        * Valida si el estado esta en la lista de estados, de acuerdo a la RENAPO.
+        * @@param {string} str - String con el estado.
+        */
+        function estadoValido(str) {
+            var estado = ['AS', 'BC', 'BS', 'CC', 'CS', 'CH', 'CL', 'CM', 'DF', 'DG',
+                'GT', 'GR', 'HG', 'JC', 'MC', 'MN', 'MS', 'NT', 'NL', 'OC', 'PL', 'QT',
+                'QR', 'SP', 'SL', 'SR', 'TC', 'TS', 'TL', 'VZ', 'YN', 'ZS', 'NE'];
+
+            return (estado.indexOf(str.toUpperCase()) > -1);
+        }
+
+
+        /**
+        * normalizaString()
+        * Elimina los acentos, eñes y diéresis que pudiera tener el nombre.
+        * @@param {string} str - String con el nombre o los apellidos.
+        */
+        function normalizaString(str) {
+            var origen, destino, salida;
+            origen = ['Ã', 'À', 'Á', 'Ä', 'Â', 'È', 'É', 'Ë', 'Ê', 'Ì', 'Í', 'Ï', 'Î',
+                'Ò', 'Ó', 'Ö', 'Ô', 'Ù', 'Ú', 'Ü', 'Û', 'ã', 'à', 'á', 'ä', 'â',
+                'è', 'é', 'ë', 'ê', 'ì', 'í', 'ï', 'î', 'ò', 'ó', 'ö', 'ô', 'ù',
+                'ú', 'ü', 'û', 'Ç', 'ç'];
+            destino = ['A', 'A', 'A', 'A', 'A', 'E', 'E', 'E', 'E', 'I', 'I', 'I', 'I',
+                'O', 'O', 'O', 'O', 'U', 'U', 'U', 'U', 'a', 'a', 'a', 'a', 'a',
+                'e', 'e', 'e', 'e', 'i', 'i', 'i', 'i', 'o', 'o', 'o', 'o', 'u',
+                'u', 'u', 'u', 'c', 'c'];
+            str = str.split('');
+            salida = str.map(function (char) {
+                var pos = origen.indexOf(char);
+                return (pos > -1) ? destino[pos] : char;
+            });
+
+            return salida.join('');
+        }
+
+
+        /**
+        * agregaDigitoVerificador()
+        * Agrega el dígito que se usa para validar el CURP.
+        * @@param {string} curp_str - String que contiene los primeros 17 caracteres del CURP.
+        */
+        function agregaDigitoVerificador(curp_str) {
+            var curp, caracteres, curpNumerico, suma, digito;
+
+            // Convierte el CURP en un arreglo
+            curp = curp_str.substring(0, 17).toUpperCase().split('');
+            caracteres = [
+                '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E',
+                'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'Ñ', 'O', 'P', 'Q', 'R', 'S',
+                'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
+            ];
+
+            // Convierte el curp a un arreglo de números, usando la posición de cada
+            // carácter, dentro del arreglo `caracteres`.
+            curpNumerico = curp.map(function (caracter) {
+                return caracteres.indexOf(caracter);
+            });
+
+            suma = curpNumerico.reduce(function (prev, valor, indice) {
+                return prev + (valor * (18 - indice));
+            }, 0);
+
+            digito = (10 - (suma % 10));
+
+            if (digito === 10) {
+                digito = 0;
+            }
+
+            return curp_str + digito;
+        }
+
+        /**
+         * extraerInicial()
+         * Funcion que extrae la inicial del primer nombre, o, si tiene mas de 1 nombre Y el primer
+         * nombre es uno de la lista de nombres comunes, la inicial del segundo nombre
+         * @@param {string} nombre - String que representa todos los nombres (excepto los apellidos) separados por espacio
+         */
+        function extraerInicial(nombre) {
+            var nombres, primerNombreEsComun;
+            nombres = nombre.toUpperCase().trim().split(/\s+/);
+            primerNombreEsComun = (nombres.length > 1 && comunes.indexOf(nombres[0]) > -1);
+
+            if (primerNombreEsComun) {
+                return nombres[1].substring(0, 1);
+            }
+
+            return nombres[0].substring(0, 1);
+        }
+
+        /**
+        * generaCurp()
+        * Función principal que genera el CURP.
+        * @@param {object} param - Objeto que tiene los parámetros necesarios para poder generar el curp,
+        * Las propiedasdes del objeto param son:
+        * @@param {string} nombre - Nombre(s).
+        * @@param {string} apellido_paterno - Apellido materno.
+        * @@param {string} apellido_materno - Apellido materno.
+        * En caso de haber conjunciones en los apellidos, estas deben ir aqui.
+        * @@param {string} sexo - Sexo. H para hombre, M para mujer.
+        * @@param {string} estado - Estado, usando las abreviaturas oficiales.
+        * @@param {array} fecha_nacimiento - Arreglo con [ día, mes, año ], cada uno como numero.
+        * @@param {string} [homonimia] - Opcional. Valor usado para evitar repeticiones, es asignado por gobernación.
+        * Por default es 0 si la fecha de nacimiento es menor o igual a 1999, o A, si es igual o mayor a 2000.
+        */
+        function generaCurp(param) {
+            var inicial_nombre, vocal_apellido, posicion_1_4, posicion_14_16, curp, primera_letra_paterno, primera_letra_materno, nombres, nombre_a_usar, pad;
+
+            pad = zeropad.bind(null, 2);
+            if (!estadoValido(param.estado)) {
+                return false;
+            }
+
+            param.nombre = ajustaCompuesto(normalizaString(param.nombre.toUpperCase())).trim();
+            param.apellido_paterno = ajustaCompuesto(normalizaString(param.apellido_paterno.toUpperCase())).trim();
+
+            param.apellido_materno = param.apellido_materno || "";
+            param.apellido_materno = ajustaCompuesto(normalizaString(param.apellido_materno.toUpperCase())).trim();
+
+            inicial_nombre = extraerInicial(param.nombre);
+
+            vocal_apellido = param.apellido_paterno.trim().substring(1).replace(/[BCDFGHJKLMNÑPQRSTVWXYZ]/g, '').substring(0, 1);
+            vocal_apellido = (vocal_apellido === '') ? 'X' : vocal_apellido;
+
+            primera_letra_paterno = param.apellido_paterno.substring(0, 1);
+            primera_letra_paterno = primera_letra_paterno === 'Ñ' ? 'X' : primera_letra_paterno;
+
+            if (!param.apellido_materno || param.apellido_materno === "") {
+                primera_letra_materno = 'X';
+            } else {
+                primera_letra_materno = param.apellido_materno.substring(0, 1);
+                primera_letra_materno = primera_letra_materno === 'Ñ' ? 'X' : primera_letra_materno;
+            }
+
+            posicion_1_4 = [
+                primera_letra_paterno,
+                vocal_apellido,
+                primera_letra_materno,
+                inicial_nombre
+            ].join('');
+
+            posicion_1_4 = filtraInconvenientes(filtraCaracteres(posicion_1_4));
+
+            nombres = param.nombre.split(" ").filter(function (palabra) {
+                return palabra !== "";
+            });
+            nombre_a_usar = comunes.indexOf(nombres[0]) > -1 ? nombres[1] : nombres[0];
+
+            posicion_14_16 = [
+                primerConsonante(param.apellido_paterno),
+                primerConsonante(param.apellido_materno),
+                primerConsonante(nombre_a_usar)
+            ].join('');
+
+            curp = [
+                posicion_1_4,
+                pad(param.fecha_nacimiento[2] - 1900),
+                pad(param.fecha_nacimiento[1]),
+                pad(param.fecha_nacimiento[0]),
+                param.sexo.toUpperCase(),
+                param.estado.toUpperCase(),
+                posicion_14_16,
+                param.homonimia || (param.fecha_nacimiento[2] > 1999 ? 'A' : 0)
+            ].join('');
+
+            return agregaDigitoVerificador(curp);
+        }
+
+        // Si es un navegador, exporta 'generaCurp' a una variable global.
+        // Si es node.js, exporta esa función en module.exports
+        if (global.hasOwnProperty('window') && global.window === global) {
+            global.generaCurp = generaCurp;
+        } else {
+            module.exports = generaCurp;
+        }
+
+    }(this));
+    /*==============================================================================*/
+    /*+++ Aqui va la implementacion +++*/
+    function calcularCurp() {
+        var nombre = document.getElementById("nombre").value;
+        var apellido_paterno = document.getElementById("primerapellido").value;
+        var apellido_materno = document.getElementById("segundoapellido").value;
+        var sexo = document.getElementById("sexo").value;
+        var estado = document.getElementById("estado").value;
+        var fecha_nacimiento = [document.getElementById("dia").value
+            , document.getElementById("mes").value
+            , document.getElementById("anio").value];
+
+        /*
+        var curp = generaCurp({
+          nombre            : 'Constantina',
+          apellido_paterno  : 'Vazquez',
+          apellido_materno  : 'Bautista',
+          sexo              : 'M',
+          estado            : 'PL',
+          fecha_nacimiento  : [25, 02, 1957]
+        });
+        */
+
+        //alert(estado);
+
+        var curp = generaCurp({
+            nombre: nombre,
+            apellido_paterno: apellido_paterno,
+            apellido_materno: apellido_materno,
+            sexo: sexo,
+            estado: estado,
+            fecha_nacimiento: fecha_nacimiento
+        });
+
+
+        document.getElementById('curp').value = curp;
+    }
+
+
+    /***********/
+    function validarInput(input) {
+        var curp = input.value.toUpperCase(),
+            resultado = document.getElementById("resultado2"),
+            valido = "No válido";
+
+        if (curpValida(curp)) {
+            valido = "Válido";
+            resultado.classList.add("ok");
+        } else {
+            resultado.classList.remove("ok");
+        }
+
+        resultado.innerText = "CURP: " + curp + "\nFormato: " + valido;
+    }
+
+    function curpValida(curp) {
+        var re = /^([A-Z][AEIOUX][A-Z]{2}\d{2}(?:0\d|1[0-2])(?:[0-2]\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\d])(\d)$/,
+            validado = curp.match(re);
+
+        if (!validado)  //Coincide con el formato general?
+            return false;
+
+        //Validar que coincida el dígito verificador
+        function digitoVerificador(curp17) {
+            //Fuente https://consultas.curp.gob.mx/CurpSP/
+            var diccionario = "0123456789ABCDEFGHIJKLMNÑOPQRSTUVWXYZ",
+                lngSuma = 0.0,
+                lngDigito = 0.0;
+            for (var i = 0; i < 17; i++)
+                lngSuma = lngSuma + diccionario.indexOf(curp17.charAt(i)) * (18 - i);
+            lngDigito = 10 - lngSuma % 10;
+            if (lngDigito == 10)
+                return 0;
+            return lngDigito;
+        }
+        if (validado[2] != digitoVerificador(validado[1]))
+            return false;
+
+        return true; //Validado
+    }
+</script>

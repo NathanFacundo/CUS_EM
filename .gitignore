@@ -1,0 +1,12 @@
+
+.vs/cus/v16/.suo
+.vs/cus/config/applicationhost.config
+.vs/cus/config/applicationhost.config
+cus/obj/Debug/CUS.csproj.AssemblyReference.cache
+.vs/cus/v16/.suo
+cus/obj/Debug/CUS.pdb
+.vs/cus/config/applicationhost.config
+**/*.suo
+**/*.dll
+**/*.pdb
+**/*.cache

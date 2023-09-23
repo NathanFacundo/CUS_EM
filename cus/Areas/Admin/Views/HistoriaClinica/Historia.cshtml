@@ -1,0 +1,273 @@
+﻿
+@{
+    ViewBag.Title = "";
+}
+
+<style>
+
+    .modal {
+        padding: 0 !important;
+    }
+
+    #myModal .modal-dialog {
+        max-width:none;
+        height: 100%;
+        margin:0;
+    }
+
+    /*#myModal {
+        top: 100px;
+        left: 100px;
+        z-index: 1;
+        transform: rotate(360deg);
+    }*/
+
+</style>
+
+<div class="page-wrapper">
+    <div class="content container-fluid">
+
+        <div class="page-header">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3 class="page-title">Búsqueda de Historia Clínica</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-sm-12" id="BusquedaPX">
+                <div class="row">
+                    <div class="col-md-3 mb-3">
+                        <input type="text" class="form-control BuscarPX" id="ExpedientePX" placeholder="Expediente PX" required>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <button class="btn btn-primary" onclick="BtnBuscarPX()">Buscar</button>
+                    </div>
+                    <div class="col-md-3 mb-3">
+
+                    </div>
+                </div>
+                <div>
+                    <div class="table-responsive">
+                        <table id="TblPaciente" class="datatable table table-stripped">
+                            <thead>
+                                <tr>
+                                    <th style="text-align:center">
+                                        Nombre
+                                    </th>
+                                    <th style="text-align:center">
+                                        Primer Apellido
+                                    </th>
+                                    <th style="text-align:center">
+                                        Fecha Registro H.C.
+                                    </th>
+                                    <th style="width:5px">Ver H.C.</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="model-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="model-body">
+                <p>...</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="~/Areas/Admin/assets/js/jquery-3.2.1.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+
+    $(document).ready(function () {
+
+        var table = $('#TblPaciente').DataTable();
+        table.destroy();
+        table = $('#TblPaciente').DataTable({
+            paging: false,
+            scroller: false,
+            responsive: true,
+            searching: false,
+            info: true,
+            lengthChange: false,
+            pageLength: 20,
+            language: {
+                "zeroRecords": "",
+                "info": "_TOTAL_ px",
+                "search": "Buscar:",
+                "infoEmpty": "",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Último",
+                    "next": "Siguiente",
+                    "previous": "Anterior",
+                },
+                "select": {
+                    "rows": " %d filas seleccionadas"
+                },
+            }
+        });
+
+        let timerInterval
+        Swal.fire({
+            title: 'Busque al px. y seleccione la H.C. que desea ver',
+            timer: 3500,
+            timerProgressBar: true,
+            willClose: () => {
+                clearInterval(timerInterval)
+            }
+        });
+    });
+
+    //Si dan click en Enter en los inputs de Nombre/Expediente
+    $('.BuscarPX').on("keypress", function (e) {
+        if (e.keyCode == 13) {
+            FuncionBuscarPX();
+            return false;
+        }
+    });
+
+    //Si dan click en el botón de Buscar
+    function BtnBuscarPX() {
+        FuncionBuscarPX();
+    };
+
+    function FuncionBuscarPX() {
+	    var ExpedientePX = $("#ExpedientePX").val();
+
+	    Swal.fire({
+		    title: 'Cargando... Espere por favor',
+		    timer: 1000,
+		    timerProgressBar: true,
+	    });
+
+	    $.ajax({
+		    url: '@Url.Action("BuscarHistoria", "HistoriaClinica")',
+		    method: 'POST',
+		    dataType: 'json',
+		    data: {
+                ExpedientePX: ExpedientePX
+		    },
+		    success: function(data) {
+                if (data.MENSAJE.substring(0, 6) == "Succe:") {
+                    LlenaTablaHistorias(data.HISTORIAS);
+			    }
+			    if (data.MENSAJE.substring(0, 6) == "Error:") {
+				    Swal.fire({
+					    icon: 'error',
+					    title: '¡Error!',
+					    text: data.MENSAJE.substring(7),
+				    });
+			    }
+		    },
+		    error: function(ex) {
+			    Swal.fire({
+				    icon: 'error',
+				    title: '¡Error!',
+			    });
+		    }
+	    });
+
+    };
+
+    function LlenaTablaHistorias(HISTORIAS) {
+        var table = $('#TblPaciente').DataTable();
+        table.destroy();
+
+        table = $('#TblPaciente').DataTable({
+            responsive: true,
+            searching: false,
+            info: true,
+            deferRender: true,
+            scroller: false,
+            scrollColapse: true,
+            paging: false,
+            lengthChange: false,
+            language: {
+                "zeroRecords": "No se encontraron historias",
+                "info": "",
+                "search": "",
+                "infoEmpty": "",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Último",
+                    "next": "Siguiente",
+                    "previous": "Anterior",
+                },
+                "select": {
+                    "rows": " %d filas seleccionadas"
+                },
+            },
+            data: HISTORIAS,
+            columns: [
+                { 'data': 'Nombre', className: "text-center" },
+                { 'data': 'PrimerApellido', className: "text-center" },
+                { 'data': 'FechaReg', className: "text-center" },
+                {
+                    "className": 'text-center',
+                    "orderable": false,
+                    "data": null,
+                    "defaultContent": '<button title="Seleccionar px" id="VerDetalle" class="btn btn-success fa fa-check" data-toggle="modal" ></button>',
+                    "target": -2
+                }
+            ]
+        });
+    }
+
+    $('#TblPaciente tbody').on('click', '#VerDetalle', function () {
+        var tr = $(this).closest('tr');
+        row = $('#TblPaciente').DataTable().row(tr);
+
+        //Este es el Identificador armado que se inserta en cada tbl de la H.C.
+        var Clave_hc_px = row.data().Clave;
+        //alert(Clave_hc_px);
+
+        $.ajax({
+		    url: '@Url.Action("ConsultarHC", "HistoriaClinica")',
+		    method: 'POST',
+		    dataType: 'json',
+            data: { Clave_hc_px: Clave_hc_px },
+		    success: function(data) {
+                
+		    },
+		    error: function(ex) {
+			    Swal.fire({
+				    icon: 'error',
+				    title: '¡Error!',
+			    });
+		    }
+	    });
+
+    });
+
+
+
+</script>
+

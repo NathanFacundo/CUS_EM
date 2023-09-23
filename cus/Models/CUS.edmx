@@ -1,0 +1,1983 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CUSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Name" Type="text" />
+          <Property Name="Area" Type="int" />
+          <Property Name="Unidad" Type="int" />
+        </EntityType>
+        <EntityType Name="hc_alimentacion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipoLactancia" Type="varchar" MaxLength="30" />
+          <Property Name="TiempoLactancia" Type="varchar" MaxLength="30" />
+          <Property Name="EdadAblactacion" Type="varchar" MaxLength="30" />
+          <Property Name="AlimentosInicio" Type="varchar" MaxLength="200" />
+          <Property Name="EdadIntegracion" Type="varchar" MaxLength="30" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+          <Property Name="Id_HistoriaClinica" Type="int" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="hc_antecedentes_desarrollo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SostuvoCabeza" Type="varchar" MaxLength="20" />
+          <Property Name="EspecifiqueSostuvoCabeza" Type="varchar" MaxLength="30" />
+          <Property Name="SeSento" Type="varchar" MaxLength="20" />
+          <Property Name="EspecifiqueSeSento" Type="varchar" MaxLength="30" />
+          <Property Name="Camino" Type="varchar" MaxLength="20" />
+          <Property Name="EspecifiqueCamino" Type="varchar" MaxLength="30" />
+          <Property Name="Habla" Type="varchar" MaxLength="20" />
+          <Property Name="EspecifiqueHabla" Type="varchar" MaxLength="30" />
+          <Property Name="ControlEsfinteres" Type="varchar" MaxLength="20" />
+          <Property Name="EspecifiqueControlEsf" Type="varchar" MaxLength="30" />
+          <Property Name="PruebaEDI" Type="varchar" MaxLength="20" />
+          <Property Name="EspecifiquePruebaEDI" Type="varchar" MaxLength="30" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+          <Property Name="Id_HistoriaClinica" Type="int" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="hc_antecedentes_ginecoobstetricos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Menarquia" Type="varchar" MaxLength="5" />
+          <Property Name="MotivoMenarquia" Type="varchar" MaxLength="200" />
+          <Property Name="RitmoMenarquia" Type="varchar" MaxLength="20" />
+          <Property Name="CantidadMenarquia" Type="varchar" MaxLength="20" />
+          <Property Name="ColoracionMenarquia" Type="varchar" MaxLength="20" />
+          <Property Name="EspecifiqueColoracionMenarquia" Type="varchar" MaxLength="200" />
+          <Property Name="VidaSexual" Type="varchar" MaxLength="5" />
+          <Property Name="NumeroParejasSexuales" Type="varchar" MaxLength="30" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+          <Property Name="TipoMenarquia" Type="varchar" MaxLength="30" />
+          <Property Name="Id_HistoriaClinica" Type="int" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="hc_antecedentes_patologicos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Antecedentes" Type="varchar" MaxLength="30" />
+          <Property Name="PxHospitalizado" Type="varchar" MaxLength="5" />
+          <Property Name="EspecifiqueHospitalizado" Type="varchar" MaxLength="200" />
+          <Property Name="RealizadoCirugia" Type="varchar" MaxLength="5" />
+          <Property Name="EspecifiqueCirugia" Type="varchar" MaxLength="200" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+          <Property Name="CheckRespiratorios" Type="bit" />
+          <Property Name="CheckEndocrinologicos" Type="bit" />
+          <Property Name="CheckCardiovasculares" Type="bit" />
+          <Property Name="CheckOncologicos" Type="bit" />
+          <Property Name="CheckSaludMental" Type="bit" />
+          <Property Name="CheckNeurologicos" Type="bit" />
+          <Property Name="CheckInfectoContagiosos" Type="bit" />
+          <Property Name="CheckProblemasAparatoR" Type="bit" />
+          <Property Name="CheckProblemasGastro" Type="bit" />
+          <Property Name="CheckReumatologicos" Type="bit" />
+          <Property Name="CheckNinguna" Type="bit" />
+          <Property Name="Id_HistoriaClinica" Type="int" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="hc_antecedentes_perinatales">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NumeroEmbarazo" Type="int" />
+          <Property Name="EnfermedadEmbarazo" Type="varchar" MaxLength="5" />
+          <Property Name="EspecifiqueEnfermedadEmbarazo" Type="varchar" MaxLength="200" />
+          <Property Name="TratamientoEmbarazo" Type="varchar" MaxLength="5" />
+          <Property Name="EspecifiqueTratamientoEmbarazo" Type="varchar" MaxLength="5" />
+          <Property Name="LugarParto" Type="varchar" MaxLength="20" />
+          <Property Name="EspecifiqueLugarParto" Type="varchar" MaxLength="20" />
+          <Property Name="EdadGestional" Type="varchar" MaxLength="20" />
+          <Property Name="EspecifiqueEdadGestional" Type="varchar" MaxLength="50" />
+          <Property Name="Apgar" Type="varchar" MaxLength="20" />
+          <Property Name="EspecifiqueApgar" Type="varchar" MaxLength="20" />
+          <Property Name="TipoParto" Type="varchar" MaxLength="20" />
+          <Property Name="PartoFue" Type="varchar" MaxLength="20" />
+          <Property Name="EspecifiquePartoFue" Type="varchar" MaxLength="20" />
+          <Property Name="EspecifiqueMotivoCesarea" Type="varchar" MaxLength="20" />
+          <Property Name="ComplicacionObs" Type="varchar" MaxLength="5" />
+          <Property Name="EspecifiqueComplicacionObs" Type="varchar" MaxLength="20" />
+          <Property Name="TamizMetabolico" Type="varchar" MaxLength="5" />
+          <Property Name="TamizMetabolicoOpciones" Type="varchar" MaxLength="20" />
+          <Property Name="TamizAuditivo" Type="varchar" MaxLength="5" />
+          <Property Name="TamizAuditivoOpciones" Type="varchar" MaxLength="20" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+          <Property Name="Id_HistoriaClinica" Type="int" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="hc_evaluacion_economica">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="beneficiarioPrograma" Type="varchar" MaxLength="5" />
+          <Property Name="EspecifiqueBeneficiario" Type="varchar" MaxLength="30" />
+          <Property Name="rolEconimico" Type="varchar" MaxLength="20" />
+          <Property Name="EspecifiqueRol" Type="varchar" MaxLength="20" />
+          <Property Name="riesgoEconomico" Type="varchar" MaxLength="5" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+          <Property Name="Id_HistoriaClinica" Type="int" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="hc_evaluacion_social">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="estadocivil" Type="varchar" MaxLength="30" />
+          <Property Name="numeropersonas" Type="varchar" MaxLength="30" />
+          <Property Name="numerohabitaciones" Type="int" />
+          <Property Name="hacinamiento" Type="varchar" MaxLength="5" />
+          <Property Name="escolaridad" Type="varchar" MaxLength="25" />
+          <Property Name="GradoEsc" Type="varchar" MaxLength="20" />
+          <Property Name="PromedioEsc" Type="varchar" MaxLength="10" />
+          <Property Name="reprobado" Type="varchar" MaxLength="5" />
+          <Property Name="EspecifiqueReprobado" Type="varchar" MaxLength="50" />
+          <Property Name="Desercion" Type="varchar" MaxLength="5" />
+          <Property Name="Guarderia" Type="varchar" MaxLength="5" />
+          <Property Name="Cuidador" Type="varchar" MaxLength="20" />
+          <Property Name="Problemas" Type="varchar" MaxLength="5" />
+          <Property Name="ProblemasMaestros" Type="varchar" MaxLength="5" />
+          <Property Name="Ocupacio" Type="varchar" MaxLength="50" />
+          <Property Name="TipoTrab" Type="varchar" MaxLength="20" />
+          <Property Name="RiesgoSos" Type="varchar" MaxLength="5" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+          <Property Name="ServicioSal" Type="varchar" MaxLength="30" />
+          <Property Name="Id_HistoriaClinica" Type="int" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="hc_factores_riesgo_psicologicos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CambiosSueño" Type="varchar" MaxLength="5" />
+          <Property Name="CambiosEnergia" Type="varchar" MaxLength="5" />
+          <Property Name="CambiosApetito" Type="varchar" MaxLength="5" />
+          <Property Name="Pesimismo" Type="varchar" MaxLength="5" />
+          <Property Name="Irritabilidad" Type="varchar" MaxLength="5" />
+          <Property Name="PerdidaPlacer" Type="varchar" MaxLength="5" />
+          <Property Name="PalpitacionesFuertes" Type="varchar" MaxLength="5" />
+          <Property Name="SensacionAahogo" Type="varchar" MaxLength="5" />
+          <Property Name="MiedoPreocupacion" Type="varchar" MaxLength="5" />
+          <Property Name="IdeacionSuicida" Type="varchar" MaxLength="5" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+          <Property Name="Id_HistoriaClinica" Type="int" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="hc_ficha_identificacion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="acompanante" Type="varchar" MaxLength="5" />
+          <Property Name="NombreAcompa" Type="varchar" MaxLength="20" />
+          <Property Name="alergia" Type="varchar" MaxLength="5" />
+          <Property Name="NombreAlergia" Type="varchar" MaxLength="50" />
+          <Property Name="MotivoCons" Type="varchar" MaxLength="500" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+          <Property Name="Id_HistoriaClinica" Type="int" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="hc_habitos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HorasSueño" Type="varchar" MaxLength="20" />
+          <Property Name="TieneInsomnio" Type="varchar" MaxLength="5" />
+          <Property Name="TieneEnuresis" Type="varchar" MaxLength="5" />
+          <Property Name="TienePesadillas" Type="varchar" MaxLength="5" />
+          <Property Name="HorasOcio" Type="varchar" MaxLength="20" />
+          <Property Name="ActividadFisica" Type="varchar" MaxLength="5" />
+          <Property Name="TiempoActividadFisica" Type="varchar" MaxLength="20" />
+          <Property Name="FrecuenciaActividadFisica" Type="varchar" MaxLength="20" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+          <Property Name="Check_Adicciones_Padre" Type="bit" />
+          <Property Name="Check_Adicciones_Madre" Type="bit" />
+          <Property Name="Check_Adicciones_Ambas" Type="bit" />
+          <Property Name="Check_Adicciones_NA" Type="bit" />
+          <Property Name="Check_Cardiopatia_Padre" Type="bit" />
+          <Property Name="Check_Cardiopatia_Madre" Type="bit" />
+          <Property Name="Check_Cardiopatia_Ambas" Type="bit" />
+          <Property Name="Check_Cardiopatia_NA" Type="bit" />
+          <Property Name="Check_Diabetes_Padre" Type="bit" />
+          <Property Name="Check_Diabetes_Madre" Type="bit" />
+          <Property Name="Check_Diabetes_Ambas" Type="bit" />
+          <Property Name="Check_Diabetes_NA" Type="bit" />
+          <Property Name="Check_Dislipidemias_Padre" Type="bit" />
+          <Property Name="Check_Dislipidemias_Madre" Type="bit" />
+          <Property Name="Check_Dislipidemias_Ambas" Type="bit" />
+          <Property Name="Check_Dislipidemias_NA" Type="bit" />
+          <Property Name="Check_Epilepsia_Padre" Type="bit" />
+          <Property Name="Check_Epilepsia_Madre" Type="bit" />
+          <Property Name="Check_Epilepsia_Ambas" Type="bit" />
+          <Property Name="Check_Epilepsia_NA" Type="bit" />
+          <Property Name="Check_Hipertension_Padre" Type="bit" />
+          <Property Name="Check_Hipertension_Madre" Type="bit" />
+          <Property Name="Check_Hipertension_Ambas" Type="bit" />
+          <Property Name="Check_Hipertension_NA" Type="bit" />
+          <Property Name="Check_Infectocontagiosas_Padre" Type="bit" />
+          <Property Name="Check_Infectocontagiosas_Madre" Type="bit" />
+          <Property Name="Check_Infectocontagiosas_Ambas" Type="bit" />
+          <Property Name="Check_Infectocontagiosas_NA" Type="bit" />
+          <Property Name="Check_Malformaciones_Padre" Type="bit" />
+          <Property Name="Check_Malformaciones_Madre" Type="bit" />
+          <Property Name="Check_Malformaciones_Ambas" Type="bit" />
+          <Property Name="Check_Malformaciones_NA" Type="bit" />
+          <Property Name="Check_Nefropatias_Padre" Type="bit" />
+          <Property Name="Check_Nefropatias_Madre" Type="bit" />
+          <Property Name="Check_Nefropatias_Ambas" Type="bit" />
+          <Property Name="Check_Nefropatias_NA" Type="bit" />
+          <Property Name="Check_Obesidad_Padre" Type="bit" />
+          <Property Name="Check_Obesidad_Madre" Type="bit" />
+          <Property Name="Check_Obesidad_Ambas" Type="bit" />
+          <Property Name="Check_Obesidad_NA" Type="bit" />
+          <Property Name="Check_Oncologicos_Padre" Type="bit" />
+          <Property Name="Check_Oncologicos_Madre" Type="bit" />
+          <Property Name="Check_Oncologicos_Ambas" Type="bit" />
+          <Property Name="Check_Oncologicos_NA" Type="bit" />
+          <Property Name="Id_HistoriaClinica" Type="int" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="hc_historial_consumo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TomaAlcohol" Type="varchar" MaxLength="5" />
+          <Property Name="TomaAlcoholFrecuencia" Type="varchar" MaxLength="20" />
+          <Property Name="CantidadAlcohol" Type="varchar" MaxLength="20" />
+          <Property Name="Fuma" Type="varchar" MaxLength="5" />
+          <Property Name="EdadInicio" Type="varchar" MaxLength="20" />
+          <Property Name="ActualmenteFuma" Type="varchar" MaxLength="5" />
+          <Property Name="TiempoInactividadFuma" Type="varchar" MaxLength="20" />
+          <Property Name="TipoFuma" Type="varchar" MaxLength="20" />
+          <Property Name="FrecuenciaFuma" Type="varchar" MaxLength="30" />
+          <Property Name="CantidadFuma" Type="varchar" MaxLength="20" />
+          <Property Name="ConsumeDroga" Type="varchar" MaxLength="5" />
+          <Property Name="TipoDrogaConsume" Type="varchar" MaxLength="30" />
+          <Property Name="FrecuenciaDroga" Type="varchar" MaxLength="30" />
+          <Property Name="CantidadDrogaConsume" Type="varchar" MaxLength="30" />
+          <Property Name="TipoLactancia" Type="varchar" MaxLength="30" />
+          <Property Name="TiempoLactancia" Type="varchar" MaxLength="30" />
+          <Property Name="EdadAblactacion" Type="varchar" MaxLength="30" />
+          <Property Name="AlimentosInicio" Type="varchar" MaxLength="200" />
+          <Property Name="EdadIntegracion" Type="varchar" MaxLength="30" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+          <Property Name="Id_HistoriaClinica" Type="int" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="hc_inmunizaciones">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CartillaVacunacion" Type="varchar" MaxLength="5" />
+          <Property Name="EsquemaVacunacion" Type="varchar" MaxLength="5" />
+          <Property Name="EspecifiqueVacuna" Type="varchar" MaxLength="200" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+          <Property Name="Id_HistoriaClinica" Type="int" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="hc_valoracion_familiar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="mamaPaciente" Type="varchar" MaxLength="15" />
+          <Property Name="EdadMama" Type="varchar" MaxLength="15" />
+          <Property Name="GradoMama" Type="varchar" MaxLength="25" />
+          <Property Name="OcupacionMama" Type="varchar" MaxLength="25" />
+          <Property Name="TipoTrabajoMama" Type="varchar" MaxLength="20" />
+          <Property Name="papaPaciente" Type="varchar" MaxLength="15" />
+          <Property Name="EdadPapa" Type="varchar" MaxLength="15" />
+          <Property Name="GradoPapa" Type="varchar" MaxLength="25" />
+          <Property Name="OcupacionPapa" Type="varchar" MaxLength="25" />
+          <Property Name="TipoTrabajoPapa" Type="varchar" MaxLength="20" />
+          <Property Name="ViveCon" Type="varchar" MaxLength="20" />
+          <Property Name="tieneHermanos" Type="varchar" MaxLength="5" />
+          <Property Name="CuantosHermanos" Type="int" />
+          <Property Name="EspecifiqueEnf" Type="varchar" MaxLength="50" />
+          <Property Name="involucraTratamiento" Type="varchar" MaxLength="5" />
+          <Property Name="EspecifiqueInvol" Type="varchar" MaxLength="50" />
+          <Property Name="riesgoSocial" Type="varchar" MaxLength="5" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+          <Property Name="Id_HistoriaClinica" Type="int" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="hc_valores_creencias">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="perteneceReligion" Type="varchar" MaxLength="5" />
+          <Property Name="religion" Type="varchar" MaxLength="30" />
+          <Property Name="EspecifiqueReligion" Type="varchar" MaxLength="30" />
+          <Property Name="creenciaReligiosa" Type="varchar" MaxLength="5" />
+          <Property Name="EspecifiqueCreencia" Type="varchar" MaxLength="30" />
+          <Property Name="costumbreValores" Type="varchar" MaxLength="5" />
+          <Property Name="EspecifiqueCostumbres" Type="varchar" MaxLength="30" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+          <Property Name="Id_HistoriaClinica" Type="int" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="HistoriaClinica">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="20" />
+          <Property Name="Medico" Type="varchar" MaxLength="50" />
+          <Property Name="FechaRegistroHC" Type="datetime" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Paciente">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UnidadAfiliacion" Type="int" Nullable="false" />
+          <Property Name="CURP" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="PrimerApellido" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="SegundoApellido" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Sexo" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="FechaNacimiento" Type="datetime" Nullable="false" />
+          <Property Name="Nacionalidad" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="EntidadNacimiento" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Edad" Type="int" Nullable="false" />
+          <Property Name="Expediente" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Dir_Calle" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Dir_Numero" Type="int" Nullable="false" />
+          <Property Name="Dir_CP" Type="int" Nullable="false" />
+          <Property Name="Dir_Colonia" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Dir_Municipio" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Dir_EntidadFed" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Telefono1" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Telefono2" Type="nvarchar" MaxLength="30" />
+          <Property Name="Email" Type="nvarchar" MaxLength="30" />
+          <Property Name="RFC" Type="nvarchar" MaxLength="30" />
+          <Property Name="EstadoCivil" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Escolaridad" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Ocupacion" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="ServicioSalud" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="ServicioSalud_Extra" Type="nvarchar" MaxLength="20" />
+          <Property Name="DE_Indigena" Type="bit" Nullable="false" />
+          <Property Name="DE_Migrante" Type="bit" Nullable="false" />
+          <Property Name="DE_Afroamericano" Type="bit" Nullable="false" />
+          <Property Name="BA_Visual" Type="bit" Nullable="false" />
+          <Property Name="BA_Auditiva" Type="bit" Nullable="false" />
+          <Property Name="BA_Fisica" Type="bit" Nullable="false" />
+          <Property Name="BA_Mental" Type="bit" Nullable="false" />
+          <Property Name="BA_Idioma" Type="bit" Nullable="false" />
+          <Property Name="BA_Idioma_Nombre" Type="nvarchar" MaxLength="20" />
+          <Property Name="BA_Analfabeta" Type="bit" Nullable="false" />
+          <Property Name="CE_Nombre" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="CE_Calle" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="CE_Numero" Type="int" Nullable="false" />
+          <Property Name="CE_CP" Type="int" Nullable="false" />
+          <Property Name="CE_Colonia" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="CE_Municipio" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="CE_EntidadFed" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="CE_Telefono" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Nombre_Tutor" Type="varchar" MaxLength="30" />
+          <Property Name="PrimerApellido_Tutor" Type="varchar" MaxLength="20" />
+          <Property Name="SegundoApellido_Tutor" Type="varchar" MaxLength="20" />
+          <Property Name="FechaRegistro" Type="datetime" />
+          <Property Name="Curp_Calculado" Type="varchar" MaxLength="30" />
+          <Property Name="Curp_CalculadoMotivo" Type="varchar" MaxLength="500" />
+          <Property Name="NA_DE" Type="bit" />
+          <Property Name="NA_BA" Type="bit" />
+        </EntityType>
+        <EntityType Name="UnidadAfiliacion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreUnidad" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Prefijo" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <Association Name="FK__hc_alimen__Id_Pa__4F47C5E3">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+          <End Role="hc_alimentacion" Type="Self.hc_alimentacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="hc_alimentacion">
+              <PropertyRef Name="Id_Paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__hc_antece__Id_Pa__05D8E0BE">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+          <End Role="hc_antecedentes_perinatales" Type="Self.hc_antecedentes_perinatales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="hc_antecedentes_perinatales">
+              <PropertyRef Name="Id_Paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__hc_antece__Id_Pa__08B54D69">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+          <End Role="hc_antecedentes_patologicos" Type="Self.hc_antecedentes_patologicos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="hc_antecedentes_patologicos">
+              <PropertyRef Name="Id_Paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__hc_antece__Id_Pa__2645B050">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+          <End Role="hc_antecedentes_desarrollo" Type="Self.hc_antecedentes_desarrollo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="hc_antecedentes_desarrollo">
+              <PropertyRef Name="Id_Paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__hc_antece__Id_Pa__29221CFB">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+          <End Role="hc_antecedentes_ginecoobstetricos" Type="Self.hc_antecedentes_ginecoobstetricos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="hc_antecedentes_ginecoobstetricos">
+              <PropertyRef Name="Id_Paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__hc_evalua__Id_Pa__72C60C4A">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+          <End Role="hc_evaluacion_social" Type="Self.hc_evaluacion_social" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="hc_evaluacion_social">
+              <PropertyRef Name="Id_Paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__hc_evalua__Id_Pa__787EE5A0">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+          <End Role="hc_evaluacion_economica" Type="Self.hc_evaluacion_economica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="hc_evaluacion_economica">
+              <PropertyRef Name="Id_Paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__hc_factor__Id_Pa__7E37BEF6">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+          <End Role="hc_factores_riesgo_psicologicos" Type="Self.hc_factores_riesgo_psicologicos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="hc_factores_riesgo_psicologicos">
+              <PropertyRef Name="Id_Paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__hc_ficha___Id_Pa__6FE99F9F">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+          <End Role="hc_ficha_identificacion" Type="Self.hc_ficha_identificacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="hc_ficha_identificacion">
+              <PropertyRef Name="Id_Paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__hc_habito__Id_Pa__02FC7413">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+          <End Role="hc_habitos" Type="Self.hc_habitos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="hc_habitos">
+              <PropertyRef Name="Id_Paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__hc_histor__Id_Pa__236943A5">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+          <End Role="hc_historial_consumo" Type="Self.hc_historial_consumo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="hc_historial_consumo">
+              <PropertyRef Name="Id_Paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__hc_inmuni__Id_Pa__208CD6FA">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+          <End Role="hc_inmunizaciones" Type="Self.hc_inmunizaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="hc_inmunizaciones">
+              <PropertyRef Name="Id_Paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__hc_valora__Id_Pa__75A278F5">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+          <End Role="hc_valoracion_familiar" Type="Self.hc_valoracion_familiar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="hc_valoracion_familiar">
+              <PropertyRef Name="Id_Paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__hc_valore__Id_Pa__7B5B524B">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+          <End Role="hc_valores_creencias" Type="Self.hc_valores_creencias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="hc_valores_creencias">
+              <PropertyRef Name="Id_Paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HistoriaC__Id_Pa__3C34F16F">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+          <End Role="HistoriaClinica" Type="Self.HistoriaClinica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HistoriaClinica">
+              <PropertyRef Name="Id_Paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CUSModelStoreContainer">
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_alimentacion" EntityType="Self.hc_alimentacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_antecedentes_desarrollo" EntityType="Self.hc_antecedentes_desarrollo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_antecedentes_ginecoobstetricos" EntityType="Self.hc_antecedentes_ginecoobstetricos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_antecedentes_patologicos" EntityType="Self.hc_antecedentes_patologicos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_antecedentes_perinatales" EntityType="Self.hc_antecedentes_perinatales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_evaluacion_economica" EntityType="Self.hc_evaluacion_economica" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_evaluacion_social" EntityType="Self.hc_evaluacion_social" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_factores_riesgo_psicologicos" EntityType="Self.hc_factores_riesgo_psicologicos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_ficha_identificacion" EntityType="Self.hc_ficha_identificacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_habitos" EntityType="Self.hc_habitos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_historial_consumo" EntityType="Self.hc_historial_consumo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_inmunizaciones" EntityType="Self.hc_inmunizaciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_valoracion_familiar" EntityType="Self.hc_valoracion_familiar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_valores_creencias" EntityType="Self.hc_valores_creencias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HistoriaClinica" EntityType="Self.HistoriaClinica" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Paciente" EntityType="Self.Paciente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UnidadAfiliacion" EntityType="Self.UnidadAfiliacion" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__hc_alimen__Id_Pa__4F47C5E3" Association="Self.FK__hc_alimen__Id_Pa__4F47C5E3">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="hc_alimentacion" EntitySet="hc_alimentacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__hc_antece__Id_Pa__05D8E0BE" Association="Self.FK__hc_antece__Id_Pa__05D8E0BE">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="hc_antecedentes_perinatales" EntitySet="hc_antecedentes_perinatales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__hc_antece__Id_Pa__08B54D69" Association="Self.FK__hc_antece__Id_Pa__08B54D69">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="hc_antecedentes_patologicos" EntitySet="hc_antecedentes_patologicos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__hc_antece__Id_Pa__2645B050" Association="Self.FK__hc_antece__Id_Pa__2645B050">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="hc_antecedentes_desarrollo" EntitySet="hc_antecedentes_desarrollo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__hc_antece__Id_Pa__29221CFB" Association="Self.FK__hc_antece__Id_Pa__29221CFB">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="hc_antecedentes_ginecoobstetricos" EntitySet="hc_antecedentes_ginecoobstetricos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__hc_evalua__Id_Pa__72C60C4A" Association="Self.FK__hc_evalua__Id_Pa__72C60C4A">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="hc_evaluacion_social" EntitySet="hc_evaluacion_social" />
+          </AssociationSet>
+          <AssociationSet Name="FK__hc_evalua__Id_Pa__787EE5A0" Association="Self.FK__hc_evalua__Id_Pa__787EE5A0">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="hc_evaluacion_economica" EntitySet="hc_evaluacion_economica" />
+          </AssociationSet>
+          <AssociationSet Name="FK__hc_factor__Id_Pa__7E37BEF6" Association="Self.FK__hc_factor__Id_Pa__7E37BEF6">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="hc_factores_riesgo_psicologicos" EntitySet="hc_factores_riesgo_psicologicos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__hc_ficha___Id_Pa__6FE99F9F" Association="Self.FK__hc_ficha___Id_Pa__6FE99F9F">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="hc_ficha_identificacion" EntitySet="hc_ficha_identificacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__hc_habito__Id_Pa__02FC7413" Association="Self.FK__hc_habito__Id_Pa__02FC7413">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="hc_habitos" EntitySet="hc_habitos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__hc_histor__Id_Pa__236943A5" Association="Self.FK__hc_histor__Id_Pa__236943A5">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="hc_historial_consumo" EntitySet="hc_historial_consumo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__hc_inmuni__Id_Pa__208CD6FA" Association="Self.FK__hc_inmuni__Id_Pa__208CD6FA">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="hc_inmunizaciones" EntitySet="hc_inmunizaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__hc_valora__Id_Pa__75A278F5" Association="Self.FK__hc_valora__Id_Pa__75A278F5">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="hc_valoracion_familiar" EntitySet="hc_valoracion_familiar" />
+          </AssociationSet>
+          <AssociationSet Name="FK__hc_valore__Id_Pa__7B5B524B" Association="Self.FK__hc_valore__Id_Pa__7B5B524B">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="hc_valores_creencias" EntitySet="hc_valores_creencias" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HistoriaC__Id_Pa__3C34F16F" Association="Self.FK__HistoriaC__Id_Pa__3C34F16F">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="HistoriaClinica" EntitySet="HistoriaClinica" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CUSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RoleId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Area" Type="Int32" />
+          <Property Name="Unidad" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="CUS" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
+          <EntitySet Name="UnidadAfiliacion" EntityType="CUSModel.UnidadAfiliacion" />
+          <EntitySet Name="Paciente" EntityType="CUSModel.Paciente" />
+          <EntitySet Name="hc_antecedentes_desarrollo" EntityType="CUSModel.hc_antecedentes_desarrollo" />
+          <EntitySet Name="hc_antecedentes_ginecoobstetricos" EntityType="CUSModel.hc_antecedentes_ginecoobstetricos" />
+          <EntitySet Name="hc_antecedentes_patologicos" EntityType="CUSModel.hc_antecedentes_patologicos" />
+          <EntitySet Name="hc_antecedentes_perinatales" EntityType="CUSModel.hc_antecedentes_perinatales" />
+          <EntitySet Name="hc_evaluacion_economica" EntityType="CUSModel.hc_evaluacion_economica" />
+          <EntitySet Name="hc_evaluacion_social" EntityType="CUSModel.hc_evaluacion_social" />
+          <EntitySet Name="hc_factores_riesgo_psicologicos" EntityType="CUSModel.hc_factores_riesgo_psicologicos" />
+          <EntitySet Name="hc_ficha_identificacion" EntityType="CUSModel.hc_ficha_identificacion" />
+          <EntitySet Name="hc_habitos" EntityType="CUSModel.hc_habitos" />
+          <EntitySet Name="hc_historial_consumo" EntityType="CUSModel.hc_historial_consumo" />
+          <EntitySet Name="hc_inmunizaciones" EntityType="CUSModel.hc_inmunizaciones" />
+          <EntitySet Name="hc_valoracion_familiar" EntityType="CUSModel.hc_valoracion_familiar" />
+          <EntitySet Name="hc_valores_creencias" EntityType="CUSModel.hc_valores_creencias" />
+          <EntitySet Name="HistoriaClinica" EntityType="CUSModel.HistoriaClinica" />
+          <AssociationSet Name="FK__hc_antece__Id_Pa__2645B050" Association="CUSModel.FK__hc_antece__Id_Pa__2645B050">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="hc_antecedentes_desarrollo" EntitySet="hc_antecedentes_desarrollo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__hc_antece__Id_Pa__29221CFB" Association="CUSModel.FK__hc_antece__Id_Pa__29221CFB">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="hc_antecedentes_ginecoobstetricos" EntitySet="hc_antecedentes_ginecoobstetricos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__hc_antece__Id_Pa__08B54D69" Association="CUSModel.FK__hc_antece__Id_Pa__08B54D69">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="hc_antecedentes_patologicos" EntitySet="hc_antecedentes_patologicos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__hc_antece__Id_Pa__05D8E0BE" Association="CUSModel.FK__hc_antece__Id_Pa__05D8E0BE">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="hc_antecedentes_perinatales" EntitySet="hc_antecedentes_perinatales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__hc_evalua__Id_Pa__787EE5A0" Association="CUSModel.FK__hc_evalua__Id_Pa__787EE5A0">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="hc_evaluacion_economica" EntitySet="hc_evaluacion_economica" />
+          </AssociationSet>
+          <AssociationSet Name="FK__hc_evalua__Id_Pa__72C60C4A" Association="CUSModel.FK__hc_evalua__Id_Pa__72C60C4A">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="hc_evaluacion_social" EntitySet="hc_evaluacion_social" />
+          </AssociationSet>
+          <AssociationSet Name="FK__hc_factor__Id_Pa__7E37BEF6" Association="CUSModel.FK__hc_factor__Id_Pa__7E37BEF6">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="hc_factores_riesgo_psicologicos" EntitySet="hc_factores_riesgo_psicologicos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__hc_ficha___Id_Pa__6FE99F9F" Association="CUSModel.FK__hc_ficha___Id_Pa__6FE99F9F">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="hc_ficha_identificacion" EntitySet="hc_ficha_identificacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__hc_habito__Id_Pa__02FC7413" Association="CUSModel.FK__hc_habito__Id_Pa__02FC7413">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="hc_habitos" EntitySet="hc_habitos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__hc_histor__Id_Pa__236943A5" Association="CUSModel.FK__hc_histor__Id_Pa__236943A5">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="hc_historial_consumo" EntitySet="hc_historial_consumo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__hc_inmuni__Id_Pa__208CD6FA" Association="CUSModel.FK__hc_inmuni__Id_Pa__208CD6FA">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="hc_inmunizaciones" EntitySet="hc_inmunizaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__hc_valora__Id_Pa__75A278F5" Association="CUSModel.FK__hc_valora__Id_Pa__75A278F5">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="hc_valoracion_familiar" EntitySet="hc_valoracion_familiar" />
+          </AssociationSet>
+          <AssociationSet Name="FK__hc_valore__Id_Pa__7B5B524B" Association="CUSModel.FK__hc_valore__Id_Pa__7B5B524B">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="hc_valores_creencias" EntitySet="hc_valores_creencias" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HistoriaC__Id_Pa__3C34F16F" Association="CUSModel.FK__HistoriaC__Id_Pa__3C34F16F">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="HistoriaClinica" EntitySet="HistoriaClinica" />
+          </AssociationSet>
+          <EntitySet Name="hc_alimentacion" EntityType="CUSModel.hc_alimentacion" />
+          <AssociationSet Name="FK__hc_alimen__Id_Pa__4F47C5E3" Association="CUSModel.FK__hc_alimen__Id_Pa__4F47C5E3">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="hc_alimentacion" EntitySet="hc_alimentacion" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="UnidadAfiliacion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreUnidad" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Prefijo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Paciente">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UnidadAfiliacion" Type="Int32" Nullable="false" />
+          <Property Name="CURP" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="PrimerApellido" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SegundoApellido" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Sexo" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Nacionalidad" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="EntidadNacimiento" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Edad" Type="Int32" Nullable="false" />
+          <Property Name="Expediente" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Dir_Calle" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Dir_Numero" Type="Int32" Nullable="false" />
+          <Property Name="Dir_CP" Type="Int32" Nullable="false" />
+          <Property Name="Dir_Colonia" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Dir_Municipio" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Dir_EntidadFed" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono1" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono2" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="RFC" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="EstadoCivil" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Escolaridad" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Ocupacion" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="ServicioSalud" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ServicioSalud_Extra" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DE_Indigena" Type="Boolean" Nullable="false" />
+          <Property Name="DE_Migrante" Type="Boolean" Nullable="false" />
+          <Property Name="DE_Afroamericano" Type="Boolean" Nullable="false" />
+          <Property Name="BA_Visual" Type="Boolean" Nullable="false" />
+          <Property Name="BA_Auditiva" Type="Boolean" Nullable="false" />
+          <Property Name="BA_Fisica" Type="Boolean" Nullable="false" />
+          <Property Name="BA_Mental" Type="Boolean" Nullable="false" />
+          <Property Name="BA_Idioma" Type="Boolean" Nullable="false" />
+          <Property Name="BA_Idioma_Nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="BA_Analfabeta" Type="Boolean" Nullable="false" />
+          <Property Name="CE_Nombre" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="CE_Calle" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="CE_Numero" Type="Int32" Nullable="false" />
+          <Property Name="CE_CP" Type="Int32" Nullable="false" />
+          <Property Name="CE_Colonia" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="CE_Municipio" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="CE_EntidadFed" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="CE_Telefono" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Nombre_Tutor" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="PrimerApellido_Tutor" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SegundoApellido_Tutor" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FechaRegistro" Type="DateTime" Precision="3" />
+          <Property Name="Curp_Calculado" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Curp_CalculadoMotivo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="NA_DE" Type="Boolean" />
+          <Property Name="NA_BA" Type="Boolean" />
+          <NavigationProperty Name="hc_antecedentes_desarrollo" Relationship="CUSModel.FK__hc_antece__Id_Pa__2645B050" FromRole="Paciente" ToRole="hc_antecedentes_desarrollo" />
+          <NavigationProperty Name="hc_antecedentes_ginecoobstetricos" Relationship="CUSModel.FK__hc_antece__Id_Pa__29221CFB" FromRole="Paciente" ToRole="hc_antecedentes_ginecoobstetricos" />
+          <NavigationProperty Name="hc_antecedentes_patologicos" Relationship="CUSModel.FK__hc_antece__Id_Pa__08B54D69" FromRole="Paciente" ToRole="hc_antecedentes_patologicos" />
+          <NavigationProperty Name="hc_antecedentes_perinatales" Relationship="CUSModel.FK__hc_antece__Id_Pa__05D8E0BE" FromRole="Paciente" ToRole="hc_antecedentes_perinatales" />
+          <NavigationProperty Name="hc_evaluacion_economica" Relationship="CUSModel.FK__hc_evalua__Id_Pa__787EE5A0" FromRole="Paciente" ToRole="hc_evaluacion_economica" />
+          <NavigationProperty Name="hc_evaluacion_social" Relationship="CUSModel.FK__hc_evalua__Id_Pa__72C60C4A" FromRole="Paciente" ToRole="hc_evaluacion_social" />
+          <NavigationProperty Name="hc_factores_riesgo_psicologicos" Relationship="CUSModel.FK__hc_factor__Id_Pa__7E37BEF6" FromRole="Paciente" ToRole="hc_factores_riesgo_psicologicos" />
+          <NavigationProperty Name="hc_ficha_identificacion" Relationship="CUSModel.FK__hc_ficha___Id_Pa__6FE99F9F" FromRole="Paciente" ToRole="hc_ficha_identificacion" />
+          <NavigationProperty Name="hc_habitos" Relationship="CUSModel.FK__hc_habito__Id_Pa__02FC7413" FromRole="Paciente" ToRole="hc_habitos" />
+          <NavigationProperty Name="hc_historial_consumo" Relationship="CUSModel.FK__hc_histor__Id_Pa__236943A5" FromRole="Paciente" ToRole="hc_historial_consumo" />
+          <NavigationProperty Name="hc_inmunizaciones" Relationship="CUSModel.FK__hc_inmuni__Id_Pa__208CD6FA" FromRole="Paciente" ToRole="hc_inmunizaciones" />
+          <NavigationProperty Name="hc_valoracion_familiar" Relationship="CUSModel.FK__hc_valora__Id_Pa__75A278F5" FromRole="Paciente" ToRole="hc_valoracion_familiar" />
+          <NavigationProperty Name="hc_valores_creencias" Relationship="CUSModel.FK__hc_valore__Id_Pa__7B5B524B" FromRole="Paciente" ToRole="hc_valores_creencias" />
+          <NavigationProperty Name="HistoriaClinica" Relationship="CUSModel.FK__HistoriaC__Id_Pa__3C34F16F" FromRole="Paciente" ToRole="HistoriaClinica" />
+          <NavigationProperty Name="hc_alimentacion" Relationship="CUSModel.FK__hc_alimen__Id_Pa__4F47C5E3" FromRole="Paciente" ToRole="hc_alimentacion" />
+        </EntityType>
+        <EntityType Name="hc_antecedentes_desarrollo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SostuvoCabeza" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EspecifiqueSostuvoCabeza" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="SeSento" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EspecifiqueSeSento" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Camino" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EspecifiqueCamino" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Habla" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EspecifiqueHabla" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ControlEsfinteres" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EspecifiqueControlEsf" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="PruebaEDI" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EspecifiquePruebaEDI" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+          <Property Name="Id_HistoriaClinica" Type="Int32" />
+          <NavigationProperty Name="Paciente" Relationship="CUSModel.FK__hc_antece__Id_Pa__2645B050" FromRole="hc_antecedentes_desarrollo" ToRole="Paciente" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="hc_antecedentes_ginecoobstetricos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Menarquia" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="MotivoMenarquia" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="RitmoMenarquia" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CantidadMenarquia" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ColoracionMenarquia" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EspecifiqueColoracionMenarquia" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="VidaSexual" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="NumeroParejasSexuales" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+          <Property Name="TipoMenarquia" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Id_HistoriaClinica" Type="Int32" />
+          <NavigationProperty Name="Paciente" Relationship="CUSModel.FK__hc_antece__Id_Pa__29221CFB" FromRole="hc_antecedentes_ginecoobstetricos" ToRole="Paciente" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="hc_antecedentes_patologicos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Antecedentes" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="PxHospitalizado" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="EspecifiqueHospitalizado" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="RealizadoCirugia" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="EspecifiqueCirugia" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+          <Property Name="CheckRespiratorios" Type="Boolean" />
+          <Property Name="CheckEndocrinologicos" Type="Boolean" />
+          <Property Name="CheckCardiovasculares" Type="Boolean" />
+          <Property Name="CheckOncologicos" Type="Boolean" />
+          <Property Name="CheckSaludMental" Type="Boolean" />
+          <Property Name="CheckNeurologicos" Type="Boolean" />
+          <Property Name="CheckInfectoContagiosos" Type="Boolean" />
+          <Property Name="CheckProblemasAparatoR" Type="Boolean" />
+          <Property Name="CheckProblemasGastro" Type="Boolean" />
+          <Property Name="CheckReumatologicos" Type="Boolean" />
+          <Property Name="CheckNinguna" Type="Boolean" />
+          <Property Name="Id_HistoriaClinica" Type="Int32" />
+          <NavigationProperty Name="Paciente" Relationship="CUSModel.FK__hc_antece__Id_Pa__08B54D69" FromRole="hc_antecedentes_patologicos" ToRole="Paciente" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="hc_antecedentes_perinatales">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NumeroEmbarazo" Type="Int32" />
+          <Property Name="EnfermedadEmbarazo" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="EspecifiqueEnfermedadEmbarazo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="TratamientoEmbarazo" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="EspecifiqueTratamientoEmbarazo" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="LugarParto" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EspecifiqueLugarParto" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EdadGestional" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EspecifiqueEdadGestional" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Apgar" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EspecifiqueApgar" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="TipoParto" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PartoFue" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EspecifiquePartoFue" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EspecifiqueMotivoCesarea" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ComplicacionObs" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="EspecifiqueComplicacionObs" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="TamizMetabolico" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="TamizMetabolicoOpciones" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="TamizAuditivo" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="TamizAuditivoOpciones" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+          <Property Name="Id_HistoriaClinica" Type="Int32" />
+          <NavigationProperty Name="Paciente" Relationship="CUSModel.FK__hc_antece__Id_Pa__05D8E0BE" FromRole="hc_antecedentes_perinatales" ToRole="Paciente" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="hc_evaluacion_economica">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="beneficiarioPrograma" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="EspecifiqueBeneficiario" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="rolEconimico" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EspecifiqueRol" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="riesgoEconomico" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+          <Property Name="Id_HistoriaClinica" Type="Int32" />
+          <NavigationProperty Name="Paciente" Relationship="CUSModel.FK__hc_evalua__Id_Pa__787EE5A0" FromRole="hc_evaluacion_economica" ToRole="Paciente" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="hc_evaluacion_social">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="estadocivil" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="numeropersonas" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="numerohabitaciones" Type="Int32" />
+          <Property Name="hacinamiento" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="escolaridad" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="GradoEsc" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PromedioEsc" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="reprobado" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="EspecifiqueReprobado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Desercion" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Guarderia" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Cuidador" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Problemas" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="ProblemasMaestros" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Ocupacio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TipoTrab" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="RiesgoSos" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+          <Property Name="ServicioSal" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Id_HistoriaClinica" Type="Int32" />
+          <NavigationProperty Name="Paciente" Relationship="CUSModel.FK__hc_evalua__Id_Pa__72C60C4A" FromRole="hc_evaluacion_social" ToRole="Paciente" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="hc_factores_riesgo_psicologicos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CambiosSueño" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="CambiosEnergia" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="CambiosApetito" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Pesimismo" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Irritabilidad" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="PerdidaPlacer" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="PalpitacionesFuertes" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="SensacionAahogo" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="MiedoPreocupacion" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="IdeacionSuicida" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+          <Property Name="Id_HistoriaClinica" Type="Int32" />
+          <NavigationProperty Name="Paciente" Relationship="CUSModel.FK__hc_factor__Id_Pa__7E37BEF6" FromRole="hc_factores_riesgo_psicologicos" ToRole="Paciente" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="hc_ficha_identificacion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="acompanante" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="NombreAcompa" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="alergia" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="NombreAlergia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MotivoCons" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+          <Property Name="Id_HistoriaClinica" Type="Int32" />
+          <NavigationProperty Name="Paciente" Relationship="CUSModel.FK__hc_ficha___Id_Pa__6FE99F9F" FromRole="hc_ficha_identificacion" ToRole="Paciente" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="hc_habitos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HorasSueño" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="TieneInsomnio" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="TieneEnuresis" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="TienePesadillas" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="HorasOcio" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ActividadFisica" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="TiempoActividadFisica" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FrecuenciaActividadFisica" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+          <Property Name="Check_Adicciones_Padre" Type="Boolean" />
+          <Property Name="Check_Adicciones_Madre" Type="Boolean" />
+          <Property Name="Check_Adicciones_Ambas" Type="Boolean" />
+          <Property Name="Check_Adicciones_NA" Type="Boolean" />
+          <Property Name="Check_Cardiopatia_Padre" Type="Boolean" />
+          <Property Name="Check_Cardiopatia_Madre" Type="Boolean" />
+          <Property Name="Check_Cardiopatia_Ambas" Type="Boolean" />
+          <Property Name="Check_Cardiopatia_NA" Type="Boolean" />
+          <Property Name="Check_Diabetes_Padre" Type="Boolean" />
+          <Property Name="Check_Diabetes_Madre" Type="Boolean" />
+          <Property Name="Check_Diabetes_Ambas" Type="Boolean" />
+          <Property Name="Check_Diabetes_NA" Type="Boolean" />
+          <Property Name="Check_Dislipidemias_Padre" Type="Boolean" />
+          <Property Name="Check_Dislipidemias_Madre" Type="Boolean" />
+          <Property Name="Check_Dislipidemias_Ambas" Type="Boolean" />
+          <Property Name="Check_Dislipidemias_NA" Type="Boolean" />
+          <Property Name="Check_Epilepsia_Padre" Type="Boolean" />
+          <Property Name="Check_Epilepsia_Madre" Type="Boolean" />
+          <Property Name="Check_Epilepsia_Ambas" Type="Boolean" />
+          <Property Name="Check_Epilepsia_NA" Type="Boolean" />
+          <Property Name="Check_Hipertension_Padre" Type="Boolean" />
+          <Property Name="Check_Hipertension_Madre" Type="Boolean" />
+          <Property Name="Check_Hipertension_Ambas" Type="Boolean" />
+          <Property Name="Check_Hipertension_NA" Type="Boolean" />
+          <Property Name="Check_Infectocontagiosas_Padre" Type="Boolean" />
+          <Property Name="Check_Infectocontagiosas_Madre" Type="Boolean" />
+          <Property Name="Check_Infectocontagiosas_Ambas" Type="Boolean" />
+          <Property Name="Check_Infectocontagiosas_NA" Type="Boolean" />
+          <Property Name="Check_Malformaciones_Padre" Type="Boolean" />
+          <Property Name="Check_Malformaciones_Madre" Type="Boolean" />
+          <Property Name="Check_Malformaciones_Ambas" Type="Boolean" />
+          <Property Name="Check_Malformaciones_NA" Type="Boolean" />
+          <Property Name="Check_Nefropatias_Padre" Type="Boolean" />
+          <Property Name="Check_Nefropatias_Madre" Type="Boolean" />
+          <Property Name="Check_Nefropatias_Ambas" Type="Boolean" />
+          <Property Name="Check_Nefropatias_NA" Type="Boolean" />
+          <Property Name="Check_Obesidad_Padre" Type="Boolean" />
+          <Property Name="Check_Obesidad_Madre" Type="Boolean" />
+          <Property Name="Check_Obesidad_Ambas" Type="Boolean" />
+          <Property Name="Check_Obesidad_NA" Type="Boolean" />
+          <Property Name="Check_Oncologicos_Padre" Type="Boolean" />
+          <Property Name="Check_Oncologicos_Madre" Type="Boolean" />
+          <Property Name="Check_Oncologicos_Ambas" Type="Boolean" />
+          <Property Name="Check_Oncologicos_NA" Type="Boolean" />
+          <Property Name="Id_HistoriaClinica" Type="Int32" />
+          <NavigationProperty Name="Paciente" Relationship="CUSModel.FK__hc_habito__Id_Pa__02FC7413" FromRole="hc_habitos" ToRole="Paciente" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="hc_historial_consumo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TomaAlcohol" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="TomaAlcoholFrecuencia" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CantidadAlcohol" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fuma" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="EdadInicio" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ActualmenteFuma" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="TiempoInactividadFuma" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="TipoFuma" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FrecuenciaFuma" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CantidadFuma" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ConsumeDroga" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="TipoDrogaConsume" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="FrecuenciaDroga" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CantidadDrogaConsume" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="TipoLactancia" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="TiempoLactancia" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="EdadAblactacion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="AlimentosInicio" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="EdadIntegracion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+          <Property Name="Id_HistoriaClinica" Type="Int32" />
+          <NavigationProperty Name="Paciente" Relationship="CUSModel.FK__hc_histor__Id_Pa__236943A5" FromRole="hc_historial_consumo" ToRole="Paciente" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="hc_inmunizaciones">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CartillaVacunacion" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="EsquemaVacunacion" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="EspecifiqueVacuna" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+          <Property Name="Id_HistoriaClinica" Type="Int32" />
+          <NavigationProperty Name="Paciente" Relationship="CUSModel.FK__hc_inmuni__Id_Pa__208CD6FA" FromRole="hc_inmunizaciones" ToRole="Paciente" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="hc_valoracion_familiar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mamaPaciente" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="EdadMama" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="GradoMama" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="OcupacionMama" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="TipoTrabajoMama" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="papaPaciente" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="EdadPapa" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="GradoPapa" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="OcupacionPapa" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="TipoTrabajoPapa" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ViveCon" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="tieneHermanos" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="CuantosHermanos" Type="Int32" />
+          <Property Name="EspecifiqueEnf" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="involucraTratamiento" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="EspecifiqueInvol" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="riesgoSocial" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+          <Property Name="Id_HistoriaClinica" Type="Int32" />
+          <NavigationProperty Name="Paciente" Relationship="CUSModel.FK__hc_valora__Id_Pa__75A278F5" FromRole="hc_valoracion_familiar" ToRole="Paciente" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="hc_valores_creencias">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="perteneceReligion" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="religion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="EspecifiqueReligion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="creenciaReligiosa" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="EspecifiqueCreencia" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="costumbreValores" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="EspecifiqueCostumbres" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+          <Property Name="Id_HistoriaClinica" Type="Int32" />
+          <NavigationProperty Name="Paciente" Relationship="CUSModel.FK__hc_valore__Id_Pa__7B5B524B" FromRole="hc_valores_creencias" ToRole="Paciente" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="HistoriaClinica">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Medico" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FechaRegistroHC" Type="DateTime" Precision="3" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Paciente" Relationship="CUSModel.FK__HistoriaC__Id_Pa__3C34F16F" FromRole="HistoriaClinica" ToRole="Paciente" />
+        </EntityType>
+        <Association Name="FK__hc_antece__Id_Pa__2645B050">
+          <End Type="CUSModel.Paciente" Role="Paciente" Multiplicity="1" />
+          <End Type="CUSModel.hc_antecedentes_desarrollo" Role="hc_antecedentes_desarrollo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="hc_antecedentes_desarrollo">
+              <PropertyRef Name="Id_Paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__hc_antece__Id_Pa__29221CFB">
+          <End Type="CUSModel.Paciente" Role="Paciente" Multiplicity="1" />
+          <End Type="CUSModel.hc_antecedentes_ginecoobstetricos" Role="hc_antecedentes_ginecoobstetricos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="hc_antecedentes_ginecoobstetricos">
+              <PropertyRef Name="Id_Paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__hc_antece__Id_Pa__08B54D69">
+          <End Type="CUSModel.Paciente" Role="Paciente" Multiplicity="1" />
+          <End Type="CUSModel.hc_antecedentes_patologicos" Role="hc_antecedentes_patologicos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="hc_antecedentes_patologicos">
+              <PropertyRef Name="Id_Paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__hc_antece__Id_Pa__05D8E0BE">
+          <End Type="CUSModel.Paciente" Role="Paciente" Multiplicity="1" />
+          <End Type="CUSModel.hc_antecedentes_perinatales" Role="hc_antecedentes_perinatales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="hc_antecedentes_perinatales">
+              <PropertyRef Name="Id_Paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__hc_evalua__Id_Pa__787EE5A0">
+          <End Type="CUSModel.Paciente" Role="Paciente" Multiplicity="1" />
+          <End Type="CUSModel.hc_evaluacion_economica" Role="hc_evaluacion_economica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="hc_evaluacion_economica">
+              <PropertyRef Name="Id_Paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__hc_evalua__Id_Pa__72C60C4A">
+          <End Type="CUSModel.Paciente" Role="Paciente" Multiplicity="1" />
+          <End Type="CUSModel.hc_evaluacion_social" Role="hc_evaluacion_social" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="hc_evaluacion_social">
+              <PropertyRef Name="Id_Paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__hc_factor__Id_Pa__7E37BEF6">
+          <End Type="CUSModel.Paciente" Role="Paciente" Multiplicity="1" />
+          <End Type="CUSModel.hc_factores_riesgo_psicologicos" Role="hc_factores_riesgo_psicologicos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="hc_factores_riesgo_psicologicos">
+              <PropertyRef Name="Id_Paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__hc_ficha___Id_Pa__6FE99F9F">
+          <End Type="CUSModel.Paciente" Role="Paciente" Multiplicity="1" />
+          <End Type="CUSModel.hc_ficha_identificacion" Role="hc_ficha_identificacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="hc_ficha_identificacion">
+              <PropertyRef Name="Id_Paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__hc_habito__Id_Pa__02FC7413">
+          <End Type="CUSModel.Paciente" Role="Paciente" Multiplicity="1" />
+          <End Type="CUSModel.hc_habitos" Role="hc_habitos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="hc_habitos">
+              <PropertyRef Name="Id_Paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__hc_histor__Id_Pa__236943A5">
+          <End Type="CUSModel.Paciente" Role="Paciente" Multiplicity="1" />
+          <End Type="CUSModel.hc_historial_consumo" Role="hc_historial_consumo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="hc_historial_consumo">
+              <PropertyRef Name="Id_Paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__hc_inmuni__Id_Pa__208CD6FA">
+          <End Type="CUSModel.Paciente" Role="Paciente" Multiplicity="1" />
+          <End Type="CUSModel.hc_inmunizaciones" Role="hc_inmunizaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="hc_inmunizaciones">
+              <PropertyRef Name="Id_Paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__hc_valora__Id_Pa__75A278F5">
+          <End Type="CUSModel.Paciente" Role="Paciente" Multiplicity="1" />
+          <End Type="CUSModel.hc_valoracion_familiar" Role="hc_valoracion_familiar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="hc_valoracion_familiar">
+              <PropertyRef Name="Id_Paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__hc_valore__Id_Pa__7B5B524B">
+          <End Type="CUSModel.Paciente" Role="Paciente" Multiplicity="1" />
+          <End Type="CUSModel.hc_valores_creencias" Role="hc_valores_creencias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="hc_valores_creencias">
+              <PropertyRef Name="Id_Paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HistoriaC__Id_Pa__3C34F16F">
+          <End Type="CUSModel.Paciente" Role="Paciente" Multiplicity="1" />
+          <End Type="CUSModel.HistoriaClinica" Role="HistoriaClinica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HistoriaClinica">
+              <PropertyRef Name="Id_Paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="hc_alimentacion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoLactancia" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="TiempoLactancia" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="EdadAblactacion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="AlimentosInicio" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="EdadIntegracion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+          <Property Name="Id_HistoriaClinica" Type="Int32" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Paciente" Relationship="CUSModel.FK__hc_alimen__Id_Pa__4F47C5E3" FromRole="hc_alimentacion" ToRole="Paciente" />
+        </EntityType>
+        <Association Name="FK__hc_alimen__Id_Pa__4F47C5E3">
+          <End Type="CUSModel.Paciente" Role="Paciente" Multiplicity="1" />
+          <End Type="CUSModel.hc_alimentacion" Role="hc_alimentacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="hc_alimentacion">
+              <PropertyRef Name="Id_Paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CUSModelStoreContainer" CdmEntityContainer="CUS">
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="CUSModel.AspNetRoles">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="CUSModel.AspNetUserClaims">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="CUSModel.AspNetUserLogins">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserRoles">
+            <EntityTypeMapping TypeName="CUSModel.AspNetUserRoles">
+              <MappingFragment StoreEntitySet="AspNetUserRoles">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="CUSModel.AspNetUsers">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Unidad" ColumnName="Unidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UnidadAfiliacion">
+            <EntityTypeMapping TypeName="CUSModel.UnidadAfiliacion">
+              <MappingFragment StoreEntitySet="UnidadAfiliacion">
+                <ScalarProperty Name="Prefijo" ColumnName="Prefijo" />
+                <ScalarProperty Name="NombreUnidad" ColumnName="NombreUnidad" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Paciente">
+            <EntityTypeMapping TypeName="CUSModel.Paciente">
+              <MappingFragment StoreEntitySet="Paciente">
+                <ScalarProperty Name="NA_BA" ColumnName="NA_BA" />
+                <ScalarProperty Name="NA_DE" ColumnName="NA_DE" />
+                <ScalarProperty Name="Curp_CalculadoMotivo" ColumnName="Curp_CalculadoMotivo" />
+                <ScalarProperty Name="Curp_Calculado" ColumnName="Curp_Calculado" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="SegundoApellido_Tutor" ColumnName="SegundoApellido_Tutor" />
+                <ScalarProperty Name="PrimerApellido_Tutor" ColumnName="PrimerApellido_Tutor" />
+                <ScalarProperty Name="Nombre_Tutor" ColumnName="Nombre_Tutor" />
+                <ScalarProperty Name="CE_Telefono" ColumnName="CE_Telefono" />
+                <ScalarProperty Name="CE_EntidadFed" ColumnName="CE_EntidadFed" />
+                <ScalarProperty Name="CE_Municipio" ColumnName="CE_Municipio" />
+                <ScalarProperty Name="CE_Colonia" ColumnName="CE_Colonia" />
+                <ScalarProperty Name="CE_CP" ColumnName="CE_CP" />
+                <ScalarProperty Name="CE_Numero" ColumnName="CE_Numero" />
+                <ScalarProperty Name="CE_Calle" ColumnName="CE_Calle" />
+                <ScalarProperty Name="CE_Nombre" ColumnName="CE_Nombre" />
+                <ScalarProperty Name="BA_Analfabeta" ColumnName="BA_Analfabeta" />
+                <ScalarProperty Name="BA_Idioma_Nombre" ColumnName="BA_Idioma_Nombre" />
+                <ScalarProperty Name="BA_Idioma" ColumnName="BA_Idioma" />
+                <ScalarProperty Name="BA_Mental" ColumnName="BA_Mental" />
+                <ScalarProperty Name="BA_Fisica" ColumnName="BA_Fisica" />
+                <ScalarProperty Name="BA_Auditiva" ColumnName="BA_Auditiva" />
+                <ScalarProperty Name="BA_Visual" ColumnName="BA_Visual" />
+                <ScalarProperty Name="DE_Afroamericano" ColumnName="DE_Afroamericano" />
+                <ScalarProperty Name="DE_Migrante" ColumnName="DE_Migrante" />
+                <ScalarProperty Name="DE_Indigena" ColumnName="DE_Indigena" />
+                <ScalarProperty Name="ServicioSalud_Extra" ColumnName="ServicioSalud_Extra" />
+                <ScalarProperty Name="ServicioSalud" ColumnName="ServicioSalud" />
+                <ScalarProperty Name="Ocupacion" ColumnName="Ocupacion" />
+                <ScalarProperty Name="Escolaridad" ColumnName="Escolaridad" />
+                <ScalarProperty Name="EstadoCivil" ColumnName="EstadoCivil" />
+                <ScalarProperty Name="RFC" ColumnName="RFC" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Telefono2" ColumnName="Telefono2" />
+                <ScalarProperty Name="Telefono1" ColumnName="Telefono1" />
+                <ScalarProperty Name="Dir_EntidadFed" ColumnName="Dir_EntidadFed" />
+                <ScalarProperty Name="Dir_Municipio" ColumnName="Dir_Municipio" />
+                <ScalarProperty Name="Dir_Colonia" ColumnName="Dir_Colonia" />
+                <ScalarProperty Name="Dir_CP" ColumnName="Dir_CP" />
+                <ScalarProperty Name="Dir_Numero" ColumnName="Dir_Numero" />
+                <ScalarProperty Name="Dir_Calle" ColumnName="Dir_Calle" />
+                <ScalarProperty Name="Expediente" ColumnName="Expediente" />
+                <ScalarProperty Name="Edad" ColumnName="Edad" />
+                <ScalarProperty Name="EntidadNacimiento" ColumnName="EntidadNacimiento" />
+                <ScalarProperty Name="Nacionalidad" ColumnName="Nacionalidad" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
+                <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="CURP" ColumnName="CURP" />
+                <ScalarProperty Name="UnidadAfiliacion" ColumnName="UnidadAfiliacion" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_antecedentes_desarrollo">
+            <EntityTypeMapping TypeName="CUSModel.hc_antecedentes_desarrollo">
+              <MappingFragment StoreEntitySet="hc_antecedentes_desarrollo">
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="Id_HistoriaClinica" ColumnName="Id_HistoriaClinica" />
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+                <ScalarProperty Name="EspecifiquePruebaEDI" ColumnName="EspecifiquePruebaEDI" />
+                <ScalarProperty Name="PruebaEDI" ColumnName="PruebaEDI" />
+                <ScalarProperty Name="EspecifiqueControlEsf" ColumnName="EspecifiqueControlEsf" />
+                <ScalarProperty Name="ControlEsfinteres" ColumnName="ControlEsfinteres" />
+                <ScalarProperty Name="EspecifiqueHabla" ColumnName="EspecifiqueHabla" />
+                <ScalarProperty Name="Habla" ColumnName="Habla" />
+                <ScalarProperty Name="EspecifiqueCamino" ColumnName="EspecifiqueCamino" />
+                <ScalarProperty Name="Camino" ColumnName="Camino" />
+                <ScalarProperty Name="EspecifiqueSeSento" ColumnName="EspecifiqueSeSento" />
+                <ScalarProperty Name="SeSento" ColumnName="SeSento" />
+                <ScalarProperty Name="EspecifiqueSostuvoCabeza" ColumnName="EspecifiqueSostuvoCabeza" />
+                <ScalarProperty Name="SostuvoCabeza" ColumnName="SostuvoCabeza" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_antecedentes_ginecoobstetricos">
+            <EntityTypeMapping TypeName="CUSModel.hc_antecedentes_ginecoobstetricos">
+              <MappingFragment StoreEntitySet="hc_antecedentes_ginecoobstetricos">
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="Id_HistoriaClinica" ColumnName="Id_HistoriaClinica" />
+                <ScalarProperty Name="TipoMenarquia" ColumnName="TipoMenarquia" />
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+                <ScalarProperty Name="NumeroParejasSexuales" ColumnName="NumeroParejasSexuales" />
+                <ScalarProperty Name="VidaSexual" ColumnName="VidaSexual" />
+                <ScalarProperty Name="EspecifiqueColoracionMenarquia" ColumnName="EspecifiqueColoracionMenarquia" />
+                <ScalarProperty Name="ColoracionMenarquia" ColumnName="ColoracionMenarquia" />
+                <ScalarProperty Name="CantidadMenarquia" ColumnName="CantidadMenarquia" />
+                <ScalarProperty Name="RitmoMenarquia" ColumnName="RitmoMenarquia" />
+                <ScalarProperty Name="MotivoMenarquia" ColumnName="MotivoMenarquia" />
+                <ScalarProperty Name="Menarquia" ColumnName="Menarquia" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_antecedentes_patologicos">
+            <EntityTypeMapping TypeName="CUSModel.hc_antecedentes_patologicos">
+              <MappingFragment StoreEntitySet="hc_antecedentes_patologicos">
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="Id_HistoriaClinica" ColumnName="Id_HistoriaClinica" />
+                <ScalarProperty Name="CheckNinguna" ColumnName="CheckNinguna" />
+                <ScalarProperty Name="CheckReumatologicos" ColumnName="CheckReumatologicos" />
+                <ScalarProperty Name="CheckProblemasGastro" ColumnName="CheckProblemasGastro" />
+                <ScalarProperty Name="CheckProblemasAparatoR" ColumnName="CheckProblemasAparatoR" />
+                <ScalarProperty Name="CheckInfectoContagiosos" ColumnName="CheckInfectoContagiosos" />
+                <ScalarProperty Name="CheckNeurologicos" ColumnName="CheckNeurologicos" />
+                <ScalarProperty Name="CheckSaludMental" ColumnName="CheckSaludMental" />
+                <ScalarProperty Name="CheckOncologicos" ColumnName="CheckOncologicos" />
+                <ScalarProperty Name="CheckCardiovasculares" ColumnName="CheckCardiovasculares" />
+                <ScalarProperty Name="CheckEndocrinologicos" ColumnName="CheckEndocrinologicos" />
+                <ScalarProperty Name="CheckRespiratorios" ColumnName="CheckRespiratorios" />
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+                <ScalarProperty Name="EspecifiqueCirugia" ColumnName="EspecifiqueCirugia" />
+                <ScalarProperty Name="RealizadoCirugia" ColumnName="RealizadoCirugia" />
+                <ScalarProperty Name="EspecifiqueHospitalizado" ColumnName="EspecifiqueHospitalizado" />
+                <ScalarProperty Name="PxHospitalizado" ColumnName="PxHospitalizado" />
+                <ScalarProperty Name="Antecedentes" ColumnName="Antecedentes" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_antecedentes_perinatales">
+            <EntityTypeMapping TypeName="CUSModel.hc_antecedentes_perinatales">
+              <MappingFragment StoreEntitySet="hc_antecedentes_perinatales">
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="Id_HistoriaClinica" ColumnName="Id_HistoriaClinica" />
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+                <ScalarProperty Name="TamizAuditivoOpciones" ColumnName="TamizAuditivoOpciones" />
+                <ScalarProperty Name="TamizAuditivo" ColumnName="TamizAuditivo" />
+                <ScalarProperty Name="TamizMetabolicoOpciones" ColumnName="TamizMetabolicoOpciones" />
+                <ScalarProperty Name="TamizMetabolico" ColumnName="TamizMetabolico" />
+                <ScalarProperty Name="EspecifiqueComplicacionObs" ColumnName="EspecifiqueComplicacionObs" />
+                <ScalarProperty Name="ComplicacionObs" ColumnName="ComplicacionObs" />
+                <ScalarProperty Name="EspecifiqueMotivoCesarea" ColumnName="EspecifiqueMotivoCesarea" />
+                <ScalarProperty Name="EspecifiquePartoFue" ColumnName="EspecifiquePartoFue" />
+                <ScalarProperty Name="PartoFue" ColumnName="PartoFue" />
+                <ScalarProperty Name="TipoParto" ColumnName="TipoParto" />
+                <ScalarProperty Name="EspecifiqueApgar" ColumnName="EspecifiqueApgar" />
+                <ScalarProperty Name="Apgar" ColumnName="Apgar" />
+                <ScalarProperty Name="EspecifiqueEdadGestional" ColumnName="EspecifiqueEdadGestional" />
+                <ScalarProperty Name="EdadGestional" ColumnName="EdadGestional" />
+                <ScalarProperty Name="EspecifiqueLugarParto" ColumnName="EspecifiqueLugarParto" />
+                <ScalarProperty Name="LugarParto" ColumnName="LugarParto" />
+                <ScalarProperty Name="EspecifiqueTratamientoEmbarazo" ColumnName="EspecifiqueTratamientoEmbarazo" />
+                <ScalarProperty Name="TratamientoEmbarazo" ColumnName="TratamientoEmbarazo" />
+                <ScalarProperty Name="EspecifiqueEnfermedadEmbarazo" ColumnName="EspecifiqueEnfermedadEmbarazo" />
+                <ScalarProperty Name="EnfermedadEmbarazo" ColumnName="EnfermedadEmbarazo" />
+                <ScalarProperty Name="NumeroEmbarazo" ColumnName="NumeroEmbarazo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_evaluacion_economica">
+            <EntityTypeMapping TypeName="CUSModel.hc_evaluacion_economica">
+              <MappingFragment StoreEntitySet="hc_evaluacion_economica">
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="Id_HistoriaClinica" ColumnName="Id_HistoriaClinica" />
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+                <ScalarProperty Name="riesgoEconomico" ColumnName="riesgoEconomico" />
+                <ScalarProperty Name="EspecifiqueRol" ColumnName="EspecifiqueRol" />
+                <ScalarProperty Name="rolEconimico" ColumnName="rolEconimico" />
+                <ScalarProperty Name="EspecifiqueBeneficiario" ColumnName="EspecifiqueBeneficiario" />
+                <ScalarProperty Name="beneficiarioPrograma" ColumnName="beneficiarioPrograma" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_evaluacion_social">
+            <EntityTypeMapping TypeName="CUSModel.hc_evaluacion_social">
+              <MappingFragment StoreEntitySet="hc_evaluacion_social">
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="Id_HistoriaClinica" ColumnName="Id_HistoriaClinica" />
+                <ScalarProperty Name="ServicioSal" ColumnName="ServicioSal" />
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+                <ScalarProperty Name="RiesgoSos" ColumnName="RiesgoSos" />
+                <ScalarProperty Name="TipoTrab" ColumnName="TipoTrab" />
+                <ScalarProperty Name="Ocupacio" ColumnName="Ocupacio" />
+                <ScalarProperty Name="ProblemasMaestros" ColumnName="ProblemasMaestros" />
+                <ScalarProperty Name="Problemas" ColumnName="Problemas" />
+                <ScalarProperty Name="Cuidador" ColumnName="Cuidador" />
+                <ScalarProperty Name="Guarderia" ColumnName="Guarderia" />
+                <ScalarProperty Name="Desercion" ColumnName="Desercion" />
+                <ScalarProperty Name="EspecifiqueReprobado" ColumnName="EspecifiqueReprobado" />
+                <ScalarProperty Name="reprobado" ColumnName="reprobado" />
+                <ScalarProperty Name="PromedioEsc" ColumnName="PromedioEsc" />
+                <ScalarProperty Name="GradoEsc" ColumnName="GradoEsc" />
+                <ScalarProperty Name="escolaridad" ColumnName="escolaridad" />
+                <ScalarProperty Name="hacinamiento" ColumnName="hacinamiento" />
+                <ScalarProperty Name="numerohabitaciones" ColumnName="numerohabitaciones" />
+                <ScalarProperty Name="numeropersonas" ColumnName="numeropersonas" />
+                <ScalarProperty Name="estadocivil" ColumnName="estadocivil" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_factores_riesgo_psicologicos">
+            <EntityTypeMapping TypeName="CUSModel.hc_factores_riesgo_psicologicos">
+              <MappingFragment StoreEntitySet="hc_factores_riesgo_psicologicos">
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="Id_HistoriaClinica" ColumnName="Id_HistoriaClinica" />
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+                <ScalarProperty Name="IdeacionSuicida" ColumnName="IdeacionSuicida" />
+                <ScalarProperty Name="MiedoPreocupacion" ColumnName="MiedoPreocupacion" />
+                <ScalarProperty Name="SensacionAahogo" ColumnName="SensacionAahogo" />
+                <ScalarProperty Name="PalpitacionesFuertes" ColumnName="PalpitacionesFuertes" />
+                <ScalarProperty Name="PerdidaPlacer" ColumnName="PerdidaPlacer" />
+                <ScalarProperty Name="Irritabilidad" ColumnName="Irritabilidad" />
+                <ScalarProperty Name="Pesimismo" ColumnName="Pesimismo" />
+                <ScalarProperty Name="CambiosApetito" ColumnName="CambiosApetito" />
+                <ScalarProperty Name="CambiosEnergia" ColumnName="CambiosEnergia" />
+                <ScalarProperty Name="CambiosSueño" ColumnName="CambiosSueño" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_ficha_identificacion">
+            <EntityTypeMapping TypeName="CUSModel.hc_ficha_identificacion">
+              <MappingFragment StoreEntitySet="hc_ficha_identificacion">
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="Id_HistoriaClinica" ColumnName="Id_HistoriaClinica" />
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+                <ScalarProperty Name="MotivoCons" ColumnName="MotivoCons" />
+                <ScalarProperty Name="NombreAlergia" ColumnName="NombreAlergia" />
+                <ScalarProperty Name="alergia" ColumnName="alergia" />
+                <ScalarProperty Name="NombreAcompa" ColumnName="NombreAcompa" />
+                <ScalarProperty Name="acompanante" ColumnName="acompanante" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_habitos">
+            <EntityTypeMapping TypeName="CUSModel.hc_habitos">
+              <MappingFragment StoreEntitySet="hc_habitos">
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="Id_HistoriaClinica" ColumnName="Id_HistoriaClinica" />
+                <ScalarProperty Name="Check_Oncologicos_NA" ColumnName="Check_Oncologicos_NA" />
+                <ScalarProperty Name="Check_Oncologicos_Ambas" ColumnName="Check_Oncologicos_Ambas" />
+                <ScalarProperty Name="Check_Oncologicos_Madre" ColumnName="Check_Oncologicos_Madre" />
+                <ScalarProperty Name="Check_Oncologicos_Padre" ColumnName="Check_Oncologicos_Padre" />
+                <ScalarProperty Name="Check_Obesidad_NA" ColumnName="Check_Obesidad_NA" />
+                <ScalarProperty Name="Check_Obesidad_Ambas" ColumnName="Check_Obesidad_Ambas" />
+                <ScalarProperty Name="Check_Obesidad_Madre" ColumnName="Check_Obesidad_Madre" />
+                <ScalarProperty Name="Check_Obesidad_Padre" ColumnName="Check_Obesidad_Padre" />
+                <ScalarProperty Name="Check_Nefropatias_NA" ColumnName="Check_Nefropatias_NA" />
+                <ScalarProperty Name="Check_Nefropatias_Ambas" ColumnName="Check_Nefropatias_Ambas" />
+                <ScalarProperty Name="Check_Nefropatias_Madre" ColumnName="Check_Nefropatias_Madre" />
+                <ScalarProperty Name="Check_Nefropatias_Padre" ColumnName="Check_Nefropatias_Padre" />
+                <ScalarProperty Name="Check_Malformaciones_NA" ColumnName="Check_Malformaciones_NA" />
+                <ScalarProperty Name="Check_Malformaciones_Ambas" ColumnName="Check_Malformaciones_Ambas" />
+                <ScalarProperty Name="Check_Malformaciones_Madre" ColumnName="Check_Malformaciones_Madre" />
+                <ScalarProperty Name="Check_Malformaciones_Padre" ColumnName="Check_Malformaciones_Padre" />
+                <ScalarProperty Name="Check_Infectocontagiosas_NA" ColumnName="Check_Infectocontagiosas_NA" />
+                <ScalarProperty Name="Check_Infectocontagiosas_Ambas" ColumnName="Check_Infectocontagiosas_Ambas" />
+                <ScalarProperty Name="Check_Infectocontagiosas_Madre" ColumnName="Check_Infectocontagiosas_Madre" />
+                <ScalarProperty Name="Check_Infectocontagiosas_Padre" ColumnName="Check_Infectocontagiosas_Padre" />
+                <ScalarProperty Name="Check_Hipertension_NA" ColumnName="Check_Hipertension_NA" />
+                <ScalarProperty Name="Check_Hipertension_Ambas" ColumnName="Check_Hipertension_Ambas" />
+                <ScalarProperty Name="Check_Hipertension_Madre" ColumnName="Check_Hipertension_Madre" />
+                <ScalarProperty Name="Check_Hipertension_Padre" ColumnName="Check_Hipertension_Padre" />
+                <ScalarProperty Name="Check_Epilepsia_NA" ColumnName="Check_Epilepsia_NA" />
+                <ScalarProperty Name="Check_Epilepsia_Ambas" ColumnName="Check_Epilepsia_Ambas" />
+                <ScalarProperty Name="Check_Epilepsia_Madre" ColumnName="Check_Epilepsia_Madre" />
+                <ScalarProperty Name="Check_Epilepsia_Padre" ColumnName="Check_Epilepsia_Padre" />
+                <ScalarProperty Name="Check_Dislipidemias_NA" ColumnName="Check_Dislipidemias_NA" />
+                <ScalarProperty Name="Check_Dislipidemias_Ambas" ColumnName="Check_Dislipidemias_Ambas" />
+                <ScalarProperty Name="Check_Dislipidemias_Madre" ColumnName="Check_Dislipidemias_Madre" />
+                <ScalarProperty Name="Check_Dislipidemias_Padre" ColumnName="Check_Dislipidemias_Padre" />
+                <ScalarProperty Name="Check_Diabetes_NA" ColumnName="Check_Diabetes_NA" />
+                <ScalarProperty Name="Check_Diabetes_Ambas" ColumnName="Check_Diabetes_Ambas" />
+                <ScalarProperty Name="Check_Diabetes_Madre" ColumnName="Check_Diabetes_Madre" />
+                <ScalarProperty Name="Check_Diabetes_Padre" ColumnName="Check_Diabetes_Padre" />
+                <ScalarProperty Name="Check_Cardiopatia_NA" ColumnName="Check_Cardiopatia_NA" />
+                <ScalarProperty Name="Check_Cardiopatia_Ambas" ColumnName="Check_Cardiopatia_Ambas" />
+                <ScalarProperty Name="Check_Cardiopatia_Madre" ColumnName="Check_Cardiopatia_Madre" />
+                <ScalarProperty Name="Check_Cardiopatia_Padre" ColumnName="Check_Cardiopatia_Padre" />
+                <ScalarProperty Name="Check_Adicciones_NA" ColumnName="Check_Adicciones_NA" />
+                <ScalarProperty Name="Check_Adicciones_Ambas" ColumnName="Check_Adicciones_Ambas" />
+                <ScalarProperty Name="Check_Adicciones_Madre" ColumnName="Check_Adicciones_Madre" />
+                <ScalarProperty Name="Check_Adicciones_Padre" ColumnName="Check_Adicciones_Padre" />
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+                <ScalarProperty Name="FrecuenciaActividadFisica" ColumnName="FrecuenciaActividadFisica" />
+                <ScalarProperty Name="TiempoActividadFisica" ColumnName="TiempoActividadFisica" />
+                <ScalarProperty Name="ActividadFisica" ColumnName="ActividadFisica" />
+                <ScalarProperty Name="HorasOcio" ColumnName="HorasOcio" />
+                <ScalarProperty Name="TienePesadillas" ColumnName="TienePesadillas" />
+                <ScalarProperty Name="TieneEnuresis" ColumnName="TieneEnuresis" />
+                <ScalarProperty Name="TieneInsomnio" ColumnName="TieneInsomnio" />
+                <ScalarProperty Name="HorasSueño" ColumnName="HorasSueño" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_historial_consumo">
+            <EntityTypeMapping TypeName="CUSModel.hc_historial_consumo">
+              <MappingFragment StoreEntitySet="hc_historial_consumo">
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="Id_HistoriaClinica" ColumnName="Id_HistoriaClinica" />
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+                <ScalarProperty Name="EdadIntegracion" ColumnName="EdadIntegracion" />
+                <ScalarProperty Name="AlimentosInicio" ColumnName="AlimentosInicio" />
+                <ScalarProperty Name="EdadAblactacion" ColumnName="EdadAblactacion" />
+                <ScalarProperty Name="TiempoLactancia" ColumnName="TiempoLactancia" />
+                <ScalarProperty Name="TipoLactancia" ColumnName="TipoLactancia" />
+                <ScalarProperty Name="CantidadDrogaConsume" ColumnName="CantidadDrogaConsume" />
+                <ScalarProperty Name="FrecuenciaDroga" ColumnName="FrecuenciaDroga" />
+                <ScalarProperty Name="TipoDrogaConsume" ColumnName="TipoDrogaConsume" />
+                <ScalarProperty Name="ConsumeDroga" ColumnName="ConsumeDroga" />
+                <ScalarProperty Name="CantidadFuma" ColumnName="CantidadFuma" />
+                <ScalarProperty Name="FrecuenciaFuma" ColumnName="FrecuenciaFuma" />
+                <ScalarProperty Name="TipoFuma" ColumnName="TipoFuma" />
+                <ScalarProperty Name="TiempoInactividadFuma" ColumnName="TiempoInactividadFuma" />
+                <ScalarProperty Name="ActualmenteFuma" ColumnName="ActualmenteFuma" />
+                <ScalarProperty Name="EdadInicio" ColumnName="EdadInicio" />
+                <ScalarProperty Name="Fuma" ColumnName="Fuma" />
+                <ScalarProperty Name="CantidadAlcohol" ColumnName="CantidadAlcohol" />
+                <ScalarProperty Name="TomaAlcoholFrecuencia" ColumnName="TomaAlcoholFrecuencia" />
+                <ScalarProperty Name="TomaAlcohol" ColumnName="TomaAlcohol" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_inmunizaciones">
+            <EntityTypeMapping TypeName="CUSModel.hc_inmunizaciones">
+              <MappingFragment StoreEntitySet="hc_inmunizaciones">
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="Id_HistoriaClinica" ColumnName="Id_HistoriaClinica" />
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+                <ScalarProperty Name="EspecifiqueVacuna" ColumnName="EspecifiqueVacuna" />
+                <ScalarProperty Name="EsquemaVacunacion" ColumnName="EsquemaVacunacion" />
+                <ScalarProperty Name="CartillaVacunacion" ColumnName="CartillaVacunacion" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_valoracion_familiar">
+            <EntityTypeMapping TypeName="CUSModel.hc_valoracion_familiar">
+              <MappingFragment StoreEntitySet="hc_valoracion_familiar">
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="Id_HistoriaClinica" ColumnName="Id_HistoriaClinica" />
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+                <ScalarProperty Name="riesgoSocial" ColumnName="riesgoSocial" />
+                <ScalarProperty Name="EspecifiqueInvol" ColumnName="EspecifiqueInvol" />
+                <ScalarProperty Name="involucraTratamiento" ColumnName="involucraTratamiento" />
+                <ScalarProperty Name="EspecifiqueEnf" ColumnName="EspecifiqueEnf" />
+                <ScalarProperty Name="CuantosHermanos" ColumnName="CuantosHermanos" />
+                <ScalarProperty Name="tieneHermanos" ColumnName="tieneHermanos" />
+                <ScalarProperty Name="ViveCon" ColumnName="ViveCon" />
+                <ScalarProperty Name="TipoTrabajoPapa" ColumnName="TipoTrabajoPapa" />
+                <ScalarProperty Name="OcupacionPapa" ColumnName="OcupacionPapa" />
+                <ScalarProperty Name="GradoPapa" ColumnName="GradoPapa" />
+                <ScalarProperty Name="EdadPapa" ColumnName="EdadPapa" />
+                <ScalarProperty Name="papaPaciente" ColumnName="papaPaciente" />
+                <ScalarProperty Name="TipoTrabajoMama" ColumnName="TipoTrabajoMama" />
+                <ScalarProperty Name="OcupacionMama" ColumnName="OcupacionMama" />
+                <ScalarProperty Name="GradoMama" ColumnName="GradoMama" />
+                <ScalarProperty Name="EdadMama" ColumnName="EdadMama" />
+                <ScalarProperty Name="mamaPaciente" ColumnName="mamaPaciente" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_valores_creencias">
+            <EntityTypeMapping TypeName="CUSModel.hc_valores_creencias">
+              <MappingFragment StoreEntitySet="hc_valores_creencias">
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="Id_HistoriaClinica" ColumnName="Id_HistoriaClinica" />
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+                <ScalarProperty Name="EspecifiqueCostumbres" ColumnName="EspecifiqueCostumbres" />
+                <ScalarProperty Name="costumbreValores" ColumnName="costumbreValores" />
+                <ScalarProperty Name="EspecifiqueCreencia" ColumnName="EspecifiqueCreencia" />
+                <ScalarProperty Name="creenciaReligiosa" ColumnName="creenciaReligiosa" />
+                <ScalarProperty Name="EspecifiqueReligion" ColumnName="EspecifiqueReligion" />
+                <ScalarProperty Name="religion" ColumnName="religion" />
+                <ScalarProperty Name="perteneceReligion" ColumnName="perteneceReligion" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HistoriaClinica">
+            <EntityTypeMapping TypeName="CUSModel.HistoriaClinica">
+              <MappingFragment StoreEntitySet="HistoriaClinica">
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+                <ScalarProperty Name="FechaRegistroHC" ColumnName="FechaRegistroHC" />
+                <ScalarProperty Name="Medico" ColumnName="Medico" />
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_alimentacion">
+            <EntityTypeMapping TypeName="CUSModel.hc_alimentacion">
+              <MappingFragment StoreEntitySet="hc_alimentacion">
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="Id_HistoriaClinica" ColumnName="Id_HistoriaClinica" />
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+                <ScalarProperty Name="EdadIntegracion" ColumnName="EdadIntegracion" />
+                <ScalarProperty Name="AlimentosInicio" ColumnName="AlimentosInicio" />
+                <ScalarProperty Name="EdadAblactacion" ColumnName="EdadAblactacion" />
+                <ScalarProperty Name="TiempoLactancia" ColumnName="TiempoLactancia" />
+                <ScalarProperty Name="TipoLactancia" ColumnName="TipoLactancia" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,420 @@
+﻿@model IEnumerable<CUS.Models.Paciente>
+
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div>
+            <div class="row justify-content-center">
+                <div class="success-cont">
+                    <h3>PX REGISTRADOS</h3>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="col-md-3 mb-3">
+                    <input type="text" class="form-control BuscarPX" id="NombrePX" placeholder="Nombre PX" required>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <input type="text" class="form-control BuscarPX" id="ExpedientePX" placeholder="Expediente PX" required>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <button class="btn btn-primary" onclick="BtnBuscarPX()">Buscar</button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table id="TblPaciente" class="datatable table table-stripped">
+                                    <thead>
+                                        <tr>
+                                            <th style="text-align:center">
+                                                Nombre
+                                            </th>
+                                            <th style="text-align:center">
+                                                Primer Apellido
+                                            </th>
+                                            <th style="text-align:center">
+                                                Segundo Apellido
+                                            </th>
+                                            <th style="text-align:center">
+                                                Unidad de Afiliacion
+                                            </th>
+                                            <th style="text-align:center">
+                                                Expediente
+                                            </th>
+                                            <th style="text-align:center">
+                                                CURP
+                                            </th>
+                                            <th style="text-align:center">
+                                                Sexo
+                                            </th>
+                                            <th style="text-align:center">
+                                                Edad
+                                            </th>
+                                            <th style="text-align:center">
+                                                FechaRegistro
+                                            </th>
+                                            <th style="width:5px"></th>
+                                            <th style="width:5px"></th>
+                                            <th style="width:5px"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+@*@if (TempData["Exito"] != null)
+{
+    var mensaje = TempData["Exito"];
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Éxito',
+            text: '@mensaje',
+        });
+    </script>
+}*@
+
+@if (TempData["Error"] != null)
+{
+    var mensaje = TempData["Error"];
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: '@mensaje',
+        });
+    </script>
+}
+
+<script>
+
+    $(document).ready(function () {
+        var table = $('#TblPaciente').DataTable();
+        table.destroy();
+
+        table = $('#TblPaciente').DataTable({
+            paging: false,
+            scroller: false,
+            responsive: true,
+            searching: false,
+            info: true,
+            lengthChange: false,
+            pageLength: 20,
+            language: {
+                "zeroRecords": "No se encontraron px",
+                "info": "_TOTAL_ px",
+                "search": "Buscar:",
+                "infoEmpty": "",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Último",
+                    "next": "Siguiente",
+                    "previous": "Anterior",
+                },
+                "select": {
+                    "rows": " %d filas seleccionadas"
+                },
+            }
+        });
+
+        BuscarPXIndex();
+    });
+
+    function BuscarPXIndex() {
+	    $.ajax({
+		    url: '@Url.Action("BuscarPacienteIndex", "Derechohabiente")',
+		    method: 'POST',
+            dataType: 'json',
+            data: null,
+            success: function (data) {
+                LlenaTablaPX(data.PACIENTES);
+		    },
+		    error: function(ex) {
+			    Swal.fire({
+				    icon: 'error',
+				    title: '¡Error!',
+			    });
+		    }
+	    });
+    };
+
+    //Si dan click en Enter en los inputs de Nombre/Expediente
+    $('.BuscarPX').on("keypress", function (e) {
+        if (e.keyCode == 13) {
+            FuncionBuscarPX();
+            return false;
+        }
+    });
+
+    //Si dan click en el botón de Buscar
+    function BtnBuscarPX() {
+        FuncionBuscarPX();
+    };
+
+    function FuncionBuscarPX() {
+	    var NombrePX = $("#NombrePX").val();
+	    var ExpedientePX = $("#ExpedientePX").val();
+
+	    Swal.fire({
+		    title: 'Cargando... Espere por favor',
+		    timer: 1000,
+		    timerProgressBar: true,
+	    });
+
+	    $.ajax({
+		    url: '@Url.Action("BuscarPaciente", "Derechohabiente")',
+		    method: 'POST',
+		    dataType: 'json',
+		    data: {
+                NombrePX: NombrePX,
+                ExpedientePX: ExpedientePX
+		    },
+		    success: function(data) {
+                if (data.MENSAJE.substring(0, 6) == "Succe:") {
+                    LlenaTablaPX(data.PACIENTES);
+			    }
+			    if (data.MENSAJE.substring(0, 6) == "Error:") {
+				    Swal.fire({
+					    icon: 'error',
+					    title: '¡Error!',
+					    text: data.MENSAJE.substring(7),
+				    });
+			    }
+		    },
+		    error: function(ex) {
+			    Swal.fire({
+				    icon: 'error',
+				    title: '¡Error!',
+			    });
+		    }
+	    });
+
+    };
+
+    function LlenaTablaPX(PX) {
+        var table = $('#TblPaciente').DataTable();
+        table.destroy();
+
+        table = $('#TblPaciente').DataTable({
+            responsive: true,
+            searching: false,
+            info: true,
+            deferRender: true,
+            scroller: false,
+            scrollColapse: true,
+            paging: false,
+            lengthChange: false,
+            language: {
+                "zeroRecords": "No se encontraron PX",
+                "info": "_TOTAL_  PX",
+                "search": "",
+                "infoEmpty": "",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Último",
+                    "next": "Siguiente",
+                    "previous": "Anterior",
+                },
+                "select": {
+                    "rows": " %d filas seleccionadas"
+                },
+            },
+            data: PX,
+            order: [[8, 'desc']],
+            columns: [
+                { 'data': 'Nombre', className: "text-center" },
+                { 'data': 'PrimerApellido', className: "text-center" },
+                { 'data': 'SegundoApellido', className: "text-center" },
+                //{ 'data': 'UnidadAfiliacion', className: "text-center" },
+                {
+                    "data": "UnidadAfiliacion", className: "text-center", render: function (data, type, row) {
+                        if (row.UnidadAfiliacion == 1 ) {
+                            return '<h8 style="color:black; ">Unidad habitacional I.</h8>';
+                        }
+                        if (row.UnidadAfiliacion == 2) {
+                            return '<h8 style="color:black; ">Módulo dental Apodaca</h8>';
+                        }
+                        if (row.UnidadAfiliacion == 3) {
+                            return '<h8 style="color:black; ">Pueblo Nuevo</h8>';
+                        }
+                        if (row.UnidadAfiliacion == 4) {
+                            return '<h8 style="color:black; ">Vicente Guerrero</h8>';
+                        }
+                        if (row.UnidadAfiliacion == 5) {
+                            return '<h8 style="color:black; ">San Rafael</h8>';
+                        }
+                        if (row.UnidadAfiliacion == 6) {
+                            return '<h8 style="color:black; ">21 de enero</h8>';
+                        }
+                        if (row.UnidadAfiliacion == 7) {
+                            return '<h8 style="color:black; ">Clínica de atención int.</h8>';
+                        }
+                        if (row.UnidadAfiliacion == 8) {
+                            return '<h8 style="color:black; ">Módulo dental Guadalupe</h8>';
+                        }
+                        if (row.UnidadAfiliacion == 9) {
+                            return '<h8 style="color:black; ">Ciénega de Flores</h8>';
+                        }
+                    }
+                },
+                { 'data': 'Expediente', className: "text-center" },
+                { 'data': 'CURP', className: "text-center" },
+                { 'data': 'Sexo', className: "text-center" },
+                { 'data': 'Edad', className: "text-center" },
+                { 'data': 'FechaRegistro', className: "text-center" },
+                {
+                    "className": 'text-center',
+                    "orderable": false,
+                    "data": null,
+                    "defaultContent": '<button title="Ver Detalle" id="VerDetalle" class="btn btn-success fa fa-address-card" data-toggle="modal" ></button>',
+                    "target": -2
+                },
+                {
+                    "className": 'text-center',
+                    "orderable": false,
+                    "data": null,
+                    "defaultContent": '<button title="Editar" id="Editar" class="btn btn-primary fa fa-pencil" data-toggle="modal" ></button>',
+                    "target": -2
+                },
+                {
+                    "className": 'text-center',
+                    "orderable": false,
+                    "data": null,
+                    "defaultContent": '<button title="Eliminar" id="Eliminar" class="btn btn-danger fa fa-times-circle" data-toggle="modal" ></button>',
+                    "target": -2
+                }
+            ],
+            columnDefs: [
+                { "visible": false, "targets": 8 },
+            ]
+        });
+    }
+
+    $('#TblPaciente tbody').on('click', '#VerDetalle', function () {
+        var tr = $(this).closest('tr');
+        row = $('#TblPaciente').DataTable().row(tr);
+        id = row.data().Id;
+
+        window.location = encodeURI('@Url.Action("Details", "Derechohabiente")?id=' + id)
+    });
+
+    $('#TblPaciente tbody').on('click', '#Editar', function () {
+        var tr = $(this).closest('tr');
+        row = $('#TblPaciente').DataTable().row(tr);
+        id = row.data().Id;
+
+        window.location = encodeURI('@Url.Action("Edit", "Derechohabiente")?id=' + id)
+    });
+
+    $('#TblPaciente tbody').on('click', '#Eliminar', function () {
+        var tr = $(this).closest('tr');
+        row = $('#TblPaciente').DataTable().row(tr);
+        ID = row.data().Id;
+
+        Swal.fire({
+            title: '¿Desea eliminar al PX?',
+            showDenyButton: true,
+            showCancelButton: false,
+            confirmButtonText: 'Si',
+            denyButtonText: `Cancelar`,
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                $.ajax({
+                    url: '@Url.Action("Delete", "Derechohabiente")',
+                    method: 'GET',
+                    dataType: 'json',
+                    data: { id: ID },
+                    success: function (data) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: '¡Éxito!',
+                            text: data,
+                            willClose: () => {
+                                location.reload();
+                            }
+                        });
+                    },
+                    error: function (ex) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: '¡Error!',
+
+                        });
+                    }
+                });
+
+            } else if (result.isDenied) {
+                location.reload();
+            }
+        })
+    });
+
+    @*function Editar(id) {
+        window.location = encodeURI('@Url.Action("Edit", "Derechohabiente")?id=' + id)
+        /*window.location = encodeURI('../Derechohabiente/Edit?id=' + id)*/
+    }
+
+    function Detalles(id) {
+        /*window.location = encodeURI('../Derechohabiente/Details?id=' + id)*/
+        window.location = encodeURI('@Url.Action("Details", "Derechohabiente")?id=' + id)
+    }
+
+    function Eliminar(id) {
+
+        Swal.fire({
+            title: '¿Desea eliminar al PX?',
+            showDenyButton: true,
+            showCancelButton: false,
+            confirmButtonText: 'Si',
+            denyButtonText: `Cancelar`,
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                $.ajax({
+                    url: '@Url.Action("Delete", "Derechohabiente")',
+                    method: 'GET',
+                    dataType: 'json',
+                    data: { id: id },
+                    success: function (data) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: '¡Éxito!',
+                            text: data,
+                            willClose: () => {
+                                location.reload();
+                            }
+                        });
+                    },
+                    error: function (ex) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: '¡Error!',
+
+                        });
+                    }
+                });
+
+            } else if (result.isDenied) {
+                location.reload();
+            }
+        })
+
+    };*@
+
+</script>

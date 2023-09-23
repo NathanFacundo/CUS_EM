@@ -1,0 +1,291 @@
+﻿@model IEnumerable<CUS.Models.Paciente>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UnidadAfiliacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CURP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrimerApellido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SegundoApellido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sexo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaNacimiento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nacionalidad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EntidadNacimiento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Edad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Expediente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dir_Calle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dir_Numero)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dir_CP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dir_Colonia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dir_Municipio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dir_EntidadFed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefono1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefono2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RFC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EstadoCivil)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Escolaridad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ocupacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ServicioSalud)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ServicioSalud_Extra)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DE_Indigena)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DE_Migrante)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DE_Afroamericano)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BA_Visual)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BA_Auditiva)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BA_Fisica)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BA_Mental)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BA_Idioma)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BA_Idioma_Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BA_Analfabeta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CE_Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CE_Calle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CE_Numero)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CE_CP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CE_Colonia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CE_Municipio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CE_EntidadFed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CE_Telefono)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnidadAfiliacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CURP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrimerApellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SegundoApellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sexo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaNacimiento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nacionalidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EntidadNacimiento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Edad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Expediente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dir_Calle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dir_Numero)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dir_CP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dir_Colonia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dir_Municipio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dir_EntidadFed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefono1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefono2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RFC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EstadoCivil)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Escolaridad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ocupacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServicioSalud)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServicioSalud_Extra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DE_Indigena)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DE_Migrante)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DE_Afroamericano)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BA_Visual)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BA_Auditiva)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BA_Fisica)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BA_Mental)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BA_Idioma)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BA_Idioma_Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BA_Analfabeta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CE_Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CE_Calle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CE_Numero)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CE_CP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CE_Colonia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CE_Municipio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CE_EntidadFed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CE_Telefono)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            </td>
+        </tr>
+    }
+
+</table>

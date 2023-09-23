@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProyectoEMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'ProyectoEM.dbo.UsuarioUnidad' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="UsuarioUnidad">
+          <Property Name="id" Type="int" />
+          <Property Name="usuario" Type="varchar" MaxLength="50" />
+          <Property Name="unidad" Type="int" />
+          <Property Name="fecha" Type="datetime" />
+          <Property Name="estatus" Type="int" />
+        </EntityType>-->
+  <EntityContainer Name="ProyectoEMModelStoreContainer" />
+</Schema>
