@@ -10,9 +10,9 @@
     }
 
     #myModal .modal-dialog {
-        max-width:none;
+        max-width: none;
         height: 100%;
-        margin:0;
+        margin: 0;
     }
 
     /*#myModal {
@@ -79,25 +79,170 @@
 </div>
 
 
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
         <div class="modal-content">
-            <div class="model-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Historia Clínica</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="model-body">
-                <p>...</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+            <div class="modal-body">
+                <p>
+
+                    <h4 class="collapsed" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        Ficha de Identificación <i class="fa fa-plus-circle"></i>
+                    </h4>
+
+                </p>
+
+                <div class="collapse" id="collapseExample">
+                    <div class="card card-body">
+
+                        <p>
+                            ¿El paciente trae acompañante? <span id="acompanante"></span>
+                        </p>
+                        <p>
+                            Acompañante Especificado <span id="NombreAcompa"></span>
+                        </p>
+
+                        <p>
+                            ¿Padece de alguna alergia? <span id="alergia"></span>
+                        </p>
+                        <p>
+                            Alergia Especificada <span id="NombreAlergia"></span>
+                        </p>
+
+                        <p>
+                            Motivo de consulta <span id="MotivoCons"></span>
+                        </p>
+                    </div>
+                </div>
+
+                <hr />
+
+                <p>
+                    <h4 data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
+                        Evaluacion Social <i class="fa fa-plus-circle"></i>
+                    </h4>
+                </p>
+
+                <div class="collapse" id="collapseExample2">
+                    <div class="card card-body">
+                        <p>
+                            Estado Civil
+                        </p>
+                        <p>
+                            Número de personas que viven en el domicilio
+                        </p>
+                        <p>
+                            ¿Hay hacinamiento?
+                        </p>
+                        <p>
+                            Escolaridad
+                        </p>
+                        <p>
+                            Grado Escolar
+                        </p>
+                        <p>
+                            Promedio escolar
+                        </p>
+                        <p>
+                            Ha reprobado un año escolar
+                        </p>
+                        <p>
+                            Reprobado especificación
+                        </p>
+                        <p>
+                            Deserción escolar
+                        </p>
+                        <p>
+                            El paciente acude a guardería/estancia infantil
+                        </p>
+                        <p>
+                            Cuenta con servicios de salud
+                        </p>
+                        <p>
+                            Quien cuida del paciente
+                        </p>
+                        <p>
+                            Tiene problemas con compañeros
+                        </p>
+                        <p>
+                            Tiene problemas con maestros
+                        </p>
+                        <p>
+                            Ocupación
+                        </p>
+                        <p>
+                            Tipo de trabajo
+                        </p>
+                        <p>
+                            Tiene riesgo social
+                        </p>
+                    </div>
+                </div>
+
+                <hr />
+
+                <p>
+                    <h4 data-toggle="collapse" data-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample">
+                        Valoración familiar <i class="fa fa-plus-circle"></i>
+                    </h4>
+                </p>
+
+                <div class="collapse" id="collapseExample3">
+                    <div class="card card-body">
+                        <p>
+                            La mamá del paciente actualmente se encuentra
+                        </p>
+                        <p>
+                            Edad de la mamá
+                        </p>
+                        <p>
+                            Grado escolar de la mamá
+                        </p>
+                        <p>
+                            Ocupación de la mamá
+                        </p>
+                        <p>
+                            Tipo de trabajo de la mamá
+                        </p>
+                        <p>
+                            El papá del paciente actualmente se encuentra
+                        </p>
+                        <p>
+                            Edad del papá
+                        </p>
+                        <p>
+                            Grado escolar del papá
+                        </p>
+                        <p>
+                            Ocupación del papá
+                        </p>
+                        <p>
+                            Tipo de trabajo del papá
+                        </p>
+                        <p>
+                            Con quien vive
+                        </p>
+                        <p>Tiene Hermanos</p>
+                        <p>Cuantos hermanos tiene</p>
+                        <p>Padece alguna enfermedad</p>
+                        <p>Alguien se involucra en su tratamiento</p>
+                        <p>Quien se involucra en su tratamiento</p>
+                        <p>Riesgo Social</p>
+                    </div>
+                </div>
+
+                <hr />
+
+
             </div>
         </div>
     </div>
 </div>
+
 
 
 
@@ -247,6 +392,7 @@
 
         //Este es el Identificador armado que se inserta en cada tbl de la H.C.
         var Clave_hc_px = row.data().Clave;
+
         //alert(Clave_hc_px);
 
         $.ajax({
@@ -255,7 +401,218 @@
 		    dataType: 'json',
             data: { Clave_hc_px: Clave_hc_px },
 		    success: function(data) {
-                
+                //hc_ficha_identificacion
+                $("#acompanante").text(data.acompanante);
+                $("#NombreAcompa").text(data.NombreAcompa);
+                $("#alergia").text(data.alergia);
+                $("#NombreAlergia").text(data.NombreAlergia);
+                $("#MotivoCons").text(data.MotivoCons);
+                //hc_evaluacion_social
+                $("#estadocivil").text(data.estadocivil);
+                $("#numeropersonas").text(data.numeropersonas);
+                $("#numerohabitaciones").text(data.numerohabitaciones);
+                $("#hacinamiento").text(data.hacinamiento);
+                $("#escolaridad").text(data.escolaridad);
+                $("#GradoEsc").text(data.GradoEsc);
+                $("#PromedioEsc").text(data.PromedioEsc);
+                $("#reprobado").text(data.reprobado);
+                $("#EspecifiqueReprobado").text(data.EspecifiqueReprobado);
+                $("#Desercion").text(data.Desercion);
+                $("#Guarderia").text(data.Guarderia);
+                $("#Cuidador").text(data.Cuidador);
+                $("#Problemas").text(data.Problemas);
+                $("#ProblemasMaestros").text(data.ProblemasMaestros);
+                $("#Ocupacio").text(data.Ocupacio);
+                $("#TipoTrab").text(data.TipoTrab);
+                $("#RiesgoSos").text(data.RiesgoSos);
+                $("#ServicioSal").text(data.ServicioSal);
+                //hc_valoracion_familiar
+                $("#mamaPaciente").text(data.mamaPaciente);
+                $("#EdadMama").text(data.EdadMama);
+                $("#GradoMama").text(data.GradoMama);
+                $("#OcupacionMama").text(data.OcupacionMama);
+                $("#TipoTrabajoMama").text(data.TipoTrabajoMama);
+                $("#papaPaciente").text(data.papaPaciente);
+                $("#EdadPapa").text(data.EdadPapa);
+                $("#GradoPapa").text(data.GradoPapa);
+                $("#OcupacionPapa").text(data.OcupacionPapa);
+                $("#TipoTrabajoPapa").text(data.TipoTrabajoPapa);
+                $("#ViveCon").text(data.ViveCon);
+                $("#tieneHermanos").text(data.tieneHermanos);
+                $("#CuantosHermanos").text(data.CuantosHermanos);
+                $("#EspecifiqueEnf").text(data.EspecifiqueEnf);
+                $("#involucraTratamiento").text(data.involucraTratamiento);
+                $("#EspecifiqueInvol").text(data.EspecifiqueInvol);
+                $("#riesgoSocial").text(data.riesgoSocial);
+                //hc_evaliacion_economica
+                $("#beneficiarioPrograma").text(data.beneficiarioPrograma);
+                $("#EspecifiqueBeneficiario").text(data.EspecifiqueBeneficiario);
+                $("#rolEconimico").text(data.rolEconimico);
+                $("#EspecifiqueRol").text(data.EspecifiqueRol);
+                $("#riesgoEconomico").text(data.riesgoEconomico);
+                //hc_valores_creencias
+                $("#perteneceReligion").text(data.perteneceReligion);
+                $("#religion").text(data.religion);
+                $("#EspecifiqueReligion").text(data.EspecifiqueReligion);
+                $("#creenciaReligiosa").text(data.creenciaReligiosa);
+                $("#EspecifiqueCreencia").text(data.EspecifiqueCreencia);
+                $("#costumbreValores").text(data.costumbreValores);
+                $("#EspecifiqueCostumbres").text(data.EspecifiqueCostumbres);
+                //hc_factores_riesgo_psicologicos
+                $("#CambiosSueño").text(data.CambiosSueño);
+                $("#CambiosEnergia").text(data.CambiosEnergia);
+                $("#CambiosApetito").text(data.CambiosApetito);
+                $("#Pesimismo").text(data.Pesimismo);
+                $("#Irritabilidad").text(data.Irritabilidad);
+                $("#PerdidaPlacer").text(data.PerdidaPlacer);
+                $("#PalpitacionesFuertes").text(data.PalpitacionesFuertes);
+                $("#SensacionAahogo").text(data.SensacionAahogo);
+                $("#MiedoPreocupacion").text(data.MiedoPreocupacion);
+                $("#IdeacionSuicida").text(data.IdeacionSuicida);
+                //hc_habitos
+                $("#HorasSueño").text(data.HorasSueño);
+                $("#TieneInsomnio").text(data.TieneInsomnio);
+                $("#TieneEnuresis").text(data.TieneEnuresis);
+                $("#TienePesadillas").text(data.TienePesadillas);
+                $("#HorasOcio").text(data.HorasOcio);
+                $("#ActividadFisica").text(data.ActividadFisica);
+                $("#TiempoActividadFisica").text(data.TiempoActividadFisica);
+                $("#FrecuenciaActividadFisica").text(data.FrecuenciaActividadFisica);
+                $("#Check_Adicciones_Padre").text(data.Check_Adicciones_Padre);
+                $("#Check_Adicciones_Madre").text(data.Check_Adicciones_Madre);
+                $("#Check_Adicciones_Ambas").text(data.Check_Adicciones_Ambas);
+                $("#Check_Adicciones_NA").text(data.Check_Adicciones_NA);
+                $("#Check_Cardiopatia_Padre").text(data.Check_Cardiopatia_Padre);
+                $("#Check_Cardiopatia_Madre").text(data.Check_Cardiopatia_Madre);
+                $("#Check_Cardiopatia_Ambas").text(data.Check_Cardiopatia_Ambas);
+                $("#Check_Cardiopatia_NA").text(data.Check_Cardiopatia_NA);
+                $("#Check_Diabetes_Padre").text(data.Check_Diabetes_Padre);
+                $("#Check_Diabetes_Madre").text(data.Check_Diabetes_Madre);
+                $("#Check_Diabetes_Ambas").text(data.Check_Diabetes_Ambas);
+                $("#Check_Diabetes_NA").text(data.Check_Diabetes_NA);
+                $("#Check_Dislipidemias_Padre").text(data.Check_Dislipidemias_Padre);
+                $("#Check_Dislipidemias_Madre").text(data.Check_Dislipidemias_Madre);
+                $("#Check_Dislipidemias_Ambas").text(data.Check_Dislipidemias_Ambas);
+                $("#Check_Dislipidemias_NA").text(data.Check_Dislipidemias_NA);
+                $("#Check_Epilepsia_Padre").text(data.Check_Epilepsia_Padre);
+                $("#Check_Epilepsia_Madre").text(data.Check_Epilepsia_Madre);
+                $("#Check_Epilepsia_Ambas").text(data.Check_Epilepsia_Ambas);
+                $("#Check_Epilepsia_NA").text(data.Check_Epilepsia_NA);
+                $("#Check_Hipertension_Padre").text(data.Check_Hipertension_Padre);
+                $("#Check_Hipertension_Madre").text(data.Check_Hipertension_Madre);
+                $("#Check_Hipertension_Ambas").text(data.Check_Hipertension_Ambas);
+                $("#Check_Hipertension_NA").text(data.Check_Hipertension_NA);
+                $("#Check_Infectocontagiosas_Padre").text(data.Check_Infectocontagiosas_Padre);
+                $("#Check_Infectocontagiosas_Madre").text(data.Check_Infectocontagiosas_Madre);
+                $("#Check_Infectocontagiosas_Ambas").text(data.Check_Infectocontagiosas_Ambas);
+                $("#Check_Infectocontagiosas_NA").text(data.Check_Infectocontagiosas_NA);
+                $("#Check_Malformaciones_Padre").text(data.Check_Malformaciones_Padre);
+                $("#Check_Malformaciones_Madre").text(data.Check_Malformaciones_Madre);
+                $("#Check_Malformaciones_Ambas").text(data.Check_Malformaciones_Ambas);
+                $("#Check_Malformaciones_NA").text(data.Check_Malformaciones_NA);
+                $("#Check_Nefropatias_Padre").text(data.Check_Nefropatias_Padre);
+                $("#Check_Nefropatias_Madre").text(data.Check_Nefropatias_Madre);
+                $("#Check_Nefropatias_Ambas").text(data.Check_Nefropatias_Ambas);
+                $("#Check_Nefropatias_NA").text(data.Check_Nefropatias_NA);
+                $("#Check_Obesidad_Padre").text(data.Check_Obesidad_Padre);
+                $("#Check_Obesidad_Madre").text(data.Check_Obesidad_Madre);
+                $("#Check_Obesidad_Ambas").text(data.Check_Obesidad_Ambas);
+                $("#Check_Obesidad_NA").text(data.Check_Obesidad_NA);
+                $("#Check_Oncologicos_Padre").text(data.Check_Oncologicos_Padre);
+                $("#Check_Oncologicos_Madre").text(data.Check_Oncologicos_Madre);
+                $("#Check_Oncologicos_Ambas").text(data.Check_Oncologicos_Ambas);
+                $("#Check_Oncologicos_NA").text(data.Check_Oncologicos_NA);
+                //hc_antecedentes_perinatales
+                $("#NumeroEmbarazo").text(data.NumeroEmbarazo);
+                $("#EnfermedadEmbarazo").text(data.EnfermedadEmbarazo);
+                $("#EspecifiqueEnfermedadEmbarazo").text(data.EspecifiqueEnfermedadEmbarazo);
+                $("#TratamientoEmbarazo").text(data.TratamientoEmbarazo);
+                $("#EspecifiqueTratamientoEmbarazo").text(data.EspecifiqueTratamientoEmbarazo);
+                $("#LugarParto").text(data.LugarParto);
+                $("#EspecifiqueLugarParto").text(data.EspecifiqueLugarParto);
+                $("#EdadGestional").text(data.EdadGestional);
+                $("#EspecifiqueEdadGestional").text(data.EspecifiqueEdadGestional);
+                $("#Apgar").text(data.Apgar);
+                $("#EspecifiqueApgar").text(data.EspecifiqueApgar);
+                $("#TipoParto").text(data.TipoParto);
+                $("#PartoFue").text(data.PartoFue);
+                $("#EspecifiquePartoFue").text(data.EspecifiquePartoFue);
+                $("#EspecifiqueMotivoCesarea").text(data.EspecifiqueMotivoCesarea);
+                $("#ComplicacionObs").text(data.ComplicacionObs);
+                $("#EspecifiqueComplicacionObs").text(data.EspecifiqueComplicacionObs);
+                $("#TamizMetabolico").text(data.TamizMetabolico);
+                $("#TamizMetabolicoOpciones").text(data.TamizMetabolicoOpciones);
+                $("#TamizAuditivo").text(data.TamizAuditivo);
+                $("#TamizAuditivoOpciones").text(data.TamizAuditivoOpciones);
+                //hc_antecedentes_patologicos
+                $("#Antecedentes").text(data.Antecedentes);
+                $("#PxHospitalizado").text(data.PxHospitalizado);
+                $("#EspecifiqueHospitalizado").text(data.EspecifiqueHospitalizado);
+                $("#RealizadoCirugia").text(data.RealizadoCirugia);
+                $("#EspecifiqueCirugia").text(data.EspecifiqueCirugia);
+                $("#CheckRespiratorios").text(data.CheckRespiratorios);
+                $("#CheckEndocrinologicos").text(data.CheckEndocrinologicos);
+                $("#CheckCardiovasculares").text(data.CheckCardiovasculares);
+                $("#CheckOncologicos").text(data.CheckOncologicos);
+                $("#CheckSaludMental").text(data.CheckSaludMental);
+                $("#CheckNeurologicos").text(data.CheckNeurologicos);
+                $("#CheckInfectoContagiosos").text(data.CheckInfectoContagiosos);
+                $("#CheckProblemasAparatoR").text(data.CheckProblemasAparatoR);
+                $("#CheckProblemasGastro").text(data.CheckProblemasGastro);
+                $("#CheckReumatologicos").text(data.CheckReumatologicos);
+                $("#CheckNinguna").text(data.CheckNinguna);
+                //hc_inmunizaciones
+                $("#CartillaVacunacion").text(data.CartillaVacunacion);
+                $("#EsquemaVacunacion").text(data.EsquemaVacunacion);
+                $("#EspecifiqueVacuna").text(data.EspecifiqueVacuna);
+                //hc_historial_consumo
+                $("#TomaAlcohol").text(data.TomaAlcohol);
+                $("#TomaAlcoholFrecuencia").text(data.TomaAlcoholFrecuencia);
+                $("#CantidadAlcohol").text(data.CantidadAlcohol);
+                $("#Fuma").text(data.Fuma);
+                $("#EdadInicio").text(data.EdadInicio);
+                $("#ActualmenteFuma").text(data.ActualmenteFuma);
+                $("#TiempoInactividadFuma").text(data.TiempoInactividadFuma);
+                $("#TipoFuma").text(data.TipoFuma);
+                $("#FrecuenciaFuma").text(data.FrecuenciaFuma);
+                $("#CantidadFuma").text(data.CantidadFuma);
+                $("#ConsumeDroga").text(data.ConsumeDroga);
+                $("#TipoDrogaConsume").text(data.TipoDrogaConsume);
+                $("#FrecuenciaDroga").text(data.FrecuenciaDroga);
+                $("#CantidadDrogaConsume").text(data.CantidadDrogaConsume);
+                //hc_alimentacion
+                $("#TipoLactancia").text(data.TipoLactancia);
+                $("#TiempoLactancia").text(data.TiempoLactancia);
+                $("#EdadAblactacion").text(data.EdadAblactacion);
+                $("#AlimentosInicio").text(data.AlimentosInicio);
+                $("#EdadIntegracion").text(data.EdadIntegracion);
+                //hc_antecedentes_desarrollo
+                $("#SostuvoCabeza").text(data.SostuvoCabeza);
+                $("#EspecifiqueSostuvoCabeza").text(data.EspecifiqueSostuvoCabeza);
+                $("#SeSento").text(data.SeSento);
+                $("#EspecifiqueSeSento").text(data.EspecifiqueSeSento);
+                $("#Camino").text(data.Camino);
+                $("#EspecifiqueCamino").text(data.EspecifiqueCamino);
+                $("#Habla").text(data.Habla);
+                $("#EspecifiqueHabla").text(data.EspecifiqueHabla);
+                $("#ControlEsfinteres").text(data.ControlEsfinteres);
+                $("#EspecifiqueControlEsf").text(data.EspecifiqueControlEsf);
+                $("#PruebaEDI").text(data.PruebaEDI);
+                $("#EspecifiquePruebaEDI").text(data.EspecifiquePruebaEDI);
+                //hc_antecedentes_ginecoobstetricos
+                $("#Menarquia").text(data.Menarquia);
+                $("#MotivoMenarquia").text(data.MotivoMenarquia);
+                $("#RitmoMenarquia").text(data.RitmoMenarquia);
+                $("#CantidadMenarquia").text(data.CantidadMenarquia);
+                $("#ColoracionMenarquia").text(data.ColoracionMenarquia);
+                $("#EspecifiqueColoracionMenarquia").text(data.EspecifiqueColoracionMenarquia);
+                $("#VidaSexual").text(data.VidaSexual);
+                $("#NumeroParejasSexuales").text(data.NumeroParejasSexuales);
+                $("#TipoMenarquia").text(data.TipoMenarquia);
+
+                //Mostrar modal
+                $('#exampleModal').modal('show');
+
 		    },
 		    error: function(ex) {
 			    Swal.fire({

@@ -2061,20 +2061,23 @@ namespace CUS.Areas.Admin.Controllers
             public string TipoMenarquia { get; set; }
         }
 
+
         [HttpPost]
         public ActionResult ConsultarHC(string Clave_hc_px)//Este parametro lo recivimos de la vista, "Clave_hc_px" viene siendo el Identificador armado de la HC que se desea ver
         {
             try
             {
-                Clave_hc_px = "MDA1000HC9";
+                //Clave_hc_px = "MDA1000HC9";
 
                 //Creamos variable de tipo lista con las propiedades de las tablas que tendremos en el Select
-                List<Propiedades_HC> HC = new List<Propiedades_HC>();
+                //List<Propiedades_HC> HC = new List<Propiedades_HC>();
+
+                Propiedades_HC HC = new Propiedades_HC();
 
                 //Hacemos el Select de las primeras 3 tablas de la HC
                 //Como "Clave_hc_px" está en cada tabla (en caso que si se haya hecho esa tabla al crear la HC), los Joins se hicieron en base a esa columna en cada tabla, entonces el Where será en base a esa tabla solo de la primera tabla
                 //Recordemos que al crear la HC, puede que alguna(s) tablas no se llenen , por eso ágregué Left Join, según yo eso puede funcionar para que muestre Null cuando no encuentre registro en la tabla 
-                string query = 
+                string query =
                     "SELECT FI.acompanante, FI.NombreAcompa, FI.alergia, FI.NombreAlergia, FI.MotivoCons, " +
                     "VS.estadocivil, VS.numeropersonas, VS.numerohabitaciones, VS.hacinamiento, VS.escolaridad, VS.GradoEsc, VS.PromedioEsc, VS.reprobado, VS.EspecifiqueReprobado, VS.Desercion, VS.Guarderia, VS.Cuidador, VS.Problemas, VS.ProblemasMaestros, VS.Ocupacio, VS.TipoTrab, VS.RiesgoSos, VS.ServicioSal, " +
                     "VF.mamaPaciente, VF.EdadMama, VF.GradoMama, VF.OcupacionMama, VF.TipoTrabajoMama, VF.papaPaciente, VF.EdadPapa, VF.GradoPapa, VF.OcupacionPapa, VF.TipoTrabajoPapa, VF.ViveCon, VF.tieneHermanos, VF.CuantosHermanos, VF.EspecifiqueEnf, VF.involucraTratamiento, VF.EspecifiqueInvol, VF.riesgoSocial, " +
@@ -2107,9 +2110,10 @@ namespace CUS.Areas.Admin.Controllers
                                     "WHERE HCli.Clave_hc_px = '" + Clave_hc_px + "'";
 
                 var result = db.Database.SqlQuery<Propiedades_HC>(query);
-                HC = result.ToList();
+                HC = result.FirstOrDefault();
 
-                return Json(new { PACIENTES = HC }, JsonRequestBehavior.AllowGet);
+                //return Json(new { PACIENTES = HC }, JsonRequestBehavior.AllowGet);
+                return new JsonResult { Data = HC, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
             catch (Exception ex)
             {
