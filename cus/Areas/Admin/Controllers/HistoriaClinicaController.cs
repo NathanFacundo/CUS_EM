@@ -80,16 +80,6 @@ namespace CUS.Areas.Admin.Controllers
                 var fechaDT = DateTime.Parse(fecha);
                 var id_hc = 0;
 
-                //if(HistoriaClinica.Id_HistoriaClinica == null)
-                //{
-                //    id_hc = 0;
-                //}
-                //else
-                //{
-                //    id_hc = (int)HistoriaClinica.Id_HistoriaClinica;
-                //}
-
-
                 //Buscamos al px del que se le quiere hacer la H.C.
                 var paciente = (from a in db.Paciente
                                 where a.Expediente == expediente
@@ -104,13 +94,27 @@ namespace CUS.Areas.Admin.Controllers
                               OrderByDescending(r => r.FechaRegistroHC)
                               .FirstOrDefault();
 
-                    DateTime fechaLimite = (DateTime)fechaUltimoRegistro.FechaRegistroHC;
+                    //DateTime fechaLimite = (DateTime)fechaUltimoRegistro.FechaRegistroHC;
+                    //DateTime fl3horas = fechaLimite.AddHours(+3);
+                    //bool pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
+                    //.Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC >= fechaDT);
 
-                    DateTime fl3horas = fechaLimite.AddHours(+3);
+                    bool pacienteTieneRegistroEnUltimas3Horas;
+                    DateTime fechaLimite = DateTime.Now;
 
+                    //si NO existe registro en la bd en la tbl HistoriaClinica por default pacienteTieneRegistroEnUltimas3Horas será null, quiere decir que se creará un registro nuevo
+                    if (fechaUltimoRegistro == null)
+                    {
+                        pacienteTieneRegistroEnUltimas3Horas = false;
+                    }
+                    else
+                    {
+                        fechaLimite = (DateTime)fechaUltimoRegistro.FechaRegistroHC;
+                        DateTime fl3horas = fechaLimite.AddHours(+3);
 
-                    bool pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
-                    .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC >= fechaDT);
+                        pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
+                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC >= fechaDT);
+                    }
 
                     var Id_claveHC = "";
                     if (pacienteTieneRegistroEnUltimas3Horas)// El paciente ya tiene un registro en las últimas 3 horas
@@ -141,10 +145,7 @@ namespace CUS.Areas.Admin.Controllers
                     Historia.Clave_hc_px = Id_claveHC;
                     db.hc_ficha_identificacion.Add(Historia);
                     db.SaveChanges();
-
                 }
-
-
                 return Json(new { MENSAJE = "Succe: " }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
@@ -171,7 +172,6 @@ namespace CUS.Areas.Admin.Controllers
                 //    id_hc = (int)HistoriaClinica.Id_HistoriaClinica;
                 //}
 
-
                 //Buscamos al px del que se le quiere hacer la H.C.
                 var paciente = (from a in db.Paciente
                                 where a.Expediente == expediente
@@ -186,13 +186,27 @@ namespace CUS.Areas.Admin.Controllers
                               OrderByDescending(r => r.FechaRegistroHC)
                               .FirstOrDefault();
 
-                    DateTime fechaLimite = (DateTime)fechaUltimoRegistro.FechaRegistroHC;
+                    //DateTime fechaLimite = (DateTime)fechaUltimoRegistro.FechaRegistroHC;
+                    //DateTime fl3horas = fechaLimite.AddHours(+3);
+                    //bool pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
+                    //.Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC >= fechaDT);
 
-                    DateTime fl3horas = fechaLimite.AddHours(+3);
+                    bool pacienteTieneRegistroEnUltimas3Horas;
+                    DateTime fechaLimite = DateTime.Now;
 
+                    //si NO existe registro en la bd en la tbl HistoriaClinica por default pacienteTieneRegistroEnUltimas3Horas será null, quiere decir que se creará un registro nuevo
+                    if (fechaUltimoRegistro == null)
+                    {
+                        pacienteTieneRegistroEnUltimas3Horas = false;
+                    }
+                    else
+                    {
+                        fechaLimite = (DateTime)fechaUltimoRegistro.FechaRegistroHC;
+                        DateTime fl3horas = fechaLimite.AddHours(+3);
 
-                    bool pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
-                    .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC >= fechaDT);
+                        pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
+                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC >= fechaDT);
+                    }
 
                     var Id_claveHC = "";
                     if (pacienteTieneRegistroEnUltimas3Horas)// El paciente ya tiene un registro en las últimas 3 horas
@@ -228,10 +242,7 @@ namespace CUS.Areas.Admin.Controllers
                     Historia.Clave_hc_px = Id_claveHC;
                     db.hc_evaluacion_social.Add(Historia);
                     db.SaveChanges();
-
                 }
-
-
                 return Json(new { MENSAJE = "Succe: " }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
@@ -239,7 +250,6 @@ namespace CUS.Areas.Admin.Controllers
                 return Json(new { MENSAJE = "Error: Error de sistema: " + ex.Message }, JsonRequestBehavior.AllowGet);
             }
         }
-
 
         [HttpPost]
         public ActionResult valoracionfamiliar(hc_valoracion_familiar HistoriaClinica, string expediente)
@@ -259,7 +269,6 @@ namespace CUS.Areas.Admin.Controllers
                 //    id_hc = (int)HistoriaClinica.Id_HistoriaClinica;
                 //}
 
-
                 //Buscamos al px del que se le quiere hacer la H.C.
                 var paciente = (from a in db.Paciente
                                 where a.Expediente == expediente
@@ -274,13 +283,27 @@ namespace CUS.Areas.Admin.Controllers
                               OrderByDescending(r => r.FechaRegistroHC)
                               .FirstOrDefault();
 
-                    DateTime fechaLimite = (DateTime)fechaUltimoRegistro.FechaRegistroHC;
+                    //DateTime fechaLimite = (DateTime)fechaUltimoRegistro.FechaRegistroHC;
+                    //DateTime fl3horas = fechaLimite.AddHours(+3);
+                    //bool pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
+                    //.Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC >= fechaDT);
 
-                    DateTime fl3horas = fechaLimite.AddHours(+3);
+                    bool pacienteTieneRegistroEnUltimas3Horas;
+                    DateTime fechaLimite = DateTime.Now;
 
+                    //si NO existe registro en la bd en la tbl HistoriaClinica por default pacienteTieneRegistroEnUltimas3Horas será null, quiere decir que se creará un registro nuevo
+                    if (fechaUltimoRegistro == null)
+                    {
+                        pacienteTieneRegistroEnUltimas3Horas = false;
+                    }
+                    else
+                    {
+                        fechaLimite = (DateTime)fechaUltimoRegistro.FechaRegistroHC;
+                        DateTime fl3horas = fechaLimite.AddHours(+3);
 
-                    bool pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
-                    .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC >= fechaDT);
+                        pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
+                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC >= fechaDT);
+                    }
 
                     var Id_claveHC = "";
                     if (pacienteTieneRegistroEnUltimas3Horas)// El paciente ya tiene un registro en las últimas 3 horas
@@ -323,10 +346,7 @@ namespace CUS.Areas.Admin.Controllers
                     Historia.Clave_hc_px = Id_claveHC;
                     db.hc_valoracion_familiar.Add(Historia);
                     db.SaveChanges();
-
                 }
-
-
                 return Json(new { MENSAJE = "Succe: " }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
@@ -334,7 +354,6 @@ namespace CUS.Areas.Admin.Controllers
                 return Json(new { MENSAJE = "Error: Error de sistema: " + ex.Message }, JsonRequestBehavior.AllowGet);
             }
         }
-
 
         [HttpPost]
         public ActionResult evaluacioneconomica(hc_evaluacion_economica HistoriaClinica, string expediente)
@@ -359,13 +378,27 @@ namespace CUS.Areas.Admin.Controllers
                               OrderByDescending(r => r.FechaRegistroHC)
                               .FirstOrDefault();
 
-                    DateTime fechaLimite = (DateTime)fechaUltimoRegistro.FechaRegistroHC;
+                    //DateTime fechaLimite = (DateTime)fechaUltimoRegistro.FechaRegistroHC;
+                    //DateTime fl3horas = fechaLimite.AddHours(+3);
+                    //bool pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
+                    //.Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC >= fechaDT);
 
-                    DateTime fl3horas = fechaLimite.AddHours(+3);
+                    bool pacienteTieneRegistroEnUltimas3Horas;
+                    DateTime fechaLimite = DateTime.Now;
 
+                    //si NO existe registro en la bd en la tbl HistoriaClinica por default pacienteTieneRegistroEnUltimas3Horas será null, quiere decir que se creará un registro nuevo
+                    if (fechaUltimoRegistro == null)
+                    {
+                        pacienteTieneRegistroEnUltimas3Horas = false;
+                    }
+                    else
+                    {
+                        fechaLimite = (DateTime)fechaUltimoRegistro.FechaRegistroHC;
+                        DateTime fl3horas = fechaLimite.AddHours(+3);
 
-                    bool pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
-                    .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC >= fechaDT);
+                        pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
+                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC >= fechaDT);
+                    }
 
                     var Id_claveHC = "";
                     if (pacienteTieneRegistroEnUltimas3Horas)// El paciente ya tiene un registro en las últimas 3 horas
@@ -396,10 +429,7 @@ namespace CUS.Areas.Admin.Controllers
                     Historia.Clave_hc_px = Id_claveHC;
                     db.hc_evaluacion_economica.Add(Historia);
                     db.SaveChanges();
-
                 }
-
-
                 return Json(new { MENSAJE = "Succe: " }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
@@ -407,7 +437,6 @@ namespace CUS.Areas.Admin.Controllers
                 return Json(new { MENSAJE = "Error: Error de sistema: " + ex.Message }, JsonRequestBehavior.AllowGet);
             }
         }
-
 
         [HttpPost]
         public ActionResult valorescreencias(hc_valores_creencias HistoriaClinica, string expediente)
@@ -432,13 +461,27 @@ namespace CUS.Areas.Admin.Controllers
                               OrderByDescending(r => r.FechaRegistroHC)
                               .FirstOrDefault();
 
-                    DateTime fechaLimite = (DateTime)fechaUltimoRegistro.FechaRegistroHC;
+                    //DateTime fechaLimite = (DateTime)fechaUltimoRegistro.FechaRegistroHC;
+                    //DateTime fl3horas = fechaLimite.AddHours(+3);
+                    //bool pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
+                    //.Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC >= fechaDT);
 
-                    DateTime fl3horas = fechaLimite.AddHours(+3);
+                    bool pacienteTieneRegistroEnUltimas3Horas;
+                    DateTime fechaLimite = DateTime.Now;
 
+                    //si NO existe registro en la bd en la tbl HistoriaClinica por default pacienteTieneRegistroEnUltimas3Horas será null, quiere decir que se creará un registro nuevo
+                    if (fechaUltimoRegistro == null)
+                    {
+                        pacienteTieneRegistroEnUltimas3Horas = false;
+                    }
+                    else
+                    {
+                        fechaLimite = (DateTime)fechaUltimoRegistro.FechaRegistroHC;
+                        DateTime fl3horas = fechaLimite.AddHours(+3);
 
-                    bool pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
-                    .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC >= fechaDT);
+                        pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
+                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC >= fechaDT);
+                    }
 
                     var Id_claveHC = "";
                     if (pacienteTieneRegistroEnUltimas3Horas)// El paciente ya tiene un registro en las últimas 3 horas
@@ -471,10 +514,7 @@ namespace CUS.Areas.Admin.Controllers
                     Historia.Clave_hc_px = Id_claveHC;
                     db.hc_valores_creencias.Add(Historia);
                     db.SaveChanges();
-
                 }
-
-
                 return Json(new { MENSAJE = "Succe: " }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
@@ -482,7 +522,6 @@ namespace CUS.Areas.Admin.Controllers
                 return Json(new { MENSAJE = "Error: Error de sistema: " + ex.Message }, JsonRequestBehavior.AllowGet);
             }
         }
-
 
         [HttpPost]
         public ActionResult riesgopsicologico(hc_factores_riesgo_psicologicos HistoriaClinica, string expediente)
@@ -507,13 +546,27 @@ namespace CUS.Areas.Admin.Controllers
                               OrderByDescending(r => r.FechaRegistroHC)
                               .FirstOrDefault();
 
-                    DateTime fechaLimite = (DateTime)fechaUltimoRegistro.FechaRegistroHC;
+                    //DateTime fechaLimite = (DateTime)fechaUltimoRegistro.FechaRegistroHC;
+                    //DateTime fl3horas = fechaLimite.AddHours(+3);
+                    //bool pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
+                    //.Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC >= fechaDT);
 
-                    DateTime fl3horas = fechaLimite.AddHours(+3);
+                    bool pacienteTieneRegistroEnUltimas3Horas;
+                    DateTime fechaLimite = DateTime.Now;
 
+                    //si NO existe registro en la bd en la tbl HistoriaClinica por default pacienteTieneRegistroEnUltimas3Horas será null, quiere decir que se creará un registro nuevo
+                    if (fechaUltimoRegistro == null)
+                    {
+                        pacienteTieneRegistroEnUltimas3Horas = false;
+                    }
+                    else
+                    {
+                        fechaLimite = (DateTime)fechaUltimoRegistro.FechaRegistroHC;
+                        DateTime fl3horas = fechaLimite.AddHours(+3);
 
-                    bool pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
-                    .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC >= fechaDT);
+                        pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
+                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC >= fechaDT);
+                    }
 
                     var Id_claveHC = "";
                     if (pacienteTieneRegistroEnUltimas3Horas)// El paciente ya tiene un registro en las últimas 3 horas
@@ -549,10 +602,7 @@ namespace CUS.Areas.Admin.Controllers
                     Historia.Clave_hc_px = Id_claveHC;
                     db.hc_factores_riesgo_psicologicos.Add(Historia);
                     db.SaveChanges();
-
                 }
-
-
                 return Json(new { MENSAJE = "Hola" }, JsonRequestBehavior.AllowGet);
             }
             catch
@@ -560,8 +610,6 @@ namespace CUS.Areas.Admin.Controllers
                 return Json(new { MENSAJE = "Hola" }, JsonRequestBehavior.AllowGet);
             }
         }
-
-
 
         public class _habitos
         {
@@ -619,7 +667,6 @@ namespace CUS.Areas.Admin.Controllers
             public string Check_Oncologicos_NA { get; set; }
         }
 
-
         [HttpPost]
         public ActionResult habitos(_habitos HistoriaClinica, string expediente)
         {
@@ -643,13 +690,27 @@ namespace CUS.Areas.Admin.Controllers
                               OrderByDescending(r => r.FechaRegistroHC)
                               .FirstOrDefault();
 
-                    DateTime fechaLimite = (DateTime)fechaUltimoRegistro.FechaRegistroHC;
+                    //DateTime fechaLimite = (DateTime)fechaUltimoRegistro.FechaRegistroHC;
+                    //DateTime fl3horas = fechaLimite.AddHours(+3);
+                    //bool pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
+                    //.Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC >= fechaDT);
 
-                    DateTime fl3horas = fechaLimite.AddHours(+3);
+                    bool pacienteTieneRegistroEnUltimas3Horas;
+                    DateTime fechaLimite = DateTime.Now;
 
+                    //si NO existe registro en la bd en la tbl HistoriaClinica por default pacienteTieneRegistroEnUltimas3Horas será null, quiere decir que se creará un registro nuevo
+                    if (fechaUltimoRegistro == null)
+                    {
+                        pacienteTieneRegistroEnUltimas3Horas = false;
+                    }
+                    else
+                    {
+                        fechaLimite = (DateTime)fechaUltimoRegistro.FechaRegistroHC;
+                        DateTime fl3horas = fechaLimite.AddHours(+3);
 
-                    bool pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
-                    .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC >= fechaDT);
+                        pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
+                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC >= fechaDT);
+                    }
 
                     var Id_claveHC = "";
                     if (pacienteTieneRegistroEnUltimas3Horas)// El paciente ya tiene un registro en las últimas 3 horas
@@ -685,7 +746,6 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         Historia.Check_Adicciones_Padre = false;
                     }
-
                     if (HistoriaClinica.Check_Adicciones_Madre == "on")
                     {
                         Historia.Check_Adicciones_Madre = true;
@@ -694,9 +754,6 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         Historia.Check_Adicciones_Madre = false;
                     }
-
-
-
                     if (HistoriaClinica.Check_Adicciones_Ambas == "on")
                     {
                         Historia.Check_Adicciones_Ambas = true;
@@ -705,8 +762,6 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         Historia.Check_Adicciones_Ambas = false;
                     }
-
-
                     if (HistoriaClinica.Check_Adicciones_NA == "on")
                     {
                         Historia.Check_Adicciones_NA = true;
@@ -715,9 +770,6 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         Historia.Check_Adicciones_NA = false;
                     }
-
-
-
                     if (HistoriaClinica.Check_Cardiopatia_Padre == "on")
                     {
                         Historia.Check_Cardiopatia_Padre = true;
@@ -726,8 +778,6 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         Historia.Check_Cardiopatia_Padre = false;
                     }
-
-
                     if (HistoriaClinica.Check_Cardiopatia_Madre == "on")
                     {
                         Historia.Check_Cardiopatia_Madre = true;
@@ -736,8 +786,6 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         Historia.Check_Cardiopatia_Madre = false;
                     }
-
-
                     if (HistoriaClinica.Check_Cardiopatia_Ambas == "on")
                     {
                         Historia.Check_Cardiopatia_Ambas = true;
@@ -746,9 +794,6 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         Historia.Check_Cardiopatia_Ambas = false;
                     }
-
-
-
                     if (HistoriaClinica.Check_Cardiopatia_NA == "on")
                     {
                         Historia.Check_Cardiopatia_NA = true;
@@ -757,9 +802,6 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         Historia.Check_Cardiopatia_NA = false;
                     }
-
-
-
                     if (HistoriaClinica.Check_Diabetes_Padre == "on")
                     {
                         Historia.Check_Diabetes_Padre = true;
@@ -768,9 +810,6 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         Historia.Check_Diabetes_Padre = false;
                     }
-
-
-
                     if (HistoriaClinica.Check_Diabetes_Madre == "on")
                     {
                         Historia.Check_Diabetes_Madre = true;
@@ -779,8 +818,6 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         Historia.Check_Diabetes_Madre = false;
                     }
-
-
                     if (HistoriaClinica.Check_Diabetes_Ambas == "on")
                     {
                         Historia.Check_Diabetes_Ambas = true;
@@ -789,8 +826,6 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         Historia.Check_Diabetes_Ambas = false;
                     }
-
-
                     if (HistoriaClinica.Check_Diabetes_NA == "on")
                     {
                         Historia.Check_Diabetes_NA = true;
@@ -799,9 +834,6 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         Historia.Check_Diabetes_NA = false;
                     }
-
-
-
                     if (HistoriaClinica.Check_Dislipidemias_Padre == "on")
                     {
                         Historia.Check_Dislipidemias_Padre = true;
@@ -810,9 +842,6 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         Historia.Check_Dislipidemias_Padre = false;
                     }
-
-
-
                     if (HistoriaClinica.Check_Dislipidemias_Madre == "on")
                     {
                         Historia.Check_Dislipidemias_Madre = true;
@@ -821,9 +850,6 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         Historia.Check_Dislipidemias_Madre = false;
                     }
-
-
-
                     if (HistoriaClinica.Check_Dislipidemias_Ambas == "on")
                     {
                         Historia.Check_Dislipidemias_Ambas = true;
@@ -832,8 +858,6 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         Historia.Check_Dislipidemias_Ambas = false;
                     }
-
-
                     if (HistoriaClinica.Check_Dislipidemias_NA == "on")
                     {
                         Historia.Check_Dislipidemias_NA = true;
@@ -842,8 +866,6 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         Historia.Check_Dislipidemias_NA = false;
                     }
-
-
                     if (HistoriaClinica.Check_Epilepsia_Padre == "on")
                     {
                         Historia.Check_Epilepsia_Padre = true;
@@ -852,8 +874,6 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         Historia.Check_Epilepsia_Padre = false;
                     }
-
-
                     if (HistoriaClinica.Check_Epilepsia_Madre == "on")
                     {
                         Historia.Check_Epilepsia_Madre = true;
@@ -862,8 +882,6 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         Historia.Check_Epilepsia_Madre = false;
                     }
-
-
                     if (HistoriaClinica.Check_Epilepsia_Ambas == "on")
                     {
                         Historia.Check_Epilepsia_Ambas = true;
@@ -872,8 +890,6 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         Historia.Check_Epilepsia_Ambas = false;
                     }
-
-
                     if (HistoriaClinica.Check_Epilepsia_NA == "on")
                     {
                         Historia.Check_Epilepsia_NA = true;
@@ -882,9 +898,6 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         Historia.Check_Epilepsia_NA = false;
                     }
-
-
-
                     if (HistoriaClinica.Check_Hipertension_Padre == "on")
                     {
                         Historia.Check_Hipertension_Padre = true;
@@ -893,8 +906,6 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         Historia.Check_Hipertension_Padre = false;
                     }
-
-
                     if (HistoriaClinica.Check_Hipertension_Madre == "on")
                     {
                         Historia.Check_Hipertension_Madre = true;
@@ -903,9 +914,6 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         Historia.Check_Hipertension_Madre = false;
                     }
-
-
-
                     if (HistoriaClinica.Check_Hipertension_Ambas == "on")
                     {
                         Historia.Check_Hipertension_Ambas = true;
@@ -914,9 +922,6 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         Historia.Check_Hipertension_Ambas = false;
                     }
-
-
-
                     if (HistoriaClinica.Check_Hipertension_NA == "on")
                     {
                         Historia.Check_Hipertension_NA = true;
@@ -925,9 +930,6 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         Historia.Check_Hipertension_NA = false;
                     }
-
-
-
                     if (HistoriaClinica.Check_Infectocontagiosas_Padre == "on")
                     {
                         Historia.Check_Infectocontagiosas_Padre = true;
@@ -936,9 +938,6 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         Historia.Check_Infectocontagiosas_Padre = false;
                     }
-
-
-
                     if (HistoriaClinica.Check_Infectocontagiosas_Madre == "on")
                     {
                         Historia.Check_Infectocontagiosas_Madre = true;
@@ -947,8 +946,6 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         Historia.Check_Infectocontagiosas_Madre = false;
                     }
-
-
                     if (HistoriaClinica.Check_Infectocontagiosas_Ambas == "on")
                     {
                         Historia.Check_Infectocontagiosas_Ambas = true;
@@ -957,8 +954,6 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         Historia.Check_Infectocontagiosas_Ambas = false;
                     }
-
-
                     if (HistoriaClinica.Check_Infectocontagiosas_NA == "on")
                     {
                         Historia.Check_Infectocontagiosas_NA = true;
@@ -967,8 +962,6 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         Historia.Check_Infectocontagiosas_NA = false;
                     }
-
-
                     if (HistoriaClinica.Check_Malformaciones_Padre == "on")
                     {
                         Historia.Check_Malformaciones_Padre = true;
@@ -977,8 +970,6 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         Historia.Check_Malformaciones_Padre = false;
                     }
-
-
                     if (HistoriaClinica.Check_Malformaciones_Madre == "on")
                     {
                         Historia.Check_Malformaciones_Madre = true;
@@ -987,8 +978,6 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         Historia.Check_Malformaciones_Madre = false;
                     }
-
-
                     if (HistoriaClinica.Check_Malformaciones_Ambas == "on")
                     {
                         Historia.Check_Malformaciones_Ambas = true;
@@ -997,8 +986,6 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         Historia.Check_Malformaciones_Ambas = false;
                     }
-
-
                     if (HistoriaClinica.Check_Malformaciones_NA == "on")
                     {
                         Historia.Check_Malformaciones_NA = true;
@@ -1007,9 +994,6 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         Historia.Check_Malformaciones_NA = false;
                     }
-
-
-
                     if (HistoriaClinica.Check_Nefropatias_Padre == "on")
                     {
                         Historia.Check_Nefropatias_Padre = true;
@@ -1018,9 +1002,6 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         Historia.Check_Nefropatias_Padre = false;
                     }
-
-
-
                     if (HistoriaClinica.Check_Nefropatias_Madre == "on")
                     {
                         Historia.Check_Nefropatias_Madre = true;
@@ -1029,9 +1010,6 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         Historia.Check_Nefropatias_Madre = false;
                     }
-
-
-
                     if (HistoriaClinica.Check_Nefropatias_Ambas == "on")
                     {
                         Historia.Check_Nefropatias_Ambas = true;
@@ -1040,8 +1018,6 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         Historia.Check_Nefropatias_Ambas = false;
                     }
-
-
                     if (HistoriaClinica.Check_Nefropatias_NA == "on")
                     {
                         Historia.Check_Nefropatias_NA = true;
@@ -1050,9 +1026,6 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         Historia.Check_Nefropatias_NA = false;
                     }
-
-
-
                     if (HistoriaClinica.Check_Obesidad_Padre == "on")
                     {
                         Historia.Check_Obesidad_Padre = true;
@@ -1061,8 +1034,6 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         Historia.Check_Obesidad_Padre = false;
                     }
-
-
                     if (HistoriaClinica.Check_Obesidad_Madre == "on")
                     {
                         Historia.Check_Obesidad_Madre = true;
@@ -1071,8 +1042,6 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         Historia.Check_Obesidad_Madre = false;
                     }
-
-
                     if (HistoriaClinica.Check_Obesidad_Ambas == "on")
                     {
                         Historia.Check_Obesidad_Ambas = true;
@@ -1081,8 +1050,6 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         Historia.Check_Obesidad_Ambas = false;
                     }
-
-
                     if (HistoriaClinica.Check_Obesidad_NA == "on")
                     {
                         Historia.Check_Obesidad_NA = true;
@@ -1091,9 +1058,6 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         Historia.Check_Obesidad_NA = false;
                     }
-
-
-
                     if (HistoriaClinica.Check_Oncologicos_Padre == "on")
                     {
                         Historia.Check_Oncologicos_Padre = true;
@@ -1102,8 +1066,6 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         Historia.Check_Oncologicos_Padre = false;
                     }
-
-
                     if (HistoriaClinica.Check_Oncologicos_Madre == "on")
                     {
                         Historia.Check_Oncologicos_Madre = true;
@@ -1112,8 +1074,6 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         Historia.Check_Oncologicos_Madre = false;
                     }
-
-
                     if (HistoriaClinica.Check_Oncologicos_Ambas == "on")
                     {
                         Historia.Check_Oncologicos_Ambas = true;
@@ -1122,8 +1082,6 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         Historia.Check_Oncologicos_Ambas = false;
                     }
-
-
                     if (HistoriaClinica.Check_Oncologicos_NA == "on")
                     {
                         Historia.Check_Oncologicos_NA = true;
@@ -1132,17 +1090,12 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         Historia.Check_Oncologicos_NA = false;
                     }
-
-
                     Historia.Id_Paciente = paciente.Id;
                     //Historia.Id_HistoriaClinica = Id_claveHC;
                     Historia.Clave_hc_px = Id_claveHC;
                     db.hc_habitos.Add(Historia);
                     db.SaveChanges();
-
                 }
-
-
                 return Json(new { MENSAJE = "Succe: " }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
@@ -1150,8 +1103,6 @@ namespace CUS.Areas.Admin.Controllers
                 return Json(new { MENSAJE = "Error: Error de sistema: " + ex.Message }, JsonRequestBehavior.AllowGet);
             }
         }
-
-
 
         [HttpPost]
         public ActionResult perinatales(hc_antecedentes_perinatales HistoriaClinica, string expediente)
@@ -1177,13 +1128,29 @@ namespace CUS.Areas.Admin.Controllers
                               OrderByDescending(r => r.FechaRegistroHC)
                               .FirstOrDefault();
 
-                    //FECHA LÍMITE: es la FechaRegistro +3 horas
-                    DateTime fechaLimite = (DateTime)fechaUltimoRegistro.FechaRegistroHC;
-                    DateTime fl3horas = fechaLimite.AddHours(+3);
+                    ////FECHA LÍMITE: es la FechaRegistro +3 horas
+                    //DateTime fechaLimite = (DateTime)fechaUltimoRegistro.FechaRegistroHC;
+                    //DateTime fl3horas = fechaLimite.AddHours(+3);
+                    ////utilizamos Any() para verificar si existe algún registro para el paciente dentro de ese rango de tiempo.
+                    //bool pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
+                    //.Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC >= fechaDT);
 
-                    //utilizamos Any() para verificar si existe algún registro para el paciente dentro de ese rango de tiempo.
-                    bool pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
-                    .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC >= fechaDT);
+                    bool pacienteTieneRegistroEnUltimas3Horas;
+                    DateTime fechaLimite = DateTime.Now;
+
+                    //si NO existe registro en la bd en la tbl HistoriaClinica por default pacienteTieneRegistroEnUltimas3Horas será null, quiere decir que se creará un registro nuevo
+                    if (fechaUltimoRegistro == null)
+                    {
+                        pacienteTieneRegistroEnUltimas3Horas = false;
+                    }
+                    else
+                    {
+                        fechaLimite = (DateTime)fechaUltimoRegistro.FechaRegistroHC;
+                        DateTime fl3horas = fechaLimite.AddHours(+3);
+
+                        pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
+                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC >= fechaDT);
+                    }
 
                     var Id_claveHC = "";
                     if (pacienteTieneRegistroEnUltimas3Horas)// El paciente ya tiene un registro en las últimas 3 horas
@@ -1282,13 +1249,29 @@ namespace CUS.Areas.Admin.Controllers
                               OrderByDescending(r => r.FechaRegistroHC)
                               .FirstOrDefault();
 
-                    //FECHA LÍMITE: es la FechaRegistro +3 horas
-                    DateTime fechaLimite = (DateTime)fechaUltimoRegistro.FechaRegistroHC;
-                    DateTime fl3horas = fechaLimite.AddHours(+3);
+                    ////FECHA LÍMITE: es la FechaRegistro +3 horas
+                    //DateTime fechaLimite = (DateTime)fechaUltimoRegistro.FechaRegistroHC;
+                    //DateTime fl3horas = fechaLimite.AddHours(+3);
+                    ////utilizamos Any() para verificar si existe algún registro para el paciente dentro de ese rango de tiempo.
+                    //bool pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
+                    //.Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC >= fechaDT);
 
-                    //utilizamos Any() para verificar si existe algún registro para el paciente dentro de ese rango de tiempo.
-                    bool pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
-                    .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC >= fechaDT);
+                    bool pacienteTieneRegistroEnUltimas3Horas;
+                    DateTime fechaLimite = DateTime.Now;
+
+                    //si NO existe registro en la bd en la tbl HistoriaClinica por default pacienteTieneRegistroEnUltimas3Horas será null, quiere decir que se creará un registro nuevo
+                    if (fechaUltimoRegistro == null)
+                    {
+                        pacienteTieneRegistroEnUltimas3Horas = false;
+                    }
+                    else
+                    {
+                        fechaLimite = (DateTime)fechaUltimoRegistro.FechaRegistroHC;
+                        DateTime fl3horas = fechaLimite.AddHours(+3);
+
+                        pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
+                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC >= fechaDT);
+                    }
 
                     var Id_claveHC = "";
                     if (pacienteTieneRegistroEnUltimas3Horas)// El paciente ya tiene un registro en las últimas 3 horas
@@ -1440,12 +1423,28 @@ namespace CUS.Areas.Admin.Controllers
                               OrderByDescending(r => r.FechaRegistroHC)
                               .FirstOrDefault();
 
-                    DateTime fechaLimite = (DateTime)fechaUltimoRegistro.FechaRegistroHC;
-                    DateTime fl3horas = fechaLimite.AddHours(+3);
+                    //DateTime fechaLimite = (DateTime)fechaUltimoRegistro.FechaRegistroHC;
+                    //DateTime fl3horas = fechaLimite.AddHours(+3);
+                    ////utilizamos Any() para verificar si existe algún registro para el paciente dentro de ese rango de tiempo.
+                    //bool pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
+                    //.Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC >= fechaDT);
 
-                    //utilizamos Any() para verificar si existe algún registro para el paciente dentro de ese rango de tiempo.
-                    bool pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
-                    .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC >= fechaDT);
+                    bool pacienteTieneRegistroEnUltimas3Horas;
+                    DateTime fechaLimite = DateTime.Now;
+
+                    //si NO existe registro en la bd en la tbl HistoriaClinica por default pacienteTieneRegistroEnUltimas3Horas será null, quiere decir que se creará un registro nuevo
+                    if (fechaUltimoRegistro == null)
+                    {
+                        pacienteTieneRegistroEnUltimas3Horas = false;
+                    }
+                    else
+                    {
+                        fechaLimite = (DateTime)fechaUltimoRegistro.FechaRegistroHC;
+                        DateTime fl3horas = fechaLimite.AddHours(+3);
+
+                        pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
+                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC >= fechaDT);
+                    }
 
                     var Id_claveHC = "";
                     if (pacienteTieneRegistroEnUltimas3Horas)// El paciente ya tiene un registro en las últimas 3 horas
@@ -1505,12 +1504,28 @@ namespace CUS.Areas.Admin.Controllers
                               OrderByDescending(r => r.FechaRegistroHC)
                               .FirstOrDefault();
 
-                    DateTime fechaLimite = (DateTime)fechaUltimoRegistro.FechaRegistroHC;
-                    DateTime fl3horas = fechaLimite.AddHours(+3);
+                    //DateTime fechaLimite = (DateTime)fechaUltimoRegistro.FechaRegistroHC;
+                    //DateTime fl3horas = fechaLimite.AddHours(+3);
+                    ////utilizamos Any() para verificar si existe algún registro para el paciente dentro de ese rango de tiempo.
+                    //bool pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
+                    //.Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC >= fechaDT);
 
-                    //utilizamos Any() para verificar si existe algún registro para el paciente dentro de ese rango de tiempo.
-                    bool pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
-                    .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC >= fechaDT);
+                    bool pacienteTieneRegistroEnUltimas3Horas;
+                    DateTime fechaLimite = DateTime.Now;
+
+                    //si NO existe registro en la bd en la tbl HistoriaClinica por default pacienteTieneRegistroEnUltimas3Horas será null, quiere decir que se creará un registro nuevo
+                    if (fechaUltimoRegistro == null)
+                    {
+                        pacienteTieneRegistroEnUltimas3Horas = false;
+                    }
+                    else
+                    {
+                        fechaLimite = (DateTime)fechaUltimoRegistro.FechaRegistroHC;
+                        DateTime fl3horas = fechaLimite.AddHours(+3);
+
+                        pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
+                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC >= fechaDT);
+                    }
 
                     var Id_claveHC = "";
                     if (pacienteTieneRegistroEnUltimas3Horas)// El paciente ya tiene un registro en las últimas 3 horas
@@ -1581,12 +1596,28 @@ namespace CUS.Areas.Admin.Controllers
                               OrderByDescending(r => r.FechaRegistroHC)
                               .FirstOrDefault();
 
-                    DateTime fechaLimite = (DateTime)fechaUltimoRegistro.FechaRegistroHC;
-                    DateTime fl3horas = fechaLimite.AddHours(+3);
+                    //DateTime fechaLimite = (DateTime)fechaUltimoRegistro.FechaRegistroHC;
+                    //DateTime fl3horas = fechaLimite.AddHours(+3);
+                    ////utilizamos Any() para verificar si existe algún registro para el paciente dentro de ese rango de tiempo.
+                    //bool pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
+                    //.Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC >= fechaDT);
 
-                    //utilizamos Any() para verificar si existe algún registro para el paciente dentro de ese rango de tiempo.
-                    bool pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
-                    .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC >= fechaDT);
+                    bool pacienteTieneRegistroEnUltimas3Horas;
+                    DateTime fechaLimite = DateTime.Now;
+
+                    //si NO existe registro en la bd en la tbl HistoriaClinica por default pacienteTieneRegistroEnUltimas3Horas será null, quiere decir que se creará un registro nuevo
+                    if (fechaUltimoRegistro == null)
+                    {
+                        pacienteTieneRegistroEnUltimas3Horas = false;
+                    }
+                    else
+                    {
+                        fechaLimite = (DateTime)fechaUltimoRegistro.FechaRegistroHC;
+                        DateTime fl3horas = fechaLimite.AddHours(+3);
+
+                        pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
+                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC >= fechaDT);
+                    }
 
                     var Id_claveHC = "";
                     if (pacienteTieneRegistroEnUltimas3Horas)// El paciente ya tiene un registro en las últimas 3 horas
@@ -1648,12 +1679,28 @@ namespace CUS.Areas.Admin.Controllers
                               OrderByDescending(r => r.FechaRegistroHC)
                               .FirstOrDefault();
 
-                    DateTime fechaLimite = (DateTime)fechaUltimoRegistro.FechaRegistroHC;
-                    DateTime fl3horas = fechaLimite.AddHours(+3);
+                    //DateTime fechaLimite = (DateTime)fechaUltimoRegistro.FechaRegistroHC;
+                    //DateTime fl3horas = fechaLimite.AddHours(+3);
+                    ////utilizamos Any() para verificar si existe algún registro para el paciente dentro de ese rango de tiempo.
+                    //bool pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
+                    //.Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC >= fechaDT);
 
-                    //utilizamos Any() para verificar si existe algún registro para el paciente dentro de ese rango de tiempo.
-                    bool pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
-                    .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC >= fechaDT);
+                    bool pacienteTieneRegistroEnUltimas3Horas;
+                    DateTime fechaLimite = DateTime.Now;
+
+                    //si NO existe registro en la bd en la tbl HistoriaClinica por default pacienteTieneRegistroEnUltimas3Horas será null, quiere decir que se creará un registro nuevo
+                    if (fechaUltimoRegistro == null)
+                    {
+                        pacienteTieneRegistroEnUltimas3Horas = false;
+                    }
+                    else
+                    {
+                        fechaLimite = (DateTime)fechaUltimoRegistro.FechaRegistroHC;
+                        DateTime fl3horas = fechaLimite.AddHours(+3);
+
+                        pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
+                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC >= fechaDT);
+                    }
 
                     var Id_claveHC = "";
                     if (pacienteTieneRegistroEnUltimas3Horas)// El paciente ya tiene un registro en las últimas 3 horas
@@ -1721,12 +1768,28 @@ namespace CUS.Areas.Admin.Controllers
                               OrderByDescending(r => r.FechaRegistroHC)
                               .FirstOrDefault();
 
-                    DateTime fechaLimite = (DateTime)fechaUltimoRegistro.FechaRegistroHC;
-                    DateTime fl3horas = fechaLimite.AddHours(+3);
+                    //DateTime fechaLimite = (DateTime)fechaUltimoRegistro.FechaRegistroHC;
+                    //DateTime fl3horas = fechaLimite.AddHours(+3);
+                    ////utilizamos Any() para verificar si existe algún registro para el paciente dentro de ese rango de tiempo.
+                    //bool pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
+                    //.Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC >= fechaDT);
 
-                    //utilizamos Any() para verificar si existe algún registro para el paciente dentro de ese rango de tiempo.
-                    bool pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
-                    .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC >= fechaDT);
+                    bool pacienteTieneRegistroEnUltimas3Horas;
+                    DateTime fechaLimite = DateTime.Now;
+
+                    //si NO existe registro en la bd en la tbl HistoriaClinica por default pacienteTieneRegistroEnUltimas3Horas será null, quiere decir que se creará un registro nuevo
+                    if (fechaUltimoRegistro == null)
+                    {
+                        pacienteTieneRegistroEnUltimas3Horas = false;
+                    }
+                    else
+                    {
+                        fechaLimite = (DateTime)fechaUltimoRegistro.FechaRegistroHC;
+                        DateTime fl3horas = fechaLimite.AddHours(+3);
+
+                        pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
+                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC >= fechaDT);
+                    }
 
                     var Id_claveHC = "";
                     if (pacienteTieneRegistroEnUltimas3Horas)// El paciente ya tiene un registro en las últimas 3 horas
@@ -1847,7 +1910,6 @@ namespace CUS.Areas.Admin.Controllers
                 return Json(new { MENSAJE = "Error: Error de sistema: " + ex.Message }, JsonRequestBehavior.AllowGet);
             }
         }
-
 
         public class Propiedades_HC
         {
@@ -2060,7 +2122,6 @@ namespace CUS.Areas.Admin.Controllers
             public string NumeroParejasSexuales { get; set; }
             public string TipoMenarquia { get; set; }
         }
-
 
         [HttpPost]
         public ActionResult ConsultarHC(string Clave_hc_px)//Este parametro lo recivimos de la vista, "Clave_hc_px" viene siendo el Identificador armado de la HC que se desea ver
