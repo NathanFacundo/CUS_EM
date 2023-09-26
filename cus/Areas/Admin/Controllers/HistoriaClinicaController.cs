@@ -39,7 +39,7 @@ namespace CUS.Areas.Admin.Controllers
                     int idConsecutivo = 1;
                     var hcId = (from a in db.HistoriaClinica
                                 select a).
-                                    OrderBy(g => g.Id)
+                                    OrderByDescending(g => g.Id)
                                     .FirstOrDefault();
                     if (hcId != null)
                     {
@@ -48,7 +48,7 @@ namespace CUS.Areas.Admin.Controllers
 
                     //Guarda en tabla de historia clinica
                     HistoriaClinica hc = new HistoriaClinica();
-                    hc.Clave_hc_px = paciente.Expediente + "_HC_" + idConsecutivo;
+                    hc.Clave_hc_px = paciente.Expediente + "HC" + idConsecutivo;
                     hc.Medico = User.Identity.GetUserName();
                     hc.FechaRegistroHC = fechaDT;
                     hc.Id_Paciente = paciente.Id;
