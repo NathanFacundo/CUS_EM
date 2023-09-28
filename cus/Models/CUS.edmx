@@ -393,6 +393,7 @@
           <Property Name="Medico" Type="varchar" MaxLength="50" />
           <Property Name="FechaRegistroHC" Type="datetime" />
           <Property Name="Id_Paciente" Type="int" Nullable="false" />
+          <Property Name="TipoHistoria" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Paciente">
           <Key>
@@ -1281,6 +1282,7 @@
           <Property Name="FechaRegistroHC" Type="DateTime" Precision="3" />
           <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Paciente" Relationship="CUSModel.FK__HistoriaC__Id_Pa__3C34F16F" FromRole="HistoriaClinica" ToRole="Paciente" />
+          <Property Name="TipoHistoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK__hc_antece__Id_Pa__2645B050">
           <End Type="CUSModel.Paciente" Role="Paciente" Multiplicity="1" />
@@ -1934,6 +1936,7 @@
           <EntitySetMapping Name="HistoriaClinica">
             <EntityTypeMapping TypeName="CUSModel.HistoriaClinica">
               <MappingFragment StoreEntitySet="HistoriaClinica">
+                <ScalarProperty Name="TipoHistoria" ColumnName="TipoHistoria" />
                 <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
                 <ScalarProperty Name="FechaRegistroHC" ColumnName="FechaRegistroHC" />
                 <ScalarProperty Name="Medico" ColumnName="Medico" />

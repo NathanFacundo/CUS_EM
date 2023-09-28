@@ -44,22 +44,18 @@
                                 @*<img class="rounded-circle" alt="User Image" src="~/Content/assets/img/profiles/avatar-04.jpg">*@
                             </a>
                         </div>
-                        @*<div class="col ml-md-n2 profile-user-info">
-                            <h4 class="user-name">Jorge Antonio García Villa</h4>
-                            <h6 class="text-muted">27 de mayo de 1997</h6>
-                            <h6 class="text-muted">26 años 3 meses</h6>
-                            <h6 class="text-muted">Masculino</h6>
-                        </div>*@
-                    <div class="col ml-md-n2 profile-user-info">
-                        <h10 style="font-weight:bold;">Nombre: </h10>
-                        <a id="Nombre"></a><br />
-                        <h10 style="font-weight:bold;">Expediente: </h10>
-                        <a id="Exp"></a><br />
-                        <h10 style="font-weight:bold;">Edad: </h10>
-                        <a id="Edad"></a><br />
-                        <h10 style="font-weight:bold;">Sexo: </h10>
-                        <a id="Sexo"></a>
-                    </div>
+                        <div class="col ml-md-n2 profile-user-info">
+                            <h10 style="font-weight:bold;">Nombre: </h10>
+                            <a id="Nombre"></a><br />
+                            <h10 style="font-weight:bold;">Expediente: </h10>
+                            <a id="Exp"></a><br />
+                            <h10 style="font-weight:bold;">Edad: </h10>
+                            <a id="Edad"></a><br />
+                            <h10 style="font-weight:bold;">Sexo: </h10>
+                            <a id="Sexo"></a><br />
+                            <h10 style="font-weight:bold;">Fecha Nac.: </h10>
+                            <a id="FechaNac"></a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2571,11 +2567,13 @@
         var Exp = row.data().Expediente;
         var Edad = row.data().Edad;
         var Sexo = row.data().Sexo;
+        var FechaN = row.data().FechaNacimiento;
 
         document.getElementById("Nombre").innerHTML = Nombre + " " + PrimerA + " " + SegundoA;
         document.getElementById("Exp").innerHTML = Exp;
         document.getElementById("Edad").innerHTML = Edad;
         document.getElementById("Sexo").innerHTML = Sexo;
+        document.getElementById("FechaNac").innerHTML = FechaN;
 
         //ocultamos div de la busqueda del px
         $("#BusquedaPX").hide();

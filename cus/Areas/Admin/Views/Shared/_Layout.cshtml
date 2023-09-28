@@ -36,10 +36,8 @@
     </head>
     <body>
 
-        <!-- Main Wrapper -->
         <div class="main-wrapper">
 
-            <!-- Header -->
             <div class="header">
                 <!-- Logo -->
                 @*<div class="header-left">
@@ -54,14 +52,10 @@
                 <a href="javascript:void(0);" id="toggle_btn">
                     <i class="fe fe-text-align-left"></i>
                 </a>
-                <!-- Mobile Menu Toggle -->
                 <a class="mobile_btn" id="mobile_btn">
                     <i class="fa fa-bars"></i>
                 </a>
-                <!-- /Mobile Menu Toggle -->
-                <!-- Header Right Menu -->
                 <ul class="nav user-menu">
-                    <!-- User Menu -->
                     <li class="nav-item dropdown has-arrow">
                         <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                             <span class="user-img"><img class="rounded-circle" src="~/Content/assets/img/doctors/doctor-thumb-02.jpg" width="31" alt="Ryan Taylor"></span>
@@ -85,12 +79,9 @@
                             }
                         </div>
                     </li>
-                    <!-- /User Menu -->
                 </ul>
-                <!-- /Header Right Menu -->
             </div>
-            <!-- /Header -->
-            <!-- Sidebar -->
+            
             <div class="sidebar" id="sidebar">
                 <div class="sidebar-inner slimscroll">
                     <div id="sidebar-menu" class="sidebar-menu">
@@ -104,112 +95,75 @@
                             <li class="submenu">
                                 <a href="#"><i class="fa fa-address-book"></i> <span>Admon. Usuarios</span> <span class="menu-arrow"></span></a>
                                 <ul style="display: none;">
-                                    @*<li><a href="@Url.Action("Register", "../Account")">Registro Usuario</a></li>*@
                                     <li><a href="@Url.Action("Index", "Usuarios")">Registro Usuario</a></li>
                                 </ul>
                             </li>
-                            @*<li class="submenu">
-                                <a href="#"><i class="fe fe-user"></i> <span>Pacientes</span> <span class="menu-arrow"></span></a>
+                            <li class="submenu">
+                                @*fe fe-user*@
+                                <a href="#"><i class="fa fa-ambulance"></i> <span>Admon. PX.</span> <span class="menu-arrow"></span></a>
                                 <ul style="display: none;">
-                                    <li><a href="@Url.Action("Registro", "../PX")">Registro Paciente</a></li>
+                                    <li><a href="@Url.Action("Index", "Derechohabiente")">Lista PX.</a></li>
+                                    <li><a href="@Url.Action("Create", "Derechohabiente")">Nuevo PX.</a></li>
                                 </ul>
-                            </li>*@
-                            @*<li class="submenu">
-                                <a href="#"><i class="fe fe-user"></i> <span>Pacientes</span> <span class="menu-arrow"></span></a>
+                            </li>
+                            <li class="submenu">
+                                <a href="#"><i class="fe fe-folder"></i> <span>Expte. Médico</span> <span class="menu-arrow"></span></a>
                                 <ul style="display: none;">
-                                    <li><a href="@Url.Action("Registro", "Paciente")">Registro Paciente</a></li>
+                                    <li><a href="@Url.Action("a", "a")">Consulta</a></li>
+                                    <li><a href="@Url.Action("a", "a")">Mis PX.</a></li>
                                 </ul>
-                            </li>*@
-
-
-                            @*<li class="submenu">
-                                <a href="#"><i class="fe fe-user"></i> <span>Paciente</span> <span class="menu-arrow"></span></a>
+                            </li>
+                            <li class="submenu">
+                                <a href="#"><i class="fe fe-folder-open"></i> <span>Historia Clínica</span> <span class="menu-arrow"></span></a>
                                 <ul style="display: none;">
-                                    <li><a href="@Url.Action("Index", "Derechohabiente")">Pacientes</a></li>
-                                    <li><a href="@Url.Action("Create", "Derechohabiente")">Nuevo</a></li>
+                                    <li><a href="@Url.Action("Historia", "HistoriaClinica")">Buscar Historia</a></li>
+                                    @*<li><a href="@Url.Action("Index", "HistoriaClinica")">Nueva</a></li>*@
+
+                                    <li class="submenu">
+                                        <a href="#"><span>Nueva</span> <span class="menu-arrow"></span></a>
+                                        <ul style="display: none;">
+                                            <li><a href="@Url.Action("Index", "HistoriaClinica")">Común</a></li>
+                                            <li><a href="">Medicina</a></li>
+                                            <li><a href="">Psicología</a></li>
+                                            <li><a href="">Nutrición</a></li>
+                                            <li><a href="">Odontología</a></li>
+                                        </ul>
+                                    </li>
+
                                 </ul>
-                            </li>*@
-
-
-
-                        <li class="submenu">
-                            @*fe fe-user*@
-                            <a href="#"><i class="fa fa-ambulance"></i> <span>Admon. Pacientes</span> <span class="menu-arrow"></span></a>
-                            <ul style="display: none;">
-                                <li><a href="@Url.Action("Index", "Derechohabiente")">Lista PX.</a></li>
-                                <li><a href="@Url.Action("Create", "Derechohabiente")">Nuevo PX.</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="submenu">
-                            <a href="#"><i class="fe fe-folder"></i> <span>Exp. Médico</span> <span class="menu-arrow"></span></a>
-                            <ul style="display: none;">
-                                <li><a href="@Url.Action("a", "a")">Consulta</a></li>
-                                <li><a href="@Url.Action("a", "a")">Mis PX.</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="submenu">
-                            <a href="#"><i class="fe fe-folder-open"></i> <span>Hist. Clínica</span> <span class="menu-arrow"></span></a>
-                            <ul style="display: none;">
-                                <li><a href="@Url.Action("Index", "HistoriaClinica")">Nueva</a></li>
-                                <li><a href="@Url.Action("Historia", "HistoriaClinica")">Buscar Historia</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="submenu">
-                            <a href="#"><i class="fe fe-bookmark"></i> <span>Admon. Agendas</span> <span class="menu-arrow"></span></a>
-                            <ul style="display: none;">
-                                <li><a href="@Url.Action("a", "a")">Algo</a></li>
-                                <li><a href="@Url.Action("a", "a")">Algo</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="submenu">
-                            <a href="#"><i class="fe fe-file-excel"></i> <span>Lista Espera PX.</span> <span class="menu-arrow"></span></a>
-                            <ul style="display: none;">
-                                <li><a href="@Url.Action("a", "a")">Algo</a></li>
-                                <li><a href="@Url.Action("a", "a")">Algo</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="submenu">
-                            <a href="#"><i class="fe fe-activity"></i> <span>Monitor Clínica</span> <span class="menu-arrow"></span></a>
-                            <ul style="display: none;">
-                                <li><a href="@Url.Action("a", "a")">Algo</a></li>
-                                <li><a href="@Url.Action("a", "a")">Algo</a></li>
-                            </ul>
-                        </li>
-
-
-
+                            </li>
+                            <li class="submenu">
+                                <a href="#"><i class="fe fe-bookmark"></i> <span>Admon. Agendas</span> <span class="menu-arrow"></span></a>
+                                <ul style="display: none;">
+                                    <li><a href="@Url.Action("a", "a")">Algo</a></li>
+                                    <li><a href="@Url.Action("a", "a")">Algo</a></li>
+                                </ul>
+                            </li>
+                            <li class="submenu">
+                                <a href="#"><i class="fe fe-file-excel"></i> <span>Lista Espera PX.</span> <span class="menu-arrow"></span></a>
+                                <ul style="display: none;">
+                                    <li><a href="@Url.Action("a", "a")">Algo</a></li>
+                                    <li><a href="@Url.Action("a", "a")">Algo</a></li>
+                                </ul>
+                            </li>
+                            <li class="submenu">
+                                <a href="#"><i class="fe fe-activity"></i> <span>Monitor Clínica</span> <span class="menu-arrow"></span></a>
+                                <ul style="display: none;">
+                                    <li><a href="@Url.Action("a", "a")">Algo</a></li>
+                                    <li><a href="@Url.Action("a", "a")">Algo</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <!-- /Sidebar -->
-
-
+            
             <div class="main-wrapper">
                 @RenderBody()
             </div>
 
-            <!-- Page Wrapper -->
-            @*<div class="page-wrapper">
-                <div class="content container-fluid">
-                    @RenderBody()
-                </div>
-            </div>*@
-
-            <!-- /Main Wrapper -->
-            @*<div class="content">
-                @RenderBody()
-            </div>*@
-
-
             <footer class="footer">
             </footer>
-
         </div>
         <!-- /Main Wrapper -->
         <!-- jQuery -->
@@ -227,7 +181,6 @@
         <script src="~/Areas/Admin/assets/plugins/raphael/raphael.min.js"></script>
         <script src="~/Areas/Admin/assets/plugins/morris/morris.min.js"></script>
         <script src="~/Areas/Admin/assets/js/chart.morris.js"></script>
-
 
         @*Estos scripts son para el dashboard que dice specialists*@
         <script src="~/Areas/Admin/assets/plugins/datatables/jquery.dataTables.min.js"></script>

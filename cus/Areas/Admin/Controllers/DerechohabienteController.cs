@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -310,45 +311,91 @@ namespace CUS.Areas.Admin.Controllers
             public string PrimerApellido { get; set; }
             public string SegundoApellido { get; set; }
             public string Sexo { get; set; }
-            public DateTime FechaNacimiento { get; set; }
+            public string FechaNacimiento { get; set; }
             public int Edad { get; set; }
             public string Expediente { get; set; }
             public string Curp_Calculado { get; set; }
-            public DateTime FechaRegistro { get; set; }
+            public string FechaRegistro { get; set; }
         }
 
+        //********      Función para buscar PX para crear su H.C.
         [HttpPost]
         public JsonResult BuscarPaciente(string NombrePX, string ExpedientePX)
         {
             try
             {
-                //List<Paciente> Pacientes = new List<Paciente>();
                 List<Propiedades> Pac = new List<Propiedades>();
+                var result1 = new List<Propiedades>();
 
                 //Búsqueda de px por Expediente
                 if (NombrePX == null || NombrePX == "")
                 {
-                    //Pacientes = db.Paciente.Where(v => v.Expediente == ExpedientePX).ToList();
+                    //string query = "SELECT Id,UnidadAfiliacion,CURP,Nombre,PrimerApellido,SegundoApellido,Sexo,FechaNacimiento,Edad,Expediente,Curp_Calculado " +
+                    //                "FROM Paciente " +
+                    //                "WHERE Expediente LIKE '%" + ExpedientePX + "%'";
+                    //var result = db.Database.SqlQuery<Propiedades>(query);
+                    //Pac = result.ToList();
 
-                    string query = "SELECT Id,UnidadAfiliacion,CURP,Nombre,PrimerApellido,SegundoApellido,Sexo,FechaNacimiento,Edad,Expediente,Curp_Calculado " +
-                                    "FROM Paciente " +
-                                    "WHERE Expediente LIKE '%" + ExpedientePX + "%'";
-                    var result = db.Database.SqlQuery<Propiedades>(query);
-                    Pac = result.ToList();
+                    var query = (from a in db.Paciente
+                                 where a.Expediente.Contains(ExpedientePX)
+                                 select a).ToList();
+
+                    foreach (var q in query)
+                    {
+                        var resultado = new Propiedades
+                        {
+                            Id = q.Id,
+                            UnidadAfiliacion = q.UnidadAfiliacion,
+                            CURP = q.CURP,
+                            Nombre = q.Nombre,
+                            PrimerApellido = q.PrimerApellido,
+                            SegundoApellido = q.SegundoApellido,
+                            Sexo = q.Sexo,
+                            FechaNacimiento = string.Format("{0:dd/MM/yyyy}", q.FechaNacimiento, new CultureInfo("es-ES")),
+                            Edad = q.Edad,
+                            Expediente = q.Expediente,
+                            Curp_Calculado = q.Curp_Calculado
+                        };
+                        result1.Add(resultado);
+                    }
                 }
                 //Búsqueda de px por NOmbre
                 if (ExpedientePX == null || ExpedientePX == "")
                 {
-                    //Pacientes = db.Paciente.Where(v => v.Nombre == NombrePX).ToList();
                     //Pacientes = db.Paciente.Where(v => v.Nombre.Contains(NombrePX)).ToList();
 
-                    string query = "SELECT Id,UnidadAfiliacion,CURP,Nombre,PrimerApellido,SegundoApellido,Sexo,FechaNacimiento,Edad,Expediente,Curp_Calculado " +
-                                    "FROM Paciente " +
-                                    "WHERE Nombre LIKE '%" + NombrePX + "%'";
-                    var result = db.Database.SqlQuery<Propiedades>(query);
-                    Pac = result.ToList();
+                    //string query = "SELECT Id,UnidadAfiliacion,CURP,Nombre,PrimerApellido,SegundoApellido,Sexo,FechaNacimiento,Edad,Expediente,Curp_Calculado " +
+                    //                "FROM Paciente " +
+                    //                "WHERE Nombre LIKE '%" + NombrePX + "%'";
+                    //var result = db.Database.SqlQuery<Propiedades>(query);
+                    //Pac = result.ToList();
+
+                    var query = (from a in db.Paciente
+                                 where a.Nombre.Contains(NombrePX)
+                                 select a).ToList();
+
+                    foreach (var q in query)
+                    {
+                        var resultado = new Propiedades
+                        {
+                            Id = q.Id,
+                            UnidadAfiliacion = q.UnidadAfiliacion,
+                            CURP = q.CURP,
+                            Nombre = q.Nombre,
+                            PrimerApellido = q.PrimerApellido,
+                            SegundoApellido = q.SegundoApellido,
+                            Sexo = q.Sexo,
+                            FechaNacimiento = string.Format("{0:dd/MM/yyyy}", q.FechaNacimiento, new CultureInfo("es-ES")),
+                            Edad = q.Edad,
+                            Expediente = q.Expediente,
+                            Curp_Calculado = q.Curp_Calculado
+                        };
+                        result1.Add(resultado);
+                    }
                 }
-                return Json(new { MENSAJE = "Succe: ", PACIENTES = Pac }, JsonRequestBehavior.AllowGet);
+
+                //return Json(new { MENSAJE = "Succe: ", PACIENTES = Pac }, JsonRequestBehavior.AllowGet);
+                return Json(new { MENSAJE = "Succe: ", PACIENTES = result1 }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
             {
@@ -356,20 +403,44 @@ namespace CUS.Areas.Admin.Controllers
             }
         }
 
+        //********      Función para buscar PX al entrar a la LISTA DE PX
         [HttpPost]
         public JsonResult BuscarPacienteIndex()
         {
-            //var Paciente = db.Paciente.OrderByDescending(f => f.Id).Take(10).ToList();
+            //List<Propiedades> Pac = new List<Propiedades>();
 
-            List<Propiedades> Pac = new List<Propiedades>();
+            //string query = "SELECT TOP(10) Id,UnidadAfiliacion,CURP,Nombre,PrimerApellido,SegundoApellido,Sexo,FechaNacimiento,Edad,Expediente,Curp_Calculado,FechaRegistro " +
+            //                        "FROM Paciente ORDER BY Id DESC ";
+            //var result = db.Database.SqlQuery<Propiedades>(query);
+            //Pac = result.ToList();
 
-            string query = "SELECT TOP(10) Id,UnidadAfiliacion,CURP,Nombre,PrimerApellido,SegundoApellido,Sexo,FechaNacimiento,Edad,Expediente,Curp_Calculado,FechaRegistro " +
-                                    "FROM Paciente ORDER BY Id DESC ";
-            var result = db.Database.SqlQuery<Propiedades>(query);
-            Pac = result.ToList();
+            var result1 = new List<Propiedades>();
+
+            var query = (from a in db.Paciente
+                         select a).OrderByDescending(a=>a.Id).Take(10).ToList();
+
+            foreach (var q in query)
+            {
+                var resultado = new Propiedades
+                {
+                    Id = q.Id,
+                    UnidadAfiliacion = q.UnidadAfiliacion,
+                    CURP = q.CURP,
+                    Nombre = q.Nombre,
+                    PrimerApellido = q.PrimerApellido,
+                    SegundoApellido = q.SegundoApellido,
+                    Sexo = q.Sexo,
+                    FechaNacimiento = string.Format("{0:dd/MM/yyyy}", q.FechaNacimiento, new CultureInfo("es-ES")),
+                    Edad = q.Edad,
+                    Expediente = q.Expediente,
+                    Curp_Calculado = q.Curp_Calculado,
+                    FechaRegistro = string.Format("{0:dd/MM/yyyy}", q.FechaRegistro, new CultureInfo("es-ES")),
+                };
+                result1.Add(resultado);
+            }
 
             //return View(Paciente);
-            return Json(new { MENSAJE = "Succe: ", PACIENTES = Pac }, JsonRequestBehavior.AllowGet);
+            return Json(new { MENSAJE = "Succe: ", PACIENTES = result1 }, JsonRequestBehavior.AllowGet);
         }
 
     }

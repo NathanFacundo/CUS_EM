@@ -19,6 +19,7 @@ namespace CUS.Models
         public string Medico { get; set; }
         public Nullable<System.DateTime> FechaRegistroHC { get; set; }
         public int Id_Paciente { get; set; }
+        public string TipoHistoria { get; set; }
     
         public virtual Paciente Paciente { get; set; }
     }

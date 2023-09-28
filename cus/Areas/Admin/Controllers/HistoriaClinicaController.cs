@@ -14,6 +14,13 @@ namespace CUS.Areas.Admin.Controllers
 
         Models.CUS db = new Models.CUS();
 
+        // GET: Admin/HistoriaClinica
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        //********      Función para buscar si existe la H.C. en el rango de 3 hrs al crear una SECCIÓN DE LA H.C.
         public string buscaHisotriaClinica(int HistoriaClinica, string expediente)
         {
             //Buscar id del historia clinica
@@ -52,6 +59,7 @@ namespace CUS.Areas.Admin.Controllers
                     hc.Medico = User.Identity.GetUserName();
                     hc.FechaRegistroHC = fechaDT;
                     hc.Id_Paciente = paciente.Id;
+                    hc.TipoHistoria = "Común";
                     db.HistoriaClinica.Add(hc);
                     db.SaveChanges();
 
@@ -65,11 +73,7 @@ namespace CUS.Areas.Admin.Controllers
             return claveHC;
         }
 
-        // GET: Admin/HistoriaClinica
-        public ActionResult Index()
-        {
-            return View();
-        }
+        #region Guardar Pestañas de la H.C. Común
 
         [HttpPost]
         public ActionResult pat_prescriptions(hc_ficha_identificacion HistoriaClinica, string expediente)
@@ -1832,6 +1836,8 @@ namespace CUS.Areas.Admin.Controllers
             }
         }
 
+        #endregion
+
         public ActionResult Historia()
         {
             return View();
@@ -1855,8 +1861,10 @@ namespace CUS.Areas.Admin.Controllers
             public string Medico { get; set; }
             public int IdPX { get; set; }
             public string FechaReg { get; set; }
+            public string Tipo { get; set; }
         }
 
+        //********      Función para buscar las H.C. en base a un px que el usuario ingresó
         [HttpPost]
         public JsonResult BuscarHistoria(string ExpedientePX)
         {
@@ -1884,7 +1892,8 @@ namespace CUS.Areas.Admin.Controllers
                                         PxHC = hc.Id_Paciente,
                                         NombrePX = px.Nombre,
                                         PApellidoPX = px.PrimerApellido,
-                                        ExpPX = px.Expediente
+                                        ExpPX = px.Expediente,
+                                        TipoH = hc.TipoHistoria
                                     }).ToList();
 
                     foreach (var q in consulta)
@@ -1898,7 +1907,8 @@ namespace CUS.Areas.Admin.Controllers
                             IdPX = q.PxHC,
                             Nombre = q.NombrePX,
                             PrimerApellido = q.PApellidoPX,
-                            Expediente = q.ExpPX
+                            Expediente = q.ExpPX,
+                            Tipo = q.TipoH
                         };
                         results1.Add(resultado);
                     }
@@ -2123,15 +2133,13 @@ namespace CUS.Areas.Admin.Controllers
             public string TipoMenarquia { get; set; }
         }
 
+        //********      Función para buscar el detalle de la H.C. en el MODAL
         [HttpPost]
         public ActionResult ConsultarHC(string Clave_hc_px)//Este parametro lo recivimos de la vista, "Clave_hc_px" viene siendo el Identificador armado de la HC que se desea ver
         {
             try
             {
                 //Clave_hc_px = "MDA1000HC9";
-
-                //Creamos variable de tipo lista con las propiedades de las tablas que tendremos en el Select
-                //List<Propiedades_HC> HC = new List<Propiedades_HC>();
 
                 Propiedades_HC HC = new Propiedades_HC();
 
@@ -2173,7 +2181,6 @@ namespace CUS.Areas.Admin.Controllers
                 var result = db.Database.SqlQuery<Propiedades_HC>(query);
                 HC = result.FirstOrDefault();
 
-                //return Json(new { PACIENTES = HC }, JsonRequestBehavior.AllowGet);
                 return new JsonResult { Data = HC, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
             catch (Exception ex)
