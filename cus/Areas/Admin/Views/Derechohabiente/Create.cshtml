@@ -261,41 +261,43 @@
                                                     @Html.DropDownListFor(model => model.EntidadNacimiento, new List
                                                     <SelectListItem>
                                                     {
-                                                    new SelectListItem { Text = "AGUASCALIENTES", Value = "AGUASCALIENTES"},
-                                                    new SelectListItem { Text = "BAJA CALIFORNIA", Value = "BAJA CALIFORNIA"},
-                                                    new SelectListItem { Text = "BAJA CALIFORNIA SUR", Value = "BAJA CALIFORNIA SUR"},
-                                                    new SelectListItem { Text = "CAMPECHE", Value = "CAMPECHE"},
-                                                    new SelectListItem { Text = "COAHULIA", Value = "COAHULIA"},
-                                                    new SelectListItem { Text = "COLIMA", Value = "COLIMA"},
-                                                    new SelectListItem { Text = "CHIAPAS", Value = "CHIAPAS"},
-                                                    new SelectListItem { Text = "CHIHUAHUA", Value = "CHIHUAHUA"},
-                                                    new SelectListItem { Text = "CD. MÉXICO", Value = "CD. MÉXICO"},
-                                                    new SelectListItem { Text = "DURANGO", Value = "DURANGO"},
-                                                    new SelectListItem { Text = "GUANAJUATO", Value = "GUANAJUATO"},
-                                                    new SelectListItem { Text = "GUERRERO", Value = "GUERRERO"},
-                                                    new SelectListItem { Text = "HIDALGO", Value = "HIDALGO"},
-                                                    new SelectListItem { Text = "JALISCO", Value = "JALISCO"},
-                                                    new SelectListItem { Text = "MÉXICO", Value = "MÉXICO"},
-                                                    new SelectListItem { Text = "MICHOACAN DE OCAMPO", Value = "MICHOACAN DE OCAMPO"},
-                                                    new SelectListItem { Text = "MORELOS", Value = "MORELOS"},
-                                                    new SelectListItem { Text = "NAYARIT", Value = "NAYARIT"},
-                                                    new SelectListItem { Text = "NUEVO LEÓN", Value = "NUEVO LÉON"},
-                                                    new SelectListItem { Text = "OAXACA", Value = "OAXACA"},
-                                                    new SelectListItem { Text = "PUEBLA", Value = "PUEBLA"},
-                                                    new SelectListItem { Text = "QUERETARO DE ARTEAGA", Value = "QUERETARO DE ARTEAGA"},
-                                                    new SelectListItem { Text = "QUINTANA ROO", Value = "QUINTANA ROO"},
-                                                    new SelectListItem { Text = "SAN LUIS POTOSÍ", Value = "SAN LUIS POTOSÍ"},
-                                                    new SelectListItem { Text = "SINALOA", Value = "SINALOA"},
-                                                    new SelectListItem { Text = "TABASCO", Value = "TABASCO"},
-                                                    new SelectListItem { Text = "TAMAULIPAS", Value = "TAMAULIPAS"},
-                                                    new SelectListItem { Text = "TLAXCALA", Value = "TLAXCALA"},
-                                                    new SelectListItem { Text = "VERACRUZ", Value = "VERACRUZ"},
-                                                    new SelectListItem { Text = "YUCATÁN", Value = "YUCATÁN"},
-                                                    new SelectListItem { Text = "ZACATECAS", Value = "ZACATECAS"},
+                                                    new SelectListItem { Text = "AGUASCALIENTES", Value = "AC"},
+                                                    new SelectListItem { Text = "BAJA CALIFORNIA", Value = "BC"},
+                                                    new SelectListItem { Text = "BAJA CALIFORNIA SUR", Value = "BCS"},
+                                                    new SelectListItem { Text = "CAMPECHE", Value = "CE"},
+                                                    new SelectListItem { Text = "COAHULIA", Value = "CH"},
+                                                    new SelectListItem { Text = "COLIMA", Value = "CO"},
+                                                    new SelectListItem { Text = "CHIAPAS", Value = "CS"},
+                                                    new SelectListItem { Text = "CHIHUAHUA", Value = "CH"},
+                                                    new SelectListItem { Text = "CD. MÉXICO", Value = "CDMX"},
+                                                    new SelectListItem { Text = "DURANGO", Value = "DG"},
+                                                    new SelectListItem { Text = "GUANAJUATO", Value = "GT"},
+                                                    new SelectListItem { Text = "GUERRERO", Value = "GR"},
+                                                    new SelectListItem { Text = "HIDALGO", Value = "HG"},
+                                                    new SelectListItem { Text = "JALISCO", Value = "JC"},
+                                                    new SelectListItem { Text = "MÉXICO", Value = "MX"},
+                                                    new SelectListItem { Text = "MICHOACAN DE OCAMPO", Value = "MN"},
+                                                    new SelectListItem { Text = "MORELOS", Value = "MS"},
+                                                    new SelectListItem { Text = "NAYARIT", Value = "NT"},
+                                                    new SelectListItem { Text = "NUEVO LEÓN", Value = "NL"},
+                                                    new SelectListItem { Text = "OAXACA", Value = "OC"},
+                                                    new SelectListItem { Text = "PUEBLA", Value = "PL"},
+                                                    new SelectListItem { Text = "QUERETARO DE ARTEAGA", Value = "QT"},
+                                                    new SelectListItem { Text = "QUINTANA ROO", Value = "QR"},
+                                                    new SelectListItem { Text = "SAN LUIS POTOSÍ", Value = "SP"},
+                                                    new SelectListItem { Text = "SINALOA", Value = "SL"},
+                                                    new SelectListItem { Text = "TABASCO", Value = "TC"},
+                                                    new SelectListItem { Text = "TAMAULIPAS", Value = "TS"},
+                                                    new SelectListItem { Text = "TLAXCALA", Value = "TL"},
+                                                    new SelectListItem { Text = "VERACRUZ", Value = "VZ"},
+                                                    new SelectListItem { Text = "YUCATÁN", Value = "YN"},
+                                                    new SelectListItem { Text = "ZACATECAS", Value = "ZS"},
                                                     }, "Seleccione",
                                                     new
                                                     {
-                                                    @class = "form-control"
+                                                    @class = "form-control llenarcurp",
+                                                    @id = "estadonacimiento",
+                                                    @name = "EntidadNacimiento",
                                                     })
                                                     @Html.ValidationMessageFor(model => model.EntidadNacimiento, "", new { @class = "text-danger" })
                                                 </div>
@@ -1020,7 +1022,7 @@
 <script>
     $(".llenarcurp").on("keyup change", function (e) {
         if ($('#nombre').val() && $('#primerapellido').val() && $('#segundoapellido').val() && $('#dia').val() && $('#mes').val() && $('#anio').val()) {
-            if (!$('#sexo option:first-child').prop('selected') && !$('#estado option:first-child').prop('selected')) {
+            if (!$('#sexo option:first-child').prop('selected') && !$('#estadonacimiento option:first-child').prop('selected')) {
                 calcularCurp();
             }
         }
@@ -1108,11 +1110,11 @@
         * @@param {string} str - String con el estado.
         */
         function estadoValido(str) {
-            var estado = ['AS', 'BC', 'BS', 'CC', 'CS', 'CH', 'CL', 'CM', 'DF', 'DG',
+            var estadonacimiento = ['AS', 'BC', 'BS', 'CC', 'CS', 'CH', 'CL', 'CM', 'DF', 'DG',
                 'GT', 'GR', 'HG', 'JC', 'MC', 'MN', 'MS', 'NT', 'NL', 'OC', 'PL', 'QT',
                 'QR', 'SP', 'SL', 'SR', 'TC', 'TS', 'TL', 'VZ', 'YN', 'ZS', 'NE'];
 
-            return (estado.indexOf(str.toUpperCase()) > -1);
+            return (estadonacimiento.indexOf(str.toUpperCase()) > -1);
         }
 
 
@@ -1204,16 +1206,17 @@
         * @@param {string} apellido_materno - Apellido materno.
         * En caso de haber conjunciones en los apellidos, estas deben ir aqui.
         * @@param {string} sexo - Sexo. H para hombre, M para mujer.
-        * @@param {string} estado - Estado, usando las abreviaturas oficiales.
+        * @@param {string} estadonacimiento - Estado, usando las abreviaturas oficiales.
         * @@param {array} fecha_nacimiento - Arreglo con [ día, mes, año ], cada uno como numero.
         * @@param {string} [homonimia] - Opcional. Valor usado para evitar repeticiones, es asignado por gobernación.
         * Por default es 0 si la fecha de nacimiento es menor o igual a 1999, o A, si es igual o mayor a 2000.
         */
         function generaCurp(param) {
             var inicial_nombre, vocal_apellido, posicion_1_4, posicion_14_16, curp, primera_letra_paterno, primera_letra_materno, nombres, nombre_a_usar, pad;
+            console.log(param);
 
             pad = zeropad.bind(null, 2);
-            if (!estadoValido(param.estado)) {
+            if (!estadoValido(param.estadonacimiento)) {
                 return false;
             }
 
@@ -1264,7 +1267,7 @@
                 pad(param.fecha_nacimiento[1]),
                 pad(param.fecha_nacimiento[0]),
                 param.sexo.toUpperCase(),
-                param.estado.toUpperCase(),
+                param.estadonacimiento.toUpperCase(),
                 posicion_14_16,
                 param.homonimia || (param.fecha_nacimiento[2] > 1999 ? 'A' : 0)
             ].join('');
@@ -1288,7 +1291,7 @@
         var apellido_paterno = document.getElementById("primerapellido").value;
         var apellido_materno = document.getElementById("segundoapellido").value;
         var sexo = document.getElementById("sexo").value;
-        var estado = document.getElementById("estado").value;
+        var estadonacimiento = document.getElementById("estadonacimiento").value;
         var fecha_nacimiento = [document.getElementById("dia").value
             , document.getElementById("mes").value
             , document.getElementById("anio").value];
@@ -1299,7 +1302,7 @@
           apellido_paterno  : 'Vazquez',
           apellido_materno  : 'Bautista',
           sexo              : 'M',
-          estado            : 'PL',
+          estadonacimiento            : 'PL',
           fecha_nacimiento  : [25, 02, 1957]
         });
         */
@@ -1311,7 +1314,7 @@
             apellido_paterno: apellido_paterno,
             apellido_materno: apellido_materno,
             sexo: sexo,
-            estado: estado,
+            estadonacimiento: estadonacimiento,
             fecha_nacimiento: fecha_nacimiento
         });
 
