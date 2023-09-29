@@ -4,32 +4,27 @@
 }
 
 <style>
-
     .modal {
         padding: 0 !important;
     }
-
     #myModal .modal-dialog {
         max-width: none;
         height: 100%;
         margin: 0;
     }
-
     .modal-open .main-wrapper {
         filter: none;
     }
-
     .fa-plus-circle {
         float: right;
     }
-
-    /*#myModal {
-        top: 100px;
-        left: 100px;
-        z-index: 1;
-        transform: rotate(360deg);
-    }*/
-
+    p {
+        font-weight:bold;
+    }
+    p span{
+        font-weight: normal;
+        color:red;
+    }
 </style>
 
 <div class="page-wrapper">
@@ -44,7 +39,6 @@
         </div>
 
         <div class="row">
-
             <div class="col-sm-12" id="BusquedaPX">
                 <div class="row">
                     <div class="col-md-3 mb-3">
@@ -69,12 +63,12 @@
                                         Primer Apellido
                                     </th>
                                     <th style="text-align:center">
-                                        Fecha Registro
+                                        Fecha
                                     </th>
                                     <th style="text-align:center">
                                         Tipo
                                     </th>
-                                    <th style="width:5px">Ver H.C.</th>
+                                    <th style="width:5px">Ver</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -83,28 +77,24 @@
                     </div>
                 </div>
             </div>
-
         </div>
-
     </div>
 </div>
-
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Historia Clínica</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Historia Clínica Común</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p>
 
+                <p>
                     <h4 class="collapsed" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                         Ficha de Identificación <i class="fa fa-plus-circle"></i>
                     </h4>
-
                 </p>
 
                 <div class="collapse" id="collapseExample">
@@ -251,7 +241,6 @@
 
                 <hr />
 
-
                 <p>
                     <h4 data-toggle="collapse" data-target="#collapseExample4" aria-expanded="false" aria-controls="collapseExample4">
                         Evaluación Económica <i class="fa fa-plus-circle"></i>
@@ -279,9 +268,6 @@
                 </div>
 
                 <hr />
-
-
-
 
                 <p>
                     <h4 data-toggle="collapse" data-target="#collapseExample5" aria-expanded="false" aria-controls="collapseExample5">
@@ -316,10 +302,6 @@
                 </div>
 
                 <hr />
-
-
-
-
 
                 <p>
                     <h4 data-toggle="collapse" data-target="#collapseExample6" aria-expanded="false" aria-controls="collapseExample6">
@@ -366,10 +348,6 @@
                 </div>
 
                 <hr />
-
-
-
-
 
                 <p>
                     <h4 data-toggle="collapse" data-target="#collapseExample7" aria-expanded="false" aria-controls="collapseExample7">
@@ -541,9 +519,6 @@
 
                 <hr />
 
-
-
-
                 <p>
                     <h4 data-toggle="collapse" data-target="#collapseExample8" aria-expanded="false" aria-controls="collapseExample8">
                         Antecedentes Perinatales <i class="fa fa-plus-circle"></i>
@@ -620,9 +595,6 @@
 
                 <hr />
 
-
-
-
                 <p>
                     <h4 data-toggle="collapse" data-target="#collapseExample9" aria-expanded="false" aria-controls="collapseExample9">
                         Antecedentes Patológicos <i class="fa fa-plus-circle"></i>
@@ -635,31 +607,61 @@
                             Respiratorios: <span id="CheckRespiratorios"></span>
                         </p>
                         <p>
+                            Detalle Respiratorios: <span id="DetallarRespiratorios"></span>
+                        </p>
+                        <p>
                             Endocrinológicos: <span id="CheckEndocrinologicos"></span>
+                        </p>
+                        <p>
+                            Detalle Endocrinológicos: <span id="DetallarEndocrinologicos"></span>
                         </p>
                         <p>
                             Cardiovasculares: <span id="CheckCardiovasculares"></span>
                         </p>
                         <p>
+                            Detalle Cardiovasculares: <span id="DetallarCardiovasculares"></span>
+                        </p>
+                        <p>
                             Oncológicos: <span id="CheckOncologicos"></span>
+                        </p>
+                        <p>
+                            Detalle Oncológicos: <span id="DetallarOncologicos"></span>
                         </p>
                         <p>
                             Salud Mental: <span id="CheckSaludMental"></span>
                         </p>
                         <p>
+                            Detalle Mental: <span id="DetallarSaludMental"></span>
+                        </p>
+                        <p>
                             Neurológicos: <span id="CheckNeurologicos"></span>
+                        </p>
+                        <p>
+                            Detalle Neurológicos: <span id="DetallarNeurologicos"></span>
                         </p>
                         <p>
                             Infecto Contagiosos: <span id="CheckInfectoContagiosos"></span>
                         </p>
                         <p>
+                            Detalle Contagiosos: <span id="DetallarInfectoContagiosos"></span>
+                        </p>
+                        <p>
                             Problemas Aparato Reproductor: <span id="CheckProblemasAparatoR"></span>
+                        </p>
+                        <p>
+                            Detalle Aparato R.: <span id="DetallarProblemasAparatoR"></span>
                         </p>
                         <p>
                             Problemas Gastrointestinales: <span id="CheckProblemasGastro"></span>
                         </p>
                         <p>
+                            Detalle Gastrointestinales: <span id="DetallarProblemasGastro"></span>
+                        </p>
+                        <p>
                             Reumatológicos: <span id="CheckReumatologicos"></span>
+                        </p>
+                        <p>
+                            Detalle Reumatológicos: <span id="DetallarReumatologicos"></span>
                         </p>
                         <p>
                             Ninguna: <span id="CheckNinguna"></span>
@@ -680,10 +682,6 @@
                 </div>
 
                 <hr />
-
-
-
-
 
                 <p>
                     <h4 data-toggle="collapse" data-target="#collapseExample10" aria-expanded="false" aria-controls="collapseExample10">
@@ -706,9 +704,6 @@
                 </div>
 
                 <hr />
-
-
-
 
                 <p>
                     <h4 data-toggle="collapse" data-target="#collapseExample11" aria-expanded="false" aria-controls="collapseExample11">
@@ -759,9 +754,6 @@
 
                 <hr />
 
-
-
-
                 <p>
                     <h4 data-toggle="collapse" data-target="#collapseExample12" aria-expanded="false" aria-controls="collapseExample12">
                         Alimentacion <i class="fa fa-plus-circle"></i>
@@ -789,9 +781,6 @@
                 </div>
 
                 <hr />
-
-
-
 
                 <p>
                     <h4 data-toggle="collapse" data-target="#collapseExample13" aria-expanded="false" aria-controls="collapseExample13">
@@ -842,9 +831,6 @@
 
                 <hr />
 
-
-
-
                 <p>
                     <h4 data-toggle="collapse" data-target="#collapseExample14" aria-expanded="false" aria-controls="collapseExample14">
                         Antecedentes Gineco-obstetricos <i class="fa fa-plus-circle"></i>
@@ -885,15 +871,10 @@
 
                 <hr />
 
-
-
             </div>
         </div>
     </div>
 </div>
-
-
-
 
 <script src="~/Areas/Admin/assets/js/jquery-3.2.1.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -913,7 +894,7 @@
             lengthChange: false,
             pageLength: 20,
             language: {
-                "zeroRecords": "",
+                "zeroRecords": " ",
                 "info": "_TOTAL_ px",
                 "search": "Buscar:",
                 "infoEmpty": "",
@@ -1029,7 +1010,7 @@
                     "className": 'text-center',
                     "orderable": false,
                     "data": null,
-                    "defaultContent": '<button title="Seleccionar px" id="VerDetalle" class="btn btn-success fa fa-check" data-toggle="modal" ></button>',
+                    "defaultContent": '<button title="ver historia" id="VerDetalle" class="btn btn-success fa fa-check" data-toggle="modal" ></button>',
                     "target": -2
                 }
             ]
@@ -1043,14 +1024,14 @@
         //Este es el Identificador armado que se inserta en cada tbl de la H.C.
         var Clave_hc_px = row.data().Clave;
 
-        //alert(Clave_hc_px);
-
         $.ajax({
 		    url: '@Url.Action("ConsultarHC", "HistoriaClinica")',
 		    method: 'POST',
 		    dataType: 'json',
             data: { Clave_hc_px: Clave_hc_px },
-		    success: function(data) {
+            success: function (data) {
+
+                // #region Seteo de valor con input del MODAL
                 //hc_ficha_identificacion
                 $("#acompanante").text(data.acompanante);
                 $("#NombreAcompa").text(data.NombreAcompa);
@@ -1211,6 +1192,16 @@
                 $("#CheckProblemasGastro").text(data.CheckProblemasGastro);
                 $("#CheckReumatologicos").text(data.CheckReumatologicos);
                 $("#CheckNinguna").text(data.CheckNinguna);
+                $("#DetallarRespiratorios").text(data.DetallarRespiratorios);
+                $("#DetallarEndocrinologicos").text(data.DetallarEndocrinologicos);
+                $("#DetallarCardiovasculares").text(data.DetallarCardiovasculares);
+                $("#DetallarOncologicos").text(data.DetallarOncologicos);
+                $("#DetallarSaludMental").text(data.DetallarSaludMental);
+                $("#DetallarNeurologicos").text(data.DetallarNeurologicos);
+                $("#DetallarInfectoContagiosos").text(data.DetallarInfectoContagiosos);
+                $("#DetallarProblemasAparatoR").text(data.DetallarProblemasAparatoR);
+                $("#DetallarProblemasGastro").text(data.DetallarProblemasGastro);
+                $("#DetallarReumatologicos").text(data.DetallarReumatologicos);
                 //hc_inmunizaciones
                 $("#CartillaVacunacion").text(data.CartillaVacunacion);
                 $("#EsquemaVacunacion").text(data.EsquemaVacunacion);
@@ -1259,10 +1250,10 @@
                 $("#VidaSexual").text(data.VidaSexual);
                 $("#NumeroParejasSexuales").text(data.NumeroParejasSexuales);
                 $("#TipoMenarquia").text(data.TipoMenarquia);
+                // #endregion
 
                 //Mostrar modal
                 $('#exampleModal').modal('show');
-
 		    },
 		    error: function(ex) {
 			    Swal.fire({
@@ -1271,7 +1262,6 @@
 			    });
 		    }
 	    });
-
     });
 
 

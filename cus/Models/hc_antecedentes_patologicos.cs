@@ -34,6 +34,16 @@ namespace CUS.Models
         public Nullable<bool> CheckNinguna { get; set; }
         public Nullable<int> Id_HistoriaClinica { get; set; }
         public string Clave_hc_px { get; set; }
+        public string DetallarRespiratorios { get; set; }
+        public string DetallarEndocrinologicos { get; set; }
+        public string DetallarCardiovasculares { get; set; }
+        public string DetallarOncologicos { get; set; }
+        public string DetallarSaludMental { get; set; }
+        public string DetallarNeurologicos { get; set; }
+        public string DetallarInfectoContagiosos { get; set; }
+        public string DetallarProblemasAparatoR { get; set; }
+        public string DetallarProblemasGastro { get; set; }
+        public string DetallarReumatologicos { get; set; }
     
         public virtual Paciente Paciente { get; set; }
     }

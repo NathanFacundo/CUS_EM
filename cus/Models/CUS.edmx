@@ -136,6 +136,16 @@
           <Property Name="CheckNinguna" Type="bit" />
           <Property Name="Id_HistoriaClinica" Type="int" />
           <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
+          <Property Name="DetallarRespiratorios" Type="varchar" MaxLength="500" />
+          <Property Name="DetallarEndocrinologicos" Type="varchar" MaxLength="500" />
+          <Property Name="DetallarCardiovasculares" Type="varchar" MaxLength="500" />
+          <Property Name="DetallarOncologicos" Type="varchar" MaxLength="500" />
+          <Property Name="DetallarSaludMental" Type="varchar" MaxLength="500" />
+          <Property Name="DetallarNeurologicos" Type="varchar" MaxLength="500" />
+          <Property Name="DetallarInfectoContagiosos" Type="varchar" MaxLength="500" />
+          <Property Name="DetallarProblemasAparatoR" Type="varchar" MaxLength="500" />
+          <Property Name="DetallarProblemasGastro" Type="varchar" MaxLength="500" />
+          <Property Name="DetallarReumatologicos" Type="varchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="hc_antecedentes_perinatales">
           <Key>
@@ -1014,6 +1024,16 @@
           <Property Name="Id_HistoriaClinica" Type="Int32" />
           <NavigationProperty Name="Paciente" Relationship="CUSModel.FK__hc_antece__Id_Pa__08B54D69" FromRole="hc_antecedentes_patologicos" ToRole="Paciente" />
           <Property Name="Clave_hc_px" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DetallarRespiratorios" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="DetallarEndocrinologicos" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="DetallarCardiovasculares" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="DetallarOncologicos" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="DetallarSaludMental" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="DetallarNeurologicos" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="DetallarInfectoContagiosos" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="DetallarProblemasAparatoR" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="DetallarProblemasGastro" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="DetallarReumatologicos" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="hc_antecedentes_perinatales">
           <Key>
@@ -1653,6 +1673,16 @@
           <EntitySetMapping Name="hc_antecedentes_patologicos">
             <EntityTypeMapping TypeName="CUSModel.hc_antecedentes_patologicos">
               <MappingFragment StoreEntitySet="hc_antecedentes_patologicos">
+                <ScalarProperty Name="DetallarReumatologicos" ColumnName="DetallarReumatologicos" />
+                <ScalarProperty Name="DetallarProblemasGastro" ColumnName="DetallarProblemasGastro" />
+                <ScalarProperty Name="DetallarProblemasAparatoR" ColumnName="DetallarProblemasAparatoR" />
+                <ScalarProperty Name="DetallarInfectoContagiosos" ColumnName="DetallarInfectoContagiosos" />
+                <ScalarProperty Name="DetallarNeurologicos" ColumnName="DetallarNeurologicos" />
+                <ScalarProperty Name="DetallarSaludMental" ColumnName="DetallarSaludMental" />
+                <ScalarProperty Name="DetallarOncologicos" ColumnName="DetallarOncologicos" />
+                <ScalarProperty Name="DetallarCardiovasculares" ColumnName="DetallarCardiovasculares" />
+                <ScalarProperty Name="DetallarEndocrinologicos" ColumnName="DetallarEndocrinologicos" />
+                <ScalarProperty Name="DetallarRespiratorios" ColumnName="DetallarRespiratorios" />
                 <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
                 <ScalarProperty Name="Id_HistoriaClinica" ColumnName="Id_HistoriaClinica" />
                 <ScalarProperty Name="CheckNinguna" ColumnName="CheckNinguna" />

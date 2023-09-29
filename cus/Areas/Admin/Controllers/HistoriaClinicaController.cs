@@ -1227,6 +1227,16 @@ namespace CUS.Areas.Admin.Controllers
             public string CheckProblemasGastro { get; set; }
             public string CheckReumatologicos { get; set; }
             public string CheckNinguna { get; set; }
+            public string DetallarRespiratorios { get; set; }
+            public string DetallarEndocrinologicos { get; set; }
+            public string DetallarCardiovasculares { get; set; }
+            public string DetallarOncologicos { get; set; }
+            public string DetallarSaludMental { get; set; }
+            public string DetallarNeurologicos { get; set; }
+            public string DetallarInfectoContagiosos { get; set; }
+            public string DetallarProblemasAparatoR { get; set; }
+            public string DetallarProblemasGastro { get; set; }
+            public string DetallarReumatologicos { get; set; }
         }
 
         [HttpPost]
@@ -1301,8 +1311,8 @@ namespace CUS.Areas.Admin.Controllers
                     Historia.EspecifiqueHospitalizado = HistoriaClinica.EspecifiqueHospitalizado;
                     Historia.RealizadoCirugia = HistoriaClinica.RealizadoCirugia;
                     Historia.EspecifiqueCirugia = HistoriaClinica.EspecifiqueCirugia;
-
-                    if(HistoriaClinica.CheckRespiratorios == "on")
+                    #region GUARDAR CHECKS
+                    if (HistoriaClinica.CheckRespiratorios == "on")
                     {
                         Historia.CheckRespiratorios = true;
                     }
@@ -1390,9 +1400,19 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         Historia.CheckNinguna = false;
                     }
-
+                    #endregion
                     Historia.Id_Paciente = paciente.Id;
                     Historia.Clave_hc_px = Id_claveHC;
+                    Historia.DetallarRespiratorios = HistoriaClinica.DetallarRespiratorios;
+                    Historia.DetallarEndocrinologicos = HistoriaClinica.DetallarEndocrinologicos;
+                    Historia.DetallarCardiovasculares = HistoriaClinica.DetallarCardiovasculares;
+                    Historia.DetallarOncologicos = HistoriaClinica.DetallarOncologicos;
+                    Historia.DetallarSaludMental = HistoriaClinica.DetallarSaludMental;
+                    Historia.DetallarNeurologicos = HistoriaClinica.DetallarNeurologicos;
+                    Historia.DetallarInfectoContagiosos = HistoriaClinica.DetallarInfectoContagiosos;
+                    Historia.DetallarProblemasAparatoR = HistoriaClinica.DetallarProblemasAparatoR;
+                    Historia.DetallarProblemasGastro = HistoriaClinica.DetallarProblemasGastro;
+                    Historia.DetallarReumatologicos = HistoriaClinica.DetallarReumatologicos;
                     db.hc_antecedentes_patologicos.Add(Historia);
                     db.SaveChanges();
                 }
@@ -2083,6 +2103,16 @@ namespace CUS.Areas.Admin.Controllers
             public bool? CheckProblemasGastro { get; set; }
             public bool? CheckReumatologicos { get; set; }
             public bool? CheckNinguna { get; set; }
+            public string DetallarRespiratorios { get; set; }
+            public string DetallarEndocrinologicos { get; set; }
+            public string DetallarCardiovasculares { get; set; }
+            public string DetallarOncologicos { get; set; }
+            public string DetallarSaludMental { get; set; }
+            public string DetallarNeurologicos { get; set; }
+            public string DetallarInfectoContagiosos { get; set; }
+            public string DetallarProblemasAparatoR { get; set; }
+            public string DetallarProblemasGastro { get; set; }
+            public string DetallarReumatologicos { get; set; }
             //hc_inmunizaciones
             public string CartillaVacunacion { get; set; }
             public string EsquemaVacunacion { get; set; }
@@ -2155,7 +2185,7 @@ namespace CUS.Areas.Admin.Controllers
                     "FRP.CambiosSueño, FRP.CambiosEnergia, FRP.CambiosApetito, FRP.Pesimismo, FRP.Irritabilidad, FRP.PerdidaPlacer, FRP.PalpitacionesFuertes, FRP.SensacionAahogo, FRP.MiedoPreocupacion, FRP.IdeacionSuicida, " +
                     "H.HorasSueño, H.TieneInsomnio, H.TieneEnuresis, H.TienePesadillas, H.HorasOcio, H.ActividadFisica, H.TiempoActividadFisica, H.FrecuenciaActividadFisica, H.Check_Adicciones_Padre, H.Check_Adicciones_Madre, H.Check_Adicciones_Ambas, H.Check_Adicciones_NA, H.Check_Cardiopatia_Padre, H.Check_Cardiopatia_Madre, H.Check_Cardiopatia_Ambas, H.Check_Cardiopatia_NA, H.Check_Diabetes_Padre, H.Check_Diabetes_Madre, H.Check_Diabetes_Ambas, H.Check_Diabetes_NA, H.Check_Dislipidemias_Padre, H.Check_Dislipidemias_Madre, H.Check_Dislipidemias_Ambas, H.Check_Dislipidemias_NA, H.Check_Epilepsia_Padre, H.Check_Epilepsia_Madre, H.Check_Epilepsia_Ambas, H.Check_Epilepsia_NA, H.Check_Hipertension_Padre, H.Check_Hipertension_Madre, H.Check_Hipertension_Ambas, H.Check_Hipertension_NA, H.Check_Infectocontagiosas_Padre, H.Check_Infectocontagiosas_Madre, H.Check_Infectocontagiosas_Ambas, H.Check_Infectocontagiosas_NA, H.Check_Malformaciones_Padre, H.Check_Malformaciones_Madre, H.Check_Malformaciones_Ambas, H.Check_Malformaciones_NA, H.Check_Nefropatias_Padre, H.Check_Nefropatias_Madre, H.Check_Nefropatias_Ambas, H.Check_Nefropatias_NA, H.Check_Obesidad_Padre, H.Check_Obesidad_Madre, H.Check_Obesidad_Ambas, H.Check_Obesidad_NA, H.Check_Oncologicos_Padre, H.Check_Oncologicos_Madre, H.Check_Oncologicos_Ambas, H.Check_Oncologicos_NA, " +
                     "AP.NumeroEmbarazo, AP.EnfermedadEmbarazo, AP.EspecifiqueEnfermedadEmbarazo, AP.TratamientoEmbarazo, AP.EspecifiqueTratamientoEmbarazo, AP.LugarParto, AP.EspecifiqueLugarParto, AP.EdadGestional, AP.EspecifiqueEdadGestional, AP.Apgar, AP.EspecifiqueApgar, AP.TipoParto, AP.PartoFue, AP.EspecifiquePartoFue, AP.EspecifiqueMotivoCesarea, AP.ComplicacionObs, AP.EspecifiqueComplicacionObs, AP.TamizMetabolico, AP.TamizMetabolicoOpciones, AP.TamizAuditivo, AP.TamizAuditivoOpciones, " +
-                    "APA.Antecedentes, APA.PxHospitalizado, APA.EspecifiqueHospitalizado, APA.RealizadoCirugia, APA.EspecifiqueCirugia, APA.CheckRespiratorios, APA.CheckEndocrinologicos, APA.CheckCardiovasculares, APA.CheckOncologicos, APA.CheckSaludMental, APA.CheckNeurologicos, APA.CheckInfectoContagiosos, APA.CheckProblemasAparatoR, APA.CheckProblemasGastro, APA.CheckReumatologicos, APA.CheckNinguna, " +
+                    "APA.Antecedentes, APA.PxHospitalizado, APA.EspecifiqueHospitalizado, APA.RealizadoCirugia, APA.EspecifiqueCirugia, APA.CheckRespiratorios, APA.CheckEndocrinologicos, APA.CheckCardiovasculares, APA.CheckOncologicos, APA.CheckSaludMental, APA.CheckNeurologicos, APA.CheckInfectoContagiosos, APA.CheckProblemasAparatoR, APA.CheckProblemasGastro, APA.CheckReumatologicos, APA.CheckNinguna, APA.DetallarRespiratorios, APA.DetallarEndocrinologicos, APA.DetallarCardiovasculares, APA.DetallarOncologicos, APA.DetallarSaludMental, APA.DetallarNeurologicos, APA.DetallarInfectoContagiosos, APA.DetallarProblemasAparatoR, APA.DetallarProblemasGastro, APA.DetallarReumatologicos, " +
                     "I.CartillaVacunacion, I.EsquemaVacunacion, I.EspecifiqueVacuna, " +
                     "HC.TomaAlcohol, HC.TomaAlcoholFrecuencia, HC.CantidadAlcohol, HC.Fuma, HC.EdadInicio, HC.ActualmenteFuma, HC.TiempoInactividadFuma, HC.TipoFuma, HC.FrecuenciaFuma, HC.CantidadFuma, HC.ConsumeDroga, HC.TipoDrogaConsume, HC.FrecuenciaDroga, HC.CantidadDrogaConsume, " +
                     "A.TipoLactancia, A.TiempoLactancia, A.EdadAblactacion, A.AlimentosInicio, A.EdadIntegracion, " +
