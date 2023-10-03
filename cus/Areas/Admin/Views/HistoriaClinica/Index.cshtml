@@ -9,22 +9,18 @@
         max-width: 110px;
         font-size: 10px;
     }
-
     .user-tabs .nav-tabs > li > a {
         padding: 5px;
     }
-
 </style>
 
-<!-- Page Wrapper -->
 <div class="page-wrapper">
     <div class="content container-fluid">
 
-        <!-- Page Header -->
         <div class="page-header">
             <div class="row">
                 <div class="col-sm-12">
-                    <h3 class="page-title">Historia Clínica</h3>
+                    <h3 class="page-title">Historia Clínica Común</h3>
                     @*<ul class="breadcrumb">
                     <li class="breadcrumb-item"><a href="@Url.Action(" Index", "Admin" )">Dashboard</a></li>
                     <li class="breadcrumb-item"><a href="@Url.Action(" Index", "HistoriaClinica" )">Historia Clínica</a></li>
@@ -32,8 +28,7 @@
                 </div>
             </div>
         </div>
-        <!-- /Page Header -->
-
+        
         <div class="row">
 
             <div class="col-sm-12" id="InfoPX">
@@ -61,54 +56,54 @@
             </div>
 
             <div class="col-sm-12" id="BusquedaPX">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h4>Busque al px. para la H.C.</h4>
-                        </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Busque al px.</h4>
                     </div>
-                    <div class="row">
-                        <div class="col-md-3 mb-3">
-                            <input type="text" class="form-control BuscarPX" id="NombrePX" placeholder="Nombre PX" required>
-                        </div>
-                        <div class="col-md-3 mb-3">
-                            <input type="text" class="form-control BuscarPX" id="ExpedientePX" placeholder="Expediente PX" required>
-                        </div>
-                        <div class="col-md-3 mb-3">
-                            <button class="btn btn-primary" onclick="BtnBuscarPX()">Buscar</button>
-                        </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 mb-3">
+                        <input type="text" class="form-control BuscarPX" id="NombrePX" placeholder="Nombre PX" required>
                     </div>
-                    <div>
-                        <div class="table-responsive">
-                            <table id="TblPaciente" class="datatable table table-stripped">
-                                <thead>
-                                    <tr>
-                                        <th style="text-align:center">
-                                            Nombre
-                                        </th>
-                                        <th style="text-align:center">
-                                            Primer Apellido
-                                        </th>
-                                        <th style="text-align:center">
-                                            Segundo Apellido
-                                        </th>
-                                        <th style="text-align:center">
-                                            Unidad de Afiliacion
-                                        </th>
-                                        <th style="text-align:center">
-                                            Expediente
-                                        </th>
-                                        <th style="width:5px">Seleccionar</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                </tbody>
-                            </table>
-                        </div>
+                    <div class="col-md-3 mb-3">
+                        <input type="text" class="form-control BuscarPX" id="ExpedientePX" placeholder="Expediente PX" required>
                     </div>
+                    <div class="col-md-3 mb-2">
+                        <button class="btn btn-primary" onclick="BtnBuscarPX()">Buscar</button>
+                    </div>
+                </div>
+                <div>
+                    <div class="table-responsive">
+                        <table id="TblPaciente" class="datatable table table-stripped">
+                            <thead>
+                                <tr>
+                                    <th style="text-align:center">
+                                        Nombre
+                                    </th>
+                                    <th style="text-align:center">
+                                        Primer Apellido
+                                    </th>
+                                    <th style="text-align:center">
+                                        Segundo Apellido
+                                    </th>
+                                    <th style="text-align:center">
+                                        Unidad de Afiliacion
+                                    </th>
+                                    <th style="text-align:center">
+                                        Expediente
+                                    </th>
+                                    <th style="width:5px">Seleccionar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
 
             <div class="col-sm-12">
-                <!-- Tab Menu -->
+               
                 <nav class="user-tabs mb-4">
                     <ul class="nav nav-tabs nav-tabs-bottom nav-justified">
                         <li class="nav-item text-left">
@@ -156,10 +151,9 @@
 
                     </ul>
                 </nav>
-                <!-- /Tab Menu -->
-                <!-- Tab Content -->
+               
                 <div class="tab-content pt-0">
-                    <!-- Prescription Tab -->
+                    
                     <div class="tab-pane fade show active" id="pat_prescriptions">
                         <div class="card card-table mb-0 p-3 mb-5">
                             <div class="card-body">
@@ -1400,7 +1394,48 @@
                                                 </label>
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-6">
+
+                                            <div class="row">
+                                                <input type="text" class="form-control" id="DetallarRespiratorios" name="DetallarRespiratorios" placeholder="Detallar Respiratorios">
+                                            </div>
+                                            <div class="row">
+                                                <input type="text" class="form-control" id="DetallarEndocrinologicos" name="DetallarEndocrinologicos" placeholder="Detallar Endocrinologicos">
+                                            </div>
+                                            <div class="row">
+                                                <input type="text" class="form-control" id="DetallarCardiovasculares" name="DetallarCardiovasculares" placeholder="Detallar Cardiovasculares">
+                                            </div>
+                                            <div class="row">
+                                                <input type="text" class="form-control" id="DetallarOncologicos" name="DetallarOncologicos" placeholder="Detallar Oncologicos">
+                                            </div>
+                                            <div class="row">
+                                                <input type="text" class="form-control" id="DetallarSaludMental" name="DetallarSaludMental" placeholder="Detallar SaludMental">
+                                            </div>
+                                            <div class="row">
+                                                <input type="text" class="form-control" id="DetallarNeurologicos" name="DetallarNeurologicos" placeholder="Detallar Neurologicos">
+                                            </div>
+                                            <div class="row">
+                                                <input type="text" class="form-control" id="DetallarInfectoContagiosos" name="DetallarInfectoContagiosos" placeholder="Detallar InfectoContagiosos">
+                                            </div>
+                                            <div class="row">
+                                                <input type="text" class="form-control" id="DetallarProblemasAparatoR" name="DetallarProblemasAparatoR" placeholder="Detallar Problemas Aparato">
+                                            </div>
+                                            <div class="row">
+                                                <input type="text" class="form-control" id="DetallarProblemasGastro" name="DetallarProblemasGastro" placeholder="Detallar Problemas Gastro">
+                                            </div>
+                                            <div class="row">
+                                                <input type="text" class="form-control" id="DetallarReumatologicos" name="DetallarReumatologicos" placeholder="Detallar Reumatologicos">
+                                            </div>
+
+                                        </div>
+                                        
+                                    </div>
+                                    <br />
+
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-5">
                                             <div class="form-group">
                                                 <label>Px ha estado hospitalizado</label>
                                                 <select class="form-control showoptions" id="PxHospitalizado" name="PxHospitalizado">
@@ -1410,17 +1445,18 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-md-3" id="EspHospitalizado">
-                                            <div class="form-group">
+                                        <div class="col-md-6">
+                                            <div class="form-group" id="EspHospitalizado">
                                                 <label>Especifique</label>
                                                 <input type="text" class="form-control" id="EspecifiqueHospitalizado" name="EspecifiqueHospitalizado" placeholder="">
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-1">
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-5">
                                             <div class="form-group">
                                                 <label>Se ha realizado cirugía</label>
                                                 <select class="form-control showoptions" id="RealizadoCirugia" name="RealizadoCirugia">
@@ -1430,13 +1466,14 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-md-3" id="EspCirugia">
+                                        <div class="col-md-6" id="EspCirugia">
                                             <div class="form-group">
                                                 <label>Especifique</label>
                                                 <input type="text" class="form-control" id="EspecifiqueCirugia" name="EspecifiqueCirugia" placeholder="">
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="text-right">
                                         <button id="Btn_Save9" type="submit" class="btn btn-primary">Guardar</button>
                                     </div>
@@ -1879,12 +1916,11 @@
                     </div>
 
                 </div>
-                <!-- Tab Content -->
+               
             </div>
         </div>
     </div>
 </div>
-<!-- /Page Wrapper -->
 
 <script src="~/Areas/Admin/assets/js/jquery-3.2.1.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -1907,7 +1943,7 @@
             lengthChange: false,
             pageLength: 20,
             language: {
-                "zeroRecords": "No se encontraron px",
+                "zeroRecords": " ",
                 "info": "_TOTAL_ px",
                 "search": "Buscar:",
                 "infoEmpty": "",
@@ -2580,7 +2616,7 @@
         //mostramos div de la info del px
         $("#InfoPX").show();
 
-        //Mostrar botones de Guardar HC ya que ya se buscó el px
+        // #region Mostrar botones de Guardar HC ya que ya se buscó el px
         $("#Btn_Save1").css("display", "");
         $("#Btn_Save2").css("display", "");
         $("#Btn_Save3").css("display", "");
@@ -2595,20 +2631,16 @@
         $("#Btn_Save12").css("display", "");
         $("#Btn_Save13").css("display", "");
         $("#Btn_Save14").css("display", "");
+        // #endregion
     });
-
 
     //Ficha de identificacion
     $("#Btn_Save1").click(function () {
         let data = $("#F_pat_prescriptions").serialize();
         var expediente = $("#Exp").text();
 
-        //alert(expediente);
-
         if (expediente) {
-
             $.post("@Url.Action("pat_prescriptions", "HistoriaClinica")?expediente=" + expediente, data).done(function (response) {
-
                 if (response.MENSAJE.substring(0, 6) == "Succe:") {
                     Swal.fire({
                         icon: 'success',
@@ -2625,16 +2657,12 @@
                         text: response.MENSAJE.substring(7),
                     });
                 }
-
             }).fail(function (response) {
                 console.log(response);
             });
-
-
             event.preventDefault();
         }
     });
-
     //Evaluacion social
     $("#Btn_Save2").click(function () {
         let data = $("#f_evaluacionsocial").serialize();
@@ -2665,7 +2693,6 @@
             event.preventDefault();
         }
     });
-
     //Valoracion familiar
     $("#Btn_Save3").click(function () {
         let data = $("#f_valoracionfamiliar").serialize();
@@ -2697,7 +2724,6 @@
             event.preventDefault();
         }
     });
-
     //Evaluacion economica
     $("#Btn_Save4").click(function () {
         let data = $("#f_evaluacioneconomica").serialize();
@@ -2729,7 +2755,6 @@
             event.preventDefault();
         }
     });
-
     //Valores y creencias
     $("#Btn_Save5").click(function () {
         let data = $("#f_valorescreencias").serialize();
@@ -2760,7 +2785,6 @@
             event.preventDefault();
         }
     });
-
     //Factor de riesgo psicologico
     $("#Btn_Save6").click(function () {
         let data = $("#f_riesgopsicologico").serialize();
@@ -2791,7 +2815,6 @@
             event.preventDefault();
         }
     });
-
     //Habitos
     $("#Btn_Save7").click(function () {
         let data = $("#f_habitos").serialize();
@@ -2822,8 +2845,6 @@
             event.preventDefault();
         }
     });
-
-
     //perinatales
     $("#Btn_Save8").click(function () {
         let data = $("#F_perinatales").serialize();
