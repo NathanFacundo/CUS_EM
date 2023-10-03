@@ -34,7 +34,6 @@ namespace CUS.Models
         public virtual DbSet<Paciente> Paciente { get; set; }
         public virtual DbSet<hc_antecedentes_desarrollo> hc_antecedentes_desarrollo { get; set; }
         public virtual DbSet<hc_antecedentes_ginecoobstetricos> hc_antecedentes_ginecoobstetricos { get; set; }
-        public virtual DbSet<hc_antecedentes_patologicos> hc_antecedentes_patologicos { get; set; }
         public virtual DbSet<hc_antecedentes_perinatales> hc_antecedentes_perinatales { get; set; }
         public virtual DbSet<hc_evaluacion_economica> hc_evaluacion_economica { get; set; }
         public virtual DbSet<hc_evaluacion_social> hc_evaluacion_social { get; set; }
@@ -47,5 +46,7 @@ namespace CUS.Models
         public virtual DbSet<hc_valores_creencias> hc_valores_creencias { get; set; }
         public virtual DbSet<HistoriaClinica> HistoriaClinica { get; set; }
         public virtual DbSet<hc_alimentacion> hc_alimentacion { get; set; }
+        public virtual DbSet<hc_antecedentes_patologicos> hc_antecedentes_patologicos { get; set; }
+        public virtual DbSet<hc_interrogatorio> hc_interrogatorio { get; set; }
     }
 }
