@@ -1856,6 +1856,314 @@ namespace CUS.Areas.Admin.Controllers
             }
         }
 
+        public class _interrogatorio
+        {
+            public string Check_SintomasG_Si { get; set; }
+            public string Check_SintomasG_No { get; set; }
+            public string Describir_SintomasG { get; set; }
+            public string Check_Respiratorio_Si { get; set; }
+            public string Check_Respiratorio_No { get; set; }
+            public string Describir_Respiratorio { get; set; }
+            public string Check_Neurologico_Si { get; set; }
+            public string Check_Neurologico_No { get; set; }
+            public string Describir_Neurologico { get; set; }
+            public string Check_pielYanexos_Si { get; set; }
+            public string Check_pielYanexos_No { get; set; }
+            public string Describir_pielYanexos { get; set; }
+            public string Check_Hematologico_Si { get; set; }
+            public string Check_Hematologico_No { get; set; }
+            public string Describir_Hematologico { get; set; }
+            public string Check_Digestivo_Si { get; set; }
+            public string Check_Digestivo_No { get; set; }
+            public string Describir_Digestivo { get; set; }
+            public string Check_Genitourinario_Si { get; set; }
+            public string Check_Genitourinario_No { get; set; }
+            public string Describir_Genitourinario { get; set; }
+            public string Check_Cardiovascular_Si { get; set; }
+            public string Check_Cardiovascular_No { get; set; }
+            public string Describir_Cardiovascular { get; set; }
+            public string Check_Musculoesqueletico_Si { get; set; }
+            public string Check_Musculoesqueletico_No { get; set; }
+            public string Describir_Musculoesqueletico { get; set; }
+            public string Check_Renal_Si { get; set; }
+            public string Check_Renal_No { get; set; }
+            public string Describir_Renal { get; set; }
+            public string Check_Inmune_Si { get; set; }
+            public string Check_Inmune_No { get; set; }
+            public string Describir_Inmune { get; set; }
+        }
+
+        [HttpPost]
+        public ActionResult interrogatorio(_interrogatorio HistoriaClinica, string expediente)
+        {
+            try
+            {
+                var fecha = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
+                var fechaDT = DateTime.Parse(fecha);
+                var id_hc = 0;
+
+                //Buscamos al px del que se le quiere hacer la H.C.
+                var paciente = (from a in db.Paciente
+                                where a.Expediente == expediente
+                                select a).FirstOrDefault();
+
+                //Buscamos si a ese px se le acaba de crear registro en la tbl HistoriaClinica
+                if (paciente != null)
+                {
+                    var fechaUltimoRegistro = (from a in db.HistoriaClinica
+                                               where a.Id_Paciente == paciente.Id
+                                               select a).
+                              OrderByDescending(r => r.FechaRegistroHC)
+                              .FirstOrDefault();
+
+                    bool pacienteTieneRegistroEnUltimas3Horas;
+                    DateTime fechaLimite = DateTime.Now;
+
+                    //si NO existe registro en la bd en la tbl HistoriaClinica por default pacienteTieneRegistroEnUltimas3Horas será null, quiere decir que se creará un registro nuevo
+                    if (fechaUltimoRegistro == null)
+                    {
+                        pacienteTieneRegistroEnUltimas3Horas = false;
+                    }
+                    else
+                    {
+                        fechaLimite = (DateTime)fechaUltimoRegistro.FechaRegistroHC;
+                        DateTime fl3horas = fechaLimite.AddHours(+3);
+
+                        pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
+                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC >= fechaDT);
+                    }
+
+                    var Id_claveHC = "";
+                    if (pacienteTieneRegistroEnUltimas3Horas)// El paciente ya tiene un registro en las últimas 3 horas
+                    {
+                        //Obtenemos los datos del registro del px
+                        var registroReciente = db.HistoriaClinica
+                                                .Where(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fechaLimite && r.FechaRegistroHC <= fechaDT)
+                                                .OrderByDescending(r => r.FechaRegistroHC)
+                                                .FirstOrDefault();
+
+                        Id_claveHC = registroReciente.Clave_hc_px;
+                    }
+                    else// No hay registro reciente, puedes guardar el nuevo registro.
+                    {
+                        string claveHC = buscaHisotriaClinica(id_hc, expediente);
+                        Id_claveHC = claveHC;
+                    }
+
+                    //Se crea la HC de esta sección/pestaña
+                    hc_interrogatorio Historia = new hc_interrogatorio();
+                    #region CHECKS
+                    if (HistoriaClinica.Check_SintomasG_Si == "on")
+                    {
+                        Historia.Check_SintomasG_Si = true;
+                    }
+                    else
+                    {
+                        Historia.Check_SintomasG_Si = false;
+                    }
+                    if (HistoriaClinica.Check_SintomasG_No == "on")
+                    {
+                        Historia.Check_SintomasG_No = true;
+                    }
+                    else
+                    {
+                        Historia.Check_SintomasG_No = false;
+                    }
+                    //---
+                    if (HistoriaClinica.Check_Respiratorio_Si == "on")
+                    {
+                        Historia.Check_Respiratorio_Si = true;
+                    }
+                    else
+                    {
+                        Historia.Check_Respiratorio_Si = false;
+                    }
+                    if (HistoriaClinica.Check_Respiratorio_No == "on")
+                    {
+                        Historia.Check_Respiratorio_No = true;
+                    }
+                    else
+                    {
+                        Historia.Check_Respiratorio_No = false;
+                    }
+                    //---
+                    if (HistoriaClinica.Check_Neurologico_Si == "on")
+                    {
+                        Historia.Check_Neurologico_Si = true;
+                    }
+                    else
+                    {
+                        Historia.Check_Neurologico_Si = false;
+                    }
+                    if (HistoriaClinica.Check_Neurologico_No == "on")
+                    {
+                        Historia.Check_Neurologico_No = true;
+                    }
+                    else
+                    {
+                        Historia.Check_Neurologico_No = false;
+                    }
+                    //---
+                    if (HistoriaClinica.Check_pielYanexos_Si == "on")
+                    {
+                        Historia.Check_pielYanexos_Si = true;
+                    }
+                    else
+                    {
+                        Historia.Check_pielYanexos_Si = false;
+                    }
+                    if (HistoriaClinica.Check_pielYanexos_No == "on")
+                    {
+                        Historia.Check_pielYanexos_No = true;
+                    }
+                    else
+                    {
+                        Historia.Check_pielYanexos_No = false;
+                    }
+                    //---
+                    if (HistoriaClinica.Check_Hematologico_Si == "on")
+                    {
+                        Historia.Check_Hematologico_Si = true;
+                    }
+                    else
+                    {
+                        Historia.Check_Hematologico_Si = false;
+                    }
+                    if (HistoriaClinica.Check_Hematologico_No == "on")
+                    {
+                        Historia.Check_Hematologico_No = true;
+                    }
+                    else
+                    {
+                        Historia.Check_Hematologico_No = false;
+                    }
+                    //---
+                    if (HistoriaClinica.Check_Digestivo_Si == "on")
+                    {
+                        Historia.Check_Digestivo_Si = true;
+                    }
+                    else
+                    {
+                        Historia.Check_Digestivo_Si = false;
+                    }
+                    if (HistoriaClinica.Check_Digestivo_No == "on")
+                    {
+                        Historia.Check_Digestivo_No = true;
+                    }
+                    else
+                    {
+                        Historia.Check_Digestivo_No = false;
+                    }
+                    //---
+                    if (HistoriaClinica.Check_Genitourinario_Si == "on")
+                    {
+                        Historia.Check_Genitourinario_Si = true;
+                    }
+                    else
+                    {
+                        Historia.Check_Genitourinario_Si = false;
+                    }
+                    if (HistoriaClinica.Check_Genitourinario_No == "on")
+                    {
+                        Historia.Check_Genitourinario_No = true;
+                    }
+                    else
+                    {
+                        Historia.Check_Genitourinario_No = false;
+                    }
+                    //---
+                    if (HistoriaClinica.Check_Cardiovascular_Si == "on")
+                    {
+                        Historia.Check_Cardiovascular_Si = true;
+                    }
+                    else
+                    {
+                        Historia.Check_Cardiovascular_Si = false;
+                    }
+                    if (HistoriaClinica.Check_Cardiovascular_No == "on")
+                    {
+                        Historia.Check_Cardiovascular_No = true;
+                    }
+                    else
+                    {
+                        Historia.Check_Cardiovascular_No = false;
+                    }
+                    //---
+                    if (HistoriaClinica.Check_Musculoesqueletico_Si == "on")
+                    {
+                        Historia.Check_Musculoesqueletico_Si = true;
+                    }
+                    else
+                    {
+                        Historia.Check_Musculoesqueletico_Si = false;
+                    }
+                    if (HistoriaClinica.Check_Musculoesqueletico_No == "on")
+                    {
+                        Historia.Check_Musculoesqueletico_No = true;
+                    }
+                    else
+                    {
+                        Historia.Check_Musculoesqueletico_No = false;
+                    }
+                    //---
+                    if (HistoriaClinica.Check_Renal_Si == "on")
+                    {
+                        Historia.Check_Renal_Si = true;
+                    }
+                    else
+                    {
+                        Historia.Check_Renal_Si = false;
+                    }
+                    if (HistoriaClinica.Check_Renal_No == "on")
+                    {
+                        Historia.Check_Renal_No = true;
+                    }
+                    else
+                    {
+                        Historia.Check_Renal_No = false;
+                    }
+                    //---
+                    if (HistoriaClinica.Check_Inmune_Si == "on")
+                    {
+                        Historia.Check_Inmune_Si = true;
+                    }
+                    else
+                    {
+                        Historia.Check_Inmune_Si = false;
+                    }
+                    if (HistoriaClinica.Check_Inmune_No == "on")
+                    {
+                        Historia.Check_Inmune_No = true;
+                    }
+                    else
+                    {
+                        Historia.Check_Inmune_No = false;
+                    }
+                    #endregion
+                    Historia.Describir_SintomasG = HistoriaClinica.Describir_SintomasG;
+                    Historia.Describir_Respiratorio = HistoriaClinica.Describir_Respiratorio;
+                    Historia.Describir_Neurologico = HistoriaClinica.Describir_Neurologico;
+                    Historia.Describir_pielYanexos = HistoriaClinica.Describir_pielYanexos;
+                    Historia.Describir_Hematologico = HistoriaClinica.Describir_Hematologico;
+                    Historia.Describir_Digestivo = HistoriaClinica.Describir_Digestivo;
+                    Historia.Describir_Genitourinario = HistoriaClinica.Describir_Genitourinario;
+                    Historia.Describir_Cardiovascular = HistoriaClinica.Describir_Cardiovascular;
+                    Historia.Describir_Musculoesqueletico = HistoriaClinica.Describir_Musculoesqueletico;
+                    Historia.Describir_Renal = HistoriaClinica.Describir_Renal;
+                    Historia.Describir_Inmune = HistoriaClinica.Describir_Inmune;
+                    Historia.Id_Paciente = paciente.Id;
+                    Historia.Clave_hc_px = Id_claveHC;
+                    db.hc_interrogatorio.Add(Historia);
+                    db.SaveChanges();
+                }
+                return Json(new { MENSAJE = "Succe: " }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(new { MENSAJE = "Error: Error de sistema: " + ex.Message }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
         #endregion
 
         public ActionResult Historia()
@@ -2161,6 +2469,40 @@ namespace CUS.Areas.Admin.Controllers
             public string VidaSexual { get; set; }
             public string NumeroParejasSexuales { get; set; }
             public string TipoMenarquia { get; set; }
+            //hc_interrogatorio
+            public bool? Check_SintomasG_Si { get; set; }
+            public bool? Check_SintomasG_No { get; set; }
+            public string Describir_SintomasG { get; set; }
+            public bool? Check_Respiratorio_Si { get; set; }
+            public bool? Check_Respiratorio_No { get; set; }
+            public string Describir_Respiratorio { get; set; }
+            public bool? Check_Neurologico_Si { get; set; }
+            public bool? Check_Neurologico_No { get; set; }
+            public string Describir_Neurologico { get; set; }
+            public bool? Check_pielYanexos_Si { get; set; }
+            public bool? Check_pielYanexos_No { get; set; }
+            public string Describir_pielYanexos { get; set; }
+            public bool? Check_Hematologico_Si { get; set; }
+            public bool? Check_Hematologico_No { get; set; }
+            public string Describir_Hematologico { get; set; }
+            public bool? Check_Digestivo_Si { get; set; }
+            public bool? Check_Digestivo_No { get; set; }
+            public string Describir_Digestivo { get; set; }
+            public bool? Check_Genitourinario_Si { get; set; }
+            public bool? Check_Genitourinario_No { get; set; }
+            public string Describir_Genitourinario { get; set; }
+            public bool? Check_Cardiovascular_Si { get; set; }
+            public bool? Check_Cardiovascular_No { get; set; }
+            public string Describir_Cardiovascular { get; set; }
+            public bool? Check_Musculoesqueletico_Si { get; set; }
+            public bool? Check_Musculoesqueletico_No { get; set; }
+            public string Describir_Musculoesqueletico { get; set; }
+            public bool? Check_Renal_Si { get; set; }
+            public bool? Check_Renal_No { get; set; }
+            public string Describir_Renal { get; set; }
+            public bool? Check_Inmune_Si { get; set; }
+            public bool? Check_Inmune_No { get; set; }
+            public string Describir_Inmune { get; set; }
         }
 
         //********      Función para buscar el detalle de la H.C. en el MODAL
@@ -2169,8 +2511,6 @@ namespace CUS.Areas.Admin.Controllers
         {
             try
             {
-                //Clave_hc_px = "MDA1000HC9";
-
                 Propiedades_HC HC = new Propiedades_HC();
 
                 //Hacemos el Select de las primeras 3 tablas de la HC
@@ -2190,7 +2530,8 @@ namespace CUS.Areas.Admin.Controllers
                     "HC.TomaAlcohol, HC.TomaAlcoholFrecuencia, HC.CantidadAlcohol, HC.Fuma, HC.EdadInicio, HC.ActualmenteFuma, HC.TiempoInactividadFuma, HC.TipoFuma, HC.FrecuenciaFuma, HC.CantidadFuma, HC.ConsumeDroga, HC.TipoDrogaConsume, HC.FrecuenciaDroga, HC.CantidadDrogaConsume, " +
                     "A.TipoLactancia, A.TiempoLactancia, A.EdadAblactacion, A.AlimentosInicio, A.EdadIntegracion, " +
                     "AD.SostuvoCabeza, AD.EspecifiqueSostuvoCabeza, AD.SeSento, AD.EspecifiqueSeSento, AD.Camino, AD.EspecifiqueCamino, AD.Habla, AD.EspecifiqueHabla, AD.ControlEsfinteres, AD.EspecifiqueControlEsf, AD.PruebaEDI, AD.EspecifiquePruebaEDI, " +
-                    "AG.Menarquia, AG.MotivoMenarquia, AG.RitmoMenarquia, AG.CantidadMenarquia, AG.ColoracionMenarquia, AG.EspecifiqueColoracionMenarquia, AG.VidaSexual, AG.NumeroParejasSexuales, AG.TipoMenarquia " +
+                    "AG.Menarquia, AG.MotivoMenarquia, AG.RitmoMenarquia, AG.CantidadMenarquia, AG.ColoracionMenarquia, AG.EspecifiqueColoracionMenarquia, AG.VidaSexual, AG.NumeroParejasSexuales, AG.TipoMenarquia, " +
+                    "INT.Check_SintomasG_Si, INT.Check_SintomasG_No, INT.Describir_SintomasG, INT.Check_Respiratorio_Si, INT.Check_Respiratorio_No, INT.Describir_Respiratorio, INT.Check_Neurologico_Si, INT.Check_Neurologico_No, INT.Describir_Neurologico, INT.Check_pielYanexos_Si, INT.Check_pielYanexos_No, INT.Describir_pielYanexos, INT.Check_Hematologico_Si, INT.Check_Hematologico_No, INT.Describir_Hematologico, INT.Check_Digestivo_Si, INT.Check_Digestivo_No, INT.Describir_Digestivo, INT.Check_Genitourinario_Si, INT.Check_Genitourinario_No, INT.Describir_Genitourinario, INT.Check_Cardiovascular_Si, INT.Check_Cardiovascular_No, INT.Describir_Cardiovascular, INT.Check_Musculoesqueletico_Si, INT.Check_Musculoesqueletico_No, INT.Describir_Musculoesqueletico, INT.Check_Renal_Si, INT.Check_Renal_No, INT.Describir_Renal, INT.Check_Inmune_Si, INT.Check_Inmune_No, INT.Describir_Inmune " +
                                     "FROM HistoriaClinica HCli " +
                                     "LEFT JOIN hc_ficha_identificacion FI ON FI.Clave_hc_px = HCli.Clave_hc_px " +
                                     "LEFT JOIN hc_evaluacion_social VS ON HCli.Clave_hc_px = VS.Clave_hc_px " +
@@ -2206,6 +2547,7 @@ namespace CUS.Areas.Admin.Controllers
                                     "LEFT JOIN hc_alimentacion A ON HCli.Clave_hc_px = A.Clave_hc_px " +
                                     "LEFT JOIN hc_antecedentes_desarrollo AD ON HCli.Clave_hc_px = AD.Clave_hc_px " +
                                     "LEFT JOIN hc_antecedentes_ginecoobstetricos AG ON HCli.Clave_hc_px = AG.Clave_hc_px " +
+                                    "LEFT JOIN hc_interrogatorio INT ON HCli.Clave_hc_px = INT.Clave_hc_px " +
                                     "WHERE HCli.Clave_hc_px = '" + Clave_hc_px + "'";
 
                 var result = db.Database.SqlQuery<Propiedades_HC>(query);

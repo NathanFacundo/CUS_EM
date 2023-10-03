@@ -19,7 +19,6 @@ namespace CUS.Models
         {
             this.hc_antecedentes_desarrollo = new HashSet<hc_antecedentes_desarrollo>();
             this.hc_antecedentes_ginecoobstetricos = new HashSet<hc_antecedentes_ginecoobstetricos>();
-            this.hc_antecedentes_patologicos = new HashSet<hc_antecedentes_patologicos>();
             this.hc_antecedentes_perinatales = new HashSet<hc_antecedentes_perinatales>();
             this.hc_evaluacion_economica = new HashSet<hc_evaluacion_economica>();
             this.hc_evaluacion_social = new HashSet<hc_evaluacion_social>();
@@ -32,6 +31,8 @@ namespace CUS.Models
             this.hc_valores_creencias = new HashSet<hc_valores_creencias>();
             this.HistoriaClinica = new HashSet<HistoriaClinica>();
             this.hc_alimentacion = new HashSet<hc_alimentacion>();
+            this.hc_antecedentes_patologicos = new HashSet<hc_antecedentes_patologicos>();
+            this.hc_interrogatorio = new HashSet<hc_interrogatorio>();
         }
     
         public int Id { get; set; }
@@ -93,8 +94,6 @@ namespace CUS.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<hc_antecedentes_ginecoobstetricos> hc_antecedentes_ginecoobstetricos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<hc_antecedentes_patologicos> hc_antecedentes_patologicos { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<hc_antecedentes_perinatales> hc_antecedentes_perinatales { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<hc_evaluacion_economica> hc_evaluacion_economica { get; set; }
@@ -118,5 +117,9 @@ namespace CUS.Models
         public virtual ICollection<HistoriaClinica> HistoriaClinica { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<hc_alimentacion> hc_alimentacion { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<hc_antecedentes_patologicos> hc_antecedentes_patologicos { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<hc_interrogatorio> hc_interrogatorio { get; set; }
     }
 }

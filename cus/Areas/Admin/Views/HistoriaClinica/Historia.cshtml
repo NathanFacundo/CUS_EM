@@ -3,6 +3,8 @@
     ViewBag.Title = "";
 }
 
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
 <style>
     .modal {
         padding: 0 !important;
@@ -871,12 +873,124 @@
 
                 <hr />
 
+                <p>
+                    <h4 data-toggle="collapse" data-target="#collapseInterrogatorio" aria-expanded="false" aria-controls="collapseInterrogatorio">
+                        Interrogatorio Aparatos y Sistemas <i class="fa fa-plus-circle"></i>
+                    </h4>
+                </p>
+
+                <div class="collapse" id="collapseInterrogatorio">
+                    <div class="card card-body">
+
+                        <p>
+                            Síntomas Grales. Si: <span id="Check_SintomasG_Si"></span>
+                        </p>
+                        <p>
+                            Síntomas Grales. No: <span id="Check_SintomasG_No"></span>
+                        </p>
+                        <p>
+                            Síntomas Grales. Describir: <span id="Describir_SintomasG"></span>
+                        </p>
+                        <p>
+                            Respiratorio Si: <span id="Check_Respiratorio_Si"></span>
+                        </p>
+                        <p>
+                            Respiratorio No: <span id="Check_Respiratorio_No"></span>
+                        </p>
+                        <p>
+                            Respiratorio Describir: <span id="Describir_Respiratorio"></span>
+                        </p>
+                        <p>
+                            Neurológico Si: <span id="Check_Neurologico_Si"></span>
+                        </p>
+                        <p>
+                            Neurológico No: <span id="Check_Neurologico_No"></span>
+                        </p>
+                        <p>
+                            Neurológico Describir: <span id="Describir_Neurologico"></span>
+                        </p>
+                        <p>
+                            Piel y Anexos Si: <span id="Check_pielYanexos_Si"></span>
+                        </p>
+                        <p>
+                            Piel y Anexos No: <span id="Check_pielYanexos_No"></span>
+                        </p>
+                        <p>
+                            Piel y Anexos Describir: <span id="Describir_pielYanexos"></span>
+                        </p>
+                        <p>
+                            Hematológico Si: <span id="Check_Hematologico_Si"></span>
+                        </p>
+                        <p>
+                            Hematológico No: <span id="Check_Hematologico_No"></span>
+                        </p>
+                        <p>
+                            Hematológico Describir: <span id="Describir_Hematologico"></span>
+                        </p>
+                        <p>
+                            Digestivo Si: <span id="Check_Digestivo_Si"></span>
+                        </p>
+                        <p>
+                            Digestivo No: <span id="Check_Digestivo_No"></span>
+                        </p>
+                        <p>
+                            Digestivo Describir: <span id="Describir_Digestivo"></span>
+                        </p>
+                        <p>
+                            Genitourinario Si: <span id="Check_Genitourinario_Si"></span>
+                        </p>
+                        <p>
+                            Genitourinario No: <span id="Check_Genitourinario_No"></span>
+                        </p>
+                        <p>
+                            Genitourinario Describir: <span id="Describir_Genitourinario"></span>
+                        </p>
+                        <p>
+                            Cardiovascular Si: <span id="Check_Cardiovascular_Si"></span>
+                        </p>
+                        <p>
+                            Cardiovascular No: <span id="Check_Cardiovascular_No"></span>
+                        </p>
+                        <p>
+                            Cardiovascular Describir: <span id="Describir_Cardiovascular"></span>
+                        </p>
+                        <p>
+                            Musculoesqueletico Si: <span id="Check_Musculoesqueletico_Si"></span>
+                        </p>
+                        <p>
+                            Musculoesqueletico No: <span id="Check_Musculoesqueletico_No"></span>
+                        </p>
+                        <p>
+                            Musculoesqueletico Describir: <span id="Describir_Musculoesqueletico"></span>
+                        </p>
+                        <p>
+                            Renal Si: <span id="Check_Renal_Si"></span>
+                        </p>
+                        <p>
+                            Renal No: <span id="Check_Renal_No"></span>
+                        </p>
+                        <p>
+                            Renal Describir: <span id="Describir_Renal"></span>
+                        </p>
+                        <p>
+                            Inmune Si: <span id="Check_Inmune_Si"></span>
+                        </p>
+                        <p>
+                            Inmune No: <span id="Check_Inmune_No"></span>
+                        </p>
+                        <p>
+                            Inmune Describir: <span id="Describir_Inmune"></span>
+                        </p>
+
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
 </div>
 
-<script src="~/Areas/Admin/assets/js/jquery-3.2.1.min.js"></script>
+@*<script src="~/Areas/Admin/assets/js/jquery-3.2.1.min.js"></script>*@
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
@@ -1250,10 +1364,45 @@
                 $("#VidaSexual").text(data.VidaSexual);
                 $("#NumeroParejasSexuales").text(data.NumeroParejasSexuales);
                 $("#TipoMenarquia").text(data.TipoMenarquia);
+                //hc_interrogatorio
+                $("#Check_SintomasG_Si").text(data.Check_SintomasG_Si);
+                $("#Check_SintomasG_No").text(data.Check_SintomasG_No);
+                $("#Describir_SintomasG").text(data.Describir_SintomasG);
+                $("#Check_Respiratorio_Si").text(data.Check_Respiratorio_Si);
+                $("#Check_Respiratorio_No").text(data.Check_Respiratorio_No);
+                $("#Describir_Respiratorio").text(data.Describir_Respiratorio);
+                $("#Check_Neurologico_Si").text(data.Check_Neurologico_Si);
+                $("#Check_Neurologico_No").text(data.Check_Neurologico_No);
+                $("#Describir_Neurologico").text(data.Describir_Neurologico);
+                $("#Check_pielYanexos_Si").text(data.Check_pielYanexos_Si);
+                $("#Check_pielYanexos_No").text(data.Check_pielYanexos_No);
+                $("#Describir_pielYanexos").text(data.Describir_pielYanexos);
+                $("#Check_Hematologico_Si").text(data.Check_Hematologico_Si);
+                $("#Check_Hematologico_No").text(data.Check_Hematologico_No);
+                $("#Describir_Hematologico").text(data.Describir_Hematologico);
+                $("#Check_Digestivo_Si").text(data.Check_Digestivo_Si);
+                $("#Check_Digestivo_No").text(data.Check_Digestivo_No);
+                $("#Describir_Digestivo").text(data.Describir_Digestivo);
+                $("#Check_Genitourinario_Si").text(data.Check_Genitourinario_Si);
+                $("#Check_Genitourinario_No").text(data.Check_Genitourinario_No);
+                $("#Describir_Genitourinario").text(data.Describir_Genitourinario);
+                $("#Check_Cardiovascular_Si").text(data.Check_Cardiovascular_Si);
+                $("#Check_Cardiovascular_No").text(data.Check_Cardiovascular_No);
+                $("#Describir_Cardiovascular").text(data.Describir_Cardiovascular);
+                $("#Check_Musculoesqueletico_Si").text(data.Check_Musculoesqueletico_Si);
+                $("#Check_Musculoesqueletico_No").text(data.Check_Musculoesqueletico_No);
+                $("#Describir_Musculoesqueletico").text(data.Describir_Musculoesqueletico);
+                $("#Check_Renal_Si").text(data.Check_Renal_Si);
+                $("#Check_Renal_No").text(data.Check_Renal_No);
+                $("#Describir_Renal").text(data.Describir_Renal);
+                $("#Check_Inmune_Si").text(data.Check_Inmune_Si);
+                $("#Check_Inmune_No").text(data.Check_Inmune_No);
+                $("#Describir_Inmune").text(data.Describir_Inmune);
                 // #endregion
 
                 //Mostrar modal
                 $('#exampleModal').modal('show');
+                
 		    },
 		    error: function(ex) {
 			    Swal.fire({
