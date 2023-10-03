@@ -14,6 +14,7 @@ namespace CUS.Models
     
     public partial class hc_interrogatorio
     {
+        //
         public int Id { get; set; }
         public Nullable<bool> Check_SintomasG_Si { get; set; }
         public Nullable<bool> Check_SintomasG_No { get; set; }
