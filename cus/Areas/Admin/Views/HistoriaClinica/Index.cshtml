@@ -136,6 +136,12 @@
                         <li class="nav-item text-left">
                             <a class="nav-link" href="#interrogatorio" data-toggle="tab">Interrogatorio Aparatos y Sistemas</a>
                         </li>
+                        <li class="nav-item text-left">
+                            <a class="nav-link" href="#riesgo_caidas" data-toggle="tab">Riesgo de<br /> Caídas</a>
+                        </li>
+                        <li class="nav-item text-left">
+                            <a class="nav-link" href="#exploracion_fisica" data-toggle="tab">Exploración<br /> Física</a>
+                        </li>
                     </ul>
                 </nav>
                
@@ -1495,8 +1501,342 @@
                         </div>
                     </div>
 
+                    <div id="riesgo_caidas" class="tab-pane fade">
+                        <div class="card card-table mb-0 p-3 mb-5">
+                            <div class="card-body">
+                                <form id="f_riescoCaidas">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Puntuaje en la escala de valoración de riesgo de caídas</label>
+                                                <select class="form-control" name="PuntuajeEscala" id="PuntuajeEscala">
+                                                    <option selected disabled>Seleccionar</option>
+                                                    <option value="Alto">Alto</option>
+                                                    <option value="Medio">Medio</option>
+                                                    <option value="Bajo">Bajo</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+
+                                        </div>
+                                        <div class="col-md-4">
+
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <button id="Btn_Save16" type="submit" class="btn btn-primary">Guardar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="exploracion_fisica" class="tab-pane fade">
+                        <div class="card card-table mb-0">
+                            <div class="card-body">
+                                <form id="f_exploracionF">
+                                    <div class="row">
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <label><b>   </b></label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label><b>Si</b></label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label><b>No</b></label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label><b>Diferido</b></label>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label><b>Desc. Hallazgos Relevantes</b></label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <label>Cráneo</label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="Check_Craneo_Si" name="Check_Craneo_Si">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="Check_Craneo_No" name="Check_Craneo_No">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="Check_Craneo_Diferido" name="Check_Craneo_Diferido">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" id="Describir_Hallazgos_Craneo" name="Describir_Hallazgos_Craneo" placeholder="Cráneo">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <label>Cara</label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="Check_Cara_Si" name="Check_Cara_Si">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="Check_Cara_No" name="Check_Cara_No">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="Check_Cara_Diferido" name="Check_Cara_Diferido">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" id="Describir_Hallazgos_Cara" name="Describir_Hallazgos_Cara" placeholder="Cara">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <label>Ojos</label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="Check_Ojos_Si" name="Check_Ojos_Si">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="Check_Ojos_No" name="Check_Ojos_No">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="Check_Ojos_Diferido" name="Check_Ojos_Diferido">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" id="Describir_Hallazgos_Ojos" name="Describir_Hallazgos_Ojos" placeholder="Ojos">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <label>Nariz</label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="Check_Nariz_Si" name="Check_Nariz_Si">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="Check_Nariz_No" name="Check_Nariz_No">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="Check_Nariz_Diferido" name="Check_Nariz_Diferido">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" id="Describir_Hallazgos_Nariz" name="Describir_Hallazgos_Nariz" placeholder="Nariz">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <label>Oídos</label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="Check_Oidos_Si" name="Check_Oidos_Si">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="Check_Oidos_No" name="Check_Oidos_No">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="Check_Oidos_Diferido" name="Check_Oidos_Diferido">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" id="Describir_Hallazgos_Oidos" name="Describir_Hallazgos_Oidos" placeholder="Oídos">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <label>Boca</label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="Check_Boca_Si" name="Check_Boca_Si">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="Check_Boca_No" name="Check_Boca_No">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="Check_Boca_Diferido" name="Check_Boca_Diferido">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" id="Describir_Hallazgos_Boca" name="Describir_Hallazgos_Boca" placeholder="Boca">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <label>Faringe</label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="Check_Faringe_Si" name="Check_Faringe_Si">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="Check_Faringe_No" name="Check_Faringe_No">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="Check_Faringe_Diferido" name="Check_Faringe_Diferido">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" id="Describir_Hallazgos_Faringe" name="Describir_Hallazgos_Faringe" placeholder="Faringe">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <label>Cuello</label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="Check_Cuello_Si" name="Check_Cuello_Si">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="Check_Cuello_No" name="Check_Cuello_No">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="Check_Cuello_Diferido" name="Check_Cuello_Diferido">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" id="Describir_Hallazgos_Cuello" name="Describir_Hallazgos_Cuello" placeholder="Cuello">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <label>Tórax</label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="Check_Torax_Si" name="Check_Torax_Si">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="Check_Torax_No" name="Check_Torax_No">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="Check_Torax_Diferido" name="Check_Torax_Diferido">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" id="Describir_Hallazgos_Torax" name="Describir_Hallazgos_Torax" placeholder="Tórax">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <label>Aparato Resp.</label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="Check_AparatoR_Si" name="Check_AparatoR_Si">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="Check_AparatoR_No" name="Check_AparatoR_No">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="Check_AparatoR_Diferido" name="Check_AparatoR_Diferido">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" id="Describir_Hallazgos_AparatoR" name="Describir_Hallazgos_AparatoR" placeholder="Aparato Resp.">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <label>Aparato Card.</label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="Check_AparatoC_Si" name="Check_AparatoC_Si">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="Check_AparatoC_No" name="Check_AparatoC_No">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="Check_AparatoC_Diferido" name="Check_AparatoC_Diferido">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" id="Describir_Hallazgos_AparatoC" name="Describir_Hallazgos_AparatoC" placeholder="Aparato Card.">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <label>Abdomen</label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="Check_Abdomen_Si" name="Check_Abdomen_Si">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="Check_Abdomen_No" name="Check_Abdomen_No">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="Check_Abdomen_Diferido" name="Check_Abdomen_Diferido">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" id="Describir_Hallazgos_Abdomen" name="Describir_Hallazgos_Abdomen" placeholder="Abdomen">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <label>Genitales</label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="Check_Genitales_Si" name="Check_Genitales_Si">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="Check_Genitales_No" name="Check_Genitales_No">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="Check_Genitales_Diferido" name="Check_Genitales_Diferido">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" id="Describir_Hallazgos_Genitales" name="Describir_Hallazgos_Genitales" placeholder="Genitales">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <label>Extremidades</label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="Check_Extremidades_Si" name="Check_Extremidades_Si">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="Check_Extremidades_No" name="Check_Extremidades_No">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="Check_Extremidades_Diferido" name="Check_Extremidades_Diferido">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" id="Describir_Hallazgos_Extremidades" name="Describir_Hallazgos_Extremidades" placeholder="Extremidades">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <label>Sistema Nervioso</label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="Check_SistemaN_Si" name="Check_SistemaN_Si">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="Check_SistemaN_No" name="Check_SistemaN_No">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="Check_SistemaN_Diferido" name="Check_SistemaN_Diferido">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" id="Describir_Hallazgos_SistemaN" name="Describir_Hallazgos_SistemaN" placeholder="Sistema Nervioso">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <label>Piel y Anexos</label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="Check_pielanexos_Si" name="Check_pielanexos_Si">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="Check_pielanexos_No" name="Check_pielanexos_No">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="Check_pielYanexos_Diferido" name="Check_pielYanexos_Diferido">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" id="Describir_Hallazgos_pielYanexos" name="Describir_Hallazgos_pielYanexos" placeholder="Piel y Anexos">
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <button id="Btn_Save17" type="submit" class="btn btn-primary">Guardar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
-               
             </div>
         </div>
     </div>
@@ -1574,7 +1914,7 @@
             $("#TipoDroga").css("display", "none");
             $("#Combo_FrecuenciaDroga").css("display", "none");
             $("#CantidadDroga").css("display", "none");
-            
+
         // #endregion
 
         // #region Botones de Guardar HC
@@ -1588,6 +1928,8 @@
             $("#Btn_Save9").css("display", "none");
             $("#Btn_Save11").css("display", "none");
             $("#Btn_Save15").css("display", "none");//Interrogatorio
+            $("#Btn_Save16").css("display", "none");//RiesgoCaidas
+            $("#Btn_Save17").css("display", "none");//Exploracion
         // #endregion
 
         let timerInterval
@@ -1831,7 +2173,7 @@
                 $("#CantidadDroga").css("display", "none");
             }
         });
-        
+
     // #endregion
 
     //Si dan click en Enter en los inputs de Nombre/Expediente
@@ -1997,6 +2339,8 @@
         $("#Btn_Save9").css("display", "");
         $("#Btn_Save11").css("display", "");
         $("#Btn_Save15").css("display", "");
+        $("#Btn_Save16").css("display", "");
+        $("#Btn_Save17").css("display", "");
         // #endregion
     });
 
@@ -2276,6 +2620,58 @@
                     timer: 1600
                 })
                 $("#Btn_Save15").css("display", "none");
+            }
+            if (response.MENSAJE.substring(0, 6) == "Error:") {
+                Swal.fire({
+                    icon: 'error',
+                    title: '¡Error!',
+                    text: response.MENSAJE.substring(7),
+                });
+            }
+        }).fail(function (response) {
+            console.log(response);
+        });
+        event.preventDefault();
+    });
+    //RiesgoCaidas
+    $("#Btn_Save16").click(function () {
+        let data = $("#f_riescoCaidas").serialize();
+        var expediente = $("#Exp").text();
+        $.post("@Url.Action("riesgoCaidas", "HistoriaClinica")?expediente=" + expediente, data).done(function (response) {
+            if (response.MENSAJE.substring(0, 6) == "Succe:") {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Sección guardada',
+                    showConfirmButton: false,
+                    timer: 1600
+                })
+                $("#Btn_Save16").css("display", "none");
+            }
+            if (response.MENSAJE.substring(0, 6) == "Error:") {
+                Swal.fire({
+                    icon: 'error',
+                    title: '¡Error!',
+                    text: response.MENSAJE.substring(7),
+                });
+            }
+        }).fail(function (response) {
+            console.log(response);
+        });
+        event.preventDefault();
+    });
+    //Exploracion
+    $("#Btn_Save17").click(function () {
+        let data = $("#f_exploracionF").serialize();
+        var expediente = $("#Exp").text();
+        $.post("@Url.Action("exploracionFisica", "HistoriaClinica")?expediente=" + expediente, data).done(function (response) {
+            if (response.MENSAJE.substring(0, 6) == "Succe:") {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Sección guardada',
+                    showConfirmButton: false,
+                    timer: 1600
+                })
+                $("#Btn_Save17").css("display", "none");
             }
             if (response.MENSAJE.substring(0, 6) == "Error:") {
                 Swal.fire({

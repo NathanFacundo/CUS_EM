@@ -48,5 +48,7 @@ namespace CUS.Models
         public virtual DbSet<hc_alimentacion> hc_alimentacion { get; set; }
         public virtual DbSet<hc_antecedentes_patologicos> hc_antecedentes_patologicos { get; set; }
         public virtual DbSet<hc_interrogatorio> hc_interrogatorio { get; set; }
+        public virtual DbSet<hc_riesgo_caidas> hc_riesgo_caidas { get; set; }
+        public virtual DbSet<hc_exploracion_fisica> hc_exploracion_fisica { get; set; }
     }
 }

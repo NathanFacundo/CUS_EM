@@ -33,6 +33,8 @@ namespace CUS.Models
             this.hc_alimentacion = new HashSet<hc_alimentacion>();
             this.hc_antecedentes_patologicos = new HashSet<hc_antecedentes_patologicos>();
             this.hc_interrogatorio = new HashSet<hc_interrogatorio>();
+            this.hc_riesgo_caidas = new HashSet<hc_riesgo_caidas>();
+            this.hc_exploracion_fisica = new HashSet<hc_exploracion_fisica>();
         }
     
         public int Id { get; set; }
@@ -121,5 +123,9 @@ namespace CUS.Models
         public virtual ICollection<hc_antecedentes_patologicos> hc_antecedentes_patologicos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<hc_interrogatorio> hc_interrogatorio { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<hc_riesgo_caidas> hc_riesgo_caidas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<hc_exploracion_fisica> hc_exploracion_fisica { get; set; }
     }
 }

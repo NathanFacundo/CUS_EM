@@ -218,6 +218,79 @@
           <Property Name="Id_HistoriaClinica" Type="int" />
           <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="hc_exploracion_fisica">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Check_Craneo_Si" Type="bit" />
+          <Property Name="Check_Craneo_No" Type="bit" />
+          <Property Name="Check_Craneo_Diferido" Type="bit" />
+          <Property Name="Describir_Hallazgos_Craneo" Type="varchar" MaxLength="500" />
+          <Property Name="Check_Cara_Si" Type="bit" />
+          <Property Name="Check_Cara_No" Type="bit" />
+          <Property Name="Check_Cara_Diferido" Type="bit" />
+          <Property Name="Describir_Hallazgos_Cara" Type="varchar" MaxLength="500" />
+          <Property Name="Check_Ojos_Si" Type="bit" />
+          <Property Name="Check_Ojos_No" Type="bit" />
+          <Property Name="Check_Ojos_Diferido" Type="bit" />
+          <Property Name="Describir_Hallazgos_Ojos" Type="varchar" MaxLength="500" />
+          <Property Name="Check_Nariz_Si" Type="bit" />
+          <Property Name="Check_Nariz_No" Type="bit" />
+          <Property Name="Check_Nariz_Diferido" Type="bit" />
+          <Property Name="Describir_Hallazgos_Nariz" Type="varchar" MaxLength="500" />
+          <Property Name="Check_Oidos_Si" Type="bit" />
+          <Property Name="Check_Oidos_No" Type="bit" />
+          <Property Name="Check_Oidos_Diferido" Type="bit" />
+          <Property Name="Describir_Hallazgos_Oidos" Type="varchar" MaxLength="500" />
+          <Property Name="Check_Boca_Si" Type="bit" />
+          <Property Name="Check_Boca_No" Type="bit" />
+          <Property Name="Check_Boca_Diferido" Type="bit" />
+          <Property Name="Describir_Hallazgos_Boca" Type="varchar" MaxLength="500" />
+          <Property Name="Check_Faringe_Si" Type="bit" />
+          <Property Name="Check_Faringe_No" Type="bit" />
+          <Property Name="Check_Faringe_Diferido" Type="bit" />
+          <Property Name="Describir_Hallazgos_Faringe" Type="varchar" MaxLength="500" />
+          <Property Name="Check_Cuello_Si" Type="bit" />
+          <Property Name="Check_Cuello_No" Type="bit" />
+          <Property Name="Check_Cuello_Diferido" Type="bit" />
+          <Property Name="Describir_Hallazgos_Cuello" Type="varchar" MaxLength="500" />
+          <Property Name="Check_Torax_Si" Type="bit" />
+          <Property Name="Check_Torax_No" Type="bit" />
+          <Property Name="Check_Torax_Diferido" Type="bit" />
+          <Property Name="Describir_Hallazgos_Torax" Type="varchar" MaxLength="500" />
+          <Property Name="Check_AparatoR_Si" Type="bit" />
+          <Property Name="Check_AparatoR_No" Type="bit" />
+          <Property Name="Check_AparatoR_Diferido" Type="bit" />
+          <Property Name="Describir_Hallazgos_AparatoR" Type="varchar" MaxLength="500" />
+          <Property Name="Check_AparatoC_Si" Type="bit" />
+          <Property Name="Check_AparatoC_No" Type="bit" />
+          <Property Name="Check_AparatoC_Diferido" Type="bit" />
+          <Property Name="Describir_Hallazgos_AparatoC" Type="varchar" MaxLength="500" />
+          <Property Name="Check_Abdomen_Si" Type="bit" />
+          <Property Name="Check_Abdomen_No" Type="bit" />
+          <Property Name="Check_Abdomen_Diferido" Type="bit" />
+          <Property Name="Describir_Hallazgos_Abdomen" Type="varchar" MaxLength="500" />
+          <Property Name="Check_Genitales_Si" Type="bit" />
+          <Property Name="Check_Genitales_No" Type="bit" />
+          <Property Name="Check_Genitales_Diferido" Type="bit" />
+          <Property Name="Describir_Hallazgos_Genitales" Type="varchar" MaxLength="500" />
+          <Property Name="Check_Extremidades_Si" Type="bit" />
+          <Property Name="Check_Extremidades_No" Type="bit" />
+          <Property Name="Check_Extremidades_Diferido" Type="bit" />
+          <Property Name="Describir_Hallazgos_Extremidades" Type="varchar" MaxLength="500" />
+          <Property Name="Check_SistemaN_Si" Type="bit" />
+          <Property Name="Check_SistemaN_No" Type="bit" />
+          <Property Name="Check_SistemaN_Diferido" Type="bit" />
+          <Property Name="Describir_Hallazgos_SistemaN" Type="varchar" MaxLength="500" />
+          <Property Name="Check_pielanexos_Si" Type="bit" />
+          <Property Name="Check_pielanexos_No" Type="bit" />
+          <Property Name="Check_pielYanexos_Diferido" Type="bit" />
+          <Property Name="Describir_Hallazgos_pielYanexos" Type="varchar" MaxLength="500" />
+          <Property Name="Id_HistoriaClinica" Type="int" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="hc_factores_riesgo_psicologicos">
           <Key>
             <PropertyRef Name="Id" />
@@ -390,6 +463,16 @@
           <Property Name="Check_Inmune_Si" Type="bit" />
           <Property Name="Check_Inmune_No" Type="bit" />
           <Property Name="Describir_Inmune" Type="varchar" MaxLength="500" />
+          <Property Name="Id_HistoriaClinica" Type="int" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_riesgo_caidas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PuntuajeEscala" Type="varchar" MaxLength="50" />
           <Property Name="Id_HistoriaClinica" Type="int" />
           <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
           <Property Name="Id_Paciente" Type="int" Nullable="false" />
@@ -597,6 +680,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__hc_explor__Id_Pa__7E02B4CC">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+          <End Role="hc_exploracion_fisica" Type="Self.hc_exploracion_fisica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="hc_exploracion_fisica">
+              <PropertyRef Name="Id_Paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__hc_factor__Id_Pa__7E37BEF6">
           <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
           <End Role="hc_factores_riesgo_psicologicos" Type="Self.hc_factores_riesgo_psicologicos" Multiplicity="*" />
@@ -657,6 +752,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__hc_habito__Id_Pa__7849DB76">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+          <End Role="hc_habitos" Type="Self.hc_habitos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="hc_habitos">
+              <PropertyRef Name="Id_Paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__hc_histor__Id_Pa__236943A5">
           <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
           <End Role="hc_historial_consumo" Type="Self.hc_historial_consumo" Multiplicity="*" />
@@ -689,6 +796,18 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="hc_interrogatorio">
+              <PropertyRef Name="Id_Paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__hc_riesgo__Id_Pa__7B264821">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+          <End Role="hc_riesgo_caidas" Type="Self.hc_riesgo_caidas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="hc_riesgo_caidas">
               <PropertyRef Name="Id_Paciente" />
             </Dependent>
           </ReferentialConstraint>
@@ -742,12 +861,14 @@
           <EntitySet Name="hc_antecedentes_perinatales" EntityType="Self.hc_antecedentes_perinatales" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hc_evaluacion_economica" EntityType="Self.hc_evaluacion_economica" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hc_evaluacion_social" EntityType="Self.hc_evaluacion_social" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_exploracion_fisica" EntityType="Self.hc_exploracion_fisica" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hc_factores_riesgo_psicologicos" EntityType="Self.hc_factores_riesgo_psicologicos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hc_ficha_identificacion" EntityType="Self.hc_ficha_identificacion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hc_habitos" EntityType="Self.hc_habitos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hc_historial_consumo" EntityType="Self.hc_historial_consumo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hc_inmunizaciones" EntityType="Self.hc_inmunizaciones" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hc_interrogatorio" EntityType="Self.hc_interrogatorio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_riesgo_caidas" EntityType="Self.hc_riesgo_caidas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hc_valoracion_familiar" EntityType="Self.hc_valoracion_familiar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hc_valores_creencias" EntityType="Self.hc_valores_creencias" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HistoriaClinica" EntityType="Self.HistoriaClinica" Schema="dbo" store:Type="Tables" />
@@ -781,6 +902,10 @@
             <End Role="Paciente" EntitySet="Paciente" />
             <End Role="hc_evaluacion_economica" EntitySet="hc_evaluacion_economica" />
           </AssociationSet>
+          <AssociationSet Name="FK__hc_explor__Id_Pa__7E02B4CC" Association="Self.FK__hc_explor__Id_Pa__7E02B4CC">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="hc_exploracion_fisica" EntitySet="hc_exploracion_fisica" />
+          </AssociationSet>
           <AssociationSet Name="FK__hc_factor__Id_Pa__7E37BEF6" Association="Self.FK__hc_factor__Id_Pa__7E37BEF6">
             <End Role="Paciente" EntitySet="Paciente" />
             <End Role="hc_factores_riesgo_psicologicos" EntitySet="hc_factores_riesgo_psicologicos" />
@@ -801,6 +926,10 @@
             <End Role="Paciente" EntitySet="Paciente" />
             <End Role="hc_habitos" EntitySet="hc_habitos" />
           </AssociationSet>
+          <AssociationSet Name="FK__hc_habito__Id_Pa__7849DB76" Association="Self.FK__hc_habito__Id_Pa__7849DB76">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="hc_habitos" EntitySet="hc_habitos" />
+          </AssociationSet>
           <AssociationSet Name="FK__hc_histor__Id_Pa__236943A5" Association="Self.FK__hc_histor__Id_Pa__236943A5">
             <End Role="Paciente" EntitySet="Paciente" />
             <End Role="hc_historial_consumo" EntitySet="hc_historial_consumo" />
@@ -812,6 +941,10 @@
           <AssociationSet Name="FK__hc_interr__Id_Pa__756D6ECB" Association="Self.FK__hc_interr__Id_Pa__756D6ECB">
             <End Role="Paciente" EntitySet="Paciente" />
             <End Role="hc_interrogatorio" EntitySet="hc_interrogatorio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__hc_riesgo__Id_Pa__7B264821" Association="Self.FK__hc_riesgo__Id_Pa__7B264821">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="hc_riesgo_caidas" EntitySet="hc_riesgo_caidas" />
           </AssociationSet>
           <AssociationSet Name="FK__hc_valora__Id_Pa__75A278F5" Association="Self.FK__hc_valora__Id_Pa__75A278F5">
             <End Role="Paciente" EntitySet="Paciente" />
@@ -972,6 +1105,16 @@
             <End Role="Paciente" EntitySet="Paciente" />
             <End Role="hc_interrogatorio" EntitySet="hc_interrogatorio" />
           </AssociationSet>
+          <EntitySet Name="hc_riesgo_caidas" EntityType="CUSModel.hc_riesgo_caidas" />
+          <AssociationSet Name="FK__hc_riesgo__Id_Pa__7B264821" Association="CUSModel.FK__hc_riesgo__Id_Pa__7B264821">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="hc_riesgo_caidas" EntitySet="hc_riesgo_caidas" />
+          </AssociationSet>
+          <EntitySet Name="hc_exploracion_fisica" EntityType="CUSModel.hc_exploracion_fisica" />
+          <AssociationSet Name="FK__hc_explor__Id_Pa__7E02B4CC" Association="CUSModel.FK__hc_explor__Id_Pa__7E02B4CC">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="hc_exploracion_fisica" EntitySet="hc_exploracion_fisica" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="UnidadAfiliacion">
           <Key>
@@ -1054,6 +1197,8 @@
           <NavigationProperty Name="hc_alimentacion" Relationship="CUSModel.FK__hc_alimen__Id_Pa__4F47C5E3" FromRole="Paciente" ToRole="hc_alimentacion" />
           <NavigationProperty Name="hc_antecedentes_patologicos" Relationship="CUSModel.FK__hc_antece__Id_Pa__1BC821DD" FromRole="Paciente" ToRole="hc_antecedentes_patologicos" />
           <NavigationProperty Name="hc_interrogatorio" Relationship="CUSModel.FK__hc_interr__Id_Pa__4F47C5E3" FromRole="Paciente" ToRole="hc_interrogatorio" />
+          <NavigationProperty Name="hc_riesgo_caidas" Relationship="CUSModel.FK__hc_riesgo__Id_Pa__7B264821" FromRole="Paciente" ToRole="hc_riesgo_caidas" />
+          <NavigationProperty Name="hc_exploracion_fisica" Relationship="CUSModel.FK__hc_explor__Id_Pa__7E02B4CC" FromRole="Paciente" ToRole="hc_exploracion_fisica" />
         </EntityType>
         <EntityType Name="hc_antecedentes_desarrollo">
           <Key>
@@ -1651,6 +1796,115 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="hc_riesgo_caidas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PuntuajeEscala" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Id_HistoriaClinica" Type="Int32" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Paciente" Relationship="CUSModel.FK__hc_riesgo__Id_Pa__7B264821" FromRole="hc_riesgo_caidas" ToRole="Paciente" />
+        </EntityType>
+        <Association Name="FK__hc_riesgo__Id_Pa__7B264821">
+          <End Type="CUSModel.Paciente" Role="Paciente" Multiplicity="1" />
+          <End Type="CUSModel.hc_riesgo_caidas" Role="hc_riesgo_caidas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="hc_riesgo_caidas">
+              <PropertyRef Name="Id_Paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="hc_exploracion_fisica">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Check_Craneo_Si" Type="Boolean" />
+          <Property Name="Check_Craneo_No" Type="Boolean" />
+          <Property Name="Check_Craneo_Diferido" Type="Boolean" />
+          <Property Name="Describir_Hallazgos_Craneo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Check_Cara_Si" Type="Boolean" />
+          <Property Name="Check_Cara_No" Type="Boolean" />
+          <Property Name="Check_Cara_Diferido" Type="Boolean" />
+          <Property Name="Describir_Hallazgos_Cara" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Check_Ojos_Si" Type="Boolean" />
+          <Property Name="Check_Ojos_No" Type="Boolean" />
+          <Property Name="Check_Ojos_Diferido" Type="Boolean" />
+          <Property Name="Describir_Hallazgos_Ojos" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Check_Nariz_Si" Type="Boolean" />
+          <Property Name="Check_Nariz_No" Type="Boolean" />
+          <Property Name="Check_Nariz_Diferido" Type="Boolean" />
+          <Property Name="Describir_Hallazgos_Nariz" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Check_Oidos_Si" Type="Boolean" />
+          <Property Name="Check_Oidos_No" Type="Boolean" />
+          <Property Name="Check_Oidos_Diferido" Type="Boolean" />
+          <Property Name="Describir_Hallazgos_Oidos" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Check_Boca_Si" Type="Boolean" />
+          <Property Name="Check_Boca_No" Type="Boolean" />
+          <Property Name="Check_Boca_Diferido" Type="Boolean" />
+          <Property Name="Describir_Hallazgos_Boca" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Check_Faringe_Si" Type="Boolean" />
+          <Property Name="Check_Faringe_No" Type="Boolean" />
+          <Property Name="Check_Faringe_Diferido" Type="Boolean" />
+          <Property Name="Describir_Hallazgos_Faringe" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Check_Cuello_Si" Type="Boolean" />
+          <Property Name="Check_Cuello_No" Type="Boolean" />
+          <Property Name="Check_Cuello_Diferido" Type="Boolean" />
+          <Property Name="Describir_Hallazgos_Cuello" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Check_Torax_Si" Type="Boolean" />
+          <Property Name="Check_Torax_No" Type="Boolean" />
+          <Property Name="Check_Torax_Diferido" Type="Boolean" />
+          <Property Name="Describir_Hallazgos_Torax" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Check_AparatoR_Si" Type="Boolean" />
+          <Property Name="Check_AparatoR_No" Type="Boolean" />
+          <Property Name="Check_AparatoR_Diferido" Type="Boolean" />
+          <Property Name="Describir_Hallazgos_AparatoR" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Check_AparatoC_Si" Type="Boolean" />
+          <Property Name="Check_AparatoC_No" Type="Boolean" />
+          <Property Name="Check_AparatoC_Diferido" Type="Boolean" />
+          <Property Name="Describir_Hallazgos_AparatoC" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Check_Abdomen_Si" Type="Boolean" />
+          <Property Name="Check_Abdomen_No" Type="Boolean" />
+          <Property Name="Check_Abdomen_Diferido" Type="Boolean" />
+          <Property Name="Describir_Hallazgos_Abdomen" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Check_Genitales_Si" Type="Boolean" />
+          <Property Name="Check_Genitales_No" Type="Boolean" />
+          <Property Name="Check_Genitales_Diferido" Type="Boolean" />
+          <Property Name="Describir_Hallazgos_Genitales" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Check_Extremidades_Si" Type="Boolean" />
+          <Property Name="Check_Extremidades_No" Type="Boolean" />
+          <Property Name="Check_Extremidades_Diferido" Type="Boolean" />
+          <Property Name="Describir_Hallazgos_Extremidades" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Check_SistemaN_Si" Type="Boolean" />
+          <Property Name="Check_SistemaN_No" Type="Boolean" />
+          <Property Name="Check_SistemaN_Diferido" Type="Boolean" />
+          <Property Name="Describir_Hallazgos_SistemaN" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Check_pielYanexos_Diferido" Type="Boolean" />
+          <Property Name="Describir_Hallazgos_pielYanexos" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Id_HistoriaClinica" Type="Int32" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Paciente" Relationship="CUSModel.FK__hc_explor__Id_Pa__7E02B4CC" FromRole="hc_exploracion_fisica" ToRole="Paciente" />
+          <Property Name="Check_pielanexos_Si" Type="Boolean" />
+          <Property Name="Check_pielanexos_No" Type="Boolean" />
+        </EntityType>
+        <Association Name="FK__hc_explor__Id_Pa__7E02B4CC">
+          <End Type="CUSModel.Paciente" Role="Paciente" Multiplicity="1" />
+          <End Type="CUSModel.hc_exploracion_fisica" Role="hc_exploracion_fisica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="hc_exploracion_fisica">
+              <PropertyRef Name="Id_Paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2181,6 +2435,91 @@
                 <ScalarProperty Name="Describir_SintomasG" ColumnName="Describir_SintomasG" />
                 <ScalarProperty Name="Check_SintomasG_No" ColumnName="Check_SintomasG_No" />
                 <ScalarProperty Name="Check_SintomasG_Si" ColumnName="Check_SintomasG_Si" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_riesgo_caidas">
+            <EntityTypeMapping TypeName="CUSModel.hc_riesgo_caidas">
+              <MappingFragment StoreEntitySet="hc_riesgo_caidas">
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="Id_HistoriaClinica" ColumnName="Id_HistoriaClinica" />
+                <ScalarProperty Name="PuntuajeEscala" ColumnName="PuntuajeEscala" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_exploracion_fisica">
+            <EntityTypeMapping TypeName="CUSModel.hc_exploracion_fisica">
+              <MappingFragment StoreEntitySet="hc_exploracion_fisica">
+                <ScalarProperty Name="Check_pielanexos_No" ColumnName="Check_pielanexos_No" />
+                <ScalarProperty Name="Check_pielanexos_Si" ColumnName="Check_pielanexos_Si" />
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="Id_HistoriaClinica" ColumnName="Id_HistoriaClinica" />
+                <ScalarProperty Name="Describir_Hallazgos_pielYanexos" ColumnName="Describir_Hallazgos_pielYanexos" />
+                <ScalarProperty Name="Check_pielYanexos_Diferido" ColumnName="Check_pielYanexos_Diferido" />
+                <ScalarProperty Name="Describir_Hallazgos_SistemaN" ColumnName="Describir_Hallazgos_SistemaN" />
+                <ScalarProperty Name="Check_SistemaN_Diferido" ColumnName="Check_SistemaN_Diferido" />
+                <ScalarProperty Name="Check_SistemaN_No" ColumnName="Check_SistemaN_No" />
+                <ScalarProperty Name="Check_SistemaN_Si" ColumnName="Check_SistemaN_Si" />
+                <ScalarProperty Name="Describir_Hallazgos_Extremidades" ColumnName="Describir_Hallazgos_Extremidades" />
+                <ScalarProperty Name="Check_Extremidades_Diferido" ColumnName="Check_Extremidades_Diferido" />
+                <ScalarProperty Name="Check_Extremidades_No" ColumnName="Check_Extremidades_No" />
+                <ScalarProperty Name="Check_Extremidades_Si" ColumnName="Check_Extremidades_Si" />
+                <ScalarProperty Name="Describir_Hallazgos_Genitales" ColumnName="Describir_Hallazgos_Genitales" />
+                <ScalarProperty Name="Check_Genitales_Diferido" ColumnName="Check_Genitales_Diferido" />
+                <ScalarProperty Name="Check_Genitales_No" ColumnName="Check_Genitales_No" />
+                <ScalarProperty Name="Check_Genitales_Si" ColumnName="Check_Genitales_Si" />
+                <ScalarProperty Name="Describir_Hallazgos_Abdomen" ColumnName="Describir_Hallazgos_Abdomen" />
+                <ScalarProperty Name="Check_Abdomen_Diferido" ColumnName="Check_Abdomen_Diferido" />
+                <ScalarProperty Name="Check_Abdomen_No" ColumnName="Check_Abdomen_No" />
+                <ScalarProperty Name="Check_Abdomen_Si" ColumnName="Check_Abdomen_Si" />
+                <ScalarProperty Name="Describir_Hallazgos_AparatoC" ColumnName="Describir_Hallazgos_AparatoC" />
+                <ScalarProperty Name="Check_AparatoC_Diferido" ColumnName="Check_AparatoC_Diferido" />
+                <ScalarProperty Name="Check_AparatoC_No" ColumnName="Check_AparatoC_No" />
+                <ScalarProperty Name="Check_AparatoC_Si" ColumnName="Check_AparatoC_Si" />
+                <ScalarProperty Name="Describir_Hallazgos_AparatoR" ColumnName="Describir_Hallazgos_AparatoR" />
+                <ScalarProperty Name="Check_AparatoR_Diferido" ColumnName="Check_AparatoR_Diferido" />
+                <ScalarProperty Name="Check_AparatoR_No" ColumnName="Check_AparatoR_No" />
+                <ScalarProperty Name="Check_AparatoR_Si" ColumnName="Check_AparatoR_Si" />
+                <ScalarProperty Name="Describir_Hallazgos_Torax" ColumnName="Describir_Hallazgos_Torax" />
+                <ScalarProperty Name="Check_Torax_Diferido" ColumnName="Check_Torax_Diferido" />
+                <ScalarProperty Name="Check_Torax_No" ColumnName="Check_Torax_No" />
+                <ScalarProperty Name="Check_Torax_Si" ColumnName="Check_Torax_Si" />
+                <ScalarProperty Name="Describir_Hallazgos_Cuello" ColumnName="Describir_Hallazgos_Cuello" />
+                <ScalarProperty Name="Check_Cuello_Diferido" ColumnName="Check_Cuello_Diferido" />
+                <ScalarProperty Name="Check_Cuello_No" ColumnName="Check_Cuello_No" />
+                <ScalarProperty Name="Check_Cuello_Si" ColumnName="Check_Cuello_Si" />
+                <ScalarProperty Name="Describir_Hallazgos_Faringe" ColumnName="Describir_Hallazgos_Faringe" />
+                <ScalarProperty Name="Check_Faringe_Diferido" ColumnName="Check_Faringe_Diferido" />
+                <ScalarProperty Name="Check_Faringe_No" ColumnName="Check_Faringe_No" />
+                <ScalarProperty Name="Check_Faringe_Si" ColumnName="Check_Faringe_Si" />
+                <ScalarProperty Name="Describir_Hallazgos_Boca" ColumnName="Describir_Hallazgos_Boca" />
+                <ScalarProperty Name="Check_Boca_Diferido" ColumnName="Check_Boca_Diferido" />
+                <ScalarProperty Name="Check_Boca_No" ColumnName="Check_Boca_No" />
+                <ScalarProperty Name="Check_Boca_Si" ColumnName="Check_Boca_Si" />
+                <ScalarProperty Name="Describir_Hallazgos_Oidos" ColumnName="Describir_Hallazgos_Oidos" />
+                <ScalarProperty Name="Check_Oidos_Diferido" ColumnName="Check_Oidos_Diferido" />
+                <ScalarProperty Name="Check_Oidos_No" ColumnName="Check_Oidos_No" />
+                <ScalarProperty Name="Check_Oidos_Si" ColumnName="Check_Oidos_Si" />
+                <ScalarProperty Name="Describir_Hallazgos_Nariz" ColumnName="Describir_Hallazgos_Nariz" />
+                <ScalarProperty Name="Check_Nariz_Diferido" ColumnName="Check_Nariz_Diferido" />
+                <ScalarProperty Name="Check_Nariz_No" ColumnName="Check_Nariz_No" />
+                <ScalarProperty Name="Check_Nariz_Si" ColumnName="Check_Nariz_Si" />
+                <ScalarProperty Name="Describir_Hallazgos_Ojos" ColumnName="Describir_Hallazgos_Ojos" />
+                <ScalarProperty Name="Check_Ojos_Diferido" ColumnName="Check_Ojos_Diferido" />
+                <ScalarProperty Name="Check_Ojos_No" ColumnName="Check_Ojos_No" />
+                <ScalarProperty Name="Check_Ojos_Si" ColumnName="Check_Ojos_Si" />
+                <ScalarProperty Name="Describir_Hallazgos_Cara" ColumnName="Describir_Hallazgos_Cara" />
+                <ScalarProperty Name="Check_Cara_Diferido" ColumnName="Check_Cara_Diferido" />
+                <ScalarProperty Name="Check_Cara_No" ColumnName="Check_Cara_No" />
+                <ScalarProperty Name="Check_Cara_Si" ColumnName="Check_Cara_Si" />
+                <ScalarProperty Name="Describir_Hallazgos_Craneo" ColumnName="Describir_Hallazgos_Craneo" />
+                <ScalarProperty Name="Check_Craneo_Diferido" ColumnName="Check_Craneo_Diferido" />
+                <ScalarProperty Name="Check_Craneo_No" ColumnName="Check_Craneo_No" />
+                <ScalarProperty Name="Check_Craneo_Si" ColumnName="Check_Craneo_Si" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

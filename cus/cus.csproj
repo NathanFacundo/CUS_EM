@@ -236,6 +236,9 @@
     <Compile Include="Models\hc_evaluacion_social.cs">
       <DependentUpon>CUS.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\hc_exploracion_fisica.cs">
+      <DependentUpon>CUS.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\hc_factores_riesgo_psicologicos.cs">
       <DependentUpon>CUS.tt</DependentUpon>
     </Compile>
@@ -252,6 +255,9 @@
       <DependentUpon>CUS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\hc_interrogatorio.cs">
+      <DependentUpon>CUS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\hc_riesgo_caidas.cs">
       <DependentUpon>CUS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\hc_valoracion_familiar.cs">
@@ -509,6 +515,7 @@
     <Content Include="Areas\Admin\Views\HistoriaClinica\Historia-Copia.cshtml" />
     <Content Include="Areas\Admin\Views\HistoriaClinica\Index-Copia.cshtml" />
     <Content Include="Areas\Admin\Views\NotaEvolucion\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Derechohabiente\View.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

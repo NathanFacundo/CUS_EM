@@ -106,19 +106,39 @@
                                     <li><a href="@Url.Action("Create", "Derechohabiente")">Nuevo PX.</a></li>
                                 </ul>
                             </li>
+
                             <li class="submenu">
                                 <a href="#"><i class="fe fe-folder"></i> <span>Expte. Médico</span> <span class="menu-arrow"></span></a>
                                 <ul style="display: none;">
                                     <li><a href="@Url.Action("Index", "NotaEvolucion")">Nota de Evolución</a></li>
                                     <li><a href="@Url.Action("a", "a")">Mis PX.</a></li>
+
+                                    <li class="submenu">
+                                        <a href="#"><i class="fe fe-folder-open"></i> <span>Historia Clínica</span> <span class="menu-arrow"></span></a>
+                                        <ul style="display: none;">
+                                            <li><a href="@Url.Action("Historia", "HistoriaClinica")">Buscar Historia</a></li>
+                                            <li class="submenu">
+                                                <a href="#"><span>Nueva</span> <span class="menu-arrow"></span></a>
+                                                <ul style="display: none;">
+                                                    <li><a href="@Url.Action("Index", "HistoriaClinica")">Común</a></li>
+                                                    <li><a href="">Medicina</a></li>
+                                                    <li><a href="">Psicología</a></li>
+                                                    <li><a href="">Nutrición</a></li>
+                                                    <li><a href="">Odontología</a></li>
+                                                </ul>
+                                            </li>
+
+                                        </ul>
+                                    </li>
+
                                 </ul>
                             </li>
-                            <li class="submenu">
+
+
+                            @*<li class="submenu">
                                 <a href="#"><i class="fe fe-folder-open"></i> <span>Historia Clínica</span> <span class="menu-arrow"></span></a>
                                 <ul style="display: none;">
                                     <li><a href="@Url.Action("Historia", "HistoriaClinica")">Buscar Historia</a></li>
-                                    @*<li><a href="@Url.Action("Index", "HistoriaClinica")">Nueva</a></li>*@
-
                                     <li class="submenu">
                                         <a href="#"><span>Nueva</span> <span class="menu-arrow"></span></a>
                                         <ul style="display: none;">
@@ -131,7 +151,9 @@
                                     </li>
 
                                 </ul>
-                            </li>
+                            </li>*@
+
+
                             <li class="submenu">
                                 <a href="#"><i class="fe fe-bookmark"></i> <span>Admon. Agendas</span> <span class="menu-arrow"></span></a>
                                 <ul style="display: none;">
@@ -139,13 +161,13 @@
                                     <li><a href="@Url.Action("a", "a")">Algo</a></li>
                                 </ul>
                             </li>
-                            <li class="submenu">
+                            @*<li class="submenu">
                                 <a href="#"><i class="fe fe-file-excel"></i> <span>Lista Espera PX.</span> <span class="menu-arrow"></span></a>
                                 <ul style="display: none;">
                                     <li><a href="@Url.Action("a", "a")">Algo</a></li>
                                     <li><a href="@Url.Action("a", "a")">Algo</a></li>
                                 </ul>
-                            </li>
+                            </li>*@
                             <li class="submenu">
                                 <a href="#"><i class="fe fe-activity"></i> <span>Monitor Clínica</span> <span class="menu-arrow"></span></a>
                                 <ul style="display: none;">
