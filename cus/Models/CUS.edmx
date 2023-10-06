@@ -585,8 +585,8 @@
           <Property Name="FechaRegistro" Type="datetime" />
           <Property Name="Curp_Calculado" Type="varchar" MaxLength="30" />
           <Property Name="Curp_CalculadoMotivo" Type="varchar" MaxLength="500" />
-          <Property Name="NA_DE" Type="bit" />
-          <Property Name="NA_BA" Type="bit" />
+          <Property Name="NA_BA" Type="bit" Nullable="false" />
+          <Property Name="NA_DE" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="UnidadAfiliacion">
           <Key>
@@ -1179,8 +1179,6 @@
           <Property Name="FechaRegistro" Type="DateTime" Precision="3" />
           <Property Name="Curp_Calculado" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Curp_CalculadoMotivo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="NA_DE" Type="Boolean" />
-          <Property Name="NA_BA" Type="Boolean" />
           <NavigationProperty Name="hc_antecedentes_desarrollo" Relationship="CUSModel.FK__hc_antece__Id_Pa__2645B050" FromRole="Paciente" ToRole="hc_antecedentes_desarrollo" />
           <NavigationProperty Name="hc_antecedentes_ginecoobstetricos" Relationship="CUSModel.FK__hc_antece__Id_Pa__29221CFB" FromRole="Paciente" ToRole="hc_antecedentes_ginecoobstetricos" />
           <NavigationProperty Name="hc_antecedentes_perinatales" Relationship="CUSModel.FK__hc_antece__Id_Pa__05D8E0BE" FromRole="Paciente" ToRole="hc_antecedentes_perinatales" />
@@ -1199,6 +1197,8 @@
           <NavigationProperty Name="hc_interrogatorio" Relationship="CUSModel.FK__hc_interr__Id_Pa__4F47C5E3" FromRole="Paciente" ToRole="hc_interrogatorio" />
           <NavigationProperty Name="hc_riesgo_caidas" Relationship="CUSModel.FK__hc_riesgo__Id_Pa__7B264821" FromRole="Paciente" ToRole="hc_riesgo_caidas" />
           <NavigationProperty Name="hc_exploracion_fisica" Relationship="CUSModel.FK__hc_explor__Id_Pa__7E02B4CC" FromRole="Paciente" ToRole="hc_exploracion_fisica" />
+          <Property Name="NA_BA" Type="Boolean" Nullable="false" />
+          <Property Name="NA_DE" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="hc_antecedentes_desarrollo">
           <Key>
@@ -1979,8 +1979,8 @@
           <EntitySetMapping Name="Paciente">
             <EntityTypeMapping TypeName="CUSModel.Paciente">
               <MappingFragment StoreEntitySet="Paciente">
-                <ScalarProperty Name="NA_BA" ColumnName="NA_BA" />
                 <ScalarProperty Name="NA_DE" ColumnName="NA_DE" />
+                <ScalarProperty Name="NA_BA" ColumnName="NA_BA" />
                 <ScalarProperty Name="Curp_CalculadoMotivo" ColumnName="Curp_CalculadoMotivo" />
                 <ScalarProperty Name="Curp_Calculado" ColumnName="Curp_Calculado" />
                 <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />

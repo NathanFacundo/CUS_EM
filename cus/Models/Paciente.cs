@@ -88,8 +88,8 @@ namespace CUS.Models
         public Nullable<System.DateTime> FechaRegistro { get; set; }
         public string Curp_Calculado { get; set; }
         public string Curp_CalculadoMotivo { get; set; }
-        public Nullable<bool> NA_DE { get; set; }
-        public Nullable<bool> NA_BA { get; set; }
+        public bool NA_BA { get; set; }
+        public bool NA_DE { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<hc_antecedentes_desarrollo> hc_antecedentes_desarrollo { get; set; }
