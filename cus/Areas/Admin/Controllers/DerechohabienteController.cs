@@ -114,6 +114,8 @@ namespace CUS.Areas.Admin.Controllers
                         paciente.CURP = "SIN CURP";
                     }
 
+
+
                     //Convertimos a mayúsculas los datos del tutor en caso que el px sea menor de edad
                     if ((paciente.Nombre_Tutor != null) || (paciente.PrimerApellido_Tutor != null) || (paciente.SegundoApellido_Tutor != null))
                     {
@@ -126,6 +128,57 @@ namespace CUS.Areas.Admin.Controllers
                         if (paciente.SegundoApellido_Tutor != null || paciente.SegundoApellido_Tutor != "")
                             paciente.SegundoApellido_Tutor = paciente.SegundoApellido_Tutor.ToUpper();
                     }
+
+
+
+                    //Convertir FechaNacimiento a Años-Meses-Dias
+
+                    var today = DateTime.Today;
+                    DateTime fnac = (DateTime)paciente.FechaNacimiento;
+                    int Years = 0;
+                    int Months = 0;
+                    int Days = 0;
+
+                    if ((today.Year - fnac.Year) > 0 ||
+                    (((today.Year - fnac.Year) == 0) && ((fnac.Month < today.Month) ||
+                    ((fnac.Month == today.Month) && (fnac.Day <= today.Day)))))
+                    {
+                        int DaysInBdayMonth = DateTime.DaysInMonth(fnac.Year, fnac.Month);
+                        int DaysRemain = today.Day + (DaysInBdayMonth - fnac.Day);
+
+                        if (today.Month > fnac.Month)
+                        {
+                            Years = today.Year - fnac.Year;
+                            Months = today.Month - (fnac.Month + 1) + Math.Abs(DaysRemain / DaysInBdayMonth);
+                            Days = (DaysRemain % DaysInBdayMonth + DaysInBdayMonth) % DaysInBdayMonth;
+                        }
+                        else if (today.Month == fnac.Month)
+                        {
+                            if (today.Day >= fnac.Day)
+                            {
+                                Years = today.Year - fnac.Year;
+                                Months = 0;
+                                Days = today.Day - fnac.Day;
+                            }
+                            else
+                            {
+                                Years = (today.Year - 1) - fnac.Year;
+                                Months = 11;
+                                Days = DateTime.DaysInMonth(fnac.Year, fnac.Month) - (fnac.Day - today.Day);
+                            }
+                        }
+                        else
+                        {
+                            Years = (today.Year - 1) - fnac.Year;
+                            Months = today.Month + (11 - fnac.Month) + Math.Abs(DaysRemain / DaysInBdayMonth);
+                            Days = (DaysRemain % DaysInBdayMonth + DaysInBdayMonth) % DaysInBdayMonth;
+                        }
+                    }
+                    var edad = Years + " años con " + Months + " meses" + " y " + Days + " días";
+
+
+
+
 
                     db.Paciente.Add(paciente);
                     db.SaveChanges();
