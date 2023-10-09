@@ -2317,9 +2317,35 @@
         var Sexo = row.data().Sexo;
         var FechaN = row.data().FechaNacimiento;
 
+
+        //Dividir fecha de nacimiento
+        var splitFechaN = FechaN.split('/');
+        const anioNacimiento = parseInt(splitFechaN[2]);
+        const mesNacimiento = parseInt(splitFechaN[1]);
+        const diaNacimiento = parseInt(splitFechaN[0]);
+
+        // Obtiene la fecha actual
+        const fechaActual = new Date();
+
+        // Obtiene el año, mes y día actual
+        const anioActual = fechaActual.getFullYear();
+        const mesActual = fechaActual.getMonth() + 1; // Los meses en JavaScript van de 0 a 11
+        const diaActual = fechaActual.getDate();
+
+        // Calcula la edad
+        let edad = anioActual - anioNacimiento;
+        let edadMeses = mesActual - mesNacimiento;
+
+        // Verifica si aún no ha llegado el cumpleaños de este año
+        if (mesActual < mesNacimiento || (mesActual === mesNacimiento && diaActual < diaNacimiento)) {
+            edad--;
+        }
+
+
+
         document.getElementById("Nombre").innerHTML = Nombre + " " + PrimerA + " " + SegundoA;
         document.getElementById("Exp").innerHTML = Exp;
-        document.getElementById("Edad").innerHTML = Edad;
+        document.getElementById("Edad").innerHTML = edad + ' años ' + edadMeses + ' meses';
         document.getElementById("Sexo").innerHTML = Sexo;
         document.getElementById("FechaNac").innerHTML = FechaN;
 
