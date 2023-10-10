@@ -56,7 +56,7 @@
                                                 Edad
                                             </th>
                                             <th style="text-align:center">
-                                                FechaRegistro
+                                                Id
                                             </th>
                                             <th style="width:5px"></th>
                                             <th style="width:5px"></th>
@@ -276,7 +276,7 @@
                 { 'data': 'CURP', className: "text-center" },
                 { 'data': 'Sexo', className: "text-center" },
                 { 'data': 'Edad', className: "text-center" },
-                { 'data': 'FechaRegistro', className: "text-center" },
+                { 'data': 'Id', className: "text-center" },
                 {
                     "className": 'text-center',
                     "orderable": false,
@@ -298,7 +298,8 @@
                     "defaultContent": '<button title="Eliminar" id="Eliminar" class="btn btn-danger fa fa-times-circle" data-toggle="modal" ></button>',
                     "target": -2
                 }
-            ],
+            ]
+            ,
             columnDefs: [
                 { "visible": false, "targets": 8 },
             ]
