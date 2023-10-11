@@ -174,6 +174,7 @@
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\DerechohabienteController.cs" />
     <Compile Include="Areas\Admin\Controllers\HistoriaClinicaController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HistoriaMedicinaController.cs" />
     <Compile Include="Areas\Admin\Controllers\NotaEvolucionController.cs" />
     <Compile Include="Areas\Admin\Controllers\PacienteController.cs" />
     <Compile Include="Areas\Admin\Controllers\UsuariosController.cs" />
@@ -516,6 +517,8 @@
     <Content Include="Areas\Admin\Views\HistoriaClinica\Index-Copia.cshtml" />
     <Content Include="Areas\Admin\Views\NotaEvolucion\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Derechohabiente\View.cshtml" />
+    <Content Include="Areas\Admin\Views\HistoriaMedicina\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\HistoriaMedicina\Historia.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
