@@ -59,6 +59,16 @@
           <Property Name="Area" Type="int" />
           <Property Name="Unidad" Type="int" />
         </EntityType>
+        <EntityType Name="Diagnosticos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="clave" Type="varchar" MaxLength="50" />
+          <Property Name="diagnostico" Type="text" />
+          <Property Name="status" Type="int" />
+          <Property Name="nivel" Type="int" />
+        </EntityType>
         <EntityType Name="hc_alimentacion">
           <Key>
             <PropertyRef Name="Id" />
@@ -530,6 +540,31 @@
           <Property Name="Id_Paciente" Type="int" Nullable="false" />
           <Property Name="TipoHistoria" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="NotaEvolucion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="num_exp" Type="varchar" MaxLength="50" />
+          <Property Name="medico" Type="varchar" MaxLength="100" />
+          <Property Name="nota_subjetivo" Type="text" />
+          <Property Name="nota_objetivo" Type="text" />
+          <Property Name="nota_plan" Type="text" />
+          <Property Name="diagnostico1" Type="varchar" MaxLength="50" />
+          <Property Name="diagnostico2" Type="varchar" MaxLength="50" />
+          <Property Name="diagnostico3" Type="varchar" MaxLength="50" />
+          <Property Name="diagnostico4" Type="varchar" MaxLength="50" />
+          <Property Name="diagnostico5" Type="varchar" MaxLength="50" />
+          <Property Name="tipo_diagnostico1" Type="varchar" MaxLength="50" />
+          <Property Name="tipo_diagnostico2" Type="varchar" MaxLength="50" />
+          <Property Name="tipo_diagnostico3" Type="varchar" MaxLength="50" />
+          <Property Name="tipo_diagnostico4" Type="varchar" MaxLength="50" />
+          <Property Name="tipo_diagnostico5" Type="varchar" MaxLength="50" />
+          <Property Name="fecha" Type="datetime" />
+          <Property Name="ip_realiza" Type="varchar" MaxLength="50" />
+          <Property Name="status" Type="int" />
+          <Property Name="id_unidad" Type="int" />
+        </EntityType>
         <EntityType Name="Paciente">
           <Key>
             <PropertyRef Name="Id" />
@@ -585,8 +620,8 @@
           <Property Name="FechaRegistro" Type="datetime" />
           <Property Name="Curp_Calculado" Type="varchar" MaxLength="30" />
           <Property Name="Curp_CalculadoMotivo" Type="varchar" MaxLength="500" />
-          <Property Name="NA_BA" Type="bit" Nullable="false" />
-          <Property Name="NA_DE" Type="bit" Nullable="false" />
+          <Property Name="NA_DE" Type="bit" />
+          <Property Name="NA_BA" Type="bit" />
         </EntityType>
         <EntityType Name="UnidadAfiliacion">
           <Key>
@@ -596,7 +631,7 @@
           <Property Name="NombreUnidad" Type="nvarchar" MaxLength="256" Nullable="false" />
           <Property Name="Prefijo" Type="varchar" MaxLength="10" />
         </EntityType>
-        <Association Name="FK__hc_alimen__Id_Pa__4F47C5E3">
+        <Association Name="FK__hc_alimen__Id_Pa__3C34F16F">
           <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
           <End Role="hc_alimentacion" Type="Self.hc_alimentacion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -608,31 +643,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__hc_antece__Id_Pa__05D8E0BE">
-          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
-          <End Role="hc_antecedentes_perinatales" Type="Self.hc_antecedentes_perinatales" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Paciente">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="hc_antecedentes_perinatales">
-              <PropertyRef Name="Id_Paciente" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__hc_antece__Id_Pa__08B54D69">
-          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
-          <End Role="hc_antecedentes_patologicos" Type="Self.hc_antecedentes_patologicos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Paciente">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="hc_antecedentes_patologicos">
-              <PropertyRef Name="Id_Paciente" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__hc_antece__Id_Pa__2645B050">
+        <Association Name="FK__hc_antece__Id_Pa__19DFD96B">
           <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
           <End Role="hc_antecedentes_desarrollo" Type="Self.hc_antecedentes_desarrollo" Multiplicity="*" />
           <ReferentialConstraint>
@@ -644,7 +655,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__hc_antece__Id_Pa__29221CFB">
+        <Association Name="FK__hc_antece__Id_Pa__1AD3FDA4">
           <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
           <End Role="hc_antecedentes_ginecoobstetricos" Type="Self.hc_antecedentes_ginecoobstetricos" Multiplicity="*" />
           <ReferentialConstraint>
@@ -656,19 +667,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__hc_evalua__Id_Pa__72C60C4A">
+        <Association Name="FK__hc_antece__Id_Pa__1BC821DD">
           <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
-          <End Role="hc_evaluacion_social" Type="Self.hc_evaluacion_social" Multiplicity="*" />
+          <End Role="hc_antecedentes_patologicos" Type="Self.hc_antecedentes_patologicos" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Paciente">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="hc_evaluacion_social">
+            <Dependent Role="hc_antecedentes_patologicos">
               <PropertyRef Name="Id_Paciente" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__hc_evalua__Id_Pa__787EE5A0">
+        <Association Name="FK__hc_antece__Id_Pa__1CBC4616">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+          <End Role="hc_antecedentes_perinatales" Type="Self.hc_antecedentes_perinatales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="hc_antecedentes_perinatales">
+              <PropertyRef Name="Id_Paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__hc_evalua__Id_Pa__1DB06A4F">
           <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
           <End Role="hc_evaluacion_economica" Type="Self.hc_evaluacion_economica" Multiplicity="*" />
           <ReferentialConstraint>
@@ -680,7 +703,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__hc_explor__Id_Pa__7E02B4CC">
+        <Association Name="FK__hc_evalua__Id_Pa__1EA48E88">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+          <End Role="hc_evaluacion_social" Type="Self.hc_evaluacion_social" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="hc_evaluacion_social">
+              <PropertyRef Name="Id_Paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__hc_explor__Id_Pa__55009F39">
           <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
           <End Role="hc_exploracion_fisica" Type="Self.hc_exploracion_fisica" Multiplicity="*" />
           <ReferentialConstraint>
@@ -692,7 +727,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__hc_factor__Id_Pa__7E37BEF6">
+        <Association Name="FK__hc_factor__Id_Pa__1F98B2C1">
           <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
           <End Role="hc_factores_riesgo_psicologicos" Type="Self.hc_factores_riesgo_psicologicos" Multiplicity="*" />
           <ReferentialConstraint>
@@ -704,7 +739,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__hc_ficha___Id_Pa__6FE99F9F">
+        <Association Name="FK__hc_ficha___Id_Pa__208CD6FA">
           <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
           <End Role="hc_ficha_identificacion" Type="Self.hc_ficha_identificacion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -716,7 +751,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__hc_habito__Id_Pa__02FC7413">
+        <Association Name="FK__hc_habito__Id_Pa__2180FB33">
           <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
           <End Role="hc_habitos" Type="Self.hc_habitos" Multiplicity="*" />
           <ReferentialConstraint>
@@ -728,7 +763,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__hc_habito__Id_Pa__625A9A57">
+        <Association Name="FK__hc_habito__Id_Pa__5224328E">
           <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
           <End Role="hc_habitos" Type="Self.hc_habitos" Multiplicity="*" />
           <ReferentialConstraint>
@@ -740,31 +775,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__hc_habito__Id_Pa__65370702">
-          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
-          <End Role="hc_habitos" Type="Self.hc_habitos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Paciente">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="hc_habitos">
-              <PropertyRef Name="Id_Paciente" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__hc_habito__Id_Pa__7849DB76">
-          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
-          <End Role="hc_habitos" Type="Self.hc_habitos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Paciente">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="hc_habitos">
-              <PropertyRef Name="Id_Paciente" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__hc_histor__Id_Pa__236943A5">
+        <Association Name="FK__hc_histor__Id_Pa__22751F6C">
           <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
           <End Role="hc_historial_consumo" Type="Self.hc_historial_consumo" Multiplicity="*" />
           <ReferentialConstraint>
@@ -776,7 +787,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__hc_inmuni__Id_Pa__208CD6FA">
+        <Association Name="FK__hc_inmuni__Id_Pa__236943A5">
           <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
           <End Role="hc_inmunizaciones" Type="Self.hc_inmunizaciones" Multiplicity="*" />
           <ReferentialConstraint>
@@ -788,7 +799,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__hc_interr__Id_Pa__756D6ECB">
+        <Association Name="FK__hc_interr__Id_Pa__4F47C5E3">
           <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
           <End Role="hc_interrogatorio" Type="Self.hc_interrogatorio" Multiplicity="*" />
           <ReferentialConstraint>
@@ -800,19 +811,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__hc_riesgo__Id_Pa__7B264821">
-          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
-          <End Role="hc_riesgo_caidas" Type="Self.hc_riesgo_caidas" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Paciente">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="hc_riesgo_caidas">
-              <PropertyRef Name="Id_Paciente" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__hc_valora__Id_Pa__75A278F5">
+        <Association Name="FK__hc_valora__Id_Pa__245D67DE">
           <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
           <End Role="hc_valoracion_familiar" Type="Self.hc_valoracion_familiar" Multiplicity="*" />
           <ReferentialConstraint>
@@ -824,7 +823,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__hc_valore__Id_Pa__7B5B524B">
+        <Association Name="FK__hc_valore__Id_Pa__25518C17">
           <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
           <End Role="hc_valores_creencias" Type="Self.hc_valores_creencias" Multiplicity="*" />
           <ReferentialConstraint>
@@ -836,7 +835,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HistoriaC__Id_Pa__3C34F16F">
+        <Association Name="FK__HistoriaC__Id_Pa__282DF8C2">
           <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
           <End Role="HistoriaClinica" Type="Self.HistoriaClinica" Multiplicity="*" />
           <ReferentialConstraint>
@@ -854,6 +853,7 @@
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Diagnosticos" EntityType="Self.Diagnosticos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hc_alimentacion" EntityType="Self.hc_alimentacion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hc_antecedentes_desarrollo" EntityType="Self.hc_antecedentes_desarrollo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hc_antecedentes_ginecoobstetricos" EntityType="Self.hc_antecedentes_ginecoobstetricos" Schema="dbo" store:Type="Tables" />
@@ -872,89 +872,78 @@
           <EntitySet Name="hc_valoracion_familiar" EntityType="Self.hc_valoracion_familiar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hc_valores_creencias" EntityType="Self.hc_valores_creencias" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HistoriaClinica" EntityType="Self.HistoriaClinica" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NotaEvolucion" EntityType="Self.NotaEvolucion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Paciente" EntityType="Self.Paciente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UnidadAfiliacion" EntityType="Self.UnidadAfiliacion" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__hc_alimen__Id_Pa__4F47C5E3" Association="Self.FK__hc_alimen__Id_Pa__4F47C5E3">
+          <AssociationSet Name="FK__hc_alimen__Id_Pa__3C34F16F" Association="Self.FK__hc_alimen__Id_Pa__3C34F16F">
             <End Role="Paciente" EntitySet="Paciente" />
             <End Role="hc_alimentacion" EntitySet="hc_alimentacion" />
           </AssociationSet>
-          <AssociationSet Name="FK__hc_antece__Id_Pa__05D8E0BE" Association="Self.FK__hc_antece__Id_Pa__05D8E0BE">
-            <End Role="Paciente" EntitySet="Paciente" />
-            <End Role="hc_antecedentes_perinatales" EntitySet="hc_antecedentes_perinatales" />
-          </AssociationSet>
-          <AssociationSet Name="FK__hc_antece__Id_Pa__08B54D69" Association="Self.FK__hc_antece__Id_Pa__08B54D69">
-            <End Role="Paciente" EntitySet="Paciente" />
-            <End Role="hc_antecedentes_patologicos" EntitySet="hc_antecedentes_patologicos" />
-          </AssociationSet>
-          <AssociationSet Name="FK__hc_antece__Id_Pa__2645B050" Association="Self.FK__hc_antece__Id_Pa__2645B050">
+          <AssociationSet Name="FK__hc_antece__Id_Pa__19DFD96B" Association="Self.FK__hc_antece__Id_Pa__19DFD96B">
             <End Role="Paciente" EntitySet="Paciente" />
             <End Role="hc_antecedentes_desarrollo" EntitySet="hc_antecedentes_desarrollo" />
           </AssociationSet>
-          <AssociationSet Name="FK__hc_antece__Id_Pa__29221CFB" Association="Self.FK__hc_antece__Id_Pa__29221CFB">
+          <AssociationSet Name="FK__hc_antece__Id_Pa__1AD3FDA4" Association="Self.FK__hc_antece__Id_Pa__1AD3FDA4">
             <End Role="Paciente" EntitySet="Paciente" />
             <End Role="hc_antecedentes_ginecoobstetricos" EntitySet="hc_antecedentes_ginecoobstetricos" />
           </AssociationSet>
-          <AssociationSet Name="FK__hc_evalua__Id_Pa__72C60C4A" Association="Self.FK__hc_evalua__Id_Pa__72C60C4A">
+          <AssociationSet Name="FK__hc_antece__Id_Pa__1BC821DD" Association="Self.FK__hc_antece__Id_Pa__1BC821DD">
             <End Role="Paciente" EntitySet="Paciente" />
-            <End Role="hc_evaluacion_social" EntitySet="hc_evaluacion_social" />
+            <End Role="hc_antecedentes_patologicos" EntitySet="hc_antecedentes_patologicos" />
           </AssociationSet>
-          <AssociationSet Name="FK__hc_evalua__Id_Pa__787EE5A0" Association="Self.FK__hc_evalua__Id_Pa__787EE5A0">
+          <AssociationSet Name="FK__hc_antece__Id_Pa__1CBC4616" Association="Self.FK__hc_antece__Id_Pa__1CBC4616">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="hc_antecedentes_perinatales" EntitySet="hc_antecedentes_perinatales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__hc_evalua__Id_Pa__1DB06A4F" Association="Self.FK__hc_evalua__Id_Pa__1DB06A4F">
             <End Role="Paciente" EntitySet="Paciente" />
             <End Role="hc_evaluacion_economica" EntitySet="hc_evaluacion_economica" />
           </AssociationSet>
-          <AssociationSet Name="FK__hc_explor__Id_Pa__7E02B4CC" Association="Self.FK__hc_explor__Id_Pa__7E02B4CC">
+          <AssociationSet Name="FK__hc_evalua__Id_Pa__1EA48E88" Association="Self.FK__hc_evalua__Id_Pa__1EA48E88">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="hc_evaluacion_social" EntitySet="hc_evaluacion_social" />
+          </AssociationSet>
+          <AssociationSet Name="FK__hc_explor__Id_Pa__55009F39" Association="Self.FK__hc_explor__Id_Pa__55009F39">
             <End Role="Paciente" EntitySet="Paciente" />
             <End Role="hc_exploracion_fisica" EntitySet="hc_exploracion_fisica" />
           </AssociationSet>
-          <AssociationSet Name="FK__hc_factor__Id_Pa__7E37BEF6" Association="Self.FK__hc_factor__Id_Pa__7E37BEF6">
+          <AssociationSet Name="FK__hc_factor__Id_Pa__1F98B2C1" Association="Self.FK__hc_factor__Id_Pa__1F98B2C1">
             <End Role="Paciente" EntitySet="Paciente" />
             <End Role="hc_factores_riesgo_psicologicos" EntitySet="hc_factores_riesgo_psicologicos" />
           </AssociationSet>
-          <AssociationSet Name="FK__hc_ficha___Id_Pa__6FE99F9F" Association="Self.FK__hc_ficha___Id_Pa__6FE99F9F">
+          <AssociationSet Name="FK__hc_ficha___Id_Pa__208CD6FA" Association="Self.FK__hc_ficha___Id_Pa__208CD6FA">
             <End Role="Paciente" EntitySet="Paciente" />
             <End Role="hc_ficha_identificacion" EntitySet="hc_ficha_identificacion" />
           </AssociationSet>
-          <AssociationSet Name="FK__hc_habito__Id_Pa__02FC7413" Association="Self.FK__hc_habito__Id_Pa__02FC7413">
+          <AssociationSet Name="FK__hc_habito__Id_Pa__2180FB33" Association="Self.FK__hc_habito__Id_Pa__2180FB33">
             <End Role="Paciente" EntitySet="Paciente" />
             <End Role="hc_habitos" EntitySet="hc_habitos" />
           </AssociationSet>
-          <AssociationSet Name="FK__hc_habito__Id_Pa__625A9A57" Association="Self.FK__hc_habito__Id_Pa__625A9A57">
+          <AssociationSet Name="FK__hc_habito__Id_Pa__5224328E" Association="Self.FK__hc_habito__Id_Pa__5224328E">
             <End Role="Paciente" EntitySet="Paciente" />
             <End Role="hc_habitos" EntitySet="hc_habitos" />
           </AssociationSet>
-          <AssociationSet Name="FK__hc_habito__Id_Pa__65370702" Association="Self.FK__hc_habito__Id_Pa__65370702">
-            <End Role="Paciente" EntitySet="Paciente" />
-            <End Role="hc_habitos" EntitySet="hc_habitos" />
-          </AssociationSet>
-          <AssociationSet Name="FK__hc_habito__Id_Pa__7849DB76" Association="Self.FK__hc_habito__Id_Pa__7849DB76">
-            <End Role="Paciente" EntitySet="Paciente" />
-            <End Role="hc_habitos" EntitySet="hc_habitos" />
-          </AssociationSet>
-          <AssociationSet Name="FK__hc_histor__Id_Pa__236943A5" Association="Self.FK__hc_histor__Id_Pa__236943A5">
+          <AssociationSet Name="FK__hc_histor__Id_Pa__22751F6C" Association="Self.FK__hc_histor__Id_Pa__22751F6C">
             <End Role="Paciente" EntitySet="Paciente" />
             <End Role="hc_historial_consumo" EntitySet="hc_historial_consumo" />
           </AssociationSet>
-          <AssociationSet Name="FK__hc_inmuni__Id_Pa__208CD6FA" Association="Self.FK__hc_inmuni__Id_Pa__208CD6FA">
+          <AssociationSet Name="FK__hc_inmuni__Id_Pa__236943A5" Association="Self.FK__hc_inmuni__Id_Pa__236943A5">
             <End Role="Paciente" EntitySet="Paciente" />
             <End Role="hc_inmunizaciones" EntitySet="hc_inmunizaciones" />
           </AssociationSet>
-          <AssociationSet Name="FK__hc_interr__Id_Pa__756D6ECB" Association="Self.FK__hc_interr__Id_Pa__756D6ECB">
+          <AssociationSet Name="FK__hc_interr__Id_Pa__4F47C5E3" Association="Self.FK__hc_interr__Id_Pa__4F47C5E3">
             <End Role="Paciente" EntitySet="Paciente" />
             <End Role="hc_interrogatorio" EntitySet="hc_interrogatorio" />
           </AssociationSet>
-          <AssociationSet Name="FK__hc_riesgo__Id_Pa__7B264821" Association="Self.FK__hc_riesgo__Id_Pa__7B264821">
-            <End Role="Paciente" EntitySet="Paciente" />
-            <End Role="hc_riesgo_caidas" EntitySet="hc_riesgo_caidas" />
-          </AssociationSet>
-          <AssociationSet Name="FK__hc_valora__Id_Pa__75A278F5" Association="Self.FK__hc_valora__Id_Pa__75A278F5">
+          <AssociationSet Name="FK__hc_valora__Id_Pa__245D67DE" Association="Self.FK__hc_valora__Id_Pa__245D67DE">
             <End Role="Paciente" EntitySet="Paciente" />
             <End Role="hc_valoracion_familiar" EntitySet="hc_valoracion_familiar" />
           </AssociationSet>
-          <AssociationSet Name="FK__hc_valore__Id_Pa__7B5B524B" Association="Self.FK__hc_valore__Id_Pa__7B5B524B">
+          <AssociationSet Name="FK__hc_valore__Id_Pa__25518C17" Association="Self.FK__hc_valore__Id_Pa__25518C17">
             <End Role="Paciente" EntitySet="Paciente" />
             <End Role="hc_valores_creencias" EntitySet="hc_valores_creencias" />
           </AssociationSet>
-          <AssociationSet Name="FK__HistoriaC__Id_Pa__3C34F16F" Association="Self.FK__HistoriaC__Id_Pa__3C34F16F">
+          <AssociationSet Name="FK__HistoriaC__Id_Pa__282DF8C2" Association="Self.FK__HistoriaC__Id_Pa__282DF8C2">
             <End Role="Paciente" EntitySet="Paciente" />
             <End Role="HistoriaClinica" EntitySet="HistoriaClinica" />
           </AssociationSet>
@@ -1115,6 +1104,8 @@
             <End Role="Paciente" EntitySet="Paciente" />
             <End Role="hc_exploracion_fisica" EntitySet="hc_exploracion_fisica" />
           </AssociationSet>
+          <EntitySet Name="Diagnosticos" EntityType="CUSModel.Diagnosticos" />
+          <EntitySet Name="NotaEvolucion" EntityType="CUSModel.NotaEvolucion" />
         </EntityContainer>
         <EntityType Name="UnidadAfiliacion">
           <Key>
@@ -1197,8 +1188,8 @@
           <NavigationProperty Name="hc_interrogatorio" Relationship="CUSModel.FK__hc_interr__Id_Pa__4F47C5E3" FromRole="Paciente" ToRole="hc_interrogatorio" />
           <NavigationProperty Name="hc_riesgo_caidas" Relationship="CUSModel.FK__hc_riesgo__Id_Pa__7B264821" FromRole="Paciente" ToRole="hc_riesgo_caidas" />
           <NavigationProperty Name="hc_exploracion_fisica" Relationship="CUSModel.FK__hc_explor__Id_Pa__7E02B4CC" FromRole="Paciente" ToRole="hc_exploracion_fisica" />
-          <Property Name="NA_BA" Type="Boolean" Nullable="false" />
-          <Property Name="NA_DE" Type="Boolean" Nullable="false" />
+          <Property Name="NA_BA" Type="Boolean" />
+          <Property Name="NA_DE" Type="Boolean" />
         </EntityType>
         <EntityType Name="hc_antecedentes_desarrollo">
           <Key>
@@ -1905,6 +1896,41 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Diagnosticos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="clave" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="diagnostico" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="nivel" Type="Int32" />
+        </EntityType>
+        <EntityType Name="NotaEvolucion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="num_exp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="medico" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="nota_subjetivo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="nota_objetivo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="nota_plan" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="diagnostico1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="diagnostico2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="diagnostico3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="diagnostico4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="diagnostico5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tipo_diagnostico1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tipo_diagnostico2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tipo_diagnostico3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tipo_diagnostico4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tipo_diagnostico5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fecha" Type="DateTime" Precision="3" />
+          <Property Name="ip_realiza" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="id_unidad" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2521,6 +2547,43 @@
                 <ScalarProperty Name="Check_Craneo_No" ColumnName="Check_Craneo_No" />
                 <ScalarProperty Name="Check_Craneo_Si" ColumnName="Check_Craneo_Si" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Diagnosticos">
+            <EntityTypeMapping TypeName="CUSModel.Diagnosticos">
+              <MappingFragment StoreEntitySet="Diagnosticos">
+                <ScalarProperty Name="nivel" ColumnName="nivel" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="diagnostico" ColumnName="diagnostico" />
+                <ScalarProperty Name="clave" ColumnName="clave" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NotaEvolucion">
+            <EntityTypeMapping TypeName="CUSModel.NotaEvolucion">
+              <MappingFragment StoreEntitySet="NotaEvolucion">
+                <ScalarProperty Name="id_unidad" ColumnName="id_unidad" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="ip_realiza" ColumnName="ip_realiza" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="tipo_diagnostico5" ColumnName="tipo_diagnostico5" />
+                <ScalarProperty Name="tipo_diagnostico4" ColumnName="tipo_diagnostico4" />
+                <ScalarProperty Name="tipo_diagnostico3" ColumnName="tipo_diagnostico3" />
+                <ScalarProperty Name="tipo_diagnostico2" ColumnName="tipo_diagnostico2" />
+                <ScalarProperty Name="tipo_diagnostico1" ColumnName="tipo_diagnostico1" />
+                <ScalarProperty Name="diagnostico5" ColumnName="diagnostico5" />
+                <ScalarProperty Name="diagnostico4" ColumnName="diagnostico4" />
+                <ScalarProperty Name="diagnostico3" ColumnName="diagnostico3" />
+                <ScalarProperty Name="diagnostico2" ColumnName="diagnostico2" />
+                <ScalarProperty Name="diagnostico1" ColumnName="diagnostico1" />
+                <ScalarProperty Name="nota_plan" ColumnName="nota_plan" />
+                <ScalarProperty Name="nota_objetivo" ColumnName="nota_objetivo" />
+                <ScalarProperty Name="nota_subjetivo" ColumnName="nota_subjetivo" />
+                <ScalarProperty Name="medico" ColumnName="medico" />
+                <ScalarProperty Name="num_exp" ColumnName="num_exp" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
