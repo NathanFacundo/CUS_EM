@@ -1,0 +1,382 @@
+﻿
+@{
+
+}
+
+<style>
+    .nav-tabs.nav-tabs-bottom > li {
+        margin-bottom: -1px;
+        width: 110px;
+        max-width: 110px;
+        font-size: 10px;
+    }
+
+    .user-tabs .nav-tabs > li > a {
+        padding: 5px;
+    }
+</style>
+
+<div class="page-wrapper">
+    <div class="content container-fluid">
+
+        <div class="page-header">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3 class="page-title">Historia Clínica Medicina</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-sm-12" id="InfoPX">
+                <div class="profile-header">
+                    <div class="row align-items-center">
+                        <div class="col-auto profile-image">
+                            <a href="#">
+                            </a>
+                        </div>
+                        <div class="col ml-md-n2 profile-user-info">
+                            <h10 style="font-weight:bold;">Nombre: </h10>
+                            <a id="Nombre"></a><br />
+                            <h10 style="font-weight:bold;">Expediente: </h10>
+                            <a id="Exp"></a><br />
+                            <h10 style="font-weight:bold;">Edad: </h10>
+                            <a id="Edad"></a><br />
+                            <h10 style="font-weight:bold;">Sexo: </h10>
+                            <a id="Sexo"></a><br />
+                            <h10 style="font-weight:bold;">Fecha Nac.: </h10>
+                            <a id="FechaNac"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12" id="BusquedaPX">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Busque al px.</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 mb-3">
+                        <input type="text" class="form-control BuscarPX" id="NombrePX" placeholder="Nombre PX" required>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <input type="text" class="form-control BuscarPX" id="ExpedientePX" placeholder="Expediente PX" required>
+                    </div>
+                    <div class="col-md-3 mb-2">
+                        <button class="btn btn-primary" onclick="BtnBuscarPX()">Buscar</button>
+                    </div>
+                </div>
+                <div>
+                    <div class="table-responsive">
+                        <table id="TblPaciente" class="datatable table table-stripped">
+                            <thead>
+                                <tr>
+                                    <th style="text-align:center">
+                                        Nombre
+                                    </th>
+                                    <th style="text-align:center">
+                                        Primer Apellido
+                                    </th>
+                                    <th style="text-align:center">
+                                        Segundo Apellido
+                                    </th>
+                                    <th style="text-align:center">
+                                        Unidad de Afiliacion
+                                    </th>
+                                    <th style="text-align:center">
+                                        Expediente
+                                    </th>
+                                    <th style="width:5px">Seleccionar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12">
+
+                <nav class="user-tabs mb-4">
+                    <ul class="nav nav-tabs nav-tabs-bottom nav-justified">
+                        <li class="nav-item text-left">
+                            <a class="nav-link active" href="#HabitusExterior" data-toggle="tab">Habitus <br />Exterior</a>
+                        </li>
+                        <li class="nav-item text-left">
+                            <a class="nav-link" href="#Habitos" data-toggle="tab"><span class="med-records">Hábitos</span></a>
+                        </li>
+                        <li class="nav-item text-left">
+                            <a class="nav-link" href="#AntecedentesPerinatales" data-toggle="tab">Antecedentes <br />Perinatales</a>
+                        </li>
+                        <li class="nav-item text-left">
+                            <a class="nav-link" href="#Inmunizaciones" data-toggle="tab">Inmunizaciones</a>
+                        </li>
+                        <li class="nav-item text-left">
+                            <a class="nav-link" href="#Alimentacion" data-toggle="tab">Alimentación</a>
+                        </li>
+                        <li class="nav-item text-left">
+                            <a class="nav-link" href="#HabitosAlimentacion" data-toggle="tab">Hábitos <br />Alimentación</a>
+                        </li>
+                        <li class="nav-item text-left">
+                            <a class="nav-link" href="#AntecedentesDesarrollo" data-toggle="tab">Antecedentes <br />Desarrollo</a>
+                        </li>
+                        <li class="nav-item text-left">
+                            <a class="nav-link" href="#AntecedentesGineco" data-toggle="tab">Antecedentes <br />Gineco-Obstétricos</a>
+                        </li>
+                        <li class="nav-item text-left">
+                            <a class="nav-link" href="#AntecedentesVidaSexual" data-toggle="tab">Antecedentes <br />Vida Sexual</a>
+                        </li>
+                        <li class="nav-item text-left">
+                            <a class="nav-link" href="#PrincipioEvolucion" data-toggle="tab">Principio, Evolución<br />Estado Actual</a>
+                        </li>
+                        <li class="nav-item text-left">
+                            <a class="nav-link" href="#ResultadosLaboratorio" data-toggle="tab">Resultados Laboratorio<br />y Gabinete</a>
+                        </li>
+                        
+                    </ul>
+                </nav>
+
+                <div class="tab-content pt-0">
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Areas/Admin/assets/js/jquery-3.2.1.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+
+    $(document).ready(function () {
+
+        //Ocultamos div donde se muestra la info del px ya que aún no se ha buscado
+        $("#InfoPX").hide();
+
+        var table = $('#TblPaciente').DataTable();
+        table.destroy();
+        table = $('#TblPaciente').DataTable({
+            paging: false,
+            scroller: false,
+            responsive: true,
+            searching: false,
+            info: true,
+            lengthChange: false,
+            pageLength: 20,
+            language: {
+                "zeroRecords": " ",
+                "info": "_TOTAL_ px",
+                "search": "Buscar:",
+                "infoEmpty": "",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Último",
+                    "next": "Siguiente",
+                    "previous": "Anterior",
+                },
+                "select": {
+                    "rows": " %d filas seleccionadas"
+                },
+            }
+        });
+
+        let timerInterval
+        Swal.fire({
+            title: 'Busque al px. y selecciónalo para crearle la h.c.',
+            timer: 3500,
+            timerProgressBar: true,
+            willClose: () => {
+                clearInterval(timerInterval)
+            }
+        });
+    });
+
+    //Si dan click en Enter en los inputs de Nombre/Expediente
+    $('.BuscarPX').on("keypress", function (e) {
+        if (e.keyCode == 13) {
+            FuncionBuscarPX();
+            return false;
+        }
+    });
+
+    //Si dan click en el botón de Buscar
+    function BtnBuscarPX() {
+        FuncionBuscarPX();
+    };
+
+    function FuncionBuscarPX() {
+	    var NombrePX = $("#NombrePX").val();
+	    var ExpedientePX = $("#ExpedientePX").val();
+
+	    Swal.fire({
+		    title: 'Cargando... Espere por favor',
+		    timer: 1000,
+		    timerProgressBar: true,
+	    });
+
+	    $.ajax({
+		    url: '@Url.Action("BuscarPaciente", "Derechohabiente")',
+		    method: 'POST',
+		    dataType: 'json',
+		    data: {
+                NombrePX: NombrePX,
+                ExpedientePX: ExpedientePX
+		    },
+		    success: function(data) {
+                if (data.MENSAJE.substring(0, 6) == "Succe:") {
+                    LlenaTablaPX(data.PACIENTES);
+			    }
+			    if (data.MENSAJE.substring(0, 6) == "Error:") {
+				    Swal.fire({
+					    icon: 'error',
+					    title: '¡Error!',
+					    text: data.MENSAJE.substring(7),
+				    });
+			    }
+		    },
+		    error: function(ex) {
+			    Swal.fire({
+				    icon: 'error',
+				    title: '¡Error!',
+			    });
+		    }
+	    });
+
+    };
+
+    function LlenaTablaPX(PX) {
+        var table = $('#TblPaciente').DataTable();
+        table.destroy();
+
+        table = $('#TblPaciente').DataTable({
+            responsive: true,
+            searching: false,
+            info: true,
+            deferRender: true,
+            scroller: false,
+            scrollColapse: true,
+            paging: false,
+            lengthChange: false,
+            language: {
+                "zeroRecords": "No se encontraron PX",
+                "info": "",
+                "search": "",
+                "infoEmpty": "",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Último",
+                    "next": "Siguiente",
+                    "previous": "Anterior",
+                },
+                "select": {
+                    "rows": " %d filas seleccionadas"
+                },
+            },
+            data: PX,
+            columns: [
+                { 'data': 'Nombre', className: "text-center" },
+                { 'data': 'PrimerApellido', className: "text-center" },
+                { 'data': 'SegundoApellido', className: "text-center" },
+                {
+                    "data": "UnidadAfiliacion", className: "text-center", render: function (data, type, row) {
+                        if (row.UnidadAfiliacion == 1 ) {
+                            return '<h8 style="color:black; ">Unidad habitacional I.</h8>';
+                        }
+                        if (row.UnidadAfiliacion == 2) {
+                            return '<h8 style="color:black; ">Módulo dental Apodaca</h8>';
+                        }
+                        if (row.UnidadAfiliacion == 3) {
+                            return '<h8 style="color:black; ">Pueblo Nuevo</h8>';
+                        }
+                        if (row.UnidadAfiliacion == 4) {
+                            return '<h8 style="color:black; ">Vicente Guerrero</h8>';
+                        }
+                        if (row.UnidadAfiliacion == 5) {
+                            return '<h8 style="color:black; ">San Rafael</h8>';
+                        }
+                        if (row.UnidadAfiliacion == 6) {
+                            return '<h8 style="color:black; ">21 de enero</h8>';
+                        }
+                        if (row.UnidadAfiliacion == 7) {
+                            return '<h8 style="color:black; ">Clínica de atención int.</h8>';
+                        }
+                        if (row.UnidadAfiliacion == 8) {
+                            return '<h8 style="color:black; ">Módulo dental Guadalupe</h8>';
+                        }
+                        if (row.UnidadAfiliacion == 9) {
+                            return '<h8 style="color:black; ">Ciénega de Flores</h8>';
+                        }
+                    }
+                },
+                { 'data': 'Expediente', className: "text-center" },
+                {
+                    "className": 'text-center',
+                    "orderable": false,
+                    "data": null,
+                    "defaultContent": '<button title="Seleccionar px" id="VerDetalle" class="btn btn-success fa fa-check" data-toggle="modal" ></button>',
+                    "target": -2
+                }
+            ]
+        });
+    }
+
+    $('#TblPaciente tbody').on('click', '#VerDetalle', function () {
+        var tr = $(this).closest('tr');
+        row = $('#TblPaciente').DataTable().row(tr);
+
+        var Nombre = row.data().Nombre;
+        var PrimerA = row.data().PrimerApellido;
+        var SegundoA = row.data().SegundoApellido;
+        var Exp = row.data().Expediente;
+        var Edad = row.data().Edad;
+        var Sexo = row.data().Sexo;
+        var FechaN = row.data().FechaNacimiento;
+
+
+        //Dividir fecha de nacimiento
+        var splitFechaN = FechaN.split('/');
+        const anioNacimiento = parseInt(splitFechaN[2]);
+        const mesNacimiento = parseInt(splitFechaN[1]);
+        const diaNacimiento = parseInt(splitFechaN[0]);
+
+        // Obtiene la fecha actual
+        const fechaActual = new Date();
+
+        // Obtiene el año, mes y día actual
+        const anioActual = fechaActual.getFullYear();
+        const mesActual = fechaActual.getMonth() + 1; // Los meses en JavaScript van de 0 a 11
+        const diaActual = fechaActual.getDate();
+
+        // Calcula la edad
+        let edad = anioActual - anioNacimiento;
+        let edadMeses = mesActual - mesNacimiento;
+
+        // Verifica si aún no ha llegado el cumpleaños de este año
+        if (mesActual < mesNacimiento || (mesActual === mesNacimiento && diaActual < diaNacimiento)) {
+            edad--;
+        }
+
+        document.getElementById("Nombre").innerHTML = Nombre + " " + PrimerA + " " + SegundoA;
+        document.getElementById("Exp").innerHTML = Exp;
+        document.getElementById("Edad").innerHTML = edad + ' años ' + edadMeses + ' meses';
+        document.getElementById("Sexo").innerHTML = Sexo;
+        document.getElementById("FechaNac").innerHTML = FechaN;
+
+        //ocultamos div de la busqueda del px
+        $("#BusquedaPX").hide();
+        //mostramos div de la info del px
+        $("#InfoPX").show();
+
+        
+    });
+
+    
+
+</script>
