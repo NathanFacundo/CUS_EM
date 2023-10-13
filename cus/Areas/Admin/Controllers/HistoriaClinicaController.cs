@@ -117,7 +117,7 @@ namespace CUS.Areas.Admin.Controllers
                         DateTime fl3horas = fechaLimite.AddHours(+3);
 
                         pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
-                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC >= fechaDT);
+                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC <= fechaDT);
                     }
 
                     var Id_claveHC = "";
@@ -209,7 +209,7 @@ namespace CUS.Areas.Admin.Controllers
                         DateTime fl3horas = fechaLimite.AddHours(+3);
 
                         pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
-                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC >= fechaDT);
+                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC <= fechaDT);
                     }
 
                     var Id_claveHC = "";
@@ -306,7 +306,7 @@ namespace CUS.Areas.Admin.Controllers
                         DateTime fl3horas = fechaLimite.AddHours(+3);
 
                         pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
-                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC >= fechaDT);
+                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC <= fechaDT);
                     }
 
                     var Id_claveHC = "";
@@ -401,7 +401,7 @@ namespace CUS.Areas.Admin.Controllers
                         DateTime fl3horas = fechaLimite.AddHours(+3);
 
                         pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
-                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC >= fechaDT);
+                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC <= fechaDT);
                     }
 
                     var Id_claveHC = "";
@@ -484,7 +484,7 @@ namespace CUS.Areas.Admin.Controllers
                         DateTime fl3horas = fechaLimite.AddHours(+3);
 
                         pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
-                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC >= fechaDT);
+                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC <= fechaDT);
                     }
 
                     var Id_claveHC = "";
@@ -569,7 +569,7 @@ namespace CUS.Areas.Admin.Controllers
                         DateTime fl3horas = fechaLimite.AddHours(+3);
 
                         pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
-                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC >= fechaDT);
+                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC <= fechaDT);
                     }
 
                     var Id_claveHC = "";
@@ -713,7 +713,7 @@ namespace CUS.Areas.Admin.Controllers
                         DateTime fl3horas = fechaLimite.AddHours(+3);
 
                         pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
-                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC >= fechaDT);
+                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC <= fechaDT);
                     }
 
                     var Id_claveHC = "";
@@ -1183,7 +1183,7 @@ namespace CUS.Areas.Admin.Controllers
                         DateTime fl3horas = fechaLimite.AddHours(+3);
 
                         pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
-                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC >= fechaDT);
+                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC <= fechaDT);
                     }
 
                     var Id_claveHC = "";
@@ -1366,7 +1366,7 @@ namespace CUS.Areas.Admin.Controllers
                         DateTime fl3horas = fechaLimite.AddHours(+3);
 
                         pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
-                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC >= fechaDT);
+                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC <= fechaDT);
                     }
 
                     var Id_claveHC = "";
@@ -1489,7 +1489,7 @@ namespace CUS.Areas.Admin.Controllers
                         DateTime fl3horas = fechaLimite.AddHours(+3);
 
                         pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
-                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC >= fechaDT);
+                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC <= fechaDT);
                     }
 
                     var Id_claveHC = "";
@@ -1760,7 +1760,7 @@ namespace CUS.Areas.Admin.Controllers
                         DateTime fl3horas = fechaLimite.AddHours(+3);
 
                         pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
-                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC >= fechaDT);
+                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC <= fechaDT);
                     }
 
                     var Id_claveHC = "";
@@ -1902,7 +1902,7 @@ namespace CUS.Areas.Admin.Controllers
                         DateTime fl3horas = fechaLimite.AddHours(+3);
 
                         pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
-                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC >= fechaDT);
+                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC <= fechaDT);
                     }
 
                     var Id_claveHC = "";

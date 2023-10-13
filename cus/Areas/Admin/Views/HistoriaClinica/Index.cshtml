@@ -2463,7 +2463,7 @@
     //Evaluacion economica
     $("#Btn_Save4").click(function () {
         let data = $("#f_evaluacioneconomica").serialize();
-        alert(data);
+        //alert(data);
         var expediente = $("#Exp").text();
         if (expediente) {
             $.post("@Url.Action("evaluacioneconomica", "HistoriaClinica")?expediente=" + expediente, data).done(function (response) {
