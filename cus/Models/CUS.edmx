@@ -540,6 +540,31 @@
           <Property Name="Id_Paciente" Type="int" Nullable="false" />
           <Property Name="TipoHistoria" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="NotaEvolucion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="num_exp" Type="varchar" MaxLength="50" />
+          <Property Name="medico" Type="varchar" MaxLength="100" />
+          <Property Name="nota_subjetivo" Type="text" />
+          <Property Name="nota_objetivo" Type="text" />
+          <Property Name="nota_plan" Type="text" />
+          <Property Name="diagnostico1" Type="varchar" MaxLength="50" />
+          <Property Name="diagnostico2" Type="varchar" MaxLength="50" />
+          <Property Name="diagnostico3" Type="varchar" MaxLength="50" />
+          <Property Name="diagnostico4" Type="varchar" MaxLength="50" />
+          <Property Name="diagnostico5" Type="varchar" MaxLength="50" />
+          <Property Name="tipo_diagnostico1" Type="varchar" MaxLength="50" />
+          <Property Name="tipo_diagnostico2" Type="varchar" MaxLength="50" />
+          <Property Name="tipo_diagnostico3" Type="varchar" MaxLength="50" />
+          <Property Name="tipo_diagnostico4" Type="varchar" MaxLength="50" />
+          <Property Name="tipo_diagnostico5" Type="varchar" MaxLength="50" />
+          <Property Name="fecha" Type="datetime" />
+          <Property Name="ip_realiza" Type="varchar" MaxLength="50" />
+          <Property Name="status" Type="int" />
+          <Property Name="id_unidad" Type="int" />
+        </EntityType>
         <EntityType Name="Paciente">
           <Key>
             <PropertyRef Name="Id" />
@@ -883,6 +908,7 @@
           <EntitySet Name="hc_valoracion_familiar" EntityType="Self.hc_valoracion_familiar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hc_valores_creencias" EntityType="Self.hc_valores_creencias" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HistoriaClinica" EntityType="Self.HistoriaClinica" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NotaEvolucion" EntityType="Self.NotaEvolucion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Paciente" EntityType="Self.Paciente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UnidadAfiliacion" EntityType="Self.UnidadAfiliacion" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__hc_alimen__Id_Pa__4F47C5E3" Association="Self.FK__hc_alimen__Id_Pa__4F47C5E3">
@@ -2579,6 +2605,32 @@
                 <ScalarProperty Name="status" ColumnName="status" />
                 <ScalarProperty Name="diagnostico" ColumnName="diagnostico" />
                 <ScalarProperty Name="clave" ColumnName="clave" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NotaEvolucion">
+            <EntityTypeMapping TypeName="CUSModel.NotaEvolucion">
+              <MappingFragment StoreEntitySet="NotaEvolucion">
+                <ScalarProperty Name="id_unidad" ColumnName="id_unidad" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="ip_realiza" ColumnName="ip_realiza" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="tipo_diagnostico5" ColumnName="tipo_diagnostico5" />
+                <ScalarProperty Name="tipo_diagnostico4" ColumnName="tipo_diagnostico4" />
+                <ScalarProperty Name="tipo_diagnostico3" ColumnName="tipo_diagnostico3" />
+                <ScalarProperty Name="tipo_diagnostico2" ColumnName="tipo_diagnostico2" />
+                <ScalarProperty Name="tipo_diagnostico1" ColumnName="tipo_diagnostico1" />
+                <ScalarProperty Name="diagnostico5" ColumnName="diagnostico5" />
+                <ScalarProperty Name="diagnostico4" ColumnName="diagnostico4" />
+                <ScalarProperty Name="diagnostico3" ColumnName="diagnostico3" />
+                <ScalarProperty Name="diagnostico2" ColumnName="diagnostico2" />
+                <ScalarProperty Name="diagnostico1" ColumnName="diagnostico1" />
+                <ScalarProperty Name="nota_plan" ColumnName="nota_plan" />
+                <ScalarProperty Name="nota_objetivo" ColumnName="nota_objetivo" />
+                <ScalarProperty Name="nota_subjetivo" ColumnName="nota_subjetivo" />
+                <ScalarProperty Name="medico" ColumnName="medico" />
+                <ScalarProperty Name="num_exp" ColumnName="num_exp" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
