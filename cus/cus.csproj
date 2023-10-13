@@ -216,6 +216,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CUS.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Diagnosticos.cs">
+      <DependentUpon>CUS.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\hc_alimentacion.cs">
       <DependentUpon>CUS.tt</DependentUpon>
     </Compile>
@@ -272,6 +275,9 @@
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\NotaEvolucion.cs">
+      <DependentUpon>CUS.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Paciente.cs">
       <DependentUpon>CUS.tt</DependentUpon>
     </Compile>
