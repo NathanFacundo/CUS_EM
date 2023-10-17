@@ -18,7 +18,6 @@
 
 <div class="page-wrapper">
     <div class="content container-fluid">
-
         <div class="page-header">
             <div class="row">
                 <div class="col-sm-12">
@@ -26,9 +25,7 @@
                 </div>
             </div>
         </div>
-
         <div class="row">
-
             <div class="col-sm-12" id="InfoPX">
                 <div class="profile-header">
                     <div class="row align-items-center">
@@ -51,7 +48,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="col-sm-12" id="BusquedaPX">
                 <div class="row">
                     <div class="col-md-12">
@@ -98,9 +94,7 @@
                     </div>
                 </div>
             </div>
-
             <div class="col-sm-12">
-
                 <nav class="user-tabs mb-4">
                     <ul class="nav nav-tabs nav-tabs-bottom nav-justified">
                         <li class="nav-item text-left">
@@ -136,13 +130,368 @@
                         <li class="nav-item text-left">
                             <a class="nav-link" href="#ResultadosLaboratorio" data-toggle="tab">Resultados Laboratorio<br />y Gabinete</a>
                         </li>
-                        
                     </ul>
                 </nav>
 
                 <div class="tab-content pt-0">
 
+                    <div class="tab-pane fade show active" id="HabitusExterior">
+                        <div class="card card-table mb-0 p-3 mb-5">
+                            <div class="card-body">
+                                <form id="F_Habitus">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Buen estado general</label>
+                                                <select class="form-control" id="BuenEstadoGral" name="BuenEstadoGral">
+                                                    <option>Seleccionar</option>
+                                                    <option value="Si">Si</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Tranquilo</label>
+                                                <select class="form-control" id="Tranquilo" name="Tranquilo">
+                                                    <option>Seleccionar</option>
+                                                    <option value="Si">Si</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Cooperador</label>
+                                                <select class="form-control" id="Cooperador" name="Cooperador">
+                                                    <option>Seleccionar</option>
+                                                    <option value="Si">Si</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Orientado</label>
+                                                <select class="form-control" id="Orientado" name="Orientado">
+                                                    <option>Seleccionar</option>
+                                                    <option value="Si">Si</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Facies caract.</label>
+                                                <select class="form-control" id="FaciesCaract" name="FaciesCaract">
+                                                    <option>Seleccionar</option>
+                                                    <option value="Si">Si</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Depresivo</label>
+                                                <select class="form-control" id="Depresivo" name="Depresivo">
+                                                    <option>Seleccionar</option>
+                                                    <option value="Si">Si</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Ansioso</label>
+                                                <select class="form-control" id="Ansioso" name="Ansioso">
+                                                    <option>Seleccionar</option>
+                                                    <option value="Si">Si</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Agresivo</label>
+                                                <select class="form-control" id="Agresivo" name="Agresivo">
+                                                    <option>Seleccionar</option>
+                                                    <option value="Si">Si</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Temeroso</label>
+                                                <select class="form-control" id="Temeroso" name="Temeroso">
+                                                    <option>Seleccionar</option>
+                                                    <option value="Si">Si</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Irritable</label>
+                                                <select class="form-control" id="Irritable" name="Irritable">
+                                                    <option>Seleccionar</option>
+                                                    <option value="Si">Si</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Marcha</label>
+                                                <select class="form-control" id="Marcha" name="Marcha">
+                                                    <option>Seleccionar</option>
+                                                    <option value="Si">Si</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                        </div>
+                                    </div>
 
+                                    <div class="text-right">
+                                        <button id="Btn_Habitus" type="submit" class="btn btn-primary">Guardar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="Habitos" class="tab-pane fade">
+                        <div class="card card-table mb-0">
+                            <div class="card-body">
+                                <form id="f_Habitos">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Horas de sueño</label>
+                                                <select class="form-control showoptions" id="HorasSuenio" name="HorasSuenio">
+                                                    <option>Seleccionar</option>
+                                                    <option value="Menos 5 horas">Menos 5 horas</option>
+                                                    <option value="5-8 horas">5-8 horas</option>
+                                                    <option value="Mas 8 horas">Más 8 horas</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Tiene insomnio</label>
+                                                <select class="form-control showoptions" id="TieneInsomnio" name="TieneInsomnio">
+                                                    <option>Seleccionar</option>
+                                                    <option value="Si">Si</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Tiene enuresis. Solo menores -20 años</label>
+                                                <select class="form-control showoptions" id="TieneEnuresis" name="TieneEnuresis">
+                                                    <option>Seleccionar</option>
+                                                    <option value="Si">Si</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Tiene pesadillas</label>
+                                                <select class="form-control showoptions" id="TienePesadillas" name="TienePesadillas">
+                                                    <option>Seleccionar</option>
+                                                    <option value="Si">Si</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Horas de ocio</label>
+                                                <select class="form-control showoptions" id="HorasOcio" name="HorasOcio">
+                                                    <option>Seleccionar</option>
+                                                    <option value="1-3 horas">1-3 horas</option>
+                                                    <option value="3-5 horas">3-5 horas</option>
+                                                    <option value="mas 5 horas">más 5 horas</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Practica actividad física</label>
+                                                <select class="form-control showoptions" id="ActividadFisica" name="ActividadFisica">
+                                                    <option>Seleccionar</option>
+                                                    <option value="Si">Si</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6" id="Combo_TiempoActividadF">
+                                            <div class="form-group">
+                                                <label>Tiempo</label>
+                                                <select class="form-control showoptions" id="ActFi_Tiempo" name="ActFi_Tiempo">
+                                                    <option>Seleccionar</option>
+                                                    <option value="menos 30 minutos">menos 30 minutos</option>
+                                                    <option value="30-60 minutos">30-60 minutos</option>
+                                                    <option value="mas 60 minutos">más 60 minutos</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6" id="Combo_FrecuenciaActividadF">
+                                            <div class="form-group">
+                                                <label>Frecuencia</label>
+                                                <select class="form-control showoptions" id="ActFi_Frecuencia" name="ActFi_Frecuencia">
+                                                    <option>Seleccionar</option>
+                                                    <option value="Diario">Diario</option>
+                                                    <option value="1-3 veces por semana">1-3 veces por semana</option>
+                                                    <option value="1 vez por semana">1 vez por semana</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <button id="Btn_Habitos" type="submit" class="btn btn-primary">Guardar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="AntecedentesPerinatales" class="tab-pane fade">
+                        <div class="card card-table mb-0">
+                            <div class="card-body">
+                                <form id="F_Perinatales">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>No. Embarazo de la madre</label>
+                                                <input type="text" class="form-control" id="NumeroEmbarazo" name="NumeroEmbarazo" placeholder="">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Enfermedad durante embarazo</label>
+                                                <select class="form-control showoptions" id="EnfermedadesEmbarazo" name="EnfermedadesEmbarazo">
+                                                    <option>Seleccionar</option>
+                                                    <option value="Si">Si</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4" id="EspEnfermedad">
+                                            <div class="form-group">
+                                                <label>Especifique Enfermedad</label>
+                                                <input type="text" class="form-control" id="Especifica_EnfermedadesEmb" name="Especifica_EnfermedadesEmb" placeholder="">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Tratamientos durante embarazo</label>
+                                                <select class="form-control showoptions" id="TratamientosEmbarazo" name="TratamientosEmbarazo">
+                                                    <option>Seleccionar</option>
+                                                    <option value="Si">Si</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4" id="EspTratamiento">
+                                            <div class="form-group">
+                                                <label>Especifique Tratamiento</label>
+                                                <input type="text" class="form-control" id="Especifica_TratamientosEmb" name="Especifica_TratamientosEmb" placeholder="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Lugar de parto</label>
+                                                <select class="form-control showoptions" id="LugarParto" name="LugarParto">
+                                                    <option>Seleccionar</option>
+                                                    <option value="IMSS">IMSS</option>
+                                                    <option value="ISSSTE">ISSSTE</option>
+                                                    <option value="SSNL">SSNL</option>
+                                                    <option value="Otro">Otro</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4" id="EspLugarParto">
+                                            <div class="form-group">
+                                                <label>Especifique Lugar</label>
+                                                <input type="text" class="form-control" id="Otra_LugarParto" name="Otra_LugarParto" placeholder="">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Edad Gestional</label>
+                                                <select class="form-control showoptions" id="EdadGestional" name="EdadGestional">
+                                                    <option>Seleccionar</option>
+                                                    <option value="Conoce">Conoce</option>
+                                                    <option value="Desconoce">Desconoce</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4" id="EspEdadGestional">
+                                            <div class="form-group">
+                                                <label>Especifique Edad</label>
+                                                <input type="text" class="form-control" id="Especifica_EdadGes" name="Especifica_EdadGes" placeholder="">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Apgar</label>
+                                                <select class="form-control showoptions" id="Apgar" name="Apgar">
+                                                    <option>Seleccionar</option>
+                                                    <option value="Conoce">Conoce</option>
+                                                    <option value="Desconoce">Desconoce</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4" id="EspApgar">
+                                            <div class="form-group">
+                                                <label>Especifique Apgar</label>
+                                                <input type="text" class="form-control" id="Especifica_Apgar" name="Especifica_Apgar" placeholder="">
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Tipo de Parto</label>
+                                                <select class="form-control showoptions" id="TipoParto" name="TipoParto">
+                                                    <option>Seleccionar</option>
+                                                    <option value="Parto">Parto</option>
+                                                    <option value="Cesárea">Cesárea</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="text-right">
+                                        <button id="Btn_Perinatales" type="submit" class="btn btn-primary">Guardar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
             </div>
@@ -187,16 +536,103 @@
             }
         });
 
-        let timerInterval
-        Swal.fire({
-            title: 'Busque al px. y selecciónalo para crearle la h.c.',
-            timer: 3500,
-            timerProgressBar: true,
-            willClose: () => {
-                clearInterval(timerInterval)
-            }
-        });
+        // #region Botones de Guardar HC
+        $("#Btn_Habitus").css("display", "none");
+        $("#Btn_Habitos").css("display", "none");
+        $("#Btn_Perinatales").css("display", "none");
+        
+        // #endregion
+
+        // #region Pestañas: Elementos de la H.C. que nacerán ocultos y se mostrarán hasta que se seleccione o se haga alguna acción
+        //habitos
+        $("#Combo_TiempoActividadF").css("display", "none");
+        $("#Combo_FrecuenciaActividadF").css("display", "none");
+        //perinatales
+        $("#EspEnfermedad").css("display", "none");
+        $("#EspTratamiento").css("display", "none");
+        $("#EspLugarParto").css("display", "none");
+        $("#EspEdadGestional").css("display", "none");
+        $("#EspApgar").css("display", "none");
+        // #endregion
+
+
+
+        //let timerInterval
+        //Swal.fire({
+        //    title: 'Busque al px. y selecciónalo para crearle la h.c.',
+        //    timer: 3500,
+        //    timerProgressBar: true,
+        //    willClose: () => {
+        //        clearInterval(timerInterval)
+        //    }
+        //});
+
+
     });
+
+    // #region Pestañas: Elementos de la H.C. que se mostrarán hasta que se seleccione o se haga alguna acción
+    
+    //habitos
+    $("#ActividadFisica").change(function () {
+        var combo = document.getElementById("ActividadFisica");
+        var selected = combo.options[combo.selectedIndex].text;
+        if (selected == "Si") {
+            $("#Combo_TiempoActividadF").css("display", "");
+            $("#Combo_FrecuenciaActividadF").css("display", "");
+        } else {
+            $("#Combo_TiempoActividadF").css("display", "none");
+            $("#Combo_FrecuenciaActividadF").css("display", "none");
+        }
+    });
+    //*perinatales
+    $("#EnfermedadesEmbarazo").change(function () {
+        var combo = document.getElementById("EnfermedadesEmbarazo");
+        var selected = combo.options[combo.selectedIndex].text;
+        if (selected == "Si") {
+            $("#EspEnfermedad").css("display", "");
+        } else {
+            $("#EspEnfermedad").css("display", "none");
+        }
+    });
+    $("#TratamientosEmbarazo").change(function () {
+        var combo = document.getElementById("TratamientosEmbarazo");
+        var selected = combo.options[combo.selectedIndex].text;
+        if (selected == "Si") {
+            $("#EspTratamiento").css("display", "");
+        } else {
+            $("#EspTratamiento").css("display", "none");
+        }
+    });
+    $("#LugarParto").change(function () {
+        var combo = document.getElementById("LugarParto");
+        var selected = combo.options[combo.selectedIndex].text;
+        if (selected == "Otro") {
+            $("#EspLugarParto").css("display", "");
+        } else {
+            $("#EspLugarParto").css("display", "none");
+        }
+    });
+    $("#EdadGestional").change(function () {
+        var combo = document.getElementById("EdadGestional");
+        var selected = combo.options[combo.selectedIndex].text;
+        if (selected == "Conoce") {
+            $("#EspEdadGestional").css("display", "");
+        } else {
+            $("#EspEdadGestional").css("display", "none");
+        }
+    });
+    $("#Apgar").change(function () {
+        var combo = document.getElementById("Apgar");
+        var selected = combo.options[combo.selectedIndex].text;
+        if (selected == "Conoce") {
+            $("#EspApgar").css("display", "");
+        } else {
+            $("#EspApgar").css("display", "none");
+        }
+    });
+    
+    
+    // #endregion
 
     //Si dan click en Enter en los inputs de Nombre/Expediente
     $('.BuscarPX').on("keypress", function (e) {
@@ -374,7 +810,12 @@
         //mostramos div de la info del px
         $("#InfoPX").show();
 
+        // #region Mostrar botones de Guardar HC ya que ya se buscó el px
+        $("#Btn_Habitus").css("display", "");
+        $("#Btn_Habitos").css("display", "");
+        $("#Btn_Perinatales").css("display", "");
         
+        // #endregion
     });
 
     
