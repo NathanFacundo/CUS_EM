@@ -130,6 +130,15 @@
                         <li class="nav-item text-left">
                             <a class="nav-link" href="#ResultadosLaboratorio" data-toggle="tab">Resultados Laboratorio<br />y Gabinete</a>
                         </li>
+                        <li class="nav-item text-left">
+                            <a class="nav-link" href="#Plan" data-toggle="tab">Plan<br />  </a>
+                        </li>
+                        <li class="nav-item text-left">
+                            <a class="nav-link" href="#Pronostico" data-toggle="tab">Pronóstico<br />  </a>
+                        </li>
+                        <li class="nav-item text-left">
+                            <a class="nav-link" href="#Otros" data-toggle="tab">Otros<br />  </a>
+                        </li>
                     </ul>
                 </nav>
 
@@ -936,6 +945,125 @@
                         </div>
                     </div>
 
+                    <div id="Plan" class="tab-pane fade">
+                        <div class="card card-table mb-0">
+                            <div class="card-body">
+                                <form id="F_Plan">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label>Describa</label>
+                                            <textarea class="form-control" placeholder="" id="Plan" name="Plan"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="text-right">
+                                        <button id="Btn_Plan" type="submit" class="btn btn-primary">Guardar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="Pronostico" class="tab-pane fade">
+                        <div class="card card-table mb-0">
+                            <div class="card-body">
+                                <form id="F_Pronostico">
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="row">
+                                                <label>Selecciona</label>
+                                            </div>
+                                            <div class="row">
+                                                <input class="form-check-input" type="checkbox" id="LigadoEvolucion" name="LigadoEvolucion">
+                                                <label class="form-check-label" for="">
+                                                    Ligado a Evolucion
+                                                </label>
+                                            </div>
+                                            <div class="row">
+                                                <input class="form-check-input" type="checkbox" id="Favorable" name="Favorable">
+                                                <label class="form-check-label" for="">
+                                                    Favorable
+                                                </label>
+                                            </div>
+                                            <div class="row">
+                                                <input class="form-check-input" type="checkbox" id="Desfavorable" name="Desfavorable">
+                                                <label class="form-check-label" for="">
+                                                    Desfavorable
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="text-right">
+                                        <button id="Btn_Pronostico" type="submit" class="btn btn-primary">Guardar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="Otros" class="tab-pane fade">
+                        <div class="card card-table mb-0">
+                            <div class="card-body">
+                                <form id="F_Otros">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>¿Requiere interconsulta?</label>
+                                            <select class="form-control showoptions" id="Interconsulta" name="Interconsulta">
+                                                <option>Seleccionar</option>
+                                                <option value="Si">Si</option>
+                                                <option value="No">No</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6" id="">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>¿Se proporcionan indicaciones de urgencias... relacionados con el padecimiento actual?</label>
+                                            <select class="form-control showoptions" id="PadecimientoActual" name="PadecimientoActual">
+                                                <option>Seleccionar</option>
+                                                <option value="Si">Si</option>
+                                                <option value="No aplica">No aplica</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6" id="EspPadecimientoActual">
+                                            <div class="form-group">
+                                                <label>Especifique</label>
+                                                <input type="text" class="form-control" id="Especifica_PadecimientoActual" name="Especifica_PadecimientoActual" placeholder="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Próxima cita</label>
+                                            <select class="form-control showoptions" id="ProximaCita" name="ProximaCita">
+                                                <option>Seleccionar</option>
+                                                <option value="1 a 3 dias">1 a 3 dias</option>
+                                                <option value="3 a 7">3 a 7</option>
+                                                <option value="1 semana">1 semana</option>
+                                                <option value="2 semana">2 semana</option>
+                                                <option value="3 semana">3 semana</option>
+                                                <option value="1 mes">1 mes</option>
+                                                <option value="más de un mes">más de un mes</option>
+                                                <option value="3 meses">3 meses</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6" id="">
+                                            
+                                        </div>
+                                    </div>
+
+                                    <div class="text-right">
+                                        <button id="Btn_Otros" type="submit" class="btn btn-primary">Guardar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
 
                 </div>
             </div>
@@ -992,6 +1120,9 @@
         $("#Btn_AntecedentesVidaS").css("display", "none");
         $("#Btn_PrincipioEvolucion").css("display", "none");
         $("#Btn_ResultadosLaboratorio").css("display", "none");
+        $("#Btn_Plan").css("display", "none");
+        $("#Btn_Pronostico").css("display", "none");
+        $("#Btn_Otros").css("display", "none");
         
         // #endregion
 
@@ -1029,6 +1160,8 @@
         $("#NumeroParejasS").css("display", "none");
         //Resultados laboratorio
         $("#EspResultados").css("display", "none");
+        $("#EspPadecimientoActual").css("display", "none");
+        //Otros
 
         // #endregion
 
@@ -1258,7 +1391,16 @@
             $("#EspResultados").css("display", "none");
         }
     });
-
+    //Otros
+    $("#PadecimientoActual").change(function () {
+        var combo = document.getElementById("PadecimientoActual");
+        var selected = combo.options[combo.selectedIndex].text;
+        if (selected == "Si") {
+            $("#EspPadecimientoActual").css("display", "");
+        } else {
+            $("#EspPadecimientoActual").css("display", "none");
+        }
+    });
 
     // #endregion
 
@@ -1449,6 +1591,9 @@
         $("#Btn_AntecedentesVidaS").css("display", "");
         $("#Btn_PrincipioEvolucion").css("display", "");
         $("#Btn_ResultadosLaboratorio").css("display", "");
+        $("#Btn_Plan").css("display", "");
+        $("#Btn_Pronostico").css("display", "");
+        $("#Btn_Otros").css("display", "");
         
         // #endregion
     });
