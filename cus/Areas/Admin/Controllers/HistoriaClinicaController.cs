@@ -589,11 +589,11 @@ namespace CUS.Areas.Admin.Controllers
                     db.hc_factores_riesgo_psicologicos.Add(Historia);
                     db.SaveChanges();
                 }
-                return Json(new { MENSAJE = "Hola" }, JsonRequestBehavior.AllowGet);
+                return Json(new { MENSAJE = "Succe: " }, JsonRequestBehavior.AllowGet);
             }
-            catch
+            catch(Exception ex)
             {
-                return Json(new { MENSAJE = "Hola" }, JsonRequestBehavior.AllowGet);
+                return Json(new { MENSAJE = "Error: Error de sistema: " + ex.Message }, JsonRequestBehavior.AllowGet);
             }
         }
 
