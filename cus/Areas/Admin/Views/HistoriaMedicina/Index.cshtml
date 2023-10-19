@@ -850,7 +850,365 @@
                             <div class="card-body">
                                 <form id="F_desarrollo">
                                     <div class="row">
-
+                                        <div class="col-md-4">
+                                            <label>Menarquia</label>
+                                            <select class="form-control showoptions" id="Menarquia" name="Menarquia">
+                                                <option>Seleccionar</option>
+                                                <option value="Si">Si</option>
+                                                <option value="No">No</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4" id="EspMenarquia">
+                                            <div class="form-group">
+                                                <label>Motivo</label>
+                                                <input type="text" class="form-control" id="Motivo_Menarquia" name="Motivo_Menarquia" placeholder="">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4" id="EspRitmo">
+                                            <div class="form-group">
+                                                <label>Ritmo</label>
+                                                <input type="text" class="form-control" id="Ritmo_Menarquia" name="Ritmo_Menarquia" placeholder="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label>Tipo</label>
+                                            <select class="form-control showoptions" id="Tipo_Menarquia" name="Tipo_Menarquia">
+                                                <option>Seleccionar</option>
+                                                <option value="Regular">Regular</option>
+                                                <option value="Irregular">Irregular</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Cantidad</label>
+                                                <select class="form-control showoptions" id="Cantidad_Menarquia" name="Cantidad_Menarquia">
+                                                    <option>Seleccionar</option>
+                                                    <option value="Escasa">Escasa</option>
+                                                    <option value="Regular">Regular</option>
+                                                    <option value="Abundante">Abundante</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Coloración</label>
+                                                <select class="form-control showoptions" id="Coloracion_Menarquia" name="Coloracion_Menarquia">
+                                                    <option>Seleccionar</option>
+                                                    <option value="Roja">Roja</option>
+                                                    <option value="Oscura">Oscura</option>
+                                                    <option value="Roja Brillante">Roja Brillante</option>
+                                                    <option value="Otra">Otra</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3" id="EspColoracion">
+                                            <div class="form-group">
+                                                <label>Especifique</label>
+                                                <input type="text" class="form-control" id="Especifica_Coloracion" name="Especifica_Coloracion" placeholder="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Fenómenos Asociados</label>
+                                                <input type="text" class="form-control" id="FenomenosAsoc" name="FenomenosAsoc" placeholder="">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Dolor Pélvico</label>
+                                                <select class="form-control showoptions" id="DolorPelvico" name="DolorPelvico">
+                                                    <option>Seleccionar</option>
+                                                    <option value="Si">Si</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Sangrado Anormal</label>
+                                                <select class="form-control showoptions" id="SangradoAnormal" name="SangradoAnormal">
+                                                    <option>Seleccionar</option>
+                                                    <option value="Si">Si</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Ultimo Método Anticonceptivo</label>
+                                                <select class="form-control showoptions" id="UltimoMetodoAnti" name="UltimoMetodoAnti">
+                                                    <option>Seleccionar</option>
+                                                    <option value="Aplica">Aplica</option>
+                                                    <option value="No Aplica">No Aplica</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4" id="EspMetodoAntiCon">
+                                            <div class="form-group">
+                                                <label>Especifique</label>
+                                                <input type="text" class="form-control" id="Especifica_UltimoMetodoAnti" name="Especifica_UltimoMetodoAnti" placeholder="">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Sangrado Postcoito</label>
+                                                <select class="form-control showoptions" id="SangradoPostcoito" name="SangradoPostcoito">
+                                                    <option>Seleccionar</option>
+                                                    <option value="Si">Si</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Flujo Transvaginal</label>
+                                                <input type="text" class="form-control" id="FlujoTransvaginal" name="FlujoTransvaginal" placeholder="">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Gesta</label>
+                                                <input type="text" class="form-control" id="Gesta" name="Gesta" placeholder="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Partos</label>
+                                                <select class="form-control showoptions" id="Partos" name="Partos">
+                                                    <option>Seleccionar</option>
+                                                    <option value="Si">Si</option>
+                                                    <option value="No Aplica">No Aplica</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6" id="EspPartos">
+                                            <div class="form-group">
+                                                <label>Especifique</label>
+                                                <input type="text" class="form-control" id="Especifica_Partos" name="Especifica_Partos" placeholder="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Cesárea</label>
+                                                <select class="form-control showoptions" id="Cesarea" name="Cesarea">
+                                                    <option>Seleccionar</option>
+                                                    <option value="Si">Si</option>
+                                                    <option value="No Aplica">No Aplica</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6" id="EspCesarea">
+                                            <div class="form-group">
+                                                <label>Especifique</label>
+                                                <input type="text" class="form-control" id="Especifica_Cesarea" name="Especifica_Cesarea" placeholder="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Abortos</label>
+                                                <select class="form-control showoptions" id="Abortos" name="Abortos">
+                                                    <option>Seleccionar</option>
+                                                    <option value="Si">Si</option>
+                                                    <option value="No Aplica">No Aplica</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6" id="EspAbortos">
+                                            <div class="form-group">
+                                                <label>Especifique</label>
+                                                <input type="text" class="form-control" id="Especifica_Abortos" name="Especifica_Abortos" placeholder="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Hijos a Términos</label>
+                                                <select class="form-control showoptions" id="HijosTerminos" name="HijosTerminos">
+                                                    <option>Seleccionar</option>
+                                                    <option value="Si">Si</option>
+                                                    <option value="No Aplica">No Aplica</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6" id="EspHijosTerminos">
+                                            <div class="form-group">
+                                                <label>Especifique</label>
+                                                <input type="text" class="form-control" id="Especifica_HijosTerminos" name="Especifica_HijosTerminos" placeholder="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Prematuros</label>
+                                                <select class="form-control showoptions" id="Prematuros" name="Prematuros">
+                                                    <option>Seleccionar</option>
+                                                    <option value="Si">Si</option>
+                                                    <option value="No Aplica">No Aplica</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6" id="EspPrematuros">
+                                            <div class="form-group">
+                                                <label>Especifique</label>
+                                                <input type="text" class="form-control" id="Especifica_Prematuros" name="Especifica_Prematuros" placeholder="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Fecha Último Parto</label>
+                                                <select class="form-control showoptions" id="FechaUltimoParto" name="FechaUltimoParto">
+                                                    <option>Seleccionar</option>
+                                                    <option value="Si">Si</option>
+                                                    <option value="No Aplica">No Aplica</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6" id="EspFechaUltimoP">
+                                            <div class="form-group">
+                                                <label>Especifique</label>
+                                                <input type="text" id="date" name="Especifica_FechaUltimoParto" class="form-control">
+                                                <span class="form-text text-muted">dd/mm/yyyy</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Fecha Última Cesárea</label>
+                                                <select class="form-control showoptions" id="FechaUltimaCesarea" name="FechaUltimaCesarea">
+                                                    <option>Seleccionar</option>
+                                                    <option value="Si">Si</option>
+                                                    <option value="No Aplica">No Aplica</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4" id="EspFechaUltimaCes">
+                                            <div class="form-group">
+                                                <label>Especifique Fecha</label>
+                                                <input type="text" id="" name="Especifica_FechaUltimaCesarea" class="form-control">
+                                                <span class="form-text text-muted">dd/mm/yyyy</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4" id="EspMotivoUltimaCes">
+                                            <div class="form-group">
+                                                <label>Motivo</label>
+                                                <input type="text" class="form-control" id="Motivo_FechaUltimaCesarea" name="Motivo_FechaUltimaCesarea" placeholder="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Fecha Última Aborto</label>
+                                                <select class="form-control showoptions" id="FechaUltimoAborto" name="FechaUltimoAborto">
+                                                    <option>Seleccionar</option>
+                                                    <option value="Si">Si</option>
+                                                    <option value="No Aplica">No Aplica</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6" id="EspFechaUltimaAbor">
+                                            <div class="form-group">
+                                                <label>Especifique Fecha</label>
+                                                <input type="text" id="" name="Especifica_FechaUltimoAborto" class="form-control">
+                                                <span class="form-text text-muted">dd/mm/yyyy</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Fecha Última Menstruación</label>
+                                                <select class="form-control showoptions" id="FechaUltimaMenstruacion" name="FechaUltimaMenstruacion">
+                                                    <option>Seleccionar</option>
+                                                    <option value="Si">Si</option>
+                                                    <option value="No Aplica">No Aplica</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6" id="EspFechaUltimaMens">
+                                            <div class="form-group">
+                                                <label>Especifique Fecha</label>
+                                                <input type="text" id="" name="Especifica_FechaUltimaMenstruacion" class="form-control">
+                                                <span class="form-text text-muted">dd/mm/yyyy</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Fecha Probable Parto</label>
+                                                <select class="form-control showoptions" id="FechaProbableParto" name="FechaProbableParto">
+                                                    <option>Seleccionar</option>
+                                                    <option value="Si">Si</option>
+                                                    <option value="No Aplica">No Aplica</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6" id="EspFechaProbParto">
+                                            <div class="form-group">
+                                                <label>Especifique Fecha</label>
+                                                <input type="text" id="" name="Especifica_FechaProbableParto" class="form-control">
+                                                <span class="form-text text-muted">dd/mm/yyyy</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Fecha Último Papanicolau</label>
+                                                <select class="form-control showoptions" id="FechaUltimoPapanicolau" name="FechaUltimoPapanicolau">
+                                                    <option>Seleccionar</option>
+                                                    <option value="Si lo realizó">Si lo realizó</option>
+                                                    <option value="No lo realizo">No lo realizó</option>
+                                                    <option value="No aplica">No aplica</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3" id="EspFechaUltimoPapa">
+                                            <div class="form-group">
+                                                <label>Especifique Fecha</label>
+                                                <input type="text" id="" name="Especifica_FechaUltimoPapanicolau" class="form-control">
+                                                <span class="form-text text-muted">dd/mm/yyyy</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3" id="EspBitUltimoPapa">
+                                            <div class="form-group">
+                                                <input class="form-check-input" type="checkbox" id="NoRecuerda_FechaUltimoPapanicolau" name="NoRecuerda_FechaUltimoPapanicolau">
+                                                <label class="form-check-label" for="">
+                                                    No Recuerda
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3" id="EspResultadoUltimoPapa">
+                                            <div class="form-group">
+                                                <label>Resultado</label>
+                                                <select class="form-control showoptions" id="Resultado_FechaUltimoPapanicolau" name="Resultado_FechaUltimoPapanicolau">
+                                                    <option>Seleccionar</option>
+                                                    <option value="Positivo">Positivo</option>
+                                                    <option value="Negativo">Negativo</option>
+                                                    <option value="Desconoce">Desconoce</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
 
                                     <div class="text-right">
@@ -1052,7 +1410,7 @@
                                             </select>
                                         </div>
                                         <div class="col-md-6" id="">
-                                            
+
                                         </div>
                                     </div>
 
@@ -1073,6 +1431,10 @@
 
 <script src="~/Areas/Admin/assets/js/jquery-3.2.1.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- Mask JS -->
+<script src="~/Areas/Admin/assets/js/jquery.maskedinput.min.js"></script>
+<script src="~/Areas/Admin/assets/js/mask.js"></script>
 
 <script>
 
@@ -1116,14 +1478,14 @@
         $("#Btn_Alimentacion").css("display", "none");
         $("#Btn_HabitosAlimen").css("display", "none");
         $("#Btn_AntecedentesDes").css("display", "none");
-
+        $("#Btn_AntecedentesGineco").css("display", "none");
         $("#Btn_AntecedentesVidaS").css("display", "none");
         $("#Btn_PrincipioEvolucion").css("display", "none");
         $("#Btn_ResultadosLaboratorio").css("display", "none");
         $("#Btn_Plan").css("display", "none");
         $("#Btn_Pronostico").css("display", "none");
         $("#Btn_Otros").css("display", "none");
-        
+
         // #endregion
 
         // #region Pestañas: Elementos de la H.C. que nacerán ocultos y se mostrarán hasta que se seleccione o se haga alguna acción
@@ -1155,6 +1517,25 @@
         $("#EspHabla").css("display", "none");
         $("#EspControlEsf").css("display", "none");
         $("#EspPruebaEDI").css("display", "none");
+        //Gineco
+        $("#EspMenarquia").css("display", "none");
+        $("#EspRitmo").css("display", "none");
+        $("#EspColoracion").css("display", "none");
+        $("#EspMetodoAntiCon").css("display", "none");
+        $("#EspPartos").css("display", "none");
+        $("#EspCesarea").css("display", "none");
+        $("#EspAbortos").css("display", "none");
+        $("#EspHijosTerminos").css("display", "none");
+        $("#EspPrematuros").css("display", "none");
+        $("#EspFechaUltimoP").css("display", "none");
+        $("#EspFechaUltimaCes").css("display", "none");
+        $("#EspMotivoUltimaCes").css("display", "none");
+        $("#EspFechaUltimaAbor").css("display", "none");
+        $("#EspFechaUltimaMens").css("display", "none");
+        $("#EspFechaProbParto").css("display", "none");
+        $("#EspFechaUltimoPapa").css("display", "none");
+        $("#EspBitUltimoPapa").css("display", "none");
+        $("#EspResultadoUltimoPapa").css("display", "none");
         //Vida sexual
         $("#EdadVS").css("display", "none");
         $("#NumeroParejasS").css("display", "none");
@@ -1177,7 +1558,7 @@
     });
 
     // #region Pestañas: Elementos de la H.C. que se mostrarán hasta que se seleccione o se haga alguna acción
-    
+
     //habitos
     $("#ActividadFisica").change(function () {
         var combo = document.getElementById("ActividadFisica");
@@ -1369,6 +1750,142 @@
             $("#EspPruebaEDI").css("display", "none");
         }
     });
+    //gineco
+    $("#Menarquia").change(function () {
+        var combo = document.getElementById("Menarquia");
+        var selected = combo.options[combo.selectedIndex].text;
+        if (selected == "Si") {
+            $("#EspRitmo").css("display", "");
+            $("#EspMenarquia").css("display", "none");
+        } else {
+            $("#EspMenarquia").css("display", "");
+            $("#EspRitmo").css("display", "none");
+        }
+    });
+    $("#Coloracion_Menarquia").change(function () {
+        var combo = document.getElementById("Coloracion_Menarquia");
+        var selected = combo.options[combo.selectedIndex].text;
+        if (selected == "Otra") {
+            $("#EspColoracion").css("display", "");
+        } else {
+            $("#EspColoracion").css("display", "none");
+        }
+    });
+    $("#UltimoMetodoAnti").change(function () {
+        var combo = document.getElementById("UltimoMetodoAnti");
+        var selected = combo.options[combo.selectedIndex].text;
+        if (selected == "Aplica") {
+            $("#EspMetodoAntiCon").css("display", "");
+        } else {
+            $("#EspMetodoAntiCon").css("display", "none");
+        }
+    });
+    $("#Partos").change(function () {
+        var combo = document.getElementById("Partos");
+        var selected = combo.options[combo.selectedIndex].text;
+        if (selected == "Si") {
+            $("#EspPartos").css("display", "");
+        } else {
+            $("#EspPartos").css("display", "none");
+        }
+    });
+    $("#Cesarea").change(function () {
+        var combo = document.getElementById("Cesarea");
+        var selected = combo.options[combo.selectedIndex].text;
+        if (selected == "Si") {
+            $("#EspCesarea").css("display", "");
+        } else {
+            $("#EspCesarea").css("display", "none");
+        }
+    });
+    $("#Abortos").change(function () {
+        var combo = document.getElementById("Abortos");
+        var selected = combo.options[combo.selectedIndex].text;
+        if (selected == "Si") {
+            $("#EspAbortos").css("display", "");
+        } else {
+            $("#EspAbortos").css("display", "none");
+        }
+    });
+    $("#HijosTerminos").change(function () {
+        var combo = document.getElementById("HijosTerminos");
+        var selected = combo.options[combo.selectedIndex].text;
+        if (selected == "Si") {
+            $("#EspHijosTerminos").css("display", "");
+        } else {
+            $("#EspHijosTerminos").css("display", "none");
+        }
+    });
+    $("#Prematuros").change(function () {
+        var combo = document.getElementById("Prematuros");
+        var selected = combo.options[combo.selectedIndex].text;
+        if (selected == "Si") {
+            $("#EspPrematuros").css("display", "");
+        } else {
+            $("#EspPrematuros").css("display", "none");
+        }
+    });
+    $("#FechaUltimoParto").change(function () {
+        var combo = document.getElementById("FechaUltimoParto");
+        var selected = combo.options[combo.selectedIndex].text;
+        if (selected == "Si") {
+            $("#EspFechaUltimoP").css("display", "");
+        } else {
+            $("#EspFechaUltimoP").css("display", "none");
+        }
+    });
+    $("#FechaUltimaCesarea").change(function () {
+        var combo = document.getElementById("FechaUltimaCesarea");
+        var selected = combo.options[combo.selectedIndex].text;
+        if (selected == "Si") {
+            $("#EspFechaUltimaCes").css("display", "");
+            $("#EspMotivoUltimaCes").css("display", "");
+        } else {
+            $("#EspFechaUltimaCes").css("display", "none");
+            $("#EspMotivoUltimaCes").css("display", "none");
+        }
+    });
+    $("#FechaUltimoAborto").change(function () {
+        var combo = document.getElementById("FechaUltimoAborto");
+        var selected = combo.options[combo.selectedIndex].text;
+        if (selected == "Si") {
+            $("#EspFechaUltimaAbor").css("display", "");
+        } else {
+            $("#EspFechaUltimaAbor").css("display", "none");
+        }
+    });
+    $("#FechaUltimaMenstruacion").change(function () {
+        var combo = document.getElementById("FechaUltimaMenstruacion");
+        var selected = combo.options[combo.selectedIndex].text;
+        if (selected == "Si") {
+            $("#EspFechaUltimaMens").css("display", "");
+        } else {
+            $("#EspFechaUltimaMens").css("display", "none");
+        }
+    });
+    $("#FechaProbableParto").change(function () {
+        var combo = document.getElementById("FechaProbableParto");
+        var selected = combo.options[combo.selectedIndex].text;
+        if (selected == "Si") {
+            $("#EspFechaProbParto").css("display", "");
+        } else {
+            $("#EspFechaProbParto").css("display", "none");
+        }
+    });
+    $("#FechaUltimoPapanicolau").change(function () {
+        var combo = document.getElementById("FechaUltimoPapanicolau");
+        var selected = combo.options[combo.selectedIndex].text;
+        if (selected == "Si lo realizó") {
+            $("#EspFechaUltimoPapa").css("display", "");
+            $("#EspBitUltimoPapa").css("display", "");
+            $("#EspResultadoUltimoPapa").css("display", "");
+        } else {
+            $("#EspFechaUltimoPapa").css("display", "none");
+            $("#EspBitUltimoPapa").css("display", "none");
+            $("#EspResultadoUltimoPapa").css("display", "none");
+        }
+    });
+
     //Vida sexual
     $("#InicioVidaSexual").change(function () {
         var combo = document.getElementById("InicioVidaSexual");
@@ -1587,17 +2104,17 @@
         $("#Btn_Alimentacion").css("display", "");
         $("#Btn_HabitosAlimen").css("display", "");
         $("#Btn_AntecedentesDes").css("display", "");
-
+        $("#Btn_AntecedentesGineco").css("display", "");
         $("#Btn_AntecedentesVidaS").css("display", "");
         $("#Btn_PrincipioEvolucion").css("display", "");
         $("#Btn_ResultadosLaboratorio").css("display", "");
         $("#Btn_Plan").css("display", "");
         $("#Btn_Pronostico").css("display", "");
         $("#Btn_Otros").css("display", "");
-        
+
         // #endregion
     });
 
-    
+
 
 </script>
