@@ -261,6 +261,63 @@
     <Compile Include="Models\hc_interrogatorio.cs">
       <DependentUpon>CUS.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\HC_Medicina.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HC_Medicina.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HC_Medicina.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HC_Medicina.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HC_Medicina.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HC_Medicina.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\hc_MED_Alimentacion.cs">
+      <DependentUpon>HC_Medicina.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\hc_MED_AntecedentesDes.cs">
+      <DependentUpon>HC_Medicina.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\hc_MED_AntecedentesGinecoObs.cs">
+      <DependentUpon>HC_Medicina.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\hc_MED_AntecedentesPeri.cs">
+      <DependentUpon>HC_Medicina.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\hc_MED_AntecedentesVidaSex.cs">
+      <DependentUpon>HC_Medicina.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\hc_MED_Habitos.cs">
+      <DependentUpon>HC_Medicina.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\hc_MED_HabitosAlimentacion.cs">
+      <DependentUpon>HC_Medicina.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\hc_MED_HabitusExterior.cs">
+      <DependentUpon>HC_Medicina.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\hc_MED_Inmunizaciones.cs">
+      <DependentUpon>HC_Medicina.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\hc_MED_Otros.cs">
+      <DependentUpon>HC_Medicina.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\hc_MED_Plan.cs">
+      <DependentUpon>HC_Medicina.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\hc_MED_PrincipioEvolEstado.cs">
+      <DependentUpon>HC_Medicina.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\hc_MED_Pronostico.cs">
+      <DependentUpon>HC_Medicina.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\hc_MED_ResultadosLaboratorio.cs">
+      <DependentUpon>HC_Medicina.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\hc_riesgo_caidas.cs">
       <DependentUpon>CUS.tt</DependentUpon>
     </Compile>
@@ -468,6 +525,16 @@
       <DependentUpon>CUS.edmx</DependentUpon>
       <LastGenOutput>CUS.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\HC_Medicina.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HC_Medicina.edmx</DependentUpon>
+      <LastGenOutput>HC_Medicina.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\HC_Medicina.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HC_Medicina.edmx</DependentUpon>
+      <LastGenOutput>HC_Medicina.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\assets\fonts\MaterialIcons-Regular.eot" />
@@ -519,12 +586,17 @@
     <Content Include="Areas\Admin\Views\Usuarios\Editar.cshtml" />
     <Content Include="Areas\Admin\Views\HistoriaClinica\Index.cshtml" />
     <Content Include="Areas\Admin\Views\HistoriaClinica\Historia.cshtml" />
-    <Content Include="Areas\Admin\Views\HistoriaClinica\Historia-Copia.cshtml" />
-    <Content Include="Areas\Admin\Views\HistoriaClinica\Index-Copia.cshtml" />
     <Content Include="Areas\Admin\Views\NotaEvolucion\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Derechohabiente\View.cshtml" />
     <Content Include="Areas\Admin\Views\HistoriaMedicina\Index.cshtml" />
     <Content Include="Areas\Admin\Views\HistoriaMedicina\Historia.cshtml" />
+    <EntityDeploy Include="Models\HC_Medicina.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>HC_Medicina.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\HC_Medicina.edmx.diagram">
+      <DependentUpon>HC_Medicina.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
