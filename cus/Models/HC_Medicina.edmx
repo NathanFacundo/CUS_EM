@@ -321,18 +321,18 @@
           <Property Name="Prematuros" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="Especifica_Prematuros" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="FechaUltimoParto" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="Especifica_FechaUltimoParto" Type="DateTime" Precision="3" />
+          <Property Name="Especifica_FechaUltimoParto" Type="DateTime" Precision="3" Nullable="true" />
           <Property Name="FechaUltimaCesarea" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="Especifica_FechaUltimaCesarea" Type="DateTime" Precision="3" />
+          <Property Name="Especifica_FechaUltimaCesarea" Type="DateTime" Precision="3" Nullable="true" />
           <Property Name="Motivo_FechaUltimaCesarea" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="FechaUltimoAborto" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="Especifica_FechaUltimoAborto" Type="DateTime" Precision="3" />
+          <Property Name="Especifica_FechaUltimoAborto" Type="DateTime" Precision="3" Nullable="true" />
           <Property Name="FechaUltimaMenstruacion" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="Especifica_FechaUltimaMenstruacion" Type="DateTime" Precision="3" />
+          <Property Name="Especifica_FechaUltimaMenstruacion" Type="DateTime" Precision="3" Nullable="true" />
           <Property Name="FechaProbableParto" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="Especifica_FechaProbableParto" Type="DateTime" Precision="3" />
+          <Property Name="Especifica_FechaProbableParto" Type="DateTime" Precision="3" Nullable="true" />
           <Property Name="FechaUltimoPapanicolau" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="Especifica_FechaUltimoPapanicolau" Type="DateTime" Precision="3" />
+          <Property Name="Especifica_FechaUltimoPapanicolau" Type="DateTime" Precision="3" Nullable="true" />
           <Property Name="NoRecuerda_FechaUltimoPapanicolau" Type="Boolean" />
           <Property Name="Resultado_FechaUltimoPapanicolau" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="Id_Paciente" Type="Int32" Nullable="false" />

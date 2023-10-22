@@ -34,5 +34,6 @@ namespace CUS.Models
         public string ip_realiza { get; set; }
         public Nullable<int> status { get; set; }
         public Nullable<int> id_unidad { get; set; }
+        public string escala_dolor { get; set; }
     }
 }

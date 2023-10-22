@@ -44,12 +44,21 @@ namespace CUS.Areas.Admin.Controllers
                     idConsecutivo = hcId.Id + 1;
                 }
 
+                //Buscamos la ULTIMA hc común del px para obtener el Identificador y hacer match en el registro de la hc Medicina
+                var Ultima_HCcomun = (from a in db.HistoriaClinica
+                                      where a.Id_Paciente == paciente.Id
+                                      where a.TipoHistoria == "Común" || a.TipoHistoria == "Datos Grales."
+                                      select a).
+                                OrderByDescending(g => g.Id)
+                                .FirstOrDefault();
+
                 Models.HistoriaClinica hc = new Models.HistoriaClinica();
                 hc.Clave_hc_px = paciente.Expediente + "HC" + idConsecutivo;
                 hc.Medico = User.Identity.GetUserName();
                 hc.FechaRegistroHC = fechaDT;
                 hc.Id_Paciente = paciente.Id;
                 hc.TipoHistoria = "Medicina";
+                hc.Ident_HCcomún = Ultima_HCcomun.Clave_hc_px;//Este es el identificador de la ultima HC Común, que hará matcha con la HC Medicina
                 db.HistoriaClinica.Add(hc);
                 db.SaveChanges();
 
@@ -629,8 +638,53 @@ namespace CUS.Areas.Admin.Controllers
             }
         }
 
+        public class AntecedentesGinecoPropiedades
+        {
+            public string Menarquia { get; set; }
+            public string Motivo_Menarquia { get; set; }
+            public string Ritmo_Menarquia { get; set; }
+            public string Tipo_Menarquia { get; set; }
+            public string Cantidad_Menarquia { get; set; }
+            public string Coloracion_Menarquia { get; set; }
+            public string Especifica_Coloracion { get; set; }
+            public string FenomenosAsoc { get; set; }
+            public string DolorPelvico { get; set; }
+            public string SangradoAnormal { get; set; }
+            public string UltimoMetodoAnti { get; set; }
+            public string Especifica_UltimoMetodoAnti { get; set; }
+            public string SangradoPostcoito { get; set; }
+            public string FlujoTransvaginal { get; set; }
+            public string Gesta { get; set; }
+            public string Partos { get; set; }
+            public string Especifica_Partos { get; set; }
+            public string Cesarea { get; set; }
+            public string Especifica_Cesarea { get; set; }
+            public string Abortos { get; set; }
+            public string Especifica_Abortos { get; set; }
+            public string HijosTerminos { get; set; }
+            public string Especifica_HijosTerminos { get; set; }
+            public string Prematuros { get; set; }
+            public string Especifica_Prematuros { get; set; }
+            public string FechaUltimoParto { get; set; }
+            public DateTime? Especifica_FechaUltimoParto { get; set; }
+            public string FechaUltimaCesarea { get; set; }
+            public DateTime? Especifica_FechaUltimaCesarea { get; set; }
+            public string Motivo_FechaUltimaCesarea { get; set; }
+            public string FechaUltimoAborto { get; set; }
+            public DateTime? Especifica_FechaUltimoAborto { get; set; }
+            public string FechaUltimaMenstruacion { get; set; }
+            public DateTime? Especifica_FechaUltimaMenstruacion { get; set; }
+            public string FechaProbableParto { get; set; }
+            public DateTime? Especifica_FechaProbableParto { get; set; }
+            public string FechaUltimoPapanicolau { get; set; }
+            public DateTime? Especifica_FechaUltimoPapanicolau { get; set; }
+            public string NoRecuerda_FechaUltimoPapanicolau { get; set; }
+            public string Resultado_FechaUltimoPapanicolau { get; set; }
+
+        }
+
         [HttpPost]
-        public ActionResult AntecedentesGineco(Models.hc_MED_AntecedentesGinecoObs HistoriaClinica, string expediente)
+        public ActionResult AntecedentesGineco(AntecedentesGinecoPropiedades HistoriaClinica, string expediente)
         {
             try
             {
@@ -713,19 +767,72 @@ namespace CUS.Areas.Admin.Controllers
                     Historia.Prematuros = HistoriaClinica.Prematuros;
                     Historia.Especifica_Prematuros = HistoriaClinica.Especifica_Prematuros;
                     Historia.FechaUltimoParto = HistoriaClinica.FechaUltimoParto;
-                    Historia.Especifica_FechaUltimoParto = HistoriaClinica.Especifica_FechaUltimoParto;
+                    //Historia.Especifica_FechaUltimoParto = (DateTime)HistoriaClinica.Especifica_FechaUltimoParto;
+                    if (HistoriaClinica.Especifica_FechaUltimoParto.HasValue)
+                    {
+                        Historia.Especifica_FechaUltimoParto = HistoriaClinica.Especifica_FechaUltimoParto.Value;
+                    }
+                    else
+                    {
+                        //Historia.Especifica_FechaUltimoParto = null; // O simplemente no asignar ningún valor si es nulo.
+                    }
+
+
                     Historia.FechaUltimaCesarea = HistoriaClinica.FechaUltimaCesarea;
-                    Historia.Especifica_FechaUltimaCesarea = HistoriaClinica.Especifica_FechaUltimaCesarea;
+                    //Historia.Especifica_FechaUltimaCesarea = (DateTime)HistoriaClinica.Especifica_FechaUltimaCesarea;
+                    if (HistoriaClinica.Especifica_FechaUltimaCesarea.HasValue)
+                    {
+                        Historia.Especifica_FechaUltimaCesarea = HistoriaClinica.Especifica_FechaUltimaCesarea.Value;
+                    }
+                    else
+                    {
+                    }
                     Historia.Motivo_FechaUltimaCesarea = HistoriaClinica.Motivo_FechaUltimaCesarea;
                     Historia.FechaUltimoAborto = HistoriaClinica.FechaUltimoAborto;
-                    Historia.Especifica_FechaUltimoAborto = HistoriaClinica.Especifica_FechaUltimoAborto;
+                    //Historia.Especifica_FechaUltimoAborto = (DateTime)HistoriaClinica.Especifica_FechaUltimoAborto;
+                    if (HistoriaClinica.Especifica_FechaUltimoAborto.HasValue)
+                    {
+                        Historia.Especifica_FechaUltimoAborto = HistoriaClinica.Especifica_FechaUltimoAborto.Value;
+                    }
+                    else
+                    {
+                    }
                     Historia.FechaUltimaMenstruacion = HistoriaClinica.FechaUltimaMenstruacion;
-                    Historia.Especifica_FechaUltimaMenstruacion = HistoriaClinica.Especifica_FechaUltimaMenstruacion;
+                    //Historia.Especifica_FechaUltimaMenstruacion = (DateTime)HistoriaClinica.Especifica_FechaUltimaMenstruacion;
+                    if (HistoriaClinica.Especifica_FechaUltimaMenstruacion.HasValue)
+                    {
+                        Historia.Especifica_FechaUltimaMenstruacion = HistoriaClinica.Especifica_FechaUltimaMenstruacion.Value;
+                    }
+                    else
+                    {
+                    }
                     Historia.FechaProbableParto = HistoriaClinica.FechaProbableParto;
-                    Historia.Especifica_FechaProbableParto = HistoriaClinica.Especifica_FechaProbableParto;
+                    //Historia.Especifica_FechaProbableParto = (DateTime)HistoriaClinica.Especifica_FechaProbableParto;
+                    if (HistoriaClinica.Especifica_FechaProbableParto.HasValue)
+                    {
+                        Historia.Especifica_FechaProbableParto = HistoriaClinica.Especifica_FechaProbableParto.Value;
+                    }
+                    else
+                    {
+                    }
                     Historia.FechaUltimoPapanicolau = HistoriaClinica.FechaUltimoPapanicolau;
-                    Historia.Especifica_FechaUltimoPapanicolau = HistoriaClinica.Especifica_FechaUltimoPapanicolau;
-                    Historia.NoRecuerda_FechaUltimoPapanicolau = HistoriaClinica.NoRecuerda_FechaUltimoPapanicolau;
+                    //Historia.Especifica_FechaUltimoPapanicolau = (DateTime)HistoriaClinica.Especifica_FechaUltimoPapanicolau;
+                    if (HistoriaClinica.Especifica_FechaUltimoPapanicolau.HasValue)
+                    {
+                        Historia.Especifica_FechaUltimoPapanicolau = HistoriaClinica.Especifica_FechaUltimoPapanicolau.Value;
+                    }
+                    else
+                    {
+                    }
+
+                    if (HistoriaClinica.NoRecuerda_FechaUltimoPapanicolau == "on")
+                    {
+                        Historia.NoRecuerda_FechaUltimoPapanicolau = true;
+                    }
+                    else
+                    {
+                        Historia.NoRecuerda_FechaUltimoPapanicolau = false;
+                    }
                     Historia.Resultado_FechaUltimoPapanicolau = HistoriaClinica.Resultado_FechaUltimoPapanicolau;
 
                     Historia.Id_Paciente = paciente.Id;
