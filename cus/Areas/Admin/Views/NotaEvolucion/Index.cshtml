@@ -9,6 +9,7 @@
 
     #escalaDolorModal .modal-dialog {
         height: 100%;
+        margin-top: 120px;
     }
 
     .modal-open .main-wrapper {
@@ -133,7 +134,7 @@
     }
 
     .borrardiag {
-        width: 100%;
+        width: 50%;
         filter: grayscale(100%);
     }
 
@@ -287,14 +288,120 @@
         font-size: 15pt;
         font-weight: bold;
         top: 75%;
-        width: 10%;
-        left: 45%;
+        width: 50%;
+        left: 25%;
         visibility: hidden;
         font-size: .9em;
         color: #EEAA7B;
     }
 
 
+    .gradient-blur {
+        position: fixed;
+        z-index: 5;
+        inset: auto 0 0 0;
+        height: 65%;
+        pointer-events: none;
+    }
+
+        .gradient-blur > div,
+        .gradient-blur::before,
+        .gradient-blur::after {
+            position: absolute;
+            inset: 0;
+        }
+
+        .gradient-blur::before {
+            content: "";
+            z-index: 1;
+            -webkit-backdrop-filter: blur(0.5px);
+            backdrop-filter: blur(0.5px);
+            -webkit-mask: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, black 12.5%, black 25%, rgba(0, 0, 0, 0) 37.5%);
+            mask: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, black 12.5%, black 25%, rgba(0, 0, 0, 0) 37.5%);
+        }
+
+        .gradient-blur > div:nth-of-type(1) {
+            z-index: 2;
+            -webkit-backdrop-filter: blur(1px);
+            backdrop-filter: blur(1px);
+            -webkit-mask: linear-gradient(to bottom, rgba(0, 0, 0, 0) 12.5%, black 25%, black 37.5%, rgba(0, 0, 0, 0) 50%);
+            mask: linear-gradient(to bottom, rgba(0, 0, 0, 0) 12.5%, black 25%, black 37.5%, rgba(0, 0, 0, 0) 50%);
+        }
+
+        .gradient-blur > div:nth-of-type(2) {
+            z-index: 3;
+            -webkit-backdrop-filter: blur(2px);
+            backdrop-filter: blur(2px);
+            -webkit-mask: linear-gradient(to bottom, rgba(0, 0, 0, 0) 25%, black 37.5%, black 50%, rgba(0, 0, 0, 0) 62.5%);
+            mask: linear-gradient(to bottom, rgba(0, 0, 0, 0) 25%, black 37.5%, black 50%, rgba(0, 0, 0, 0) 62.5%);
+        }
+
+        .gradient-blur > div:nth-of-type(3) {
+            z-index: 4;
+            -webkit-backdrop-filter: blur(4px);
+            backdrop-filter: blur(4px);
+            -webkit-mask: linear-gradient(to bottom, rgba(0, 0, 0, 0) 37.5%, black 50%, black 62.5%, rgba(0, 0, 0, 0) 75%);
+            mask: linear-gradient(to bottom, rgba(0, 0, 0, 0) 37.5%, black 50%, black 62.5%, rgba(0, 0, 0, 0) 75%);
+        }
+
+        .gradient-blur > div:nth-of-type(4) {
+            z-index: 5;
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+            -webkit-mask: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, black 62.5%, black 75%, rgba(0, 0, 0, 0) 87.5%);
+            mask: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, black 62.5%, black 75%, rgba(0, 0, 0, 0) 87.5%);
+        }
+
+        .gradient-blur > div:nth-of-type(5) {
+            z-index: 6;
+            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(16px);
+            -webkit-mask: linear-gradient(to bottom, rgba(0, 0, 0, 0) 62.5%, black 75%, black 87.5%, rgba(0, 0, 0, 0) 100%);
+            mask: linear-gradient(to bottom, rgba(0, 0, 0, 0) 62.5%, black 75%, black 87.5%, rgba(0, 0, 0, 0) 100%);
+        }
+
+        .gradient-blur > div:nth-of-type(6) {
+            z-index: 7;
+            -webkit-backdrop-filter: blur(32px);
+            backdrop-filter: blur(32px);
+            -webkit-mask: linear-gradient(to bottom, rgba(0, 0, 0, 0) 75%, black 87.5%, black 100%);
+            mask: linear-gradient(to bottom, rgba(0, 0, 0, 0) 75%, black 87.5%, black 100%);
+        }
+
+        .gradient-blur::after {
+            content: "";
+            z-index: 8;
+            -webkit-backdrop-filter: blur(64px);
+            backdrop-filter: blur(64px);
+            -webkit-mask: linear-gradient(to bottom, rgba(0, 0, 0, 0) 87.5%, black 100%);
+            mask: linear-gradient(to bottom, rgba(0, 0, 0, 0) 87.5%, black 100%);
+        }
+
+    body {
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .flecha {
+        width: 10px;
+    }
+
+    .btn-buscar {
+        background-color: #20c0f3;
+        color: white !important;
+        width: 8%;
+    }
+
+        .btn-buscar:hover {
+            background-color: #20c0f3 !important;
+            color: white !important;
+        }
+
+    .btnbuscapac {
+        width: 20px;
+        -webkit-filter: invert(100%);
+        filter: invert(100%);
+    }
 
 </style>
 
@@ -414,17 +521,17 @@
                                     <div class="resumenTopCheck" id="analisisCheck">✓</div>
                                     <div class="row mt-5 ml-0 mr-0 mb-0" id="diagnosticoMedico">
                                         <div class="col-md-12 p-2 text-left">
-                                            <h6>Mis diagnósticos frecuentes <img class="flecha" src="~/Imagenes/iconos/flecha-abajo.png" /> </h6>
+                                            <h6>Mis diagnósticos frecuentes <img class="flecha" src="~/Content/assets/img/flecha-abajo.png" /> </h6>
                                         </div>
                                     </div>
                                     <div class="row m-0 mt-5" id="diagnosticoPaciente">
                                         <div class="col-md-12 p-2 text-left">
-                                            <h6>Diagnósticos frecuentes del paciente <img class="flecha" src="~/Imagenes/iconos/flecha-abajo.png" /> </h6>
+                                            <h6>Diagnósticos frecuentes del paciente <img class="flecha" src="~/Content/assets/img/flecha-abajo.png" /> </h6>
                                         </div>
                                     </div>
                                     <div class="row m-0 mt-5" id="diagnosticoEspecialidad">
                                         <div class="col-md-12 p-2 text-left">
-                                            <h6>Diagnósticos frecuentes de especialidad <img class="flecha" src="~/Imagenes/iconos/flecha-abajo.png" /> </h6>
+                                            <h6>Diagnósticos frecuentes de especialidad <img class="flecha" src="~/Content/assets/img/flecha-abajo.png" /> </h6>
                                         </div>
                                     </div>
                                     <div class="row m-0 mt-5" id="diagnosticoBusqueda">
@@ -432,7 +539,7 @@
                                             <h6>Buscar otro diagnostico</h6>
                                             <input style="width:90%;" id="diagnosticoTxt" placeholder="Escribe aquí la descripción o clave y da clic en el boton de buscar" />
                                             <a class="btn btn-buscar">
-                                                <img src="~/Imagenes/search1.png" class="btnbuscapac">
+                                                <img src="~/Content/assets/img/search1.png" class="btnbuscapac">
                                             </a>
                                         </div>
                                     </div>
@@ -452,9 +559,6 @@
                                         </div>
                                         <div class="col-md-3 m-auto p-0">
                                             <div class="row m-0">
-                                                <div class="col-md-12 p-2">
-                                                    <div class="diaginfo2" id="diaginfo1">Selecciona el tipo de diagnostico antes de seleccionar otro</div>
-                                                </div>
                                                 <div class="col-9 p-2">
                                                     <select class="form-control tipoconsulta" id="tipoconsulta1" name="tipconsulta1" required>
                                                         <option disabled selected>Seleccionar opción</option>
@@ -462,8 +566,8 @@
                                                         <option value="1">Primera Vez</option>
                                                     </select>
                                                 </div>
-                                                <div class="col-3 p-2">
-                                                    <img class="borrardiag" id="borrardiag1" src="~/Imagenes/iconos/trashcan2.png" />
+                                                <div class="col-3 text-center p-2">
+                                                    <img class="borrardiag" id="borrardiag1" src="~/Content/assets/img/trashcan.png" />
                                                 </div>
                                             </div>
                                         </div>
@@ -481,9 +585,6 @@
                                         </div>
                                         <div class="col-md-3 m-auto p-0">
                                             <div class="row m-0">
-                                                <div class="col-md-12 p-2">
-                                                    <div class="diaginfo2" id="diaginfo2">Selecciona el tipo de diagnostico antes de seleccionar otro</div>
-                                                </div>
                                                 <div class="col-9 p-2">
                                                     <select class="form-control tipoconsulta" id="tipoconsulta2" name="tipconsulta2" required>
                                                         <option disabled selected>Seleccionar opción</option>
@@ -491,8 +592,8 @@
                                                         <option value="1">Primera Vez</option>
                                                     </select>
                                                 </div>
-                                                <div class="col-3 p-2">
-                                                    <img class="borrardiag" id="borrardiag2" src="~/Imagenes/iconos/trashcan2.png" />
+                                                <div class="col-3 text-center p-2">
+                                                    <img class="borrardiag" id="borrardiag2" src="~/Content/assets/img/trashcan.png" />
                                                 </div>
                                             </div>
                                         </div>
@@ -517,60 +618,8 @@
                                                         <option value="1">Primera Vez</option>
                                                     </select>
                                                 </div>
-                                                <div class="col-3 p-2">
-                                                    <img class="borrardiag" id="borrardiag3" src="~/Imagenes/iconos/trashcan2.png" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="row m-0">
-                                        <div class="col-md-12 p-2">
-                                            <div class="diaginfo">4. Diagnóstico</div>
-                                        </div>
-
-                                        <div class="col-md-9 m-auto p-2">
-                                            <textarea class="resumenText" id="diagnostico4" name="diagnostico4" readonly></textarea>
-                                            <input id="clave4" type="hidden" />
-                                        </div>
-                                        <div class="col-md-3 m-auto p-0">
-                                            <div class="row m-0">
-                                                <div class="col-9 p-2">
-                                                    <select class="form-control tipoconsulta" id="tipoconsulta4" name="tipconsulta4" required>
-                                                        <option disabled selected>Seleccionar opción</option>
-                                                        <option value="2">Subsecuente</option>
-                                                        <option value="1">Primera Vez</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-3 p-2">
-                                                    <img class="borrardiag" id="borrardiag4" src="~/Imagenes/iconos/trashcan2.png" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="row m-0">
-                                        <div class="col-md-12 p-2">
-                                            <div class="diaginfo">5. Diagnóstico</div>
-                                        </div>
-
-                                        <div class="col-md-9 m-auto p-2">
-                                            <textarea class="resumenText" id="diagnostico5" name="diagnostico5" readonly></textarea>
-                                            <input id="clave4" type="hidden" />
-                                        </div>
-                                        <div class="col-md-3 m-auto p-0">
-                                            <div class="row m-0">
-                                                <div class="col-9 p-2">
-                                                    <select class="form-control tipoconsulta" id="tipoconsulta5" name="tipconsulta5" required>
-                                                        <option disabled selected>Seleccionar opción</option>
-                                                        <option value="2">Subsecuente</option>
-                                                        <option value="1">Primera Vez</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-3 p-2">
-                                                    <img class="borrardiag" id="borrardiag5" src="~/Imagenes/iconos/trashcan2.png" />
+                                                <div class="col-3 text-center p-2">
+                                                    <img class="borrardiag" id="borrardiag3" src="~/Content/assets/img/trashcan.png" />
                                                 </div>
                                             </div>
                                         </div>
@@ -584,11 +633,23 @@
                                 </div>
                             </div>
                             <div class="col-md-12 mt-4 text-center">
-                                <button type="submit" name="next" class="next success-button" id="finalizar">Finalizar</button>
+                                <button type="submit" name="next" class="next success-button btn btn-primary" id="finalizar">Guardar</button>
                             </div>
                         }
 
                     </div>
+
+
+                    <div class="gradient-blur">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+
+
 
                 </div>
             </div>
@@ -599,13 +660,13 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="escalaDolorModal" tabindex="-1" aria-labelledby="escalaDolorModalLabel" aria-hidden="true">
+<div class="modal fade" id="escalaDolorModal" tabindex="-1" aria-labelledby="escalaDolorModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-body p-0">
-                <h5 class="modal-title" id="exampleModalLabel">Escala del Dolor</h5>
+                <h3 class="modal-title text-center mt-4" id="exampleModalLabel"> <b>Escala del Dolor</b> </h3>
                 <div id="container">
-                    <svg width="500" height="400" viewBox="0 0 800 400" id="scale">
+                    <svg width="500" height="300" viewBox="0 0 800 400" id="scale">
                         <circle id="YAS" r="150" cx="50%" cy="50%">
                         </circle>
                         <circle id="Yeah" r="150" cx="50%" cy="50%"></circle>
@@ -615,7 +676,7 @@
                         <circle id="AHHHHHHH" r="150" cx="50%" cy="50%"></circle>
                         <polygon id="needle" points="390, 200 410,200 400, 340" />
                     </svg>
-                    <h1>How much pain are you in?</h1>
+                    <h1>¿Cuánto dolor sientes?</h1>
                     <input id="slider" type="range" min="0" max="100" value="50" />
                     <label id="level" id="value">severe</label>
                     <svg class="faces" viewBox="0 0 105 105" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
@@ -650,10 +711,6 @@
                 </svg>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary">Guardar</button>
-            </div>
         </div>
     </div>
 </div>
@@ -668,6 +725,7 @@
 <script>
     // Initialization Area
     var painArray = ["YAS", "Yeah", "Mmkay", "Ouch", "Owwwww", "AHHHHHHH"];
+    //var painArray = ["Sin Dolor", "Duele un poco", "Duele un poco más", "Duele aún más", "Duele mucho", "El peor dolor"];
     var pain = {}
     for (var i = 0; i < painArray.length; i++) {
         pain[i] = painArray[i];
@@ -677,6 +735,7 @@
     var slider = document.getElementById("slider");
 
     var level = document.getElementById("level");
+    //alert(slider.value);
     level.innerHTML = slider.value;
 
     function findPainLevel(value) {
@@ -724,12 +783,35 @@
         var currentLevel = this.value;
         var painLevel = findPainLevel(currentLevel);
         moveGauge(currentLevel);
-        level.innerHTML = pain[painLevel];
+        //alert(pain[painLevel]);
+
+        //var painArray = ["YAS", "Yeah", "Mmkay", "Ouch", "Owwwww", "AHHHHHHH"];
+        //var painArray = ["Sin Dolor", "Duele un poco", "Duele un poco más", "Duele aún más", "Duele mucho", "El peor dolor"];
+
+        switch (pain[painLevel]) {
+            case "YAS":
+                level.innerHTML = "Sin Dolor";
+                break;
+            case "Yeah":
+                level.innerHTML = "Duele un poco";
+                break;
+            case "Mmkay":
+                level.innerHTML = "Duele un poco más";
+                break;
+            case "Ouch":
+                level.innerHTML = "Duele aún más";
+                break;
+            case "Owwwww":
+                level.innerHTML = "Duele mucho";
+                break;
+            default:
+                level.innerHTML = "El peor dolor";
+        }
+
         morphFace(painLevel);
 
     }
 </script>
-
 
 <script>
 
@@ -917,20 +999,12 @@
             //mostramos div de la info del px
             $("#InfoPX").show();
 
-            // #region Mostrar botones de Guardar HC ya que ya se buscó el px
-            $("#Btn_Save1").css("display", "");
-            $("#Btn_Save2").css("display", "");
-            $("#Btn_Save3").css("display", "");
-            $("#Btn_Save4").css("display", "");
-            $("#Btn_Save5").css("display", "");
-            $("#Btn_Save6").css("display", "");
-            $("#Btn_Save7").css("display", "");
-            $("#Btn_Save9").css("display", "");
-            $("#Btn_Save11").css("display", "");
-            $("#Btn_Save15").css("display", "");
-            $("#Btn_Save16").css("display", "");
-            $("#Btn_Save17").css("display", "");
-            // #endregion
+            //Quitar el blur de la nota
+            $('.gradient-blur').hide();
+            //Regresar el height de el body
+            $('body').css('height', 'auto');
+            $('body').css('overflow', 'auto');
+
         });
 
 
@@ -939,10 +1013,363 @@
 
 </script>
 
-
 <script>
     //Buscar si esta llenado la escala del dolor en enfermeria, si no esta llenado, mostrar el modal de la escala del dolor
     $(document).ready(function () {
         $('#escalaDolorModal').modal('show');
     });
+
+
+    //Al cambiar la escala del dolor qu eeste guarde en la db la escala del dolor que siente el paciente en la nota de evolucion
+    $("#slider").change(function () {
+        /*
+        $.ajax({
+            //url: '@Url.Action("GuardarEscalaDolor", "NotaEvolucion")',
+            /*dataType: "json",
+            data: {
+                numexp: numexp,
+            },
+            async: false,
+            success: function (data) {
+                $('#escalaDolorModal').modal('hide');
+            },
+            error: function (xhr, status, error) {
+            }
+        })
+        */
+
+        $('#escalaDolorModal').modal('hide');
+
+        
+    });
+</script>
+
+
+<script>
+
+    var ExpedientePX = $("#ExpedientePX").val();
+
+    /*
+    $.ajax({
+        url: '@Url.Action("DiagnosticosMedico", "NotaEvolucion")',
+        /*dataType: "json",
+        //data: { diagnostico: $("#analisis").val() },
+        success: function (data) {
+            $.each(data, function (i, item) {
+                //console.log(item.DesCorta);
+                $('#diagnosticoMedico').append('<div class="col-md-2 p-2"><div class="shadow p-2 mb-2 rounded diagnostico-select" data-clave="' + item.Clave + '">' + item.DesCorta + '</div></div>');
+            });
+        },
+        error: function (xhr, status, error) {
+
+        }
+    });
+    */
+
+    /*
+    $.ajax({
+        url: '@Url.Action("DiagnosticosPaciente", "NotaEvolucion")',
+        /*dataType: "json",
+        data: { numemp: ExpedientePX },
+        success: function (data) {
+            $.each(data, function (i, item) {
+                //console.log(item.DesCorta);
+                $('#diagnosticoPaciente').append('<div class="col-md-2 p-2"><div class="shadow p-2 mb-2 rounded diagnostico-select" data-clave="' + item.Clave + '">' + item.DesCorta + '</div></div>');
+            });
+        },
+        error: function (xhr, status, error) {
+
+        }
+    });
+
+    $.ajax({
+        url: '@Url.Action("DiagnosticosEspecialidad", "NotaEvolucion")',
+        /*dataType: "json",
+        //data: { numemp: $("#numemp").val() },
+        success: function (data) {
+            $.each(data, function (i, item) {
+                //console.log(item.DesCorta);
+                $('#diagnosticoEspecialidad').append('<div class="col-md-2 p-2"><div class="shadow p-2 mb-2 rounded diagnostico-select" data-clave="' + item.Clave + '">' + item.DesCorta + '</div></div>');
+            });
+        },
+        error: function (xhr, status, error) {
+
+        }
+    });
+    */
+
+
+    //Buscar un nuevo diagnostico
+    $('#diagnosticoBusqueda').on('click', '.btn-buscar', function () {
+
+        //var s_exp = $(this).val();
+
+        if ($("#diagnosticoTxt").val().length >= 3) {
+            $('#diagnosticoBusquedaLista').empty();
+            $('#diagnosticoBusquedaAlert').text('');
+            $.ajax({
+                url: '@Url.Action("BuscarDiagnosticos", "NotaEvolucion")',
+                dataType: "json",
+                data: { diagnostico: $("#diagnosticoTxt").val() },
+                success: function (data) {
+                    //console.log(data);
+                    $.each(data, function (i, item) {
+                        //console.log(item.DesCorta);
+                        $('#diagnosticoBusquedaLista').append('<div class="col-md-2 p-2"><div class="shadow p-2 mb-2 rounded diagnostico-select" data-clave="' + item.clave + '">' + item.diagnostico + '</div></div>');
+                    });
+                },
+                error: function (xhr, status, error) {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'error',
+                        showConfirmButton: false,
+                        timer: 10000
+                    });
+                }
+            });
+        } else {
+            $('#diagnosticoBusquedaLista').empty();
+            $('#diagnosticoBusquedaAlert').text('¡Escribe más de dos caracteres!');
+        }
+
+    });
+
+
+    $("#tipoconsulta1").attr('disabled', 'disabled');
+    $("#tipoconsulta2").attr('disabled', 'disabled');
+    $("#tipoconsulta3").attr('disabled', 'disabled');
+    //$('#diaginfo1').hide();
+    //$('#diaginfo2').hide();
+    //Al dar click en los diagnoticos que se ponga en los cuadros de abajo
+    $(document).on('click', '.diagnostico-select', function (event) {
+        //console.log(event.data.nombre);
+        // imprime 'juan'
+        var clave = $(this).attr('data-clave');
+        var desCorta = $(this).text();
+        //alert(desCorta);
+        //$('#diagnostico1').val(desCorta);
+        //$('#clave1').val(clave);
+        //$('.diagnostico-select').css('background-color', 'white');
+        //$('.diagnostico-select').css('color', 'black');
+        if ($(this).hasClass("diagnostico-active")) {
+
+            $(this).removeClass('diagnostico-active');
+
+            if ($('#clave1').val() == clave) {
+                $('#diagnostico1').val('');
+                $('#clave1').val('');
+                $("#tipoconsulta1").attr('disabled', 'disabled');
+                $('#borrardiag1').css('filter', 'grayscale(100%)');
+
+
+                //$("#tipoconsulta1").val($("#tipoconsulta1 option:first").val());
+                //$('#finalizar').attr('disabled', 'disabled');
+                //$('#finalizar').css('background-color', 'lightgray');
+
+
+                //Si hay un valor en el diagnostico2
+                if ($('#clave2').val()) {
+                    $('#diagnostico1').val($('#diagnostico2').val());
+                    $('#clave1').val($('#clave2').val());
+                    $("#tipoconsulta1").removeAttr('disabled');
+                    $('#borrardiag1').css('filter', 'none');
+                    $("#tipoconsulta2").attr('disabled', 'disabled');
+                    $('#borrardiag2').css('filter', 'grayscale(100%)');
+                    $('#diagnostico2').val('');
+                    $('#clave2').val('');
+
+                    $("#tipoconsulta1 option").each(function () {
+                        var val = $(this).val();
+                        if (val == $('#tipoconsulta2').val()) {
+                            $(this).prop('selected', true);
+                        }
+                    });
+
+                    $("#tipoconsulta2").val($("#tipoconsulta2 option:first").val());
+
+
+                }
+
+                //Si hay un valor en el diagnostico3
+                if ($('#clave3').val()) {
+                    $('#diagnostico2').val($('#diagnostico3').val());
+                    $('#clave2').val($('#clave3').val());
+                    $("#tipoconsulta2").removeAttr('disabled');
+                    $('#borrardiag2').css('filter', 'none');
+                    $("#tipoconsulta3").attr('disabled', 'disabled');
+                    $('#borrardiag3').css('filter', 'grayscale(100%)');
+                    $('#diagnostico3').val('');
+                    $('#clave3').val('');
+
+                    $("#tipoconsulta2 option").each(function () {
+                        var val = $(this).val();
+                        if (val == $('#tipoconsulta3').val()) {
+                            $(this).prop('selected', true);
+                        }
+                    });
+
+                    $("#tipoconsulta3").val($("#tipoconsulta3 option:first").val());
+                }
+
+                //No hay ni diagnostico 1 ni 2
+                if (!$('#clave1').val()) {
+                    $("#tipoconsulta1").val($("#tipoconsulta1 option:first").val());
+                    //$('#finalizar').attr('disabled', 'disabled');
+                    //$('#finalizar').css('background-color', 'lightgray');
+                }
+
+
+
+            } else {
+                if ($('#clave2').val() == clave) {
+                    $('#diagnostico2').val('');
+                    $('#clave2').val('');
+                    $("#tipoconsulta2").attr('disabled', 'disabled');
+                    $('#borrardiag2').css('filter', 'grayscale(100%)');
+                    //Si hay un valor en el diagnostico3
+                    if ($('#clave3').val()) {
+                        $('#diagnostico2').val($('#diagnostico3').val());
+                        $('#clave2').val($('#clave3').val());
+                        $("#tipoconsulta2").removeAttr('disabled');
+                        $('#borrardiag2').css('filter', 'none');
+                        $("#tipoconsulta3").attr('disabled', 'disabled');
+                        $('#borrardiag3').css('filter', 'grayscale(100%)');
+                        $('#diagnostico3').val('');
+                        $('#clave3').val('');
+
+                        $("#tipoconsulta2 option").each(function () {
+                            var val = $(this).val();
+                            if (val == $('#tipoconsulta3').val()) {
+                                $(this).prop('selected', true);
+                            }
+                        });
+                    }
+
+                    if (!$('#clave2').val()) {
+                        $("#tipoconsulta2").val($("#tipoconsulta2 option:first").val());
+                    }
+
+                    $("#tipoconsulta3").val($("#tipoconsulta3 option:first").val());
+
+
+                } else {
+                    if ($('#clave3').val() == clave) {
+                        $('#diagnostico3').val('');
+                        $('#clave3').val('');
+                        $("#tipoconsulta3").attr('disabled', 'disabled');
+                        $('#borrardiag3').css('filter', 'grayscale(100%)');
+                        $("#tipoconsulta3").val($("#tipoconsulta3 option:first").val());
+                    }
+                }
+            }
+
+
+            $.ajax({
+                url: '@Url.Action("GuardaDiagSOAP", "ServiciosMedicos")',
+                dataType: "json",
+                data: { numemp: $("#numemp").val(), tipoconsulta1: $("#tipoconsulta1").val(), tipoconsulta2: $("#tipoconsulta2").val(), tipoconsulta3: $("#tipoconsulta3").val(), diagnostico1: $("#clave1").val(), diagnostico2: $("#clave2").val(), diagnostico3: $("#clave3").val() },
+                success: function (data) {
+                    infoSOAP();
+                },
+                error: function (xhr, status, error) {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'error',
+                        //stitle: 'Expediente no encontrado',
+                        showConfirmButton: false,
+                        timer: 10000
+                    });
+                }
+            });
+
+
+
+
+        } else {
+
+            $('#finalizar').attr('disabled', 'disabled');
+            $('#finalizar').css('background-color', 'lightgray');
+
+            var numItems = $('.diagnostico-active').length;
+            if (numItems < 3) {
+                if (numItems == 0) {
+                    $('#diagnostico1').val(desCorta);
+                    $('#clave1').val(clave);
+                    $("#tipoconsulta1").removeAttr('disabled');
+                    $('#borrardiag1').css('filter', 'none');
+                    $(this).addClass('diagnostico-active');
+
+                } else {
+                    if (numItems == 1) {
+                        //alert($("#tipoconsulta1").val());
+                        if ($("#tipoconsulta1").val() == null) {
+                            //alert('llena el tipo de diagnostico 1');
+                            $('#diaginfo1').show();
+                        } else {
+                            $('#diaginfo1').hide();
+                            $('#diagnostico2').val(desCorta);
+                            $('#clave2').val(clave);
+                            $("#tipoconsulta2").removeAttr('disabled');
+                            $('#borrardiag2').css('filter', 'none');
+                            $(this).addClass('diagnostico-active');
+                            //$('#finalizar').attr('disabled', 'disabled');
+                            //$('#finalizar').css('background-color', 'lightgray');
+                        }
+
+                    } else {
+                        if ($("#tipoconsulta2").val() == null) {
+                            //alert('llena el tipo de diagnostico 1');
+                            $('#diaginfo2').show();
+                        } else {
+                            $('#diaginfo1').hide();
+                            $('#diagnostico3').val(desCorta);
+                            $('#clave3').val(clave);
+                            $("#tipoconsulta3").removeAttr('disabled');
+                            $('#borrardiag3').css('filter', 'none');
+                            $(this).addClass('diagnostico-active');
+                            //$('#finalizar').attr('disabled', 'disabled');
+                            //$('#finalizar').css('background-color', 'lightgray');
+                        }
+
+                    }
+                }
+
+            }
+        }
+
+
+        var hash = "#diagnosticoBusquedaListaHistorial";
+        $('html, body').animate({
+            scrollTop: $(hash).offset().top
+        }, 800, function () {
+            window.location.href = "#diagnosticoBusquedaListaHistorial"
+        });
+
+    });
+
+
+    $(".tipoconsulta").change(function () {
+        $('#diaginfo1').hide();
+        $('#diaginfo2').hide();
+        $.ajax({
+            url: '@Url.Action("GuardaDiagSOAP", "ServiciosMedicos")',
+            dataType: "json",
+            data: { numemp: $("#numemp").val(), tipoconsulta1: $("#tipoconsulta1").val(), tipoconsulta2: $("#tipoconsulta2").val(), tipoconsulta3: $("#tipoconsulta3").val(), diagnostico1: $("#clave1").val(), diagnostico2: $("#clave2").val(), diagnostico3: $("#clave3").val() },
+            success: function (data) {
+                infoSOAP();
+            },
+            error: function (xhr, status, error) {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    //stitle: 'Expediente no encontrado',
+                    showConfirmButton: false,
+                    timer: 10000
+                });
+            }
+        });
+    });
+
+
+
 </script>
