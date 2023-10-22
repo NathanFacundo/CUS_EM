@@ -12,16 +12,13 @@ namespace CUS.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class HistoriaClinica
+    public partial class hc_MED_Inmunizaciones
     {
         public int Id { get; set; }
-        public string Clave_hc_px { get; set; }
-        public string Medico { get; set; }
-        public Nullable<System.DateTime> FechaRegistroHC { get; set; }
+        public string CartillaVacunacion { get; set; }
+        public string EsquemaVacunacion { get; set; }
+        public string Especifica_EsquemaVac { get; set; }
         public int Id_Paciente { get; set; }
-        public string TipoHistoria { get; set; }
-        public string Ident_HCcomún { get; set; }
-    
-        public virtual Paciente Paciente { get; set; }
+        public string Clave_hc_px { get; set; }
     }
 }

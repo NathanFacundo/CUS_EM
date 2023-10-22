@@ -12,16 +12,18 @@ namespace CUS.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class HistoriaClinica
+    public partial class hc_MED_Habitos
     {
         public int Id { get; set; }
-        public string Clave_hc_px { get; set; }
-        public string Medico { get; set; }
-        public Nullable<System.DateTime> FechaRegistroHC { get; set; }
+        public string HorasSuenio { get; set; }
+        public string TieneInsomnio { get; set; }
+        public string TieneEuresis { get; set; }
+        public string TienePesadillas { get; set; }
+        public string HorasOcio { get; set; }
+        public string ActividadFisica { get; set; }
+        public string ActFi_Tiempo { get; set; }
+        public string ActFi_Frecuencia { get; set; }
         public int Id_Paciente { get; set; }
-        public string TipoHistoria { get; set; }
-        public string Ident_HCcomún { get; set; }
-    
-        public virtual Paciente Paciente { get; set; }
+        public string Clave_hc_px { get; set; }
     }
 }

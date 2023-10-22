@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="81013d775d85454794370112490456b3" Name="Diagram1" ZoomLevel="72">
+        <EntityTypeShape EntityType="Models.hc_MED_Alimentacion" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.hc_MED_AntecedentesDes" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.hc_MED_AntecedentesGinecoObs" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.hc_MED_AntecedentesPeri" Width="1.5" PointX="0.625" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.hc_MED_AntecedentesVidaSex" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.hc_MED_Habitos" Width="1.5" PointX="6.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.hc_MED_HabitosAlimentacion" Width="1.5" PointX="2.875" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.hc_MED_HabitusExterior" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.hc_MED_Inmunizaciones" Width="1.5" PointX="6.625" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.hc_MED_Otros" Width="1.5" PointX="8.625" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.hc_MED_Plan" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.hc_MED_PrincipioEvolEstado" Width="1.5" PointX="12.625" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.hc_MED_Pronostico" Width="1.5" PointX="10.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.hc_MED_ResultadosLaboratorio" Width="1.5" PointX="10.75" PointY="5" IsExpanded="true" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

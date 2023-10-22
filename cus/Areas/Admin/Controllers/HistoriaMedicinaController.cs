@@ -1,89 +1,1329 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 
 namespace CUS.Areas.Admin.Controllers
 {
     public class HistoriaMedicinaController : Controller
     {
+        Models.CUS db = new Models.CUS();
+        Models.HC_Medicina hcMed = new Models.HC_Medicina();
+
         // GET: Admin/HistoriaMedicina
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET: Admin/HistoriaMedicina/Details/5
-        public ActionResult Details(int id)
+        //********      Función para Guarda nueva HC MEDICINA
+        public string buscaHisotriaClinica(string expediente)
         {
-            return View();
+            var fecha = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
+            var fechaDT = DateTime.Parse(fecha);
+            var claveHC = "";
+            
+            //Busca id de paciente
+            var paciente = (from a in db.Paciente
+                            where a.Expediente == expediente
+                            select a).FirstOrDefault();
+
+            if (paciente != null)
+            {
+                //Busca el ultimo registro del Historia Clinica
+                int idConsecutivo = 1;
+                var hcId = (from a in db.HistoriaClinica
+                            select a).
+                                OrderByDescending(g => g.Id)
+                                .FirstOrDefault();
+                if (hcId != null)
+                {
+                    idConsecutivo = hcId.Id + 1;
+                }
+
+                //Buscamos la ULTIMA hc común del px para obtener el Identificador y hacer match en el registro de la hc Medicina
+                var Ultima_HCcomun = (from a in db.HistoriaClinica
+                                      where a.Id_Paciente == paciente.Id
+                                      where a.TipoHistoria == "Común" || a.TipoHistoria == "Datos Grales."
+                                      select a).
+                                OrderByDescending(g => g.Id)
+                                .FirstOrDefault();
+
+                Models.HistoriaClinica hc = new Models.HistoriaClinica();
+                hc.Clave_hc_px = paciente.Expediente + "HC" + idConsecutivo;
+                hc.Medico = User.Identity.GetUserName();
+                hc.FechaRegistroHC = fechaDT;
+                hc.Id_Paciente = paciente.Id;
+                hc.TipoHistoria = "Medicina";
+                hc.Ident_HCcomún = Ultima_HCcomun.Clave_hc_px;//Este es el identificador de la ultima HC Común, que hará matcha con la HC Medicina
+                db.HistoriaClinica.Add(hc);
+                db.SaveChanges();
+
+                claveHC = paciente.Expediente + "HC" + idConsecutivo;
+            }
+            return claveHC;
         }
 
-        // GET: Admin/HistoriaMedicina/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
+        #region Guardar Pestañas de la H.C. Medicina
 
-        // POST: Admin/HistoriaMedicina/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult HabitusExterior(Models.hc_MED_HabitusExterior HistoriaClinica, string expediente)
         {
             try
             {
-                // TODO: Add insert logic here
+                var fecha = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
+                var fechaDT = DateTime.Parse(fecha);
+                
+                //Buscamos al px del que se le quiere hacer la H.C.
+                var paciente = (from a in db.Paciente
+                                where a.Expediente == expediente
+                                select a).FirstOrDefault();
 
-                return RedirectToAction("Index");
+                //Buscamos si a ese px se le acaba de crear registro en la tbl HistoriaClinica
+                if (paciente != null)
+                {
+                    var fechaUltimoRegistro = (from a in db.HistoriaClinica
+                                               where a.Id_Paciente == paciente.Id
+                                               select a).
+                              OrderByDescending(r => r.FechaRegistroHC)
+                              .FirstOrDefault();
+
+                    bool pacienteTieneRegistroEnUltimas3Horas;
+                    DateTime fechaLimite = DateTime.Now;
+                    //si NO existe registro en la bd en la tbl HistoriaClinica por default 'pacienteTieneRegistroEnUltimas3Horas' será null,
+                    //quiere decir que se creará un registro nuevo
+                    if (fechaUltimoRegistro == null)
+                    {
+                        pacienteTieneRegistroEnUltimas3Horas = false;
+                    }
+                    else
+                    {
+                        DateTime fechaActual = DateTime.Now;
+                        DateTime fechaL = fechaActual.AddHours(-3);
+                        //utilizar fechaLimite para verificar si el paciente tiene un registro dentro de las últimas 3 horas y tambien validar el TIPO DE HISTORIA
+                        pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
+                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC >= fechaL && r.FechaRegistroHC <= fechaActual && r.TipoHistoria == "Medicina");
+                    }
+
+                    var Id_claveHC = "";
+                    if (pacienteTieneRegistroEnUltimas3Horas)// El paciente ya tiene un registro en las últimas 3 horas
+                    {
+                        //Obtenemos los datos del registro del px
+                        var registroReciente = db.HistoriaClinica
+                                                .Where(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fechaLimite && r.FechaRegistroHC <= fechaDT)
+                                                .OrderByDescending(r => r.FechaRegistroHC)
+                                                .FirstOrDefault();
+
+                        Id_claveHC = registroReciente.Clave_hc_px;
+                    }
+                    else// No hay registro reciente, puedes guardar el nuevo registro.
+                    {
+                        string claveHC = buscaHisotriaClinica(expediente);
+                        Id_claveHC = claveHC;
+                    }
+
+                    //Se crea la HC de esta sección/pestaña
+                    Models.hc_MED_HabitusExterior Historia = new Models.hc_MED_HabitusExterior();
+                    Historia.BuenEstadoGral = HistoriaClinica.BuenEstadoGral;
+                    Historia.Tranquilo = HistoriaClinica.Tranquilo;
+                    Historia.Cooperador = HistoriaClinica.Cooperador;
+                    Historia.Orientado = HistoriaClinica.Orientado;
+                    Historia.FaciesCaract = HistoriaClinica.FaciesCaract;
+                    Historia.Depresivo = HistoriaClinica.Depresivo;
+                    Historia.Ansioso = HistoriaClinica.Ansioso;
+                    Historia.Agresivo = HistoriaClinica.Agresivo;
+                    Historia.Temeroso = HistoriaClinica.Temeroso;
+                    Historia.Irritable = HistoriaClinica.Irritable;
+                    Historia.Marcha = HistoriaClinica.Marcha;
+
+                    Historia.Id_Paciente = paciente.Id;
+                    Historia.Clave_hc_px = Id_claveHC;
+                    hcMed.hc_MED_HabitusExterior.Add(Historia);
+                    hcMed.SaveChanges();
+                }
+                return Json(new { MENSAJE = "Succe: " }, JsonRequestBehavior.AllowGet);
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                return Json(new { MENSAJE = "Error: Error de sistema: " + ex.Message }, JsonRequestBehavior.AllowGet);
             }
         }
 
-        // GET: Admin/HistoriaMedicina/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: Admin/HistoriaMedicina/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Habitos(Models.hc_MED_Habitos HistoriaClinica, string expediente)
         {
             try
             {
-                // TODO: Add update logic here
+                var fecha = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
+                var fechaDT = DateTime.Parse(fecha);
 
-                return RedirectToAction("Index");
+                //Buscamos al px del que se le quiere hacer la H.C.
+                var paciente = (from a in db.Paciente
+                                where a.Expediente == expediente
+                                select a).FirstOrDefault();
+
+                //Buscamos si a ese px se le acaba de crear registro en la tbl HistoriaClinica
+                if (paciente != null)
+                {
+                    var fechaUltimoRegistro = (from a in db.HistoriaClinica
+                                               where a.Id_Paciente == paciente.Id
+                                               select a).
+                              OrderByDescending(r => r.FechaRegistroHC)
+                              .FirstOrDefault();
+
+                    bool pacienteTieneRegistroEnUltimas3Horas;
+                    DateTime fechaLimite = DateTime.Now;
+                    //si NO existe registro en la bd en la tbl HistoriaClinica por default 'pacienteTieneRegistroEnUltimas3Horas' será null,
+                    //quiere decir que se creará un registro nuevo
+                    if (fechaUltimoRegistro == null)
+                    {
+                        pacienteTieneRegistroEnUltimas3Horas = false;
+                    }
+                    else
+                    {
+                        DateTime fechaActual = DateTime.Now;
+                        DateTime fechaL = fechaActual.AddHours(-3);
+                        //utilizar fechaLimite para verificar si el paciente tiene un registro dentro de las últimas 3 horas y tambien validar el TIPO DE HISTORIA
+                        pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
+                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC >= fechaL && r.FechaRegistroHC <= fechaActual && r.TipoHistoria == "Medicina");
+                    }
+
+                    var Id_claveHC = "";
+                    if (pacienteTieneRegistroEnUltimas3Horas)// El paciente ya tiene un registro en las últimas 3 horas
+                    {
+                        //Obtenemos los datos del registro del px
+                        var registroReciente = db.HistoriaClinica
+                                                .Where(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fechaLimite && r.FechaRegistroHC <= fechaDT)
+                                                .OrderByDescending(r => r.FechaRegistroHC)
+                                                .FirstOrDefault();
+
+                        Id_claveHC = registroReciente.Clave_hc_px;
+                    }
+                    else// No hay registro reciente, puedes guardar el nuevo registro.
+                    {
+                        string claveHC = buscaHisotriaClinica(expediente);
+                        Id_claveHC = claveHC;
+                    }
+
+                    //Se crea la HC de esta sección/pestaña
+                    Models.hc_MED_Habitos Historia = new Models.hc_MED_Habitos();
+                    Historia.HorasSuenio = HistoriaClinica.HorasSuenio;
+                    Historia.TieneInsomnio = HistoriaClinica.TieneInsomnio;
+                    Historia.TieneEuresis = HistoriaClinica.TieneEuresis;
+                    Historia.TienePesadillas = HistoriaClinica.TienePesadillas;
+                    Historia.HorasOcio = HistoriaClinica.HorasOcio;
+                    Historia.ActividadFisica = HistoriaClinica.ActividadFisica;
+                    Historia.ActFi_Tiempo = HistoriaClinica.ActFi_Tiempo;
+                    Historia.ActFi_Frecuencia = HistoriaClinica.ActFi_Frecuencia;
+                    
+                    Historia.Id_Paciente = paciente.Id;
+                    Historia.Clave_hc_px = Id_claveHC;
+                    hcMed.hc_MED_Habitos.Add(Historia);
+                    hcMed.SaveChanges();
+                }
+                return Json(new { MENSAJE = "Succe: " }, JsonRequestBehavior.AllowGet);
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                return Json(new { MENSAJE = "Error: Error de sistema: " + ex.Message }, JsonRequestBehavior.AllowGet);
             }
         }
 
-        // GET: Admin/HistoriaMedicina/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Admin/HistoriaMedicina/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult AntecedentesPerinatales(Models.hc_MED_AntecedentesPeri HistoriaClinica, string expediente)
         {
             try
             {
-                // TODO: Add delete logic here
+                var fecha = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
+                var fechaDT = DateTime.Parse(fecha);
 
-                return RedirectToAction("Index");
+                //Buscamos al px del que se le quiere hacer la H.C.
+                var paciente = (from a in db.Paciente
+                                where a.Expediente == expediente
+                                select a).FirstOrDefault();
+
+                //Buscamos si a ese px se le acaba de crear registro en la tbl HistoriaClinica
+                if (paciente != null)
+                {
+                    var fechaUltimoRegistro = (from a in db.HistoriaClinica
+                                               where a.Id_Paciente == paciente.Id
+                                               select a).
+                              OrderByDescending(r => r.FechaRegistroHC)
+                              .FirstOrDefault();
+
+                    bool pacienteTieneRegistroEnUltimas3Horas;
+                    DateTime fechaLimite = DateTime.Now;
+                    //si NO existe registro en la bd en la tbl HistoriaClinica por default 'pacienteTieneRegistroEnUltimas3Horas' será null,
+                    //quiere decir que se creará un registro nuevo
+                    if (fechaUltimoRegistro == null)
+                    {
+                        pacienteTieneRegistroEnUltimas3Horas = false;
+                    }
+                    else
+                    {
+                        DateTime fechaActual = DateTime.Now;
+                        DateTime fechaL = fechaActual.AddHours(-3);
+                        //utilizar fechaLimite para verificar si el paciente tiene un registro dentro de las últimas 3 horas y tambien validar el TIPO DE HISTORIA
+                        pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
+                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC >= fechaL && r.FechaRegistroHC <= fechaActual && r.TipoHistoria == "Medicina");
+                    }
+
+                    var Id_claveHC = "";
+                    if (pacienteTieneRegistroEnUltimas3Horas)// El paciente ya tiene un registro en las últimas 3 horas
+                    {
+                        //Obtenemos los datos del registro del px
+                        var registroReciente = db.HistoriaClinica
+                                                .Where(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fechaLimite && r.FechaRegistroHC <= fechaDT)
+                                                .OrderByDescending(r => r.FechaRegistroHC)
+                                                .FirstOrDefault();
+
+                        Id_claveHC = registroReciente.Clave_hc_px;
+                    }
+                    else// No hay registro reciente, puedes guardar el nuevo registro.
+                    {
+                        string claveHC = buscaHisotriaClinica(expediente);
+                        Id_claveHC = claveHC;
+                    }
+
+                    //Se crea la HC de esta sección/pestaña
+                    Models.hc_MED_AntecedentesPeri Historia = new Models.hc_MED_AntecedentesPeri();
+                    Historia.NumeroEmbarazo = HistoriaClinica.NumeroEmbarazo;
+                    Historia.EnfermedadesEmbarazo = HistoriaClinica.EnfermedadesEmbarazo;
+                    Historia.Especifica_EnfermedadesEmb = HistoriaClinica.Especifica_EnfermedadesEmb;
+                    Historia.TratamientosEmbarazo = HistoriaClinica.TratamientosEmbarazo;
+                    Historia.Especifica_TratamientosEmb = HistoriaClinica.Especifica_TratamientosEmb;
+                    Historia.LugarParto = HistoriaClinica.LugarParto;
+                    Historia.Otra_LugarParto = HistoriaClinica.Otra_LugarParto;
+                    Historia.EdadGestional = HistoriaClinica.EdadGestional;
+                    Historia.Especifica_EdadGes = HistoriaClinica.Especifica_EdadGes;
+                    Historia.Apgar = HistoriaClinica.Apgar;
+                    Historia.Especifica_Apgar = HistoriaClinica.Especifica_Apgar;
+                    Historia.TipoParto = HistoriaClinica.TipoParto;
+                    Historia.PartoFue_TipoParto = HistoriaClinica.PartoFue_TipoParto;
+                    Historia.Distocica_TipoParto = HistoriaClinica.Distocica_TipoParto;
+                    Historia.Cesaria_TipoParto = HistoriaClinica.Cesaria_TipoParto;
+                    Historia.ComplicacionAtenObst = HistoriaClinica.ComplicacionAtenObst;
+                    Historia.Especifica_Complicacion = HistoriaClinica.Especifica_Complicacion;
+                    Historia.TamizMetabolico = HistoriaClinica.TamizMetabolico;
+                    Historia.Seleccione_TamizMetabolico = HistoriaClinica.Seleccione_TamizMetabolico;
+                    Historia.TamizAuditivo = HistoriaClinica.TamizAuditivo;
+                    Historia.Seleccione_TamizAuditivo = HistoriaClinica.Seleccione_TamizAuditivo;
+
+                    Historia.Id_Paciente = paciente.Id;
+                    Historia.Clave_hc_px = Id_claveHC;
+                    hcMed.hc_MED_AntecedentesPeri.Add(Historia);
+                    hcMed.SaveChanges();
+                }
+                return Json(new { MENSAJE = "Succe: " }, JsonRequestBehavior.AllowGet);
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                return Json(new { MENSAJE = "Error: Error de sistema: " + ex.Message }, JsonRequestBehavior.AllowGet);
             }
         }
+
+        [HttpPost]
+        public ActionResult Inmunizaciones(Models.hc_MED_Inmunizaciones HistoriaClinica, string expediente)
+        {
+            try
+            {
+                var fecha = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
+                var fechaDT = DateTime.Parse(fecha);
+
+                //Buscamos al px del que se le quiere hacer la H.C.
+                var paciente = (from a in db.Paciente
+                                where a.Expediente == expediente
+                                select a).FirstOrDefault();
+
+                //Buscamos si a ese px se le acaba de crear registro en la tbl HistoriaClinica
+                if (paciente != null)
+                {
+                    var fechaUltimoRegistro = (from a in db.HistoriaClinica
+                                               where a.Id_Paciente == paciente.Id
+                                               select a).
+                              OrderByDescending(r => r.FechaRegistroHC)
+                              .FirstOrDefault();
+
+                    bool pacienteTieneRegistroEnUltimas3Horas;
+                    DateTime fechaLimite = DateTime.Now;
+                    //si NO existe registro en la bd en la tbl HistoriaClinica por default 'pacienteTieneRegistroEnUltimas3Horas' será null,
+                    //quiere decir que se creará un registro nuevo
+                    if (fechaUltimoRegistro == null)
+                    {
+                        pacienteTieneRegistroEnUltimas3Horas = false;
+                    }
+                    else
+                    {
+                        DateTime fechaActual = DateTime.Now;
+                        DateTime fechaL = fechaActual.AddHours(-3);
+                        //utilizar fechaLimite para verificar si el paciente tiene un registro dentro de las últimas 3 horas y tambien validar el TIPO DE HISTORIA
+                        pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
+                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC >= fechaL && r.FechaRegistroHC <= fechaActual && r.TipoHistoria == "Medicina");
+                    }
+
+                    var Id_claveHC = "";
+                    if (pacienteTieneRegistroEnUltimas3Horas)// El paciente ya tiene un registro en las últimas 3 horas
+                    {
+                        //Obtenemos los datos del registro del px
+                        var registroReciente = db.HistoriaClinica
+                                                .Where(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fechaLimite && r.FechaRegistroHC <= fechaDT)
+                                                .OrderByDescending(r => r.FechaRegistroHC)
+                                                .FirstOrDefault();
+
+                        Id_claveHC = registroReciente.Clave_hc_px;
+                    }
+                    else// No hay registro reciente, puedes guardar el nuevo registro.
+                    {
+                        string claveHC = buscaHisotriaClinica(expediente);
+                        Id_claveHC = claveHC;
+                    }
+
+                    //Se crea la HC de esta sección/pestaña
+                    Models.hc_MED_Inmunizaciones Historia = new Models.hc_MED_Inmunizaciones();
+                    Historia.CartillaVacunacion = HistoriaClinica.CartillaVacunacion;
+                    Historia.EsquemaVacunacion = HistoriaClinica.EsquemaVacunacion;
+                    Historia.Especifica_EsquemaVac = HistoriaClinica.Especifica_EsquemaVac;
+                    
+                    Historia.Id_Paciente = paciente.Id;
+                    Historia.Clave_hc_px = Id_claveHC;
+                    hcMed.hc_MED_Inmunizaciones.Add(Historia);
+                    hcMed.SaveChanges();
+                }
+                return Json(new { MENSAJE = "Succe: " }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(new { MENSAJE = "Error: Error de sistema: " + ex.Message }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Alimentacion(Models.hc_MED_Alimentacion HistoriaClinica, string expediente)
+        {
+            try
+            {
+                var fecha = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
+                var fechaDT = DateTime.Parse(fecha);
+
+                //Buscamos al px del que se le quiere hacer la H.C.
+                var paciente = (from a in db.Paciente
+                                where a.Expediente == expediente
+                                select a).FirstOrDefault();
+
+                //Buscamos si a ese px se le acaba de crear registro en la tbl HistoriaClinica
+                if (paciente != null)
+                {
+                    var fechaUltimoRegistro = (from a in db.HistoriaClinica
+                                               where a.Id_Paciente == paciente.Id
+                                               select a).
+                              OrderByDescending(r => r.FechaRegistroHC)
+                              .FirstOrDefault();
+
+                    bool pacienteTieneRegistroEnUltimas3Horas;
+                    DateTime fechaLimite = DateTime.Now;
+                    //si NO existe registro en la bd en la tbl HistoriaClinica por default 'pacienteTieneRegistroEnUltimas3Horas' será null,
+                    //quiere decir que se creará un registro nuevo
+                    if (fechaUltimoRegistro == null)
+                    {
+                        pacienteTieneRegistroEnUltimas3Horas = false;
+                    }
+                    else
+                    {
+                        DateTime fechaActual = DateTime.Now;
+                        DateTime fechaL = fechaActual.AddHours(-3);
+                        //utilizar fechaLimite para verificar si el paciente tiene un registro dentro de las últimas 3 horas y tambien validar el TIPO DE HISTORIA
+                        pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
+                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC >= fechaL && r.FechaRegistroHC <= fechaActual && r.TipoHistoria == "Medicina");
+                    }
+
+                    var Id_claveHC = "";
+                    if (pacienteTieneRegistroEnUltimas3Horas)// El paciente ya tiene un registro en las últimas 3 horas
+                    {
+                        //Obtenemos los datos del registro del px
+                        var registroReciente = db.HistoriaClinica
+                                                .Where(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fechaLimite && r.FechaRegistroHC <= fechaDT)
+                                                .OrderByDescending(r => r.FechaRegistroHC)
+                                                .FirstOrDefault();
+
+                        Id_claveHC = registroReciente.Clave_hc_px;
+                    }
+                    else// No hay registro reciente, puedes guardar el nuevo registro.
+                    {
+                        string claveHC = buscaHisotriaClinica(expediente);
+                        Id_claveHC = claveHC;
+                    }
+
+                    //Se crea la HC de esta sección/pestaña
+                    Models.hc_MED_Alimentacion Historia = new Models.hc_MED_Alimentacion();
+                    Historia.TipoLactancia = HistoriaClinica.TipoLactancia;
+                    Historia.TiempoLactancia = HistoriaClinica.TiempoLactancia;
+                    Historia.EdadAblactacion = HistoriaClinica.EdadAblactacion;
+                    Historia.AlimentosInicio = HistoriaClinica.AlimentosInicio;
+                    Historia.EdadIntegracion = HistoriaClinica.EdadIntegracion;
+                    Historia.MuertCuna = HistoriaClinica.MuertCuna;
+
+                    Historia.Id_Paciente = paciente.Id;
+                    Historia.Clave_hc_px = Id_claveHC;
+                    hcMed.hc_MED_Alimentacion.Add(Historia);
+                    hcMed.SaveChanges();
+                }
+                return Json(new { MENSAJE = "Succe: " }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(new { MENSAJE = "Error: Error de sistema: " + ex.Message }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult HabitosAlimenta(Models.hc_MED_HabitosAlimentacion HistoriaClinica, string expediente)
+        {
+            try
+            {
+                var fecha = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
+                var fechaDT = DateTime.Parse(fecha);
+
+                //Buscamos al px del que se le quiere hacer la H.C.
+                var paciente = (from a in db.Paciente
+                                where a.Expediente == expediente
+                                select a).FirstOrDefault();
+
+                //Buscamos si a ese px se le acaba de crear registro en la tbl HistoriaClinica
+                if (paciente != null)
+                {
+                    var fechaUltimoRegistro = (from a in db.HistoriaClinica
+                                               where a.Id_Paciente == paciente.Id
+                                               select a).
+                              OrderByDescending(r => r.FechaRegistroHC)
+                              .FirstOrDefault();
+
+                    bool pacienteTieneRegistroEnUltimas3Horas;
+                    DateTime fechaLimite = DateTime.Now;
+                    //si NO existe registro en la bd en la tbl HistoriaClinica por default 'pacienteTieneRegistroEnUltimas3Horas' será null,
+                    //quiere decir que se creará un registro nuevo
+                    if (fechaUltimoRegistro == null)
+                    {
+                        pacienteTieneRegistroEnUltimas3Horas = false;
+                    }
+                    else
+                    {
+                        DateTime fechaActual = DateTime.Now;
+                        DateTime fechaL = fechaActual.AddHours(-3);
+                        //utilizar fechaLimite para verificar si el paciente tiene un registro dentro de las últimas 3 horas y tambien validar el TIPO DE HISTORIA
+                        pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
+                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC >= fechaL && r.FechaRegistroHC <= fechaActual && r.TipoHistoria == "Medicina");
+                    }
+
+                    var Id_claveHC = "";
+                    if (pacienteTieneRegistroEnUltimas3Horas)// El paciente ya tiene un registro en las últimas 3 horas
+                    {
+                        //Obtenemos los datos del registro del px
+                        var registroReciente = db.HistoriaClinica
+                                                .Where(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fechaLimite && r.FechaRegistroHC <= fechaDT)
+                                                .OrderByDescending(r => r.FechaRegistroHC)
+                                                .FirstOrDefault();
+
+                        Id_claveHC = registroReciente.Clave_hc_px;
+                    }
+                    else// No hay registro reciente, puedes guardar el nuevo registro.
+                    {
+                        string claveHC = buscaHisotriaClinica(expediente);
+                        Id_claveHC = claveHC;
+                    }
+
+                    //Se crea la HC de esta sección/pestaña
+                    Models.hc_MED_HabitosAlimentacion Historia = new Models.hc_MED_HabitosAlimentacion();
+                    Historia.HabitosAlimentacion = HistoriaClinica.HabitosAlimentacion;
+                    Historia.EspecificaBueno = HistoriaClinica.EspecificaBueno;
+                    Historia.EspecificaRegular = HistoriaClinica.EspecificaRegular;
+                    Historia.EspecificaMalo = HistoriaClinica.EspecificaMalo;
+                    
+                    Historia.Id_Paciente = paciente.Id;
+                    Historia.Clave_hc_px = Id_claveHC;
+                    hcMed.hc_MED_HabitosAlimentacion.Add(Historia);
+                    hcMed.SaveChanges();
+                }
+                return Json(new { MENSAJE = "Succe: " }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(new { MENSAJE = "Error: Error de sistema: " + ex.Message }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult AntecedentesDesarrollo(Models.hc_MED_AntecedentesDes HistoriaClinica, string expediente)
+        {
+            try
+            {
+                var fecha = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
+                var fechaDT = DateTime.Parse(fecha);
+
+                //Buscamos al px del que se le quiere hacer la H.C.
+                var paciente = (from a in db.Paciente
+                                where a.Expediente == expediente
+                                select a).FirstOrDefault();
+
+                //Buscamos si a ese px se le acaba de crear registro en la tbl HistoriaClinica
+                if (paciente != null)
+                {
+                    var fechaUltimoRegistro = (from a in db.HistoriaClinica
+                                               where a.Id_Paciente == paciente.Id
+                                               select a).
+                              OrderByDescending(r => r.FechaRegistroHC)
+                              .FirstOrDefault();
+
+                    bool pacienteTieneRegistroEnUltimas3Horas;
+                    DateTime fechaLimite = DateTime.Now;
+                    //si NO existe registro en la bd en la tbl HistoriaClinica por default 'pacienteTieneRegistroEnUltimas3Horas' será null,
+                    //quiere decir que se creará un registro nuevo
+                    if (fechaUltimoRegistro == null)
+                    {
+                        pacienteTieneRegistroEnUltimas3Horas = false;
+                    }
+                    else
+                    {
+                        DateTime fechaActual = DateTime.Now;
+                        DateTime fechaL = fechaActual.AddHours(-3);
+                        //utilizar fechaLimite para verificar si el paciente tiene un registro dentro de las últimas 3 horas y tambien validar el TIPO DE HISTORIA
+                        pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
+                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC >= fechaL && r.FechaRegistroHC <= fechaActual && r.TipoHistoria == "Medicina");
+                    }
+
+                    var Id_claveHC = "";
+                    if (pacienteTieneRegistroEnUltimas3Horas)// El paciente ya tiene un registro en las últimas 3 horas
+                    {
+                        //Obtenemos los datos del registro del px
+                        var registroReciente = db.HistoriaClinica
+                                                .Where(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fechaLimite && r.FechaRegistroHC <= fechaDT)
+                                                .OrderByDescending(r => r.FechaRegistroHC)
+                                                .FirstOrDefault();
+
+                        Id_claveHC = registroReciente.Clave_hc_px;
+                    }
+                    else// No hay registro reciente, puedes guardar el nuevo registro.
+                    {
+                        string claveHC = buscaHisotriaClinica(expediente);
+                        Id_claveHC = claveHC;
+                    }
+
+                    //Se crea la HC de esta sección/pestaña
+                    Models.hc_MED_AntecedentesDes Historia = new Models.hc_MED_AntecedentesDes();
+                    Historia.SostuvoCabeza = HistoriaClinica.SostuvoCabeza;
+                    Historia.Especifica_SostuvoCab = HistoriaClinica.Especifica_SostuvoCab;
+                    Historia.SeSento = HistoriaClinica.SeSento;
+                    Historia.Especifica_SeSento = HistoriaClinica.Especifica_SeSento;
+                    Historia.Camino = HistoriaClinica.Camino;
+                    Historia.Especifica_Camino = HistoriaClinica.Especifica_Camino;
+                    Historia.Habla = HistoriaClinica.Habla;
+                    Historia.Especifica_Habla = HistoriaClinica.Especifica_Habla;
+                    Historia.ControlEsfinteres = HistoriaClinica.ControlEsfinteres;
+                    Historia.Especifica_ControlEsfin = HistoriaClinica.Especifica_ControlEsfin;
+                    Historia.PruebaEDI = HistoriaClinica.PruebaEDI;
+                    Historia.Especifica_PruebaEDI = HistoriaClinica.Especifica_PruebaEDI;
+
+                    Historia.Id_Paciente = paciente.Id;
+                    Historia.Clave_hc_px = Id_claveHC;
+                    hcMed.hc_MED_AntecedentesDes.Add(Historia);
+                    hcMed.SaveChanges();
+                }
+                return Json(new { MENSAJE = "Succe: " }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(new { MENSAJE = "Error: Error de sistema: " + ex.Message }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        public class AntecedentesGinecoPropiedades
+        {
+            public string Menarquia { get; set; }
+            public string Motivo_Menarquia { get; set; }
+            public string Ritmo_Menarquia { get; set; }
+            public string Tipo_Menarquia { get; set; }
+            public string Cantidad_Menarquia { get; set; }
+            public string Coloracion_Menarquia { get; set; }
+            public string Especifica_Coloracion { get; set; }
+            public string FenomenosAsoc { get; set; }
+            public string DolorPelvico { get; set; }
+            public string SangradoAnormal { get; set; }
+            public string UltimoMetodoAnti { get; set; }
+            public string Especifica_UltimoMetodoAnti { get; set; }
+            public string SangradoPostcoito { get; set; }
+            public string FlujoTransvaginal { get; set; }
+            public string Gesta { get; set; }
+            public string Partos { get; set; }
+            public string Especifica_Partos { get; set; }
+            public string Cesarea { get; set; }
+            public string Especifica_Cesarea { get; set; }
+            public string Abortos { get; set; }
+            public string Especifica_Abortos { get; set; }
+            public string HijosTerminos { get; set; }
+            public string Especifica_HijosTerminos { get; set; }
+            public string Prematuros { get; set; }
+            public string Especifica_Prematuros { get; set; }
+            public string FechaUltimoParto { get; set; }
+            public DateTime? Especifica_FechaUltimoParto { get; set; }
+            public string FechaUltimaCesarea { get; set; }
+            public DateTime? Especifica_FechaUltimaCesarea { get; set; }
+            public string Motivo_FechaUltimaCesarea { get; set; }
+            public string FechaUltimoAborto { get; set; }
+            public DateTime? Especifica_FechaUltimoAborto { get; set; }
+            public string FechaUltimaMenstruacion { get; set; }
+            public DateTime? Especifica_FechaUltimaMenstruacion { get; set; }
+            public string FechaProbableParto { get; set; }
+            public DateTime? Especifica_FechaProbableParto { get; set; }
+            public string FechaUltimoPapanicolau { get; set; }
+            public DateTime? Especifica_FechaUltimoPapanicolau { get; set; }
+            public string NoRecuerda_FechaUltimoPapanicolau { get; set; }
+            public string Resultado_FechaUltimoPapanicolau { get; set; }
+
+        }
+
+        [HttpPost]
+        public ActionResult AntecedentesGineco(AntecedentesGinecoPropiedades HistoriaClinica, string expediente)
+        {
+            try
+            {
+                var fecha = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
+                var fechaDT = DateTime.Parse(fecha);
+
+                //Buscamos al px del que se le quiere hacer la H.C.
+                var paciente = (from a in db.Paciente
+                                where a.Expediente == expediente
+                                select a).FirstOrDefault();
+
+                //Buscamos si a ese px se le acaba de crear registro en la tbl HistoriaClinica
+                if (paciente != null)
+                {
+                    var fechaUltimoRegistro = (from a in db.HistoriaClinica
+                                               where a.Id_Paciente == paciente.Id
+                                               select a).
+                              OrderByDescending(r => r.FechaRegistroHC)
+                              .FirstOrDefault();
+
+                    bool pacienteTieneRegistroEnUltimas3Horas;
+                    DateTime fechaLimite = DateTime.Now;
+                    //si NO existe registro en la bd en la tbl HistoriaClinica por default 'pacienteTieneRegistroEnUltimas3Horas' será null,
+                    //quiere decir que se creará un registro nuevo
+                    if (fechaUltimoRegistro == null)
+                    {
+                        pacienteTieneRegistroEnUltimas3Horas = false;
+                    }
+                    else
+                    {
+                        DateTime fechaActual = DateTime.Now;
+                        DateTime fechaL = fechaActual.AddHours(-3);
+                        //utilizar fechaLimite para verificar si el paciente tiene un registro dentro de las últimas 3 horas y tambien validar el TIPO DE HISTORIA
+                        pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
+                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC >= fechaL && r.FechaRegistroHC <= fechaActual && r.TipoHistoria == "Medicina");
+                    }
+
+                    var Id_claveHC = "";
+                    if (pacienteTieneRegistroEnUltimas3Horas)// El paciente ya tiene un registro en las últimas 3 horas
+                    {
+                        //Obtenemos los datos del registro del px
+                        var registroReciente = db.HistoriaClinica
+                                                .Where(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fechaLimite && r.FechaRegistroHC <= fechaDT)
+                                                .OrderByDescending(r => r.FechaRegistroHC)
+                                                .FirstOrDefault();
+
+                        Id_claveHC = registroReciente.Clave_hc_px;
+                    }
+                    else// No hay registro reciente, puedes guardar el nuevo registro.
+                    {
+                        string claveHC = buscaHisotriaClinica(expediente);
+                        Id_claveHC = claveHC;
+                    }
+
+                    //Se crea la HC de esta sección/pestaña
+                    Models.hc_MED_AntecedentesGinecoObs Historia = new Models.hc_MED_AntecedentesGinecoObs();
+                    Historia.Menarquia = HistoriaClinica.Menarquia;
+                    Historia.Motivo_Menarquia = HistoriaClinica.Motivo_Menarquia;
+                    Historia.Ritmo_Menarquia = HistoriaClinica.Ritmo_Menarquia;
+                    Historia.Tipo_Menarquia = HistoriaClinica.Tipo_Menarquia;
+                    Historia.Cantidad_Menarquia = HistoriaClinica.Cantidad_Menarquia;
+                    Historia.Coloracion_Menarquia = HistoriaClinica.Coloracion_Menarquia;
+                    Historia.Especifica_Coloracion = HistoriaClinica.Especifica_Coloracion;
+                    Historia.FenomenosAsoc = HistoriaClinica.FenomenosAsoc;
+                    Historia.DolorPelvico = HistoriaClinica.DolorPelvico;
+                    Historia.SangradoAnormal = HistoriaClinica.SangradoAnormal;
+                    Historia.UltimoMetodoAnti = HistoriaClinica.UltimoMetodoAnti;
+                    Historia.Especifica_UltimoMetodoAnti = HistoriaClinica.Especifica_UltimoMetodoAnti;
+                    Historia.SangradoPostcoito = HistoriaClinica.SangradoPostcoito;
+                    Historia.FlujoTransvaginal = HistoriaClinica.FlujoTransvaginal;
+                    Historia.Gesta = HistoriaClinica.Gesta;
+                    Historia.Partos = HistoriaClinica.Partos;
+                    Historia.Especifica_Partos = HistoriaClinica.Especifica_Partos;
+                    Historia.Cesarea = HistoriaClinica.Cesarea;
+                    Historia.Especifica_Cesarea = HistoriaClinica.Especifica_Cesarea;
+                    Historia.Abortos = HistoriaClinica.Abortos;
+                    Historia.Especifica_Abortos = HistoriaClinica.Especifica_Abortos;
+                    Historia.HijosTerminos = HistoriaClinica.HijosTerminos;
+                    Historia.Especifica_HijosTerminos = HistoriaClinica.Especifica_HijosTerminos;
+                    Historia.Prematuros = HistoriaClinica.Prematuros;
+                    Historia.Especifica_Prematuros = HistoriaClinica.Especifica_Prematuros;
+                    Historia.FechaUltimoParto = HistoriaClinica.FechaUltimoParto;
+                    //Historia.Especifica_FechaUltimoParto = (DateTime)HistoriaClinica.Especifica_FechaUltimoParto;
+                    if (HistoriaClinica.Especifica_FechaUltimoParto.HasValue)
+                    {
+                        Historia.Especifica_FechaUltimoParto = HistoriaClinica.Especifica_FechaUltimoParto.Value;
+                    }
+                    else
+                    {
+                        //Historia.Especifica_FechaUltimoParto = null; // O simplemente no asignar ningún valor si es nulo.
+                    }
+
+
+                    Historia.FechaUltimaCesarea = HistoriaClinica.FechaUltimaCesarea;
+                    //Historia.Especifica_FechaUltimaCesarea = (DateTime)HistoriaClinica.Especifica_FechaUltimaCesarea;
+                    if (HistoriaClinica.Especifica_FechaUltimaCesarea.HasValue)
+                    {
+                        Historia.Especifica_FechaUltimaCesarea = HistoriaClinica.Especifica_FechaUltimaCesarea.Value;
+                    }
+                    else
+                    {
+                    }
+                    Historia.Motivo_FechaUltimaCesarea = HistoriaClinica.Motivo_FechaUltimaCesarea;
+                    Historia.FechaUltimoAborto = HistoriaClinica.FechaUltimoAborto;
+                    //Historia.Especifica_FechaUltimoAborto = (DateTime)HistoriaClinica.Especifica_FechaUltimoAborto;
+                    if (HistoriaClinica.Especifica_FechaUltimoAborto.HasValue)
+                    {
+                        Historia.Especifica_FechaUltimoAborto = HistoriaClinica.Especifica_FechaUltimoAborto.Value;
+                    }
+                    else
+                    {
+                    }
+                    Historia.FechaUltimaMenstruacion = HistoriaClinica.FechaUltimaMenstruacion;
+                    //Historia.Especifica_FechaUltimaMenstruacion = (DateTime)HistoriaClinica.Especifica_FechaUltimaMenstruacion;
+                    if (HistoriaClinica.Especifica_FechaUltimaMenstruacion.HasValue)
+                    {
+                        Historia.Especifica_FechaUltimaMenstruacion = HistoriaClinica.Especifica_FechaUltimaMenstruacion.Value;
+                    }
+                    else
+                    {
+                    }
+                    Historia.FechaProbableParto = HistoriaClinica.FechaProbableParto;
+                    //Historia.Especifica_FechaProbableParto = (DateTime)HistoriaClinica.Especifica_FechaProbableParto;
+                    if (HistoriaClinica.Especifica_FechaProbableParto.HasValue)
+                    {
+                        Historia.Especifica_FechaProbableParto = HistoriaClinica.Especifica_FechaProbableParto.Value;
+                    }
+                    else
+                    {
+                    }
+                    Historia.FechaUltimoPapanicolau = HistoriaClinica.FechaUltimoPapanicolau;
+                    //Historia.Especifica_FechaUltimoPapanicolau = (DateTime)HistoriaClinica.Especifica_FechaUltimoPapanicolau;
+                    if (HistoriaClinica.Especifica_FechaUltimoPapanicolau.HasValue)
+                    {
+                        Historia.Especifica_FechaUltimoPapanicolau = HistoriaClinica.Especifica_FechaUltimoPapanicolau.Value;
+                    }
+                    else
+                    {
+                    }
+
+                    if (HistoriaClinica.NoRecuerda_FechaUltimoPapanicolau == "on")
+                    {
+                        Historia.NoRecuerda_FechaUltimoPapanicolau = true;
+                    }
+                    else
+                    {
+                        Historia.NoRecuerda_FechaUltimoPapanicolau = false;
+                    }
+                    Historia.Resultado_FechaUltimoPapanicolau = HistoriaClinica.Resultado_FechaUltimoPapanicolau;
+
+                    Historia.Id_Paciente = paciente.Id;
+                    Historia.Clave_hc_px = Id_claveHC;
+                    hcMed.hc_MED_AntecedentesGinecoObs.Add(Historia);
+                    hcMed.SaveChanges();
+                }
+                return Json(new { MENSAJE = "Succe: " }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(new { MENSAJE = "Error: Error de sistema: " + ex.Message }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult AntecedentesVidaSexual(Models.hc_MED_AntecedentesVidaSex HistoriaClinica, string expediente)
+        {
+            try
+            {
+                var fecha = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
+                var fechaDT = DateTime.Parse(fecha);
+
+                //Buscamos al px del que se le quiere hacer la H.C.
+                var paciente = (from a in db.Paciente
+                                where a.Expediente == expediente
+                                select a).FirstOrDefault();
+
+                //Buscamos si a ese px se le acaba de crear registro en la tbl HistoriaClinica
+                if (paciente != null)
+                {
+                    var fechaUltimoRegistro = (from a in db.HistoriaClinica
+                                               where a.Id_Paciente == paciente.Id
+                                               select a).
+                              OrderByDescending(r => r.FechaRegistroHC)
+                              .FirstOrDefault();
+
+                    bool pacienteTieneRegistroEnUltimas3Horas;
+                    DateTime fechaLimite = DateTime.Now;
+                    //si NO existe registro en la bd en la tbl HistoriaClinica por default 'pacienteTieneRegistroEnUltimas3Horas' será null,
+                    //quiere decir que se creará un registro nuevo
+                    if (fechaUltimoRegistro == null)
+                    {
+                        pacienteTieneRegistroEnUltimas3Horas = false;
+                    }
+                    else
+                    {
+                        DateTime fechaActual = DateTime.Now;
+                        DateTime fechaL = fechaActual.AddHours(-3);
+                        //utilizar fechaLimite para verificar si el paciente tiene un registro dentro de las últimas 3 horas y tambien validar el TIPO DE HISTORIA
+                        pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
+                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC >= fechaL && r.FechaRegistroHC <= fechaActual && r.TipoHistoria == "Medicina");
+                    }
+
+                    var Id_claveHC = "";
+                    if (pacienteTieneRegistroEnUltimas3Horas)// El paciente ya tiene un registro en las últimas 3 horas
+                    {
+                        //Obtenemos los datos del registro del px
+                        var registroReciente = db.HistoriaClinica
+                                                .Where(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fechaLimite && r.FechaRegistroHC <= fechaDT)
+                                                .OrderByDescending(r => r.FechaRegistroHC)
+                                                .FirstOrDefault();
+
+                        Id_claveHC = registroReciente.Clave_hc_px;
+                    }
+                    else// No hay registro reciente, puedes guardar el nuevo registro.
+                    {
+                        string claveHC = buscaHisotriaClinica(expediente);
+                        Id_claveHC = claveHC;
+                    }
+
+                    //Se crea la HC de esta sección/pestaña
+                    Models.hc_MED_AntecedentesVidaSex Historia = new Models.hc_MED_AntecedentesVidaSex();
+                    Historia.InicioVidaSexual = HistoriaClinica.InicioVidaSexual;
+                    Historia.Edad_InicioVidaSexual = HistoriaClinica.Edad_InicioVidaSexual;
+                    Historia.Numero_ParejasSexuales = HistoriaClinica.Numero_ParejasSexuales;
+                    
+                    Historia.Id_Paciente = paciente.Id;
+                    Historia.Clave_hc_px = Id_claveHC;
+                    hcMed.hc_MED_AntecedentesVidaSex.Add(Historia);
+                    hcMed.SaveChanges();
+                }
+                return Json(new { MENSAJE = "Succe: " }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(new { MENSAJE = "Error: Error de sistema: " + ex.Message }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult PrincipioEvolucion(Models.hc_MED_PrincipioEvolEstado HistoriaClinica, string expediente)
+        {
+            try
+            {
+                var fecha = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
+                var fechaDT = DateTime.Parse(fecha);
+
+                //Buscamos al px del que se le quiere hacer la H.C.
+                var paciente = (from a in db.Paciente
+                                where a.Expediente == expediente
+                                select a).FirstOrDefault();
+
+                //Buscamos si a ese px se le acaba de crear registro en la tbl HistoriaClinica
+                if (paciente != null)
+                {
+                    var fechaUltimoRegistro = (from a in db.HistoriaClinica
+                                               where a.Id_Paciente == paciente.Id
+                                               select a).
+                              OrderByDescending(r => r.FechaRegistroHC)
+                              .FirstOrDefault();
+
+                    bool pacienteTieneRegistroEnUltimas3Horas;
+                    DateTime fechaLimite = DateTime.Now;
+                    //si NO existe registro en la bd en la tbl HistoriaClinica por default 'pacienteTieneRegistroEnUltimas3Horas' será null,
+                    //quiere decir que se creará un registro nuevo
+                    if (fechaUltimoRegistro == null)
+                    {
+                        pacienteTieneRegistroEnUltimas3Horas = false;
+                    }
+                    else
+                    {
+                        DateTime fechaActual = DateTime.Now;
+                        DateTime fechaL = fechaActual.AddHours(-3);
+                        //utilizar fechaLimite para verificar si el paciente tiene un registro dentro de las últimas 3 horas y tambien validar el TIPO DE HISTORIA
+                        pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
+                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC >= fechaL && r.FechaRegistroHC <= fechaActual && r.TipoHistoria == "Medicina");
+                    }
+
+                    var Id_claveHC = "";
+                    if (pacienteTieneRegistroEnUltimas3Horas)// El paciente ya tiene un registro en las últimas 3 horas
+                    {
+                        //Obtenemos los datos del registro del px
+                        var registroReciente = db.HistoriaClinica
+                                                .Where(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fechaLimite && r.FechaRegistroHC <= fechaDT)
+                                                .OrderByDescending(r => r.FechaRegistroHC)
+                                                .FirstOrDefault();
+
+                        Id_claveHC = registroReciente.Clave_hc_px;
+                    }
+                    else// No hay registro reciente, puedes guardar el nuevo registro.
+                    {
+                        string claveHC = buscaHisotriaClinica(expediente);
+                        Id_claveHC = claveHC;
+                    }
+
+                    //Se crea la HC de esta sección/pestaña
+                    Models.hc_MED_PrincipioEvolEstado Historia = new Models.hc_MED_PrincipioEvolEstado();
+                    Historia.PEE = HistoriaClinica.PEE;
+                    
+                    Historia.Id_Paciente = paciente.Id;
+                    Historia.Clave_hc_px = Id_claveHC;
+                    hcMed.hc_MED_PrincipioEvolEstado.Add(Historia);
+                    hcMed.SaveChanges();
+                }
+                return Json(new { MENSAJE = "Succe: " }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(new { MENSAJE = "Error: Error de sistema: " + ex.Message }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult ResultadosLaboratorio(Models.hc_MED_ResultadosLaboratorio HistoriaClinica, string expediente)
+        {
+            try
+            {
+                var fecha = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
+                var fechaDT = DateTime.Parse(fecha);
+
+                //Buscamos al px del que se le quiere hacer la H.C.
+                var paciente = (from a in db.Paciente
+                                where a.Expediente == expediente
+                                select a).FirstOrDefault();
+
+                //Buscamos si a ese px se le acaba de crear registro en la tbl HistoriaClinica
+                if (paciente != null)
+                {
+                    var fechaUltimoRegistro = (from a in db.HistoriaClinica
+                                               where a.Id_Paciente == paciente.Id
+                                               select a).
+                              OrderByDescending(r => r.FechaRegistroHC)
+                              .FirstOrDefault();
+
+                    bool pacienteTieneRegistroEnUltimas3Horas;
+                    DateTime fechaLimite = DateTime.Now;
+                    //si NO existe registro en la bd en la tbl HistoriaClinica por default 'pacienteTieneRegistroEnUltimas3Horas' será null,
+                    //quiere decir que se creará un registro nuevo
+                    if (fechaUltimoRegistro == null)
+                    {
+                        pacienteTieneRegistroEnUltimas3Horas = false;
+                    }
+                    else
+                    {
+                        DateTime fechaActual = DateTime.Now;
+                        DateTime fechaL = fechaActual.AddHours(-3);
+                        //utilizar fechaLimite para verificar si el paciente tiene un registro dentro de las últimas 3 horas y tambien validar el TIPO DE HISTORIA
+                        pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
+                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC >= fechaL && r.FechaRegistroHC <= fechaActual && r.TipoHistoria == "Medicina");
+                    }
+
+                    var Id_claveHC = "";
+                    if (pacienteTieneRegistroEnUltimas3Horas)// El paciente ya tiene un registro en las últimas 3 horas
+                    {
+                        //Obtenemos los datos del registro del px
+                        var registroReciente = db.HistoriaClinica
+                                                .Where(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fechaLimite && r.FechaRegistroHC <= fechaDT)
+                                                .OrderByDescending(r => r.FechaRegistroHC)
+                                                .FirstOrDefault();
+
+                        Id_claveHC = registroReciente.Clave_hc_px;
+                    }
+                    else// No hay registro reciente, puedes guardar el nuevo registro.
+                    {
+                        string claveHC = buscaHisotriaClinica(expediente);
+                        Id_claveHC = claveHC;
+                    }
+
+                    //Se crea la HC de esta sección/pestaña
+                    Models.hc_MED_ResultadosLaboratorio Historia = new Models.hc_MED_ResultadosLaboratorio();
+                    Historia.RLGR = HistoriaClinica.RLGR;
+                    Historia.Especifica_RLGR = HistoriaClinica.Especifica_RLGR;
+
+                    Historia.Id_Paciente = paciente.Id;
+                    Historia.Clave_hc_px = Id_claveHC;
+                    hcMed.hc_MED_ResultadosLaboratorio.Add(Historia);
+                    hcMed.SaveChanges();
+                }
+                return Json(new { MENSAJE = "Succe: " }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(new { MENSAJE = "Error: Error de sistema: " + ex.Message }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Plan(Models.hc_MED_Plan HistoriaClinica, string expediente)
+        {
+            try
+            {
+                var fecha = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
+                var fechaDT = DateTime.Parse(fecha);
+
+                //Buscamos al px del que se le quiere hacer la H.C.
+                var paciente = (from a in db.Paciente
+                                where a.Expediente == expediente
+                                select a).FirstOrDefault();
+
+                //Buscamos si a ese px se le acaba de crear registro en la tbl HistoriaClinica
+                if (paciente != null)
+                {
+                    var fechaUltimoRegistro = (from a in db.HistoriaClinica
+                                               where a.Id_Paciente == paciente.Id
+                                               select a).
+                              OrderByDescending(r => r.FechaRegistroHC)
+                              .FirstOrDefault();
+
+                    bool pacienteTieneRegistroEnUltimas3Horas;
+                    DateTime fechaLimite = DateTime.Now;
+                    //si NO existe registro en la bd en la tbl HistoriaClinica por default 'pacienteTieneRegistroEnUltimas3Horas' será null,
+                    //quiere decir que se creará un registro nuevo
+                    if (fechaUltimoRegistro == null)
+                    {
+                        pacienteTieneRegistroEnUltimas3Horas = false;
+                    }
+                    else
+                    {
+                        DateTime fechaActual = DateTime.Now;
+                        DateTime fechaL = fechaActual.AddHours(-3);
+                        //utilizar fechaLimite para verificar si el paciente tiene un registro dentro de las últimas 3 horas y tambien validar el TIPO DE HISTORIA
+                        pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
+                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC >= fechaL && r.FechaRegistroHC <= fechaActual && r.TipoHistoria == "Medicina");
+                    }
+
+                    var Id_claveHC = "";
+                    if (pacienteTieneRegistroEnUltimas3Horas)// El paciente ya tiene un registro en las últimas 3 horas
+                    {
+                        //Obtenemos los datos del registro del px
+                        var registroReciente = db.HistoriaClinica
+                                                .Where(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fechaLimite && r.FechaRegistroHC <= fechaDT)
+                                                .OrderByDescending(r => r.FechaRegistroHC)
+                                                .FirstOrDefault();
+
+                        Id_claveHC = registroReciente.Clave_hc_px;
+                    }
+                    else// No hay registro reciente, puedes guardar el nuevo registro.
+                    {
+                        string claveHC = buscaHisotriaClinica(expediente);
+                        Id_claveHC = claveHC;
+                    }
+
+                    //Se crea la HC de esta sección/pestaña
+                    Models.hc_MED_Plan Historia = new Models.hc_MED_Plan();
+                    Historia.Plan = HistoriaClinica.Plan;
+                    
+                    Historia.Id_Paciente = paciente.Id;
+                    Historia.Clave_hc_px = Id_claveHC;
+                    hcMed.hc_MED_Plan.Add(Historia);
+                    hcMed.SaveChanges();
+                }
+                return Json(new { MENSAJE = "Succe: " }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(new { MENSAJE = "Error: Error de sistema: " + ex.Message }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        public class PronosticoPropiedades
+        {
+            public string LigadoEvolucion { get; set; }
+            public string Favorable { get; set; }
+            public string Desfavorable { get; set; }
+        }
+
+        [HttpPost]
+        public ActionResult Pronostico(PronosticoPropiedades HistoriaClinica, string expediente)
+        {
+            try
+            {
+                var fecha = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
+                var fechaDT = DateTime.Parse(fecha);
+
+                //Buscamos al px del que se le quiere hacer la H.C.
+                var paciente = (from a in db.Paciente
+                                where a.Expediente == expediente
+                                select a).FirstOrDefault();
+
+                //Buscamos si a ese px se le acaba de crear registro en la tbl HistoriaClinica
+                if (paciente != null)
+                {
+                    var fechaUltimoRegistro = (from a in db.HistoriaClinica
+                                               where a.Id_Paciente == paciente.Id
+                                               select a).
+                              OrderByDescending(r => r.FechaRegistroHC)
+                              .FirstOrDefault();
+
+                    bool pacienteTieneRegistroEnUltimas3Horas;
+                    DateTime fechaLimite = DateTime.Now;
+                    //si NO existe registro en la bd en la tbl HistoriaClinica por default 'pacienteTieneRegistroEnUltimas3Horas' será null,
+                    //quiere decir que se creará un registro nuevo
+                    if (fechaUltimoRegistro == null)
+                    {
+                        pacienteTieneRegistroEnUltimas3Horas = false;
+                    }
+                    else
+                    {
+                        DateTime fechaActual = DateTime.Now;
+                        DateTime fechaL = fechaActual.AddHours(-3);
+                        //utilizar fechaLimite para verificar si el paciente tiene un registro dentro de las últimas 3 horas y tambien validar el TIPO DE HISTORIA
+                        pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
+                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC >= fechaL && r.FechaRegistroHC <= fechaActual && r.TipoHistoria == "Medicina");
+                    }
+
+                    var Id_claveHC = "";
+                    if (pacienteTieneRegistroEnUltimas3Horas)// El paciente ya tiene un registro en las últimas 3 horas
+                    {
+                        //Obtenemos los datos del registro del px
+                        var registroReciente = db.HistoriaClinica
+                                                .Where(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fechaLimite && r.FechaRegistroHC <= fechaDT)
+                                                .OrderByDescending(r => r.FechaRegistroHC)
+                                                .FirstOrDefault();
+
+                        Id_claveHC = registroReciente.Clave_hc_px;
+                    }
+                    else// No hay registro reciente, puedes guardar el nuevo registro.
+                    {
+                        string claveHC = buscaHisotriaClinica(expediente);
+                        Id_claveHC = claveHC;
+                    }
+
+                    //Se crea la HC de esta sección/pestaña
+                    Models.hc_MED_Pronostico Historia = new Models.hc_MED_Pronostico();
+                    
+                    if (HistoriaClinica.LigadoEvolucion == "on")
+                    {
+                        Historia.LigadoEvolucion = true;
+                    }
+                    else
+                    {
+                        Historia.LigadoEvolucion = false;
+                    }
+                    if (HistoriaClinica.Favorable == "on")
+                    {
+                        Historia.Favorable = true;
+                    }
+                    else
+                    {
+                        Historia.Favorable = false;
+                    }
+                    if (HistoriaClinica.Desfavorable == "on")
+                    {
+                        Historia.Desfavorable = true;
+                    }
+                    else
+                    {
+                        Historia.Desfavorable = false;
+                    }
+
+                    Historia.Id_Paciente = paciente.Id;
+                    Historia.Clave_hc_px = Id_claveHC;
+                    hcMed.hc_MED_Pronostico.Add(Historia);
+                    hcMed.SaveChanges();
+                }
+                return Json(new { MENSAJE = "Succe: " }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(new { MENSAJE = "Error: Error de sistema: " + ex.Message }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Otros(Models.hc_MED_Otros HistoriaClinica, string expediente)
+        {
+            try
+            {
+                var fecha = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
+                var fechaDT = DateTime.Parse(fecha);
+
+                //Buscamos al px del que se le quiere hacer la H.C.
+                var paciente = (from a in db.Paciente
+                                where a.Expediente == expediente
+                                select a).FirstOrDefault();
+
+                //Buscamos si a ese px se le acaba de crear registro en la tbl HistoriaClinica
+                if (paciente != null)
+                {
+                    var fechaUltimoRegistro = (from a in db.HistoriaClinica
+                                               where a.Id_Paciente == paciente.Id
+                                               select a).
+                              OrderByDescending(r => r.FechaRegistroHC)
+                              .FirstOrDefault();
+
+                    bool pacienteTieneRegistroEnUltimas3Horas;
+                    DateTime fechaLimite = DateTime.Now;
+                    //si NO existe registro en la bd en la tbl HistoriaClinica por default 'pacienteTieneRegistroEnUltimas3Horas' será null,
+                    //quiere decir que se creará un registro nuevo
+                    if (fechaUltimoRegistro == null)
+                    {
+                        pacienteTieneRegistroEnUltimas3Horas = false;
+                    }
+                    else
+                    {
+                        DateTime fechaActual = DateTime.Now;
+                        DateTime fechaL = fechaActual.AddHours(-3);
+                        //utilizar fechaLimite para verificar si el paciente tiene un registro dentro de las últimas 3 horas y tambien validar el TIPO DE HISTORIA
+                        pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
+                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC >= fechaL && r.FechaRegistroHC <= fechaActual && r.TipoHistoria == "Medicina");
+                    }
+
+                    var Id_claveHC = "";
+                    if (pacienteTieneRegistroEnUltimas3Horas)// El paciente ya tiene un registro en las últimas 3 horas
+                    {
+                        //Obtenemos los datos del registro del px
+                        var registroReciente = db.HistoriaClinica
+                                                .Where(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fechaLimite && r.FechaRegistroHC <= fechaDT)
+                                                .OrderByDescending(r => r.FechaRegistroHC)
+                                                .FirstOrDefault();
+
+                        Id_claveHC = registroReciente.Clave_hc_px;
+                    }
+                    else// No hay registro reciente, puedes guardar el nuevo registro.
+                    {
+                        string claveHC = buscaHisotriaClinica(expediente);
+                        Id_claveHC = claveHC;
+                    }
+
+                    //Se crea la HC de esta sección/pestaña
+                    Models.hc_MED_Otros Historia = new Models.hc_MED_Otros();
+                    Historia.Interconsulta = HistoriaClinica.Interconsulta;
+                    Historia.PadecimientoActual = HistoriaClinica.PadecimientoActual;
+                    Historia.Especifica_PadecimientoActual = HistoriaClinica.Especifica_PadecimientoActual;
+                    Historia.ProximaCita = HistoriaClinica.ProximaCita;
+
+                    Historia.Id_Paciente = paciente.Id;
+                    Historia.Clave_hc_px = Id_claveHC;
+                    hcMed.hc_MED_Otros.Add(Historia);
+                    hcMed.SaveChanges();
+                }
+                return Json(new { MENSAJE = "Succe: " }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(new { MENSAJE = "Error: Error de sistema: " + ex.Message }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        #endregion
+
     }
 }

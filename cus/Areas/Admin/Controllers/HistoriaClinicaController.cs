@@ -59,7 +59,7 @@ namespace CUS.Areas.Admin.Controllers
                     hc.Medico = User.Identity.GetUserName();
                     hc.FechaRegistroHC = fechaDT;
                     hc.Id_Paciente = paciente.Id;
-                    hc.TipoHistoria = "Común";
+                    hc.TipoHistoria = "Datos Grales.";
                     db.HistoriaClinica.Add(hc);
                     db.SaveChanges();
 
