@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using CUS.Models;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,31 @@ namespace CUS.Areas.Admin.Controllers
         {
             return View();
         }
+
+
+
+        public int buscaNotaEvolucion(int notaEvoId)
+        {
+            //Buscar id de la nota de evolucion
+            var notaEvo = (from a in db.NotaEvolucion
+                               where a.id == notaEvoId
+                           select a).FirstOrDefault();
+
+            var fecha = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
+            var fechaDT = DateTime.Parse(fecha);
+
+            int claveNE = 0;
+
+            if (notaEvo != null)
+            {
+                claveNE = notaEvo.id;
+            }
+            
+            return claveNE;
+        }
+
+
+
 
 
         //Diagnosticos frecuentes del medico
@@ -156,6 +182,95 @@ namespace CUS.Areas.Admin.Controllers
             return new JsonResult { Data = diagnosticos, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
 
+
+        [HttpPost]
+        public ActionResult Create(NotaEvolucion notaEvolucion, string expediente)
+        {
+            try
+            {
+                var fecha = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
+                var fechaDT = DateTime.Parse(fecha);
+
+                //Buscamos al px del que se le quiere hacer la Nota de Evolucion.
+                var paciente = (from a in db.Paciente
+                                where a.Expediente == expediente
+                                select a).FirstOrDefault();
+
+                //Buscamos si a ese px se le acaba de crear registro en la tbl NotaEvolucion.
+                if (paciente != null)
+                {
+                    var fechaUltimoRegistro = (from a in db.NotaEvolucion
+                                               where a.num_exp == paciente.Expediente
+                                               select a).
+                              OrderByDescending(r => r.fecha)
+                              .FirstOrDefault();
+
+                    bool pacienteTieneRegistroEnUltimas3Horas;
+                    DateTime fechaLimite = DateTime.Now;
+
+                    //si NO existe registro en la bd en la tbl NotaEvolucion por default pacienteTieneRegistroEnUltimas3Horas será null, quiere decir que se creará un registro nuevo
+                    if (fechaUltimoRegistro == null)
+                    {
+                        pacienteTieneRegistroEnUltimas3Horas = false;
+                    }
+                    else
+                    {
+                        //calcular la fecha actual y luego restarle 3 horas para obtener la fecha límite para las últimas 3 horas.
+                        DateTime fechaActual = DateTime.Now;
+                        DateTime fechaL = fechaActual.AddHours(-3);
+
+                        //utilizar fechaLimite para verificar si el paciente tiene un registro dentro de las últimas 3 horas
+                        pacienteTieneRegistroEnUltimas3Horas = db.NotaEvolucion
+                        .Any(r => r.num_exp == paciente.Expediente && r.fecha >= fechaL && r.fecha <= fechaActual);
+                    }
+
+                    if (pacienteTieneRegistroEnUltimas3Horas)// El paciente ya tiene un registro en las últimas 3 horas
+                    {
+                        //Obtenemos los datos del registro del px
+                        var registroReciente = db.NotaEvolucion
+                                                .Where(r => r.num_exp == paciente.Expediente && r.fecha <= fechaLimite && r.fecha <= fechaDT)
+                                                .OrderByDescending(r => r.fecha)
+                                                .FirstOrDefault();
+
+                        //Actualiza la nota
+
+                        //Id_claveHC = registroReciente.Clave_hc_px;
+                    }
+                    else// No hay registro reciente, puedes guardar el nuevo registro.
+                    {
+                        //Se crea la HC de esta sección/pestaña
+                        NotaEvolucion nota = new NotaEvolucion();
+                        nota.nota_subjetivo = notaEvolucion.nota_subjetivo;
+                        nota.nota_objetivo = notaEvolucion.nota_objetivo;
+                        nota.nota_plan = notaEvolucion.nota_plan;
+                        nota.diagnostico1 = notaEvolucion.diagnostico1;
+                        nota.diagnostico2 = notaEvolucion.diagnostico1;
+                        nota.diagnostico3 = notaEvolucion.diagnostico1;
+                        nota.tipo_diagnostico1 = notaEvolucion.tipo_diagnostico1;
+                        nota.tipo_diagnostico2 = notaEvolucion.tipo_diagnostico2;
+                        nota.tipo_diagnostico3 = notaEvolucion.tipo_diagnostico3;
+                        nota.num_exp = paciente.Expediente;
+                        nota.fecha = fechaDT;
+                        //Historia.Id_HistoriaClinica = Id_claveHC;
+                        //nota.Clave_hc_px = Id_claveHC;
+                        db.NotaEvolucion.Add(nota);
+                        db.SaveChanges();
+                    }
+
+                  
+                }
+                //return Json(new { MENSAJE = "Succe: " }, JsonRequestBehavior.AllowGet);
+                TempData["message_success"] = "Nota médica terminada con éxito";
+                return Redirect(Request.UrlReferrer.ToString());
+
+            }
+            catch (Exception ex)
+            {
+                //return Json(new { MENSAJE = "Error: Error de sistema: " + ex.Message }, JsonRequestBehavior.AllowGet);
+                TempData["message_success"] = "Error, vuelve a intentar";
+                return Redirect(Request.UrlReferrer.ToString());
+            }
+        }
 
     }
 }

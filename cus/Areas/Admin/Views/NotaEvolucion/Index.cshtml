@@ -403,6 +403,11 @@
         filter: invert(100%);
     }
 
+    .profile-header {
+        padding-left: 0px;
+        margin-bottom: 20px;
+    }
+
 </style>
 
 <div class="page-wrapper">
@@ -421,7 +426,7 @@
 
         <div class="row">
 
-            <div class="col-sm-12" id="InfoPX">
+            <div class="col-sm-12 p-0" id="InfoPX">
                 <div class="profile-header">
                     <div class="row align-items-center">
                         <div class="col-auto profile-image">
@@ -504,26 +509,26 @@
 
                         @using (Html.BeginForm("Create", "NotaEvolucion", FormMethod.Post, htmlAttributes: new { @id = "msform" }))
                         {
-                            @Html.AntiForgeryToken()
+                            <input type="hidden" value="" name="expediente" id="numexp"/>
                             <div class="row m-0 ml-3 mr-3">
                                 <div class="col-12 p-2">
                                     <div class="resumenTop" id="subjetivoLetra">S</div>
                                     <div class="resumenTopCheck" id="subjetivoCheck">✓</div>
-                                    <textarea class="resumenText mt-5" id="subjetivo" name="s_exp"></textarea>
+                                    <textarea class="resumenText mt-5" id="subjetivo" name="nota_subjetivo"></textarea>
                                 </div>
                                 <div class="col-12 p-2">
                                     <div class="resumenTop" id="objetivoLetra">O</div>
                                     <div class="resumenTopCheck" id="objetivoCheck">✓</div>
-                                    <textarea class="resumenText mt-5" id="objetivo" name="o_exp"></textarea>
+                                    <textarea class="resumenText mt-5" id="objetivo" name="nota_objetivo"></textarea>
                                 </div>
                                 <div class="col-12 p-2">
                                     <div class="resumenTop" id="analisisLetra">A</div>
                                     <div class="resumenTopCheck" id="analisisCheck">✓</div>
-                                    <div class="row mt-5 ml-0 mr-0 mb-0" id="diagnosticoMedico">
+                                    <!--div class="row mt-5 ml-0 mr-0 mb-0" id="diagnosticoMedico">
                                         <div class="col-md-12 p-2 text-left">
                                             <h6>Mis diagnósticos frecuentes <img class="flecha" src="~/Content/assets/img/flecha-abajo.png" /> </h6>
                                         </div>
-                                    </div>
+                                    <-div>
                                     <div class="row m-0 mt-5" id="diagnosticoPaciente">
                                         <div class="col-md-12 p-2 text-left">
                                             <h6>Diagnósticos frecuentes del paciente <img class="flecha" src="~/Content/assets/img/flecha-abajo.png" /> </h6>
@@ -533,8 +538,8 @@
                                         <div class="col-md-12 p-2 text-left">
                                             <h6>Diagnósticos frecuentes de especialidad <img class="flecha" src="~/Content/assets/img/flecha-abajo.png" /> </h6>
                                         </div>
-                                    </div>
-                                    <div class="row m-0 mt-5" id="diagnosticoBusqueda">
+                                    </div-->
+                                    <div class="row mt-5 ml-0 mr-0 mb-0" id="diagnosticoBusqueda">
                                         <div class="col-md-12 p-2 text-left">
                                             <h6>Buscar otro diagnostico</h6>
                                             <input style="width:90%;" id="diagnosticoTxt" placeholder="Escribe aquí la descripción o clave y da clic en el boton de buscar" />
@@ -554,13 +559,13 @@
                                         </div>
 
                                         <div class="col-md-9 m-auto p-2">
-                                            <textarea class="resumenText" id="diagnostico1" name="diagnostico" readonly></textarea>
+                                            <textarea class="resumenText" id="diagnostico1" name="diagnostico1" readonly></textarea>
                                             <input id="clave1" type="hidden" />
                                         </div>
                                         <div class="col-md-3 m-auto p-0">
                                             <div class="row m-0">
                                                 <div class="col-9 p-2">
-                                                    <select class="form-control tipoconsulta" id="tipoconsulta1" name="tipconsulta1" required>
+                                                    <select class="form-control tipoconsulta" id="tipoconsulta1" name="tipo_diagnostico1" required>
                                                         <option disabled selected>Seleccionar opción</option>
                                                         <option value="2">Subsecuente</option>
                                                         <option value="1">Primera Vez</option>
@@ -586,7 +591,7 @@
                                         <div class="col-md-3 m-auto p-0">
                                             <div class="row m-0">
                                                 <div class="col-9 p-2">
-                                                    <select class="form-control tipoconsulta" id="tipoconsulta2" name="tipconsulta2" required>
+                                                    <select class="form-control tipoconsulta" id="tipoconsulta2" name="tipo_diagnostico2" required>
                                                         <option disabled selected>Seleccionar opción</option>
                                                         <option value="2">Subsecuente</option>
                                                         <option value="1">Primera Vez</option>
@@ -612,7 +617,7 @@
                                         <div class="col-md-3 m-auto p-0">
                                             <div class="row m-0">
                                                 <div class="col-9 p-2">
-                                                    <select class="form-control tipoconsulta" id="tipoconsulta3" name="tipconsulta3" required>
+                                                    <select class="form-control tipoconsulta" id="tipoconsulta3" name="tipo_diagnostico3" required>
                                                         <option disabled selected>Seleccionar opción</option>
                                                         <option value="2">Subsecuente</option>
                                                         <option value="1">Primera Vez</option>
@@ -629,7 +634,7 @@
                                 <div class="col-12 p-2">
                                     <div class="resumenTop" id="planLetra">P</div>
                                     <div class="resumenTopCheck" id="planCheck">✓</div>
-                                    <textarea class="resumenText mt-5" id="plan" name="p_exp"></textarea>
+                                    <textarea class="resumenText mt-5" id="plan" name="nota_plan"></textarea>
                                 </div>
                             </div>
                             <div class="col-md-12 mt-4 text-center">
@@ -1005,6 +1010,8 @@
             $('body').css('height', 'auto');
             $('body').css('overflow', 'auto');
 
+            $("#numexp").val(Exp);
+
         });
 
 
@@ -1264,9 +1271,9 @@
             }
 
 
-            $.ajax({
-                url: '@Url.Action("GuardaDiagSOAP", "ServiciosMedicos")',
-                dataType: "json",
+            //$.ajax({
+                //url: '@Url.Action("GuardaDiagSOAP", "ServiciosMedicos")',
+                /*dataType: "json",
                 data: { numemp: $("#numemp").val(), tipoconsulta1: $("#tipoconsulta1").val(), tipoconsulta2: $("#tipoconsulta2").val(), tipoconsulta3: $("#tipoconsulta3").val(), diagnostico1: $("#clave1").val(), diagnostico2: $("#clave2").val(), diagnostico3: $("#clave3").val() },
                 success: function (data) {
                     infoSOAP();
@@ -1281,6 +1288,7 @@
                     });
                 }
             });
+            */
 
 
 
@@ -1348,12 +1356,13 @@
     });
 
 
+    /*
     $(".tipoconsulta").change(function () {
         $('#diaginfo1').hide();
         $('#diaginfo2').hide();
-        $.ajax({
-            url: '@Url.Action("GuardaDiagSOAP", "ServiciosMedicos")',
-            dataType: "json",
+        //$.ajax({
+            //url: '@Url.Action("GuardaDiagSOAP", "Nota")',
+            /*dataType: "json",
             data: { numemp: $("#numemp").val(), tipoconsulta1: $("#tipoconsulta1").val(), tipoconsulta2: $("#tipoconsulta2").val(), tipoconsulta3: $("#tipoconsulta3").val(), diagnostico1: $("#clave1").val(), diagnostico2: $("#clave2").val(), diagnostico3: $("#clave3").val() },
             success: function (data) {
                 infoSOAP();
@@ -1369,7 +1378,98 @@
             }
         });
     });
+    */
 
 
+</script>
+
+
+
+<script>
+    $("#borrardiag1").click(function () {
+        $(".diagnostico-active").each(function (index) {
+            if ($(this).attr('data-clave') == $('#clave1').val()) {
+                $(this).removeClass('diagnostico-active');
+                $('#diagnostico1').val('');
+                $('#clave1').val('');
+                $('#borrardiag1').css('filter', 'grayscale(100%)');
+                $("#tipoconsulta1").attr('disabled', 'disabled');
+            }
+        });
+
+
+        if ($('#clave2').val()) {
+            $('#diagnostico1').val($('#diagnostico2').val());
+            $('#clave1').val($('#clave2').val());
+            $('#borrardiag1').css('filter', 'none');
+            $("#tipoconsulta1").removeAttr('disabled');
+            //alert($('#diagnostico2').val());
+            $('#diagnostico2').val('');
+            $('#clave2').val('');
+        }
+
+        $("#tipoconsulta1").val($("#tipoconsulta1 option:first").val());
+
+
+        /*if (!$("#tipoconsulta1").val()) {
+            $('#finalizar').attr('disabled', 'disabled');
+            $('#finalizar').css('background-color', 'lightgray');
+        }*/
+
+    });
+
+
+    $("#borrardiag2").click(function () {
+        $(".diagnostico-active").each(function (index) {
+            if ($(this).attr('data-clave') == $('#clave2').val()) {
+                $(this).removeClass('diagnostico-active');
+                $('#diagnostico2').val('');
+                $('#clave2').val('');
+                $('#borrardiag2').css('filter', 'grayscale(100%)');
+                $("#tipoconsulta2").attr('disabled', 'disabled');
+            }
+        });
+
+
+        if ($('#clave3').val()) {
+            $('#diagnostico2').val($('#diagnostico3').val());
+            $('#clave2').val($('#clave3').val());
+            $('#borrardiag2').css('filter', 'none');
+            $("#tipoconsulta2").removeAttr('disabled');
+            //alert($('#diagnostico2').val());
+            $('#diagnostico3').val('');
+            $('#clave3').val('');
+        }
+
+        $("#tipoconsulta2").val($("#tipoconsulta2 option:first").val());
+
+    });
+
+
+    $("#borrardiag3").click(function () {
+        $(".diagnostico-active").each(function (index) {
+            if ($(this).attr('data-clave') == $('#clave3').val()) {
+                $(this).removeClass('diagnostico-active');
+                $('#diagnostico3').val('');
+                $('#clave3').val('');
+                $('#borrardiag3').css('filter', 'grayscale(100%)');
+                $("#tipoconsulta3").attr('disabled', 'disabled');
+            }
+        });
+
+        $("#tipoconsulta3").val($("#tipoconsulta3 option:first").val());
+
+    });
+
+</script>
+
+
+
+<script>
+
+    //Buscar si existe un soap llenado en las ultimas 3 horas
+    $(document).ready(function () {
+        $(this).scrollTop(0);
+    });
 
 </script>
