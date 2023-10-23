@@ -117,13 +117,13 @@ namespace CUS.Areas.Admin.Controllers
                         //DateTime fl3horas = fechaLimite.AddHours(+3);
                         //calcular la fecha actual y luego restarle 3 horas para obtener la fecha límite para las últimas 3 horas.
                         DateTime fechaActual = DateTime.Now;
-                        DateTime fechaL = fechaActual.AddHours(-3);
+                        DateTime fechaL = fechaActual.AddHours(-1.5);
 
                         //pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
                         //.Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fl3horas && r.FechaRegistroHC <= fechaDT);
                         //utilizar fechaLimite para verificar si el paciente tiene un registro dentro de las últimas 3 horas
                         pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
-                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC >= fechaL && r.FechaRegistroHC <= fechaActual);
+                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC >= fechaL && r.FechaRegistroHC <= fechaActual && r.TipoHistoria == "Común" || r.TipoHistoria == "Datos Grales.");
                     }
 
                     var Id_claveHC = "";
@@ -208,11 +208,11 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         //calcular la fecha actual y luego restarle 3 horas para obtener la fecha límite para las últimas 3 horas.
                         DateTime fechaActual = DateTime.Now;
-                        DateTime fechaL = fechaActual.AddHours(-3);
+                        DateTime fechaL = fechaActual.AddHours(-1.5);
 
                         //utilizar fechaLimite para verificar si el paciente tiene un registro dentro de las últimas 3 horas
                         pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
-                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC >= fechaL && r.FechaRegistroHC <= fechaActual);
+                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC >= fechaL && r.FechaRegistroHC <= fechaActual && r.TipoHistoria == "Común" || r.TipoHistoria == "Datos Grales.");
                     }
 
                     var Id_claveHC = "";
@@ -293,11 +293,11 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         //calcular la fecha actual y luego restarle 3 horas para obtener la fecha límite para las últimas 3 horas.
                         DateTime fechaActual = DateTime.Now;
-                        DateTime fechaL = fechaActual.AddHours(-3);
+                        DateTime fechaL = fechaActual.AddHours(-1.5);
 
                         //utilizar fechaLimite para verificar si el paciente tiene un registro dentro de las últimas 3 horas
                         pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
-                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC >= fechaL && r.FechaRegistroHC <= fechaActual);
+                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC >= fechaL && r.FechaRegistroHC <= fechaActual && r.TipoHistoria == "Común" || r.TipoHistoria == "Datos Grales.");
                     }
 
                     var Id_claveHC = "";
@@ -385,11 +385,11 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         //calcular la fecha actual y luego restarle 3 horas para obtener la fecha límite para las últimas 3 horas.
                         DateTime fechaActual = DateTime.Now;
-                        DateTime fechaL = fechaActual.AddHours(-3);
+                        DateTime fechaL = fechaActual.AddHours(-1.5);
 
                         //utilizar fechaLimite para verificar si el paciente tiene un registro dentro de las últimas 3 horas
                         pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
-                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC >= fechaL && r.FechaRegistroHC <= fechaActual);
+                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC >= fechaL && r.FechaRegistroHC <= fechaActual && r.TipoHistoria == "Común" || r.TipoHistoria == "Datos Grales.");
                     }
 
                     var Id_claveHC = "";
@@ -465,11 +465,11 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         //calcular la fecha actual y luego restarle 3 horas para obtener la fecha límite para las últimas 3 horas.
                         DateTime fechaActual = DateTime.Now;
-                        DateTime fechaL = fechaActual.AddHours(-3);
+                        DateTime fechaL = fechaActual.AddHours(-1.5);
 
                         //utilizar fechaLimite para verificar si el paciente tiene un registro dentro de las últimas 3 horas
                         pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
-                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC >= fechaL && r.FechaRegistroHC <= fechaActual);
+                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC >= fechaL && r.FechaRegistroHC <= fechaActual && r.TipoHistoria == "Común" || r.TipoHistoria == "Datos Grales.");
                     }
 
                     var Id_claveHC = "";
@@ -547,11 +547,11 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         //calcular la fecha actual y luego restarle 3 horas para obtener la fecha límite para las últimas 3 horas.
                         DateTime fechaActual = DateTime.Now;
-                        DateTime fechaL = fechaActual.AddHours(-3);
+                        DateTime fechaL = fechaActual.AddHours(-1.5);
 
                         //utilizar fechaLimite para verificar si el paciente tiene un registro dentro de las últimas 3 horas
                         pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
-                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC >= fechaL && r.FechaRegistroHC <= fechaActual);
+                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC >= fechaL && r.FechaRegistroHC <= fechaActual && r.TipoHistoria == "Común" || r.TipoHistoria == "Datos Grales.");
                     }
 
                     var Id_claveHC = "";
@@ -688,11 +688,11 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         //calcular la fecha actual y luego restarle 3 horas para obtener la fecha límite para las últimas 3 horas.
                         DateTime fechaActual = DateTime.Now;
-                        DateTime fechaL = fechaActual.AddHours(-3);
+                        DateTime fechaL = fechaActual.AddHours(-1.5);
 
                         //utilizar fechaLimite para verificar si el paciente tiene un registro dentro de las últimas 3 horas
                         pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
-                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC >= fechaL && r.FechaRegistroHC <= fechaActual);
+                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC >= fechaL && r.FechaRegistroHC <= fechaActual && r.TipoHistoria == "Común" || r.TipoHistoria == "Datos Grales.");
                     }
 
                     var Id_claveHC = "";
@@ -1153,11 +1153,11 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         //calcular la fecha actual y luego restarle 3 horas para obtener la fecha límite para las últimas 3 horas.
                         DateTime fechaActual = DateTime.Now;
-                        DateTime fechaL = fechaActual.AddHours(-3);
+                        DateTime fechaL = fechaActual.AddHours(-1.5);
 
                         //utilizar fechaLimite para verificar si el paciente tiene un registro dentro de las últimas 3 horas
                         pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
-                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC >= fechaL && r.FechaRegistroHC <= fechaActual);
+                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC >= fechaL && r.FechaRegistroHC <= fechaActual && r.TipoHistoria == "Común" || r.TipoHistoria == "Datos Grales.");
                     }
 
                     var Id_claveHC = "";
@@ -1332,11 +1332,11 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         //calcular la fecha actual y luego restarle 3 horas para obtener la fecha límite para las últimas 3 horas.
                         DateTime fechaActual = DateTime.Now;
-                        DateTime fechaL = fechaActual.AddHours(-3);
+                        DateTime fechaL = fechaActual.AddHours(-1.5);
 
                         //utilizar fechaLimite para verificar si el paciente tiene un registro dentro de las últimas 3 horas
                         pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
-                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC >= fechaL && r.FechaRegistroHC <= fechaActual);
+                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC >= fechaL && r.FechaRegistroHC <= fechaActual && r.TipoHistoria == "Común" || r.TipoHistoria == "Datos Grales.");
                     }
 
                     var Id_claveHC = "";
@@ -1457,11 +1457,11 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         //calcular la fecha actual y luego restarle 3 horas para obtener la fecha límite para las últimas 3 horas.
                         DateTime fechaActual = DateTime.Now;
-                        DateTime fechaL = fechaActual.AddHours(-3);
+                        DateTime fechaL = fechaActual.AddHours(-1.5);
 
                         //utilizar fechaLimite para verificar si el paciente tiene un registro dentro de las últimas 3 horas
                         pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
-                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC >= fechaL && r.FechaRegistroHC <= fechaActual);
+                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC >= fechaL && r.FechaRegistroHC <= fechaActual && r.TipoHistoria == "Común" || r.TipoHistoria == "Datos Grales.");
                     }
 
                     var Id_claveHC = "";
@@ -1730,11 +1730,11 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         //calcular la fecha actual y luego restarle 3 horas para obtener la fecha límite para las últimas 3 horas.
                         DateTime fechaActual = DateTime.Now;
-                        DateTime fechaL = fechaActual.AddHours(-3);
+                        DateTime fechaL = fechaActual.AddHours(-1.5);
 
                         //utilizar fechaLimite para verificar si el paciente tiene un registro dentro de las últimas 3 horas
                         pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
-                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC >= fechaL && r.FechaRegistroHC <= fechaActual);
+                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC >= fechaL && r.FechaRegistroHC <= fechaActual && r.TipoHistoria == "Común" || r.TipoHistoria == "Datos Grales.");
                     }
 
                     var Id_claveHC = "";
@@ -1874,11 +1874,11 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         //calcular la fecha actual y luego restarle 3 horas para obtener la fecha límite para las últimas 3 horas.
                         DateTime fechaActual = DateTime.Now;
-                        DateTime fechaL = fechaActual.AddHours(-3);
+                        DateTime fechaL = fechaActual.AddHours(-1.5);
 
                         //utilizar fechaLimite para verificar si el paciente tiene un registro dentro de las últimas 3 horas
                         pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
-                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC >= fechaL && r.FechaRegistroHC <= fechaActual);
+                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC >= fechaL && r.FechaRegistroHC <= fechaActual && r.TipoHistoria == "Común" || r.TipoHistoria == "Datos Grales.");
                     }
 
                     var Id_claveHC = "";
@@ -2359,7 +2359,7 @@ namespace CUS.Areas.Admin.Controllers
             public string Tipo { get; set; }
         }
 
-        //********      Función para buscar las H.C. en base a un px que el usuario ingresó
+        //********      Lista de las H.C. en base a un px que el usuario ingresó
         [HttpPost]
         public JsonResult BuscarHistoria(string ExpedientePX)
         {
@@ -2678,7 +2678,7 @@ namespace CUS.Areas.Admin.Controllers
 
         //********      Función para buscar el detalle de la H.C. en el MODAL
         [HttpPost]
-        public ActionResult ConsultarHC(string Clave_hc_px)//Este parametro lo recivimos de la vista, "Clave_hc_px" viene siendo el Identificador armado de la HC que se desea ver
+        public ActionResult ConsultarHC(string Clave_hc_px, string TipoHistoria)//Este parametro lo recivimos de la vista, "Clave_hc_px" viene siendo el Identificador armado de la HC que se desea ver
         {
             try
             {

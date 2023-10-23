@@ -1143,13 +1143,12 @@
 
         //Este es el Identificador armado que se inserta en cada tbl de la H.C.
         var Clave_hc_px = row.data().Clave;
-        var TipoHistoria = row.data().Tipo;
 
         $.ajax({
 		    url: '@Url.Action("ConsultarHC", "HistoriaClinica")',
 		    method: 'POST',
 		    dataType: 'json',
-            data: { Clave_hc_px: Clave_hc_px, TipoHistoria: TipoHistoria },
+            data: { Clave_hc_px: Clave_hc_px },
             success: function (data) {
 
                 // #region Seteo de valor con input del MODAL
@@ -1429,9 +1428,9 @@
                     cambiarTexto(elemento);
                 });
 
-
                 //Mostrar modal
                 $('#exampleModal').modal('show');
+                
 		    },
 		    error: function(ex) {
 			    Swal.fire({
