@@ -1420,7 +1420,7 @@
                                                 Especifica fecha último papanicolau: <span id="Especifica_FechaUltimoPapanicolau"></span>
                                             </p>
                                             <p>
-                                                No recuerda fecha último papanicolau: <span id="NoRecuerda_FechaUltimoPapanicolau"></span>
+                                                No recuerda fecha último papanicolau: <span id="NoRecuerda_FechaUltimoPapanicolau" class="estado"></span>
                                             </p>
                                             <p>
                                                 Resultado fecha último papanicolau: <span id="Resultado_FechaUltimoPapanicolau"></span>
@@ -1497,13 +1497,13 @@
                                     <div class="collapse" id="collapsePR">
                                         <div class="card card-body">
                                             <p>
-                                                Ligado evolucion: <span id="LigadoEvolucion"></span>
+                                                Ligado evolucion: <span id="LigadoEvolucion" class="estado"></span>
                                             </p>
                                             <p>
-                                                Favorable: <span id="Favorable"></span>
+                                                Favorable: <span id="Favorable" class="estado"></span>
                                             </p>
                                             <p>
-                                                Desfavorable: <span id="Desfavorable"></span>
+                                                Desfavorable: <span id="Desfavorable" class="estado"></span>
                                             </p>
                                         </div>
                                     </div>
@@ -1530,11 +1530,7 @@
                                         </div>
                                     </div>
 
-
                                 </div>
-
-                                
-                                
                             </div>
                         </fieldset>
                     </div>
@@ -1718,23 +1714,30 @@
         });
     }
 
+    var Clave_hc_px;
+    var TipoHistoria;
+
     $('#TblPaciente tbody').on('click', '#VerDetalle', function () {
         var tr = $(this).closest('tr');
         row = $('#TblPaciente').DataTable().row(tr);
 
         //Este es el Identificador armado que se inserta en cada tbl de la H.C.
-        var Clave_hc_px = row.data().Clave;
-        var TipoHistoria = row.data().Tipo;
+        Clave_hc_px = row.data().Clave;
+        TipoHistoria = row.data().Tipo;
+
+        //Esta es la clave que tiene match con la HC de la especialidad **Ident_HCcomun**
+        var Clave_HCcomun = row.data().Ident_HCcomun;
 
         $.ajax({
 		    url: '@Url.Action("ConsultarHC", "HistoriaClinica")',
 		    method: 'POST',
 		    dataType: 'json',
-            data: { Clave_hc_px: Clave_hc_px, TipoHistoria: TipoHistoria },
+            //data: { Clave_hc_px: Clave_hc_px, TipoHistoria: TipoHistoria },
+            data: { Clave_hc_px: Clave_HCcomun, TipoHistoria: TipoHistoria },
             success: function (data) {
 
-                document.getElementById('NombreHC').textContent = "H.C. " + TipoHistoria;
-                document.getElementById('NombreHC1').textContent = "H.C. " + TipoHistoria;
+                document.getElementById('NombreHC').textContent = TipoHistoria;
+                document.getElementById('NombreHC1').textContent = TipoHistoria;
 
                 // #region Seteo de valor con input del MODAL
                 //hc_ficha_identificacion
@@ -2020,16 +2023,203 @@
 				    title: '¡Error!',
 			    });
 		    }
-	    });
+        });
     });
-
-    
 
     function Tab2() {
         var NombreHC = $('#NombreHC').text();
 
-        alert("se hizo click en el tab 2: " + NombreHC)
+        if (NombreHC == "Medicina") {
+            $('#Medicina').show();
+
+            $.ajax({
+		        url: '@Url.Action("ConsultarHC_Med", "HistoriaMedicina")',
+		        method: 'POST',
+		        dataType: 'json',
+                data: { Clave_hc_px: Clave_hc_px, TipoHistoria: TipoHistoria },
+                success: function (data) {
+
+                    // #region Seteo de valor con input del MODAL
+                    //HabitusExterior
+                    $("#BuenEstadoGral").text(data.BuenEstadoGral);
+                    $("#Tranquilo").text(data.Tranquilo);
+                    $("#Cooperador").text(data.Cooperador);
+                    $("#Orientado").text(data.Orientado);
+                    $("#FaciesCaract").text(data.FaciesCaract);
+                    $("#Depresivo").text(data.Depresivo);
+                    $("#Ansioso").text(data.Ansioso);
+                    $("#Agresivo").text(data.Agresivo);
+                    $("#Temeroso").text(data.Temeroso);
+                    $("#Irritable").text(data.Irritable);
+                    $("#Marcha").text(data.Marcha);
+                    //Habitos
+                    $("#HorasSuenio").text(data.HorasSuenio);
+                    $("#TieneInsomnio").text(data.TieneInsomnio);
+                    $("#TieneEuresis").text(data.TieneEuresis);
+                    $("#TienePesadillas").text(data.TienePesadillas);
+                    $("#HorasOcio").text(data.HorasOcio);
+                    $("#ActividadFisica").text(data.ActividadFisica);
+                    $("#ActFi_Tiempo").text(data.ActFi_Tiempo);
+                    $("#ActFi_Frecuencia").text(data.ActFi_Frecuencia);
+                    //AntecedentesPeri
+                    $("#NumeroEmbarazo").text(data.NumeroEmbarazo);
+                    $("#EnfermedadesEmbarazo").text(data.EnfermedadesEmbarazo);
+                    $("#Especifica_EnfermedadesEmb").text(data.Especifica_EnfermedadesEmb);
+                    $("#TratamientosEmbarazo").text(data.TratamientosEmbarazo);
+                    $("#Especifica_TratamientosEmb").text(data.Especifica_TratamientosEmb);
+                    $("#LugarParto").text(data.LugarParto);
+                    $("#Otra_LugarParto").text(data.Otra_LugarParto);
+                    $("#EdadGestional").text(data.EdadGestional);
+                    $("#Especifica_EdadGes").text(data.Especifica_EdadGes);
+                    $("#Apgar").text(data.Apgar);
+                    $("#Especifica_Apgar").text(data.Especifica_Apgar);
+                    $("#TipoParto").text(data.TipoParto);
+                    $("#PartoFue_TipoParto").text(data.PartoFue_TipoParto);
+                    $("#Distocica_TipoParto").text(data.Distocica_TipoParto);
+                    $("#Cesaria_TipoParto").text(data.Cesaria_TipoParto);
+                    $("#ComplicacionAtenObst").text(data.ComplicacionAtenObst);
+                    $("#Especifica_Complicacion").text(data.Especifica_Complicacion);
+                    $("#TamizMetabolico").text(data.TamizMetabolico);
+                    $("#Seleccione_TamizMetabolico").text(data.Seleccione_TamizMetabolico);
+                    $("#TamizAuditivo").text(data.TamizAuditivo);
+                    $("#Seleccione_TamizAuditivo").text(data.Seleccione_TamizAuditivo);
+                    //Inmunizaciones
+                    $("#CartillaVacunacion").text(data.CartillaVacunacion);
+                    $("#EsquemaVacunacion").text(data.EsquemaVacunacion);
+                    $("#Especifica_EsquemaVac").text(data.Especifica_EsquemaVac);
+                    //Alimentacion
+                    $("#TipoLactancia").text(data.TipoLactancia);
+                    $("#TiempoLactancia").text(data.TiempoLactancia);
+                    $("#EdadAblactacion").text(data.EdadAblactacion);
+                    $("#AlimentosInicio").text(data.AlimentosInicio);
+                    $("#EdadIntegracion").text(data.EdadIntegracion);
+                    $("#MuertCuna").text(data.MuertCuna);
+                    //HabitosAlimentacion
+                    $("#HabitosAlimentacion").text(data.HabitosAlimentacion);
+                    $("#EspecificaBueno").text(data.EspecificaBueno);
+                    $("#EspecificaRegular").text(data.EspecificaRegular);
+                    $("#EspecificaMalo").text(data.EspecificaMalo);
+                    //AntecedentesDes
+                    $("#SostuvoCabeza").text(data.SostuvoCabeza);
+                    $("#Especifica_SostuvoCab").text(data.Especifica_SostuvoCab);
+                    $("#SeSento").text(data.SeSento);
+                    $("#Especifica_SeSento").text(data.Especifica_SeSento);
+                    $("#Camino").text(data.Camino);
+                    $("#Especifica_Camino").text(data.Especifica_Camino);
+                    $("#Habla").text(data.Habla);
+                    $("#Especifica_Habla").text(data.Especifica_Habla);
+                    $("#ControlEsfinteres").text(data.ControlEsfinteres);
+                    $("#Especifica_ControlEsfin").text(data.Especifica_ControlEsfin);
+                    $("#PruebaEDI").text(data.PruebaEDI);
+                    $("#Especifica_PruebaEDI").text(data.Especifica_PruebaEDI);
+                    //AntecedentesGinecoObs
+                    $("#Menarquia").text(data.Menarquia);
+                    $("#Motivo_Menarquia").text(data.Motivo_Menarquia);
+                    $("#Ritmo_Menarquia").text(data.Ritmo_Menarquia);
+                    $("#Tipo_Menarquia").text(data.Tipo_Menarquia);
+                    $("#Cantidad_Menarquia").text(data.Cantidad_Menarquia);
+                    $("#Coloracion_Menarquia").text(data.Coloracion_Menarquia);
+                    $("#Especifica_Coloracion").text(data.Especifica_Coloracion);
+                    $("#FenomenosAsoc").text(data.FenomenosAsoc);
+                    $("#DolorPelvico").text(data.DolorPelvico);
+                    $("#SangradoAnormal").text(data.SangradoAnormal);
+                    $("#UltimoMetodoAnti").text(data.UltimoMetodoAnti);
+                    $("#Especifica_UltimoMetodoAnti").text(data.Especifica_UltimoMetodoAnti);
+                    $("#SangradoPostcoito").text(data.SangradoPostcoito);
+                    $("#FlujoTransvaginal").text(data.FlujoTransvaginal);
+                    $("#Gesta").text(data.Gesta);
+                    $("#Partos").text(data.Partos);
+                    $("#Especifica_Partos").text(data.Especifica_Partos);
+                    $("#Cesarea").text(data.Cesarea);
+                    $("#Especifica_Cesarea").text(data.Especifica_Cesarea);
+                    $("#Abortos").text(data.Abortos);
+                    $("#Especifica_Abortos").text(data.Especifica_Abortos);
+                    $("#HijosTerminos").text(data.HijosTerminos);
+                    $("#Especifica_HijosTerminos").text(data.Especifica_HijosTerminos);
+                    $("#Prematuros").text(data.Prematuros);
+                    $("#Especifica_Prematuros").text(data.Especifica_Prematuros);
+                    $("#FechaUltimoParto").text(data.FechaUltimoParto);
+                    $("#Especifica_FechaUltimoParto").text(data.Especifica_FechaUltimoParto);
+                    $("#FechaUltimaCesarea").text(data.FechaUltimaCesarea);
+                    $("#Especifica_FechaUltimaCesarea").text(data.Especifica_FechaUltimaCesarea);
+                    $("#Motivo_FechaUltimaCesarea").text(data.Motivo_FechaUltimaCesarea);
+                    $("#FechaUltimoAborto").text(data.FechaUltimoAborto);
+                    $("#Especifica_FechaUltimoAborto").text(data.Especifica_FechaUltimoAborto);
+                    $("#FechaUltimaMenstruacion").text(data.FechaUltimaMenstruacion);
+                    $("#Especifica_FechaUltimaMenstruacion").text(data.Especifica_FechaUltimaMenstruacion);
+                    $("#FechaProbableParto").text(data.FechaProbableParto);
+                    $("#Especifica_FechaProbableParto").text(data.Especifica_FechaProbableParto);
+                    $("#FechaUltimoPapanicolau").text(data.FechaUltimoPapanicolau);
+                    $("#Especifica_FechaUltimoPapanicolau").text(data.Especifica_FechaUltimoPapanicolau);
+                    $("#NoRecuerda_FechaUltimoPapanicolau").text(data.NoRecuerda_FechaUltimoPapanicolau);
+                    $("#Resultado_FechaUltimoPapanicolau").text(data.Resultado_FechaUltimoPapanicolau);
+                    //AntecedentesVidaSex
+                    $("#InicioVidaSexual").text(data.InicioVidaSexual);
+                    $("#Edad_InicioVidaSexual").text(data.Edad_InicioVidaSexual);
+                    $("#Numero_ParejasSexuales").text(data.Numero_ParejasSexuales);
+                    //PrincipioEvolEstado
+                    $("#PEE").text(data.PEE);
+                    //ResultadosLaboratorio
+                    $("#RLGR").text(data.RLGR);
+                    $("#Especifica_RLGR").text(data.Especifica_RLGR);
+                    //Plan
+                    $("#Plan").text(data.Plan);
+                    //Pronostico
+                    $("#LigadoEvolucion").text(data.LigadoEvolucion);
+                    $("#Favorable").text(data.Favorable);
+                    $("#Desfavorable").text(data.Desfavorable);
+                    //Otros
+                    $("#Interconsulta").text(data.Interconsulta);
+                    $("#PadecimientoActual").text(data.PadecimientoActual);
+                    $("#Especifica_PadecimientoActual").text(data.Especifica_PadecimientoActual);
+                    $("#ProximaCita").text(data.ProximaCita);
+                    // #endregion
+
+                    // Obtener todos los elementos con la clase "estado"
+                    var elementosEstado = document.querySelectorAll(".estado");
+                    // Función para cambiar el texto basado en el contenido
+                    function cambiarTexto(spanElement) {
+                        var contenido = spanElement.textContent; // Obtener el contenido del <span>
+                        if (contenido === "true") {
+                            spanElement.textContent = "seleccionado";
+                        } else if (contenido === "false") {
+                            spanElement.textContent = "no seleccionado";
+                        }
+                    }
+                    // Iterar a través de los elementos y aplicar la función
+                    elementosEstado.forEach(function (elemento) {
+                        cambiarTexto(elemento);
+                    });
+                
+		        },
+		        error: function(ex) {
+			        Swal.fire({
+				        icon: 'error',
+				        title: '¡Error!',
+			        });
+		        }
+            });
+
+        } else {
+            $('#Medicina').hide();
+        }
+
     }
+
+    $('#exampleModal').on('hidden.bs.modal', function () {
+        // Establece la pestaña activa en "tab01" cuando se cierra el modal
+        $(".tabs").removeClass("active");
+        $(".tabs h6").removeClass("font-weight-bold");
+        $(".tabs h6").addClass("text-muted");
+        $("#tab01").children("h6").removeClass("text-muted");
+        $("#tab01").children("h6").addClass("font-weight-bold");
+        $("#tab01").addClass("active");
+        $("fieldset").removeClass("show");
+        $("#tab011").addClass("show");
+    });
+
+
+
 
 </script>
 

@@ -2357,6 +2357,7 @@ namespace CUS.Areas.Admin.Controllers
             public int IdPX { get; set; }
             public string FechaReg { get; set; }
             public string Tipo { get; set; }
+            public string Ident_HCcomun { get; set; }
         }
 
         //********      Lista de las H.C. en base a un px que el usuario ingresó
@@ -2388,7 +2389,8 @@ namespace CUS.Areas.Admin.Controllers
                                         NombrePX = px.Nombre,
                                         PApellidoPX = px.PrimerApellido,
                                         ExpPX = px.Expediente,
-                                        TipoH = hc.TipoHistoria
+                                        TipoH = hc.TipoHistoria,
+                                        Ident = hc.Ident_HCcomun
                                     }).ToList().OrderByDescending(n=>n.IdHC);
 
                     foreach (var q in consulta)
@@ -2403,7 +2405,8 @@ namespace CUS.Areas.Admin.Controllers
                             Nombre = q.NombrePX,
                             PrimerApellido = q.PApellidoPX,
                             Expediente = q.ExpPX,
-                            Tipo = q.TipoH
+                            Tipo = q.TipoH,
+                            Ident_HCcomun = q.Ident
                         };
                         results1.Add(resultado);
                     }

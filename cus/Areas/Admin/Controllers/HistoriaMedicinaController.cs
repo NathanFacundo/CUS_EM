@@ -58,7 +58,7 @@ namespace CUS.Areas.Admin.Controllers
                 hc.FechaRegistroHC = fechaDT;
                 hc.Id_Paciente = paciente.Id;
                 hc.TipoHistoria = "Medicina";
-                hc.Ident_HCcomún = Ultima_HCcomun.Clave_hc_px;//Este es el identificador de la ultima HC Común, que hará matcha con la HC Medicina
+                hc.Ident_HCcomun = Ultima_HCcomun.Clave_hc_px;//Este es el identificador de la ultima HC Común, que hará matcha con la HC Medicina
                 db.HistoriaClinica.Add(hc);
                 db.SaveChanges();
 
@@ -1324,6 +1324,194 @@ namespace CUS.Areas.Admin.Controllers
         }
 
         #endregion
+
+        public class Propiedades_HC
+        {
+            //HabitusExterior
+            public string BuenEstadoGral { get; set; }
+            public string Tranquilo { get; set; }
+            public string Cooperador { get; set; }
+            public string Orientado { get; set; }
+            public string FaciesCaract { get; set; }
+            public string Depresivo { get; set; }
+            public string Ansioso { get; set; }
+            public string Agresivo { get; set; }
+            public string Temeroso { get; set; }
+            public string Irritable { get; set; }
+            public string Marcha { get; set; }
+            //Habitos
+            public string HorasSuenio { get; set; }
+            public string TieneInsomnio { get; set; }
+            public string TieneEuresis { get; set; }
+            public string TienePesadillas { get; set; }
+            public string HorasOcio { get; set; }
+            public string ActividadFisica { get; set; }
+            public string ActFi_Tiempo { get; set; }
+            public string ActFi_Frecuencia { get; set; }
+            //AntecedentesPeri
+            public int? NumeroEmbarazo { get; set; }
+            public string EnfermedadesEmbarazo { get; set; }
+            public string Especifica_EnfermedadesEmb { get; set; }
+            public string TratamientosEmbarazo { get; set; }
+            public string Especifica_TratamientosEmb { get; set; }
+            public string LugarParto { get; set; }
+            public string Otra_LugarParto { get; set; }
+            public string EdadGestional { get; set; }
+            public string Especifica_EdadGes { get; set; }
+            public string Apgar { get; set; }
+            public string Especifica_Apgar { get; set; }
+            public string TipoParto { get; set; }
+            public string PartoFue_TipoParto { get; set; }
+            public string Distocica_TipoParto { get; set; }
+            public string Cesaria_TipoParto { get; set; }
+            public string ComplicacionAtenObst { get; set; }
+            public string Especifica_Complicacion { get; set; }
+            public string TamizMetabolico { get; set; }
+            public string Seleccione_TamizMetabolico { get; set; }
+            public string TamizAuditivo { get; set; }
+            public string Seleccione_TamizAuditivo { get; set; }
+            //Inmunizaciones
+            public string CartillaVacunacion { get; set; }
+            public string EsquemaVacunacion { get; set; }
+            public string Especifica_EsquemaVac { get; set; }
+            //Alimentacion
+            public string TipoLactancia { get; set; }
+            public string TiempoLactancia { get; set; }
+            public string EdadAblactacion { get; set; }
+            public string AlimentosInicio { get; set; }
+            public string EdadIntegracion { get; set; }
+            public string MuertCuna { get; set; }
+            //HabitosAlimentacion
+            public string HabitosAlimentacion { get; set; }
+            public string EspecificaBueno { get; set; }
+            public string EspecificaRegular { get; set; }
+            public string EspecificaMalo { get; set; }
+            //AntecedentesDes
+            public string SostuvoCabeza { get; set; }
+            public string Especifica_SostuvoCab { get; set; }
+            public string SeSento { get; set; }
+            public string Especifica_SeSento { get; set; }
+            public string Camino { get; set; }
+            public string Especifica_Camino { get; set; }
+            public string Habla { get; set; }
+            public string Especifica_Habla { get; set; }
+            public string ControlEsfinteres { get; set; }
+            public string Especifica_ControlEsfin { get; set; }
+            public string PruebaEDI { get; set; }
+            public string Especifica_PruebaEDI { get; set; }
+            //AntecedentesGinecoObs
+            public string Menarquia { get; set; }
+            public string Motivo_Menarquia { get; set; }
+            public string Ritmo_Menarquia { get; set; }
+            public string Tipo_Menarquia { get; set; }
+            public string Cantidad_Menarquia { get; set; }
+            public string Coloracion_Menarquia { get; set; }
+            public string Especifica_Coloracion { get; set; }
+            public string FenomenosAsoc { get; set; }
+            public string DolorPelvico { get; set; }
+            public string SangradoAnormal { get; set; }
+            public string UltimoMetodoAnti { get; set; }
+            public string Especifica_UltimoMetodoAnti { get; set; }
+            public string SangradoPostcoito { get; set; }
+            public string FlujoTransvaginal { get; set; }
+            public string Gesta { get; set; }
+            public string Partos { get; set; }
+            public string Especifica_Partos { get; set; }
+            public string Cesarea { get; set; }
+            public string Especifica_Cesarea { get; set; }
+            public string Abortos { get; set; }
+            public string Especifica_Abortos { get; set; }
+            public string HijosTerminos { get; set; }
+            public string Especifica_HijosTerminos { get; set; }
+            public string Prematuros { get; set; }
+            public string Especifica_Prematuros { get; set; }
+            public string FechaUltimoParto { get; set; }
+            public DateTime? Especifica_FechaUltimoParto { get; set; }
+            public string FechaUltimaCesarea { get; set; }
+            public DateTime? Especifica_FechaUltimaCesarea { get; set; }
+            public string Motivo_FechaUltimaCesarea { get; set; }
+            public string FechaUltimoAborto { get; set; }
+            public DateTime? Especifica_FechaUltimoAborto { get; set; }
+            public string FechaUltimaMenstruacion { get; set; }
+            public DateTime? Especifica_FechaUltimaMenstruacion { get; set; }
+            public string FechaProbableParto { get; set; }
+            public DateTime? Especifica_FechaProbableParto { get; set; }
+            public string FechaUltimoPapanicolau { get; set; }
+            public DateTime? Especifica_FechaUltimoPapanicolau { get; set; }
+            public bool? NoRecuerda_FechaUltimoPapanicolau { get; set; }
+            public string Resultado_FechaUltimoPapanicolau { get; set; }
+            //AntecedentesVidaSex
+            public string InicioVidaSexual { get; set; }
+            public string Edad_InicioVidaSexual { get; set; }
+            public string Numero_ParejasSexuales { get; set; }
+            //PrincipioEvolEstado
+            public string PEE { get; set; }
+            //ResultadosLaboratorio
+            public string RLGR { get; set; }
+            public string Especifica_RLGR { get; set; }
+            //Plan
+            public string Plan { get; set; }
+            //Pronostico
+            public bool? LigadoEvolucion { get; set; }
+            public bool? Favorable { get; set; }
+            public bool? Desfavorable { get; set; }
+            //Otros
+            public string Interconsulta { get; set; }
+            public string PadecimientoActual { get; set; }
+            public string Especifica_PadecimientoActual { get; set; }
+            public string ProximaCita { get; set; }
+        }
+
+        //********      Función para buscar el detalle de la H.C. en el MODAL
+        [HttpPost]
+        public ActionResult ConsultarHC_Med(string Clave_hc_px, string TipoHistoria)//Este parametro lo recivimos de la vista, "Clave_hc_px" viene siendo el Identificador armado de la HC que se desea ver
+        {
+            try
+            {
+                Propiedades_HC HC = new Propiedades_HC();
+
+                string query =
+                    "SELECT HE.BuenEstadoGral, HE.Tranquilo, HE.Cooperador, HE.Orientado, HE.FaciesCaract, HE.Depresivo, HE.Ansioso, HE.Agresivo, HE.Temeroso, HE.Irritable, HE.Marcha, " +
+                    "H.HorasSuenio, H.TieneInsomnio, H.TieneEuresis, H.TienePesadillas, H.HorasOcio, H.ActividadFisica, H.ActFi_Tiempo, H.ActFi_Frecuencia, " +
+                    "AP.NumeroEmbarazo, AP.EnfermedadesEmbarazo, AP.Especifica_EnfermedadesEmb, AP.TratamientosEmbarazo, AP.Especifica_TratamientosEmb, AP.LugarParto, AP.Otra_LugarParto, AP.EdadGestional, AP.Especifica_EdadGes, AP.Apgar, AP.Especifica_Apgar, AP.TipoParto, AP.PartoFue_TipoParto, AP.Distocica_TipoParto, AP.Cesaria_TipoParto, AP.ComplicacionAtenObst, AP.Especifica_Complicacion, AP.TamizMetabolico, AP.Seleccione_TamizMetabolico, AP.TamizAuditivo, AP.Seleccione_TamizAuditivo, " +
+                    "I.CartillaVacunacion, I.EsquemaVacunacion, I.Especifica_EsquemaVac, " +
+                    "A.TipoLactancia, A.TiempoLactancia, A.EdadAblactacion, A.AlimentosInicio, A.EdadIntegracion, A.MuertCuna, " +
+                    "HA.HabitosAlimentacion, HA.EspecificaBueno, HA.EspecificaRegular, HA.EspecificaMalo, " +
+                    "AD.SostuvoCabeza, AD.Especifica_SostuvoCab, AD.SeSento, AD.Especifica_SeSento, AD.Camino, AD.Especifica_Camino, AD.Habla, AD.Especifica_Habla, AD.ControlEsfinteres, AD.Especifica_ControlEsfin, AD.PruebaEDI, AD.Especifica_PruebaEDI, " +
+                    "AGO.Menarquia, AGO.Motivo_Menarquia, AGO.Ritmo_Menarquia, AGO.Tipo_Menarquia, AGO.Cantidad_Menarquia, AGO.Coloracion_Menarquia, AGO.Especifica_Coloracion, AGO.FenomenosAsoc, AGO.DolorPelvico, AGO.SangradoAnormal, AGO.UltimoMetodoAnti, AGO.Especifica_UltimoMetodoAnti, AGO.SangradoPostcoito, AGO.FlujoTransvaginal, AGO.Gesta, AGO.Partos, AGO.Especifica_Partos, AGO.Cesarea, AGO.Especifica_Cesarea, AGO.Abortos, AGO.Especifica_Abortos, AGO.HijosTerminos, AGO.Especifica_HijosTerminos, AGO.Prematuros, AGO.Especifica_Prematuros, AGO.FechaUltimoParto, AGO.Especifica_FechaUltimoParto, AGO.FechaUltimaCesarea, AGO.Especifica_FechaUltimaCesarea, AGO.Motivo_FechaUltimaCesarea, AGO.FechaUltimoAborto, AGO.Especifica_FechaUltimoAborto, AGO.FechaUltimaMenstruacion, AGO.Especifica_FechaUltimaMenstruacion, AGO.FechaProbableParto, AGO.Especifica_FechaProbableParto, AGO.FechaUltimoPapanicolau, AGO.Especifica_FechaUltimoPapanicolau, AGO.NoRecuerda_FechaUltimoPapanicolau, AGO.Resultado_FechaUltimoPapanicolau, " +
+                    "AVS.InicioVidaSexual, AVS.Edad_InicioVidaSexual, AVS.Numero_ParejasSexuales, " +
+                    "PEE.PEE, " +
+                    "RL.RLGR, RL.Especifica_RLGR, " +
+                    "PL.[Plan], " +
+                    "PR.LigadoEvolucion, PR.Favorable, PR.Desfavorable, " +
+                    "O.Interconsulta, O.PadecimientoActual, O.Especifica_PadecimientoActual, O.ProximaCita " +
+                                    "FROM HistoriaClinica HCli " +
+                                    "LEFT JOIN hc_MED_HabitusExterior HE ON HE.Clave_hc_px = HCli.Clave_hc_px " +
+                                    "LEFT JOIN hc_MED_Habitos H ON H.Clave_hc_px = HCli.Clave_hc_px " +
+                                    "LEFT JOIN hc_MED_AntecedentesPeri AP ON AP.Clave_hc_px = HCli.Clave_hc_px " +
+                                    "LEFT JOIN hc_MED_Inmunizaciones I ON I.Clave_hc_px = HCli.Clave_hc_px " +
+                                    "LEFT JOIN hc_MED_Alimentacion A ON A.Clave_hc_px = HCli.Clave_hc_px " +
+                                    "LEFT JOIN hc_MED_HabitosAlimentacion HA ON HA.Clave_hc_px = HCli.Clave_hc_px " +
+                                    "LEFT JOIN hc_MED_AntecedentesDes AD ON AD.Clave_hc_px = HCli.Clave_hc_px " +
+                                    "LEFT JOIN hc_MED_AntecedentesGinecoObs AGO ON AGO.Clave_hc_px = HCli.Clave_hc_px " +
+                                    "LEFT JOIN hc_MED_AntecedentesVidaSex AVS ON AVS.Clave_hc_px = HCli.Clave_hc_px " +
+                                    "LEFT JOIN hc_MED_PrincipioEvolEstado PEE ON PEE.Clave_hc_px = HCli.Clave_hc_px " +
+                                    "LEFT JOIN hc_MED_ResultadosLaboratorio RL ON RL.Clave_hc_px = HCli.Clave_hc_px " +
+                                    "LEFT JOIN hc_MED_Plan PL ON PL.Clave_hc_px = HCli.Clave_hc_px " +
+                                    "LEFT JOIN hc_MED_Pronostico PR ON PR.Clave_hc_px = HCli.Clave_hc_px " +
+                                    "LEFT JOIN hc_MED_Otros O ON O.Clave_hc_px = HCli.Clave_hc_px " +
+                                    "WHERE HCli.Clave_hc_px = '" + Clave_hc_px + "' ";
+
+                var result = hcMed.Database.SqlQuery<Propiedades_HC>(query);
+                HC = result.FirstOrDefault();
+
+                return new JsonResult { Data = HC, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            }
+            catch (Exception ex)
+            {
+                return Json(new { MENSAJE = "Error: Error de sistema: " + ex.Message }, JsonRequestBehavior.AllowGet);
+            }
+        }
 
     }
 }
