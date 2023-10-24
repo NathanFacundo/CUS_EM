@@ -597,6 +597,7 @@
     <Content Include="Models\HC_Medicina.edmx.diagram">
       <DependentUpon>HC_Medicina.edmx</DependentUpon>
     </Content>
+    <Content Include="Areas\Admin\Views\HistoriaClinica\HistoriaCopia.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

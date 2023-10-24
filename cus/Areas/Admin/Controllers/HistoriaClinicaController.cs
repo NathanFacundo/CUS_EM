@@ -2713,7 +2713,7 @@ namespace CUS.Areas.Admin.Controllers
                                     "LEFT JOIN hc_interrogatorio INT ON HCli.Clave_hc_px = INT.Clave_hc_px " +
                                     "LEFT JOIN hc_riesgo_caidas RC ON HCli.Clave_hc_px = RC.Clave_hc_px " +
                                     "LEFT JOIN hc_exploracion_fisica EF ON HCli.Clave_hc_px = EF.Clave_hc_px " +
-                                    "WHERE HCli.Clave_hc_px = '" + Clave_hc_px + "'";
+                                    "WHERE HCli.Clave_hc_px = '" + Clave_hc_px + "' ";
 
                 var result = db.Database.SqlQuery<Propiedades_HC>(query);
                 HC = result.FirstOrDefault();
