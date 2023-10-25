@@ -2379,6 +2379,7 @@ namespace CUS.Areas.Admin.Controllers
                     var consulta = (from hc in db.HistoriaClinica
                                     join px in db.Paciente on hc.Id_Paciente equals px.Id
                                     where hc.Id_Paciente == PX.Id
+                                    where hc.TipoHistoria != "Común" && hc.TipoHistoria != "Datos Grales."
                                     select new
                                     {
                                         IdHC = hc.Id,
