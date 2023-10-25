@@ -96,19 +96,19 @@
           <Property Name="EnfermedadesEmbarazo" Type="varchar" MaxLength="5" />
           <Property Name="Especifica_EnfermedadesEmb" Type="varchar" MaxLength="200" />
           <Property Name="TratamientosEmbarazo" Type="varchar" MaxLength="5" />
-          <Property Name="Especifica_TratamientosEmb" Type="varchar" MaxLength="5" />
+          <Property Name="Especifica_TratamientosEmb" Type="varchar" MaxLength="200" />
           <Property Name="LugarParto" Type="varchar" MaxLength="20" />
-          <Property Name="Otra_LugarParto" Type="varchar" MaxLength="20" />
+          <Property Name="Otra_LugarParto" Type="varchar" MaxLength="100" />
           <Property Name="EdadGestional" Type="varchar" MaxLength="20" />
           <Property Name="Especifica_EdadGes" Type="varchar" MaxLength="50" />
           <Property Name="Apgar" Type="varchar" MaxLength="20" />
-          <Property Name="Especifica_Apgar" Type="varchar" MaxLength="20" />
+          <Property Name="Especifica_Apgar" Type="varchar" MaxLength="100" />
           <Property Name="TipoParto" Type="varchar" MaxLength="20" />
-          <Property Name="PartoFue_TipoParto" Type="varchar" MaxLength="20" />
-          <Property Name="Distocica_TipoParto" Type="varchar" MaxLength="20" />
-          <Property Name="Cesaria_TipoParto" Type="varchar" MaxLength="20" />
+          <Property Name="PartoFue_TipoParto" Type="varchar" MaxLength="200" />
+          <Property Name="Distocica_TipoParto" Type="varchar" MaxLength="200" />
+          <Property Name="Cesaria_TipoParto" Type="varchar" MaxLength="200" />
           <Property Name="ComplicacionAtenObst" Type="varchar" MaxLength="5" />
-          <Property Name="Especifica_Complicacion" Type="varchar" MaxLength="20" />
+          <Property Name="Especifica_Complicacion" Type="varchar" MaxLength="200" />
           <Property Name="TamizMetabolico" Type="varchar" MaxLength="5" />
           <Property Name="Seleccione_TamizMetabolico" Type="varchar" MaxLength="20" />
           <Property Name="TamizAuditivo" Type="varchar" MaxLength="5" />
@@ -191,7 +191,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Interconsulta" Type="varchar" MaxLength="5" />
-          <Property Name="PadecimientoActual" Type="varchar" MaxLength="5" />
+          <Property Name="PadecimientoActual" Type="varchar" MaxLength="20" />
           <Property Name="Especifica_PadecimientoActual" Type="varchar" MaxLength="200" />
           <Property Name="ProximaCita" Type="varchar" MaxLength="30" />
           <Property Name="Id_Paciente" Type="int" Nullable="false" />
@@ -347,19 +347,19 @@
           <Property Name="EnfermedadesEmbarazo" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="Especifica_EnfermedadesEmb" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="TratamientosEmbarazo" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-          <Property Name="Especifica_TratamientosEmb" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Especifica_TratamientosEmb" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="LugarParto" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Otra_LugarParto" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Otra_LugarParto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="EdadGestional" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Especifica_EdadGes" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Apgar" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Especifica_Apgar" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Especifica_Apgar" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="TipoParto" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="PartoFue_TipoParto" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Distocica_TipoParto" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Cesaria_TipoParto" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PartoFue_TipoParto" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Distocica_TipoParto" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Cesaria_TipoParto" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="ComplicacionAtenObst" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-          <Property Name="Especifica_Complicacion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Especifica_Complicacion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="TamizMetabolico" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="Seleccione_TamizMetabolico" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="TamizAuditivo" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
@@ -442,7 +442,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Interconsulta" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-          <Property Name="PadecimientoActual" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="PadecimientoActual" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Especifica_PadecimientoActual" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="ProximaCita" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
