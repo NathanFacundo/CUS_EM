@@ -9,35 +9,43 @@
     .modal {
         padding: 0 !important;
     }
+
     #myModal .modal-dialog {
         max-width: none;
         height: 100%;
         margin: 0;
     }
+
     .modal-open .main-wrapper {
         filter: none;
     }
+
     .fa-plus-circle {
         float: right;
     }
+
     p {
-        font-weight:bold;
+        font-weight: bold;
     }
-    p span{
-        font-weight: normal;
-        color:red;
-    }
+
+        p span {
+            font-weight: normal;
+            color: red;
+        }
 
 
     .container {
-    margin: 200px auto;
+        margin: 200px auto;
     }
+
     fieldset {
         display: none;
     }
-    fieldset.show {
-        display: block;
-    }
+
+        fieldset.show {
+            display: block;
+        }
+
     select:focus, input:focus {
         -moz-box-shadow: none !important;
         -webkit-box-shadow: none !important;
@@ -46,47 +54,54 @@
         outline-width: 0 !important;
         font-weight: 400;
     }
+
     button:focus {
         -moz-box-shadow: none !important;
         -webkit-box-shadow: none !important;
         box-shadow: none !important;
         outline-width: 0;
     }
+
     .tabs {
         margin: 2px 5px 0px 5px;
         padding-bottom: 10px;
         cursor: pointer;
     }
-    .tabs:hover, .tabs.active {
-        border-bottom: 1px solid #2196F3;
-    }
+
+        .tabs:hover, .tabs.active {
+            border-bottom: 1px solid #2196F3;
+        }
+
     a:hover {
         text-decoration: none;
         color: #1565C0;
     }
+
     .box {
         margin-bottom: 10px;
         border-radius: 5px;
         padding: 10px;
     }
+
     .modal-backdrop {
         background-color: #64B5F6;
     }
+
     .line {
         background-color: #CFD8DC;
         height: 1px;
         width: 100%;
     }
+
     @@media screen and (max-width: 768px) {
         .tabs h6 {
             font-size: 12px;
         }
     }
 
-    #Medicina{
+    #Medicina {
         display: none;
     }
-
 </style>
 
 <div class="page-wrapper">
@@ -1630,8 +1645,10 @@
         FuncionBuscarPX();
     };
 
+    var ExpedientePX;
+
     function FuncionBuscarPX() {
-	    var ExpedientePX = $("#ExpedientePX").val();
+	    ExpedientePX = $("#ExpedientePX").val();
 
 	    Swal.fire({
 		    title: 'Cargando... Espere por favor',
@@ -2026,6 +2043,21 @@
         });
     });
 
+    $('#exampleModal').on('hidden.bs.modal', function () {
+        //// Establece la pestaña activa en "tab01" cuando se cierra el modal
+        //$(".tabs").removeClass("active");
+        //$(".tabs h6").removeClass("font-weight-bold");
+        //$(".tabs h6").addClass("text-muted");
+        //$("#tab01").children("h6").removeClass("text-muted");
+        //$("#tab01").children("h6").addClass("font-weight-bold");
+        //$("#tab01").addClass("active");
+        //$("fieldset").removeClass("show");
+        //$("#tab011").addClass("show");
+
+        //FuncionBuscarPX();
+        alert('hola');
+    });
+
     function Tab2() {
         var NombreHC = $('#NombreHC').text();
 
@@ -2139,18 +2171,50 @@
                     $("#Prematuros").text(data.Prematuros);
                     $("#Especifica_Prematuros").text(data.Especifica_Prematuros);
                     $("#FechaUltimoParto").text(data.FechaUltimoParto);
-                    $("#Especifica_FechaUltimoParto").text(data.Especifica_FechaUltimoParto);
+                    //$("#Especifica_FechaUltimoParto").text(data.Especifica_FechaUltimoParto);
+                    // Suponiendo que data.Especifica_FechaUltimoParto es "/Date(1012629600000)/"
+                    var fechaJson = data.Especifica_FechaUltimoParto;
+                    var fechaMilisegundos = parseInt(fechaJson.match(/\d+/)[0]); // Extraer los milisegundos
+                    var fecha = new Date(fechaMilisegundos);
+                    var fechaLegible = fecha.toLocaleDateString(); // O cualquier otro formato que desees
+                    // Luego, establece la fecha legible en tu vista
+                    $("#Especifica_FechaUltimoParto").text(fechaLegible);
                     $("#FechaUltimaCesarea").text(data.FechaUltimaCesarea);
-                    $("#Especifica_FechaUltimaCesarea").text(data.Especifica_FechaUltimaCesarea);
+                    //$("#Especifica_FechaUltimaCesarea").text(data.Especifica_FechaUltimaCesarea);
+                    var fechaJson1 = data.Especifica_FechaUltimaCesarea;
+                    var fechaMilisegundos1 = parseInt(fechaJson1.match(/\d+/)[0]); 
+                    var fecha1 = new Date(fechaMilisegundos1);
+                    var fechaLegible1 = fecha1.toLocaleDateString(); 
+                    $("#Especifica_FechaUltimaCesarea").text(fechaLegible1);
                     $("#Motivo_FechaUltimaCesarea").text(data.Motivo_FechaUltimaCesarea);
                     $("#FechaUltimoAborto").text(data.FechaUltimoAborto);
-                    $("#Especifica_FechaUltimoAborto").text(data.Especifica_FechaUltimoAborto);
+                    //$("#Especifica_FechaUltimoAborto").text(data.Especifica_FechaUltimoAborto);
+                    var fechaJson2 = data.Especifica_FechaUltimoAborto;
+                    var fechaMilisegundos2 = parseInt(fechaJson2.match(/\d+/)[0]);
+                    var fecha2 = new Date(fechaMilisegundos2);
+                    var fechaLegible2 = fecha2.toLocaleDateString();
+                    $("#Especifica_FechaUltimoAborto").text(fechaLegible2);
                     $("#FechaUltimaMenstruacion").text(data.FechaUltimaMenstruacion);
-                    $("#Especifica_FechaUltimaMenstruacion").text(data.Especifica_FechaUltimaMenstruacion);
+                    //$("#Especifica_FechaUltimaMenstruacion").text(data.Especifica_FechaUltimaMenstruacion);
+                    var fechaJson3 = data.Especifica_FechaUltimaMenstruacion;
+                    var fechaMilisegundos3 = parseInt(fechaJson3.match(/\d+/)[0]);
+                    var fecha3 = new Date(fechaMilisegundos3);
+                    var fechaLegible3 = fecha3.toLocaleDateString();
+                    $("#Especifica_FechaUltimaMenstruacion").text(fechaLegible3);
                     $("#FechaProbableParto").text(data.FechaProbableParto);
-                    $("#Especifica_FechaProbableParto").text(data.Especifica_FechaProbableParto);
+                    //$("#Especifica_FechaProbableParto").text(data.Especifica_FechaProbableParto);
+                    var fechaJson4 = data.Especifica_FechaProbableParto;
+                    var fechaMilisegundos4 = parseInt(fechaJson4.match(/\d+/)[0]);
+                    var fecha4 = new Date(fechaMilisegundos4);
+                    var fechaLegible4 = fecha4.toLocaleDateString();
+                    $("#Especifica_FechaProbableParto").text(fechaLegible4);
                     $("#FechaUltimoPapanicolau").text(data.FechaUltimoPapanicolau);
-                    $("#Especifica_FechaUltimoPapanicolau").text(data.Especifica_FechaUltimoPapanicolau);
+                    //$("#Especifica_FechaUltimoPapanicolau").text(data.Especifica_FechaUltimoPapanicolau);
+                    var fechaJson5 = data.Especifica_FechaUltimoPapanicolau;
+                    var fechaMilisegundos5 = parseInt(fechaJson5.match(/\d+/)[0]);
+                    var fecha5 = new Date(fechaMilisegundos5);
+                    var fechaLegible5 = fecha5.toLocaleDateString();
+                    $("#Especifica_FechaUltimoPapanicolau").text(fechaLegible5);
                     $("#NoRecuerda_FechaUltimoPapanicolau").text(data.NoRecuerda_FechaUltimoPapanicolau);
                     $("#Resultado_FechaUltimoPapanicolau").text(data.Resultado_FechaUltimoPapanicolau);
                     //AntecedentesVidaSex
@@ -2190,7 +2254,7 @@
                     elementosEstado.forEach(function (elemento) {
                         cambiarTexto(elemento);
                     });
-                
+
 		        },
 		        error: function(ex) {
 			        Swal.fire({
@@ -2206,17 +2270,7 @@
 
     }
 
-    $('#exampleModal').on('hidden.bs.modal', function () {
-        // Establece la pestaña activa en "tab01" cuando se cierra el modal
-        $(".tabs").removeClass("active");
-        $(".tabs h6").removeClass("font-weight-bold");
-        $(".tabs h6").addClass("text-muted");
-        $("#tab01").children("h6").removeClass("text-muted");
-        $("#tab01").children("h6").addClass("font-weight-bold");
-        $("#tab01").addClass("active");
-        $("fieldset").removeClass("show");
-        $("#tab011").addClass("show");
-    });
+
 
 
 

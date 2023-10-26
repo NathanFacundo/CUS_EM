@@ -236,6 +236,127 @@
           <Property Name="Id_Paciente" Type="int" Nullable="false" />
           <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="hc_PS_AreasAtencion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Conductual" Type="bit" />
+          <Property Name="Emocional" Type="bit" />
+          <Property Name="RelacionesIn" Type="bit" />
+          <Property Name="Neurologico" Type="bit" />
+          <Property Name="Academico" Type="bit" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="hc_PS_AtencionPsicologica">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Presencia_Voluntaria" Type="bit" />
+          <Property Name="Presencia_Sugerida" Type="bit" />
+          <Property Name="Presencia_Obligatoria" Type="bit" />
+          <Property Name="AnteriormenteAtencion" Type="varchar" MaxLength="100" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="hc_PS_Familia">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Parentesco" Type="varchar" MaxLength="20" />
+          <Property Name="NombreCompleto" Type="varchar" MaxLength="500" />
+          <Property Name="Edad" Type="varchar" MaxLength="10" />
+          <Property Name="Ocupacion" Type="varchar" MaxLength="100" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="hc_PS_IndicacionTerapeutica">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Plan" Type="varchar" MaxLength="500" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="hc_PS_MotivoConsulta">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Motivo" Type="varchar" MaxLength="500" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="hc_PS_SignosAlarma">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Signo" Type="varchar" MaxLength="50" />
+          <Property Name="Esp_Signo" Type="varchar" MaxLength="300" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="hc_PS_SintomatologiaActual">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sintomatologia" Type="varchar" MaxLength="300" />
+          <Property Name="DificultadRespirar_Si" Type="bit" />
+          <Property Name="DificultadRespirar_No" Type="bit" />
+          <Property Name="DificultadRespirar_Esp" Type="varchar" MaxLength="300" />
+          <Property Name="SensacionMorir_Si" Type="bit" />
+          <Property Name="SensacionMorir_No" Type="bit" />
+          <Property Name="SensacionMorir_Esp" Type="varchar" MaxLength="300" />
+          <Property Name="TemblorCuerpo_Si" Type="bit" />
+          <Property Name="TemblorCuerpo_No" Type="bit" />
+          <Property Name="TemblorCuerpo_Esp" Type="varchar" MaxLength="300" />
+          <Property Name="Desmayo_Si" Type="bit" />
+          <Property Name="Desmayo_No" Type="bit" />
+          <Property Name="Desmayo_Esp" Type="varchar" MaxLength="300" />
+          <Property Name="Lloras_Si" Type="bit" />
+          <Property Name="Lloras_No" Type="bit" />
+          <Property Name="Lloras_Esp" Type="varchar" MaxLength="300" />
+          <Property Name="DespiertasAnimo_Si" Type="bit" />
+          <Property Name="DespiertasAnimo_No" Type="bit" />
+          <Property Name="DespiertasAnimo_Esp" Type="varchar" MaxLength="300" />
+          <Property Name="Culpable_Si" Type="bit" />
+          <Property Name="Culpable_No" Type="bit" />
+          <Property Name="Culpable_Esp" Type="varchar" MaxLength="300" />
+          <Property Name="PerdidoMotivacion_Si" Type="bit" />
+          <Property Name="PerdidoMotivacion_No" Type="bit" />
+          <Property Name="PerdidoMotivacion_Esp" Type="varchar" MaxLength="300" />
+          <Property Name="QuererMorir_Si" Type="bit" />
+          <Property Name="QuererMorir_No" Type="bit" />
+          <Property Name="QuererMorir_Esp" Type="varchar" MaxLength="300" />
+          <Property Name="Consultado_Si" Type="bit" />
+          <Property Name="Consultado_No" Type="bit" />
+          <Property Name="Consultado_Esp" Type="varchar" MaxLength="300" />
+          <Property Name="ProblemasAtencion_Si" Type="bit" />
+          <Property Name="ProblemasAtencion_No" Type="bit" />
+          <Property Name="ProblemasAtencion_Esp" Type="varchar" MaxLength="300" />
+          <Property Name="ProblemasDormir_Si" Type="bit" />
+          <Property Name="ProblemasDormir_No" Type="bit" />
+          <Property Name="ProblemasDormir_Esp" Type="varchar" MaxLength="300" />
+          <Property Name="CambioApetito_Si" Type="bit" />
+          <Property Name="CambioApetito_No" Type="bit" />
+          <Property Name="CambioApetito_Esp" Type="varchar" MaxLength="300" />
+          <Property Name="ParteTiempo_Triste" Type="bit" />
+          <Property Name="ParteTiempo_Enojado" Type="bit" />
+          <Property Name="ParteTiempo_Miedo" Type="bit" />
+          <Property Name="ParteTiempo_Angustiado" Type="bit" />
+          <Property Name="ParteTiempo_Estresado" Type="bit" />
+          <Property Name="ParteTiempo_Maniaco" Type="bit" />
+          <Property Name="ParteTiempo_Otra" Type="bit" />
+          <Property Name="ParteTiempo_OtraEsp" Type="varchar" MaxLength="300" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityContainer Name="ModelsStoreContainer">
           <EntitySet Name="hc_MED_Alimentacion" EntityType="Self.hc_MED_Alimentacion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hc_MED_AntecedentesDes" EntityType="Self.hc_MED_AntecedentesDes" Schema="dbo" store:Type="Tables" />
@@ -251,6 +372,13 @@
           <EntitySet Name="hc_MED_PrincipioEvolEstado" EntityType="Self.hc_MED_PrincipioEvolEstado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hc_MED_Pronostico" EntityType="Self.hc_MED_Pronostico" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hc_MED_ResultadosLaboratorio" EntityType="Self.hc_MED_ResultadosLaboratorio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_PS_AreasAtencion" EntityType="Self.hc_PS_AreasAtencion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_PS_AtencionPsicologica" EntityType="Self.hc_PS_AtencionPsicologica" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_PS_Familia" EntityType="Self.hc_PS_Familia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_PS_IndicacionTerapeutica" EntityType="Self.hc_PS_IndicacionTerapeutica" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_PS_MotivoConsulta" EntityType="Self.hc_PS_MotivoConsulta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_PS_SignosAlarma" EntityType="Self.hc_PS_SignosAlarma" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_PS_SintomatologiaActual" EntityType="Self.hc_PS_SintomatologiaActual" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -502,7 +630,135 @@
           <EntitySet Name="hc_MED_PrincipioEvolEstado" EntityType="Self.hc_MED_PrincipioEvolEstado" />
           <EntitySet Name="hc_MED_Pronostico" EntityType="Self.hc_MED_Pronostico" />
           <EntitySet Name="hc_MED_ResultadosLaboratorio" EntityType="Self.hc_MED_ResultadosLaboratorio" />
+          <EntitySet Name="hc_PS_AreasAtencion" EntityType="Models.hc_PS_AreasAtencion" />
+          <EntitySet Name="hc_PS_AtencionPsicologica" EntityType="Models.hc_PS_AtencionPsicologica" />
+          <EntitySet Name="hc_PS_Familia" EntityType="Models.hc_PS_Familia" />
+          <EntitySet Name="hc_PS_IndicacionTerapeutica" EntityType="Models.hc_PS_IndicacionTerapeutica" />
+          <EntitySet Name="hc_PS_MotivoConsulta" EntityType="Models.hc_PS_MotivoConsulta" />
+          <EntitySet Name="hc_PS_SignosAlarma" EntityType="Models.hc_PS_SignosAlarma" />
+          <EntitySet Name="hc_PS_SintomatologiaActual" EntityType="Models.hc_PS_SintomatologiaActual" />
         </EntityContainer>
+        <EntityType Name="hc_PS_AreasAtencion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Conductual" Type="Boolean" />
+          <Property Name="Emocional" Type="Boolean" />
+          <Property Name="RelacionesIn" Type="Boolean" />
+          <Property Name="Neurologico" Type="Boolean" />
+          <Property Name="Academico" Type="Boolean" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="hc_PS_AtencionPsicologica">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Presencia_Voluntaria" Type="Boolean" />
+          <Property Name="Presencia_Sugerida" Type="Boolean" />
+          <Property Name="Presencia_Obligatoria" Type="Boolean" />
+          <Property Name="AnteriormenteAtencion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="hc_PS_Familia">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Parentesco" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="NombreCompleto" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Edad" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Ocupacion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="hc_PS_IndicacionTerapeutica">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Plan" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="hc_PS_MotivoConsulta">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Motivo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="hc_PS_SignosAlarma">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Signo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Esp_Signo" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="hc_PS_SintomatologiaActual">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sintomatologia" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="DificultadRespirar_Si" Type="Boolean" />
+          <Property Name="DificultadRespirar_No" Type="Boolean" />
+          <Property Name="DificultadRespirar_Esp" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="SensacionMorir_Si" Type="Boolean" />
+          <Property Name="SensacionMorir_No" Type="Boolean" />
+          <Property Name="SensacionMorir_Esp" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="TemblorCuerpo_Si" Type="Boolean" />
+          <Property Name="TemblorCuerpo_No" Type="Boolean" />
+          <Property Name="TemblorCuerpo_Esp" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Desmayo_Si" Type="Boolean" />
+          <Property Name="Desmayo_No" Type="Boolean" />
+          <Property Name="Desmayo_Esp" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Lloras_Si" Type="Boolean" />
+          <Property Name="Lloras_No" Type="Boolean" />
+          <Property Name="Lloras_Esp" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="DespiertasAnimo_Si" Type="Boolean" />
+          <Property Name="DespiertasAnimo_No" Type="Boolean" />
+          <Property Name="DespiertasAnimo_Esp" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Culpable_Si" Type="Boolean" />
+          <Property Name="Culpable_No" Type="Boolean" />
+          <Property Name="Culpable_Esp" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="PerdidoMotivacion_Si" Type="Boolean" />
+          <Property Name="PerdidoMotivacion_No" Type="Boolean" />
+          <Property Name="PerdidoMotivacion_Esp" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="QuererMorir_Si" Type="Boolean" />
+          <Property Name="QuererMorir_No" Type="Boolean" />
+          <Property Name="QuererMorir_Esp" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Consultado_Si" Type="Boolean" />
+          <Property Name="Consultado_No" Type="Boolean" />
+          <Property Name="Consultado_Esp" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="ProblemasAtencion_Si" Type="Boolean" />
+          <Property Name="ProblemasAtencion_No" Type="Boolean" />
+          <Property Name="ProblemasAtencion_Esp" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="ProblemasDormir_Si" Type="Boolean" />
+          <Property Name="ProblemasDormir_No" Type="Boolean" />
+          <Property Name="ProblemasDormir_Esp" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="CambioApetito_Si" Type="Boolean" />
+          <Property Name="CambioApetito_No" Type="Boolean" />
+          <Property Name="CambioApetito_Esp" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="ParteTiempo_Triste" Type="Boolean" />
+          <Property Name="ParteTiempo_Enojado" Type="Boolean" />
+          <Property Name="ParteTiempo_Miedo" Type="Boolean" />
+          <Property Name="ParteTiempo_Angustiado" Type="Boolean" />
+          <Property Name="ParteTiempo_Estresado" Type="Boolean" />
+          <Property Name="ParteTiempo_Maniaco" Type="Boolean" />
+          <Property Name="ParteTiempo_Otra" Type="Boolean" />
+          <Property Name="ParteTiempo_OtraEsp" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -751,6 +1007,134 @@
                 <ScalarProperty Name="RLGR" ColumnName="RLGR" />
                 <ScalarProperty Name="Especifica_RLGR" ColumnName="Especifica_RLGR" />
                 <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_PS_AreasAtencion">
+            <EntityTypeMapping TypeName="Models.hc_PS_AreasAtencion">
+              <MappingFragment StoreEntitySet="hc_PS_AreasAtencion">
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+                <ScalarProperty Name="Academico" ColumnName="Academico" />
+                <ScalarProperty Name="Neurologico" ColumnName="Neurologico" />
+                <ScalarProperty Name="RelacionesIn" ColumnName="RelacionesIn" />
+                <ScalarProperty Name="Emocional" ColumnName="Emocional" />
+                <ScalarProperty Name="Conductual" ColumnName="Conductual" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_PS_AtencionPsicologica">
+            <EntityTypeMapping TypeName="Models.hc_PS_AtencionPsicologica">
+              <MappingFragment StoreEntitySet="hc_PS_AtencionPsicologica">
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+                <ScalarProperty Name="AnteriormenteAtencion" ColumnName="AnteriormenteAtencion" />
+                <ScalarProperty Name="Presencia_Obligatoria" ColumnName="Presencia_Obligatoria" />
+                <ScalarProperty Name="Presencia_Sugerida" ColumnName="Presencia_Sugerida" />
+                <ScalarProperty Name="Presencia_Voluntaria" ColumnName="Presencia_Voluntaria" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_PS_Familia">
+            <EntityTypeMapping TypeName="Models.hc_PS_Familia">
+              <MappingFragment StoreEntitySet="hc_PS_Familia">
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+                <ScalarProperty Name="Ocupacion" ColumnName="Ocupacion" />
+                <ScalarProperty Name="Edad" ColumnName="Edad" />
+                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+                <ScalarProperty Name="Parentesco" ColumnName="Parentesco" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_PS_IndicacionTerapeutica">
+            <EntityTypeMapping TypeName="Models.hc_PS_IndicacionTerapeutica">
+              <MappingFragment StoreEntitySet="hc_PS_IndicacionTerapeutica">
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+                <ScalarProperty Name="Plan" ColumnName="Plan" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_PS_MotivoConsulta">
+            <EntityTypeMapping TypeName="Models.hc_PS_MotivoConsulta">
+              <MappingFragment StoreEntitySet="hc_PS_MotivoConsulta">
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+                <ScalarProperty Name="Motivo" ColumnName="Motivo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_PS_SignosAlarma">
+            <EntityTypeMapping TypeName="Models.hc_PS_SignosAlarma">
+              <MappingFragment StoreEntitySet="hc_PS_SignosAlarma">
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+                <ScalarProperty Name="Esp_Signo" ColumnName="Esp_Signo" />
+                <ScalarProperty Name="Signo" ColumnName="Signo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_PS_SintomatologiaActual">
+            <EntityTypeMapping TypeName="Models.hc_PS_SintomatologiaActual">
+              <MappingFragment StoreEntitySet="hc_PS_SintomatologiaActual">
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+                <ScalarProperty Name="ParteTiempo_OtraEsp" ColumnName="ParteTiempo_OtraEsp" />
+                <ScalarProperty Name="ParteTiempo_Otra" ColumnName="ParteTiempo_Otra" />
+                <ScalarProperty Name="ParteTiempo_Maniaco" ColumnName="ParteTiempo_Maniaco" />
+                <ScalarProperty Name="ParteTiempo_Estresado" ColumnName="ParteTiempo_Estresado" />
+                <ScalarProperty Name="ParteTiempo_Angustiado" ColumnName="ParteTiempo_Angustiado" />
+                <ScalarProperty Name="ParteTiempo_Miedo" ColumnName="ParteTiempo_Miedo" />
+                <ScalarProperty Name="ParteTiempo_Enojado" ColumnName="ParteTiempo_Enojado" />
+                <ScalarProperty Name="ParteTiempo_Triste" ColumnName="ParteTiempo_Triste" />
+                <ScalarProperty Name="CambioApetito_Esp" ColumnName="CambioApetito_Esp" />
+                <ScalarProperty Name="CambioApetito_No" ColumnName="CambioApetito_No" />
+                <ScalarProperty Name="CambioApetito_Si" ColumnName="CambioApetito_Si" />
+                <ScalarProperty Name="ProblemasDormir_Esp" ColumnName="ProblemasDormir_Esp" />
+                <ScalarProperty Name="ProblemasDormir_No" ColumnName="ProblemasDormir_No" />
+                <ScalarProperty Name="ProblemasDormir_Si" ColumnName="ProblemasDormir_Si" />
+                <ScalarProperty Name="ProblemasAtencion_Esp" ColumnName="ProblemasAtencion_Esp" />
+                <ScalarProperty Name="ProblemasAtencion_No" ColumnName="ProblemasAtencion_No" />
+                <ScalarProperty Name="ProblemasAtencion_Si" ColumnName="ProblemasAtencion_Si" />
+                <ScalarProperty Name="Consultado_Esp" ColumnName="Consultado_Esp" />
+                <ScalarProperty Name="Consultado_No" ColumnName="Consultado_No" />
+                <ScalarProperty Name="Consultado_Si" ColumnName="Consultado_Si" />
+                <ScalarProperty Name="QuererMorir_Esp" ColumnName="QuererMorir_Esp" />
+                <ScalarProperty Name="QuererMorir_No" ColumnName="QuererMorir_No" />
+                <ScalarProperty Name="QuererMorir_Si" ColumnName="QuererMorir_Si" />
+                <ScalarProperty Name="PerdidoMotivacion_Esp" ColumnName="PerdidoMotivacion_Esp" />
+                <ScalarProperty Name="PerdidoMotivacion_No" ColumnName="PerdidoMotivacion_No" />
+                <ScalarProperty Name="PerdidoMotivacion_Si" ColumnName="PerdidoMotivacion_Si" />
+                <ScalarProperty Name="Culpable_Esp" ColumnName="Culpable_Esp" />
+                <ScalarProperty Name="Culpable_No" ColumnName="Culpable_No" />
+                <ScalarProperty Name="Culpable_Si" ColumnName="Culpable_Si" />
+                <ScalarProperty Name="DespiertasAnimo_Esp" ColumnName="DespiertasAnimo_Esp" />
+                <ScalarProperty Name="DespiertasAnimo_No" ColumnName="DespiertasAnimo_No" />
+                <ScalarProperty Name="DespiertasAnimo_Si" ColumnName="DespiertasAnimo_Si" />
+                <ScalarProperty Name="Lloras_Esp" ColumnName="Lloras_Esp" />
+                <ScalarProperty Name="Lloras_No" ColumnName="Lloras_No" />
+                <ScalarProperty Name="Lloras_Si" ColumnName="Lloras_Si" />
+                <ScalarProperty Name="Desmayo_Esp" ColumnName="Desmayo_Esp" />
+                <ScalarProperty Name="Desmayo_No" ColumnName="Desmayo_No" />
+                <ScalarProperty Name="Desmayo_Si" ColumnName="Desmayo_Si" />
+                <ScalarProperty Name="TemblorCuerpo_Esp" ColumnName="TemblorCuerpo_Esp" />
+                <ScalarProperty Name="TemblorCuerpo_No" ColumnName="TemblorCuerpo_No" />
+                <ScalarProperty Name="TemblorCuerpo_Si" ColumnName="TemblorCuerpo_Si" />
+                <ScalarProperty Name="SensacionMorir_Esp" ColumnName="SensacionMorir_Esp" />
+                <ScalarProperty Name="SensacionMorir_No" ColumnName="SensacionMorir_No" />
+                <ScalarProperty Name="SensacionMorir_Si" ColumnName="SensacionMorir_Si" />
+                <ScalarProperty Name="DificultadRespirar_Esp" ColumnName="DificultadRespirar_Esp" />
+                <ScalarProperty Name="DificultadRespirar_No" ColumnName="DificultadRespirar_No" />
+                <ScalarProperty Name="DificultadRespirar_Si" ColumnName="DificultadRespirar_Si" />
+                <ScalarProperty Name="Sintomatologia" ColumnName="Sintomatologia" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

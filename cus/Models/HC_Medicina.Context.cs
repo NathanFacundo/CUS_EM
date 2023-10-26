@@ -39,5 +39,12 @@ namespace CUS.Models
         public virtual DbSet<hc_MED_PrincipioEvolEstado> hc_MED_PrincipioEvolEstado { get; set; }
         public virtual DbSet<hc_MED_Pronostico> hc_MED_Pronostico { get; set; }
         public virtual DbSet<hc_MED_ResultadosLaboratorio> hc_MED_ResultadosLaboratorio { get; set; }
+        public virtual DbSet<hc_PS_AreasAtencion> hc_PS_AreasAtencion { get; set; }
+        public virtual DbSet<hc_PS_AtencionPsicologica> hc_PS_AtencionPsicologica { get; set; }
+        public virtual DbSet<hc_PS_Familia> hc_PS_Familia { get; set; }
+        public virtual DbSet<hc_PS_IndicacionTerapeutica> hc_PS_IndicacionTerapeutica { get; set; }
+        public virtual DbSet<hc_PS_MotivoConsulta> hc_PS_MotivoConsulta { get; set; }
+        public virtual DbSet<hc_PS_SignosAlarma> hc_PS_SignosAlarma { get; set; }
+        public virtual DbSet<hc_PS_SintomatologiaActual> hc_PS_SintomatologiaActual { get; set; }
     }
 }
