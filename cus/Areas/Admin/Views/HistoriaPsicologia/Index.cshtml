@@ -1,0 +1,1063 @@
+﻿
+
+@{
+}
+
+<style>
+    .nav-tabs.nav-tabs-bottom > li {
+        margin-bottom: -1px;
+        width: 110px;
+        max-width: 110px;
+        font-size: 10px;
+    }
+
+    .user-tabs .nav-tabs > li > a {
+        padding: 5px;
+    }
+</style>
+
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3 class="page-title">Historia Clínica Psicología</h3>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12" id="InfoPX">
+                <div class="profile-header">
+                    <div class="row align-items-center">
+                        <div class="col-auto profile-image">
+                            <a href="#">
+                            </a>
+                        </div>
+                        <div class="col ml-md-n2 profile-user-info">
+                            <h10 style="font-weight:bold;">Nombre: </h10>
+                            <a id="Nombre"></a><br />
+                            <h10 style="font-weight:bold;">Expediente: </h10>
+                            <a id="Exp"></a><br />
+                            <h10 style="font-weight:bold;">Edad: </h10>
+                            <a id="Edad"></a><br />
+                            <h10 style="font-weight:bold;">Sexo: </h10>
+                            <a id="Sexo"></a><br />
+                            <h10 style="font-weight:bold;">Fecha Nac.: </h10>
+                            <a id="FechaNac"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12" id="BusquedaPX">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Busque al px.</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 mb-3">
+                        <input type="text" class="form-control BuscarPX" id="NombrePX" placeholder="Nombre PX" required>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <input type="text" class="form-control BuscarPX" id="ExpedientePX" placeholder="Expediente PX" required>
+                    </div>
+                    <div class="col-md-3 mb-2">
+                        <button class="btn btn-primary" onclick="BtnBuscarPX()">Buscar</button>
+                    </div>
+                </div>
+                <div>
+                    <div class="table-responsive">
+                        <table id="TblPaciente" class="datatable table table-stripped">
+                            <thead>
+                                <tr>
+                                    <th style="text-align:center">
+                                        Nombre
+                                    </th>
+                                    <th style="text-align:center">
+                                        Primer Apellido
+                                    </th>
+                                    <th style="text-align:center">
+                                        Segundo Apellido
+                                    </th>
+                                    <th style="text-align:center">
+                                        Unidad de Afiliacion
+                                    </th>
+                                    <th style="text-align:center">
+                                        Expediente
+                                    </th>
+                                    <th style="width:5px">Seleccionar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <nav class="user-tabs mb-4">
+                    <ul class="nav nav-tabs nav-tabs-bottom nav-justified">
+                        <li class="nav-item text-left">
+                            <a class="nav-link active" href="#Familia" data-toggle="tab">Familia <br />  </a>
+                        </li>
+                        <li class="nav-item text-left">
+                            <a class="nav-link" href="#AtencionPsicologica" data-toggle="tab">Atención <br />Psicologíca</a>
+                        </li>
+                        <li class="nav-item text-left">
+                            <a class="nav-link" href="#MotivoConsulta" data-toggle="tab">Motivo de <br />Consulta</a>
+                        </li>
+                        <li class="nav-item text-left">
+                            <a class="nav-link" href="#Sintomatologia" data-toggle="tab">Sintomatología <br />Actual</a>
+                        </li>
+                        <li class="nav-item text-left">
+                            <a class="nav-link" href="#AreasAtencion" data-toggle="tab">Áreas de <br />Atención</a>
+                        </li>
+                        <li class="nav-item text-left">
+                            <a class="nav-link" href="#SignosAlarma" data-toggle="tab">Signos de <br />Alarma</a>
+                        </li>
+                        <li class="nav-item text-left">
+                            <a class="nav-link" href="#IndicacionTera" data-toggle="tab">Indicación <br />Terapéutica</a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="tab-content pt-0">
+
+                    <div class="tab-pane fade show active" id="Familia">
+                        <div class="card card-table mb-0 p-3 mb-5">
+                            <div class="card-body">
+                                <form id="F_Familia">
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label>Parentesco</label>
+                                                <select class="form-control" id="Parentesco" name="Parentesco">
+                                                    <option value="">Seleccionar</option>
+                                                    <option value="Mamá">Mamá</option>
+                                                    <option value="Papá">Papá</option>
+                                                    <option value="Hermano">Hermano</option>
+                                                    <option value="Hermana">Hermana</option>
+                                                    <option value="Abuelo">Abuelo</option>
+                                                    <option value="Abuela">Abuela</option>
+                                                    <option value="Tío">Tío</option>
+                                                    <option value="Tía">Tía</option>
+                                                    <option value="Primo">Primo</option>
+                                                    <option value="Prima">Prima</option>
+                                                    <option value="Tutor">Tutor</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <div class="form-group">
+                                                <label>Nombre Completo</label>
+                                                <input type="text" class="form-control" id="NombreCompleto" name="NombreCompleto" placeholder="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Edad</label>
+                                                <input type="text" class="form-control" id="Edad" name="Edad" placeholder="">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Ocupación</label>
+                                                <input type="text" class="form-control" id="Ocupacion" name="Ocupacion" placeholder="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <button id="Btn_Familia" type="submit" class="btn btn-primary">Guardar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade show" id="AtencionPsicologica">
+                        <div class="card card-table mb-0 p-3 mb-5">
+                            <div class="card-body">
+                                <form id="F_AtencionPsi">
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="row">
+                                                <label>Su presencia en esta clínica es:</label>
+                                            </div>
+                                            <div class="row">
+                                                <input class="form-check-input" type="checkbox" id="Presencia_Voluntaria" name="Presencia_Voluntaria">
+                                                <label class="form-check-label" for="">
+                                                    Voluntaria
+                                                </label>
+                                            </div>
+                                            <div class="row">
+                                                <input class="form-check-input" type="checkbox" id="Presencia_Sugerida" name="Presencia_Sugerida">
+                                                <label class="form-check-label" for="">
+                                                    Sugerida
+                                                </label>
+                                            </div>
+                                            <div class="row">
+                                                <input class="form-check-input" type="checkbox" id="Presencia_Obligatoria" name="Presencia_Obligatoria">
+                                                <label class="form-check-label" for="">
+                                                    Obligatoria
+                                                </label>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group">
+                                                    <label>¿Has acudido anteriormente a atención psicologíca?</label>
+                                                    <input type="text" class="form-control" id="AnteriormenteAtencion" name="AnteriormenteAtencion" placeholder="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <button id="Btn_AtencionPsi" type="submit" class="btn btn-primary">Guardar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade show" id="MotivoConsulta">
+                        <div class="card card-table mb-0 p-3 mb-5">
+                            <div class="card-body">
+                                <form id="F_MotivoCon">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Motivo de consulta</label>
+                                                <input type="text" class="form-control" id="Motivo" name="Motivo" placeholder="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <button id="Btn_Motivo" type="submit" class="btn btn-primary">Guardar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade show" id="Sintomatologia">
+                        <div class="card card-table mb-0 p-3 mb-5">
+                            <div class="card-body">
+                                <form id="F_Sintomatologia">
+                                    <div class="row">
+                                        <h3>Seleccione si el px presenta alguno de lo siguiente:</h3>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label><b></b></label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label><b>Si</b></label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label><b>No</b></label>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label><b>Especificar</b></label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>¿Dificultad respirar (ahogos)?</label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="DificultadRespirar_Si" name="DificultadRespirar_Si">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="DificultadRespirar_No" name="DificultadRespirar_No">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" id="DificultadRespirar_Esp" name="DificultadRespirar_Esp" placeholder="Dificultad respirar">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>¿Sensación que te vas a morir?</label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="SensacionMorir_Si" name="SensacionMorir_Si">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="SensacionMorir_No" name="SensacionMorir_No">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" id="SensacionMorir_Esp" name="SensacionMorir_Esp" placeholder="Sensación morir">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>¿Temblor de cuerpo?</label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="TemblorCuerpo_Si" name="TemblorCuerpo_Si">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="TemblorCuerpo_No" name="TemblorCuerpo_No">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" id="TemblorCuerpo_Esp" name="TemblorCuerpo_Esp" placeholder="Temblor cuerpo">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>¿Como que te vas a desmayar?</label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="Desmayo_Si" name="Desmayo_Si">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="Desmayo_No" name="Desmayo_No">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" id="Desmayo_Esp" name="Desmayo_Esp" placeholder="Desmayo">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>¿Lloras y no puedes controlarlo?</label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="Lloras_Si" name="Lloras_Si">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="Lloras_No" name="Lloras_No">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" id="Lloras_Esp" name="Lloras_Esp" placeholder="Lloras">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>¿Despiertas sin ánimo de hacer las cosas que antes hacías?</label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="DespiertasAnimo_Si" name="DespiertasAnimo_Si">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="DespiertasAnimo_No" name="DespiertasAnimo_No">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" id="DespiertasAnimo_Esp" name="DespiertasAnimo_Esp" placeholder="Sin ánimo">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>¿Te sientes culpable o inútil frecuentemente?</label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="Culpable_Si" name="Culpable_Si">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="Culpable_No" name="Culpable_No">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" id="Culpable_Esp" name="Culpable_Esp" placeholder="Culpable">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>¿Has perdido la motivación de seguir adelante?</label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="PerdidoMotivacion_Si" name="PerdidoMotivacion_Si">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="PerdidoMotivacion_No" name="PerdidoMotivacion_No">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" id="PerdidoMotivacion_Esp" name="PerdidoMotivacion_Esp" placeholder="Motivación">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>¿Has pensado en querer morir?</label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="QuererMorir_Si" name="QuererMorir_Si">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="QuererMorir_No" name="QuererMorir_No">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" id="QuererMorir_Esp" name="QuererMorir_Esp" placeholder="Morir">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>¿Has consultado a otros profesionales de psicología o psiquiatría?</label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="Consultado_Si" name="Consultado_Si">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="Consultado_No" name="Consultado_No">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" id="Consultado_Esp" name="Consultado_Esp" placeholder="Consultado">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>¿Tienes problemas de atención, concentración y memoria?</label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="ProblemasAtencion_Si" name="ProblemasAtencion_Si">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="ProblemasAtencion_No" name="ProblemasAtencion_No">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" id="ProblemasAtencion_Esp" name="ProblemasAtencion_Esp" placeholder="Problemas">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>¿Tienes problemas para dormir?</label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="ProblemasDormir_Si" name="ProblemasDormir_Si">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="ProblemasDormir_No" name="ProblemasDormir_No">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" id="ProblemasDormir_Esp" name="ProblemasDormir_Esp" placeholder="Problemas Dormir">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>¿Ha cambiado tu apetito?</label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="CambioApetito_Si" name="CambioApetito_Si">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input class="form-check-input" type="checkbox" id="CambioApetito_No" name="CambioApetito_No">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" id="CambioApetito_Esp" name="CambioApetito_Esp" placeholder="Apetito">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-11">
+                                            <div class="row">
+                                                <label>La mayor parte del tiempo te sientes:</label>
+                                            </div>
+                                            <div class="row">
+                                                <input class="form-check-input" type="checkbox" id="ParteTiempo_Triste" name="ParteTiempo_Triste">
+                                                <label class="form-check-label" for="">
+                                                    Triste
+                                                </label>
+                                            </div>
+                                            <div class="row">
+                                                <input class="form-check-input" type="checkbox" id="ParteTiempo_Enojado" name="ParteTiempo_Enojado">
+                                                <label class="form-check-label" for="">
+                                                    Enojado
+                                                </label>
+                                            </div>
+                                            <div class="row">
+                                                <input class="form-check-input" type="checkbox" id="ParteTiempo_Miedo" name="ParteTiempo_Miedo">
+                                                <label class="form-check-label" for="">
+                                                    Con miedo
+                                                </label>
+                                            </div>
+                                            <div class="row">
+                                                <input class="form-check-input" type="checkbox" id="ParteTiempo_Angustiado" name="ParteTiempo_Angustiado">
+                                                <label class="form-check-label" for="">
+                                                    Angustiado
+                                                </label>
+                                            </div>
+                                            <div class="row">
+                                                <input class="form-check-input" type="checkbox" id="ParteTiempo_Estresado" name="ParteTiempo_Estresado">
+                                                <label class="form-check-label" for="">
+                                                    Estresado
+                                                </label>
+                                            </div>
+                                            <div class="row">
+                                                <input class="form-check-input" type="checkbox" id="ParteTiempo_Maniaco" name="ParteTiempo_Maniaco">
+                                                <label class="form-check-label" for="">
+                                                    Maniaco
+                                                </label>
+                                            </div>
+                                            <div class="row">
+                                                <input class="form-check-input" type="checkbox" id="ParteTiempo_Otra" name="ParteTiempo_Otra">
+                                                <label class="form-check-label" for="">
+                                                    Otro
+                                                </label>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group">
+                                                    <label>Especifique opción Otro</label>
+                                                    <input type="text" class="form-control" id="ParteTiempo_OtraEsp" name="ParteTiempo_OtraEsp" placeholder="Otro">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <button id="Btn_Sintomatologia" type="submit" class="btn btn-primary">Guardar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade show" id="AreasAtencion">
+                        <div class="card card-table mb-0 p-3 mb-5">
+                            <div class="card-body">
+                                <form id="F_AreasAtencion">
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="row">
+                                                <label>Seleccione una o más:</label>
+                                            </div>
+                                            <div class="row">
+                                                <input class="form-check-input" type="checkbox" id="Conductual" name="Conductual">
+                                                <label class="form-check-label" for="">
+                                                    Conductual y salúd física
+                                                </label>
+                                            </div>
+                                            <div class="row">
+                                                <input class="form-check-input" type="checkbox" id="Emocional" name="Emocional">
+                                                <label class="form-check-label" for="">
+                                                    Emocional
+                                                </label>
+                                            </div>
+                                            <div class="row">
+                                                <input class="form-check-input" type="checkbox" id="RelacionesIn" name="RelacionesIn">
+                                                <label class="form-check-label" for="">
+                                                    Relaciones interpersonales
+                                                </label>
+                                            </div>
+                                            <div class="row">
+                                                <input class="form-check-input" type="checkbox" id="Neurologico" name="Neurologico">
+                                                <label class="form-check-label" for="">
+                                                    Neurológico
+                                                </label>
+                                            </div>
+                                            <div class="row">
+                                                <input class="form-check-input" type="checkbox" id="Academico" name="Academico">
+                                                <label class="form-check-label" for="">
+                                                    Académico y profesional
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <button id="Btn_AreasAtencion" type="submit" class="btn btn-primary">Guardar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade show" id="SignosAlarma">
+                        <div class="card card-table mb-0 p-3 mb-5">
+                            <div class="card-body">
+                                <form id="F_SignosAlarma">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Seleccione</label>
+                                                <select class="form-control" id="Signo" name="Signo">
+                                                    <option value="">Seleccionar</option>
+                                                    <option value="Autoagresión">Autoagresión</option>
+                                                    <option value="Heteroagresión">Heteroagresión</option>
+                                                    <option value="Violencia">Violencia</option>
+                                                    <option value="Consumo de sustancias">Consumo de sustancias</option>
+                                                    <option value="Ninguna">Ninguna</option>
+                                                    <option value="Otra">Otra</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Especifique opción Otra</label>
+                                                <input type="text" class="form-control" id="Esp_Signo" name="Esp_Signo" placeholder="Otra">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <button id="Btn_SignosAlarma" type="submit" class="btn btn-primary">Guardar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade show" id="IndicacionTera">
+                        <div class="card card-table mb-0 p-3 mb-5">
+                            <div class="card-body">
+                                <form id="F_IndicacionTera">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Plan terapéutico</label>
+                                                <textarea class="form-control" placeholder="" id="Plan" name="Plan"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <button id="Btn_IndicacionTera" type="submit" class="btn btn-primary">Guardar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Areas/Admin/assets/js/jquery-3.2.1.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+
+    $(document).ready(function () {
+
+        //Ocultamos div donde se muestra la info del px ya que aún no se ha buscado
+        $("#InfoPX").hide();
+
+        var table = $('#TblPaciente').DataTable();
+        table.destroy();
+        table = $('#TblPaciente').DataTable({
+            paging: false,
+            scroller: false,
+            responsive: true,
+            searching: false,
+            info: true,
+            lengthChange: false,
+            pageLength: 20,
+            language: {
+                "zeroRecords": " ",
+                "info": "_TOTAL_ px",
+                "search": "Buscar:",
+                "infoEmpty": "",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Último",
+                    "next": "Siguiente",
+                    "previous": "Anterior",
+                },
+                "select": {
+                    "rows": " %d filas seleccionadas"
+                },
+            }
+        });
+
+        // #region Botones de Guardar HC
+        $("#Btn_Familia").css("display", "none");
+        $("#Btn_AtencionPsi").css("display", "none");
+        $("#Btn_Motivo").css("display", "none");
+        $("#Btn_Sintomatologia").css("display", "none");
+        $("#Btn_AreasAtencion").css("display", "none");
+        $("#Btn_SignosAlarma").css("display", "none");
+        $("#Btn_IndicacionTera").css("display", "none");
+        // #endregion
+
+        //let timerInterval
+        //Swal.fire({
+        //    title: 'Busque al px. y selecciónalo para crearle la h.c.',
+        //    timer: 3500,
+        //    timerProgressBar: true,
+        //    willClose: () => {
+        //        clearInterval(timerInterval)
+        //    }
+        //});
+    });
+
+    //Si dan click en Enter en los inputs de Nombre/Expediente
+    $('.BuscarPX').on("keypress", function (e) {
+        if (e.keyCode == 13) {
+            FuncionBuscarPX();
+            return false;
+        }
+    });
+
+    //Si dan click en el botón de Buscar
+    function BtnBuscarPX() {
+        FuncionBuscarPX();
+    };
+
+    function FuncionBuscarPX() {
+	    var NombrePX = $("#NombrePX").val();
+	    var ExpedientePX = $("#ExpedientePX").val();
+
+	    Swal.fire({
+		    title: 'Cargando... Espere por favor',
+		    timer: 1000,
+		    timerProgressBar: true,
+	    });
+
+	    $.ajax({
+		    url: '@Url.Action("BuscarPaciente", "Derechohabiente")',
+		    method: 'POST',
+		    dataType: 'json',
+		    data: {
+                NombrePX: NombrePX,
+                ExpedientePX: ExpedientePX
+		    },
+		    success: function(data) {
+                if (data.MENSAJE.substring(0, 6) == "Succe:") {
+                    LlenaTablaPX(data.PACIENTES);
+			    }
+			    if (data.MENSAJE.substring(0, 6) == "Error:") {
+				    Swal.fire({
+					    icon: 'error',
+					    title: '¡Error!',
+					    text: data.MENSAJE.substring(7),
+				    });
+			    }
+		    },
+		    error: function(ex) {
+			    Swal.fire({
+				    icon: 'error',
+				    title: '¡Error!',
+			    });
+		    }
+	    });
+
+    };
+
+    function LlenaTablaPX(PX) {
+        var table = $('#TblPaciente').DataTable();
+        table.destroy();
+
+        table = $('#TblPaciente').DataTable({
+            responsive: true,
+            searching: false,
+            info: true,
+            deferRender: true,
+            scroller: false,
+            scrollColapse: true,
+            paging: false,
+            lengthChange: false,
+            language: {
+                "zeroRecords": "No se encontraron PX",
+                "info": "",
+                "search": "",
+                "infoEmpty": "",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Último",
+                    "next": "Siguiente",
+                    "previous": "Anterior",
+                },
+                "select": {
+                    "rows": " %d filas seleccionadas"
+                },
+            },
+            data: PX,
+            columns: [
+                { 'data': 'Nombre', className: "text-center" },
+                { 'data': 'PrimerApellido', className: "text-center" },
+                { 'data': 'SegundoApellido', className: "text-center" },
+                {
+                    "data": "UnidadAfiliacion", className: "text-center", render: function (data, type, row) {
+                        if (row.UnidadAfiliacion == 1 ) {
+                            return '<h8 style="color:black; ">Unidad habitacional I.</h8>';
+                        }
+                        if (row.UnidadAfiliacion == 2) {
+                            return '<h8 style="color:black; ">Módulo dental Apodaca</h8>';
+                        }
+                        if (row.UnidadAfiliacion == 3) {
+                            return '<h8 style="color:black; ">Pueblo Nuevo</h8>';
+                        }
+                        if (row.UnidadAfiliacion == 4) {
+                            return '<h8 style="color:black; ">Vicente Guerrero</h8>';
+                        }
+                        if (row.UnidadAfiliacion == 5) {
+                            return '<h8 style="color:black; ">San Rafael</h8>';
+                        }
+                        if (row.UnidadAfiliacion == 6) {
+                            return '<h8 style="color:black; ">21 de enero</h8>';
+                        }
+                        if (row.UnidadAfiliacion == 7) {
+                            return '<h8 style="color:black; ">Clínica de atención int.</h8>';
+                        }
+                        if (row.UnidadAfiliacion == 8) {
+                            return '<h8 style="color:black; ">Módulo dental Guadalupe</h8>';
+                        }
+                        if (row.UnidadAfiliacion == 9) {
+                            return '<h8 style="color:black; ">Ciénega de Flores</h8>';
+                        }
+                    }
+                },
+                { 'data': 'Expediente', className: "text-center" },
+                {
+                    "className": 'text-center',
+                    "orderable": false,
+                    "data": null,
+                    "defaultContent": '<button title="Seleccionar px" id="VerDetalle" class="btn btn-success fa fa-check" data-toggle="modal" ></button>',
+                    "target": -2
+                }
+            ]
+        });
+    }
+
+    $('#TblPaciente tbody').on('click', '#VerDetalle', function () {
+        var tr = $(this).closest('tr');
+        row = $('#TblPaciente').DataTable().row(tr);
+
+        var Nombre = row.data().Nombre;
+        var PrimerA = row.data().PrimerApellido;
+        var SegundoA = row.data().SegundoApellido;
+        var Exp = row.data().Expediente;
+        var Edad = row.data().Edad;
+        var Sexo = row.data().Sexo;
+        var FechaN = row.data().FechaNacimiento;
+
+        //Dividir fecha de nacimiento
+        var splitFechaN = FechaN.split('/');
+        const anioNacimiento = parseInt(splitFechaN[2]);
+        const mesNacimiento = parseInt(splitFechaN[1]);
+        const diaNacimiento = parseInt(splitFechaN[0]);
+
+        // Obtiene la fecha actual
+        const fechaActual = new Date();
+
+        // Obtiene el año, mes y día actual
+        const anioActual = fechaActual.getFullYear();
+        const mesActual = fechaActual.getMonth() + 1; // Los meses en JavaScript van de 0 a 11
+        const diaActual = fechaActual.getDate();
+
+        // Calcula la edad
+        let edad = anioActual - anioNacimiento;
+        let edadMeses = mesActual - mesNacimiento;
+
+        // Verifica si aún no ha llegado el cumpleaños de este año
+        if (mesActual < mesNacimiento || (mesActual === mesNacimiento && diaActual < diaNacimiento)) {
+            edad--;
+        }
+
+        document.getElementById("Nombre").innerHTML = Nombre + " " + PrimerA + " " + SegundoA;
+        document.getElementById("Exp").innerHTML = Exp;
+        document.getElementById("Edad").innerHTML = edad + ' años ' + edadMeses + ' meses';
+        document.getElementById("Sexo").innerHTML = Sexo;
+        document.getElementById("FechaNac").innerHTML = FechaN;
+
+        //ocultamos div de la busqueda del px
+        $("#BusquedaPX").hide();
+        //mostramos div de la info del px
+        $("#InfoPX").show();
+
+        // #region Botones de Guardar HC
+        $("#Btn_Familia").css("display", "");
+        $("#Btn_AtencionPsi").css("display", "");
+        $("#Btn_Motivo").css("display", "");
+        $("#Btn_Sintomatologia").css("display", "");
+        $("#Btn_AreasAtencion").css("display", "");
+        $("#Btn_SignosAlarma").css("display", "");
+        $("#Btn_IndicacionTera").css("display", "");
+        // #endregion
+
+    });
+
+    // #region Guardar cada pestaña/sección
+
+    $("#Btn_Familia").click(function () {
+        let data = $("#F_Familia").serialize();
+        var expediente = $("#Exp").text();
+        if (expediente) {
+            $.post("@Url.Action("Familia", "HistoriaPsicologia")?expediente=" + expediente, data).done(function (response) {
+                if (response.MENSAJE.substring(0, 6) == "Succe:") {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Sección guardada',
+                        showConfirmButton: false,
+                        timer: 1600
+                    })
+                    $("#Btn_Familia").css("display", "none");
+                }
+                if (response.MENSAJE.substring(0, 6) == "Error:") {
+                    Swal.fire({
+                        icon: 'error',
+                        title: '¡Error!',
+                        text: response.MENSAJE.substring(7),
+                    });
+                }
+            }).fail(function (response) {
+                console.log(response);
+            });
+            event.preventDefault();
+        }
+    });
+    $("#Btn_AtencionPsi").click(function () {
+        let data = $("#F_AtencionPsi").serialize();
+        var expediente = $("#Exp").text();
+        if (expediente) {
+            $.post("@Url.Action("AtencionPsi", "HistoriaPsicologia")?expediente=" + expediente, data).done(function (response) {
+                if (response.MENSAJE.substring(0, 6) == "Succe:") {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Sección guardada',
+                        showConfirmButton: false,
+                        timer: 1600
+                    })
+                    $("#Btn_AtencionPsi").css("display", "none");
+                }
+                if (response.MENSAJE.substring(0, 6) == "Error:") {
+                    Swal.fire({
+                        icon: 'error',
+                        title: '¡Error!',
+                        text: response.MENSAJE.substring(7),
+                    });
+                }
+            }).fail(function (response) {
+                console.log(response);
+            });
+            event.preventDefault();
+        }
+    });
+    $("#Btn_Motivo").click(function () {
+        let data = $("#F_MotivoCon").serialize();
+        var expediente = $("#Exp").text();
+        if (expediente) {
+            $.post("@Url.Action("Motivo", "HistoriaPsicologia")?expediente=" + expediente, data).done(function (response) {
+                if (response.MENSAJE.substring(0, 6) == "Succe:") {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Sección guardada',
+                        showConfirmButton: false,
+                        timer: 1600
+                    })
+                    $("#Btn_Motivo").css("display", "none");
+                }
+                if (response.MENSAJE.substring(0, 6) == "Error:") {
+                    Swal.fire({
+                        icon: 'error',
+                        title: '¡Error!',
+                        text: response.MENSAJE.substring(7),
+                    });
+                }
+            }).fail(function (response) {
+                console.log(response);
+            });
+            event.preventDefault();
+        }
+    });
+    $("#Btn_Sintomatologia").click(function () {
+        let data = $("#F_Sintomatologia").serialize();
+        var expediente = $("#Exp").text();
+        if (expediente) {
+            $.post("@Url.Action("Sintomatologia", "HistoriaPsicologia")?expediente=" + expediente, data).done(function (response) {
+                if (response.MENSAJE.substring(0, 6) == "Succe:") {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Sección guardada',
+                        showConfirmButton: false,
+                        timer: 1600
+                    })
+                    $("#Btn_Sintomatologia").css("display", "none");
+                }
+                if (response.MENSAJE.substring(0, 6) == "Error:") {
+                    Swal.fire({
+                        icon: 'error',
+                        title: '¡Error!',
+                        text: response.MENSAJE.substring(7),
+                    });
+                }
+            }).fail(function (response) {
+                console.log(response);
+            });
+            event.preventDefault();
+        }
+    });
+    $("#Btn_AreasAtencion").click(function () {
+        let data = $("#F_AreasAtencion").serialize();
+        var expediente = $("#Exp").text();
+        if (expediente) {
+            $.post("@Url.Action("AreasAtencion", "HistoriaPsicologia")?expediente=" + expediente, data).done(function (response) {
+                if (response.MENSAJE.substring(0, 6) == "Succe:") {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Sección guardada',
+                        showConfirmButton: false,
+                        timer: 1600
+                    })
+                    $("#Btn_AreasAtencion").css("display", "none");
+                }
+                if (response.MENSAJE.substring(0, 6) == "Error:") {
+                    Swal.fire({
+                        icon: 'error',
+                        title: '¡Error!',
+                        text: response.MENSAJE.substring(7),
+                    });
+                }
+            }).fail(function (response) {
+                console.log(response);
+            });
+            event.preventDefault();
+        }
+    });
+    $("#Btn_SignosAlarma").click(function () {
+        let data = $("#F_SignosAlarma").serialize();
+        var expediente = $("#Exp").text();
+        if (expediente) {
+            $.post("@Url.Action("SignosAlarma", "HistoriaPsicologia")?expediente=" + expediente, data).done(function (response) {
+                if (response.MENSAJE.substring(0, 6) == "Succe:") {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Sección guardada',
+                        showConfirmButton: false,
+                        timer: 1600
+                    })
+                    $("#Btn_SignosAlarma").css("display", "none");
+                }
+                if (response.MENSAJE.substring(0, 6) == "Error:") {
+                    Swal.fire({
+                        icon: 'error',
+                        title: '¡Error!',
+                        text: response.MENSAJE.substring(7),
+                    });
+                }
+            }).fail(function (response) {
+                console.log(response);
+            });
+            event.preventDefault();
+        }
+    });
+    $("#Btn_IndicacionTera").click(function () {
+        let data = $("#F_IndicacionTera").serialize();
+        var expediente = $("#Exp").text();
+        if (expediente) {
+            $.post("@Url.Action("IndicacionTera", "HistoriaPsicologia")?expediente=" + expediente, data).done(function (response) {
+                if (response.MENSAJE.substring(0, 6) == "Succe:") {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Sección guardada',
+                        showConfirmButton: false,
+                        timer: 1600
+                    })
+                    $("#Btn_IndicacionTera").css("display", "none");
+                }
+                if (response.MENSAJE.substring(0, 6) == "Error:") {
+                    Swal.fire({
+                        icon: 'error',
+                        title: '¡Error!',
+                        text: response.MENSAJE.substring(7),
+                    });
+                }
+            }).fail(function (response) {
+                console.log(response);
+            });
+            event.preventDefault();
+        }
+    });
+
+    // #endregion
+
+</script>
