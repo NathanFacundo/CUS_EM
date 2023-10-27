@@ -1097,7 +1097,7 @@
                                         <div class="col-md-4" id="EspFechaUltimaCes">
                                             <div class="form-group">
                                                 <label>Especifique Fecha</label>
-                                                <input type="text" id="" name="Especifica_FechaUltimaCesarea" class="form-control">
+                                                <input type="text" id="date1" name="Especifica_FechaUltimaCesarea" class="form-control">
                                                 <span class="form-text text-muted">dd/mm/yyyy</span>
                                             </div>
                                         </div>
@@ -2495,4 +2495,25 @@
 
     // #endregion
 
+</script>
+
+
+<script>
+    $(document).ready(function () {
+        const fechaInput = $('#date1');
+
+        fechaInput.on('input', function () {
+            let inputValue = fechaInput.val().replace(/\D/g, ''); // Eliminar caracteres no numéricos
+
+            if (inputValue.length > 0) {
+                inputValue = inputValue.replace(/(\d{2})(\d{2})(\d{4})/, '$1/$2/$3');
+                if (inputValue.length > 10) {
+                    // Limitar a 10 caracteres
+                    inputValue = inputValue.substring(0, 10);
+                }
+            }
+
+            fechaInput.val(inputValue);
+        });
+    });
 </script>

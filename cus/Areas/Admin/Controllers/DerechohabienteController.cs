@@ -496,5 +496,13 @@ namespace CUS.Areas.Admin.Controllers
             return Json(new { MENSAJE = "Succe: ", PACIENTES = result1 }, JsonRequestBehavior.AllowGet);
         }
 
+
+        public JsonResult BuscarPaciente()
+        {
+            // Tu lógica global aquí
+            return Json(new { mensaje = "mensaje" }, JsonRequestBehavior.AllowGet);
+        }
+
+
     }
 }
