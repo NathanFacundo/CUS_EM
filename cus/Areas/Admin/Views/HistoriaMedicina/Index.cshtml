@@ -1122,7 +1122,7 @@
                                         <div class="col-md-6" id="EspFechaUltimaAbor">
                                             <div class="form-group">
                                                 <label>Especifique Fecha</label>
-                                                <input type="text" id="" name="Especifica_FechaUltimoAborto" class="form-control">
+                                                <input type="text" id="date2" name="Especifica_FechaUltimoAborto" class="form-control">
                                                 <span class="form-text text-muted">dd/mm/yyyy</span>
                                             </div>
                                         </div>
@@ -1141,7 +1141,7 @@
                                         <div class="col-md-6" id="EspFechaUltimaMens">
                                             <div class="form-group">
                                                 <label>Especifique Fecha</label>
-                                                <input type="text" id="" name="Especifica_FechaUltimaMenstruacion" class="form-control">
+                                                <input type="text" id="date3" name="Especifica_FechaUltimaMenstruacion" class="form-control">
                                                 <span class="form-text text-muted">dd/mm/yyyy</span>
                                             </div>
                                         </div>
@@ -1160,7 +1160,7 @@
                                         <div class="col-md-6" id="EspFechaProbParto">
                                             <div class="form-group">
                                                 <label>Especifique Fecha</label>
-                                                <input type="text" id="" name="Especifica_FechaProbableParto" class="form-control">
+                                                <input type="text" id="date4" name="Especifica_FechaProbableParto" class="form-control">
                                                 <span class="form-text text-muted">dd/mm/yyyy</span>
                                             </div>
                                         </div>
@@ -1180,7 +1180,7 @@
                                         <div class="col-md-3" id="EspFechaUltimoPapa">
                                             <div class="form-group">
                                                 <label>Especifique Fecha</label>
-                                                <input type="text" id="" name="Especifica_FechaUltimoPapanicolau" class="form-control">
+                                                <input type="text" id="date5" name="Especifica_FechaUltimoPapanicolau" class="form-control">
                                                 <span class="form-text text-muted">dd/mm/yyyy</span>
                                             </div>
                                         </div>
@@ -1538,6 +1538,71 @@
             willClose: () => {
                 clearInterval(timerInterval)
             }
+        });
+
+        const fechaInput = $('#date1');
+        fechaInput.on('input', function () {
+            let inputValue = fechaInput.val().replace(/\D/g, ''); // Eliminar caracteres no numéricos
+            if (inputValue.length > 0) {
+                inputValue = inputValue.replace(/(\d{2})(\d{2})(\d{4})/, '$1/$2/$3');
+                if (inputValue.length > 10) {
+                    // Limitar a 10 caracteres
+                    inputValue = inputValue.substring(0, 10);
+                }
+            }
+            fechaInput.val(inputValue);
+        });
+
+        const fechaInput2 = $('#date2');
+        fechaInput2.on('input', function () {
+            let inputValue = fechaInput2.val().replace(/\D/g, ''); // Eliminar caracteres no numéricos
+            if (inputValue.length > 0) {
+                inputValue = inputValue.replace(/(\d{2})(\d{2})(\d{4})/, '$1/$2/$3');
+                if (inputValue.length > 10) {
+                    // Limitar a 10 caracteres
+                    inputValue = inputValue.substring(0, 10);
+                }
+            }
+            fechaInput2.val(inputValue);
+        });
+
+        const fechaInput3 = $('#date3');
+        fechaInput3.on('input', function () {
+            let inputValue = fechaInput3.val().replace(/\D/g, ''); // Eliminar caracteres no numéricos
+            if (inputValue.length > 0) {
+                inputValue = inputValue.replace(/(\d{2})(\d{2})(\d{4})/, '$1/$2/$3');
+                if (inputValue.length > 10) {
+                    // Limitar a 10 caracteres
+                    inputValue = inputValue.substring(0, 10);
+                }
+            }
+            fechaInput3.val(inputValue);
+        });
+
+        const fechaInput4 = $('#date4');
+        fechaInput4.on('input', function () {
+            let inputValue = fechaInput4.val().replace(/\D/g, ''); // Eliminar caracteres no numéricos
+            if (inputValue.length > 0) {
+                inputValue = inputValue.replace(/(\d{2})(\d{2})(\d{4})/, '$1/$2/$3');
+                if (inputValue.length > 10) {
+                    // Limitar a 10 caracteres
+                    inputValue = inputValue.substring(0, 10);
+                }
+            }
+            fechaInput4.val(inputValue);
+        });
+
+        const fechaInput5 = $('#date5');
+        fechaInput5.on('input', function () {
+            let inputValue = fechaInput5.val().replace(/\D/g, ''); // Eliminar caracteres no numéricos
+            if (inputValue.length > 0) {
+                inputValue = inputValue.replace(/(\d{2})(\d{2})(\d{4})/, '$1/$2/$3');
+                if (inputValue.length > 10) {
+                    // Limitar a 10 caracteres
+                    inputValue = inputValue.substring(0, 10);
+                }
+            }
+            fechaInput5.val(inputValue);
         });
     });
 
