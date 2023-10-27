@@ -9,43 +9,33 @@
     .modal {
         padding: 0 !important;
     }
-
     #myModal .modal-dialog {
         max-width: none;
         height: 100%;
         margin: 0;
     }
-
     .modal-open .main-wrapper {
         filter: none;
     }
-
     .fa-plus-circle {
         float: right;
     }
-
     p {
         font-weight: bold;
     }
-
         p span {
             font-weight: normal;
             color: red;
         }
-
-
     .container {
         margin: 200px auto;
     }
-
     fieldset {
         display: none;
     }
-
         fieldset.show {
             display: block;
         }
-
     select:focus, input:focus {
         -moz-box-shadow: none !important;
         -webkit-box-shadow: none !important;
@@ -54,52 +44,46 @@
         outline-width: 0 !important;
         font-weight: 400;
     }
-
     button:focus {
         -moz-box-shadow: none !important;
         -webkit-box-shadow: none !important;
         box-shadow: none !important;
         outline-width: 0;
     }
-
     .tabs {
         margin: 2px 5px 0px 5px;
         padding-bottom: 10px;
         cursor: pointer;
     }
-
         .tabs:hover, .tabs.active {
             border-bottom: 1px solid #2196F3;
         }
-
     a:hover {
         text-decoration: none;
         color: #1565C0;
     }
-
     .box {
         margin-bottom: 10px;
         border-radius: 5px;
         padding: 10px;
     }
-
     .modal-backdrop {
         background-color: #64B5F6;
     }
-
     .line {
         background-color: #CFD8DC;
         height: 1px;
         width: 100%;
     }
-
     @@media screen and (max-width: 768px) {
         .tabs h6 {
             font-size: 12px;
         }
     }
-
     #Medicina {
+        display: none;
+    }
+    Psicologia {
         display: none;
     }
 </style>
@@ -110,7 +94,7 @@
         <div class="page-header">
             <div class="row">
                 <div class="col-sm-12">
-                    <h3 class="page-title">Búsqueda de Historia Clínica</h3>
+                    <h3 class="page-title">Búsqueda de Historia</h3>
                 </div>
             </div>
         </div>
@@ -180,864 +164,866 @@
                         <fieldset class="show" id="tab011">
                             <div class="bg-light">
                                 <h5 class="text-center mb-4 mt-0 pt-4">Datos Grales.</h5>
-                                <p>
-                                    <h4 class="collapsed" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                                        Ficha de Identificación <i class="fa fa-plus-circle"></i>
-                                    </h4>
-                                </p>
-                                <div class="collapse" id="collapseExample">
-                                    <div class="card card-body">
+                                <div>
+                                    <p>
+                                        <h4 class="collapsed" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                            Ficha de Identificación <i class="fa fa-plus-circle"></i>
+                                        </h4>
+                                    </p>
+                                    <div class="collapse" id="collapseExample">
+                                        <div class="card card-body">
 
-                                        <p>
-                                            ¿El paciente trae acompañante?: <span id="acompanante"></span>
-                                        </p>
-                                        <p>
-                                            Acompañante Especificado: <span id="NombreAcompa"></span>
-                                        </p>
+                                            <p>
+                                                ¿El paciente trae acompañante?: <span id="acompanante"></span>
+                                            </p>
+                                            <p>
+                                                Acompañante Especificado: <span id="NombreAcompa"></span>
+                                            </p>
 
-                                        <p>
-                                            ¿Padece de alguna alergia?: <span id="alergia"></span>
-                                        </p>
-                                        <p>
-                                            Alergia Especificada: <span id="NombreAlergia"></span>
-                                        </p>
+                                            <p>
+                                                ¿Padece de alguna alergia?: <span id="alergia"></span>
+                                            </p>
+                                            <p>
+                                                Alergia Especificada: <span id="NombreAlergia"></span>
+                                            </p>
 
-                                        <p>
-                                            Motivo de consulta: <span id="MotivoCons"></span>
-                                        </p>
+                                            <p>
+                                                Motivo de consulta: <span id="MotivoCons"></span>
+                                            </p>
+                                        </div>
                                     </div>
-                                </div>
-                                <hr />
-                                <p>
-                                    <h4 data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
-                                        Evaluacion Social <i class="fa fa-plus-circle"></i>
-                                    </h4>
-                                </p>
-                                <div class="collapse" id="collapseExample2">
-                                    <div class="card card-body">
-                                        <p>
-                                            Estado Civil: <span id="estadocivil"></span>
-                                        </p>
-                                        <p>
-                                            Número de personas que viven en el domicilio: <span id="numeropersonas"></span>
-                                        </p>
-                                        <p>
-                                            Número de habitaciones: <span id="numerohabitaciones"></span>
-                                        </p>
-                                        <p>
-                                            ¿Hay hacinamiento?: <span id="hacinamiento"></span>
-                                        </p>
-                                        <p>
-                                            Escolaridad: <span id="escolaridad"></span>
-                                        </p>
-                                        <p>
-                                            Grado Escolar: <span id="GradoEsc"></span>
-                                        </p>
-                                        <p>
-                                            Promedio escolar: <span id="PromedioEsc"></span>
-                                        </p>
-                                        <p>
-                                            Ha reprobado un año escolar: <span id="reprobado"></span>
-                                        </p>
-                                        <p>
-                                            Reprobado especificación: <span id="EspecifiqueReprobado"></span>
-                                        </p>
-                                        <p>
-                                            Deserción escolar: <span id="Desercion"></span>
-                                        </p>
-                                        <p>
-                                            El paciente acude a guardería/estancia infantil: <span id="Guarderia"></span>
-                                        </p>
-                                        <p>
-                                            Cuenta con servicios de salud: <span id="ServicioSal"></span>
-                                        </p>
-                                        <p>
-                                            Quien cuida del paciente: <span id="Cuidador"></span>
-                                        </p>
-                                        <p>
-                                            Tiene problemas con compañeros: <span id="Problemas"></span>
-                                        </p>
-                                        <p>
-                                            Tiene problemas con maestros: <span id="ProblemasMaestros"></span>
-                                        </p>
-                                        <p>
-                                            Ocupación: <span id="Ocupacio"></span>
-                                        </p>
-                                        <p>
-                                            Tipo de trabajo: <span id="TipoTrab"></span>
-                                        </p>
-                                        <p>
-                                            Tiene riesgo social: <span id="RiesgoSos"></span>
-                                        </p>
+                                    <hr />
+                                    <p>
+                                        <h4 data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
+                                            Evaluacion Social <i class="fa fa-plus-circle"></i>
+                                        </h4>
+                                    </p>
+                                    <div class="collapse" id="collapseExample2">
+                                        <div class="card card-body">
+                                            <p>
+                                                Estado Civil: <span id="estadocivil"></span>
+                                            </p>
+                                            <p>
+                                                Número de personas que viven en el domicilio: <span id="numeropersonas"></span>
+                                            </p>
+                                            <p>
+                                                Número de habitaciones: <span id="numerohabitaciones"></span>
+                                            </p>
+                                            <p>
+                                                ¿Hay hacinamiento?: <span id="hacinamiento"></span>
+                                            </p>
+                                            <p>
+                                                Escolaridad: <span id="escolaridad"></span>
+                                            </p>
+                                            <p>
+                                                Grado Escolar: <span id="GradoEsc"></span>
+                                            </p>
+                                            <p>
+                                                Promedio escolar: <span id="PromedioEsc"></span>
+                                            </p>
+                                            <p>
+                                                Ha reprobado un año escolar: <span id="reprobado"></span>
+                                            </p>
+                                            <p>
+                                                Reprobado especificación: <span id="EspecifiqueReprobado"></span>
+                                            </p>
+                                            <p>
+                                                Deserción escolar: <span id="Desercion"></span>
+                                            </p>
+                                            <p>
+                                                El paciente acude a guardería/estancia infantil: <span id="Guarderia"></span>
+                                            </p>
+                                            <p>
+                                                Cuenta con servicios de salud: <span id="ServicioSal"></span>
+                                            </p>
+                                            <p>
+                                                Quien cuida del paciente: <span id="Cuidador"></span>
+                                            </p>
+                                            <p>
+                                                Tiene problemas con compañeros: <span id="Problemas"></span>
+                                            </p>
+                                            <p>
+                                                Tiene problemas con maestros: <span id="ProblemasMaestros"></span>
+                                            </p>
+                                            <p>
+                                                Ocupación: <span id="Ocupacio"></span>
+                                            </p>
+                                            <p>
+                                                Tipo de trabajo: <span id="TipoTrab"></span>
+                                            </p>
+                                            <p>
+                                                Tiene riesgo social: <span id="RiesgoSos"></span>
+                                            </p>
+                                        </div>
                                     </div>
-                                </div>
-                                <hr />
-                                <p>
-                                    <h4 data-toggle="collapse" data-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample">
-                                        Valoración familiar <i class="fa fa-plus-circle"></i>
-                                    </h4>
-                                </p>
-                                <div class="collapse" id="collapseExample3">
-                                    <div class="card card-body">
-                                        <p>
-                                            La mamá del paciente actualmente se encuentra: <span id="mamaPaciente"></span>
-                                        </p>
-                                        <p>
-                                            Edad de la mamá: <span id="EdadMama"></span>
-                                        </p>
-                                        <p>
-                                            Grado escolar de la mamá: <span id="GradoMama"></span>
-                                        </p>
-                                        <p>
-                                            Ocupación de la mamá: <span id="OcupacionMama"></span>
-                                        </p>
-                                        <p>
-                                            Tipo de trabajo de la mamá: <span id="TipoTrabajoMama"></span>
-                                        </p>
-                                        <p>
-                                            El papá del paciente actualmente se encuentra: <span id="papaPaciente"></span>
-                                        </p>
-                                        <p>
-                                            Edad del papá: <span id="EdadPapa"></span>
-                                        </p>
-                                        <p>
-                                            Grado escolar del papá: <span id="GradoPapa"></span>
-                                        </p>
-                                        <p>
-                                            Ocupación del papá: <span id="OcupacionPapa"></span>
-                                        </p>
-                                        <p>
-                                            Tipo de trabajo del papá: <span id="TipoTrabajoPapa"></span>
-                                        </p>
-                                        <p>
-                                            Con quien vive: <span id="ViveCon"></span>
-                                        </p>
-                                        <p>Tiene Hermanos: <span id="tieneHermanos"></span></p>
-                                        <p>Cuantos hermanos tiene: <span id="CuantosHermanos"></span></p>
-                                        <p>Padece alguna enfermedad: <span id="EspecifiqueEnf"></span></p>
-                                        <p>Alguien se involucra en su tratamiento: <span id="involucraTratamiento"></span></p>
-                                        <p>Quien se involucra en su tratamiento: <span id="EspecifiqueInvol"></span></p>
-                                        <p>Riesgo Social: <span id="riesgoSocial"></span></p>
+                                    <hr />
+                                    <p>
+                                        <h4 data-toggle="collapse" data-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample">
+                                            Valoración familiar <i class="fa fa-plus-circle"></i>
+                                        </h4>
+                                    </p>
+                                    <div class="collapse" id="collapseExample3">
+                                        <div class="card card-body">
+                                            <p>
+                                                La mamá del paciente actualmente se encuentra: <span id="mamaPaciente"></span>
+                                            </p>
+                                            <p>
+                                                Edad de la mamá: <span id="EdadMama"></span>
+                                            </p>
+                                            <p>
+                                                Grado escolar de la mamá: <span id="GradoMama"></span>
+                                            </p>
+                                            <p>
+                                                Ocupación de la mamá: <span id="OcupacionMama"></span>
+                                            </p>
+                                            <p>
+                                                Tipo de trabajo de la mamá: <span id="TipoTrabajoMama"></span>
+                                            </p>
+                                            <p>
+                                                El papá del paciente actualmente se encuentra: <span id="papaPaciente"></span>
+                                            </p>
+                                            <p>
+                                                Edad del papá: <span id="EdadPapa"></span>
+                                            </p>
+                                            <p>
+                                                Grado escolar del papá: <span id="GradoPapa"></span>
+                                            </p>
+                                            <p>
+                                                Ocupación del papá: <span id="OcupacionPapa"></span>
+                                            </p>
+                                            <p>
+                                                Tipo de trabajo del papá: <span id="TipoTrabajoPapa"></span>
+                                            </p>
+                                            <p>
+                                                Con quien vive: <span id="ViveCon"></span>
+                                            </p>
+                                            <p>Tiene Hermanos: <span id="tieneHermanos"></span></p>
+                                            <p>Cuantos hermanos tiene: <span id="CuantosHermanos"></span></p>
+                                            <p>Padece alguna enfermedad: <span id="EspecifiqueEnf"></span></p>
+                                            <p>Alguien se involucra en su tratamiento: <span id="involucraTratamiento"></span></p>
+                                            <p>Quien se involucra en su tratamiento: <span id="EspecifiqueInvol"></span></p>
+                                            <p>Riesgo Social: <span id="riesgoSocial"></span></p>
+                                        </div>
                                     </div>
-                                </div>
-                                <hr />
-                                <p>
-                                    <h4 data-toggle="collapse" data-target="#collapseExample4" aria-expanded="false" aria-controls="collapseExample4">
-                                        Evaluación Económica <i class="fa fa-plus-circle"></i>
-                                    </h4>
-                                </p>
-                                <div class="collapse" id="collapseExample4">
-                                    <div class="card card-body">
-                                        <p>
-                                            Es beneficiario de algún programa: <span id="beneficiarioPrograma"></span>
-                                        </p>
-                                        <p>
-                                            beneficiario especificado: <span id="EspecifiqueBeneficiario"></span>
-                                        </p>
-                                        <p>
-                                            Rol económico: <span id="rolEconimico"></span>
-                                        </p>
-                                        <p>
-                                            Rol especificado: <span id="EspecifiqueRol"></span>
-                                        </p>
-                                        <p>
-                                            Riesgo económico: <span id="riesgoEconomico"></span>
-                                        </p>
+                                    <hr />
+                                    <p>
+                                        <h4 data-toggle="collapse" data-target="#collapseExample4" aria-expanded="false" aria-controls="collapseExample4">
+                                            Evaluación Económica <i class="fa fa-plus-circle"></i>
+                                        </h4>
+                                    </p>
+                                    <div class="collapse" id="collapseExample4">
+                                        <div class="card card-body">
+                                            <p>
+                                                Es beneficiario de algún programa: <span id="beneficiarioPrograma"></span>
+                                            </p>
+                                            <p>
+                                                beneficiario especificado: <span id="EspecifiqueBeneficiario"></span>
+                                            </p>
+                                            <p>
+                                                Rol económico: <span id="rolEconimico"></span>
+                                            </p>
+                                            <p>
+                                                Rol especificado: <span id="EspecifiqueRol"></span>
+                                            </p>
+                                            <p>
+                                                Riesgo económico: <span id="riesgoEconomico"></span>
+                                            </p>
+                                        </div>
                                     </div>
-                                </div>
-                                <hr />
-                                <p>
-                                    <h4 data-toggle="collapse" data-target="#collapseExample5" aria-expanded="false" aria-controls="collapseExample5">
-                                        Valoración de Creencias <i class="fa fa-plus-circle"></i>
-                                    </h4>
-                                </p>
-                                <div class="collapse" id="collapseExample5">
-                                    <div class="card card-body">
-                                        <p>
-                                            Pertenece a una religión: <span id="beneficiarioPrograma"></span>
-                                        </p>
-                                        <p>
-                                            Religion: <span id="religion"></span>
-                                        </p>
-                                        <p>
-                                            Religión especificada: <span id="EspecifiqueReligion"></span>
-                                        </p>
-                                        <p>
-                                            Tiene alguna creencia religiosa: <span id="creenciaReligiosa"></span>
-                                        </p>
-                                        <p>
-                                            Creencia especificada: <span id="EspecifiqueCreencia"></span>
-                                        </p>
-                                        <p>
-                                            Tiene alguna Costumbre o valores: <span id="costumbreValores"></span>
-                                        </p>
-                                        <p>
-                                            Costumbres epecificadas: <span id="EspecifiqueCostumbres"></span>
-                                        </p>
+                                    <hr />
+                                    <p>
+                                        <h4 data-toggle="collapse" data-target="#collapseExample5" aria-expanded="false" aria-controls="collapseExample5">
+                                            Valoración de Creencias <i class="fa fa-plus-circle"></i>
+                                        </h4>
+                                    </p>
+                                    <div class="collapse" id="collapseExample5">
+                                        <div class="card card-body">
+                                            <p>
+                                                Pertenece a una religión: <span id="beneficiarioPrograma"></span>
+                                            </p>
+                                            <p>
+                                                Religion: <span id="religion"></span>
+                                            </p>
+                                            <p>
+                                                Religión especificada: <span id="EspecifiqueReligion"></span>
+                                            </p>
+                                            <p>
+                                                Tiene alguna creencia religiosa: <span id="creenciaReligiosa"></span>
+                                            </p>
+                                            <p>
+                                                Creencia especificada: <span id="EspecifiqueCreencia"></span>
+                                            </p>
+                                            <p>
+                                                Tiene alguna Costumbre o valores: <span id="costumbreValores"></span>
+                                            </p>
+                                            <p>
+                                                Costumbres epecificadas: <span id="EspecifiqueCostumbres"></span>
+                                            </p>
+                                        </div>
                                     </div>
-                                </div>
-                                <hr />
-                                <p>
-                                    <h4 data-toggle="collapse" data-target="#collapseExample6" aria-expanded="false" aria-controls="collapseExample6">
-                                        Riesgos Psicológicos <i class="fa fa-plus-circle"></i>
-                                    </h4>
-                                </p>
-                                <div class="collapse" id="collapseExample6">
-                                    <div class="card card-body">
-                                        <p>
-                                            Cambios en sueño: <span id="CambiosSueño"></span>
-                                        </p>
-                                        <p>
-                                            Cambios en energía: <span id="CambiosEnergia"></span>
-                                        </p>
-                                        <p>
-                                            Cambios en apetito: <span id="CambiosApetito"></span>
-                                        </p>
-                                        <p>
-                                            Pesimismo: <span id="Pesimismo"></span>
-                                        </p>
-                                        <p>
-                                            Irritabilidad: <span id="Irritabilidad"></span>
-                                        </p>
-                                        <p>
-                                            Pérdida de placer: <span id="PerdidaPlacer"></span>
-                                        </p>
-                                        <p>
-                                            Palpitaciones fuertes: <span id="PalpitacionesFuertes"></span>
-                                        </p>
-                                        <p>
-                                            Sensación ahogo: <span id="SensacionAahogo"></span>
-                                        </p>
-                                        <p>
-                                            Pesimismo: <span id="Pesimismo"></span>
-                                        </p>
-                                        <p>
-                                            Miedo o preocupación: <span id="MiedoPreocupacion"></span>
-                                        </p>
-                                        <p>
-                                            Ideación suicida: <span id="IdeacionSuicida"></span>
-                                        </p>
+                                    <hr />
+                                    <p>
+                                        <h4 data-toggle="collapse" data-target="#collapseExample6" aria-expanded="false" aria-controls="collapseExample6">
+                                            Riesgos Psicológicos <i class="fa fa-plus-circle"></i>
+                                        </h4>
+                                    </p>
+                                    <div class="collapse" id="collapseExample6">
+                                        <div class="card card-body">
+                                            <p>
+                                                Cambios en sueño: <span id="CambiosSueño"></span>
+                                            </p>
+                                            <p>
+                                                Cambios en energía: <span id="CambiosEnergia"></span>
+                                            </p>
+                                            <p>
+                                                Cambios en apetito: <span id="CambiosApetito"></span>
+                                            </p>
+                                            <p>
+                                                Pesimismo: <span id="Pesimismo"></span>
+                                            </p>
+                                            <p>
+                                                Irritabilidad: <span id="Irritabilidad"></span>
+                                            </p>
+                                            <p>
+                                                Pérdida de placer: <span id="PerdidaPlacer"></span>
+                                            </p>
+                                            <p>
+                                                Palpitaciones fuertes: <span id="PalpitacionesFuertes"></span>
+                                            </p>
+                                            <p>
+                                                Sensación ahogo: <span id="SensacionAahogo"></span>
+                                            </p>
+                                            <p>
+                                                Pesimismo: <span id="Pesimismo"></span>
+                                            </p>
+                                            <p>
+                                                Miedo o preocupación: <span id="MiedoPreocupacion"></span>
+                                            </p>
+                                            <p>
+                                                Ideación suicida: <span id="IdeacionSuicida"></span>
+                                            </p>
+                                        </div>
                                     </div>
-                                </div>
-                                <hr />
-                                <p>
-                                    <h4 data-toggle="collapse" data-target="#collapseExample7" aria-expanded="false" aria-controls="collapseExample7">
-                                        Antecedentes Familiares <i class="fa fa-plus-circle"></i>
-                                    </h4>
-                                </p>
-                                <div class="collapse" id="collapseExample7">
-                                    <div class="card card-body">
-                                        <p>
-                                            Adicciones Padre: <span id="Check_Adicciones_Padre" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Adicciones Madre: <span id="Check_Adicciones_Madre" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Adicciones Ambas: <span id="Check_Adicciones_Ambas" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            No aplica adicciones: <span id="Check_Adicciones_NA" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Cardiopatia Padre: <span id="Check_Cardiopatia_Padre" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Cardiopatia Madre: <span id="Check_Cardiopatia_Madre" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Cardiopatia Ambas: <span id="Check_Cardiopatia_Ambas" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            No aplica cardiopatia: <span id="Check_Cardiopatia_NA" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Diabetes Padre: <span id="Check_Diabetes_Padre" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Diabetes Madre: <span id="Check_Diabetes_Madre" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Diabetes Ambas: <span id="Check_Diabetes_Ambas" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            No aplica diabetes: <span id="Check_Diabetes_NA" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Dislipidemias Padre: <span id="Check_Dislipidemias_Padre" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Dislipidemias Madre: <span id="Check_Dislipidemias_Madre" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Dislipidemias Ambas: <span id="Check_Dislipidemias_Ambas" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            No aplica dislipidemias: <span id="Check_Dislipidemias_NA" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Epilepsia Padre: <span id="Check_Epilepsia_Padre" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Epilepsia Madre: <span id="Check_Epilepsia_Madre" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Epilepsia Ambas: <span id="Check_Epilepsia_Ambas" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            No aplica epilepsia: <span id="Check_Epilepsia_NA" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Hipertensión Padre: <span id="Check_Hipertension_Padre" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Hipertensión Madre: <span id="Check_Hipertension_Madre" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Hipertensión Ambas: <span id="Check_Hipertension_Ambas" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            No aplica hipertensión: <span id="Check_Hipertension_NA" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Infectocontagiosas Padre: <span id="Check_Infectocontagiosas_Padre" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Infectocontagiosas Madre: <span id="Check_Infectocontagiosas_Madre" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Infectocontagiosas Ambas: <span id="Check_Infectocontagiosas_Ambas" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            No aplica infectocontagiosas: <span id="Check_Infectocontagiosas_NA" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Malformaciones Padre: <span id="Check_Malformaciones_Padre" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Malformaciones Madre: <span id="Check_Malformaciones_Madre" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Malformaciones Ambas: <span id="Check_Malformaciones_Ambas" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            No aplica malformaciones: <span id="Check_Malformaciones_NA" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Nefropatías Padre: <span id="Check_Nefropatias_Padre" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Nefropatías Madre: <span id="Check_Nefropatias_Madre" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Nefropatías Ambas: <span id="Check_Nefropatias_Ambas" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            No aplica nefropatías: <span id="Check_Nefropatias_NA" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Obesidad Padre: <span id="Check_Obesidad_Padre" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Obesidad Madre: <span id="Check_Obesidad_Madre" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Obesidad Ambas: <span id="Check_Obesidad_Ambas" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            No aplica obesidad: <span id="Check_Obesidad_NA" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Oncológicos Padre: <span id="Check_Oncologicos_Padre" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Oncológicos Madre: <span id="Check_Oncologicos_Madre" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Obesidad Oncológicos: <span id="Check_Oncologicos_Ambas" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            No aplica oncológicos: <span id="Check_Oncologicos_NA" class="estado"></span>
-                                        </p>
+                                    <hr />
+                                    <p>
+                                        <h4 data-toggle="collapse" data-target="#collapseExample7" aria-expanded="false" aria-controls="collapseExample7">
+                                            Antecedentes Familiares <i class="fa fa-plus-circle"></i>
+                                        </h4>
+                                    </p>
+                                    <div class="collapse" id="collapseExample7">
+                                        <div class="card card-body">
+                                            <p>
+                                                Adicciones Padre: <span id="Check_Adicciones_Padre" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Adicciones Madre: <span id="Check_Adicciones_Madre" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Adicciones Ambas: <span id="Check_Adicciones_Ambas" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                No aplica adicciones: <span id="Check_Adicciones_NA" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Cardiopatia Padre: <span id="Check_Cardiopatia_Padre" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Cardiopatia Madre: <span id="Check_Cardiopatia_Madre" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Cardiopatia Ambas: <span id="Check_Cardiopatia_Ambas" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                No aplica cardiopatia: <span id="Check_Cardiopatia_NA" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Diabetes Padre: <span id="Check_Diabetes_Padre" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Diabetes Madre: <span id="Check_Diabetes_Madre" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Diabetes Ambas: <span id="Check_Diabetes_Ambas" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                No aplica diabetes: <span id="Check_Diabetes_NA" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Dislipidemias Padre: <span id="Check_Dislipidemias_Padre" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Dislipidemias Madre: <span id="Check_Dislipidemias_Madre" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Dislipidemias Ambas: <span id="Check_Dislipidemias_Ambas" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                No aplica dislipidemias: <span id="Check_Dislipidemias_NA" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Epilepsia Padre: <span id="Check_Epilepsia_Padre" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Epilepsia Madre: <span id="Check_Epilepsia_Madre" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Epilepsia Ambas: <span id="Check_Epilepsia_Ambas" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                No aplica epilepsia: <span id="Check_Epilepsia_NA" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Hipertensión Padre: <span id="Check_Hipertension_Padre" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Hipertensión Madre: <span id="Check_Hipertension_Madre" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Hipertensión Ambas: <span id="Check_Hipertension_Ambas" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                No aplica hipertensión: <span id="Check_Hipertension_NA" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Infectocontagiosas Padre: <span id="Check_Infectocontagiosas_Padre" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Infectocontagiosas Madre: <span id="Check_Infectocontagiosas_Madre" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Infectocontagiosas Ambas: <span id="Check_Infectocontagiosas_Ambas" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                No aplica infectocontagiosas: <span id="Check_Infectocontagiosas_NA" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Malformaciones Padre: <span id="Check_Malformaciones_Padre" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Malformaciones Madre: <span id="Check_Malformaciones_Madre" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Malformaciones Ambas: <span id="Check_Malformaciones_Ambas" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                No aplica malformaciones: <span id="Check_Malformaciones_NA" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Nefropatías Padre: <span id="Check_Nefropatias_Padre" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Nefropatías Madre: <span id="Check_Nefropatias_Madre" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Nefropatías Ambas: <span id="Check_Nefropatias_Ambas" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                No aplica nefropatías: <span id="Check_Nefropatias_NA" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Obesidad Padre: <span id="Check_Obesidad_Padre" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Obesidad Madre: <span id="Check_Obesidad_Madre" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Obesidad Ambas: <span id="Check_Obesidad_Ambas" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                No aplica obesidad: <span id="Check_Obesidad_NA" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Oncológicos Padre: <span id="Check_Oncologicos_Padre" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Oncológicos Madre: <span id="Check_Oncologicos_Madre" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Obesidad Oncológicos: <span id="Check_Oncologicos_Ambas" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                No aplica oncológicos: <span id="Check_Oncologicos_NA" class="estado"></span>
+                                            </p>
 
+                                        </div>
                                     </div>
-                                </div>
-                                <hr />
-                                <p>
-                                    <h4 data-toggle="collapse" data-target="#collapseExample9" aria-expanded="false" aria-controls="collapseExample9">
-                                        Antecedentes Patológicos <i class="fa fa-plus-circle"></i>
-                                    </h4>
-                                </p>
-                                <div class="collapse" id="collapseExample9">
-                                    <div class="card card-body">
-                                        <p>
-                                            Respiratorios: <span id="CheckRespiratorios" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Detalle Respiratorios: <span id="DetallarRespiratorios"></span>
-                                        </p>
-                                        <p>
-                                            Endocrinológicos: <span id="CheckEndocrinologicos" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Detalle Endocrinológicos: <span id="DetallarEndocrinologicos"></span>
-                                        </p>
-                                        <p>
-                                            Cardiovasculares: <span id="CheckCardiovasculares" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Detalle Cardiovasculares: <span id="DetallarCardiovasculares"></span>
-                                        </p>
-                                        <p>
-                                            Oncológicos: <span id="CheckOncologicos" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Detalle Oncológicos: <span id="DetallarOncologicos"></span>
-                                        </p>
-                                        <p>
-                                            Salud Mental: <span id="CheckSaludMental" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Detalle Mental: <span id="DetallarSaludMental"></span>
-                                        </p>
-                                        <p>
-                                            Neurológicos: <span id="CheckNeurologicos" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Detalle Neurológicos: <span id="DetallarNeurologicos"></span>
-                                        </p>
-                                        <p>
-                                            Infecto Contagiosos: <span id="CheckInfectoContagiosos" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Detalle Contagiosos: <span id="DetallarInfectoContagiosos"></span>
-                                        </p>
-                                        <p>
-                                            Problemas Aparato Reproductor: <span id="CheckProblemasAparatoR" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Detalle Aparato R.: <span id="DetallarProblemasAparatoR"></span>
-                                        </p>
-                                        <p>
-                                            Problemas Gastrointestinales: <span id="CheckProblemasGastro" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Detalle Gastrointestinales: <span id="DetallarProblemasGastro"></span>
-                                        </p>
-                                        <p>
-                                            Reumatológicos: <span id="CheckReumatologicos" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Detalle Reumatológicos: <span id="DetallarReumatologicos"></span>
-                                        </p>
-                                        <p>
-                                            Ninguna: <span id="CheckNinguna" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Px ha estado hospitalizado: <span id="PxHospitalizado"></span>
-                                        </p>
-                                        <p>
-                                            Hospitalización especificado: <span id="EspecifiqueHospitalizado"></span>
-                                        </p>
-                                        <p>
-                                            Se ha realizado cirugía: <span id="RealizadoCirugia"></span>
-                                        </p>
-                                        <p>
-                                            Cirugías epecificación: <span id="CheckNeurologicos" class="estado"></span>
-                                        </p>
+                                    <hr />
+                                    <p>
+                                        <h4 data-toggle="collapse" data-target="#collapseExample9" aria-expanded="false" aria-controls="collapseExample9">
+                                            Antecedentes Patológicos <i class="fa fa-plus-circle"></i>
+                                        </h4>
+                                    </p>
+                                    <div class="collapse" id="collapseExample9">
+                                        <div class="card card-body">
+                                            <p>
+                                                Respiratorios: <span id="CheckRespiratorios" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Detalle Respiratorios: <span id="DetallarRespiratorios"></span>
+                                            </p>
+                                            <p>
+                                                Endocrinológicos: <span id="CheckEndocrinologicos" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Detalle Endocrinológicos: <span id="DetallarEndocrinologicos"></span>
+                                            </p>
+                                            <p>
+                                                Cardiovasculares: <span id="CheckCardiovasculares" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Detalle Cardiovasculares: <span id="DetallarCardiovasculares"></span>
+                                            </p>
+                                            <p>
+                                                Oncológicos: <span id="CheckOncologicos" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Detalle Oncológicos: <span id="DetallarOncologicos"></span>
+                                            </p>
+                                            <p>
+                                                Salud Mental: <span id="CheckSaludMental" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Detalle Mental: <span id="DetallarSaludMental"></span>
+                                            </p>
+                                            <p>
+                                                Neurológicos: <span id="CheckNeurologicos" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Detalle Neurológicos: <span id="DetallarNeurologicos"></span>
+                                            </p>
+                                            <p>
+                                                Infecto Contagiosos: <span id="CheckInfectoContagiosos" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Detalle Contagiosos: <span id="DetallarInfectoContagiosos"></span>
+                                            </p>
+                                            <p>
+                                                Problemas Aparato Reproductor: <span id="CheckProblemasAparatoR" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Detalle Aparato R.: <span id="DetallarProblemasAparatoR"></span>
+                                            </p>
+                                            <p>
+                                                Problemas Gastrointestinales: <span id="CheckProblemasGastro" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Detalle Gastrointestinales: <span id="DetallarProblemasGastro"></span>
+                                            </p>
+                                            <p>
+                                                Reumatológicos: <span id="CheckReumatologicos" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Detalle Reumatológicos: <span id="DetallarReumatologicos"></span>
+                                            </p>
+                                            <p>
+                                                Ninguna: <span id="CheckNinguna" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Px ha estado hospitalizado: <span id="PxHospitalizado"></span>
+                                            </p>
+                                            <p>
+                                                Hospitalización especificado: <span id="EspecifiqueHospitalizado"></span>
+                                            </p>
+                                            <p>
+                                                Se ha realizado cirugía: <span id="RealizadoCirugia"></span>
+                                            </p>
+                                            <p>
+                                                Cirugías epecificación: <span id="CheckNeurologicos" class="estado"></span>
+                                            </p>
+                                        </div>
                                     </div>
-                                </div>
-                                <hr />
-                                <p>
-                                    <h4 data-toggle="collapse" data-target="#collapseExample11" aria-expanded="false" aria-controls="collapseExample11">
-                                        Historial de Consumo <i class="fa fa-plus-circle"></i>
-                                    </h4>
-                                </p>
-                                <div class="collapse" id="collapseExample11">
-                                    <div class="card card-body">
-                                        <p>
-                                            Toma Alcohol: <span id="TomaAlcohol"></span>
-                                        </p>
-                                        <p>
-                                            Toma Alcohol Frecuencia: <span id="TomaAlcoholFrecuencia"></span>
-                                        </p>
-                                        <p>
-                                            Cantidad Alcohol: <span id="CantidadAlcohol"></span>
-                                        </p>
-                                        <p>
-                                            Fuma ó Fumó: <span id="Fuma"></span>
-                                        </p>
-                                        <p>
-                                            Edad de inicio: <span id="EdadInicio"></span>
-                                        </p>
-                                        <p>
-                                            Actualmente fuma: <span id="ActualmenteFuma"></span>
-                                        </p>
-                                        <p>
-                                            Tiempo Inactividad: <span id="TiempoInactividadFuma"></span>
-                                        </p>
-                                        <p>
-                                            Tipo: <span id="TipoFuma"></span>
-                                        </p>
-                                        <p>
-                                            Frecuencia: <span id="FrecuenciaFuma"></span>
-                                        </p>
-                                        <p>
-                                            Cantidad: <span id="CantidadFuma"></span>
-                                        </p>
-                                        <p>
-                                            Consume droga: <span id="ConsumeDroga"></span>
-                                        </p>
-                                        <p>
-                                            Cantidad: <span id="CantidadDrogaConsume"></span>
-                                        </p>
+                                    <hr />
+                                    <p>
+                                        <h4 data-toggle="collapse" data-target="#collapseExample11" aria-expanded="false" aria-controls="collapseExample11">
+                                            Historial de Consumo <i class="fa fa-plus-circle"></i>
+                                        </h4>
+                                    </p>
+                                    <div class="collapse" id="collapseExample11">
+                                        <div class="card card-body">
+                                            <p>
+                                                Toma Alcohol: <span id="TomaAlcohol"></span>
+                                            </p>
+                                            <p>
+                                                Toma Alcohol Frecuencia: <span id="TomaAlcoholFrecuencia"></span>
+                                            </p>
+                                            <p>
+                                                Cantidad Alcohol: <span id="CantidadAlcohol"></span>
+                                            </p>
+                                            <p>
+                                                Fuma ó Fumó: <span id="Fuma"></span>
+                                            </p>
+                                            <p>
+                                                Edad de inicio: <span id="EdadInicio"></span>
+                                            </p>
+                                            <p>
+                                                Actualmente fuma: <span id="ActualmenteFuma"></span>
+                                            </p>
+                                            <p>
+                                                Tiempo Inactividad: <span id="TiempoInactividadFuma"></span>
+                                            </p>
+                                            <p>
+                                                Tipo: <span id="TipoFuma"></span>
+                                            </p>
+                                            <p>
+                                                Frecuencia: <span id="FrecuenciaFuma"></span>
+                                            </p>
+                                            <p>
+                                                Cantidad: <span id="CantidadFuma"></span>
+                                            </p>
+                                            <p>
+                                                Consume droga: <span id="ConsumeDroga"></span>
+                                            </p>
+                                            <p>
+                                                Cantidad: <span id="CantidadDrogaConsume"></span>
+                                            </p>
+                                        </div>
                                     </div>
-                                </div>
-                                <hr />
-                                <p>
-                                    <h4 data-toggle="collapse" data-target="#collapseInterrogatorio" aria-expanded="false" aria-controls="collapseInterrogatorio">
-                                        Interrogatorio Aparatos y Sistemas <i class="fa fa-plus-circle"></i>
-                                    </h4>
-                                </p>
-                                <div class="collapse" id="collapseInterrogatorio">
-                                    <div class="card card-body">
+                                    <hr />
+                                    <p>
+                                        <h4 data-toggle="collapse" data-target="#collapseInterrogatorio" aria-expanded="false" aria-controls="collapseInterrogatorio">
+                                            Interrogatorio Aparatos y Sistemas <i class="fa fa-plus-circle"></i>
+                                        </h4>
+                                    </p>
+                                    <div class="collapse" id="collapseInterrogatorio">
+                                        <div class="card card-body">
 
-                                        <p>
-                                            Síntomas Grales. Si: <span id="Check_SintomasG_Si" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Síntomas Grales. No: <span id="Check_SintomasG_No" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Síntomas Grales. Describir: <span id="Describir_SintomasG"></span>
-                                        </p>
-                                        <p>
-                                            Respiratorio Si: <span id="Check_Respiratorio_Si" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Respiratorio No: <span id="Check_Respiratorio_No" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Respiratorio Describir: <span id="Describir_Respiratorio"></span>
-                                        </p>
-                                        <p>
-                                            Neurológico Si: <span id="Check_Neurologico_Si" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Neurológico No: <span id="Check_Neurologico_No" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Neurológico Describir: <span id="Describir_Neurologico"></span>
-                                        </p>
-                                        <p>
-                                            Piel y Anexos Si: <span id="Check_pielYanexos_Si" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Piel y Anexos No: <span id="Check_pielYanexos_No" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Piel y Anexos Describir: <span id="Describir_pielYanexos"></span>
-                                        </p>
-                                        <p>
-                                            Hematológico Si: <span id="Check_Hematologico_Si" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Hematológico No: <span id="Check_Hematologico_No" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Hematológico Describir: <span id="Describir_Hematologico"></span>
-                                        </p>
-                                        <p>
-                                            Digestivo Si: <span id="Check_Digestivo_Si" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Digestivo No: <span id="Check_Digestivo_No" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Digestivo Describir: <span id="Describir_Digestivo"></span>
-                                        </p>
-                                        <p>
-                                            Genitourinario Si: <span id="Check_Genitourinario_Si" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Genitourinario No: <span id="Check_Genitourinario_No" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Genitourinario Describir: <span id="Describir_Genitourinario"></span>
-                                        </p>
-                                        <p>
-                                            Cardiovascular Si: <span id="Check_Cardiovascular_Si" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Cardiovascular No: <span id="Check_Cardiovascular_No" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Cardiovascular Describir: <span id="Describir_Cardiovascular"></span>
-                                        </p>
-                                        <p>
-                                            Musculoesqueletico Si: <span id="Check_Musculoesqueletico_Si" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Musculoesqueletico No: <span id="Check_Musculoesqueletico_No" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Musculoesqueletico Describir: <span id="Describir_Musculoesqueletico"></span>
-                                        </p>
-                                        <p>
-                                            Renal Si: <span id="Check_Renal_Si" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Renal No: <span id="Check_Renal_No" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Renal Describir: <span id="Describir_Renal"></span>
-                                        </p>
-                                        <p>
-                                            Inmune Si: <span id="Check_Inmune_Si" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Inmune No: <span id="Check_Inmune_No" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Inmune Describir: <span id="Describir_Inmune"></span>
-                                        </p>
+                                            <p>
+                                                Síntomas Grales. Si: <span id="Check_SintomasG_Si" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Síntomas Grales. No: <span id="Check_SintomasG_No" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Síntomas Grales. Describir: <span id="Describir_SintomasG"></span>
+                                            </p>
+                                            <p>
+                                                Respiratorio Si: <span id="Check_Respiratorio_Si" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Respiratorio No: <span id="Check_Respiratorio_No" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Respiratorio Describir: <span id="Describir_Respiratorio"></span>
+                                            </p>
+                                            <p>
+                                                Neurológico Si: <span id="Check_Neurologico_Si" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Neurológico No: <span id="Check_Neurologico_No" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Neurológico Describir: <span id="Describir_Neurologico"></span>
+                                            </p>
+                                            <p>
+                                                Piel y Anexos Si: <span id="Check_pielYanexos_Si" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Piel y Anexos No: <span id="Check_pielYanexos_No" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Piel y Anexos Describir: <span id="Describir_pielYanexos"></span>
+                                            </p>
+                                            <p>
+                                                Hematológico Si: <span id="Check_Hematologico_Si" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Hematológico No: <span id="Check_Hematologico_No" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Hematológico Describir: <span id="Describir_Hematologico"></span>
+                                            </p>
+                                            <p>
+                                                Digestivo Si: <span id="Check_Digestivo_Si" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Digestivo No: <span id="Check_Digestivo_No" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Digestivo Describir: <span id="Describir_Digestivo"></span>
+                                            </p>
+                                            <p>
+                                                Genitourinario Si: <span id="Check_Genitourinario_Si" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Genitourinario No: <span id="Check_Genitourinario_No" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Genitourinario Describir: <span id="Describir_Genitourinario"></span>
+                                            </p>
+                                            <p>
+                                                Cardiovascular Si: <span id="Check_Cardiovascular_Si" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Cardiovascular No: <span id="Check_Cardiovascular_No" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Cardiovascular Describir: <span id="Describir_Cardiovascular"></span>
+                                            </p>
+                                            <p>
+                                                Musculoesqueletico Si: <span id="Check_Musculoesqueletico_Si" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Musculoesqueletico No: <span id="Check_Musculoesqueletico_No" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Musculoesqueletico Describir: <span id="Describir_Musculoesqueletico"></span>
+                                            </p>
+                                            <p>
+                                                Renal Si: <span id="Check_Renal_Si" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Renal No: <span id="Check_Renal_No" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Renal Describir: <span id="Describir_Renal"></span>
+                                            </p>
+                                            <p>
+                                                Inmune Si: <span id="Check_Inmune_Si" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Inmune No: <span id="Check_Inmune_No" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Inmune Describir: <span id="Describir_Inmune"></span>
+                                            </p>
 
+                                        </div>
                                     </div>
-                                </div>
-                                <hr />
-                                <p>
-                                    <h4 data-toggle="collapse" data-target="#collapseRiesgo" aria-expanded="false" aria-controls="collapseRiesgo">
-                                        Riesgo de Caídas <i class="fa fa-plus-circle"></i>
-                                    </h4>
-                                </p>
-                                <div class="collapse" id="collapseRiesgo">
-                                    <div class="card card-body">
+                                    <hr />
+                                    <p>
+                                        <h4 data-toggle="collapse" data-target="#collapseRiesgo" aria-expanded="false" aria-controls="collapseRiesgo">
+                                            Riesgo de Caídas <i class="fa fa-plus-circle"></i>
+                                        </h4>
+                                    </p>
+                                    <div class="collapse" id="collapseRiesgo">
+                                        <div class="card card-body">
 
-                                        <p>
-                                            Puntuaje en la escala de valoración de riesgo de caídas: <span id="PuntuajeEscala"></span>
-                                        </p>
+                                            <p>
+                                                Puntuaje en la escala de valoración de riesgo de caídas: <span id="PuntuajeEscala"></span>
+                                            </p>
 
+                                        </div>
                                     </div>
-                                </div>
-                                <hr />
-                                <p>
-                                    <h4 data-toggle="collapse" data-target="#collapseExploracion" aria-expanded="false" aria-controls="collapseExploracion">
-                                        Exploración Física <i class="fa fa-plus-circle"></i>
-                                    </h4>
-                                </p>
-                                <div class="collapse" id="collapseExploracion">
-                                    <div class="card card-body">
-                                        <p>
-                                            Cráneo Si: <span id="Check_Craneo_Si" class="estado"></span>
-                                        </p>
-                                        @*<input class="form-check-input" type="checkbox" id="Check_Craneo_Si" name="Check_Craneo_Si">*@
+                                    <hr />
+                                    <p>
+                                        <h4 data-toggle="collapse" data-target="#collapseExploracion" aria-expanded="false" aria-controls="collapseExploracion">
+                                            Exploración Física <i class="fa fa-plus-circle"></i>
+                                        </h4>
+                                    </p>
+                                    <div class="collapse" id="collapseExploracion">
+                                        <div class="card card-body">
+                                            <p>
+                                                Cráneo Si: <span id="Check_Craneo_Si" class="estado"></span>
+                                            </p>
+                                            @*<input class="form-check-input" type="checkbox" id="Check_Craneo_Si" name="Check_Craneo_Si">*@
 
-                                        <p>
-                                            Cráneo No: <span id="Check_Craneo_No" class="estado"></span>
-                                        </p>
+                                            <p>
+                                                Cráneo No: <span id="Check_Craneo_No" class="estado"></span>
+                                            </p>
 
-                                        <p>
-                                            Cráneo Diferido: <span id="Check_Craneo_Diferido" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Cráneo Describir: <span id="Describir_Hallazgos_Craneo"></span>
-                                        </p>
+                                            <p>
+                                                Cráneo Diferido: <span id="Check_Craneo_Diferido" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Cráneo Describir: <span id="Describir_Hallazgos_Craneo"></span>
+                                            </p>
 
-                                        <p>
-                                            Cara Si: <span id="Check_Cara_Si" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Cara No: <span id="Check_Cara_No" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Cara Diferido: <span id="Check_Cara_Diferido" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Cara Describir: <span id="Describir_Hallazgos_Cara"></span>
-                                        </p>
+                                            <p>
+                                                Cara Si: <span id="Check_Cara_Si" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Cara No: <span id="Check_Cara_No" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Cara Diferido: <span id="Check_Cara_Diferido" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Cara Describir: <span id="Describir_Hallazgos_Cara"></span>
+                                            </p>
 
-                                        <p>
-                                            Ojos Si: <span id="Check_Ojos_Si" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Ojos No: <span id="Check_Ojos_No" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Ojos Diferido: <span id="Check_Ojos_Diferido" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Ojos Describir: <span id="Describir_Hallazgos_Ojos"></span>
-                                        </p>
+                                            <p>
+                                                Ojos Si: <span id="Check_Ojos_Si" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Ojos No: <span id="Check_Ojos_No" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Ojos Diferido: <span id="Check_Ojos_Diferido" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Ojos Describir: <span id="Describir_Hallazgos_Ojos"></span>
+                                            </p>
 
-                                        <p>
-                                            Naríz Si: <span id="Check_Nariz_Si" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Naríz No: <span id="Check_Nariz_No" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Naríz Diferido: <span id="Check_Nariz_Diferido" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Naríz Describir: <span id="Describir_Hallazgos_Nariz"></span>
-                                        </p>
+                                            <p>
+                                                Naríz Si: <span id="Check_Nariz_Si" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Naríz No: <span id="Check_Nariz_No" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Naríz Diferido: <span id="Check_Nariz_Diferido" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Naríz Describir: <span id="Describir_Hallazgos_Nariz"></span>
+                                            </p>
 
-                                        <p>
-                                            Oídos Si: <span id="Check_Oidos_Si" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Oídos No: <span id="Check_Oidos_No" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Oídos Diferido: <span id="Check_Oidos_Diferido" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Oídos Describir: <span id="Describir_Hallazgos_Oidos"></span>
-                                        </p>
+                                            <p>
+                                                Oídos Si: <span id="Check_Oidos_Si" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Oídos No: <span id="Check_Oidos_No" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Oídos Diferido: <span id="Check_Oidos_Diferido" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Oídos Describir: <span id="Describir_Hallazgos_Oidos"></span>
+                                            </p>
 
-                                        <p>
-                                            Boca Si: <span id="Check_Boca_Si" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Boca No: <span id="Check_Boca_No" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Boca Diferido: <span id="Check_Boca_Diferido" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Boca Describir: <span id="Describir_Hallazgos_Boca"></span>
-                                        </p>
+                                            <p>
+                                                Boca Si: <span id="Check_Boca_Si" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Boca No: <span id="Check_Boca_No" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Boca Diferido: <span id="Check_Boca_Diferido" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Boca Describir: <span id="Describir_Hallazgos_Boca"></span>
+                                            </p>
 
-                                        <p>
-                                            Faringe Si: <span id="Check_Faringe_Si" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Faringe No: <span id="Check_Faringe_No" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Faringe Diferido: <span id="Check_Faringe_Diferido" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Faringe Describir: <span id="Describir_Hallazgos_Faringe"></span>
-                                        </p>
+                                            <p>
+                                                Faringe Si: <span id="Check_Faringe_Si" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Faringe No: <span id="Check_Faringe_No" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Faringe Diferido: <span id="Check_Faringe_Diferido" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Faringe Describir: <span id="Describir_Hallazgos_Faringe"></span>
+                                            </p>
 
-                                        <p>
-                                            Cuello Si: <span id="Check_Cuello_Si" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Cuello No: <span id="Check_Cuello_No" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Cuello Diferido: <span id="Check_Cuello_Diferido" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Cuello Describir: <span id="Describir_Hallazgos_Cuello"></span>
-                                        </p>
+                                            <p>
+                                                Cuello Si: <span id="Check_Cuello_Si" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Cuello No: <span id="Check_Cuello_No" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Cuello Diferido: <span id="Check_Cuello_Diferido" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Cuello Describir: <span id="Describir_Hallazgos_Cuello"></span>
+                                            </p>
 
-                                        <p>
-                                            Tórax Si: <span id="Check_Torax_Si" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Tórax No: <span id="Check_Torax_No" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Tórax Diferido: <span id="Check_Torax_Diferido" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Tórax Describir: <span id="Describir_Hallazgos_Torax"></span>
-                                        </p>
+                                            <p>
+                                                Tórax Si: <span id="Check_Torax_Si" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Tórax No: <span id="Check_Torax_No" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Tórax Diferido: <span id="Check_Torax_Diferido" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Tórax Describir: <span id="Describir_Hallazgos_Torax"></span>
+                                            </p>
 
-                                        <p>
-                                            Aparato Resp. Si: <span id="Check_AparatoR_Si" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Aparato Resp. No: <span id="Check_AparatoR_No" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Aparato Resp. Diferido: <span id="Check_AparatoR_Diferido" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Aparato Resp. Describir: <span id="Describir_Hallazgos_AparatoR"></span>
-                                        </p>
+                                            <p>
+                                                Aparato Resp. Si: <span id="Check_AparatoR_Si" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Aparato Resp. No: <span id="Check_AparatoR_No" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Aparato Resp. Diferido: <span id="Check_AparatoR_Diferido" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Aparato Resp. Describir: <span id="Describir_Hallazgos_AparatoR"></span>
+                                            </p>
 
-                                        <p>
-                                            Aparato Card. Si: <span id="Check_AparatoC_Si" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Aparato Card. No: <span id="Check_AparatoC_No" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Aparato Card. Diferido: <span id="Check_AparatoC_Diferido" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Aparato Card. Describir: <span id="Describir_Hallazgos_AparatoC"></span>
-                                        </p>
+                                            <p>
+                                                Aparato Card. Si: <span id="Check_AparatoC_Si" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Aparato Card. No: <span id="Check_AparatoC_No" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Aparato Card. Diferido: <span id="Check_AparatoC_Diferido" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Aparato Card. Describir: <span id="Describir_Hallazgos_AparatoC"></span>
+                                            </p>
 
-                                        <p>
-                                            Abdomen Si: <span id="Check_Abdomen_Si" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Abdomen No: <span id="Check_Abdomen_No" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Abdomen Diferido: <span id="Check_Abdomen_Diferido" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Abdomen Describir: <span id="Describir_Hallazgos_Abdomen"></span>
-                                        </p>
+                                            <p>
+                                                Abdomen Si: <span id="Check_Abdomen_Si" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Abdomen No: <span id="Check_Abdomen_No" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Abdomen Diferido: <span id="Check_Abdomen_Diferido" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Abdomen Describir: <span id="Describir_Hallazgos_Abdomen"></span>
+                                            </p>
 
-                                        <p>
-                                            Genitales Si: <span id="Check_Genitales_Si" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Genitales No: <span id="Check_Genitales_No" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Genitales Diferido: <span id="Check_Genitales_Diferido" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Genitales Describir: <span id="Describir_Hallazgos_Genitales"></span>
-                                        </p>
+                                            <p>
+                                                Genitales Si: <span id="Check_Genitales_Si" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Genitales No: <span id="Check_Genitales_No" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Genitales Diferido: <span id="Check_Genitales_Diferido" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Genitales Describir: <span id="Describir_Hallazgos_Genitales"></span>
+                                            </p>
 
-                                        <p>
-                                            Extremidades Si: <span id="Check_Extremidades_Si" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Extremidades No: <span id="Check_Extremidades_No" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Extremidades Diferido: <span id="Check_Extremidades_Diferido" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Extremidades Describir: <span id="Describir_Hallazgos_Extremidades"></span>
-                                        </p>
+                                            <p>
+                                                Extremidades Si: <span id="Check_Extremidades_Si" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Extremidades No: <span id="Check_Extremidades_No" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Extremidades Diferido: <span id="Check_Extremidades_Diferido" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Extremidades Describir: <span id="Describir_Hallazgos_Extremidades"></span>
+                                            </p>
 
-                                        <p>
-                                            Sistema Nervioso Si: <span id="Check_SistemaN_Si" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Sistema Nervioso No: <span id="Check_SistemaN_No" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Sistema Nervioso Diferido: <span id="Check_SistemaN_Diferido" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Sistema Nervioso Describir: <span id="Describir_Hallazgos_SistemaN"></span>
-                                        </p>
+                                            <p>
+                                                Sistema Nervioso Si: <span id="Check_SistemaN_Si" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Sistema Nervioso No: <span id="Check_SistemaN_No" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Sistema Nervioso Diferido: <span id="Check_SistemaN_Diferido" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Sistema Nervioso Describir: <span id="Describir_Hallazgos_SistemaN"></span>
+                                            </p>
 
-                                        <p>
-                                            Piel y Anexos Si: <span id="Check_pielanexos_Si" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Piel y Anexos No: <span id="Check_pielanexos_No" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Piel y Anexos Diferido: <span id="Check_pielYanexos_Diferido" class="estado"></span>
-                                        </p>
-                                        <p>
-                                            Piel y Anexos Describir: <span id="Describir_Hallazgos_pielYanexos"></span>
-                                        </p>
+                                            <p>
+                                                Piel y Anexos Si: <span id="Check_pielanexos_Si" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Piel y Anexos No: <span id="Check_pielanexos_No" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Piel y Anexos Diferido: <span id="Check_pielYanexos_Diferido" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Piel y Anexos Describir: <span id="Describir_Hallazgos_pielYanexos"></span>
+                                            </p>
 
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -1546,6 +1532,274 @@
                                     </div>
 
                                 </div>
+
+                                <div id="Psicologia">
+                                    <p>
+                                        <h4 class="collapsed" data-toggle="collapse" data-target="#collapseFam" aria-expanded="false" aria-controls="collapseFam">
+                                            Familia <i class="fa fa-plus-circle"></i>
+                                        </h4>
+                                    </p>
+                                    <div class="collapse" id="collapseFam">
+                                        <div class="card card-body">
+                                            <p>
+                                                Parentesco: <span id="Parentesco"></span>
+                                            </p>
+                                            <p>
+                                                Nombre: <span id="NombreCompleto"></span>
+                                            </p>
+                                            <p>
+                                                Edad: <span id="Edad"></span>
+                                            </p>
+                                            <p>
+                                                Ocupación: <span id="Ocupacion"></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <p>
+                                        <h4 class="collapsed" data-toggle="collapse" data-target="#collapseAtPs" aria-expanded="false" aria-controls="collapseAtPs">
+                                            Atención Psicologíca <i class="fa fa-plus-circle"></i>
+                                        </h4>
+                                    </p>
+                                    <div class="collapse" id="collapseAtPs">
+                                        <div class="card card-body">
+                                            <p>
+                                                Presencia Voluntaria: <span id="Presencia_Voluntaria" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Presencia Sugerida: <span id="Presencia_Sugerida" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Presencia Obligatoria: <span id="Presencia_Obligatoria" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Anteriormente Atención: <span id="AnteriormenteAtencion"></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <p>
+                                        <h4 class="collapsed" data-toggle="collapse" data-target="#collapseMotivoC" aria-expanded="false" aria-controls="collapseMotivoC">
+                                            Motivo Consulta <i class="fa fa-plus-circle"></i>
+                                        </h4>
+                                    </p>
+                                    <div class="collapse" id="collapseMotivoC">
+                                        <div class="card card-body">
+                                            <p>
+                                                Motivo: <span id="Motivo"></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <p>
+                                        <h4 class="collapsed" data-toggle="collapse" data-target="#collapseSinA" aria-expanded="false" aria-controls="collapseSinA">
+                                            Sintomatologia Actual <i class="fa fa-plus-circle"></i>
+                                        </h4>
+                                    </p>
+                                    <div class="collapse" id="collapseSinA">
+                                        <div class="card card-body">
+                                            <p>
+                                                Sintomatologia: <span id="Sintomatologia"></span>
+                                            </p>
+                                            <p>
+                                                Dificultad Respirar Si: <span id="DificultadRespirar_Si" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Dificultad Respirar No: <span id="DificultadRespirar_No" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Dificultad Respirar Esp.: <span id="DificultadRespirar_Esp"></span>
+                                            </p>
+                                            <p>
+                                                Sensación Morir Si: <span id="SensacionMorir_Si" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Sensación Morir No: <span id="SensacionMorir_No" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Sensación Morir Esp.: <span id="SensacionMorir_Esp"></span>
+                                            </p>
+                                            <p>
+                                                Temblor Cuerpo Si: <span id="TemblorCuerpo_Si" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Temblor Cuerpo No: <span id="TemblorCuerpo_No" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Temblor Cuerpo Esp.: <span id="TemblorCuerpo_Esp"></span>
+                                            </p>
+                                            <p>
+                                                Desmayo Si: <span id="Desmayo_Si" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Desmayo No: <span id="Desmayo_No" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Desmayo Esp.: <span id="Desmayo_Esp"></span>
+                                            </p>
+                                            <p>
+                                                Lloras Si: <span id="Lloras_Si" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Lloras No: <span id="Lloras_No" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Lloras Esp.: <span id="Lloras_Esp"></span>
+                                            </p>
+                                            <p>
+                                                Despiertas Sin Ánimo Si: <span id="DespiertasAnimo_Si" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Despiertas Sin Ánimo No: <span id="DespiertasAnimo_No" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Despiertas Sin Ánimo Esp.: <span id="DespiertasAnimo_Esp"></span>
+                                            </p>
+                                            <p>
+                                                Culpable Si: <span id="Culpable_Si" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Culpable No: <span id="Culpable_No" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Culpable Esp.: <span id="Culpable_Esp"></span>
+                                            </p>
+                                            <p>
+                                                Perdidó Motivación Si: <span id="PerdidoMotivacion_Si" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Perdidó Motivación No: <span id="PerdidoMotivacion_No" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Perdidó Motivación Esp.: <span id="PerdidoMotivacion_Esp"></span>
+                                            </p>
+                                            <p>
+                                                Querer Morir Si: <span id="QuererMorir_Si" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Querer Morir No: <span id="QuererMorir_No" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Querer Morir Esp.: <span id="QuererMorir_Esp"></span>
+                                            </p>
+                                            <p>
+                                                Consultado Si: <span id="Consultado_Si" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Consultado No: <span id="Consultado_No" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Consultado Esp.: <span id="Consultado_Esp"></span>
+                                            </p>
+                                            <p>
+                                                Problemas Atención Si: <span id="ProblemasAtencion_Si" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Problemas Atención No: <span id="ProblemasAtencion_No" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Problemas Atención Esp.: <span id="ProblemasAtencion_Esp"></span>
+                                            </p>
+                                            <p>
+                                                Problemas Dormir Si: <span id="ProblemasDormir_Si" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Problemas Dormir No: <span id="ProblemasDormir_No" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Problemas Dormir Esp.: <span id="ProblemasDormir_Esp"></span>
+                                            </p>
+                                            <p>
+                                                Cambio Apetito Si: <span id="CambioApetito_Si" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Cambio Apetito No: <span id="CambioApetito_No" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Cambio Apetito Esp.: <span id="CambioApetito_Esp"></span>
+                                            </p>
+                                            <p>
+                                                Mayor Parte Tiempo Triste: <span id="ParteTiempo_Triste" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Mayor Parte Tiempo Enojado: <span id="ParteTiempo_Enojado" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Mayor Parte Tiempo Miedo: <span id="ParteTiempo_Miedo" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Mayor Parte Tiempo Angustiado: <span id="ParteTiempo_Angustiado" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Mayor Parte Tiempo Estresado: <span id="ParteTiempo_Estresado" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Mayor Parte Tiempo Maniaco: <span id="ParteTiempo_Maniaco" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Mayor Parte Tiempo Otra: <span id="ParteTiempo_Otra" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Mayor Parte Tiempo Otra Esp.: <span id="ParteTiempo_OtraEsp"></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <p>
+                                        <h4 class="collapsed" data-toggle="collapse" data-target="#collapseAreasA" aria-expanded="false" aria-controls="collapseAreasA">
+                                            Áreas de Atención <i class="fa fa-plus-circle"></i>
+                                        </h4>
+                                    </p>
+                                    <div class="collapse" id="collapseAreasA">
+                                        <div class="card card-body">
+                                            <p>
+                                                Conductual: <span id="Conductual" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Emocional: <span id="Emocional" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                RelacionesIn: <span id="RelacionesIn" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Neurologico: <span id="Neurologico" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Academico: <span id="Academico" class="estado"></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <p>
+                                        <h4 class="collapsed" data-toggle="collapse" data-target="#collapseSignosA" aria-expanded="false" aria-controls="collapseSignosA">
+                                            Signos de Alarma <i class="fa fa-plus-circle"></i>
+                                        </h4>
+                                    </p>
+                                    <div class="collapse" id="collapseSignosA">
+                                        <div class="card card-body">
+                                            <p>
+                                                Signo: <span id="Signo"></span>
+                                            </p>
+                                            <p>
+                                                Esp. Signo: <span id="Esp_Signo"></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <p>
+                                        <h4 class="collapsed" data-toggle="collapse" data-target="#collapseIndT" aria-expanded="false" aria-controls="collapseIndT">
+                                            Indicación Terapéutica <i class="fa fa-plus-circle"></i>
+                                        </h4>
+                                    </p>
+                                    <div class="collapse" id="collapseIndT">
+                                        <div class="card card-body">
+                                            <p>
+                                                Plan: <span id="PlanPs"></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </fieldset>
                     </div>
@@ -2182,9 +2436,354 @@
                     $("#FechaUltimaCesarea").text(data.FechaUltimaCesarea);
                     //$("#Especifica_FechaUltimaCesarea").text(data.Especifica_FechaUltimaCesarea);
                     var fechaJson1 = data.Especifica_FechaUltimaCesarea;
-                    var fechaMilisegundos1 = parseInt(fechaJson1.match(/\d+/)[0]); 
+                    var fechaMilisegundos1 = parseInt(fechaJson1.match(/\d+/)[0]);
                     var fecha1 = new Date(fechaMilisegundos1);
-                    var fechaLegible1 = fecha1.toLocaleDateString(); 
+                    var fechaLegible1 = fecha1.toLocaleDateString();
+                    $("#Especifica_FechaUltimaCesarea").text(fechaLegible1);
+                    $("#Motivo_FechaUltimaCesarea").text(data.Motivo_FechaUltimaCesarea);
+                    $("#FechaUltimoAborto").text(data.FechaUltimoAborto);
+                    //$("#Especifica_FechaUltimoAborto").text(data.Especifica_FechaUltimoAborto);
+                    var fechaJson2 = data.Especifica_FechaUltimoAborto;
+                    var fechaMilisegundos2 = parseInt(fechaJson2.match(/\d+/)[0]);
+                    var fecha2 = new Date(fechaMilisegundos2);
+                    var fechaLegible2 = fecha2.toLocaleDateString();
+                    $("#Especifica_FechaUltimoAborto").text(fechaLegible2);
+                    $("#FechaUltimaMenstruacion").text(data.FechaUltimaMenstruacion);
+                    //$("#Especifica_FechaUltimaMenstruacion").text(data.Especifica_FechaUltimaMenstruacion);
+                    var fechaJson3 = data.Especifica_FechaUltimaMenstruacion;
+                    var fechaMilisegundos3 = parseInt(fechaJson3.match(/\d+/)[0]);
+                    var fecha3 = new Date(fechaMilisegundos3);
+                    var fechaLegible3 = fecha3.toLocaleDateString();
+                    $("#Especifica_FechaUltimaMenstruacion").text(fechaLegible3);
+                    $("#FechaProbableParto").text(data.FechaProbableParto);
+                    //$("#Especifica_FechaProbableParto").text(data.Especifica_FechaProbableParto);
+                    var fechaJson4 = data.Especifica_FechaProbableParto;
+                    var fechaMilisegundos4 = parseInt(fechaJson4.match(/\d+/)[0]);
+                    var fecha4 = new Date(fechaMilisegundos4);
+                    var fechaLegible4 = fecha4.toLocaleDateString();
+                    $("#Especifica_FechaProbableParto").text(fechaLegible4);
+                    $("#FechaUltimoPapanicolau").text(data.FechaUltimoPapanicolau);
+                    //$("#Especifica_FechaUltimoPapanicolau").text(data.Especifica_FechaUltimoPapanicolau);
+                    var fechaJson5 = data.Especifica_FechaUltimoPapanicolau;
+                    var fechaMilisegundos5 = parseInt(fechaJson5.match(/\d+/)[0]);
+                    var fecha5 = new Date(fechaMilisegundos5);
+                    var fechaLegible5 = fecha5.toLocaleDateString();
+                    $("#Especifica_FechaUltimoPapanicolau").text(fechaLegible5);
+                    $("#NoRecuerda_FechaUltimoPapanicolau").text(data.NoRecuerda_FechaUltimoPapanicolau);
+                    $("#Resultado_FechaUltimoPapanicolau").text(data.Resultado_FechaUltimoPapanicolau);
+                    //AntecedentesVidaSex
+                    $("#InicioVidaSexual").text(data.InicioVidaSexual);
+                    $("#Edad_InicioVidaSexual").text(data.Edad_InicioVidaSexual);
+                    $("#Numero_ParejasSexuales").text(data.Numero_ParejasSexuales);
+                    //PrincipioEvolEstado
+                    $("#PEE").text(data.PEE);
+                    //ResultadosLaboratorio
+                    $("#RLGR").text(data.RLGR);
+                    $("#Especifica_RLGR").text(data.Especifica_RLGR);
+                    //Plan
+                    $("#Plan").text(data.Plan);
+                    //Pronostico
+                    $("#LigadoEvolucion").text(data.LigadoEvolucion);
+                    $("#Favorable").text(data.Favorable);
+                    $("#Desfavorable").text(data.Desfavorable);
+                    //Otros
+                    $("#Interconsulta").text(data.Interconsulta);
+                    $("#PadecimientoActual").text(data.PadecimientoActual);
+                    $("#Especifica_PadecimientoActual").text(data.Especifica_PadecimientoActual);
+                    $("#ProximaCita").text(data.ProximaCita);
+                    // #endregion
+
+                    // Obtener todos los elementos con la clase "estado"
+                    var elementosEstado = document.querySelectorAll(".estado");
+                    // Función para cambiar el texto basado en el contenido
+                    function cambiarTexto(spanElement) {
+                        var contenido = spanElement.textContent; // Obtener el contenido del <span>
+                        if (contenido === "true") {
+                            spanElement.textContent = "seleccionado";
+                        } else if (contenido === "false") {
+                            spanElement.textContent = "no seleccionado";
+                        }
+                    }
+                    // Iterar a través de los elementos y aplicar la función
+                    elementosEstado.forEach(function (elemento) {
+                        cambiarTexto(elemento);
+                    });
+
+		        },
+		        error: function(ex) {
+			        Swal.fire({
+				        icon: 'error',
+				        title: '¡Error!',
+			        });
+		        }
+            });
+
+            $('#Psicologia').hide();
+            $('#Nutricion').hide();
+            $('#Odontologia').hide();
+        } else if (NombreHC == "Psicología") {
+            $('#Medicina').hide();
+            $('#Psicologia').show();
+
+            $.ajax({
+		        url: '@Url.Action("ConsultarHC_Psic", "HistoriaPsicologia")',
+		        method: 'POST',
+		        dataType: 'json',
+                data: { Clave_hc_px: Clave_hc_px, TipoHistoria: TipoHistoria },
+                success: function (data) {
+
+                    // #region Seteo de valor con input del MODAL
+                    //Familia
+                    $("#Parentesco").text(data.Parentesco);
+                    $("#NombreCompleto").text(data.NombreCompleto);
+                    $("#Edad").text(data.Edad);
+                    $("#Ocupacion").text(data.Ocupacion);
+                    //AtencionPsicologica
+                    $("#Presencia_Voluntaria").text(data.Presencia_Voluntaria);
+                    $("#Presencia_Sugerida").text(data.Presencia_Sugerida);
+                    $("#Presencia_Obligatoria").text(data.Presencia_Obligatoria);
+                    $("#AnteriormenteAtencion").text(data.AnteriormenteAtencion);
+                    //MotivoConsulta
+                    $("#Motivo").text(data.Motivo);
+                    //SintomatologiaActual
+                    $("#Sintomatologia").text(data.Sintomatologia);
+                    $("#DificultadRespirar_Si").text(data.DificultadRespirar_Si);
+                    $("#DificultadRespirar_No").text(data.DificultadRespirar_No);
+                    $("#DificultadRespirar_Esp").text(data.DificultadRespirar_Esp);
+                    $("#SensacionMorir_Si").text(data.SensacionMorir_Si);
+                    $("#SensacionMorir_No").text(data.SensacionMorir_No);
+                    $("#SensacionMorir_Esp").text(data.SensacionMorir_Esp);
+                    $("#TemblorCuerpo_Si").text(data.TemblorCuerpo_Si);
+                    $("#TemblorCuerpo_No").text(data.TemblorCuerpo_No);
+                    $("#TemblorCuerpo_Esp").text(data.TemblorCuerpo_Esp);
+                    $("#Desmayo_Si").text(data.Desmayo_Si);
+                    $("#Desmayo_No").text(data.Desmayo_No);
+                    $("#Desmayo_Esp").text(data.Desmayo_Esp);
+                    $("#Lloras_Si").text(data.Lloras_Si);
+                    $("#Lloras_No").text(data.Lloras_No);
+                    $("#Lloras_Esp").text(data.Lloras_Esp);
+                    $("#DespiertasAnimo_Si").text(data.DespiertasAnimo_Si);
+                    $("#DespiertasAnimo_No").text(data.DespiertasAnimo_No);
+                    $("#DespiertasAnimo_Esp").text(data.DespiertasAnimo_Esp);
+                    $("#Culpable_Si").text(data.Culpable_Si);
+                    $("#Culpable_No").text(data.Culpable_No);
+                    $("#Culpable_Esp").text(data.Culpable_Esp);
+                    $("#PerdidoMotivacion_Si").text(data.PerdidoMotivacion_Si);
+                    $("#PerdidoMotivacion_No").text(data.PerdidoMotivacion_No);
+                    $("#PerdidoMotivacion_Esp").text(data.PerdidoMotivacion_Esp);
+                    $("#QuererMorir_Si").text(data.QuererMorir_Si);
+                    $("#QuererMorir_No").text(data.QuererMorir_No);
+                    $("#QuererMorir_Esp").text(data.QuererMorir_Esp);
+                    $("#Consultado_Si").text(data.Consultado_Si);
+                    $("#Consultado_No").text(data.Consultado_No);
+                    $("#Consultado_Esp").text(data.Consultado_Esp);
+                    $("#ProblemasAtencion_Si").text(data.ProblemasAtencion_Si);
+                    $("#ProblemasAtencion_No").text(data.ProblemasAtencion_No);
+                    $("#ProblemasAtencion_Esp").text(data.ProblemasAtencion_Esp);
+                    $("#ProblemasDormir_Si").text(data.ProblemasDormir_Si);
+                    $("#ProblemasDormir_No").text(data.ProblemasDormir_No);
+                    $("#ProblemasDormir_Esp").text(data.ProblemasDormir_Esp);
+                    $("#CambioApetito_Si").text(data.CambioApetito_Si);
+                    $("#CambioApetito_No").text(data.CambioApetito_No);
+                    $("#CambioApetito_Esp").text(data.CambioApetito_Esp);
+                    $("#ParteTiempo_Triste").text(data.ParteTiempo_Triste);
+                    $("#ParteTiempo_Enojado").text(data.ParteTiempo_Enojado);
+                    $("#ParteTiempo_Miedo").text(data.ParteTiempo_Miedo);
+                    $("#ParteTiempo_Angustiado").text(data.ParteTiempo_Angustiado);
+                    $("#ParteTiempo_Estresado").text(data.ParteTiempo_Estresado);
+                    $("#ParteTiempo_Maniaco").text(data.ParteTiempo_Maniaco);
+                    $("#ParteTiempo_Otra").text(data.ParteTiempo_Otra);
+                    $("#ParteTiempo_OtraEsp").text(data.ParteTiempo_OtraEsp);
+                    //AreasAtencion
+                    $("#Conductual").text(data.Conductual);
+                    $("#Emocional").text(data.Emocional);
+                    $("#RelacionesIn").text(data.RelacionesIn);
+                    $("#Neurologico").text(data.Neurologico);
+                    $("#Academico").text(data.Academico);
+                    //SignosAlarma
+                    $("#Signo").text(data.Signo);
+                    $("#Esp_Signo").text(data.Esp_Signo);
+                    //Plan
+                    $("#PlanPs").text(data.Plan);
+                    // #endregion
+
+                    // Obtener todos los elementos con la clase "estado"
+                    var elementosEstado = document.querySelectorAll(".estado");
+                    // Función para cambiar el texto basado en el contenido
+                    function cambiarTexto(spanElement) {
+                        var contenido = spanElement.textContent; // Obtener el contenido del <span>
+                        if (contenido === "true") {
+                            spanElement.textContent = "seleccionado";
+                        } else if (contenido === "false") {
+                            spanElement.textContent = "no seleccionado";
+                        }
+                    }
+                    // Iterar a través de los elementos y aplicar la función
+                    elementosEstado.forEach(function (elemento) {
+                        cambiarTexto(elemento);
+                    });
+		        },
+		        error: function(ex) {
+			        Swal.fire({
+				        icon: 'error',
+				        title: '¡Error!',
+			        });
+		        }
+            });
+
+            $('#Nutricion').hide();
+            $('#Odontologia').hide();
+        } else if (NombreHC == "Nutrición") {
+            $('#Medicina').hide();
+            $('#Psicologia').hide();
+            $('#Nutricion').show();
+
+
+
+            $('#Odontologia').hide();
+        } else
+        if (NombreHC == "Odontología")
+        {
+            $('#Medicina').hide();
+            $('#Psicologia').hide();
+            $('#Nutricion').hide();
+            $('#Odontologia').show();
+
+
+
+        } else {
+            // Puedes agregar un manejo por defecto aquí si es necesario
+            $('#Medicina').hide();
+            $('#Psicologia').hide();
+            $('#Nutricion').hide();
+            $('#Odontologia').hide();
+        }
+
+        // #region función antigua
+        @*if (NombreHC == "Medicina") {
+            $('#Medicina').show();
+
+            $.ajax({
+		        url: '@Url.Action("ConsultarHC_Med", "HistoriaMedicina")',
+		        method: 'POST',
+		        dataType: 'json',
+                data: { Clave_hc_px: Clave_hc_px, TipoHistoria: TipoHistoria },
+                success: function (data) {
+
+                    // #region Seteo de valor con input del MODAL
+                    //HabitusExterior
+                    $("#BuenEstadoGral").text(data.BuenEstadoGral);
+                    $("#Tranquilo").text(data.Tranquilo);
+                    $("#Cooperador").text(data.Cooperador);
+                    $("#Orientado").text(data.Orientado);
+                    $("#FaciesCaract").text(data.FaciesCaract);
+                    $("#Depresivo").text(data.Depresivo);
+                    $("#Ansioso").text(data.Ansioso);
+                    $("#Agresivo").text(data.Agresivo);
+                    $("#Temeroso").text(data.Temeroso);
+                    $("#Irritable").text(data.Irritable);
+                    $("#Marcha").text(data.Marcha);
+                    //Habitos
+                    $("#HorasSuenio").text(data.HorasSuenio);
+                    $("#TieneInsomnio").text(data.TieneInsomnio);
+                    $("#TieneEuresis").text(data.TieneEuresis);
+                    $("#TienePesadillas").text(data.TienePesadillas);
+                    $("#HorasOcio").text(data.HorasOcio);
+                    $("#ActividadFisica").text(data.ActividadFisica);
+                    $("#ActFi_Tiempo").text(data.ActFi_Tiempo);
+                    $("#ActFi_Frecuencia").text(data.ActFi_Frecuencia);
+                    //AntecedentesPeri
+                    $("#NumeroEmbarazo").text(data.NumeroEmbarazo);
+                    $("#EnfermedadesEmbarazo").text(data.EnfermedadesEmbarazo);
+                    $("#Especifica_EnfermedadesEmb").text(data.Especifica_EnfermedadesEmb);
+                    $("#TratamientosEmbarazo").text(data.TratamientosEmbarazo);
+                    $("#Especifica_TratamientosEmb").text(data.Especifica_TratamientosEmb);
+                    $("#LugarParto").text(data.LugarParto);
+                    $("#Otra_LugarParto").text(data.Otra_LugarParto);
+                    $("#EdadGestional").text(data.EdadGestional);
+                    $("#Especifica_EdadGes").text(data.Especifica_EdadGes);
+                    $("#Apgar").text(data.Apgar);
+                    $("#Especifica_Apgar").text(data.Especifica_Apgar);
+                    $("#TipoParto").text(data.TipoParto);
+                    $("#PartoFue_TipoParto").text(data.PartoFue_TipoParto);
+                    $("#Distocica_TipoParto").text(data.Distocica_TipoParto);
+                    $("#Cesaria_TipoParto").text(data.Cesaria_TipoParto);
+                    $("#ComplicacionAtenObst").text(data.ComplicacionAtenObst);
+                    $("#Especifica_Complicacion").text(data.Especifica_Complicacion);
+                    $("#TamizMetabolico").text(data.TamizMetabolico);
+                    $("#Seleccione_TamizMetabolico").text(data.Seleccione_TamizMetabolico);
+                    $("#TamizAuditivo").text(data.TamizAuditivo);
+                    $("#Seleccione_TamizAuditivo").text(data.Seleccione_TamizAuditivo);
+                    //Inmunizaciones
+                    $("#CartillaVacunacion").text(data.CartillaVacunacion);
+                    $("#EsquemaVacunacion").text(data.EsquemaVacunacion);
+                    $("#Especifica_EsquemaVac").text(data.Especifica_EsquemaVac);
+                    //Alimentacion
+                    $("#TipoLactancia").text(data.TipoLactancia);
+                    $("#TiempoLactancia").text(data.TiempoLactancia);
+                    $("#EdadAblactacion").text(data.EdadAblactacion);
+                    $("#AlimentosInicio").text(data.AlimentosInicio);
+                    $("#EdadIntegracion").text(data.EdadIntegracion);
+                    $("#MuertCuna").text(data.MuertCuna);
+                    //HabitosAlimentacion
+                    $("#HabitosAlimentacion").text(data.HabitosAlimentacion);
+                    $("#EspecificaBueno").text(data.EspecificaBueno);
+                    $("#EspecificaRegular").text(data.EspecificaRegular);
+                    $("#EspecificaMalo").text(data.EspecificaMalo);
+                    //AntecedentesDes
+                    $("#SostuvoCabeza").text(data.SostuvoCabeza);
+                    $("#Especifica_SostuvoCab").text(data.Especifica_SostuvoCab);
+                    $("#SeSento").text(data.SeSento);
+                    $("#Especifica_SeSento").text(data.Especifica_SeSento);
+                    $("#Camino").text(data.Camino);
+                    $("#Especifica_Camino").text(data.Especifica_Camino);
+                    $("#Habla").text(data.Habla);
+                    $("#Especifica_Habla").text(data.Especifica_Habla);
+                    $("#ControlEsfinteres").text(data.ControlEsfinteres);
+                    $("#Especifica_ControlEsfin").text(data.Especifica_ControlEsfin);
+                    $("#PruebaEDI").text(data.PruebaEDI);
+                    $("#Especifica_PruebaEDI").text(data.Especifica_PruebaEDI);
+                    //AntecedentesGinecoObs
+                    $("#Menarquia").text(data.Menarquia);
+                    $("#Motivo_Menarquia").text(data.Motivo_Menarquia);
+                    $("#Ritmo_Menarquia").text(data.Ritmo_Menarquia);
+                    $("#Tipo_Menarquia").text(data.Tipo_Menarquia);
+                    $("#Cantidad_Menarquia").text(data.Cantidad_Menarquia);
+                    $("#Coloracion_Menarquia").text(data.Coloracion_Menarquia);
+                    $("#Especifica_Coloracion").text(data.Especifica_Coloracion);
+                    $("#FenomenosAsoc").text(data.FenomenosAsoc);
+                    $("#DolorPelvico").text(data.DolorPelvico);
+                    $("#SangradoAnormal").text(data.SangradoAnormal);
+                    $("#UltimoMetodoAnti").text(data.UltimoMetodoAnti);
+                    $("#Especifica_UltimoMetodoAnti").text(data.Especifica_UltimoMetodoAnti);
+                    $("#SangradoPostcoito").text(data.SangradoPostcoito);
+                    $("#FlujoTransvaginal").text(data.FlujoTransvaginal);
+                    $("#Gesta").text(data.Gesta);
+                    $("#Partos").text(data.Partos);
+                    $("#Especifica_Partos").text(data.Especifica_Partos);
+                    $("#Cesarea").text(data.Cesarea);
+                    $("#Especifica_Cesarea").text(data.Especifica_Cesarea);
+                    $("#Abortos").text(data.Abortos);
+                    $("#Especifica_Abortos").text(data.Especifica_Abortos);
+                    $("#HijosTerminos").text(data.HijosTerminos);
+                    $("#Especifica_HijosTerminos").text(data.Especifica_HijosTerminos);
+                    $("#Prematuros").text(data.Prematuros);
+                    $("#Especifica_Prematuros").text(data.Especifica_Prematuros);
+                    $("#FechaUltimoParto").text(data.FechaUltimoParto);
+                    //$("#Especifica_FechaUltimoParto").text(data.Especifica_FechaUltimoParto);
+                    // Suponiendo que data.Especifica_FechaUltimoParto es "/Date(1012629600000)/"
+                    var fechaJson = data.Especifica_FechaUltimoParto;
+                    var fechaMilisegundos = parseInt(fechaJson.match(/\d+/)[0]); // Extraer los milisegundos
+                    var fecha = new Date(fechaMilisegundos);
+                    var fechaLegible = fecha.toLocaleDateString(); // O cualquier otro formato que desees
+                    // Luego, establece la fecha legible en tu vista
+                    $("#Especifica_FechaUltimoParto").text(fechaLegible);
+                    $("#FechaUltimaCesarea").text(data.FechaUltimaCesarea);
+                    //$("#Especifica_FechaUltimaCesarea").text(data.Especifica_FechaUltimaCesarea);
+                    var fechaJson1 = data.Especifica_FechaUltimaCesarea;
+                    var fechaMilisegundos1 = parseInt(fechaJson1.match(/\d+/)[0]);
+                    var fecha1 = new Date(fechaMilisegundos1);
+                    var fechaLegible1 = fecha1.toLocaleDateString();
                     $("#Especifica_FechaUltimaCesarea").text(fechaLegible1);
                     $("#Motivo_FechaUltimaCesarea").text(data.Motivo_FechaUltimaCesarea);
                     $("#FechaUltimoAborto").text(data.FechaUltimoAborto);
@@ -2266,14 +2865,10 @@
 
         } else {
             $('#Medicina').hide();
-        }
+        }*@
+        // #endregion
 
     }
-
-
-
-
-
 
 </script>
 

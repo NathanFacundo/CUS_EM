@@ -996,5 +996,120 @@ namespace CUS.Areas.Admin.Controllers
 
         #endregion
 
+        public class Propiedades_HC
+        {
+            //Familia
+            public string Parentesco { get; set; }
+            public string NombreCompleto { get; set; }
+            public string Edad { get; set; }
+            public string Ocupacion { get; set; }
+            //AtencionPsicologica
+            public bool? Presencia_Voluntaria { get; set; }
+            public bool? Presencia_Sugerida { get; set; }
+            public bool? Presencia_Obligatoria { get; set; }
+            public string AnteriormenteAtencion { get; set; }
+            //MotivoConsulta
+            public string Motivo { get; set; }
+            //SintomatologiaActual
+            public string Sintomatologia { get; set; }
+            public bool? DificultadRespirar_Si { get; set; }
+            public bool? DificultadRespirar_No { get; set; }
+            public string DificultadRespirar_Esp { get; set; }
+            public bool? SensacionMorir_Si { get; set; }
+            public bool? SensacionMorir_No { get; set; }
+            public string SensacionMorir_Esp { get; set; }
+            public bool? TemblorCuerpo_Si { get; set; }
+            public bool? TemblorCuerpo_No { get; set; }
+            public string TemblorCuerpo_Esp { get; set; }
+            public bool? Desmayo_Si { get; set; }
+            public bool? Desmayo_No { get; set; }
+            public string Desmayo_Esp { get; set; }
+            public bool? Lloras_Si { get; set; }
+            public bool? Lloras_No { get; set; }
+            public string Lloras_Esp { get; set; }
+            public bool? DespiertasAnimo_Si { get; set; }
+            public bool? DespiertasAnimo_No { get; set; }
+            public string DespiertasAnimo_Esp { get; set; }
+            public bool? Culpable_Si { get; set; }
+            public bool? Culpable_No { get; set; }
+            public string Culpable_Esp { get; set; }
+            public bool? PerdidoMotivacion_Si { get; set; }
+            public bool? PerdidoMotivacion_No { get; set; }
+            public string PerdidoMotivacion_Esp { get; set; }
+            public bool? QuererMorir_Si { get; set; }
+            public bool? QuererMorir_No { get; set; }
+            public string QuererMorir_Esp { get; set; }
+            public bool? Consultado_Si { get; set; }
+            public bool? Consultado_No { get; set; }
+            public string Consultado_Esp { get; set; }
+            public bool? ProblemasAtencion_Si { get; set; }
+            public bool? ProblemasAtencion_No { get; set; }
+            public string ProblemasAtencion_Esp { get; set; }
+            public bool? ProblemasDormir_Si { get; set; }
+            public bool? ProblemasDormir_No { get; set; }
+            public string ProblemasDormir_Esp { get; set; }
+            public bool? CambioApetito_Si { get; set; }
+            public bool? CambioApetito_No { get; set; }
+            public string CambioApetito_Esp { get; set; }
+            public bool? ParteTiempo_Triste { get; set; }
+            public bool? ParteTiempo_Enojado { get; set; }
+            public bool? ParteTiempo_Miedo { get; set; }
+            public bool? ParteTiempo_Angustiado { get; set; }
+            public bool? ParteTiempo_Estresado { get; set; }
+            public bool? ParteTiempo_Maniaco { get; set; }
+            public bool? ParteTiempo_Otra { get; set; }
+            public string ParteTiempo_OtraEsp { get; set; }
+            //AreasAtencion
+            public bool? Conductual { get; set; }
+            public bool? Emocional { get; set; }
+            public bool? RelacionesIn { get; set; }
+            public bool? Neurologico { get; set; }
+            public bool? Academico { get; set; }
+            //SignosAlarma
+            public string Signo { get; set; }
+            public string Esp_Signo { get; set; }
+            //IndicacionTerapeutica
+            public string Plan { get; set; }
+        }
+
+        //********      Función para buscar el detalle de la H.C. en el MODAL
+        [HttpPost]
+        public ActionResult ConsultarHC_Psic(string Clave_hc_px, string TipoHistoria)//Este parametro lo recivimos de la vista, "Clave_hc_px" viene siendo el Identificador armado de la HC que se desea ver
+        {
+            try
+            {
+                Propiedades_HC HC = new Propiedades_HC();
+
+                string query =
+                    "SELECT F.Parentesco, F.NombreCompleto, F.Edad, F.Ocupacion, " +
+                    "AP.Presencia_Voluntaria, AP.Presencia_Sugerida, AP.Presencia_Obligatoria, AP.AnteriormenteAtencion, " +
+                    "MC.Motivo, " +
+                    "SA.Sintomatologia, SA.DificultadRespirar_Si, SA.DificultadRespirar_No, SA.DificultadRespirar_Esp, SA.SensacionMorir_Si, SA.SensacionMorir_No, SA.SensacionMorir_Esp, SA.TemblorCuerpo_Si, SA.TemblorCuerpo_No, SA.TemblorCuerpo_Esp, SA.Desmayo_Si, SA.Desmayo_No, SA.Desmayo_Esp, SA.Lloras_Si, SA.Lloras_No, SA.Lloras_Esp, SA.DespiertasAnimo_Si, SA.DespiertasAnimo_No, SA.DespiertasAnimo_Esp, " +
+                    "SA.Culpable_Si, SA.Culpable_No, SA.Culpable_Esp, SA.PerdidoMotivacion_Si, SA.PerdidoMotivacion_No, SA.PerdidoMotivacion_Esp, SA.QuererMorir_Si, SA.QuererMorir_No, SA.QuererMorir_Esp, SA.Consultado_Si, SA.Consultado_No, SA.Consultado_Esp, SA.ProblemasAtencion_Si, SA.ProblemasAtencion_No, SA.ProblemasAtencion_Esp, SA.ProblemasDormir_Si, SA.ProblemasDormir_No, SA.ProblemasDormir_Esp, SA.CambioApetito_Si, " +
+                    "SA.CambioApetito_No, SA.CambioApetito_Esp, SA.ParteTiempo_Triste, SA.ParteTiempo_Enojado, SA.ParteTiempo_Miedo, SA.ParteTiempo_Angustiado, SA.ParteTiempo_Estresado, SA.ParteTiempo_Maniaco, SA.ParteTiempo_Otra, SA.ParteTiempo_OtraEsp, " +
+                    "AA.Conductual, AA.Emocional, AA.RelacionesIn, AA.Neurologico, AA.Academico, " +
+                    "SIG.Signo, SIG.Esp_Signo, " +
+                    "IT.[Plan] " +
+                                    "FROM HistoriaClinica HCli " +
+                                    "LEFT JOIN hc_PS_Familia F ON F.Clave_hc_px = HCli.Clave_hc_px " +
+                                    "LEFT JOIN hc_PS_AtencionPsicologica AP ON AP.Clave_hc_px = HCli.Clave_hc_px " +
+                                    "LEFT JOIN hc_PS_MotivoConsulta MC ON MC.Clave_hc_px = HCli.Clave_hc_px " +
+                                    "LEFT JOIN hc_PS_SintomatologiaActual SA ON SA.Clave_hc_px = HCli.Clave_hc_px " +
+                                    "LEFT JOIN hc_PS_AreasAtencion AA ON AA.Clave_hc_px = HCli.Clave_hc_px " +
+                                    "LEFT JOIN hc_PS_SignosAlarma SIG ON SIG.Clave_hc_px = HCli.Clave_hc_px " +
+                                    "LEFT JOIN hc_PS_IndicacionTerapeutica IT ON IT.Clave_hc_px = HCli.Clave_hc_px " +
+                                    "WHERE HCli.Clave_hc_px = '" + Clave_hc_px + "' ";
+
+                var result = hcMed.Database.SqlQuery<Propiedades_HC>(query);
+                HC = result.FirstOrDefault();
+
+                return new JsonResult { Data = HC, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            }
+            catch (Exception ex)
+            {
+                return Json(new { MENSAJE = "Error: Error de sistema: " + ex.Message }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
     }
 }
