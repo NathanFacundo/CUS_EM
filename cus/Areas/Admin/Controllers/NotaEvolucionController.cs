@@ -258,11 +258,15 @@ namespace CUS.Areas.Admin.Controllers
                         nota.nota_objetivo = notaEvolucion.nota_objetivo;
                         nota.nota_plan = notaEvolucion.nota_plan;
                         nota.diagnostico1 = notaEvolucion.diagnostico1;
-                        nota.diagnostico2 = notaEvolucion.diagnostico1;
-                        nota.diagnostico3 = notaEvolucion.diagnostico1;
+                        nota.diagnostico2 = notaEvolucion.diagnostico2;
+                        nota.diagnostico3 = notaEvolucion.diagnostico3;
+                        nota.diagnostico4 = notaEvolucion.diagnostico4;
+                        nota.diagnostico5 = notaEvolucion.diagnostico5;
                         nota.tipo_diagnostico1 = notaEvolucion.tipo_diagnostico1;
                         nota.tipo_diagnostico2 = notaEvolucion.tipo_diagnostico2;
                         nota.tipo_diagnostico3 = notaEvolucion.tipo_diagnostico3;
+                        nota.tipo_diagnostico4 = notaEvolucion.tipo_diagnostico4;
+                        nota.tipo_diagnostico5 = notaEvolucion.tipo_diagnostico5;
                         nota.num_exp = paciente.Expediente;
                         nota.fecha = fechaDT;
                         //Historia.Id_HistoriaClinica = Id_claveHC;

@@ -525,20 +525,20 @@
                                     <div class="resumenTop" id="analisisLetra">A</div>
                                     <div class="resumenTopCheck" id="analisisCheck">✓</div>
                                     <!--div class="row mt-5 ml-0 mr-0 mb-0" id="diagnosticoMedico">
-                                        <div class="col-md-12 p-2 text-left">
-                                            <h6>Mis diagnósticos frecuentes <img class="flecha" src="~/Content/assets/img/flecha-abajo.png" /> </h6>
-                                        </div>
-                                    <-div>
-                                    <div class="row m-0 mt-5" id="diagnosticoPaciente">
-                                        <div class="col-md-12 p-2 text-left">
-                                            <h6>Diagnósticos frecuentes del paciente <img class="flecha" src="~/Content/assets/img/flecha-abajo.png" /> </h6>
-                                        </div>
-                                    </div>
-                                    <div class="row m-0 mt-5" id="diagnosticoEspecialidad">
-                                        <div class="col-md-12 p-2 text-left">
-                                            <h6>Diagnósticos frecuentes de especialidad <img class="flecha" src="~/Content/assets/img/flecha-abajo.png" /> </h6>
-                                        </div>
-                                    </div-->
+        <div class="col-md-12 p-2 text-left">
+            <h6>Mis diagnósticos frecuentes <img class="flecha" src="~/Content/assets/img/flecha-abajo.png" /> </h6>
+        </div>
+    <-div>
+    <div class="row m-0 mt-5" id="diagnosticoPaciente">
+        <div class="col-md-12 p-2 text-left">
+            <h6>Diagnósticos frecuentes del paciente <img class="flecha" src="~/Content/assets/img/flecha-abajo.png" /> </h6>
+        </div>
+    </div>
+    <div class="row m-0 mt-5" id="diagnosticoEspecialidad">
+        <div class="col-md-12 p-2 text-left">
+            <h6>Diagnósticos frecuentes de especialidad <img class="flecha" src="~/Content/assets/img/flecha-abajo.png" /> </h6>
+        </div>
+    </div-->
                                     <div class="row mt-5 ml-0 mr-0 mb-0" id="diagnosticoBusqueda">
                                         <div class="col-md-12 p-2 text-left">
                                             <h6>Buscar otro diagnostico</h6>
@@ -629,6 +629,59 @@
                                             </div>
                                         </div>
                                     </div>
+
+
+                                    <div class="row m-0">
+                                        <div class="col-md-12 p-2">
+                                            <div class="diaginfo">4. Diagnóstico</div>
+                                        </div>
+
+                                        <div class="col-md-9 m-auto p-2">
+                                            <textarea class="resumenText" id="diagnostico4" name="diagnostico4" readonly></textarea>
+                                            <input id="clave4" type="hidden" />
+                                        </div>
+                                        <div class="col-md-3 m-auto p-0">
+                                            <div class="row m-0">
+                                                <div class="col-9 p-2">
+                                                    <select class="form-control tipoconsulta" id="tipoconsulta4" name="tipo_diagnostico4" required>
+                                                        <option disabled selected>Seleccionar opción</option>
+                                                        <option value="2">Subsecuente</option>
+                                                        <option value="1">Primera Vez</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-3 text-center p-2">
+                                                    <img class="borrardiag" id="borrardiag4" src="~/Content/assets/img/trashcan.png" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row m-0">
+                                        <div class="col-md-12 p-2">
+                                            <div class="diaginfo">5. Diagnóstico</div>
+                                        </div>
+
+                                        <div class="col-md-9 m-auto p-2">
+                                            <textarea class="resumenText" id="diagnostico5" name="diagnostico5" readonly></textarea>
+                                            <input id="clave5" type="hidden" />
+                                        </div>
+                                        <div class="col-md-3 m-auto p-0">
+                                            <div class="row m-0">
+                                                <div class="col-9 p-2">
+                                                    <select class="form-control tipoconsulta" id="tipoconsulta5" name="tipo_diagnostico5" required>
+                                                        <option disabled selected>Seleccionar opción</option>
+                                                        <option value="2">Subsecuente</option>
+                                                        <option value="1">Primera Vez</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-3 text-center p-2">
+                                                    <img class="borrardiag" id="borrardiag5" src="~/Content/assets/img/trashcan.png" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
 
                                 </div>
                                 <div class="col-12 p-2">
@@ -1153,11 +1206,7 @@
         // imprime 'juan'
         var clave = $(this).attr('data-clave');
         var desCorta = $(this).text();
-        //alert(desCorta);
-        //$('#diagnostico1').val(desCorta);
-        //$('#clave1').val(clave);
-        //$('.diagnostico-select').css('background-color', 'white');
-        //$('.diagnostico-select').css('color', 'black');
+        //alert(clave);
         if ($(this).hasClass("diagnostico-active")) {
 
             $(this).removeClass('diagnostico-active');
@@ -1167,12 +1216,6 @@
                 $('#clave1').val('');
                 $("#tipoconsulta1").attr('disabled', 'disabled');
                 $('#borrardiag1').css('filter', 'grayscale(100%)');
-
-
-                //$("#tipoconsulta1").val($("#tipoconsulta1 option:first").val());
-                //$('#finalizar').attr('disabled', 'disabled');
-                //$('#finalizar').css('background-color', 'lightgray');
-
 
                 //Si hay un valor en el diagnostico2
                 if ($('#clave2').val()) {
@@ -1218,11 +1261,55 @@
                     $("#tipoconsulta3").val($("#tipoconsulta3 option:first").val());
                 }
 
+
+                //Si hay un valor en el diagnostico4
+                if ($('#clave4').val()) {
+                    alert('if1');
+                    $('#diagnostico3').val($('#diagnostico4').val());
+                    $('#clave3').val($('#clave4').val());
+                    $("#tipoconsulta3").removeAttr('disabled');
+                    $('#borrardiag3').css('filter', 'none');
+                    $("#tipoconsulta4").attr('disabled', 'disabled');
+                    $('#borrardiag4').css('filter', 'grayscale(100%)');
+                    $('#diagnostico4').val('');
+                    $('#clave4').val('');
+
+                    $("#tipoconsulta3 option").each(function () {
+                        var val = $(this).val();
+                        if (val == $('#tipoconsulta4').val()) {
+                            $(this).prop('selected', true);
+                        }
+                    });
+
+                    $("#tipoconsulta3").val($("#tipoconsulta3 option:first").val());
+                }
+
+
+                //Si hay un valor en el diagnostico4
+                if ($('#clave5').val()) {
+                    $('#diagnostico4').val($('#diagnostico5').val());
+                    $('#clave4').val($('#clave5').val());
+                    $("#tipoconsulta4").removeAttr('disabled');
+                    $('#borrardiag4').css('filter', 'none');
+                    $("#tipoconsulta5").attr('disabled', 'disabled');
+                    $('#borrardiag5').css('filter', 'grayscale(100%)');
+                    $('#diagnostico5').val('');
+                    $('#clave5').val('');
+
+                    $("#tipoconsulta4 option").each(function () {
+                        var val = $(this).val();
+                        if (val == $('#tipoconsulta5').val()) {
+                            $(this).prop('selected', true);
+                        }
+                    });
+
+                    $("#tipoconsulta4").val($("#tipoconsulta4 option:first").val());
+                }
+
+
                 //No hay ni diagnostico 1 ni 2
                 if (!$('#clave1').val()) {
                     $("#tipoconsulta1").val($("#tipoconsulta1 option:first").val());
-                    //$('#finalizar').attr('disabled', 'disabled');
-                    //$('#finalizar').css('background-color', 'lightgray');
                 }
 
 
@@ -1233,6 +1320,8 @@
                     $('#clave2').val('');
                     $("#tipoconsulta2").attr('disabled', 'disabled');
                     $('#borrardiag2').css('filter', 'grayscale(100%)');
+
+
                     //Si hay un valor en el diagnostico3
                     if ($('#clave3').val()) {
                         $('#diagnostico2').val($('#diagnostico3').val());
@@ -1252,11 +1341,54 @@
                         });
                     }
 
+
+                    if ($('#clave4').val()) {
+                        alert('if2');
+                        $('#diagnostico3').val($('#diagnostico4').val());
+                        $('#clave3').val($('#clave4').val());
+                        $("#tipoconsulta3").removeAttr('disabled');
+                        $('#borrardiag3').css('filter', 'none');
+                        $("#tipoconsulta4").attr('disabled', 'disabled');
+                        $('#borrardiag4').css('filter', 'grayscale(100%)');
+                        $('#diagnostico4').val('');
+                        $('#clave4').val('');
+
+                        $("#tipoconsulta3 option").each(function () {
+                            var val = $(this).val();
+                            if (val == $('#tipoconsulta4').val()) {
+                                $(this).prop('selected', true);
+                            }
+                        });
+                    }
+
+
+                    if ($('#clave5').val()) {
+                        $('#diagnostico4').val($('#diagnostico5').val());
+                        $('#clave4').val($('#clave5').val());
+                        $("#tipoconsulta4").removeAttr('disabled');
+                        $('#borrardiag4').css('filter', 'none');
+                        $("#tipoconsulta5").attr('disabled', 'disabled');
+                        $('#borrardiag5').css('filter', 'grayscale(100%)');
+                        $('#diagnostico5').val('');
+                        $('#clave5').val('');
+
+                        $("#tipoconsulta4 option").each(function () {
+                            var val = $(this).val();
+                            if (val == $('#tipoconsulta5').val()) {
+                                $(this).prop('selected', true);
+                            }
+                        });
+                    }
+
+
+                    
                     if (!$('#clave2').val()) {
                         $("#tipoconsulta2").val($("#tipoconsulta2 option:first").val());
                     }
 
                     $("#tipoconsulta3").val($("#tipoconsulta3 option:first").val());
+                    $("#tipoconsulta4").val($("#tipoconsulta4 option:first").val());
+                    $("#tipoconsulta5").val($("#tipoconsulta5 option:first").val());
 
 
                 } else {
@@ -1266,6 +1398,98 @@
                         $("#tipoconsulta3").attr('disabled', 'disabled');
                         $('#borrardiag3').css('filter', 'grayscale(100%)');
                         $("#tipoconsulta3").val($("#tipoconsulta3 option:first").val());
+
+
+                        if ($('#clave4').val()) {
+                            alert('if3');
+                            $('#diagnostico3').val($('#diagnostico4').val());
+                            $('#clave3').val($('#clave4').val());
+                            $("#tipoconsulta3").removeAttr('disabled');
+                            $('#borrardiag3').css('filter', 'none');
+                            $("#tipoconsulta4").attr('disabled', 'disabled');
+                            $('#borrardiag4').css('filter', 'grayscale(100%)');
+                            $('#diagnostico4').val('');
+                            $('#clave4').val('');
+
+                            $("#tipoconsulta3 option").each(function () {
+                                var val = $(this).val();
+                                if (val == $('#tipoconsulta4').val()) {
+                                    $(this).prop('selected', true);
+                                }
+                            });
+                        }
+
+
+                        if ($('#clave5').val()) {
+                            $('#diagnostico4').val($('#diagnostico5').val());
+                            $('#clave4').val($('#clave5').val());
+                            $("#tipoconsulta4").removeAttr('disabled');
+                            $('#borrardiag4').css('filter', 'none');
+                            $("#tipoconsulta5").attr('disabled', 'disabled');
+                            $('#borrardiag5').css('filter', 'grayscale(100%)');
+                            $('#diagnostico5').val('');
+                            $('#clave5').val('');
+
+                            $("#tipoconsulta4 option").each(function () {
+                                var val = $(this).val();
+                                if (val == $('#tipoconsulta5').val()) {
+                                    $(this).prop('selected', true);
+                                }
+                            });
+                        }
+
+
+                        if (!$('#clave3').val()) {
+                            $("#tipoconsulta3").val($("#tipoconsulta3 option:first").val());
+                        }
+
+                        $("#tipoconsulta4").val($("#tipoconsulta4 option:first").val());
+                        $("#tipoconsulta5").val($("#tipoconsulta5 option:first").val());
+
+
+                    } else {
+                        if ($('#clave4').val() == clave) {
+                            alert('if4');
+                            $('#diagnostico4').val('');
+                            $('#clave4').val('');
+                            $("#tipoconsulta4").attr('disabled', 'disabled');
+                            $('#borrardiag4').css('filter', 'grayscale(100%)');
+                            $("#tipoconsulta4").val($("#tipoconsulta4 option:first").val());
+
+
+                            if ($('#clave5').val()) {
+                                $('#diagnostico4').val($('#diagnostico5').val());
+                                $('#clave4').val($('#clave5').val());
+                                $("#tipoconsulta4").removeAttr('disabled');
+                                $('#borrardiag4').css('filter', 'none');
+                                $("#tipoconsulta5").attr('disabled', 'disabled');
+                                $('#borrardiag5').css('filter', 'grayscale(100%)');
+                                $('#diagnostico5').val('');
+                                $('#clave5').val('');
+
+                                $("#tipoconsulta4 option").each(function () {
+                                    var val = $(this).val();
+                                    if (val == $('#tipoconsulta5').val()) {
+                                        $(this).prop('selected', true);
+                                    }
+                                });
+                            }
+
+                            if (!$('#clave4').val()) {
+                                $("#tipoconsulta4").val($("#tipoconsulta4 option:first").val());
+                            }
+
+                            $("#tipoconsulta5").val($("#tipoconsulta5 option:first").val());
+
+                        } else {
+                            if ($('#clave5').val() == clave) {
+                                $('#diagnostico5').val('');
+                                $('#clave5').val('');
+                                $("#tipoconsulta5").attr('disabled', 'disabled');
+                                $('#borrardiag5').css('filter', 'grayscale(100%)');
+                                $("#tipoconsulta5").val($("#tipoconsulta5 option:first").val());
+                            }
+                        }
                     }
                 }
             }
@@ -1299,7 +1523,7 @@
             $('#finalizar').css('background-color', 'lightgray');
 
             var numItems = $('.diagnostico-active').length;
-            if (numItems < 3) {
+            if (numItems < 5) {
                 if (numItems == 0) {
                     $('#diagnostico1').val(desCorta);
                     $('#clave1').val(clave);
@@ -1309,34 +1533,55 @@
 
                 } else {
                     if (numItems == 1) {
-                        //alert($("#tipoconsulta1").val());
                         if ($("#tipoconsulta1").val() == null) {
-                            //alert('llena el tipo de diagnostico 1');
                             $('#diaginfo1').show();
                         } else {
-                            $('#diaginfo1').hide();
+                            //$('#diaginfo1').hide();
                             $('#diagnostico2').val(desCorta);
                             $('#clave2').val(clave);
                             $("#tipoconsulta2").removeAttr('disabled');
                             $('#borrardiag2').css('filter', 'none');
                             $(this).addClass('diagnostico-active');
-                            //$('#finalizar').attr('disabled', 'disabled');
-                            //$('#finalizar').css('background-color', 'lightgray');
                         }
 
                     } else {
-                        if ($("#tipoconsulta2").val() == null) {
-                            //alert('llena el tipo de diagnostico 1');
-                            $('#diaginfo2').show();
+                        if (numItems == 2) {
+                            if ($("#tipoconsulta2").val() == null) {
+                                $('#diaginfo2').show();
+                            } else {
+                                //$('#diaginfo2').hide();
+                                $('#diagnostico3').val(desCorta);
+                                $('#clave3').val(clave);
+                                $("#tipoconsulta3").removeAttr('disabled');
+                                $('#borrardiag3').css('filter', 'none');
+                                $(this).addClass('diagnostico-active');
+                            }
                         } else {
-                            $('#diaginfo1').hide();
-                            $('#diagnostico3').val(desCorta);
-                            $('#clave3').val(clave);
-                            $("#tipoconsulta3").removeAttr('disabled');
-                            $('#borrardiag3').css('filter', 'none');
-                            $(this).addClass('diagnostico-active');
-                            //$('#finalizar').attr('disabled', 'disabled');
-                            //$('#finalizar').css('background-color', 'lightgray');
+                            if (numItems == 3) {
+                                if ($("#tipoconsulta3").val() == null) {
+                                    $('#diaginfo3').show();
+                                } else {
+                                    //$('#diaginfo2').hide();
+                                    $('#diagnostico4').val(desCorta);
+                                    $('#clave4').val(clave);
+                                    $("#tipoconsulta4").removeAttr('disabled');
+                                    $('#borrardiag4').css('filter', 'none');
+                                    $(this).addClass('diagnostico-active');
+                                }
+                            } else {
+                                if (numItems == 4) {
+                                    if ($("#tipoconsulta4").val() == null) {
+                                        $('#diaginfo4').show();
+                                    } else {
+                                        //$('#diaginfo2').hide();
+                                        $('#diagnostico5').val(desCorta);
+                                        $('#clave5').val(clave);
+                                        $("#tipoconsulta5").removeAttr('disabled');
+                                        $('#borrardiag5').css('filter', 'none');
+                                        $(this).addClass('diagnostico-active');
+                                    }
+                                }
+                            }
                         }
 
                     }
@@ -1386,6 +1631,7 @@
 
 
 <script>
+
     $("#borrardiag1").click(function () {
         $(".diagnostico-active").each(function (index) {
             if ($(this).attr('data-clave') == $('#clave1').val()) {
@@ -1403,18 +1649,15 @@
             $('#clave1').val($('#clave2').val());
             $('#borrardiag1').css('filter', 'none');
             $("#tipoconsulta1").removeAttr('disabled');
-            //alert($('#diagnostico2').val());
+            var opcionSeleccionada = $("#tipoconsulta2 option:selected").val();
+            $("#tipoconsulta1").val(opcionSeleccionada);
+
             $('#diagnostico2').val('');
             $('#clave2').val('');
+            $('#borrardiag2').css('filter', 'grayscale(100%)');
+            $("#tipoconsulta2").val($("#tipoconsulta2 option:first").val());
+
         }
-
-        $("#tipoconsulta1").val($("#tipoconsulta1 option:first").val());
-
-
-        /*if (!$("#tipoconsulta1").val()) {
-            $('#finalizar').attr('disabled', 'disabled');
-            $('#finalizar').css('background-color', 'lightgray');
-        }*/
 
     });
 
@@ -1436,12 +1679,17 @@
             $('#clave2').val($('#clave3').val());
             $('#borrardiag2').css('filter', 'none');
             $("#tipoconsulta2").removeAttr('disabled');
-            //alert($('#diagnostico2').val());
+            var opcionSeleccionada = $("#tipoconsulta3 option:selected").val();
+            //alert(opcionSeleccionada);
+            $("#tipoconsulta2").val(opcionSeleccionada);
+
             $('#diagnostico3').val('');
             $('#clave3').val('');
+            $('#borrardiag3').css('filter', 'grayscale(100%)');
+            $("#tipoconsulta3").val($("#tipoconsulta3 option:first").val());
         }
 
-        $("#tipoconsulta2").val($("#tipoconsulta2 option:first").val());
+        //$("#tipoconsulta2").val($("#tipoconsulta2 option:first").val());
 
     });
 
@@ -1457,9 +1705,73 @@
             }
         });
 
-        $("#tipoconsulta3").val($("#tipoconsulta3 option:first").val());
+
+        if ($('#clave4').val()) {
+            $('#diagnostico3').val($('#diagnostico4').val());
+            $('#clave3').val($('#clave4').val());
+            $('#borrardiag3').css('filter', 'none');
+            $("#tipoconsulta3").removeAttr('disabled');
+            var opcionSeleccionada = $("#tipoconsulta4 option:selected").val();
+            $("#tipoconsulta3").val(opcionSeleccionada);
+
+            $('#diagnostico4').val('');
+            $('#clave4').val('');
+            $('#borrardiag4').css('filter', 'grayscale(100%)');
+            $("#tipoconsulta4").val($("#tipoconsulta4 option:first").val());
+
+        }
+
+        //$("#tipoconsulta3").val($("#tipoconsulta3 option:first").val());
 
     });
+
+
+    $("#borrardiag4").click(function () {
+        $(".diagnostico-active").each(function (index) {
+            if ($(this).attr('data-clave') == $('#clave4').val()) {
+                $(this).removeClass('diagnostico-active');
+                $('#diagnostico4').val('');
+                $('#clave4').val('');
+                $('#borrardiag4').css('filter', 'grayscale(100%)');
+                $("#tipoconsulta4").attr('disabled', 'disabled');
+            }
+        });
+
+
+        if ($('#clave5').val()) {
+            $('#diagnostico4').val($('#diagnostico5').val());
+            $('#clave4').val($('#clave5').val());
+            $('#borrardiag4').css('filter', 'none');
+            $("#tipoconsulta4").removeAttr('disabled');
+            var opcionSeleccionada = $("#tipoconsulta5 option:selected").val();
+            $("#tipoconsulta4").val(opcionSeleccionada);
+
+            $('#diagnostico5').val('');
+            $('#clave5').val('');
+            $('#borrardiag5').css('filter', 'grayscale(100%)');
+            $("#tipoconsulta5").val($("#tipoconsulta5 option:first").val());
+
+        }
+
+
+    });
+
+
+    $("#borrardiag5").click(function () {
+        $(".diagnostico-active").each(function (index) {
+            if ($(this).attr('data-clave') == $('#clave5').val()) {
+                $(this).removeClass('diagnostico-active');
+                $('#diagnostico5').val('');
+                $('#clave5').val('');
+                $('#borrardiag5').css('filter', 'grayscale(100%)');
+                $("#tipoconsulta5").attr('disabled', 'disabled');
+            }
+        });
+
+        $("#tipoconsulta5").val($("#tipoconsulta5 option:first").val());
+
+    });
+
 
 </script>
 
