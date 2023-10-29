@@ -1071,6 +1071,83 @@ namespace CUS.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        public ActionResult ImpresionDiag(Models.hc_MED_ImpresionDiag HistoriaClinica, string expediente)
+        {
+            try
+            {
+                var fecha = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
+                var fechaDT = DateTime.Parse(fecha);
+
+                //Buscamos al px del que se le quiere hacer la H.C.
+                var paciente = (from a in db.Paciente
+                                where a.Expediente == expediente
+                                select a).FirstOrDefault();
+
+                //Buscamos si a ese px se le acaba de crear registro en la tbl HistoriaClinica
+                if (paciente != null)
+                {
+                    var fechaUltimoRegistro = (from a in db.HistoriaClinica
+                                               where a.Id_Paciente == paciente.Id
+                                               select a).
+                              OrderByDescending(r => r.FechaRegistroHC)
+                              .FirstOrDefault();
+
+                    bool pacienteTieneRegistroEnUltimas3Horas;
+                    DateTime fechaLimite = DateTime.Now;
+                    //si NO existe registro en la bd en la tbl HistoriaClinica por default 'pacienteTieneRegistroEnUltimas3Horas' será null,
+                    //quiere decir que se creará un registro nuevo
+                    if (fechaUltimoRegistro == null)
+                    {
+                        pacienteTieneRegistroEnUltimas3Horas = false;
+                    }
+                    else
+                    {
+                        DateTime fechaActual = DateTime.Now;
+                        DateTime fechaL = fechaActual.AddHours(-3);
+                        //utilizar fechaLimite para verificar si el paciente tiene un registro dentro de las últimas 3 horas y tambien validar el TIPO DE HISTORIA
+                        pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
+                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC >= fechaL && r.FechaRegistroHC <= fechaActual && r.TipoHistoria == "Medicina");
+                    }
+
+                    var Id_claveHC = "";
+                    if (pacienteTieneRegistroEnUltimas3Horas)// El paciente ya tiene un registro en las últimas 3 horas
+                    {
+                        //Obtenemos los datos del registro del px
+                        var registroReciente = db.HistoriaClinica
+                                                .Where(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fechaLimite && r.FechaRegistroHC <= fechaDT)
+                                                .OrderByDescending(r => r.FechaRegistroHC)
+                                                .FirstOrDefault();
+
+                        Id_claveHC = registroReciente.Clave_hc_px;
+                    }
+                    else// No hay registro reciente, puedes guardar el nuevo registro.
+                    {
+                        string claveHC = buscaHisotriaClinica(expediente);
+                        Id_claveHC = claveHC;
+                    }
+
+                    //Se crea la HC de esta sección/pestaña
+                    Models.hc_MED_ImpresionDiag Historia = new Models.hc_MED_ImpresionDiag();
+                    Historia.diagnostico1 = HistoriaClinica.diagnostico1;
+                    Historia.diagnostico2 = HistoriaClinica.diagnostico2;
+                    Historia.diagnostico3 = HistoriaClinica.diagnostico3;
+                    Historia.diagnostico4 = HistoriaClinica.diagnostico4;
+                    Historia.diagnostico5 = HistoriaClinica.diagnostico5;
+
+                    Historia.Id_Paciente = paciente.Id;
+                    Historia.Clave_hc_px = Id_claveHC;
+                    hcMed.hc_MED_ImpresionDiag.Add(Historia);
+                    hcMed.SaveChanges();
+                }
+                return Json(new { MENSAJE = "Succe: " }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(new { MENSAJE = "Error: Error de sistema: " + ex.Message }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [HttpPost]
         public ActionResult Plan(Models.hc_MED_Plan HistoriaClinica, string expediente)
         {
             try
@@ -1449,6 +1526,12 @@ namespace CUS.Areas.Admin.Controllers
             //ResultadosLaboratorio
             public string RLGR { get; set; }
             public string Especifica_RLGR { get; set; }
+            //ImpresionDiag
+            public string Diagnostico1 { get; set; }
+            public string Diagnostico2 { get; set; }
+            public string Diagnostico3 { get; set; }
+            public string Diagnostico4 { get; set; }
+            public string Diagnostico5 { get; set; }
             //Plan
             public string Plan { get; set; }
             //Pronostico
@@ -1482,6 +1565,7 @@ namespace CUS.Areas.Admin.Controllers
                     "AVS.InicioVidaSexual, AVS.Edad_InicioVidaSexual, AVS.Numero_ParejasSexuales, " +
                     "PEE.PEE, " +
                     "RL.RLGR, RL.Especifica_RLGR, " +
+                    "ID.Diagnostico1, ID.Diagnostico2, ID.Diagnostico3, ID.Diagnostico4, ID.Diagnostico5, " +
                     "PL.[Plan], " +
                     "PR.LigadoEvolucion, PR.Favorable, PR.Desfavorable, " +
                     "O.Interconsulta, O.PadecimientoActual, O.Especifica_PadecimientoActual, O.ProximaCita " +
@@ -1497,6 +1581,7 @@ namespace CUS.Areas.Admin.Controllers
                                     "LEFT JOIN hc_MED_AntecedentesVidaSex AVS ON AVS.Clave_hc_px = HCli.Clave_hc_px " +
                                     "LEFT JOIN hc_MED_PrincipioEvolEstado PEE ON PEE.Clave_hc_px = HCli.Clave_hc_px " +
                                     "LEFT JOIN hc_MED_ResultadosLaboratorio RL ON RL.Clave_hc_px = HCli.Clave_hc_px " +
+                                    "LEFT JOIN hc_MED_ImpresionDiag ID ON ID.Clave_hc_px = HCli.Clave_hc_px " +
                                     "LEFT JOIN hc_MED_Plan PL ON PL.Clave_hc_px = HCli.Clave_hc_px " +
                                     "LEFT JOIN hc_MED_Pronostico PR ON PR.Clave_hc_px = HCli.Clave_hc_px " +
                                     "LEFT JOIN hc_MED_Otros O ON O.Clave_hc_px = HCli.Clave_hc_px " +

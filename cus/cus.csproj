@@ -301,6 +301,9 @@
     <Compile Include="Models\hc_MED_HabitusExterior.cs">
       <DependentUpon>HC_Medicina.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\hc_MED_ImpresionDiag.cs">
+      <DependentUpon>HC_Medicina.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\hc_MED_Inmunizaciones.cs">
       <DependentUpon>HC_Medicina.tt</DependentUpon>
     </Compile>

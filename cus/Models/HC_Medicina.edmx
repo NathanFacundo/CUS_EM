@@ -174,6 +174,19 @@
           <Property Name="Id_Paciente" Type="int" Nullable="false" />
           <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="hc_MED_ImpresionDiag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="diagnostico1" Type="varchar" MaxLength="100" />
+          <Property Name="diagnostico2" Type="varchar" MaxLength="100" />
+          <Property Name="diagnostico3" Type="varchar" MaxLength="100" />
+          <Property Name="diagnostico4" Type="varchar" MaxLength="100" />
+          <Property Name="diagnostico5" Type="varchar" MaxLength="100" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="20" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="hc_MED_Inmunizaciones">
           <Key>
             <PropertyRef Name="Id" />
@@ -366,6 +379,7 @@
           <EntitySet Name="hc_MED_Habitos" EntityType="Self.hc_MED_Habitos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hc_MED_HabitosAlimentacion" EntityType="Self.hc_MED_HabitosAlimentacion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hc_MED_HabitusExterior" EntityType="Self.hc_MED_HabitusExterior" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_MED_ImpresionDiag" EntityType="Self.hc_MED_ImpresionDiag" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hc_MED_Inmunizaciones" EntityType="Self.hc_MED_Inmunizaciones" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hc_MED_Otros" EntityType="Self.hc_MED_Otros" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hc_MED_Plan" EntityType="Self.hc_MED_Plan" Schema="dbo" store:Type="Tables" />
@@ -637,6 +651,7 @@
           <EntitySet Name="hc_PS_MotivoConsulta" EntityType="Models.hc_PS_MotivoConsulta" />
           <EntitySet Name="hc_PS_SignosAlarma" EntityType="Models.hc_PS_SignosAlarma" />
           <EntitySet Name="hc_PS_SintomatologiaActual" EntityType="Models.hc_PS_SintomatologiaActual" />
+          <EntitySet Name="hc_MED_ImpresionDiag" EntityType="Models.hc_MED_ImpresionDiag" />
         </EntityContainer>
         <EntityType Name="hc_PS_AreasAtencion">
           <Key>
@@ -758,6 +773,19 @@
           <Property Name="ParteTiempo_OtraEsp" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
           <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
           <Property Name="Clave_hc_px" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="hc_MED_ImpresionDiag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="diagnostico1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="diagnostico2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="diagnostico3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="diagnostico4" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="diagnostico5" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1134,6 +1162,20 @@
                 <ScalarProperty Name="DificultadRespirar_No" ColumnName="DificultadRespirar_No" />
                 <ScalarProperty Name="DificultadRespirar_Si" ColumnName="DificultadRespirar_Si" />
                 <ScalarProperty Name="Sintomatologia" ColumnName="Sintomatologia" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_MED_ImpresionDiag">
+            <EntityTypeMapping TypeName="Models.hc_MED_ImpresionDiag">
+              <MappingFragment StoreEntitySet="hc_MED_ImpresionDiag">
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="diagnostico5" ColumnName="diagnostico5" />
+                <ScalarProperty Name="diagnostico4" ColumnName="diagnostico4" />
+                <ScalarProperty Name="diagnostico3" ColumnName="diagnostico3" />
+                <ScalarProperty Name="diagnostico2" ColumnName="diagnostico2" />
+                <ScalarProperty Name="diagnostico1" ColumnName="diagnostico1" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

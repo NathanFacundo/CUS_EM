@@ -1033,7 +1033,6 @@
                                 <h5 class="text-center mb-4 mt-0 pt-4" id="NombreHC1"></h5>
 
                                 <div id="Medicina">
-
                                     <p>
                                         <h4 class="collapsed" data-toggle="collapse" data-target="#collapseHE" aria-expanded="false" aria-controls="collapseHE">
                                             Habitus Exterior <i class="fa fa-plus-circle"></i>
@@ -1478,6 +1477,31 @@
                                     </div>
                                     <hr />
                                     <p>
+                                        <h4 class="collapsed" data-toggle="collapse" data-target="#collapseImpresionD" aria-expanded="false" aria-controls="collapseImpresionD">
+                                            Impresión Giagnóstica <i class="fa fa-plus-circle"></i>
+                                        </h4>
+                                    </p>
+                                    <div class="collapse" id="collapseImpresionD">
+                                        <div class="card card-body">
+                                            <p>
+                                                Diagnóstico 1: <span id="diagnostico1"></span>
+                                            </p>
+                                            <p>
+                                                Diagnóstico 2: <span id="diagnostico2"></span>
+                                            </p>
+                                            <p>
+                                                diagnóstico 3: <span id="diagnostico3"></span>
+                                            </p>
+                                            <p>
+                                                Diagnóstico 4: <span id="diagnostico4"></span>
+                                            </p>
+                                            <p>
+                                                Diagnóstico 5: <span id="diagnostico5"></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <p>
                                         <h4 class="collapsed" data-toggle="collapse" data-target="#collapseP" aria-expanded="false" aria-controls="collapseP">
                                             Plan <i class="fa fa-plus-circle"></i>
                                         </h4>
@@ -1530,7 +1554,6 @@
                                             </p>
                                         </div>
                                     </div>
-
                                 </div>
 
                                 <div id="Psicologia">
@@ -2425,50 +2448,69 @@
                     $("#Prematuros").text(data.Prematuros);
                     $("#Especifica_Prematuros").text(data.Especifica_Prematuros);
                     $("#FechaUltimoParto").text(data.FechaUltimoParto);
-                    //$("#Especifica_FechaUltimoParto").text(data.Especifica_FechaUltimoParto);
+
                     // Suponiendo que data.Especifica_FechaUltimoParto es "/Date(1012629600000)/"
-                    var fechaJson = data.Especifica_FechaUltimoParto;
-                    var fechaMilisegundos = parseInt(fechaJson.match(/\d+/)[0]); // Extraer los milisegundos
-                    var fecha = new Date(fechaMilisegundos);
-                    var fechaLegible = fecha.toLocaleDateString(); // O cualquier otro formato que desees
-                    // Luego, establece la fecha legible en tu vista
-                    $("#Especifica_FechaUltimoParto").text(fechaLegible);
+                    if (data.Especifica_FechaUltimoParto != null) {
+                        var fechaJson = data.Especifica_FechaUltimoParto;
+                        var fechaMilisegundos = parseInt(fechaJson.match(/\d+/)[0]); // Extraer los milisegundos
+                        var fecha = new Date(fechaMilisegundos);
+                        var fechaLegible = fecha.toLocaleDateString(); // O cualquier otro formato que desees
+                        // Luego, establece la fecha legible en tu vista
+                        $("#Especifica_FechaUltimoParto").text(fechaLegible);
+                    }
+                    
+
                     $("#FechaUltimaCesarea").text(data.FechaUltimaCesarea);
-                    //$("#Especifica_FechaUltimaCesarea").text(data.Especifica_FechaUltimaCesarea);
-                    var fechaJson1 = data.Especifica_FechaUltimaCesarea;
-                    var fechaMilisegundos1 = parseInt(fechaJson1.match(/\d+/)[0]);
-                    var fecha1 = new Date(fechaMilisegundos1);
-                    var fechaLegible1 = fecha1.toLocaleDateString();
-                    $("#Especifica_FechaUltimaCesarea").text(fechaLegible1);
+
+                    if (data.Especifica_FechaUltimaCesarea != null) {
+                        var fechaJson1 = data.Especifica_FechaUltimaCesarea;
+                        var fechaMilisegundos1 = parseInt(fechaJson1.match(/\d+/)[0]);
+                        var fecha1 = new Date(fechaMilisegundos1);
+                        var fechaLegible1 = fecha1.toLocaleDateString();
+                        $("#Especifica_FechaUltimaCesarea").text(fechaLegible1);
+                    }
+
                     $("#Motivo_FechaUltimaCesarea").text(data.Motivo_FechaUltimaCesarea);
                     $("#FechaUltimoAborto").text(data.FechaUltimoAborto);
-                    //$("#Especifica_FechaUltimoAborto").text(data.Especifica_FechaUltimoAborto);
-                    var fechaJson2 = data.Especifica_FechaUltimoAborto;
-                    var fechaMilisegundos2 = parseInt(fechaJson2.match(/\d+/)[0]);
-                    var fecha2 = new Date(fechaMilisegundos2);
-                    var fechaLegible2 = fecha2.toLocaleDateString();
-                    $("#Especifica_FechaUltimoAborto").text(fechaLegible2);
+
+                    if (data.Especifica_FechaUltimoAborto != null) {
+                        var fechaJson2 = data.Especifica_FechaUltimoAborto;
+                        var fechaMilisegundos2 = parseInt(fechaJson2.match(/\d+/)[0]);
+                        var fecha2 = new Date(fechaMilisegundos2);
+                        var fechaLegible2 = fecha2.toLocaleDateString();
+                        $("#Especifica_FechaUltimoAborto").text(fechaLegible2);
+                    }
+
                     $("#FechaUltimaMenstruacion").text(data.FechaUltimaMenstruacion);
-                    //$("#Especifica_FechaUltimaMenstruacion").text(data.Especifica_FechaUltimaMenstruacion);
-                    var fechaJson3 = data.Especifica_FechaUltimaMenstruacion;
-                    var fechaMilisegundos3 = parseInt(fechaJson3.match(/\d+/)[0]);
-                    var fecha3 = new Date(fechaMilisegundos3);
-                    var fechaLegible3 = fecha3.toLocaleDateString();
-                    $("#Especifica_FechaUltimaMenstruacion").text(fechaLegible3);
+
+                    if (data.Especifica_FechaUltimaMenstruacion != null) {
+                        var fechaJson3 = data.Especifica_FechaUltimaMenstruacion;
+                        var fechaMilisegundos3 = parseInt(fechaJson3.match(/\d+/)[0]);
+                        var fecha3 = new Date(fechaMilisegundos3);
+                        var fechaLegible3 = fecha3.toLocaleDateString();
+                        $("#Especifica_FechaUltimaMenstruacion").text(fechaLegible3);
+                    }
+                    
                     $("#FechaProbableParto").text(data.FechaProbableParto);
-                    //$("#Especifica_FechaProbableParto").text(data.Especifica_FechaProbableParto);
-                    var fechaJson4 = data.Especifica_FechaProbableParto;
-                    var fechaMilisegundos4 = parseInt(fechaJson4.match(/\d+/)[0]);
-                    var fecha4 = new Date(fechaMilisegundos4);
-                    var fechaLegible4 = fecha4.toLocaleDateString();
-                    $("#Especifica_FechaProbableParto").text(fechaLegible4);
+                    
+                    if (data.Especifica_FechaProbableParto != null) {
+                        var fechaJson4 = data.Especifica_FechaProbableParto;
+                        var fechaMilisegundos4 = parseInt(fechaJson4.match(/\d+/)[0]);
+                        var fecha4 = new Date(fechaMilisegundos4);
+                        var fechaLegible4 = fecha4.toLocaleDateString();
+                        $("#Especifica_FechaProbableParto").text(fechaLegible4);
+                    }
+
                     $("#FechaUltimoPapanicolau").text(data.FechaUltimoPapanicolau);
-                    //$("#Especifica_FechaUltimoPapanicolau").text(data.Especifica_FechaUltimoPapanicolau);
-                    var fechaJson5 = data.Especifica_FechaUltimoPapanicolau;
-                    var fechaMilisegundos5 = parseInt(fechaJson5.match(/\d+/)[0]);
-                    var fecha5 = new Date(fechaMilisegundos5);
-                    var fechaLegible5 = fecha5.toLocaleDateString();
-                    $("#Especifica_FechaUltimoPapanicolau").text(fechaLegible5);
+                    
+                    if (data.Especifica_FechaUltimoPapanicolau != null) {
+                        var fechaJson5 = data.Especifica_FechaUltimoPapanicolau;
+                        var fechaMilisegundos5 = parseInt(fechaJson5.match(/\d+/)[0]);
+                        var fecha5 = new Date(fechaMilisegundos5);
+                        var fechaLegible5 = fecha5.toLocaleDateString();
+                        $("#Especifica_FechaUltimoPapanicolau").text(fechaLegible5);
+                    }
+
                     $("#NoRecuerda_FechaUltimoPapanicolau").text(data.NoRecuerda_FechaUltimoPapanicolau);
                     $("#Resultado_FechaUltimoPapanicolau").text(data.Resultado_FechaUltimoPapanicolau);
                     //AntecedentesVidaSex
@@ -2480,6 +2522,12 @@
                     //ResultadosLaboratorio
                     $("#RLGR").text(data.RLGR);
                     $("#Especifica_RLGR").text(data.Especifica_RLGR);
+                    //ImpresionDiag
+                    $("#diagnostico1").text(data.Diagnostico1);
+                    $("#diagnostico2").text(data.Diagnostico2);
+                    $("#diagnostico3").text(data.Diagnostico3);
+                    $("#diagnostico4").text(data.Diagnostico4);
+                    $("#diagnostico5").text(data.Diagnostico5);
                     //Plan
                     $("#Plan").text(data.Plan);
                     //Pronostico
