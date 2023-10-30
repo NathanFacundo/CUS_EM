@@ -1810,6 +1810,40 @@
                                     </div>
                                     <hr />
                                     <p>
+                                        <h4 class="collapsed" data-toggle="collapse" data-target="#collapseDiagnosticoP" aria-expanded="false" aria-controls="collapseDiagnosticoP">
+                                            Diagnóstico Presuntivo y Clasificación <i class="fa fa-plus-circle"></i>
+                                        </h4>
+                                    </p>
+                                    <div class="collapse" id="collapseDiagnosticoP">
+                                        <div class="card card-body">
+                                            <p>
+                                                Diagnóstico 1: <span id="Diagnostico1"></span>
+                                            </p>
+                                            <p>
+                                                Diagnóstico 2: <span id="Diagnostico2"></span>
+                                            </p>
+                                            <p>
+                                                Diagnóstico 3: <span id="Diagnostico3"></span>
+                                            </p>
+                                            <p>
+                                                Diagnóstico 4: <span id="Diagnostico4"></span>
+                                            </p>
+                                            <p>
+                                                Diagnóstico 5: <span id="Diagnostico5"></span>
+                                            </p>
+                                            <p>
+                                                Ligado a Evolución: <span id="D_LigadoEvol" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Favorable: <span id="Diag_Favorable" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Desfavorable: <span id="D_Desfavorable" class="estado"></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <p>
                                         <h4 class="collapsed" data-toggle="collapse" data-target="#collapseIndT" aria-expanded="false" aria-controls="collapseIndT">
                                             Indicación Terapéutica <i class="fa fa-plus-circle"></i>
                                         </h4>
@@ -2651,6 +2685,15 @@
                     //SignosAlarma
                     $("#Signo").text(data.Signo);
                     $("#Esp_Signo").text(data.Esp_Signo);
+                    //DiagnosticoPresuntivo
+                    $("#Diagnostico1").text(data.Diagnostico1);
+                    $("#Diagnostico2").text(data.Diagnostico2);
+                    $("#Diagnostico3").text(data.Diagnostico3);
+                    $("#Diagnostico4").text(data.Diagnostico4);
+                    $("#Diagnostico5").text(data.Diagnostico5);
+                    $("#D_LigadoEvol").text(data.LigadoEvolucion);
+                    $("#Diag_Favorable").text(data.Favorable);
+                    $("#D_Desfavorable").text(data.Desfavorable);
                     //Plan
                     $("#PlanPs").text(data.Plan);
                     // #endregion

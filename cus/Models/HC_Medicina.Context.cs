@@ -47,5 +47,6 @@ namespace CUS.Models
         public virtual DbSet<hc_PS_SignosAlarma> hc_PS_SignosAlarma { get; set; }
         public virtual DbSet<hc_PS_SintomatologiaActual> hc_PS_SintomatologiaActual { get; set; }
         public virtual DbSet<hc_MED_ImpresionDiag> hc_MED_ImpresionDiag { get; set; }
+        public virtual DbSet<hc_PS_DiagnosticoPres> hc_PS_DiagnosticoPres { get; set; }
     }
 }

@@ -274,6 +274,22 @@
           <Property Name="Id_Paciente" Type="int" Nullable="false" />
           <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="hc_PS_DiagnosticoPres">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="diagnostico1" Type="varchar" MaxLength="100" />
+          <Property Name="diagnostico2" Type="varchar" MaxLength="100" />
+          <Property Name="diagnostico3" Type="varchar" MaxLength="100" />
+          <Property Name="diagnostico4" Type="varchar" MaxLength="100" />
+          <Property Name="diagnostico5" Type="varchar" MaxLength="100" />
+          <Property Name="LigadoEvolucion" Type="bit" />
+          <Property Name="Favorable" Type="bit" />
+          <Property Name="Desfavorable" Type="bit" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="hc_PS_Familia">
           <Key>
             <PropertyRef Name="Id" />
@@ -388,6 +404,7 @@
           <EntitySet Name="hc_MED_ResultadosLaboratorio" EntityType="Self.hc_MED_ResultadosLaboratorio" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hc_PS_AreasAtencion" EntityType="Self.hc_PS_AreasAtencion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hc_PS_AtencionPsicologica" EntityType="Self.hc_PS_AtencionPsicologica" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_PS_DiagnosticoPres" EntityType="Self.hc_PS_DiagnosticoPres" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hc_PS_Familia" EntityType="Self.hc_PS_Familia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hc_PS_IndicacionTerapeutica" EntityType="Self.hc_PS_IndicacionTerapeutica" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hc_PS_MotivoConsulta" EntityType="Self.hc_PS_MotivoConsulta" Schema="dbo" store:Type="Tables" />
@@ -652,6 +669,7 @@
           <EntitySet Name="hc_PS_SignosAlarma" EntityType="Models.hc_PS_SignosAlarma" />
           <EntitySet Name="hc_PS_SintomatologiaActual" EntityType="Models.hc_PS_SintomatologiaActual" />
           <EntitySet Name="hc_MED_ImpresionDiag" EntityType="Models.hc_MED_ImpresionDiag" />
+          <EntitySet Name="hc_PS_DiagnosticoPres" EntityType="Models.hc_PS_DiagnosticoPres" />
         </EntityContainer>
         <EntityType Name="hc_PS_AreasAtencion">
           <Key>
@@ -786,6 +804,22 @@
           <Property Name="diagnostico5" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Clave_hc_px" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_PS_DiagnosticoPres">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="diagnostico1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="diagnostico2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="diagnostico3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="diagnostico4" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="diagnostico5" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LigadoEvolucion" Type="Boolean" />
+          <Property Name="Favorable" Type="Boolean" />
+          <Property Name="Desfavorable" Type="Boolean" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1171,6 +1205,23 @@
               <MappingFragment StoreEntitySet="hc_MED_ImpresionDiag">
                 <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
                 <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="diagnostico5" ColumnName="diagnostico5" />
+                <ScalarProperty Name="diagnostico4" ColumnName="diagnostico4" />
+                <ScalarProperty Name="diagnostico3" ColumnName="diagnostico3" />
+                <ScalarProperty Name="diagnostico2" ColumnName="diagnostico2" />
+                <ScalarProperty Name="diagnostico1" ColumnName="diagnostico1" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_PS_DiagnosticoPres">
+            <EntityTypeMapping TypeName="Models.hc_PS_DiagnosticoPres">
+              <MappingFragment StoreEntitySet="hc_PS_DiagnosticoPres">
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+                <ScalarProperty Name="Desfavorable" ColumnName="Desfavorable" />
+                <ScalarProperty Name="Favorable" ColumnName="Favorable" />
+                <ScalarProperty Name="LigadoEvolucion" ColumnName="LigadoEvolucion" />
                 <ScalarProperty Name="diagnostico5" ColumnName="diagnostico5" />
                 <ScalarProperty Name="diagnostico4" ColumnName="diagnostico4" />
                 <ScalarProperty Name="diagnostico3" ColumnName="diagnostico3" />

@@ -328,6 +328,9 @@
     <Compile Include="Models\hc_PS_AtencionPsicologica.cs">
       <DependentUpon>HC_Medicina.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\hc_PS_DiagnosticoPres.cs">
+      <DependentUpon>HC_Medicina.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\hc_PS_Familia.cs">
       <DependentUpon>HC_Medicina.tt</DependentUpon>
     </Compile>
@@ -469,6 +472,7 @@
     <Content Include="Content\assets\img\features\feature-05.jpg" />
     <Content Include="Content\assets\img\features\feature-06.jpg" />
     <Content Include="Content\assets\img\features\feature.png" />
+    <Content Include="Content\assets\img\flecha-abajo.png" />
     <Content Include="Content\assets\img\footer-logo.png" />
     <Content Include="Content\assets\img\icon-01.png" />
     <Content Include="Content\assets\img\icon-02.png" />
@@ -495,11 +499,13 @@
     <Content Include="Content\assets\img\patients\patient9.jpg" />
     <Content Include="Content\assets\img\search-bg.png" />
     <Content Include="Content\assets\img\search.png" />
+    <Content Include="Content\assets\img\search1.png" />
     <Content Include="Content\assets\img\specialities\specialities-01.png" />
     <Content Include="Content\assets\img\specialities\specialities-02.png" />
     <Content Include="Content\assets\img\specialities\specialities-03.png" />
     <Content Include="Content\assets\img\specialities\specialities-04.png" />
     <Content Include="Content\assets\img\specialities\specialities-05.png" />
+    <Content Include="Content\assets\img\trashcan.png" />
     <Content Include="Content\assets\img\video-call.jpg" />
     <Content Include="Content\assets\js\bootstrap-datetimepicker.min.js" />
     <Content Include="Content\assets\js\bootstrap.min.js" />
