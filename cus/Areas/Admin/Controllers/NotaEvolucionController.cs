@@ -10,7 +10,7 @@ namespace CUS.Areas.Admin.Controllers
 {
     public class NotaEvolucionController : Controller
     {
-        //private DerechohabienteController _dhController;
+        public DerechohabienteController _dhController;
 
         /*
         public NotaEvolucionController(DerechohabienteController dhController)
@@ -24,12 +24,19 @@ namespace CUS.Areas.Admin.Controllers
         Models.CUS db = new Models.CUS();
 
         // GET: Admin/NotaEvolucion
-        public ActionResult Index()
+        public ActionResult Index(string expediente)
         {
             //var mensajeGlobal = BuscarPaciente();
             //var mensajeGlobal = _dhController.BuscarPaciente();
-
-            return View();
+            if(expediente != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("BuscarPaciente", "DerechoHabiente");
+            }
+            
         }
 
 

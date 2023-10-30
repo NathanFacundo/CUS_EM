@@ -497,10 +497,10 @@ namespace CUS.Areas.Admin.Controllers
         }
 
 
-        public JsonResult BuscarPaciente()
+        public ActionResult BuscarPaciente()
         {
             // Tu lógica global aquí
-            return Json(new { mensaje = "mensaje" }, JsonRequestBehavior.AllowGet);
+            return View();
         }
 
 
