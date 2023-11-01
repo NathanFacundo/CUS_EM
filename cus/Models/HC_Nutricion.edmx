@@ -1,0 +1,1045 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Models.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="hc_NUT_AlimentacionInicial">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LactanciaMaterna" Type="varchar" MaxLength="5" />
+          <Property Name="Tiempo_LactanciaM" Type="varchar" MaxLength="300" />
+          <Property Name="Sucedaneo" Type="varchar" MaxLength="5" />
+          <Property Name="Cual_Sucedaneo" Type="varchar" MaxLength="300" />
+          <Property Name="AlimentacionComp" Type="varchar" MaxLength="5" />
+          <Property Name="Edad_AlimentacionC" Type="varchar" MaxLength="30" />
+          <Property Name="Motivo_AlimentacionC" Type="varchar" MaxLength="300" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_NUT_DatosDieteticos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Comidas" Type="varchar" MaxLength="30" />
+          <Property Name="Desayuno" Type="bit" />
+          <Property Name="Comidas2" Type="bit" />
+          <Property Name="Cena" Type="bit" />
+          <Property Name="ColacionMat" Type="bit" />
+          <Property Name="ColacionVes" Type="bit" />
+          <Property Name="TiempoConsumir" Type="varchar" MaxLength="30" />
+          <Property Name="Suplementos" Type="varchar" MaxLength="5" />
+          <Property Name="Especifica_Supl" Type="varchar" MaxLength="300" />
+          <Property Name="AlimentosDisgustan" Type="varchar" MaxLength="300" />
+          <Property Name="AlimentosFavoritos" Type="varchar" MaxLength="30" />
+          <Property Name="ConsumoAgua" Type="varchar" MaxLength="5" />
+          <Property Name="Especifica_ConsumoAgua" Type="varchar" MaxLength="30" />
+          <Property Name="HorasSuenio" Type="varchar" MaxLength="30" />
+          <Property Name="ActividadFisica" Type="varchar" MaxLength="5" />
+          <Property Name="Tipo_ActividadFisica" Type="varchar" MaxLength="300" />
+          <Property Name="Tiempo_ActividadFisica" Type="varchar" MaxLength="300" />
+          <Property Name="Frec_ActividadFisica" Type="varchar" MaxLength="300" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_NUT_EducacionInicial">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CriteriosGen" Type="bit" />
+          <Property Name="PrevencionEnf" Type="bit" />
+          <Property Name="EducacionMat" Type="bit" />
+          <Property Name="PlanificacionDis" Type="bit" />
+          <Property Name="AdopcionPat" Type="bit" />
+          <Property Name="EducacionMej" Type="bit" />
+          <Property Name="EjercicioAd" Type="bit" />
+          <Property Name="EducacionRel" Type="bit" />
+          <Property Name="AdherenciaTrat" Type="bit" />
+          <Property Name="DudasInq" Type="bit" />
+          <Property Name="Oral" Type="bit" />
+          <Property Name="Escrito" Type="bit" />
+          <Property Name="Video" Type="bit" />
+          <Property Name="Demostracion" Type="bit" />
+          <Property Name="Mujeremb" Type="bit" />
+          <Property Name="MadreEt" Type="bit" />
+          <Property Name="Postnatal" Type="bit" />
+          <Property Name="Cuidador6meses" Type="bit" />
+          <Property Name="Cuidador6a12meses" Type="bit" />
+          <Property Name="Cuidador1a4anios" Type="bit" />
+          <Property Name="Cuidador5a9anios" Type="bit" />
+          <Property Name="10a19anios" Type="bit" />
+          <Property Name="20a59anios" Type="bit" />
+          <Property Name="60anios" Type="bit" />
+          <Property Name="SeCompleta" Type="bit" />
+          <Property Name="SinCompletar" Type="bit" />
+          <Property Name="ReforzarParte" Type="bit" />
+          <Property Name="ReforzarToda" Type="bit" />
+          <Property Name="Rechazo" Type="bit" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_NUT_EtapaCambio">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Viene" Type="varchar" MaxLength="25" />
+          <Property Name="DeseaLograr" Type="varchar" MaxLength="300" />
+          <Property Name="Precontemplacion" Type="bit" />
+          <Property Name="Contemplacion" Type="bit" />
+          <Property Name="Preparacion" Type="bit" />
+          <Property Name="Mantenimiento" Type="bit" />
+          <Property Name="Terminacion" Type="bit" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_NUT_EvaluacionAntro">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="S4Anios_PesoN" Type="varchar" MaxLength="50" />
+          <Property Name="S4Anios_TallaN" Type="varchar" MaxLength="50" />
+          <Property Name="S4Anios_PesoA" Type="varchar" MaxLength="50" />
+          <Property Name="S4Anios_TallaA" Type="varchar" MaxLength="50" />
+          <Property Name="S4Tabla_MedPeso" Type="varchar" MaxLength="50" />
+          <Property Name="S4Tabla_MedTalla" Type="varchar" MaxLength="50" />
+          <Property Name="S4Tabla_MedPeTa" Type="varchar" MaxLength="50" />
+          <Property Name="S4Tabla_MedPeId" Type="varchar" MaxLength="50" />
+          <Property Name="S4Tabla_DesPeso" Type="varchar" MaxLength="50" />
+          <Property Name="S4Tabla_DesTalla" Type="varchar" MaxLength="50" />
+          <Property Name="S4Tabla_DesPeTa" Type="varchar" MaxLength="50" />
+          <Property Name="S4Tabla_DesPeId" Type="varchar" MaxLength="50" />
+          <Property Name="S4Tabla_RanPeso" Type="varchar" MaxLength="50" />
+          <Property Name="S4Tabla_RanTalla" Type="varchar" MaxLength="50" />
+          <Property Name="S4Tabla_RanPeTa" Type="varchar" MaxLength="50" />
+          <Property Name="S4Tabla_RanPeId" Type="varchar" MaxLength="50" />
+          <Property Name="S4Tabla_ClaPeso" Type="varchar" MaxLength="50" />
+          <Property Name="S4Tabla_ClaTalla" Type="varchar" MaxLength="50" />
+          <Property Name="S4Tabla_ClaPeTa" Type="varchar" MaxLength="50" />
+          <Property Name="S4Tabla_ClaPeId" Type="varchar" MaxLength="50" />
+          <Property Name="S4Anios_Interpretacion" Type="varchar" MaxLength="50" />
+          <Property Name="S4Anios_Observaciones" Type="varchar" MaxLength="50" />
+          <Property Name="S5Anios_PesoA" Type="varchar" MaxLength="50" />
+          <Property Name="S5Anios_TallaA" Type="varchar" MaxLength="50" />
+          <Property Name="S5Anios_Indice" Type="varchar" MaxLength="50" />
+          <Property Name="S5Anios_Desviacion" Type="varchar" MaxLength="50" />
+          <Property Name="S5Anios_Diagnostico" Type="varchar" MaxLength="50" />
+          <Property Name="S5Anios_PesoId" Type="varchar" MaxLength="50" />
+          <Property Name="S5Anios_Circunf" Type="varchar" MaxLength="50" />
+          <Property Name="S5Anios_Percentil" Type="varchar" MaxLength="50" />
+          <Property Name="S5Anios_Interpretacion" Type="varchar" MaxLength="50" />
+          <Property Name="S5Anios_Observaciones" Type="varchar" MaxLength="50" />
+          <Property Name="S10Anios_PesoA" Type="varchar" MaxLength="50" />
+          <Property Name="S10Anios_TallaA" Type="varchar" MaxLength="50" />
+          <Property Name="S10Anios_Indice" Type="varchar" MaxLength="50" />
+          <Property Name="S10Anios_Desviacion" Type="varchar" MaxLength="50" />
+          <Property Name="S10Anios_Diagnostico" Type="varchar" MaxLength="50" />
+          <Property Name="S10Anios_PesoId" Type="varchar" MaxLength="50" />
+          <Property Name="S10Anios_Circunf" Type="varchar" MaxLength="50" />
+          <Property Name="S10Anios_Percentil" Type="varchar" MaxLength="50" />
+          <Property Name="S10Anios_Interpretacion" Type="varchar" MaxLength="50" />
+          <Property Name="S10Anios_Observaciones" Type="varchar" MaxLength="50" />
+          <Property Name="S20Anios_PesoA" Type="varchar" MaxLength="50" />
+          <Property Name="S20Anios_TallaA" Type="varchar" MaxLength="50" />
+          <Property Name="S20Anios_Indice" Type="varchar" MaxLength="50" />
+          <Property Name="S20Anios_Diagnostico" Type="varchar" MaxLength="50" />
+          <Property Name="S20Anios_CircunfMu" Type="varchar" MaxLength="50" />
+          <Property Name="S20Anios_Complexion" Type="varchar" MaxLength="50" />
+          <Property Name="S20Anios_PesoId" Type="varchar" MaxLength="50" />
+          <Property Name="S20Anios_CircunfCin" Type="varchar" MaxLength="50" />
+          <Property Name="S20Anios_CircunfCad" Type="varchar" MaxLength="50" />
+          <Property Name="S20Anios_IndiceCin" Type="varchar" MaxLength="50" />
+          <Property Name="S20Anios_Riesgo" Type="varchar" MaxLength="50" />
+          <Property Name="S20Anios_Observaciones" Type="varchar" MaxLength="50" />
+          <Property Name="S60Anios_PesoA" Type="varchar" MaxLength="50" />
+          <Property Name="S60Anios_TallaA" Type="varchar" MaxLength="50" />
+          <Property Name="S60Anios_Indice" Type="varchar" MaxLength="50" />
+          <Property Name="S60Anios_Diagnostico" Type="varchar" MaxLength="50" />
+          <Property Name="S60Anios_CircunfMu" Type="varchar" MaxLength="50" />
+          <Property Name="S60Anios_Complexion" Type="varchar" MaxLength="50" />
+          <Property Name="S60Anios_PesoId" Type="varchar" MaxLength="50" />
+          <Property Name="S60Anios_PesoAj" Type="varchar" MaxLength="50" />
+          <Property Name="S60Anios_CircunfCin" Type="varchar" MaxLength="50" />
+          <Property Name="S60Anios_CircunfCad" Type="varchar" MaxLength="50" />
+          <Property Name="S60Anios_IndiceCin" Type="varchar" MaxLength="50" />
+          <Property Name="S60Anios_CircunfBra" Type="varchar" MaxLength="50" />
+          <Property Name="S60Anios_CircunfPan" Type="varchar" MaxLength="50" />
+          <Property Name="S60Anios_Observaciones" Type="varchar" MaxLength="50" />
+          <Property Name="SEmbaraz_PesoA" Type="varchar" MaxLength="50" />
+          <Property Name="SEmbaraz_TallaA" Type="varchar" MaxLength="50" />
+          <Property Name="SEmbaraz_Gestacion" Type="varchar" MaxLength="50" />
+          <Property Name="SEmbaraz_CircunfBra" Type="varchar" MaxLength="50" />
+          <Property Name="SEmbaraz_PesoPreges" Type="varchar" MaxLength="50" />
+          <Property Name="SEmbaraz_Indice" Type="varchar" MaxLength="50" />
+          <Property Name="SEmbaraz_Diagnostico" Type="varchar" MaxLength="50" />
+          <Property Name="SEmbaraz_GanPesoDesd" Type="varchar" MaxLength="50" />
+          <Property Name="SEmbaraz_GanPesoAct" Type="varchar" MaxLength="50" />
+          <Property Name="SEmbaraz_Observaciones" Type="varchar" MaxLength="50" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_NUT_FrecuenciaAlimen">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Leche" Type="bit" />
+          <Property Name="Frecuencia_Leche" Type="varchar" MaxLength="200" />
+          <Property Name="Verdura" Type="bit" />
+          <Property Name="Frecuencia_Verdura" Type="varchar" MaxLength="200" />
+          <Property Name="Fruta" Type="bit" />
+          <Property Name="Frecuencia_Fruta" Type="varchar" MaxLength="200" />
+          <Property Name="Cereales" Type="bit" />
+          <Property Name="Frecuencia_Cereales" Type="varchar" MaxLength="200" />
+          <Property Name="Leguminosas" Type="bit" />
+          <Property Name="Frecuencia_Leguminosas" Type="varchar" MaxLength="200" />
+          <Property Name="Carne" Type="bit" />
+          <Property Name="Frecuencia_Carne" Type="varchar" MaxLength="200" />
+          <Property Name="Grasa" Type="bit" />
+          <Property Name="Frecuencia_Grasa" Type="varchar" MaxLength="200" />
+          <Property Name="Azucar" Type="bit" />
+          <Property Name="Frecuencia_Azucar" Type="varchar" MaxLength="200" />
+          <Property Name="BebidasAzucar" Type="bit" />
+          <Property Name="Frecuencia_BebidasAzucar" Type="varchar" MaxLength="200" />
+          <Property Name="BebidasAlt" Type="bit" />
+          <Property Name="Frecuencia_BebidasAlt" Type="varchar" MaxLength="200" />
+          <Property Name="Cafe" Type="bit" />
+          <Property Name="Frecuencia_Cafe" Type="varchar" MaxLength="200" />
+          <Property Name="Te" Type="bit" />
+          <Property Name="Frecuencia_Te" Type="varchar" MaxLength="200" />
+          <Property Name="Cerveza" Type="bit" />
+          <Property Name="Frecuencia_Cerveza" Type="varchar" MaxLength="200" />
+          <Property Name="ProductosPan" Type="bit" />
+          <Property Name="Frecuencia_ProductosPan" Type="varchar" MaxLength="200" />
+          <Property Name="Confiteria" Type="bit" />
+          <Property Name="Frecuencia_Confiteria" Type="varchar" MaxLength="200" />
+          <Property Name="Embutidos" Type="bit" />
+          <Property Name="Frecuencia_Embutidos" Type="varchar" MaxLength="200" />
+          <Property Name="AlimentosEnla" Type="bit" />
+          <Property Name="Frecuencia_AlimentosEnla" Type="varchar" MaxLength="200" />
+          <Property Name="Sopas" Type="bit" />
+          <Property Name="Frecuencia_Sopas" Type="varchar" MaxLength="200" />
+          <Property Name="Verduras" Type="bit" />
+          <Property Name="Frecuencia_Verduras" Type="varchar" MaxLength="200" />
+          <Property Name="ComidaRap" Type="bit" />
+          <Property Name="Frecuencia_ComidaRap" Type="varchar" MaxLength="200" />
+          <Property Name="ComidaGras" Type="bit" />
+          <Property Name="Frecuencia_ComidaGras" Type="varchar" MaxLength="200" />
+          <Property Name="ProductosChat" Type="bit" />
+          <Property Name="Frecuencia_ProductosChat" Type="varchar" MaxLength="200" />
+          <Property Name="Consome" Type="bit" />
+          <Property Name="Frecuencia_Consome" Type="varchar" MaxLength="200" />
+          <Property Name="Sal" Type="bit" />
+          <Property Name="Frecuencia_Sal" Type="varchar" MaxLength="200" />
+          <Property Name="Sucedaneo" Type="bit" />
+          <Property Name="Frecuencia_Sucedaneo" Type="varchar" MaxLength="200" />
+          <Property Name="Otros" Type="bit" />
+          <Property Name="Frecuencia_Otros" Type="varchar" MaxLength="200" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_NUT_ImpresionDiag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="diagnostico1" Type="varchar" MaxLength="100" />
+          <Property Name="diagnostico2" Type="varchar" MaxLength="100" />
+          <Property Name="diagnostico3" Type="varchar" MaxLength="100" />
+          <Property Name="diagnostico4" Type="varchar" MaxLength="100" />
+          <Property Name="diagnostico5" Type="varchar" MaxLength="100" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="20" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_NUT_Otros">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Interconsulta" Type="varchar" MaxLength="5" />
+          <Property Name="PadecimientoActual" Type="varchar" MaxLength="5" />
+          <Property Name="Especifica_PadecimientoActual" Type="varchar" MaxLength="200" />
+          <Property Name="ProximaCita" Type="varchar" MaxLength="30" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="20" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_NUT_Plan">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Plan" Type="varchar" MaxLength="200" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_NUT_Pronostico">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LigadoEvolucion" Type="bit" />
+          <Property Name="Favorable" Type="bit" />
+          <Property Name="Desfavorable" Type="bit" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="20" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_NUT_Recordatorio">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Desayuno_Hora" Type="varchar" MaxLength="15" />
+          <Property Name="Desayuno_Preparacion" Type="varchar" MaxLength="300" />
+          <Property Name="Desayuno_Alimento" Type="varchar" MaxLength="300" />
+          <Property Name="Desayuno_Cantidad" Type="varchar" MaxLength="300" />
+          <Property Name="ColacionDes_Hora" Type="varchar" MaxLength="15" />
+          <Property Name="ColacionDes_Preparacion" Type="varchar" MaxLength="300" />
+          <Property Name="ColacionDes_Alimento" Type="varchar" MaxLength="300" />
+          <Property Name="ColacionDes_Cantidad" Type="varchar" MaxLength="300" />
+          <Property Name="Comida_Hora" Type="varchar" MaxLength="15" />
+          <Property Name="Comida_Preparacion" Type="varchar" MaxLength="300" />
+          <Property Name="Comida_Alimento" Type="varchar" MaxLength="300" />
+          <Property Name="Comida_Cantidad" Type="varchar" MaxLength="300" />
+          <Property Name="ColacionCom_Hora" Type="varchar" MaxLength="15" />
+          <Property Name="ColacionCom_Preparacion" Type="varchar" MaxLength="300" />
+          <Property Name="ColacionCom_Alimento" Type="varchar" MaxLength="300" />
+          <Property Name="ColacionCom_Cantidad" Type="varchar" MaxLength="300" />
+          <Property Name="Cena_Hora" Type="varchar" MaxLength="15" />
+          <Property Name="Cena_Preparacion" Type="varchar" MaxLength="300" />
+          <Property Name="Cena_Alimento" Type="varchar" MaxLength="300" />
+          <Property Name="Cena_Cantidad" Type="varchar" MaxLength="300" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_NUT_ResultadoLab">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Resultado" Type="varchar" MaxLength="15" />
+          <Property Name="Especifica_Resultado" Type="varchar" MaxLength="300" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="ModelsStoreContainer">
+          <EntitySet Name="hc_NUT_AlimentacionInicial" EntityType="Self.hc_NUT_AlimentacionInicial" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_NUT_DatosDieteticos" EntityType="Self.hc_NUT_DatosDieteticos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_NUT_EducacionInicial" EntityType="Self.hc_NUT_EducacionInicial" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_NUT_EtapaCambio" EntityType="Self.hc_NUT_EtapaCambio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_NUT_EvaluacionAntro" EntityType="Self.hc_NUT_EvaluacionAntro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_NUT_FrecuenciaAlimen" EntityType="Self.hc_NUT_FrecuenciaAlimen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_NUT_ImpresionDiag" EntityType="Self.hc_NUT_ImpresionDiag" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_NUT_Otros" EntityType="Self.hc_NUT_Otros" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_NUT_Plan" EntityType="Self.hc_NUT_Plan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_NUT_Pronostico" EntityType="Self.hc_NUT_Pronostico" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_NUT_Recordatorio" EntityType="Self.hc_NUT_Recordatorio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_NUT_ResultadoLab" EntityType="Self.hc_NUT_ResultadoLab" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Models" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="hc_NUT_AlimentacionInicial">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LactanciaMaterna" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Tiempo_LactanciaM" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Sucedaneo" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Cual_Sucedaneo" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="AlimentacionComp" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Edad_AlimentacionC" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Motivo_AlimentacionC" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_NUT_DatosDieteticos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Comidas" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Desayuno" Type="Boolean" />
+          <Property Name="Comidas2" Type="Boolean" />
+          <Property Name="Cena" Type="Boolean" />
+          <Property Name="ColacionMat" Type="Boolean" />
+          <Property Name="ColacionVes" Type="Boolean" />
+          <Property Name="TiempoConsumir" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Suplementos" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Especifica_Supl" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="AlimentosDisgustan" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="AlimentosFavoritos" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ConsumoAgua" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Especifica_ConsumoAgua" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="HorasSuenio" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ActividadFisica" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Tipo_ActividadFisica" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Tiempo_ActividadFisica" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Frec_ActividadFisica" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_NUT_EducacionInicial">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CriteriosGen" Type="Boolean" />
+          <Property Name="PrevencionEnf" Type="Boolean" />
+          <Property Name="EducacionMat" Type="Boolean" />
+          <Property Name="PlanificacionDis" Type="Boolean" />
+          <Property Name="AdopcionPat" Type="Boolean" />
+          <Property Name="EducacionMej" Type="Boolean" />
+          <Property Name="EjercicioAd" Type="Boolean" />
+          <Property Name="EducacionRel" Type="Boolean" />
+          <Property Name="AdherenciaTrat" Type="Boolean" />
+          <Property Name="DudasInq" Type="Boolean" />
+          <Property Name="Oral" Type="Boolean" />
+          <Property Name="Escrito" Type="Boolean" />
+          <Property Name="Video" Type="Boolean" />
+          <Property Name="Demostracion" Type="Boolean" />
+          <Property Name="Mujeremb" Type="Boolean" />
+          <Property Name="MadreEt" Type="Boolean" />
+          <Property Name="Postnatal" Type="Boolean" />
+          <Property Name="Cuidador6meses" Type="Boolean" />
+          <Property Name="Cuidador6a12meses" Type="Boolean" />
+          <Property Name="Cuidador1a4anios" Type="Boolean" />
+          <Property Name="Cuidador5a9anios" Type="Boolean" />
+          <Property Name="C10a19anios" Type="Boolean" />
+          <Property Name="C20a59anios" Type="Boolean" />
+          <Property Name="C60anios" Type="Boolean" />
+          <Property Name="SeCompleta" Type="Boolean" />
+          <Property Name="SinCompletar" Type="Boolean" />
+          <Property Name="ReforzarParte" Type="Boolean" />
+          <Property Name="ReforzarToda" Type="Boolean" />
+          <Property Name="Rechazo" Type="Boolean" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_NUT_EtapaCambio">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Viene" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="DeseaLograr" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Precontemplacion" Type="Boolean" />
+          <Property Name="Contemplacion" Type="Boolean" />
+          <Property Name="Preparacion" Type="Boolean" />
+          <Property Name="Mantenimiento" Type="Boolean" />
+          <Property Name="Terminacion" Type="Boolean" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_NUT_EvaluacionAntro">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="S4Anios_PesoN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S4Anios_TallaN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S4Anios_PesoA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S4Anios_TallaA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S4Tabla_MedPeso" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S4Tabla_MedTalla" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S4Tabla_MedPeTa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S4Tabla_MedPeId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S4Tabla_DesPeso" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S4Tabla_DesTalla" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S4Tabla_DesPeTa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S4Tabla_DesPeId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S4Tabla_RanPeso" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S4Tabla_RanTalla" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S4Tabla_RanPeTa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S4Tabla_RanPeId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S4Tabla_ClaPeso" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S4Tabla_ClaTalla" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S4Tabla_ClaPeTa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S4Tabla_ClaPeId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S4Anios_Interpretacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S4Anios_Observaciones" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S5Anios_PesoA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S5Anios_TallaA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S5Anios_Indice" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S5Anios_Desviacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S5Anios_Diagnostico" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S5Anios_PesoId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S5Anios_Circunf" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S5Anios_Percentil" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S5Anios_Interpretacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S5Anios_Observaciones" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S10Anios_PesoA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S10Anios_TallaA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S10Anios_Indice" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S10Anios_Desviacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S10Anios_Diagnostico" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S10Anios_PesoId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S10Anios_Circunf" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S10Anios_Percentil" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S10Anios_Interpretacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S10Anios_Observaciones" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S20Anios_PesoA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S20Anios_TallaA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S20Anios_Indice" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S20Anios_Diagnostico" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S20Anios_CircunfMu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S20Anios_Complexion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S20Anios_PesoId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S20Anios_CircunfCin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S20Anios_CircunfCad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S20Anios_IndiceCin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S20Anios_Riesgo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S20Anios_Observaciones" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S60Anios_PesoA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S60Anios_TallaA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S60Anios_Indice" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S60Anios_Diagnostico" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S60Anios_CircunfMu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S60Anios_Complexion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S60Anios_PesoId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S60Anios_PesoAj" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S60Anios_CircunfCin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S60Anios_CircunfCad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S60Anios_IndiceCin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S60Anios_CircunfBra" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S60Anios_CircunfPan" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="S60Anios_Observaciones" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SEmbaraz_PesoA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SEmbaraz_TallaA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SEmbaraz_Gestacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SEmbaraz_CircunfBra" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SEmbaraz_PesoPreges" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SEmbaraz_Indice" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SEmbaraz_Diagnostico" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SEmbaraz_GanPesoDesd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SEmbaraz_GanPesoAct" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SEmbaraz_Observaciones" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_NUT_FrecuenciaAlimen">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Leche" Type="Boolean" />
+          <Property Name="Frecuencia_Leche" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Verdura" Type="Boolean" />
+          <Property Name="Frecuencia_Verdura" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Fruta" Type="Boolean" />
+          <Property Name="Frecuencia_Fruta" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Cereales" Type="Boolean" />
+          <Property Name="Frecuencia_Cereales" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Leguminosas" Type="Boolean" />
+          <Property Name="Frecuencia_Leguminosas" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Carne" Type="Boolean" />
+          <Property Name="Frecuencia_Carne" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Grasa" Type="Boolean" />
+          <Property Name="Frecuencia_Grasa" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Azucar" Type="Boolean" />
+          <Property Name="Frecuencia_Azucar" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="BebidasAzucar" Type="Boolean" />
+          <Property Name="Frecuencia_BebidasAzucar" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="BebidasAlt" Type="Boolean" />
+          <Property Name="Frecuencia_BebidasAlt" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Cafe" Type="Boolean" />
+          <Property Name="Frecuencia_Cafe" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Te" Type="Boolean" />
+          <Property Name="Frecuencia_Te" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Cerveza" Type="Boolean" />
+          <Property Name="Frecuencia_Cerveza" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ProductosPan" Type="Boolean" />
+          <Property Name="Frecuencia_ProductosPan" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Confiteria" Type="Boolean" />
+          <Property Name="Frecuencia_Confiteria" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Embutidos" Type="Boolean" />
+          <Property Name="Frecuencia_Embutidos" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="AlimentosEnla" Type="Boolean" />
+          <Property Name="Frecuencia_AlimentosEnla" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Sopas" Type="Boolean" />
+          <Property Name="Frecuencia_Sopas" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Verduras" Type="Boolean" />
+          <Property Name="Frecuencia_Verduras" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ComidaRap" Type="Boolean" />
+          <Property Name="Frecuencia_ComidaRap" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ComidaGras" Type="Boolean" />
+          <Property Name="Frecuencia_ComidaGras" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ProductosChat" Type="Boolean" />
+          <Property Name="Frecuencia_ProductosChat" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Consome" Type="Boolean" />
+          <Property Name="Frecuencia_Consome" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Sal" Type="Boolean" />
+          <Property Name="Frecuencia_Sal" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Sucedaneo" Type="Boolean" />
+          <Property Name="Frecuencia_Sucedaneo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Otros" Type="Boolean" />
+          <Property Name="Frecuencia_Otros" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_NUT_ImpresionDiag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="diagnostico1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="diagnostico2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="diagnostico3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="diagnostico4" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="diagnostico5" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_NUT_Otros">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Interconsulta" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="PadecimientoActual" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Especifica_PadecimientoActual" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ProximaCita" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_NUT_Plan">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Plan" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_NUT_Pronostico">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LigadoEvolucion" Type="Boolean" />
+          <Property Name="Favorable" Type="Boolean" />
+          <Property Name="Desfavorable" Type="Boolean" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_NUT_Recordatorio">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Desayuno_Hora" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Desayuno_Preparacion" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Desayuno_Alimento" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Desayuno_Cantidad" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="ColacionDes_Hora" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="ColacionDes_Preparacion" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="ColacionDes_Alimento" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="ColacionDes_Cantidad" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Comida_Hora" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Comida_Preparacion" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Comida_Alimento" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Comida_Cantidad" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="ColacionCom_Hora" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="ColacionCom_Preparacion" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="ColacionCom_Alimento" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="ColacionCom_Cantidad" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Cena_Hora" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Cena_Preparacion" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Cena_Alimento" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Cena_Cantidad" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_NUT_ResultadoLab">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Resultado" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Especifica_Resultado" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="HC_Nutricion" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="hc_NUT_AlimentacionInicial" EntityType="Self.hc_NUT_AlimentacionInicial" />
+          <EntitySet Name="hc_NUT_DatosDieteticos" EntityType="Self.hc_NUT_DatosDieteticos" />
+          <EntitySet Name="hc_NUT_EducacionInicial" EntityType="Self.hc_NUT_EducacionInicial" />
+          <EntitySet Name="hc_NUT_EtapaCambio" EntityType="Self.hc_NUT_EtapaCambio" />
+          <EntitySet Name="hc_NUT_EvaluacionAntro" EntityType="Self.hc_NUT_EvaluacionAntro" />
+          <EntitySet Name="hc_NUT_FrecuenciaAlimen" EntityType="Self.hc_NUT_FrecuenciaAlimen" />
+          <EntitySet Name="hc_NUT_ImpresionDiag" EntityType="Self.hc_NUT_ImpresionDiag" />
+          <EntitySet Name="hc_NUT_Otros" EntityType="Self.hc_NUT_Otros" />
+          <EntitySet Name="hc_NUT_Plan" EntityType="Self.hc_NUT_Plan" />
+          <EntitySet Name="hc_NUT_Pronostico" EntityType="Self.hc_NUT_Pronostico" />
+          <EntitySet Name="hc_NUT_Recordatorio" EntityType="Self.hc_NUT_Recordatorio" />
+          <EntitySet Name="hc_NUT_ResultadoLab" EntityType="Self.hc_NUT_ResultadoLab" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelsStoreContainer" CdmEntityContainer="HC_Nutricion">
+          <EntitySetMapping Name="hc_NUT_AlimentacionInicial">
+            <EntityTypeMapping TypeName="Models.hc_NUT_AlimentacionInicial">
+              <MappingFragment StoreEntitySet="hc_NUT_AlimentacionInicial">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="LactanciaMaterna" ColumnName="LactanciaMaterna" />
+                <ScalarProperty Name="Tiempo_LactanciaM" ColumnName="Tiempo_LactanciaM" />
+                <ScalarProperty Name="Sucedaneo" ColumnName="Sucedaneo" />
+                <ScalarProperty Name="Cual_Sucedaneo" ColumnName="Cual_Sucedaneo" />
+                <ScalarProperty Name="AlimentacionComp" ColumnName="AlimentacionComp" />
+                <ScalarProperty Name="Edad_AlimentacionC" ColumnName="Edad_AlimentacionC" />
+                <ScalarProperty Name="Motivo_AlimentacionC" ColumnName="Motivo_AlimentacionC" />
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_NUT_DatosDieteticos">
+            <EntityTypeMapping TypeName="Models.hc_NUT_DatosDieteticos">
+              <MappingFragment StoreEntitySet="hc_NUT_DatosDieteticos">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Comidas" ColumnName="Comidas" />
+                <ScalarProperty Name="Desayuno" ColumnName="Desayuno" />
+                <ScalarProperty Name="Comidas2" ColumnName="Comidas2" />
+                <ScalarProperty Name="Cena" ColumnName="Cena" />
+                <ScalarProperty Name="ColacionMat" ColumnName="ColacionMat" />
+                <ScalarProperty Name="ColacionVes" ColumnName="ColacionVes" />
+                <ScalarProperty Name="TiempoConsumir" ColumnName="TiempoConsumir" />
+                <ScalarProperty Name="Suplementos" ColumnName="Suplementos" />
+                <ScalarProperty Name="Especifica_Supl" ColumnName="Especifica_Supl" />
+                <ScalarProperty Name="AlimentosDisgustan" ColumnName="AlimentosDisgustan" />
+                <ScalarProperty Name="AlimentosFavoritos" ColumnName="AlimentosFavoritos" />
+                <ScalarProperty Name="ConsumoAgua" ColumnName="ConsumoAgua" />
+                <ScalarProperty Name="Especifica_ConsumoAgua" ColumnName="Especifica_ConsumoAgua" />
+                <ScalarProperty Name="HorasSuenio" ColumnName="HorasSuenio" />
+                <ScalarProperty Name="ActividadFisica" ColumnName="ActividadFisica" />
+                <ScalarProperty Name="Tipo_ActividadFisica" ColumnName="Tipo_ActividadFisica" />
+                <ScalarProperty Name="Tiempo_ActividadFisica" ColumnName="Tiempo_ActividadFisica" />
+                <ScalarProperty Name="Frec_ActividadFisica" ColumnName="Frec_ActividadFisica" />
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_NUT_EducacionInicial">
+            <EntityTypeMapping TypeName="Models.hc_NUT_EducacionInicial">
+              <MappingFragment StoreEntitySet="hc_NUT_EducacionInicial">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CriteriosGen" ColumnName="CriteriosGen" />
+                <ScalarProperty Name="PrevencionEnf" ColumnName="PrevencionEnf" />
+                <ScalarProperty Name="EducacionMat" ColumnName="EducacionMat" />
+                <ScalarProperty Name="PlanificacionDis" ColumnName="PlanificacionDis" />
+                <ScalarProperty Name="AdopcionPat" ColumnName="AdopcionPat" />
+                <ScalarProperty Name="EducacionMej" ColumnName="EducacionMej" />
+                <ScalarProperty Name="EjercicioAd" ColumnName="EjercicioAd" />
+                <ScalarProperty Name="EducacionRel" ColumnName="EducacionRel" />
+                <ScalarProperty Name="AdherenciaTrat" ColumnName="AdherenciaTrat" />
+                <ScalarProperty Name="DudasInq" ColumnName="DudasInq" />
+                <ScalarProperty Name="Oral" ColumnName="Oral" />
+                <ScalarProperty Name="Escrito" ColumnName="Escrito" />
+                <ScalarProperty Name="Video" ColumnName="Video" />
+                <ScalarProperty Name="Demostracion" ColumnName="Demostracion" />
+                <ScalarProperty Name="Mujeremb" ColumnName="Mujeremb" />
+                <ScalarProperty Name="MadreEt" ColumnName="MadreEt" />
+                <ScalarProperty Name="Postnatal" ColumnName="Postnatal" />
+                <ScalarProperty Name="Cuidador6meses" ColumnName="Cuidador6meses" />
+                <ScalarProperty Name="Cuidador6a12meses" ColumnName="Cuidador6a12meses" />
+                <ScalarProperty Name="Cuidador1a4anios" ColumnName="Cuidador1a4anios" />
+                <ScalarProperty Name="Cuidador5a9anios" ColumnName="Cuidador5a9anios" />
+                <ScalarProperty Name="C10a19anios" ColumnName="10a19anios" />
+                <ScalarProperty Name="C20a59anios" ColumnName="20a59anios" />
+                <ScalarProperty Name="C60anios" ColumnName="60anios" />
+                <ScalarProperty Name="SeCompleta" ColumnName="SeCompleta" />
+                <ScalarProperty Name="SinCompletar" ColumnName="SinCompletar" />
+                <ScalarProperty Name="ReforzarParte" ColumnName="ReforzarParte" />
+                <ScalarProperty Name="ReforzarToda" ColumnName="ReforzarToda" />
+                <ScalarProperty Name="Rechazo" ColumnName="Rechazo" />
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_NUT_EtapaCambio">
+            <EntityTypeMapping TypeName="Models.hc_NUT_EtapaCambio">
+              <MappingFragment StoreEntitySet="hc_NUT_EtapaCambio">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Viene" ColumnName="Viene" />
+                <ScalarProperty Name="DeseaLograr" ColumnName="DeseaLograr" />
+                <ScalarProperty Name="Precontemplacion" ColumnName="Precontemplacion" />
+                <ScalarProperty Name="Contemplacion" ColumnName="Contemplacion" />
+                <ScalarProperty Name="Preparacion" ColumnName="Preparacion" />
+                <ScalarProperty Name="Mantenimiento" ColumnName="Mantenimiento" />
+                <ScalarProperty Name="Terminacion" ColumnName="Terminacion" />
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_NUT_EvaluacionAntro">
+            <EntityTypeMapping TypeName="Models.hc_NUT_EvaluacionAntro">
+              <MappingFragment StoreEntitySet="hc_NUT_EvaluacionAntro">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="S4Anios_PesoN" ColumnName="S4Anios_PesoN" />
+                <ScalarProperty Name="S4Anios_TallaN" ColumnName="S4Anios_TallaN" />
+                <ScalarProperty Name="S4Anios_PesoA" ColumnName="S4Anios_PesoA" />
+                <ScalarProperty Name="S4Anios_TallaA" ColumnName="S4Anios_TallaA" />
+                <ScalarProperty Name="S4Tabla_MedPeso" ColumnName="S4Tabla_MedPeso" />
+                <ScalarProperty Name="S4Tabla_MedTalla" ColumnName="S4Tabla_MedTalla" />
+                <ScalarProperty Name="S4Tabla_MedPeTa" ColumnName="S4Tabla_MedPeTa" />
+                <ScalarProperty Name="S4Tabla_MedPeId" ColumnName="S4Tabla_MedPeId" />
+                <ScalarProperty Name="S4Tabla_DesPeso" ColumnName="S4Tabla_DesPeso" />
+                <ScalarProperty Name="S4Tabla_DesTalla" ColumnName="S4Tabla_DesTalla" />
+                <ScalarProperty Name="S4Tabla_DesPeTa" ColumnName="S4Tabla_DesPeTa" />
+                <ScalarProperty Name="S4Tabla_DesPeId" ColumnName="S4Tabla_DesPeId" />
+                <ScalarProperty Name="S4Tabla_RanPeso" ColumnName="S4Tabla_RanPeso" />
+                <ScalarProperty Name="S4Tabla_RanTalla" ColumnName="S4Tabla_RanTalla" />
+                <ScalarProperty Name="S4Tabla_RanPeTa" ColumnName="S4Tabla_RanPeTa" />
+                <ScalarProperty Name="S4Tabla_RanPeId" ColumnName="S4Tabla_RanPeId" />
+                <ScalarProperty Name="S4Tabla_ClaPeso" ColumnName="S4Tabla_ClaPeso" />
+                <ScalarProperty Name="S4Tabla_ClaTalla" ColumnName="S4Tabla_ClaTalla" />
+                <ScalarProperty Name="S4Tabla_ClaPeTa" ColumnName="S4Tabla_ClaPeTa" />
+                <ScalarProperty Name="S4Tabla_ClaPeId" ColumnName="S4Tabla_ClaPeId" />
+                <ScalarProperty Name="S4Anios_Interpretacion" ColumnName="S4Anios_Interpretacion" />
+                <ScalarProperty Name="S4Anios_Observaciones" ColumnName="S4Anios_Observaciones" />
+                <ScalarProperty Name="S5Anios_PesoA" ColumnName="S5Anios_PesoA" />
+                <ScalarProperty Name="S5Anios_TallaA" ColumnName="S5Anios_TallaA" />
+                <ScalarProperty Name="S5Anios_Indice" ColumnName="S5Anios_Indice" />
+                <ScalarProperty Name="S5Anios_Desviacion" ColumnName="S5Anios_Desviacion" />
+                <ScalarProperty Name="S5Anios_Diagnostico" ColumnName="S5Anios_Diagnostico" />
+                <ScalarProperty Name="S5Anios_PesoId" ColumnName="S5Anios_PesoId" />
+                <ScalarProperty Name="S5Anios_Circunf" ColumnName="S5Anios_Circunf" />
+                <ScalarProperty Name="S5Anios_Percentil" ColumnName="S5Anios_Percentil" />
+                <ScalarProperty Name="S5Anios_Interpretacion" ColumnName="S5Anios_Interpretacion" />
+                <ScalarProperty Name="S5Anios_Observaciones" ColumnName="S5Anios_Observaciones" />
+                <ScalarProperty Name="S10Anios_PesoA" ColumnName="S10Anios_PesoA" />
+                <ScalarProperty Name="S10Anios_TallaA" ColumnName="S10Anios_TallaA" />
+                <ScalarProperty Name="S10Anios_Indice" ColumnName="S10Anios_Indice" />
+                <ScalarProperty Name="S10Anios_Desviacion" ColumnName="S10Anios_Desviacion" />
+                <ScalarProperty Name="S10Anios_Diagnostico" ColumnName="S10Anios_Diagnostico" />
+                <ScalarProperty Name="S10Anios_PesoId" ColumnName="S10Anios_PesoId" />
+                <ScalarProperty Name="S10Anios_Circunf" ColumnName="S10Anios_Circunf" />
+                <ScalarProperty Name="S10Anios_Percentil" ColumnName="S10Anios_Percentil" />
+                <ScalarProperty Name="S10Anios_Interpretacion" ColumnName="S10Anios_Interpretacion" />
+                <ScalarProperty Name="S10Anios_Observaciones" ColumnName="S10Anios_Observaciones" />
+                <ScalarProperty Name="S20Anios_PesoA" ColumnName="S20Anios_PesoA" />
+                <ScalarProperty Name="S20Anios_TallaA" ColumnName="S20Anios_TallaA" />
+                <ScalarProperty Name="S20Anios_Indice" ColumnName="S20Anios_Indice" />
+                <ScalarProperty Name="S20Anios_Diagnostico" ColumnName="S20Anios_Diagnostico" />
+                <ScalarProperty Name="S20Anios_CircunfMu" ColumnName="S20Anios_CircunfMu" />
+                <ScalarProperty Name="S20Anios_Complexion" ColumnName="S20Anios_Complexion" />
+                <ScalarProperty Name="S20Anios_PesoId" ColumnName="S20Anios_PesoId" />
+                <ScalarProperty Name="S20Anios_CircunfCin" ColumnName="S20Anios_CircunfCin" />
+                <ScalarProperty Name="S20Anios_CircunfCad" ColumnName="S20Anios_CircunfCad" />
+                <ScalarProperty Name="S20Anios_IndiceCin" ColumnName="S20Anios_IndiceCin" />
+                <ScalarProperty Name="S20Anios_Riesgo" ColumnName="S20Anios_Riesgo" />
+                <ScalarProperty Name="S20Anios_Observaciones" ColumnName="S20Anios_Observaciones" />
+                <ScalarProperty Name="S60Anios_PesoA" ColumnName="S60Anios_PesoA" />
+                <ScalarProperty Name="S60Anios_TallaA" ColumnName="S60Anios_TallaA" />
+                <ScalarProperty Name="S60Anios_Indice" ColumnName="S60Anios_Indice" />
+                <ScalarProperty Name="S60Anios_Diagnostico" ColumnName="S60Anios_Diagnostico" />
+                <ScalarProperty Name="S60Anios_CircunfMu" ColumnName="S60Anios_CircunfMu" />
+                <ScalarProperty Name="S60Anios_Complexion" ColumnName="S60Anios_Complexion" />
+                <ScalarProperty Name="S60Anios_PesoId" ColumnName="S60Anios_PesoId" />
+                <ScalarProperty Name="S60Anios_PesoAj" ColumnName="S60Anios_PesoAj" />
+                <ScalarProperty Name="S60Anios_CircunfCin" ColumnName="S60Anios_CircunfCin" />
+                <ScalarProperty Name="S60Anios_CircunfCad" ColumnName="S60Anios_CircunfCad" />
+                <ScalarProperty Name="S60Anios_IndiceCin" ColumnName="S60Anios_IndiceCin" />
+                <ScalarProperty Name="S60Anios_CircunfBra" ColumnName="S60Anios_CircunfBra" />
+                <ScalarProperty Name="S60Anios_CircunfPan" ColumnName="S60Anios_CircunfPan" />
+                <ScalarProperty Name="S60Anios_Observaciones" ColumnName="S60Anios_Observaciones" />
+                <ScalarProperty Name="SEmbaraz_PesoA" ColumnName="SEmbaraz_PesoA" />
+                <ScalarProperty Name="SEmbaraz_TallaA" ColumnName="SEmbaraz_TallaA" />
+                <ScalarProperty Name="SEmbaraz_Gestacion" ColumnName="SEmbaraz_Gestacion" />
+                <ScalarProperty Name="SEmbaraz_CircunfBra" ColumnName="SEmbaraz_CircunfBra" />
+                <ScalarProperty Name="SEmbaraz_PesoPreges" ColumnName="SEmbaraz_PesoPreges" />
+                <ScalarProperty Name="SEmbaraz_Indice" ColumnName="SEmbaraz_Indice" />
+                <ScalarProperty Name="SEmbaraz_Diagnostico" ColumnName="SEmbaraz_Diagnostico" />
+                <ScalarProperty Name="SEmbaraz_GanPesoDesd" ColumnName="SEmbaraz_GanPesoDesd" />
+                <ScalarProperty Name="SEmbaraz_GanPesoAct" ColumnName="SEmbaraz_GanPesoAct" />
+                <ScalarProperty Name="SEmbaraz_Observaciones" ColumnName="SEmbaraz_Observaciones" />
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_NUT_FrecuenciaAlimen">
+            <EntityTypeMapping TypeName="Models.hc_NUT_FrecuenciaAlimen">
+              <MappingFragment StoreEntitySet="hc_NUT_FrecuenciaAlimen">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Leche" ColumnName="Leche" />
+                <ScalarProperty Name="Frecuencia_Leche" ColumnName="Frecuencia_Leche" />
+                <ScalarProperty Name="Verdura" ColumnName="Verdura" />
+                <ScalarProperty Name="Frecuencia_Verdura" ColumnName="Frecuencia_Verdura" />
+                <ScalarProperty Name="Fruta" ColumnName="Fruta" />
+                <ScalarProperty Name="Frecuencia_Fruta" ColumnName="Frecuencia_Fruta" />
+                <ScalarProperty Name="Cereales" ColumnName="Cereales" />
+                <ScalarProperty Name="Frecuencia_Cereales" ColumnName="Frecuencia_Cereales" />
+                <ScalarProperty Name="Leguminosas" ColumnName="Leguminosas" />
+                <ScalarProperty Name="Frecuencia_Leguminosas" ColumnName="Frecuencia_Leguminosas" />
+                <ScalarProperty Name="Carne" ColumnName="Carne" />
+                <ScalarProperty Name="Frecuencia_Carne" ColumnName="Frecuencia_Carne" />
+                <ScalarProperty Name="Grasa" ColumnName="Grasa" />
+                <ScalarProperty Name="Frecuencia_Grasa" ColumnName="Frecuencia_Grasa" />
+                <ScalarProperty Name="Azucar" ColumnName="Azucar" />
+                <ScalarProperty Name="Frecuencia_Azucar" ColumnName="Frecuencia_Azucar" />
+                <ScalarProperty Name="BebidasAzucar" ColumnName="BebidasAzucar" />
+                <ScalarProperty Name="Frecuencia_BebidasAzucar" ColumnName="Frecuencia_BebidasAzucar" />
+                <ScalarProperty Name="BebidasAlt" ColumnName="BebidasAlt" />
+                <ScalarProperty Name="Frecuencia_BebidasAlt" ColumnName="Frecuencia_BebidasAlt" />
+                <ScalarProperty Name="Cafe" ColumnName="Cafe" />
+                <ScalarProperty Name="Frecuencia_Cafe" ColumnName="Frecuencia_Cafe" />
+                <ScalarProperty Name="Te" ColumnName="Te" />
+                <ScalarProperty Name="Frecuencia_Te" ColumnName="Frecuencia_Te" />
+                <ScalarProperty Name="Cerveza" ColumnName="Cerveza" />
+                <ScalarProperty Name="Frecuencia_Cerveza" ColumnName="Frecuencia_Cerveza" />
+                <ScalarProperty Name="ProductosPan" ColumnName="ProductosPan" />
+                <ScalarProperty Name="Frecuencia_ProductosPan" ColumnName="Frecuencia_ProductosPan" />
+                <ScalarProperty Name="Confiteria" ColumnName="Confiteria" />
+                <ScalarProperty Name="Frecuencia_Confiteria" ColumnName="Frecuencia_Confiteria" />
+                <ScalarProperty Name="Embutidos" ColumnName="Embutidos" />
+                <ScalarProperty Name="Frecuencia_Embutidos" ColumnName="Frecuencia_Embutidos" />
+                <ScalarProperty Name="AlimentosEnla" ColumnName="AlimentosEnla" />
+                <ScalarProperty Name="Frecuencia_AlimentosEnla" ColumnName="Frecuencia_AlimentosEnla" />
+                <ScalarProperty Name="Sopas" ColumnName="Sopas" />
+                <ScalarProperty Name="Frecuencia_Sopas" ColumnName="Frecuencia_Sopas" />
+                <ScalarProperty Name="Verduras" ColumnName="Verduras" />
+                <ScalarProperty Name="Frecuencia_Verduras" ColumnName="Frecuencia_Verduras" />
+                <ScalarProperty Name="ComidaRap" ColumnName="ComidaRap" />
+                <ScalarProperty Name="Frecuencia_ComidaRap" ColumnName="Frecuencia_ComidaRap" />
+                <ScalarProperty Name="ComidaGras" ColumnName="ComidaGras" />
+                <ScalarProperty Name="Frecuencia_ComidaGras" ColumnName="Frecuencia_ComidaGras" />
+                <ScalarProperty Name="ProductosChat" ColumnName="ProductosChat" />
+                <ScalarProperty Name="Frecuencia_ProductosChat" ColumnName="Frecuencia_ProductosChat" />
+                <ScalarProperty Name="Consome" ColumnName="Consome" />
+                <ScalarProperty Name="Frecuencia_Consome" ColumnName="Frecuencia_Consome" />
+                <ScalarProperty Name="Sal" ColumnName="Sal" />
+                <ScalarProperty Name="Frecuencia_Sal" ColumnName="Frecuencia_Sal" />
+                <ScalarProperty Name="Sucedaneo" ColumnName="Sucedaneo" />
+                <ScalarProperty Name="Frecuencia_Sucedaneo" ColumnName="Frecuencia_Sucedaneo" />
+                <ScalarProperty Name="Otros" ColumnName="Otros" />
+                <ScalarProperty Name="Frecuencia_Otros" ColumnName="Frecuencia_Otros" />
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_NUT_ImpresionDiag">
+            <EntityTypeMapping TypeName="Models.hc_NUT_ImpresionDiag">
+              <MappingFragment StoreEntitySet="hc_NUT_ImpresionDiag">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="diagnostico1" ColumnName="diagnostico1" />
+                <ScalarProperty Name="diagnostico2" ColumnName="diagnostico2" />
+                <ScalarProperty Name="diagnostico3" ColumnName="diagnostico3" />
+                <ScalarProperty Name="diagnostico4" ColumnName="diagnostico4" />
+                <ScalarProperty Name="diagnostico5" ColumnName="diagnostico5" />
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_NUT_Otros">
+            <EntityTypeMapping TypeName="Models.hc_NUT_Otros">
+              <MappingFragment StoreEntitySet="hc_NUT_Otros">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Interconsulta" ColumnName="Interconsulta" />
+                <ScalarProperty Name="PadecimientoActual" ColumnName="PadecimientoActual" />
+                <ScalarProperty Name="Especifica_PadecimientoActual" ColumnName="Especifica_PadecimientoActual" />
+                <ScalarProperty Name="ProximaCita" ColumnName="ProximaCita" />
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_NUT_Plan">
+            <EntityTypeMapping TypeName="Models.hc_NUT_Plan">
+              <MappingFragment StoreEntitySet="hc_NUT_Plan">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Plan" ColumnName="Plan" />
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_NUT_Pronostico">
+            <EntityTypeMapping TypeName="Models.hc_NUT_Pronostico">
+              <MappingFragment StoreEntitySet="hc_NUT_Pronostico">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="LigadoEvolucion" ColumnName="LigadoEvolucion" />
+                <ScalarProperty Name="Favorable" ColumnName="Favorable" />
+                <ScalarProperty Name="Desfavorable" ColumnName="Desfavorable" />
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_NUT_Recordatorio">
+            <EntityTypeMapping TypeName="Models.hc_NUT_Recordatorio">
+              <MappingFragment StoreEntitySet="hc_NUT_Recordatorio">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Desayuno_Hora" ColumnName="Desayuno_Hora" />
+                <ScalarProperty Name="Desayuno_Preparacion" ColumnName="Desayuno_Preparacion" />
+                <ScalarProperty Name="Desayuno_Alimento" ColumnName="Desayuno_Alimento" />
+                <ScalarProperty Name="Desayuno_Cantidad" ColumnName="Desayuno_Cantidad" />
+                <ScalarProperty Name="ColacionDes_Hora" ColumnName="ColacionDes_Hora" />
+                <ScalarProperty Name="ColacionDes_Preparacion" ColumnName="ColacionDes_Preparacion" />
+                <ScalarProperty Name="ColacionDes_Alimento" ColumnName="ColacionDes_Alimento" />
+                <ScalarProperty Name="ColacionDes_Cantidad" ColumnName="ColacionDes_Cantidad" />
+                <ScalarProperty Name="Comida_Hora" ColumnName="Comida_Hora" />
+                <ScalarProperty Name="Comida_Preparacion" ColumnName="Comida_Preparacion" />
+                <ScalarProperty Name="Comida_Alimento" ColumnName="Comida_Alimento" />
+                <ScalarProperty Name="Comida_Cantidad" ColumnName="Comida_Cantidad" />
+                <ScalarProperty Name="ColacionCom_Hora" ColumnName="ColacionCom_Hora" />
+                <ScalarProperty Name="ColacionCom_Preparacion" ColumnName="ColacionCom_Preparacion" />
+                <ScalarProperty Name="ColacionCom_Alimento" ColumnName="ColacionCom_Alimento" />
+                <ScalarProperty Name="ColacionCom_Cantidad" ColumnName="ColacionCom_Cantidad" />
+                <ScalarProperty Name="Cena_Hora" ColumnName="Cena_Hora" />
+                <ScalarProperty Name="Cena_Preparacion" ColumnName="Cena_Preparacion" />
+                <ScalarProperty Name="Cena_Alimento" ColumnName="Cena_Alimento" />
+                <ScalarProperty Name="Cena_Cantidad" ColumnName="Cena_Cantidad" />
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_NUT_ResultadoLab">
+            <EntityTypeMapping TypeName="Models.hc_NUT_ResultadoLab">
+              <MappingFragment StoreEntitySet="hc_NUT_ResultadoLab">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Resultado" ColumnName="Resultado" />
+                <ScalarProperty Name="Especifica_Resultado" ColumnName="Especifica_Resultado" />
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
