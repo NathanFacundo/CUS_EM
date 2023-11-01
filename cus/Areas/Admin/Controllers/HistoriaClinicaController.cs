@@ -15,9 +15,16 @@ namespace CUS.Areas.Admin.Controllers
         Models.CUS db = new Models.CUS();
 
         // GET: Admin/HistoriaClinica
-        public ActionResult Index()
+        public ActionResult Index(string expediente)
         {
-            return View();
+            if (expediente != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("BuscarPaciente", "DerechoHabiente");
+            }
         }
 
         //********      Función para buscar si existe la H.C. en el rango de 3 hrs al crear una SECCIÓN DE LA H.C.
@@ -2333,9 +2340,16 @@ namespace CUS.Areas.Admin.Controllers
 
         #endregion
 
-        public ActionResult Historia()
+        public ActionResult Historia(string expediente)
         {
-            return View();
+            if (expediente != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("BuscarPaciente", "DerechoHabiente");
+            }
         }
 
         public class Propiedades

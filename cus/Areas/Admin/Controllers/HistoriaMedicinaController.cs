@@ -14,9 +14,16 @@ namespace CUS.Areas.Admin.Controllers
         Models.HC_Medicina hcMed = new Models.HC_Medicina();
 
         // GET: Admin/HistoriaMedicina
-        public ActionResult Index()
+        public ActionResult Index(string expediente)
         {
-            return View();
+            if (expediente != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("BuscarPaciente", "DerechoHabiente");
+            }
         }
 
         //********      Función para Guarda nueva HC MEDICINA

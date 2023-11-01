@@ -12,9 +12,16 @@ namespace CUS.Areas.Admin.Controllers
         Models.CUS db = new Models.CUS();
 
         // GET: Admin/Paciente
-        public ActionResult Index()
+        public ActionResult Index(string expediente)
         {
-            return View();
+            if (expediente != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("BuscarPaciente", "DerechoHabiente");
+            }
         }
 
         // GET: Admin/Paciente/Details/5
@@ -24,9 +31,16 @@ namespace CUS.Areas.Admin.Controllers
         }
 
         // GET: Admin/Paciente/Create
-        public ActionResult Create()
+        public ActionResult Create(string expediente)
         {
-            return View();
+            if (expediente != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("BuscarPaciente", "DerechoHabiente");
+            }
         }
 
         // POST: Admin/Paciente/Create
@@ -89,11 +103,19 @@ namespace CUS.Areas.Admin.Controllers
             }
         }
 
-        public ActionResult Registro()
+        public ActionResult Registro(string expediente)
         {
-            ViewBag.UNIDADES = new SelectList(db.UnidadAfiliacion.ToList(), "Id", "NombreUnidad");
 
-            return View();
+            if (expediente != null)
+            {
+                ViewBag.UNIDADES = new SelectList(db.UnidadAfiliacion.ToList(), "Id", "NombreUnidad");
+
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("BuscarPaciente", "DerechoHabiente");
+            }
         }
     }
 }

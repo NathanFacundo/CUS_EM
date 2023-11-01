@@ -16,9 +16,18 @@ namespace CUS.Areas.Admin.Controllers
         private Models.CUS db = new Models.CUS();
 
         // GET: Admin/Derechohabiente
-        public ActionResult Index()
+        public ActionResult Index(string expediente)
         {
-            return View(db.Paciente.ToList());
+            if (expediente != null)
+            {
+                return View(db.Paciente.ToList());
+            }
+            else
+            {
+                return RedirectToAction("BuscarPaciente", "DerechoHabiente");
+            }
+
+            
         }
 
         // GET: Admin/Derechohabiente/Details/5
@@ -39,11 +48,20 @@ namespace CUS.Areas.Admin.Controllers
         }
 
         // GET: Admin/Derechohabiente/Create
-        public ActionResult Create()
+        public ActionResult Create(string expediente)
         {
-            ViewBag.UNIDADES = new SelectList(db.UnidadAfiliacion.ToList(), "Id", "NombreUnidad");
 
-            return View();
+            if (expediente != null)
+            {
+                ViewBag.UNIDADES = new SelectList(db.UnidadAfiliacion.ToList(), "Id", "NombreUnidad");
+
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("BuscarPaciente", "DerechoHabiente");
+            }
+
         }
 
         // POST: Admin/Derechohabiente/Create
