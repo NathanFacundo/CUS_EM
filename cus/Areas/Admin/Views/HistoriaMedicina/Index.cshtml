@@ -2067,7 +2067,7 @@
         $("#EspResultados").css("display", "none");
         $("#EspPadecimientoActual").css("display", "none");
         //Otros
-
+        $("#EspPadecimientoActual").css("display", "none");
         // #endregion
 
         let timerInterval
@@ -2147,7 +2147,6 @@
     });
 
     // #region Pestañas: Elementos de la H.C. que se mostrarán hasta que se seleccione o se haga alguna acción
-
     //habitos
     $("#ActividadFisica").change(function () {
         var combo = document.getElementById("ActividadFisica");
@@ -2506,7 +2505,6 @@
             $("#EspPadecimientoActual").css("display", "none");
         }
     });
-
     // #endregion
 
     //Si dan click en Enter en los inputs de Nombre/Expediente
@@ -2700,12 +2698,10 @@
         $("#Btn_Plan").css("display", "");
         $("#Btn_Pronostico").css("display", "");
         $("#Btn_Otros").css("display", "");
-
         // #endregion
     });
 
     // #region Guardar cada pestaña/sección
-
     //HabitusExterior
     $("#Btn_Habitus").click(function () {
         let data = $("#F_Habitus").serialize();
@@ -3126,7 +3122,6 @@
             event.preventDefault();
         }
     });
-
     // #endregion
 
 </script>

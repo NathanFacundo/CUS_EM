@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Models.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Models.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="hc_NUT_AlimentacionInicial">
           <Key>
             <PropertyRef Name="Id" />
@@ -82,6 +82,8 @@
           <Property Name="Rechazo" Type="bit" />
           <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
           <Property Name="Id_Paciente" Type="int" Nullable="false" />
+          <Property Name="EdRelAlimentos" Type="bit" />
+          <Property Name="Especifica_Dudas" Type="varchar" MaxLength="300" />
         </EntityType>
         <EntityType Name="hc_NUT_EtapaCambio">
           <Key>
@@ -340,8 +342,7 @@
           <EntitySet Name="hc_NUT_Recordatorio" EntityType="Self.hc_NUT_Recordatorio" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hc_NUT_ResultadoLab" EntityType="Self.hc_NUT_ResultadoLab" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Models" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -422,6 +423,8 @@
           <Property Name="Rechazo" Type="Boolean" />
           <Property Name="Clave_hc_px" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+          <Property Name="EdRelAlimentos" Type="Boolean" />
+          <Property Name="Especifica_Dudas" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="hc_NUT_EtapaCambio">
           <Key>
@@ -732,6 +735,8 @@
           <EntitySetMapping Name="hc_NUT_EducacionInicial">
             <EntityTypeMapping TypeName="Models.hc_NUT_EducacionInicial">
               <MappingFragment StoreEntitySet="hc_NUT_EducacionInicial">
+                <ScalarProperty Name="Especifica_Dudas" ColumnName="Especifica_Dudas" />
+                <ScalarProperty Name="EdRelAlimentos" ColumnName="EdRelAlimentos" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CriteriosGen" ColumnName="CriteriosGen" />
                 <ScalarProperty Name="PrevencionEnf" ColumnName="PrevencionEnf" />

@@ -46,5 +46,7 @@ namespace CUS.Models
         public Nullable<bool> Rechazo { get; set; }
         public string Clave_hc_px { get; set; }
         public int Id_Paciente { get; set; }
+        public Nullable<bool> EdRelAlimentos { get; set; }
+        public string Especifica_Dudas { get; set; }
     }
 }
