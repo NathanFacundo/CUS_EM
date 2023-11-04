@@ -1,41 +1,108 @@
-﻿
+﻿@Model CUS.Models.CUS
 @{
-    ViewBag.Title = "";
-}
+    ViewBag.Title = "Historia Clínica";
 
+    int edad = 0;
+    int meses = 0;
+    var fecha = DateTime.Now.ToString("yyyy-MM-ddT00:00:00.000");
+    var fechaDT = DateTime.Parse(fecha);
+
+    var today = fechaDT;
+    DateTime fnac = (DateTime)Model.FechaNacimiento;
+    int Years = 0;
+    int Months = 0;
+    int Days = 0;
+
+    if ((today.Year - fnac.Year) > 0 ||
+    (((today.Year - fnac.Year) == 0) && ((fnac.Month < today.Month) ||
+    ((fnac.Month == today.Month) && (fnac.Day <= today.Day)))))
+    {
+        int DaysInBdayMonth = DateTime.DaysInMonth(fnac.Year, fnac.Month);
+        int DaysRemain = today.Day + (DaysInBdayMonth - fnac.Day);
+
+        if (today.Month > fnac.Month)
+        {
+            Years = today.Year - fnac.Year;
+            Months = today.Month - (fnac.Month + 1) + Math.Abs(DaysRemain / DaysInBdayMonth);
+            Days = (DaysRemain % DaysInBdayMonth + DaysInBdayMonth) % DaysInBdayMonth;
+        }
+        else if (today.Month == fnac.Month)
+        {
+            if (today.Day >= fnac.Day)
+            {
+                Years = today.Year - fnac.Year;
+                Months = 0;
+                Days = today.Day - fnac.Day;
+            }
+            else
+            {
+                Years = (today.Year - 1) - fnac.Year;
+                Months = 11;
+                Days = DateTime.DaysInMonth(fnac.Year, fnac.Month) - (fnac.Day - today.Day);
+            }
+        }
+        else
+        {
+            Years = (today.Year - 1) - fnac.Year;
+            Months = today.Month + (11 - fnac.Month) + Math.Abs(DaysRemain / DaysInBdayMonth);
+            Days = (DaysRemain % DaysInBdayMonth + DaysInBdayMonth) % DaysInBdayMonth;
+        }
+    }
+
+    if (Years >= 99)
+    {
+        edad = 99;
+    }
+    else
+    {
+        edad = Years;
+    }
+
+    meses = Months;
+
+}
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 
 <style>
     .modal {
         padding: 0 !important;
     }
+
     #myModal .modal-dialog {
         max-width: none;
         height: 100%;
         margin: 0;
     }
+
     .modal-open .main-wrapper {
         filter: none;
     }
+
     .fa-plus-circle {
         float: right;
     }
+
     p {
         font-weight: bold;
     }
+
         p span {
             font-weight: normal;
             color: red;
         }
+
     .container {
         margin: 200px auto;
     }
+
     fieldset {
         display: none;
     }
+
         fieldset.show {
             display: block;
         }
+
     select:focus, input:focus {
         -moz-box-shadow: none !important;
         -webkit-box-shadow: none !important;
@@ -44,45 +111,55 @@
         outline-width: 0 !important;
         font-weight: 400;
     }
+
     button:focus {
         -moz-box-shadow: none !important;
         -webkit-box-shadow: none !important;
         box-shadow: none !important;
         outline-width: 0;
     }
+
     .tabs {
         margin: 2px 5px 0px 5px;
         padding-bottom: 10px;
         cursor: pointer;
     }
+
         .tabs:hover, .tabs.active {
             border-bottom: 1px solid #2196F3;
         }
+
     a:hover {
         text-decoration: none;
         color: #1565C0;
     }
+
     .box {
         margin-bottom: 10px;
         border-radius: 5px;
         padding: 10px;
     }
+
     .modal-backdrop {
         background-color: #64B5F6;
     }
+
     .line {
         background-color: #CFD8DC;
         height: 1px;
         width: 100%;
     }
+
     @@media screen and (max-width: 768px) {
         .tabs h6 {
             font-size: 12px;
         }
     }
+
     #Medicina {
         display: none;
     }
+
     Psicologia {
         display: none;
     }
@@ -100,18 +177,34 @@
         </div>
 
         <div class="row">
-            <div class="col-sm-12" id="BusquedaPX">
-                <div class="row">
-                    <div class="col-md-3 mb-3">
-                        <input type="text" class="form-control BuscarPX" id="ExpedientePX" placeholder="Expediente PX" required>
-                    </div>
-                    <div class="col-md-3 mb-3">
-                        <button class="btn btn-primary" onclick="BtnBuscarPX()">Buscar</button>
-                    </div>
-                    <div class="col-md-3 mb-3">
 
+            <div class="col-sm-12 p-0">
+                <div class="profile-header">
+                    <div class="row align-items-center">
+                        <div class="col-auto profile-image">
+                            <a href="#">
+                                @*<img class="rounded-circle" alt="User Image" src="~/Content/assets/img/profiles/avatar-04.jpg">*@
+                            </a>
+                        </div>
+                        <div class="col ml-md-n2 profile-user-info">
+                            <h10 style="font-weight:bold;">Nombre: @Model.Nombre @Model.PrimerApellido @Model.SegundoApellido </h10>
+                            <a id="Nombre"></a><br />
+                            <h10 style="font-weight:bold;">Expediente:@Model.Expediente </h10>
+                            <a id="Exp"></a><br />
+                            <h10 style="font-weight:bold;">Edad: @edad años @meses meses</h10>
+                            <a id="Edad"></a><br />
+                            <h10 style="font-weight:bold;">Sexo: @Model.Sexo</h10>
+                            <a id="Sexo"></a><br />
+                            <h10 style="font-weight:bold;">Fecha Nac.: @Model.FechaNacimiento</h10>
+                            <a id="FechaNac"></a>
+                        </div>
                     </div>
                 </div>
+            </div>
+
+
+            <div class="col-sm-12" id="BusquedaPX">
+
                 <div>
                     <div class="table-responsive">
                         <table id="TblPaciente" class="datatable table table-stripped">
@@ -1902,6 +1995,7 @@
             }
         });
 
+        /*
         let timerInterval
         Swal.fire({
             title: 'Busque al px. y seleccione la H.C. que desea ver',
@@ -1911,6 +2005,7 @@
                 clearInterval(timerInterval)
             }
         });
+        */
 
         $(".tabs").click(function () {
             $(".tabs").removeClass("active");
@@ -1944,12 +2039,15 @@
     });
 
     //Si dan click en Enter en los inputs de Nombre/Expediente
+    
     $('.BuscarPX').on("keypress", function (e) {
         if (e.keyCode == 13) {
             FuncionBuscarPX();
             return false;
         }
     });
+
+    FuncionBuscarPX();
 
     //Si dan click en el botón de Buscar
     function BtnBuscarPX() {
@@ -1959,7 +2057,10 @@
     var ExpedientePX;
 
     function FuncionBuscarPX() {
-	    ExpedientePX = $("#ExpedientePX").val();
+
+        ExpedientePX = "@Model.Expediente";
+
+        //alert(ExpedientePX);
 
 	    Swal.fire({
 		    title: 'Cargando... Espere por favor',
@@ -2492,7 +2593,7 @@
                         // Luego, establece la fecha legible en tu vista
                         $("#Especifica_FechaUltimoParto").text(fechaLegible);
                     }
-                    
+
 
                     $("#FechaUltimaCesarea").text(data.FechaUltimaCesarea);
 
@@ -2524,9 +2625,9 @@
                         var fechaLegible3 = fecha3.toLocaleDateString();
                         $("#Especifica_FechaUltimaMenstruacion").text(fechaLegible3);
                     }
-                    
+
                     $("#FechaProbableParto").text(data.FechaProbableParto);
-                    
+
                     if (data.Especifica_FechaProbableParto != null) {
                         var fechaJson4 = data.Especifica_FechaProbableParto;
                         var fechaMilisegundos4 = parseInt(fechaJson4.match(/\d+/)[0]);
@@ -2536,7 +2637,7 @@
                     }
 
                     $("#FechaUltimoPapanicolau").text(data.FechaUltimoPapanicolau);
-                    
+
                     if (data.Especifica_FechaUltimoPapanicolau != null) {
                         var fechaJson5 = data.Especifica_FechaUltimoPapanicolau;
                         var fechaMilisegundos5 = parseInt(fechaJson5.match(/\d+/)[0]);

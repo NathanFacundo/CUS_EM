@@ -1,5 +1,65 @@
-﻿@{
+﻿@Model CUS.Models.CUS
+@{
     ViewBag.Title = "Historia Clínica";
+
+    int edad = 0;
+    int meses = 0;
+    var fecha = DateTime.Now.ToString("yyyy-MM-ddT00:00:00.000");
+    var fechaDT = DateTime.Parse(fecha);
+
+    var today = fechaDT;
+    DateTime fnac = (DateTime)Model.FechaNacimiento;
+    int Years = 0;
+    int Months = 0;
+    int Days = 0;
+
+    if ((today.Year - fnac.Year) > 0 ||
+    (((today.Year - fnac.Year) == 0) && ((fnac.Month < today.Month) ||
+    ((fnac.Month == today.Month) && (fnac.Day <= today.Day)))))
+    {
+        int DaysInBdayMonth = DateTime.DaysInMonth(fnac.Year, fnac.Month);
+        int DaysRemain = today.Day + (DaysInBdayMonth - fnac.Day);
+
+        if (today.Month > fnac.Month)
+        {
+            Years = today.Year - fnac.Year;
+            Months = today.Month - (fnac.Month + 1) + Math.Abs(DaysRemain / DaysInBdayMonth);
+            Days = (DaysRemain % DaysInBdayMonth + DaysInBdayMonth) % DaysInBdayMonth;
+        }
+        else if (today.Month == fnac.Month)
+        {
+            if (today.Day >= fnac.Day)
+            {
+                Years = today.Year - fnac.Year;
+                Months = 0;
+                Days = today.Day - fnac.Day;
+            }
+            else
+            {
+                Years = (today.Year - 1) - fnac.Year;
+                Months = 11;
+                Days = DateTime.DaysInMonth(fnac.Year, fnac.Month) - (fnac.Day - today.Day);
+            }
+        }
+        else
+        {
+            Years = (today.Year - 1) - fnac.Year;
+            Months = today.Month + (11 - fnac.Month) + Math.Abs(DaysRemain / DaysInBdayMonth);
+            Days = (DaysRemain % DaysInBdayMonth + DaysInBdayMonth) % DaysInBdayMonth;
+        }
+    }
+
+    if (Years >= 99)
+    {
+        edad = 99;
+    }
+    else
+    {
+        edad = Years;
+    }
+
+    meses = Months;
+
 }
 
 <style>
@@ -9,6 +69,7 @@
         max-width: 110px;
         font-size: 10px;
     }
+
     .user-tabs .nav-tabs > li > a {
         padding: 5px;
     }
@@ -22,16 +83,16 @@
                 <div class="col-sm-12">
                     <h3 class="page-title">Datos Generales.</h3>
                     @*<ul class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="@Url.Action(" Index", "Admin" )">Dashboard</a></li>
-                    <li class="breadcrumb-item"><a href="@Url.Action(" Index", "HistoriaClinica" )">Historia Clínica</a></li>
-                </ul>*@
+                            <li class="breadcrumb-item"><a href="@Url.Action(" Index", "Admin" )">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="@Url.Action(" Index", "HistoriaClinica" )">Historia Clínica</a></li>
+                        </ul>*@
                 </div>
             </div>
         </div>
-        
+
         <div class="row">
 
-            <div class="col-sm-12" id="InfoPX">
+            <div class="col-sm-12 p-0">
                 <div class="profile-header">
                     <div class="row align-items-center">
                         <div class="col-auto profile-image">
@@ -40,70 +101,24 @@
                             </a>
                         </div>
                         <div class="col ml-md-n2 profile-user-info">
-                            <h10 style="font-weight:bold;">Nombre: </h10>
+                            <h10 style="font-weight:bold;">Nombre: @Model.Nombre @Model.PrimerApellido @Model.SegundoApellido </h10>
                             <a id="Nombre"></a><br />
-                            <h10 style="font-weight:bold;">Expediente: </h10>
+                            <h10 style="font-weight:bold;">Expediente:@Model.Expediente </h10>
                             <a id="Exp"></a><br />
-                            <h10 style="font-weight:bold;">Edad: </h10>
+                            <h10 style="font-weight:bold;">Edad: @edad años @meses meses</h10>
                             <a id="Edad"></a><br />
-                            <h10 style="font-weight:bold;">Sexo: </h10>
+                            <h10 style="font-weight:bold;">Sexo: @Model.Sexo</h10>
                             <a id="Sexo"></a><br />
-                            <h10 style="font-weight:bold;">Fecha Nac.: </h10>
+                            <h10 style="font-weight:bold;">Fecha Nac.: @Model.FechaNacimiento</h10>
                             <a id="FechaNac"></a>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="col-sm-12" id="BusquedaPX">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h4>Busque al px.</h4>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3 mb-3">
-                        <input type="text" class="form-control BuscarPX" id="NombrePX" placeholder="Nombre PX" required>
-                    </div>
-                    <div class="col-md-3 mb-3">
-                        <input type="text" class="form-control BuscarPX" id="ExpedientePX" placeholder="Expediente PX" required>
-                    </div>
-                    <div class="col-md-3 mb-2">
-                        <button class="btn btn-primary" onclick="BtnBuscarPX()">Buscar</button>
-                    </div>
-                </div>
-                <div>
-                    <div class="table-responsive">
-                        <table id="TblPaciente" class="datatable table table-stripped">
-                            <thead>
-                                <tr>
-                                    <th style="text-align:center">
-                                        Nombre
-                                    </th>
-                                    <th style="text-align:center">
-                                        Primer Apellido
-                                    </th>
-                                    <th style="text-align:center">
-                                        Segundo Apellido
-                                    </th>
-                                    <th style="text-align:center">
-                                        Unidad de Afiliacion
-                                    </th>
-                                    <th style="text-align:center">
-                                        Expediente
-                                    </th>
-                                    <th style="width:5px">Seleccionar</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+           
 
             <div class="col-sm-12">
-               
+
                 <nav class="user-tabs mb-4">
                     <ul class="nav nav-tabs nav-tabs-bottom nav-justified">
                         <li class="nav-item text-left">
@@ -144,7 +159,7 @@
                         </li>
                     </ul>
                 </nav>
-               
+
                 <div class="tab-content pt-0">
 
                     <div class="tab-pane fade show active" id="pat_prescriptions">
@@ -1917,6 +1932,7 @@
 
         // #endregion
 
+        /*
         // #region Botones de Guardar HC
             $("#Btn_Save1").css("display", "none");
             $("#Btn_Save2").css("display", "none");
@@ -1941,6 +1957,7 @@
                 clearInterval(timerInterval)
             }
         });
+    */
     });
 
     //-------------------------Elementos de la H.C. que se mostrarán hasta que se seleccione o se haga alguna acción

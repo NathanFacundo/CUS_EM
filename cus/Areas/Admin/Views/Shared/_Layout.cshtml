@@ -110,26 +110,29 @@
                             <li class="submenu">
                                 <a href="#"><i class="fe fe-folder"></i> <span>Expte. Médico</span> <span class="menu-arrow"></span></a>
                                 <ul style="display: none;">
-                                    <li><a href="@Url.Action("Index", "NotaEvolucion")">Nota de Evolución</a></li>
-                                    <li><a href="@Url.Action("a", "a")">Mis PX.</a></li>
+                                    <li><a href="@Url.Action("BuscarPaciente", "Derechohabiente")">Mis Pacientes.</a></li>
+                                    @if (Model != null)
+                                    {
+                                        <li><a href="@Url.Action("Index", "NotaEvolucion", new { expediente = Model.Expediente })">Nota de Evolución</a></li>
 
-                                    <li class="submenu">
-                                        <a href="#"><i class="fe fe-folder-open"></i> <span>Historia Clínica</span> <span class="menu-arrow"></span></a>
-                                        <ul style="display: none;">
-                                            <li><a href="@Url.Action("Historia", "HistoriaClinica")">Buscar Historia</a></li>
-                                            <li class="submenu">
-                                                <a href="#"><span>Nueva</span> <span class="menu-arrow"></span></a>
-                                                <ul style="display: none;">
-                                                    <li><a href="@Url.Action("Index", "HistoriaClinica")">Datos Generales</a></li>
-                                                    <li><a href="@Url.Action("Index", "HistoriaMedicina")">Medicina</a></li>
-                                                    <li><a href="@Url.Action("Index", "HistoriaPsicologia")">Psicología</a></li>
-                                                    <li><a href="">Nutrición</a></li>
-                                                    <li><a href="">Odontología</a></li>
-                                                </ul>
-                                            </li>
+                                        <li class="submenu">
+                                            <a href="#"><i class="fe fe-folder-open"></i> <span>Historia Clínica</span> <span class="menu-arrow"></span></a>
+                                            <ul style="display: none;">
+                                                <li><a href="@Url.Action("Historia", "HistoriaClinica", new { expediente = Model.Expediente })">Buscar Historia</a></li>
+                                                <li class="submenu">
+                                                    <a href="#"><span>Nueva</span> <span class="menu-arrow"></span></a>
+                                                    <ul style="display: none;">
+                                                        <li><a href="@Url.Action("Index", "HistoriaClinica", new { expediente = Model.Expediente })">Datos Generales</a></li>
+                                                        <li><a href="@Url.Action("Index", "HistoriaMedicina", new { expediente = Model.Expediente })">Medicina</a></li>
+                                                        <li><a href="@Url.Action("Index", "HistoriaPsicologia", new { expediente = Model.Expediente })">Psicología</a></li>
+                                                        <li><a href="">Nutrición</a></li>
+                                                        <li><a href="">Odontología</a></li>
+                                                    </ul>
+                                                </li>
 
-                                        </ul>
-                                    </li>
+                                            </ul>
+                                        </li>
+                                    }
 
                                 </ul>
                             </li>

@@ -30,7 +30,11 @@ namespace CUS.Areas.Admin.Controllers
             //var mensajeGlobal = _dhController.BuscarPaciente();
             if(expediente != null)
             {
-                return View();
+                var paciente = (from a in db.Paciente
+                                where a.Expediente == expediente
+                                select a).FirstOrDefault();
+
+                return View(paciente);
             }
             else
             {
