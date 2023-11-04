@@ -69,5 +69,7 @@ namespace CUS.Models
         public string Frecuencia_Otros { get; set; }
         public string Clave_hc_px { get; set; }
         public int Id_Paciente { get; set; }
+        public Nullable<bool> BebidasDiet { get; set; }
+        public string Frecuencia_BebidasDiet { get; set; }
     }
 }

@@ -27,7 +27,6 @@ namespace CUS.Models
     
         public virtual DbSet<hc_NUT_AlimentacionInicial> hc_NUT_AlimentacionInicial { get; set; }
         public virtual DbSet<hc_NUT_DatosDieteticos> hc_NUT_DatosDieteticos { get; set; }
-        public virtual DbSet<hc_NUT_EducacionInicial> hc_NUT_EducacionInicial { get; set; }
         public virtual DbSet<hc_NUT_EtapaCambio> hc_NUT_EtapaCambio { get; set; }
         public virtual DbSet<hc_NUT_EvaluacionAntro> hc_NUT_EvaluacionAntro { get; set; }
         public virtual DbSet<hc_NUT_FrecuenciaAlimen> hc_NUT_FrecuenciaAlimen { get; set; }
@@ -37,5 +36,6 @@ namespace CUS.Models
         public virtual DbSet<hc_NUT_Pronostico> hc_NUT_Pronostico { get; set; }
         public virtual DbSet<hc_NUT_Recordatorio> hc_NUT_Recordatorio { get; set; }
         public virtual DbSet<hc_NUT_ResultadoLab> hc_NUT_ResultadoLab { get; set; }
+        public virtual DbSet<hc_NUT_EducacionInicial> hc_NUT_EducacionInicial { get; set; }
     }
 }

@@ -72,9 +72,9 @@
           <Property Name="Cuidador6a12meses" Type="bit" />
           <Property Name="Cuidador1a4anios" Type="bit" />
           <Property Name="Cuidador5a9anios" Type="bit" />
-          <Property Name="10a19anios" Type="bit" />
-          <Property Name="20a59anios" Type="bit" />
-          <Property Name="60anios" Type="bit" />
+          <Property Name="C10a19anios" Type="bit" />
+          <Property Name="C20a59anios" Type="bit" />
+          <Property Name="C60anios" Type="bit" />
           <Property Name="SeCompleta" Type="bit" />
           <Property Name="SinCompletar" Type="bit" />
           <Property Name="ReforzarParte" Type="bit" />
@@ -245,6 +245,8 @@
           <Property Name="Frecuencia_Otros" Type="varchar" MaxLength="200" />
           <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
           <Property Name="Id_Paciente" Type="int" Nullable="false" />
+          <Property Name="BebidasDiet" Type="bit" />
+          <Property Name="Frecuencia_BebidasDiet" Type="varchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="hc_NUT_ImpresionDiag">
           <Key>
@@ -386,45 +388,6 @@
           <Property Name="Frec_ActividadFisica" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
           <Property Name="Clave_hc_px" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="hc_NUT_EducacionInicial">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CriteriosGen" Type="Boolean" />
-          <Property Name="PrevencionEnf" Type="Boolean" />
-          <Property Name="EducacionMat" Type="Boolean" />
-          <Property Name="PlanificacionDis" Type="Boolean" />
-          <Property Name="AdopcionPat" Type="Boolean" />
-          <Property Name="EducacionMej" Type="Boolean" />
-          <Property Name="EjercicioAd" Type="Boolean" />
-          <Property Name="EducacionRel" Type="Boolean" />
-          <Property Name="AdherenciaTrat" Type="Boolean" />
-          <Property Name="DudasInq" Type="Boolean" />
-          <Property Name="Oral" Type="Boolean" />
-          <Property Name="Escrito" Type="Boolean" />
-          <Property Name="Video" Type="Boolean" />
-          <Property Name="Demostracion" Type="Boolean" />
-          <Property Name="Mujeremb" Type="Boolean" />
-          <Property Name="MadreEt" Type="Boolean" />
-          <Property Name="Postnatal" Type="Boolean" />
-          <Property Name="Cuidador6meses" Type="Boolean" />
-          <Property Name="Cuidador6a12meses" Type="Boolean" />
-          <Property Name="Cuidador1a4anios" Type="Boolean" />
-          <Property Name="Cuidador5a9anios" Type="Boolean" />
-          <Property Name="C10a19anios" Type="Boolean" />
-          <Property Name="C20a59anios" Type="Boolean" />
-          <Property Name="C60anios" Type="Boolean" />
-          <Property Name="SeCompleta" Type="Boolean" />
-          <Property Name="SinCompletar" Type="Boolean" />
-          <Property Name="ReforzarParte" Type="Boolean" />
-          <Property Name="ReforzarToda" Type="Boolean" />
-          <Property Name="Rechazo" Type="Boolean" />
-          <Property Name="Clave_hc_px" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
-          <Property Name="EdRelAlimentos" Type="Boolean" />
-          <Property Name="Especifica_Dudas" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="hc_NUT_EtapaCambio">
           <Key>
@@ -586,6 +549,8 @@
           <Property Name="Frecuencia_Otros" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="Clave_hc_px" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+          <Property Name="BebidasDiet" Type="Boolean" />
+          <Property Name="Frecuencia_BebidasDiet" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="hc_NUT_ImpresionDiag">
           <Key>
@@ -672,7 +637,6 @@
         <EntityContainer Name="HC_Nutricion" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="hc_NUT_AlimentacionInicial" EntityType="Self.hc_NUT_AlimentacionInicial" />
           <EntitySet Name="hc_NUT_DatosDieteticos" EntityType="Self.hc_NUT_DatosDieteticos" />
-          <EntitySet Name="hc_NUT_EducacionInicial" EntityType="Self.hc_NUT_EducacionInicial" />
           <EntitySet Name="hc_NUT_EtapaCambio" EntityType="Self.hc_NUT_EtapaCambio" />
           <EntitySet Name="hc_NUT_EvaluacionAntro" EntityType="Self.hc_NUT_EvaluacionAntro" />
           <EntitySet Name="hc_NUT_FrecuenciaAlimen" EntityType="Self.hc_NUT_FrecuenciaAlimen" />
@@ -682,7 +646,47 @@
           <EntitySet Name="hc_NUT_Pronostico" EntityType="Self.hc_NUT_Pronostico" />
           <EntitySet Name="hc_NUT_Recordatorio" EntityType="Self.hc_NUT_Recordatorio" />
           <EntitySet Name="hc_NUT_ResultadoLab" EntityType="Self.hc_NUT_ResultadoLab" />
+          <EntitySet Name="hc_NUT_EducacionInicial" EntityType="Models.hc_NUT_EducacionInicial" />
         </EntityContainer>
+        <EntityType Name="hc_NUT_EducacionInicial">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CriteriosGen" Type="Boolean" />
+          <Property Name="PrevencionEnf" Type="Boolean" />
+          <Property Name="EducacionMat" Type="Boolean" />
+          <Property Name="PlanificacionDis" Type="Boolean" />
+          <Property Name="AdopcionPat" Type="Boolean" />
+          <Property Name="EducacionMej" Type="Boolean" />
+          <Property Name="EjercicioAd" Type="Boolean" />
+          <Property Name="EducacionRel" Type="Boolean" />
+          <Property Name="AdherenciaTrat" Type="Boolean" />
+          <Property Name="DudasInq" Type="Boolean" />
+          <Property Name="Oral" Type="Boolean" />
+          <Property Name="Escrito" Type="Boolean" />
+          <Property Name="Video" Type="Boolean" />
+          <Property Name="Demostracion" Type="Boolean" />
+          <Property Name="Mujeremb" Type="Boolean" />
+          <Property Name="MadreEt" Type="Boolean" />
+          <Property Name="Postnatal" Type="Boolean" />
+          <Property Name="Cuidador6meses" Type="Boolean" />
+          <Property Name="Cuidador6a12meses" Type="Boolean" />
+          <Property Name="Cuidador1a4anios" Type="Boolean" />
+          <Property Name="Cuidador5a9anios" Type="Boolean" />
+          <Property Name="C10a19anios" Type="Boolean" />
+          <Property Name="C20a59anios" Type="Boolean" />
+          <Property Name="C60anios" Type="Boolean" />
+          <Property Name="SeCompleta" Type="Boolean" />
+          <Property Name="SinCompletar" Type="Boolean" />
+          <Property Name="ReforzarParte" Type="Boolean" />
+          <Property Name="ReforzarToda" Type="Boolean" />
+          <Property Name="Rechazo" Type="Boolean" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+          <Property Name="EdRelAlimentos" Type="Boolean" />
+          <Property Name="Especifica_Dudas" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -727,46 +731,6 @@
                 <ScalarProperty Name="Tipo_ActividadFisica" ColumnName="Tipo_ActividadFisica" />
                 <ScalarProperty Name="Tiempo_ActividadFisica" ColumnName="Tiempo_ActividadFisica" />
                 <ScalarProperty Name="Frec_ActividadFisica" ColumnName="Frec_ActividadFisica" />
-                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
-                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="hc_NUT_EducacionInicial">
-            <EntityTypeMapping TypeName="Models.hc_NUT_EducacionInicial">
-              <MappingFragment StoreEntitySet="hc_NUT_EducacionInicial">
-                <ScalarProperty Name="Especifica_Dudas" ColumnName="Especifica_Dudas" />
-                <ScalarProperty Name="EdRelAlimentos" ColumnName="EdRelAlimentos" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="CriteriosGen" ColumnName="CriteriosGen" />
-                <ScalarProperty Name="PrevencionEnf" ColumnName="PrevencionEnf" />
-                <ScalarProperty Name="EducacionMat" ColumnName="EducacionMat" />
-                <ScalarProperty Name="PlanificacionDis" ColumnName="PlanificacionDis" />
-                <ScalarProperty Name="AdopcionPat" ColumnName="AdopcionPat" />
-                <ScalarProperty Name="EducacionMej" ColumnName="EducacionMej" />
-                <ScalarProperty Name="EjercicioAd" ColumnName="EjercicioAd" />
-                <ScalarProperty Name="EducacionRel" ColumnName="EducacionRel" />
-                <ScalarProperty Name="AdherenciaTrat" ColumnName="AdherenciaTrat" />
-                <ScalarProperty Name="DudasInq" ColumnName="DudasInq" />
-                <ScalarProperty Name="Oral" ColumnName="Oral" />
-                <ScalarProperty Name="Escrito" ColumnName="Escrito" />
-                <ScalarProperty Name="Video" ColumnName="Video" />
-                <ScalarProperty Name="Demostracion" ColumnName="Demostracion" />
-                <ScalarProperty Name="Mujeremb" ColumnName="Mujeremb" />
-                <ScalarProperty Name="MadreEt" ColumnName="MadreEt" />
-                <ScalarProperty Name="Postnatal" ColumnName="Postnatal" />
-                <ScalarProperty Name="Cuidador6meses" ColumnName="Cuidador6meses" />
-                <ScalarProperty Name="Cuidador6a12meses" ColumnName="Cuidador6a12meses" />
-                <ScalarProperty Name="Cuidador1a4anios" ColumnName="Cuidador1a4anios" />
-                <ScalarProperty Name="Cuidador5a9anios" ColumnName="Cuidador5a9anios" />
-                <ScalarProperty Name="C10a19anios" ColumnName="10a19anios" />
-                <ScalarProperty Name="C20a59anios" ColumnName="20a59anios" />
-                <ScalarProperty Name="C60anios" ColumnName="60anios" />
-                <ScalarProperty Name="SeCompleta" ColumnName="SeCompleta" />
-                <ScalarProperty Name="SinCompletar" ColumnName="SinCompletar" />
-                <ScalarProperty Name="ReforzarParte" ColumnName="ReforzarParte" />
-                <ScalarProperty Name="ReforzarToda" ColumnName="ReforzarToda" />
-                <ScalarProperty Name="Rechazo" ColumnName="Rechazo" />
                 <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
                 <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
               </MappingFragment>
@@ -878,6 +842,8 @@
           <EntitySetMapping Name="hc_NUT_FrecuenciaAlimen">
             <EntityTypeMapping TypeName="Models.hc_NUT_FrecuenciaAlimen">
               <MappingFragment StoreEntitySet="hc_NUT_FrecuenciaAlimen">
+                <ScalarProperty Name="Frecuencia_BebidasDiet" ColumnName="Frecuencia_BebidasDiet" />
+                <ScalarProperty Name="BebidasDiet" ColumnName="BebidasDiet" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Leche" ColumnName="Leche" />
                 <ScalarProperty Name="Frecuencia_Leche" ColumnName="Frecuencia_Leche" />
@@ -1021,6 +987,46 @@
                 <ScalarProperty Name="Especifica_Resultado" ColumnName="Especifica_Resultado" />
                 <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
                 <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_NUT_EducacionInicial">
+            <EntityTypeMapping TypeName="Models.hc_NUT_EducacionInicial">
+              <MappingFragment StoreEntitySet="hc_NUT_EducacionInicial">
+                <ScalarProperty Name="Especifica_Dudas" ColumnName="Especifica_Dudas" />
+                <ScalarProperty Name="EdRelAlimentos" ColumnName="EdRelAlimentos" />
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="Rechazo" ColumnName="Rechazo" />
+                <ScalarProperty Name="ReforzarToda" ColumnName="ReforzarToda" />
+                <ScalarProperty Name="ReforzarParte" ColumnName="ReforzarParte" />
+                <ScalarProperty Name="SinCompletar" ColumnName="SinCompletar" />
+                <ScalarProperty Name="SeCompleta" ColumnName="SeCompleta" />
+                <ScalarProperty Name="C60anios" ColumnName="C60anios" />
+                <ScalarProperty Name="C20a59anios" ColumnName="C20a59anios" />
+                <ScalarProperty Name="C10a19anios" ColumnName="C10a19anios" />
+                <ScalarProperty Name="Cuidador5a9anios" ColumnName="Cuidador5a9anios" />
+                <ScalarProperty Name="Cuidador1a4anios" ColumnName="Cuidador1a4anios" />
+                <ScalarProperty Name="Cuidador6a12meses" ColumnName="Cuidador6a12meses" />
+                <ScalarProperty Name="Cuidador6meses" ColumnName="Cuidador6meses" />
+                <ScalarProperty Name="Postnatal" ColumnName="Postnatal" />
+                <ScalarProperty Name="MadreEt" ColumnName="MadreEt" />
+                <ScalarProperty Name="Mujeremb" ColumnName="Mujeremb" />
+                <ScalarProperty Name="Demostracion" ColumnName="Demostracion" />
+                <ScalarProperty Name="Video" ColumnName="Video" />
+                <ScalarProperty Name="Escrito" ColumnName="Escrito" />
+                <ScalarProperty Name="Oral" ColumnName="Oral" />
+                <ScalarProperty Name="DudasInq" ColumnName="DudasInq" />
+                <ScalarProperty Name="AdherenciaTrat" ColumnName="AdherenciaTrat" />
+                <ScalarProperty Name="EducacionRel" ColumnName="EducacionRel" />
+                <ScalarProperty Name="EjercicioAd" ColumnName="EjercicioAd" />
+                <ScalarProperty Name="EducacionMej" ColumnName="EducacionMej" />
+                <ScalarProperty Name="AdopcionPat" ColumnName="AdopcionPat" />
+                <ScalarProperty Name="PlanificacionDis" ColumnName="PlanificacionDis" />
+                <ScalarProperty Name="EducacionMat" ColumnName="EducacionMat" />
+                <ScalarProperty Name="PrevencionEnf" ColumnName="PrevencionEnf" />
+                <ScalarProperty Name="CriteriosGen" ColumnName="CriteriosGen" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

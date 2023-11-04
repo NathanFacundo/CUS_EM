@@ -355,7 +355,7 @@
                     <div class="tab-pane fade show active" id="ResultadoLab">
                         <div class="card card-table mb-0 p-3 mb-5">
                             <div class="card-body">
-                                <form id="F_Habitus">
+                                <form id="F_ResultadoLab">
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group">
@@ -386,7 +386,7 @@
                     <div class="tab-pane fade show" id="EtapaCam">
                         <div class="card card-table mb-0 p-3 mb-5">
                             <div class="card-body">
-                                <form id="F_Habitus">
+                                <form id="F_EtapaCam">
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group">
@@ -934,7 +934,7 @@
                                             <input class="form-check-input" type="checkbox" id="Cereales_No" name="Cereales_No">
                                         </div>
                                         <div class="col-md-3">
-                                            <input type="text" class="form-control" id="Describir_pielYanexos" name="Describir_pielYanexos" placeholder="Cereales" maxlength="198">
+                                            <input type="text" class="form-control" id="Frecuencia_Cereales" name="Frecuencia_Cereales" placeholder="Cereales" maxlength="198">
                                         </div>
                                     </div>
                                     <div class="row">
@@ -998,13 +998,13 @@
                                             <label>Bebibas Azucaradas</label>
                                         </div>
                                         <div class="col-md-3">
-                                            <input class="form-check-input" type="checkbox" id="BebibasAzuc" name="BebibasAzuc">
+                                            <input class="form-check-input" type="checkbox" id="BebidasAzucar" name="BebidasAzucar">
                                         </div>
                                         <div class="col-md-3">
-                                            <input class="form-check-input" type="checkbox" id="BebibasAzuc_No" name="BebibasAzuc_No">
+                                            <input class="form-check-input" type="checkbox" id="BebidasAzuc_No" name="BebidasAzuc_No">
                                         </div>
                                         <div class="col-md-3">
-                                            <input type="text" class="form-control" id="Frecuencia_BebibasAzuc" name="Frecuencia_BebibasAzuc" placeholder="Bebibas Azucaradas" maxlength="198">
+                                            <input type="text" class="form-control" id="Frecuencia_BebidasAzuc" name="Frecuencia_BebidasAzuc" placeholder="Bebibas Azucaradas" maxlength="198">
                                         </div>
                                     </div>
                                     <div class="row">
@@ -1012,13 +1012,13 @@
                                             <label>Bebibas Dietéticas</label>
                                         </div>
                                         <div class="col-md-3">
-                                            <input class="form-check-input" type="checkbox" id="BebibasDiet" name="BebibasDiet">
+                                            <input class="form-check-input" type="checkbox" id="BebidasDiet" name="BebidasDiet">
                                         </div>
                                         <div class="col-md-3">
-                                            <input class="form-check-input" type="checkbox" id="BebibasDiet_No" name="BebibasDiet_No">
+                                            <input class="form-check-input" type="checkbox" id="BebidasDiet_No" name="BebidasDiet_No">
                                         </div>
                                         <div class="col-md-3">
-                                            <input type="text" class="form-control" id="Frecuencia_BebibasDiet" name="Frecuencia_BebibasDiet" placeholder="Bebibas Dietéticas" maxlength="198">
+                                            <input type="text" class="form-control" id="Frecuencia_BebidasDiet" name="Frecuencia_BebidasDiet" placeholder="Bebibas Dietéticas" maxlength="198">
                                         </div>
                                     </div>
                                     <div class="row">
@@ -1026,13 +1026,13 @@
                                             <label>Bebibas Alternativas</label>
                                         </div>
                                         <div class="col-md-3">
-                                            <input class="form-check-input" type="checkbox" id="BebibasAlt" name="BebibasAlt">
+                                            <input class="form-check-input" type="checkbox" id="BebidasAlt" name="BebidasAlt">
                                         </div>
                                         <div class="col-md-3">
-                                            <input class="form-check-input" type="checkbox" id="BebibasAlt_No" name="BebibasAlt_No">
+                                            <input class="form-check-input" type="checkbox" id="BebidasAlt_No" name="BebidasAlt_No">
                                         </div>
                                         <div class="col-md-3">
-                                            <input type="text" class="form-control" id="Frecuencia_BebibasAlt" name="Frecuencia_BebibasAlt" placeholder="Bebibas Alternativas" maxlength="198">
+                                            <input type="text" class="form-control" id="Frecuencia_BebidasAlt" name="Frecuencia_BebidasAlt" placeholder="Bebibas Alternativas" maxlength="198">
                                         </div>
                                     </div>
                                     <div class="row">
@@ -1313,31 +1313,31 @@
                                             <tbody>
                                                 <tr>
                                                     <td><label for="cell1">Peso/edad</label></td>
-                                                    <td><input type="text" id="S4Tabla_MedPeso" maxlength="198"></td>
-                                                    <td><input type="text" id="S4Tabla_DesPeso" maxlength="198"></td>
-                                                    <td><input type="text" id="S4Tabla_RanPeso" maxlength="198"></td>
-                                                    <td><input type="text" id="S4Tabla_ClaPeso" maxlength="198"></td>
+                                                    <td><input type="text" id="S4Tabla_MedPeso" name="S4Tabla_MedPeso" maxlength="198"></td>
+                                                    <td><input type="text" id="S4Tabla_DesPeso" name="S4Tabla_DesPeso" maxlength="198"></td>
+                                                    <td><input type="text" id="S4Tabla_RanPeso" name="S4Tabla_RanPeso" maxlength="198"></td>
+                                                    <td><input type="text" id="S4Tabla_ClaPeso" name="S4Tabla_ClaPeso" maxlength="198"></td>
                                                 </tr>
                                                 <tr>
                                                     <td><label for="cell6">Talla/edad</label></td>
-                                                    <td><input type="text" id="S4Tabla_MedTalla" maxlength="198"></td>
-                                                    <td><input type="text" id="S4Tabla_DesTalla" maxlength="198"></td>
-                                                    <td><input type="text" id="S4Tabla_RanTalla" maxlength="198"></td>
-                                                    <td><input type="text" id="S4Tabla_ClaTalla" maxlength="198"></td>
+                                                    <td><input type="text" id="S4Tabla_MedTalla" name="S4Tabla_MedTalla" maxlength="198"></td>
+                                                    <td><input type="text" id="S4Tabla_DesTalla" name="S4Tabla_DesTalla" maxlength="198"></td>
+                                                    <td><input type="text" id="S4Tabla_RanTalla" name="S4Tabla_RanTalla" maxlength="198"></td>
+                                                    <td><input type="text" id="S4Tabla_ClaTalla" name="S4Tabla_ClaTalla" maxlength="198"></td>
                                                 </tr>
                                                 <tr>
                                                     <td><label for="cell6">Peso/talla</label></td>
-                                                    <td><input type="text" id="S4Tabla_MedPeTa" maxlength="198"></td>
-                                                    <td><input type="text" id="S4Tabla_DesPeTa" maxlength="198"></td>
-                                                    <td><input type="text" id="S4Tabla_RanPeTa" maxlength="198"></td>
-                                                    <td><input type="text" id="S4Tabla_ClaPeTa" maxlength="198"></td>
+                                                    <td><input type="text" id="S4Tabla_MedPeTa" name="S4Tabla_MedPeTa" maxlength="198"></td>
+                                                    <td><input type="text" id="S4Tabla_DesPeTa" name="S4Tabla_DesPeTa" maxlength="198"></td>
+                                                    <td><input type="text" id="S4Tabla_RanPeTa" name="S4Tabla_RanPeTa" maxlength="198"></td>
+                                                    <td><input type="text" id="S4Tabla_ClaPeTa" name="S4Tabla_ClaPeTa" maxlength="198"></td>
                                                 </tr>
                                                 <tr>
                                                     <td><label for="cell6">Peso Ideal</label></td>
-                                                    <td><input type="text" id="S4Tabla_MedPeId" maxlength="198"></td>
-                                                    <td><input type="text" id="S4Tabla_DesPeId" maxlength="198"></td>
-                                                    <td><input type="text" id="S4Tabla_RanPeId" maxlength="198"></td>
-                                                    <td><input type="text" id="S4Tabla_ClaPeId" maxlength="198"></td>
+                                                    <td><input type="text" id="S4Tabla_MedPeId" name="S4Tabla_MedPeId" maxlength="198"></td>
+                                                    <td><input type="text" id="S4Tabla_DesPeId" name="S4Tabla_DesPeId" maxlength="198"></td>
+                                                    <td><input type="text" id="S4Tabla_RanPeId" name="S4Tabla_RanPeId" maxlength="198"></td>
+                                                    <td><input type="text" id="S4Tabla_ClaPeId" name="S4Tabla_ClaPeId" maxlength="198"></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -1906,19 +1906,19 @@
                                                 </label>
                                             </div>
                                             <div class="row">
-                                                <input class="form-check-input" type="checkbox" id="10a19anios" name="10a19anios">
+                                                <input class="form-check-input" type="checkbox" id="C10a19anios" name="C10a19anios">
                                                 <label class="form-check-label" for="">
                                                     De 10 a 19 años.
                                                 </label>
                                             </div>
                                             <div class="row">
-                                                <input class="form-check-input" type="checkbox" id="20a59anios" name="20a59anios">
+                                                <input class="form-check-input" type="checkbox" id="C20a59anios" name="C20a59anios">
                                                 <label class="form-check-label" for="">
                                                     De 20 a 59 años.
                                                 </label>
                                             </div>
                                             <div class="row">
-                                                <input class="form-check-input" type="checkbox" id="60anios" name="60anios">
+                                                <input class="form-check-input" type="checkbox" id="C60anios" name="C60anios">
                                                 <label class="form-check-label" for="">
                                                     De 60 años y más.
                                                 </label>
@@ -2597,13 +2597,228 @@
     });
 
     // #region Guardar cada pestaña/sección
-    $("#PadecimientoActual").change(function () {
-        var combo = document.getElementById("PadecimientoActual");
-        var selected = combo.options[combo.selectedIndex].text;
-        if (selected == "Si") {
-            $("#EspPadecimientoActual").css("display", "");
-        } else {
-            $("#EspPadecimientoActual").css("display", "none");
+    //ResultadoLab
+    $("#Btn_ResultadoLab").click(function () {
+        let data = $("#F_ResultadoLab").serialize();
+        var expediente = $("#Exp").text();
+        if (expediente) {
+            $.post("@Url.Action("ResultadoLab", "HistoriaNutricion")?expediente=" + expediente, data).done(function (response) {
+                if (response.MENSAJE.substring(0, 6) == "Succe:") {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Sección guardada',
+                        showConfirmButton: false,
+                        timer: 1600
+                    })
+                    $("#Btn_ResultadoLab").css("display", "none");
+                }
+                if (response.MENSAJE.substring(0, 6) == "Error:") {
+                    Swal.fire({
+                        icon: 'error',
+                        title: '¡Error!',
+                        text: response.MENSAJE.substring(7),
+                    });
+                }
+            }).fail(function (response) {
+                console.log(response);
+            });
+            event.preventDefault();
+        }
+    });
+    //EtapaCam
+    $("#Btn_EtapaCam").click(function () {
+        let data = $("#F_EtapaCam").serialize();
+        var expediente = $("#Exp").text();
+        if (expediente) {
+            $.post("@Url.Action("EtapaCam", "HistoriaNutricion")?expediente=" + expediente, data).done(function (response) {
+                if (response.MENSAJE.substring(0, 6) == "Succe:") {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Sección guardada',
+                        showConfirmButton: false,
+                        timer: 1600
+                    })
+                    $("#Btn_EtapaCam").css("display", "none");
+                }
+                if (response.MENSAJE.substring(0, 6) == "Error:") {
+                    Swal.fire({
+                        icon: 'error',
+                        title: '¡Error!',
+                        text: response.MENSAJE.substring(7),
+                    });
+                }
+            }).fail(function (response) {
+                console.log(response);
+            });
+            event.preventDefault();
+        }
+    });
+    //DatosDiet
+    $("#Btn_DatosDiet").click(function () {
+        let data = $("#F_DatosDiet").serialize();
+        var expediente = $("#Exp").text();
+        if (expediente) {
+            $.post("@Url.Action("DatosDiet", "HistoriaNutricion")?expediente=" + expediente, data).done(function (response) {
+                if (response.MENSAJE.substring(0, 6) == "Succe:") {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Sección guardada',
+                        showConfirmButton: false,
+                        timer: 1600
+                    })
+                    $("#Btn_DatosDiet").css("display", "none");
+                }
+                if (response.MENSAJE.substring(0, 6) == "Error:") {
+                    Swal.fire({
+                        icon: 'error',
+                        title: '¡Error!',
+                        text: response.MENSAJE.substring(7),
+                    });
+                }
+            }).fail(function (response) {
+                console.log(response);
+            });
+            event.preventDefault();
+        }
+    });
+    //AlimentacionIn
+    $("#Btn_AlimentacionIn").click(function () {
+        let data = $("#F_AlimentacionIn").serialize();
+        var expediente = $("#Exp").text();
+        if (expediente) {
+            $.post("@Url.Action("AlimentacionIn", "HistoriaNutricion")?expediente=" + expediente, data).done(function (response) {
+                if (response.MENSAJE.substring(0, 6) == "Succe:") {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Sección guardada',
+                        showConfirmButton: false,
+                        timer: 1600
+                    })
+                    $("#Btn_AlimentacionIn").css("display", "none");
+                }
+                if (response.MENSAJE.substring(0, 6) == "Error:") {
+                    Swal.fire({
+                        icon: 'error',
+                        title: '¡Error!',
+                        text: response.MENSAJE.substring(7),
+                    });
+                }
+            }).fail(function (response) {
+                console.log(response);
+            });
+            event.preventDefault();
+        }
+    });
+    //Recordatorio
+    $("#Btn_Recordatorio").click(function () {
+        let data = $("#F_Recordatorio").serialize();
+        var expediente = $("#Exp").text();
+        if (expediente) {
+            $.post("@Url.Action("Recordatorio", "HistoriaNutricion")?expediente=" + expediente, data).done(function (response) {
+                if (response.MENSAJE.substring(0, 6) == "Succe:") {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Sección guardada',
+                        showConfirmButton: false,
+                        timer: 1600
+                    })
+                    $("#Btn_Recordatorio").css("display", "none");
+                }
+                if (response.MENSAJE.substring(0, 6) == "Error:") {
+                    Swal.fire({
+                        icon: 'error',
+                        title: '¡Error!',
+                        text: response.MENSAJE.substring(7),
+                    });
+                }
+            }).fail(function (response) {
+                console.log(response);
+            });
+            event.preventDefault();
+        }
+    });
+    //FrecuenciaAlimen
+    $("#Btn_FrecuenciaAlimen").click(function () {
+        let data = $("#F_FrecuenciaAlimen").serialize();
+        var expediente = $("#Exp").text();
+        if (expediente) {
+            $.post("@Url.Action("FrecuenciaAlimen", "HistoriaNutricion")?expediente=" + expediente, data).done(function (response) {
+                if (response.MENSAJE.substring(0, 6) == "Succe:") {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Sección guardada',
+                        showConfirmButton: false,
+                        timer: 1600
+                    })
+                    $("#Btn_FrecuenciaAlimen").css("display", "none");
+                }
+                if (response.MENSAJE.substring(0, 6) == "Error:") {
+                    Swal.fire({
+                        icon: 'error',
+                        title: '¡Error!',
+                        text: response.MENSAJE.substring(7),
+                    });
+                }
+            }).fail(function (response) {
+                console.log(response);
+            });
+            event.preventDefault();
+        }
+    });
+    //EvaluacionAntro
+    $("#Btn_EvaluacionAntro").click(function () {
+        let data = $("#F_EvaluacionAntro").serialize();
+        var expediente = $("#Exp").text();
+        if (expediente) {
+            $.post("@Url.Action("EvaluacionAntro", "HistoriaNutricion")?expediente=" + expediente, data).done(function (response) {
+                if (response.MENSAJE.substring(0, 6) == "Succe:") {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Sección guardada',
+                        showConfirmButton: false,
+                        timer: 1600
+                    })
+                    $("#Btn_EvaluacionAntro").css("display", "none");
+                }
+                if (response.MENSAJE.substring(0, 6) == "Error:") {
+                    Swal.fire({
+                        icon: 'error',
+                        title: '¡Error!',
+                        text: response.MENSAJE.substring(7),
+                    });
+                }
+            }).fail(function (response) {
+                console.log(response);
+            });
+            event.preventDefault();
+        }
+    });
+    //EducacionIn
+    $("#Btn_EducacionIn").click(function () {
+        let data = $("#F_EducacionIn").serialize();
+        var expediente = $("#Exp").text();
+        if (expediente) {
+            $.post("@Url.Action("EducacionIn", "HistoriaNutricion")?expediente=" + expediente, data).done(function (response) {
+                if (response.MENSAJE.substring(0, 6) == "Succe:") {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Sección guardada',
+                        showConfirmButton: false,
+                        timer: 1600
+                    })
+                    $("#Btn_EducacionIn").css("display", "none");
+                }
+                if (response.MENSAJE.substring(0, 6) == "Error:") {
+                    Swal.fire({
+                        icon: 'error',
+                        title: '¡Error!',
+                        text: response.MENSAJE.substring(7),
+                    });
+                }
+            }).fail(function (response) {
+                console.log(response);
+            });
+            event.preventDefault();
         }
     });
     // #endregion
