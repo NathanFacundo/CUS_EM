@@ -173,6 +173,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\DerechohabienteController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HistoriaNutricionController.cs" />
     <Compile Include="Areas\Admin\Controllers\HistoriaClinicaController.cs" />
     <Compile Include="Areas\Admin\Controllers\HistoriaMedicinaController.cs" />
     <Compile Include="Areas\Admin\Controllers\HistoriaPsicologiaController.cs" />
@@ -321,6 +322,57 @@
     </Compile>
     <Compile Include="Models\hc_MED_ResultadosLaboratorio.cs">
       <DependentUpon>HC_Medicina.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HC_Nutricion.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HC_Nutricion.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HC_Nutricion.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HC_Nutricion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HC_Nutricion.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HC_Nutricion.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\hc_NUT_AlimentacionInicial.cs">
+      <DependentUpon>HC_Nutricion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\hc_NUT_DatosDieteticos.cs">
+      <DependentUpon>HC_Nutricion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\hc_NUT_EducacionInicial.cs">
+      <DependentUpon>HC_Nutricion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\hc_NUT_EtapaCambio.cs">
+      <DependentUpon>HC_Nutricion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\hc_NUT_EvaluacionAntro.cs">
+      <DependentUpon>HC_Nutricion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\hc_NUT_FrecuenciaAlimen.cs">
+      <DependentUpon>HC_Nutricion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\hc_NUT_ImpresionDiag.cs">
+      <DependentUpon>HC_Nutricion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\hc_NUT_Otros.cs">
+      <DependentUpon>HC_Nutricion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\hc_NUT_Plan.cs">
+      <DependentUpon>HC_Nutricion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\hc_NUT_Pronostico.cs">
+      <DependentUpon>HC_Nutricion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\hc_NUT_Recordatorio.cs">
+      <DependentUpon>HC_Nutricion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\hc_NUT_ResultadoLab.cs">
+      <DependentUpon>HC_Nutricion.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\hc_PS_AreasAtencion.cs">
       <DependentUpon>HC_Medicina.tt</DependentUpon>
@@ -566,6 +618,16 @@
       <DependentUpon>HC_Medicina.edmx</DependentUpon>
       <LastGenOutput>HC_Medicina.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\HC_Nutricion.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HC_Nutricion.edmx</DependentUpon>
+      <LastGenOutput>HC_Nutricion.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\HC_Nutricion.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HC_Nutricion.edmx</DependentUpon>
+      <LastGenOutput>HC_Nutricion.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\assets\fonts\MaterialIcons-Regular.eot" />
@@ -629,6 +691,14 @@
     </Content>
     <Content Include="Areas\Admin\Views\HistoriaClinica\HistoriaCopia.cshtml" />
     <Content Include="Areas\Admin\Views\HistoriaPsicologia\Index.cshtml" />
+    <EntityDeploy Include="Models\HC_Nutricion.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>HC_Nutricion.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\HC_Nutricion.edmx.diagram">
+      <DependentUpon>HC_Nutricion.edmx</DependentUpon>
+    </Content>
+    <Content Include="Areas\Admin\Views\HistoriaNutricion\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

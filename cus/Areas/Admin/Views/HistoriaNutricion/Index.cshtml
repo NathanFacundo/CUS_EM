@@ -1,0 +1,3141 @@
+﻿
+@{
+}
+
+<style>
+    .nav-tabs.nav-tabs-bottom > li {
+        margin-bottom: -1px;
+        width: 110px;
+        max-width: 110px;
+        font-size: 10px;
+    }
+
+    .user-tabs .nav-tabs > li > a {
+        padding: 5px;
+    }
+
+
+
+    .diaginfo {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 2px 15px;
+        background-color: #20c0f3;
+        color: white;
+        margin-left: -20px;
+        font-size: 15px;
+        font-weight: bolder;
+    }
+
+        .diaginfo:after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            width: 0;
+            height: 0;
+            border-top: solid 30px #20c0f3;
+            border-left: solid 50px transparent;
+            border-right: solid 50px transparent;
+        }
+
+
+    .diaginfo2 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 2px 15px;
+        background-color: #20c0f3;
+        color: white;
+        margin-left: -20px;
+        margin-top: -40px;
+        font-size: 12px;
+        font-weight: bolder;
+    }
+
+        .diaginfo2:after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            width: 0;
+            height: 0;
+            border-top: solid 20px #20c0f3;
+            border-left: solid 20px transparent;
+            border-right: solid 20px transparent;
+        }
+
+    .resumenTop {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 2.5vw;
+        height: 2.5vw;
+        border-radius: 2.5vw;
+        background-color: #20c0f3;
+        color: white;
+        font-size: 1.2vw;
+        line-height: 2.5vw;
+        text-align: center;
+    }
+
+
+    .resumenTopCheck {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 1.5vw;
+        height: 1.5vw;
+        border-radius: 100%;
+        background-color: #20c0f3;
+        color: white;
+        font-size: 0.8vw;
+        line-height: 1.5vw;
+        text-align: center;
+    }
+
+    .resumenText {
+        font-size: 0.8vw;
+        margin-top: 3vw;
+        color: #9E9E9E;
+        font-weight: bolder;
+        -moz-box-shadow: none !important;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+        border: none;
+        font-weight: bold;
+        border-bottom: 2px solid #FBC43D;
+        outline-width: 0;
+        width: 100%;
+        max-width: 100%;
+        background-color: transparent;
+    }
+
+    .tipoconsulta {
+        border-radius: 0px;
+        border: 2px solid #FBC43D;
+    }
+
+    .borrardiag {
+        width: 50%;
+        filter: grayscale(100%);
+    }
+
+    .borrarInt {
+        width: 50px;
+        filter: grayscale(100%);
+    }
+
+
+    #msform input,
+    #msform textarea,
+    #msform select {
+        padding: 10px 8px 4px 8px;
+        border: none;
+        border-bottom: 1px solid lightgray;
+        border-radius: 0px;
+        margin-top: 2px;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        color: #20c0f3;
+        font-size: 16px;
+        letter-spacing: 1px;
+        background-color: white;
+    }
+
+        #msform input:focus,
+        #msform textarea:focus,
+        #msform select:focus {
+            -moz-box-shadow: none !important;
+            -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+            border: none;
+            font-weight: bold;
+            border-bottom: 2px solid #20c0f3;
+            outline-width: 0
+        }
+
+
+    #notaevolucion {
+        background-color: white;
+    }
+
+    h1 {
+        position: absolute;
+        top: 60%;
+        left: 0;
+        margin: auto;
+        right: 0;
+        font-size: 1.5em;
+    }
+
+    .btn-buscar {
+        background-color: #20c0f3;
+        color: white !important;
+        width: 8%;
+    }
+
+        .btn-buscar:hover {
+            background-color: #20c0f3 !important;
+            color: white !important;
+        }
+
+    .btnbuscapac {
+        width: 20px;
+        -webkit-filter: invert(100%);
+        filter: invert(100%);
+    }
+
+    .profile-header {
+        padding-left: 0px;
+        margin-bottom: 20px;
+    }
+
+
+
+
+    /* Estilo para la tabla */
+    #tbl {
+        border: 1px solid #000;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    /* Estilo para las celdas */
+    #tbl td, th {
+        border: 1px solid #000;
+        padding: 8px;
+        text-align: left;
+    }
+
+    /* Estilo para las etiquetas */
+    #tbl label {
+        display: block; /* Para que las etiquetas estén en una línea separada */
+    }
+
+    /* Estilo para el encabezado (thead) */
+        #tbl thead {
+            /*background-color: #f0f0f0;*/ /* Cambia el color de fondo según tus preferencias */
+            border: 1px solid #000;
+        }
+
+</style>
+
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3 class="page-title">Historia Clínica Nutrición</h3>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12" id="InfoPX">
+                <div class="profile-header">
+                    <div class="row align-items-center">
+                        <div class="col-auto profile-image">
+                            <a href="#">
+                            </a>
+                        </div>
+                        <div class="col ml-md-n2 profile-user-info">
+                            <h10 style="font-weight:bold;">Nombre: </h10>
+                            <a id="Nombre"></a><br />
+                            <h10 style="font-weight:bold;">Expediente: </h10>
+                            <a id="Exp"></a><br />
+                            <h10 style="font-weight:bold;">Edad: </h10>
+                            <a id="Edad"></a><br />
+                            <h10 style="font-weight:bold;">Sexo: </h10>
+                            <a id="Sexo"></a><br />
+                            <h10 style="font-weight:bold;">Fecha Nac.: </h10>
+                            <a id="FechaNac"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12" id="BusquedaPX">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Busque al px.</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 mb-3">
+                        <input type="text" class="form-control BuscarPX" id="NombrePX" placeholder="Nombre PX" required>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <input type="text" class="form-control BuscarPX" id="ExpedientePX" placeholder="Expediente PX" required>
+                    </div>
+                    <div class="col-md-3 mb-2">
+                        <button class="btn btn-primary" onclick="BtnBuscarPX()">Buscar</button>
+                    </div>
+                </div>
+                <div>
+                    <div class="table-responsive">
+                        <table id="TblPaciente" class="datatable table table-stripped">
+                            <thead>
+                                <tr>
+                                    <th style="text-align:center">
+                                        Nombre
+                                    </th>
+                                    <th style="text-align:center">
+                                        Primer Apellido
+                                    </th>
+                                    <th style="text-align:center">
+                                        Segundo Apellido
+                                    </th>
+                                    <th style="text-align:center">
+                                        Unidad de Afiliacion
+                                    </th>
+                                    <th style="text-align:center">
+                                        Expediente
+                                    </th>
+                                    <th style="width:5px">Seleccionar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <nav class="user-tabs mb-4">
+                    <ul class="nav nav-tabs nav-tabs-bottom nav-justified">
+                        <li class="nav-item text-left">
+                            <a class="nav-link active" href="#ResultadoLab" data-toggle="tab">Resultado Lab. y<br />Gabinete R.</a>
+                        </li>
+                        <li class="nav-item text-left">
+                            <a class="nav-link" href="#EtapaCam" data-toggle="tab"><span class="med-records">Etapa de<br />Cambio</span></a>
+                        </li>
+                        <li class="nav-item text-left">
+                            <a class="nav-link" href="#DatosDiet" data-toggle="tab">Datos Dietéticos y<br />Estilo de Vida</a>
+                        </li>
+                        <li class="nav-item text-left">
+                            <a class="nav-link" href="#AlimentacionIn" data-toggle="tab">Alimentación<br />Inicial</a>
+                        </li>
+                        <li class="nav-item text-left">
+                            <a class="nav-link" href="#Recordatorio" data-toggle="tab">Recordatorio de 24 hrs.</a>
+                        </li>
+                        <li class="nav-item text-left">
+                            <a class="nav-link" href="#FrecuenciaAlimen" data-toggle="tab">Frecuencia Alimentaria<br />Semanal</a>
+                        </li>
+                        <li class="nav-item text-left">
+                            <a class="nav-link" href="#EvaluacionAntro" data-toggle="tab">Evaluación<br />Antropométrica</a>
+                        </li>
+                        @*<li class="nav-item text-left">
+                            <a class="nav-link" href="#PlanNutricio" data-toggle="tab">Del Plan<br />Nutricio</a>
+                        </li>*@
+                        <li class="nav-item text-left">
+                            <a class="nav-link" href="#EducacionIn" data-toggle="tab">Educación<br />Inicial</a>
+                        </li>
+                        <li class="nav-item text-left">
+                            <a class="nav-link" href="#ImpresionDiag" data-toggle="tab">Impresión<br />Diagnóstica</a>
+                        </li>
+                        <li class="nav-item text-left">
+                            <a class="nav-link" href="#Plan" data-toggle="tab">Plan<br />  </a>
+                        </li>
+                        <li class="nav-item text-left">
+                            <a class="nav-link" href="#Pronostico" data-toggle="tab">Pronóstico<br />  </a>
+                        </li>
+                        <li class="nav-item text-left">
+                            <a class="nav-link" href="#Otros1" data-toggle="tab">Otros<br />  </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="tab-content pt-0">
+
+                    <div class="tab-pane fade show active" id="ResultadoLab">
+                        <div class="card card-table mb-0 p-3 mb-5">
+                            <div class="card-body">
+                                <form id="F_Habitus">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Resultado</label>
+                                                <select class="form-control" id="Resultado" name="Resultado">
+                                                    <option value="">Seleccionar</option>
+                                                    <option value="Si">Si</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8" id="EspResultado">
+                                            <div class="form-group">
+                                                <label>Especifique</label>
+                                                <input type="text" class="form-control" id="Especifica_Resultado" name="Especifica_Resultado" maxlength="298">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="text-right">
+                                        <button id="Btn_ResultadoLab" type="submit" class="btn btn-primary">Guardar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade show" id="EtapaCam">
+                        <div class="card card-table mb-0 p-3 mb-5">
+                            <div class="card-body">
+                                <form id="F_Habitus">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Viene</label>
+                                                <select class="form-control" id="Viene" name="Viene">
+                                                    <option value="">Seleccionar</option>
+                                                    <option value="Iniciativa propia">Iniciativa propia</option>
+                                                    <option value="Obligado">Obligado</option>
+                                                    <option value="Sugerido">Sugerido</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <label>¿Qué desea lograr en sus consultas y en cuánto tiempo?</label>
+                                                <input type="text" class="form-control" id="DeseaLograr" name="DeseaLograr" maxlength="298">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="row">
+                                                <h4>Selecciona la etapa de cambio en la que se encuentra el px:</h4>
+                                            </div>
+                                            <div class="row">
+                                                <input class="form-check-input" type="checkbox" id="Precontemplacion" name="Precontemplacion">
+                                                <label class="form-check-label" for="">
+                                                    Pre-contemplación
+                                                </label>
+                                            </div>
+                                            <div class="row">
+                                                <input class="form-check-input" type="checkbox" id="Contemplacion" name="Contemplacion">
+                                                <label class="form-check-label" for="">
+                                                    Contemplación
+                                                </label>
+                                            </div>
+                                            <div class="row">
+                                                <input class="form-check-input" type="checkbox" id="Preparacion" name="Preparacion">
+                                                <label class="form-check-label" for="">
+                                                    Preparación para la acción
+                                                </label>
+                                            </div>
+                                            <div class="row">
+                                                <input class="form-check-input" type="checkbox" id="Mantenimiento" name="Mantenimiento">
+                                                <label class="form-check-label" for="">
+                                                    Mantenimiento
+                                                </label>
+                                            </div>
+                                            <div class="row">
+                                                <input class="form-check-input" type="checkbox" id="Terminacion" name="Terminacion">
+                                                <label class="form-check-label" for="">
+                                                    Terminación
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <button id="Btn_EtapaCam" type="submit" class="btn btn-primary">Guardar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade show" id="DatosDiet">
+                        <div class="card card-table mb-0 p-3 mb-5">
+                            <div class="card-body">
+                                <form id="F_DatosDiet">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <div class="form-group">
+                                                    <label>Número de comidas al día</label>
+                                                    <input type="text" class="form-control" id="Comidas" name="Comidas" maxlength="28">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="row">
+                                                <div class="col-md-1">
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <div class="row">
+                                                        <h4>¿Cuáles?</h4>
+                                                    </div>
+                                                    <div class="row">
+                                                        <input class="form-check-input" type="checkbox" id="Desayuno" name="Desayuno">
+                                                        <label class="form-check-label" for="">
+                                                            Desayuno
+                                                        </label>
+                                                    </div>
+                                                    <div class="row">
+                                                        <input class="form-check-input" type="checkbox" id="Comidas2" name="Comidas2">
+                                                        <label class="form-check-label" for="">
+                                                            Comida
+                                                        </label>
+                                                    </div>
+                                                    <div class="row">
+                                                        <input class="form-check-input" type="checkbox" id="Cena" name="Cena">
+                                                        <label class="form-check-label" for="">
+                                                            Cena
+                                                        </label>
+                                                    </div>
+                                                    <div class="row">
+                                                        <input class="form-check-input" type="checkbox" id="ColacionMat" name="ColacionMat">
+                                                        <label class="form-check-label" for="">
+                                                            Colación matutina
+                                                        </label>
+                                                    </div>
+                                                    <div class="row">
+                                                        <input class="form-check-input" type="checkbox" id="ColacionVes" name="ColacionVes">
+                                                        <label class="form-check-label" for="">
+                                                            Colación vespertina
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <div class="form-group">
+                                                    <label>Tiempo consumir alimentos</label>
+                                                    <input type="text" class="form-control" id="TiempoConsumir" name="TiempoConsumir" maxlength="28">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Toma suplementos</label>
+                                                <select class="form-control" id="Suplementos" name="Suplementos">
+                                                    <option value="">Seleccionar</option>
+                                                    <option value="Si">Si</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4" id="EspSuplementos">
+                                            <div class="form-group">
+                                                <div class="form-group">
+                                                    <label>Especifique suplementos</label>
+                                                    <input type="text" class="form-control" id="Especifica_Suplementos" name="Especifica_Suplementos" maxlength="298">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <div class="form-group">
+                                                    <label>Alimentos que disgustan</label>
+                                                    <input type="text" class="form-control" id="AlimentosDisgustan" name="AlimentosDisgustan" maxlength="298">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Alimentos Favoritos</label>
+                                                <input type="text" class="form-control" id="AlimentosFavoritos" name="AlimentosFavoritos" maxlength="298">
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <div class="form-group">
+                                                    <label>Consumo de agua natural al día</label>
+                                                    <select class="form-control" id="ConsumoAgua" name="ConsumoAgua">
+                                                        <option value="">Seleccionar</option>
+                                                        <option value="Si">Si</option>
+                                                        <option value="No">No</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4" id="EspConsumoAgua">
+                                            <div class="form-group">
+                                                <div class="form-group">
+                                                    <label>Especifique consumo agua</label>
+                                                    <select class="form-control" id="Especifique_ConsumoA" name="Especifique_ConsumoA">
+                                                        <option value="">Seleccionar</option>
+                                                        <option value="6 a 8 vasos">6 a 8 vasos</option>
+                                                        <option value="Menos 6 vasos">Menos 6 vasos</option>
+                                                        <option value="Mas 8 vasos">Mas 8 vasos</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Horas de sueño</label>
+                                                <input type="text" class="form-control" id="HorasSuenio" name="HorasSuenio" maxlength="28">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <div class="form-group">
+                                                    <label>Realiza actividad física</label>
+                                                    <select class="form-control" id="ActividadFisica" name="ActividadFisica">
+                                                        <option value="">Seleccionar</option>
+                                                        <option value="Si">Si</option>
+                                                        <option value="No">No</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4" id="EspTipoAF">
+                                            <div class="form-group">
+                                                <div class="form-group">
+                                                    <label>Tipo</label>
+                                                    <input type="text" class="form-control" id="Tipo_ActividadF" name="Tipo_ActividadF" maxlength="298">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6" id="EspTiempoAF">
+                                            <div class="form-group">
+                                                <div class="form-group">
+                                                    <label>Tiempo</label>
+                                                    <input type="text" class="form-control" id="Tiempo_ActividadF" name="Tiempo_ActividadF" maxlength="298">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6" id="EspFrecuenciaAF">
+                                            <div class="form-group">
+                                                <div class="form-group">
+                                                    <label>Frecuencia</label>
+                                                    <input type="text" class="form-control" id="Frecuencia_ActividadF" name="Frecuencia_ActividadF" maxlength="298">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <button id="Btn_DatosDiet" type="submit" class="btn btn-primary">Guardar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade show" id="AlimentacionIn">
+                        <div class="card card-table mb-0 p-3 mb-5">
+                            <div class="card-body">
+                                <form id="F_AlimentacionIn">
+                                    <h3>Solo menores de 2 años</h3>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Lactancia materna</label>
+                                                <select class="form-control" id="LactanciaMaterna" name="LactanciaMaterna">
+                                                    <option value="">Seleccionar</option>
+                                                    <option value="Si">Si</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8" id="EspLactancia">
+                                            <div class="form-group">
+                                                <label>¿Cuánto tiempo?</label>
+                                                <input type="text" class="form-control" id="Tiempo_LactanciaM" name="Tiempo_LactanciaM" maxlength="298">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Sucedáneo de la leche</label>
+                                                <select class="form-control" id="Sucedaneo" name="Sucedaneo">
+                                                    <option value="">Seleccionar</option>
+                                                    <option value="Si">Si</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8" id="EspSucedaneo">
+                                            <div class="form-group">
+                                                <label>¿Cuál?</label>
+                                                <input type="text" class="form-control" id="Cual_Sucedaneo" name="Cual_Sucedaneo" maxlength="298">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Alimentación complementaria</label>
+                                                <select class="form-control" id="AlimentacionComp" name="AlimentacionComp">
+                                                    <option value="">Seleccionar</option>
+                                                    <option value="Si">Si</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2" id="EspAlimentacionEdad">
+                                            <div class="form-group">
+                                                <label>Edad</label>
+                                                <input type="text" class="form-control" id="Edad_AlimentacionC" name="Edad_AlimentacionC" maxlength="28">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6" id="EspAlimentacionMotivo">
+                                            <div class="form-group">
+                                                <label>Motivo</label>
+                                                <input type="text" class="form-control" id="Motivo_AlimentacionC" name="Motivo_AlimentacionC" maxlength="298">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <button id="Btn_AlimentacionIn" type="submit" class="btn btn-primary">Guardar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade show" id="Recordatorio">
+                        <div class="card card-table mb-0 p-3 mb-5">
+                            <div class="card-body">
+                                <form id="F_Recordatorio">
+
+                                    <h4>Desayuno</h4>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Hora</label>
+                                                <input type="text" class="form-control" id="Desayuno_Hora" name="Desayuno_Hora" maxlength="14">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Preparación</label>
+                                                <input type="text" class="form-control" id="Desayuno_Preparacion" name="Desayuno_Preparacion" maxlength="298">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Alimento</label>
+                                                <input type="text" class="form-control" id="Desayuno_Alimento" name="Desayuno_Alimento" maxlength="298">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Cantidad</label>
+                                                <input type="text" class="form-control" id="Desayuno_Cantidad" name="Desayuno_Cantidad" maxlength="298">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <h4>Colación (Después del desayuno)</h4>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Hora</label>
+                                                <input type="text" class="form-control" id="ColacionDes_Hora" name="ColacionDes_Hora" maxlength="14">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Preparación</label>
+                                                <input type="text" class="form-control" id="ColacionDes_Preparacion" name="ColacionDes_Preparacion" maxlength="298">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Alimento</label>
+                                                <input type="text" class="form-control" id="ColacionDes_Alimento" name="ColacionDes_Alimento" maxlength="298">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Cantidad</label>
+                                                <input type="text" class="form-control" id="ColacionDes_Cantidad" name="ColacionDes_Cantidad" maxlength="298">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <h4>Comida</h4>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Hora</label>
+                                                <input type="text" class="form-control" id="Comida_Hora" name="Comida_Hora" maxlength="14">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Preparación</label>
+                                                <input type="text" class="form-control" id="Comida_Preparacion" name="Comida_Preparacion" maxlength="298">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Alimento</label>
+                                                <input type="text" class="form-control" id="Comida_Alimento" name="Comida_Alimento" maxlength="298">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Cantidad</label>
+                                                <input type="text" class="form-control" id="Comida_Cantidad" name="Comida_Cantidad" maxlength="298">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <h4>Colación (Después de la comida)</h4>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Hora</label>
+                                                <input type="text" class="form-control" id="ColacionCom_Hora" name="ColacionCom_Hora" maxlength="14">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Preparación</label>
+                                                <input type="text" class="form-control" id="ColacionCom_Preparacion" name="ColacionCom_Preparacion" maxlength="298">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Alimento</label>
+                                                <input type="text" class="form-control" id="ColacionCom_Alimento" name="ColacionCom_Alimento" maxlength="298">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Cantidad</label>
+                                                <input type="text" class="form-control" id="ColacionCom_Cantidad" name="ColacionCom_Cantidad" maxlength="298">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <h4>Cena</h4>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Hora</label>
+                                                <input type="text" class="form-control" id="Cena_Hora" name="Cena_Hora" maxlength="14">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Preparación</label>
+                                                <input type="text" class="form-control" id="Cena_Preparacion" name="Cena_Preparacion" maxlength="298">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Alimento</label>
+                                                <input type="text" class="form-control" id="Cena_Alimento" name="Cena_Alimento" maxlength="298">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Cantidad</label>
+                                                <input type="text" class="form-control" id="Cena_Cantidad" name="Cena_Cantidad" maxlength="298">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="text-right">
+                                        <button id="Btn_Recordatorio" type="submit" class="btn btn-primary">Guardar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="FrecuenciaAlimen" class="tab-pane fade">
+                        <div class="card card-table mb-0">
+                            <div class="card-body">
+                                <form id="F_FrecuenciaAlimen">
+
+                                    <div class="row">
+                                        @*<h3>Marque casilla según indique el px (formular pregunta)</h3>*@
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label><b>Alimento</b></label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label><b>Si</b></label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label><b>No</b></label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label><b>Frecuencia</b></label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label>Leche</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="Leche" name="Leche">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="Leche_No" name="Leche_No">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input type="text" class="form-control" id="Frecuencia_Leche" name="Frecuencia_Leche" placeholder="Leche" maxlength="198">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label>Verdura</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="Verdura" name="Verdura">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="Verdura_No" name="Verdura_No">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input type="text" class="form-control" id="Frecuencia_Verdura" name="Frecuencia_Verdura" placeholder="Verdura" maxlength="198">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label>Fruta</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="Fruta" name="Fruta">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="Fruta_No" name="Fruta_No">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input type="text" class="form-control" id="Frecuencia_Fruta" name="Frecuencia_Fruta" placeholder="Fruta" maxlength="198">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label>Cereales</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="Cereales" name="Cereales">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="Cereales_No" name="Cereales_No">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input type="text" class="form-control" id="Describir_pielYanexos" name="Describir_pielYanexos" placeholder="Cereales" maxlength="198">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label>Leguminosas</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="Leguminosas" name="Leguminosas">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="Leguminosas_No" name="Leguminosas_No">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input type="text" class="form-control" id="Frecuencia_Leguminosas" name="Frecuencia_Leguminosas" placeholder="Leguminosas" maxlength="198">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label>Carne</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="Carne" name="Carne">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="Carne_No" name="Carne_No">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input type="text" class="form-control" id="Frecuencia_Carne" name="Frecuencia_Carne" placeholder="Carne" maxlength="198">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label>Grasa</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="Grasa" name="Grasa">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="Grasa_No" name="Grasa_No">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input type="text" class="form-control" id="Frecuencia_Grasa" name="Frecuencia_Grasa" placeholder="Grasa" maxlength="198">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label>Azúcar</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="Azucar" name="Azucar">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="Azucar_No" name="Azucar_No">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input type="text" class="form-control" id="Frecuencia_Azucar" name="Frecuencia_Azucar" placeholder="Azucar" maxlength="198">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label>Bebibas Azucaradas</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="BebibasAzuc" name="BebibasAzuc">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="BebibasAzuc_No" name="BebibasAzuc_No">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input type="text" class="form-control" id="Frecuencia_BebibasAzuc" name="Frecuencia_BebibasAzuc" placeholder="Bebibas Azucaradas" maxlength="198">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label>Bebibas Dietéticas</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="BebibasDiet" name="BebibasDiet">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="BebibasDiet_No" name="BebibasDiet_No">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input type="text" class="form-control" id="Frecuencia_BebibasDiet" name="Frecuencia_BebibasDiet" placeholder="Bebibas Dietéticas" maxlength="198">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label>Bebibas Alternativas</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="BebibasAlt" name="BebibasAlt">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="BebibasAlt_No" name="BebibasAlt_No">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input type="text" class="form-control" id="Frecuencia_BebibasAlt" name="Frecuencia_BebibasAlt" placeholder="Bebibas Alternativas" maxlength="198">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label>Café</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="Cafe" name="Cafe">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="Cafe_No" name="Cafe_No">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input type="text" class="form-control" id="Frecuencia_Cafe" name="Frecuencia_Cafe" placeholder="Café" maxlength="198">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label>Té</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="Te" name="Te">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="Te_No" name="Te_No">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input type="text" class="form-control" id="Frecuencia_Te" name="Frecuencia_Te" placeholder="Té" maxlength="198">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label>Cerveza</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="Cerveza" name="Cerveza">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="Cerveza_No" name="Cerveza_No">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input type="text" class="form-control" id="Frecuencia_Cerveza" name="Frecuencia_Cerveza" placeholder="Cerveza" maxlength="198">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label>Productos Panadería</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="ProductosPan" name="ProductosPan">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="ProductosPan_No" name="ProductosPan_No">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input type="text" class="form-control" id="Frecuencia_ProductosPan" name="Frecuencia_ProductosPan" placeholder="Productos Panadería" maxlength="198">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label>Confitería</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="Confiteria" name="Confiteria">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="Confiteria_No" name="Confiteria_No">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input type="text" class="form-control" id="Frecuencia_Confiteria" name="Frecuencia_Confiteria" placeholder="Confitería" maxlength="198">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label>Embutidos</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="Embutidos" name="Embutidos">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="Embutidos_No" name="Embutidos_No">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input type="text" class="form-control" id="Frecuencia_Embutidos" name="Frecuencia_Embutidos" placeholder="Embutidos" maxlength="198">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label>Alimentos Enlatados</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="AlimentosEnla" name="AlimentosEnla">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="AlimentosEnla_No" name="AlimentosEnla_No">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input type="text" class="form-control" id="Frecuencia_AlimentosEnla" name="Frecuencia_AlimentosEnla" placeholder="Alimentos Enlatados" maxlength="198">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label>Sopas Instantáneas</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="Sopas" name="Sopas">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="Sopas_No" name="Sopas_No">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input type="text" class="form-control" id="Frecuencia_Sopas" name="Frecuencia_Sopas" placeholder="Sopas Instantáneas" maxlength="198">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label>Verudras Precocidas</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="Verudras" name="Verudras">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="Verudras_No" name="Verudras_No">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input type="text" class="form-control" id="Frecuencia_Verudras" name="Frecuencia_Verudras" placeholder="Verudras Precocidas" maxlength="198">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label>Comida Rápida</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="ComidaRap" name="ComidaRap">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="ComidaRap_No" name="ComidaRap_No">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input type="text" class="form-control" id="Frecuencia_ComidaRap" name="Frecuencia_ComidaRap" placeholder="Comida Rápida" maxlength="198">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label>Comidas Grasosas</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="ComidasGras" name="ComidasGras">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="ComidasGras_No" name="ComidasGras_No">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input type="text" class="form-control" id="Frecuencia_ComidasGras" name="Frecuencia_ComidasGras" placeholder="Comidas Grasosas" maxlength="198">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label>Productos Chatarra</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="ProductosChat" name="ProductosChat">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="ProductosChat_No" name="ProductosChat_No">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input type="text" class="form-control" id="Frecuencia_ProductosChat" name="Frecuencia_ProductosChat" placeholder="Productos Chatarra" maxlength="198">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label>Consomé</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="Consome" name="Consome">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="Consome_No" name="Consome_No">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input type="text" class="form-control" id="Frecuencia_Consome" name="Frecuencia_Consome" placeholder="Consomé" maxlength="198">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label>Sal</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="Sal" name="Sal">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="Sal_No" name="Sal_No">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input type="text" class="form-control" id="Frecuencia_Sal" name="Frecuencia_Sal" placeholder="Sal" maxlength="198">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label>Sucedáneo de la leche</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="Sucedaneo" name="Sucedaneo">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="Sucedaneo_No" name="Sucedaneo_No">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input type="text" class="form-control" id="Frecuencia_Sucedaneo" name="Frecuencia_Sucedaneo" placeholder="Sucedaneo" maxlength="198">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label>Otros</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="Otros" name="Otros">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="Otros_No" name="Otros_No">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input type="text" class="form-control" id="Frecuencia_Otros" name="Frecuencia_Otros" placeholder="Otros" maxlength="198">
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <button id="Btn_FrecuenciaAlimen" type="submit" class="btn btn-primary">Guardar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade show" id="EvaluacionAntro">
+                        <div class="card card-table mb-0 p-3 mb-5">
+                            <div class="card-body">
+                                <form id="F_EvaluacionAntro">
+
+                                    <h3>Menores 4 años 11 meses</h3>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Peso al nacer(kg)</label>
+                                                <input type="text" class="form-control" id="S4Anios_PesoN" name="S4Anios_PesoN" maxlength="49">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Talla al nacer(cm)</label>
+                                                <input type="text" class="form-control" id="S4Anios_TallaN" name="S4Anios_TallaN" maxlength="49">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Peso actual(kg)</label>
+                                                <input type="text" class="form-control" id="S4Anios_PesoA" name="S4Anios_PesoA" maxlength="49">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Talla actual(kg)</label>
+                                                <input type="text" class="form-control" id="S4Anios_TallaA" name="S4Anios_TallaA" maxlength="49">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <table class="table table-bordered" id="tbl">
+                                            <thead>
+                                                <tr>
+                                                    <th>Indicador</th>
+                                                    <th>Mediana</th>
+                                                    <th>Desviaciones est. con rel. a la mediana</th>
+                                                    <th>Rango</th>
+                                                    <th>Clasificación</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td><label for="cell1">Peso/edad</label></td>
+                                                    <td><input type="text" id="S4Tabla_MedPeso" maxlength="198"></td>
+                                                    <td><input type="text" id="S4Tabla_DesPeso" maxlength="198"></td>
+                                                    <td><input type="text" id="S4Tabla_RanPeso" maxlength="198"></td>
+                                                    <td><input type="text" id="S4Tabla_ClaPeso" maxlength="198"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label for="cell6">Talla/edad</label></td>
+                                                    <td><input type="text" id="S4Tabla_MedTalla" maxlength="198"></td>
+                                                    <td><input type="text" id="S4Tabla_DesTalla" maxlength="198"></td>
+                                                    <td><input type="text" id="S4Tabla_RanTalla" maxlength="198"></td>
+                                                    <td><input type="text" id="S4Tabla_ClaTalla" maxlength="198"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label for="cell6">Peso/talla</label></td>
+                                                    <td><input type="text" id="S4Tabla_MedPeTa" maxlength="198"></td>
+                                                    <td><input type="text" id="S4Tabla_DesPeTa" maxlength="198"></td>
+                                                    <td><input type="text" id="S4Tabla_RanPeTa" maxlength="198"></td>
+                                                    <td><input type="text" id="S4Tabla_ClaPeTa" maxlength="198"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label for="cell6">Peso Ideal</label></td>
+                                                    <td><input type="text" id="S4Tabla_MedPeId" maxlength="198"></td>
+                                                    <td><input type="text" id="S4Tabla_DesPeId" maxlength="198"></td>
+                                                    <td><input type="text" id="S4Tabla_RanPeId" maxlength="198"></td>
+                                                    <td><input type="text" id="S4Tabla_ClaPeId" maxlength="198"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Interpretación global de los 3 indicadores</label>
+                                                <input type="text" class="form-control" id="S4Anios_Interpretacion" name="S4Anios_Interpretacion" maxlength="198">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Observaciones</label>
+                                                <input type="text" class="form-control" id="S4Anios_Observaciones" name="S4Anios_Observaciones" maxlength="198">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr size="2px" color="blue" />
+                                    <h3>Igual o mayor 5 años a 9 años 11 meses</h3>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Peso actual(kg)</label>
+                                                <input type="text" class="form-control" id="S5Anios_PesoA" name="S5Anios_PesoA" maxlength="198">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Talla actual(kg)</label>
+                                                <input type="text" class="form-control" id="S5Anios_TallaA" name="S5Anios_TallaA" maxlength="198">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>IMC (kg/m2)</label>
+                                                <input type="text" class="form-control" id="S5Anios_Indice" name="S5Anios_Indice" maxlength="198">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Desviación est.</label>
+                                                <input type="text" class="form-control" id="S5Anios_Desviacion" name="S5Anios_Desviacion" maxlength="198">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Diagnóstico</label>
+                                                <input type="text" class="form-control" id="S5Anios_Diagnostico" name="S5Anios_Diagnostico" maxlength="198">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Peso ideal(kg)</label>
+                                                <input type="text" class="form-control" id="S5Anios_PesoId" name="S5Anios_PesoId" maxlength="198">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Circunferencia cintura(cm)</label>
+                                                <input type="text" class="form-control" id="S5Anios_Circunf" name="S5Anios_Circunf" maxlength="198">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Percentil</label>
+                                                <input type="text" class="form-control" id="S5Anios_Percentil" name="S5Anios_Percentil" maxlength="198">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Interpretación</label>
+                                                <input type="text" class="form-control" id="S5Anios_Interpretacion" name="S5Anios_Interpretacion" maxlength="198">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Observaciones</label>
+                                                <input type="text" class="form-control" id="S5Anios_Observaciones" name="S5Anios_Observaciones" maxlength="198">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr size="2px" color="blue" />
+                                    <h3>Igual o mayor 10 años a 19 años 11 meses</h3>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Peso actual(kg)</label>
+                                                <input type="text" class="form-control" id="S10Anios_PesoA" name="S10Anios_PesoA" maxlength="198">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Talla actual(kg)</label>
+                                                <input type="text" class="form-control" id="S10Anios_TallaA" name="S10Anios_TallaA" maxlength="198">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>IMC(kg/m2)</label>
+                                                <input type="text" class="form-control" id="S10Anios_Indice" name="S10Anios_Indice" maxlength="198">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Desviación estandar</label>
+                                                <input type="text" class="form-control" id="S10Anios_Desviacion" name="S10Anios_Desviacion" maxlength="198">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Diagnóstico</label>
+                                                <input type="text" class="form-control" id="S10Anios_Diagnostico" name="S10Anios_Diagnostico" maxlength="198">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Peso ideal(kg)</label>
+                                                <input type="text" class="form-control" id="S10Anios_PesoId" name="S10Anios_PesoId" maxlength="198">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Circunferencia (cm)</label>
+                                                <input type="text" class="form-control" id="S10Anios_Circunf" name="S10Anios_Circunf" maxlength="198">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Percentil</label>
+                                                <input type="text" class="form-control" id="S10Anios_Percentil" name="S10Anios_Percentil" maxlength="198">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Interpretación</label>
+                                                <input type="text" class="form-control" id="S10Anios_Interpretacion" name="S10Anios_Interpretacion" maxlength="198">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Observaciones</label>
+                                                <input type="text" class="form-control" id="S10Anios_Observaciones" name="S10Anios_Observaciones" maxlength="198">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr size="2px" color="blue" />
+                                    <h3>Igual o mayor 20 años a 59 años 11 meses</h3>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Peso actual(kg)</label>
+                                                <input type="text" class="form-control" id="S20Anios_PesoA" name="S20Anios_PesoA" maxlength="198">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Talla actual(kg)</label>
+                                                <input type="text" class="form-control" id="S20Anios_TallaA" name="S20Anios_TallaA" maxlength="198">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>IMC(kg/m2)</label>
+                                                <input type="text" class="form-control" id="S20Anios_Indice" name="S20Anios_Indice" maxlength="198">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Diagnóstico</label>
+                                                <input type="text" class="form-control" id="S20Anios_Diagnostico" name="S20Anios_Diagnostico" maxlength="198">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Circunferencia muñeca(cm)</label>
+                                                <input type="text" class="form-control" id="S20Anios_CircunfMu" name="S20Anios_CircunfMu" maxlength="198">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Complexión</label>
+                                                <input type="text" class="form-control" id="S20Anios_Complexion" name="S20Anios_Complexion" maxlength="198">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Peso ideal(kg)</label>
+                                                <input type="text" class="form-control" id="S20Anios_PesoId" name="S20Anios_PesoId" maxlength="198">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Circunferencia cintura(cm)</label>
+                                                <input type="text" class="form-control" id="S20Anios_CircunfCin" name="S20Anios_CircunfCin" maxlength="198">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Circunferencia cadera(cm)</label>
+                                                <input type="text" class="form-control" id="S20Anios_CircunfCad" name="S20Anios_CircunfCad" maxlength="198">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Índice cintura y cadera/diag.</label>
+                                                <input type="text" class="form-control" id="S20Anios_IndiceCin" name="S20Anios_IndiceCin" maxlength="198">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Riesgo cardio. según la cintura</label>
+                                                <input type="text" class="form-control" id="S20Anios_Riesgo" name="S20Anios_Riesgo" maxlength="198">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Observaciones</label>
+                                                <input type="text" class="form-control" id="S20Anios_Observaciones" name="S20Anios_Observaciones" maxlength="198">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr size="2px" color="blue" />
+                                    <h3>Igual o mayor 60 años</h3>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Peso actual(kg)</label>
+                                                <input type="text" class="form-control" id="S60Anios_PesoA" name="S60Anios_PesoA" maxlength="198">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Talla actual(kg)</label>
+                                                <input type="text" class="form-control" id="S60Anios_TallaA" name="S60Anios_TallaA" maxlength="198">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>IMC(kg/m2)</label>
+                                                <input type="text" class="form-control" id="S60Anios_Indice" name="S60Anios_Indice" maxlength="198">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Diagnóstico</label>
+                                                <input type="text" class="form-control" id="S60Anios_Diagnostico" name="S60Anios_Diagnostico" maxlength="198">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Circunferencia muñeca(cm)</label>
+                                                <input type="text" class="form-control" id="S60Anios_CircunfMu" name="S60Anios_CircunfMu" maxlength="198">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Complexión</label>
+                                                <input type="text" class="form-control" id="S60Anios_Complexion" name="S60Anios_Complexion" maxlength="198">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Peso ideal(kg)</label>
+                                                <input type="text" class="form-control" id="S60Anios_PesoId" name="S60Anios_PesoId" maxlength="198">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Peso ajustado(kg)</label>
+                                                <input type="text" class="form-control" id="S60Anios_PesoAj" name="S60Anios_PesoAj" maxlength="198">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Circunferencia cintura(cm)</label>
+                                                <input type="text" class="form-control" id="S60Anios_CircunfCin" name="S60Anios_CircunfCin" maxlength="198">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Circunferencia cadera(cm)</label>
+                                                <input type="text" class="form-control" id="S60Anios_CircunfCad" name="S60Anios_CircunfCad" maxlength="198">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Índice cintura y cadera/diag.</label>
+                                                <input type="text" class="form-control" id="S60Anios_IndiceCin" name="S60Anios_IndiceCin" maxlength="198">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Circunferencia brazo(cm)</label>
+                                                <input type="text" class="form-control" id="S60Anios_CircunfBra" name="S60Anios_CircunfBra" maxlength="198">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Circunferencia pantorrilla</label>
+                                                <input type="text" class="form-control" id="S60Anios_CircunfPan" name="S60Anios_CircunfPan" maxlength="198">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Observaciones</label>
+                                                <input type="text" class="form-control" id="S60Anios_Observaciones" name="S60Anios_Observaciones" maxlength="198">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr size="2px" color="blue" />
+                                    <h3>Embarazada</h3>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Peso actual(kg)</label>
+                                                <input type="text" class="form-control" id="SEmbaraz_PesoA" name="SEmbaraz_PesoA" maxlength="198">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Talla actual(kg)</label>
+                                                <input type="text" class="form-control" id="SEmbaraz_TallaA" name="SEmbaraz_TallaA" maxlength="198">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Mes/semana de gestación</label>
+                                                <input type="text" class="form-control" id="SEmbaraz_Gestacion" name="SEmbaraz_Gestacion" maxlength="198">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Circunferencia brazo(cm)</label>
+                                                <input type="text" class="form-control" id="SEmbaraz_CircunfBra" name="SEmbaraz_CircunfBra" maxlength="198">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Peso pregestacional(kg)</label>
+                                                <input type="text" class="form-control" id="SEmbaraz_PesoPreges" name="SEmbaraz_PesoPreges" maxlength="198">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>IMC pregestacional</label>
+                                                <input type="text" class="form-control" id="SEmbaraz_Indice" name="SEmbaraz_Indice" maxlength="198">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Diagnóstico pregestacional</label>
+                                                <input type="text" class="form-control" id="SEmbaraz_Diagnostico" name="SEmbaraz_Diagnostico" maxlength="198">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Ganancia peso deseable durante embarazo(kg)</label>
+                                                <input type="text" class="form-control" id="SEmbaraz_GanPesoDesd" name="SEmbaraz_GanPesoDesd" maxlength="198">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Ganancia peso actual durante embarazo(kg)</label>
+                                                <input type="text" class="form-control" id="SEmbaraz_GanPesoAct" name="SEmbaraz_GanPesoAct" maxlength="198">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Observaciones</label>
+                                                <input type="text" class="form-control" id="SEmbaraz_Observaciones" name="SEmbaraz_Observaciones" maxlength="198">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="text-right">
+                                        <button id="Btn_EvaluacionAntro" type="submit" class="btn btn-primary">Guardar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade show" id="EducacionIn">
+                        <div class="card card-table mb-0 p-3 mb-5">
+                            <div class="card-body">
+                                <form id="F_EducacionIn">
+                                    <h4>Tema de educación impartido. Selecciona 1 o más.</h4>
+
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="row">
+                                                <input class="form-check-input" type="checkbox" id="CriteriosGen" name="CriteriosGen">
+                                                <label class="form-check-label" for="">
+                                                    Criterios grales. de la alimnetación en base a la normativa.
+                                                </label>
+                                            </div>
+                                            <div class="row">
+                                                <input class="form-check-input" type="checkbox" id="PrevencionEnf" name="PrevencionEnf">
+                                                <label class="form-check-label" for="">
+                                                    Prevención de enfermedades relacionadas con la alimentación.
+                                                </label>
+                                            </div>
+                                            <div class="row">
+                                                <input class="form-check-input" type="checkbox" id="EducacionMat" name="EducacionMat">
+                                                <label class="form-check-label" for="">
+                                                    Educación en materia de alimentación correcta.
+                                                </label>
+                                            </div>
+                                            <div class="row">
+                                                <input class="form-check-input" type="checkbox" id="PlanificacionDis" name="PlanificacionDis">
+                                                <label class="form-check-label" for="">
+                                                    Planificación y dist. de la dieta de acuerdo a la etapa de la vida.
+                                                </label>
+                                            </div>
+                                            <div class="row">
+                                                <input class="form-check-input" type="checkbox" id="AdopcionPat" name="AdopcionPat">
+                                                <label class="form-check-label" for="">
+                                                    Adopción de patrones de alimentación saludables para la prev. de enfermedades.
+                                                </label>
+                                            </div>
+                                            <div class="row">
+                                                <input class="form-check-input" type="checkbox" id="EducacionMej" name="EducacionMej">
+                                                <label class="form-check-label" for="">
+                                                    Educación para mejorar los hábitos alimentarios en la familia.
+                                                </label>
+                                            </div>
+                                            <div class="row">
+                                                <input class="form-check-input" type="checkbox" id="EjercicioAd" name="EjercicioAd">
+                                                <label class="form-check-label" for="">
+                                                    Ejercicio adecuado.
+                                                </label>
+                                            </div>
+                                            <div class="row">
+                                                <input class="form-check-input" type="checkbox" id="EducacionRel" name="EducacionRel">
+                                                <label class="form-check-label" for="">
+                                                    Educación relacionada para lograr hábitos alimentarios correctos.
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="row">
+                                                <input class="form-check-input" type="checkbox" id="AdherenciaTrat" name="AdherenciaTrat">
+                                                <label class="form-check-label" for="">
+                                                    Adherencia al tratamiento.
+                                                </label>
+                                            </div>
+                                            <div class="row">
+                                                <input class="form-check-input" type="checkbox" id="EdRelAlimentos" name="EdRelAlimentos">
+                                                <label class="form-check-label" for="">
+                                                    Educación rel. con alimentos o nutrientes que influyen en el efecto de los medicamentos.
+                                                </label>
+                                            </div>
+                                            <div class="row">
+                                                <input class="form-check-input" type="checkbox" id="DudasInq" name="DudasInq">
+                                                <label class="form-check-label" for="">
+                                                    Dudas, inquietudes del px.
+                                                </label>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group">
+                                                    <label>Especifique Dudas, inquietudes del px.</label>
+                                                    <input type="text" class="form-control" id="Especifica_Dudas" name="Especifica_Dudas" maxlength="298">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h4>Método utilizado. Selecciona 1 o más.</h4>
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="row">
+                                                <input class="form-check-input" type="checkbox" id="Oral" name="Oral">
+                                                <label class="form-check-label" for="">
+                                                    Oral.
+                                                </label>
+                                            </div>
+                                            <div class="row">
+                                                <input class="form-check-input" type="checkbox" id="Escrito" name="Escrito">
+                                                <label class="form-check-label" for="">
+                                                    Escrito.
+                                                </label>
+                                            </div>
+                                            <div class="row">
+                                                <input class="form-check-input" type="checkbox" id="Video" name="Video">
+                                                <label class="form-check-label" for="">
+                                                    Video.
+                                                </label>
+                                            </div>
+                                            <div class="row">
+                                                <input class="form-check-input" type="checkbox" id="Demostracion" name="Demostracion">
+                                                <label class="form-check-label" for="">
+                                                    Demostración.
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h4>Etapa de la vida. Selecciona 1.</h4>
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="row">
+                                                <input class="form-check-input" type="checkbox" id="MujerEmb" name="MujerEmb">
+                                                <label class="form-check-label" for="">
+                                                    Mujer embarazada.
+                                                </label>
+                                            </div>
+                                            <div class="row">
+                                                <input class="form-check-input" type="checkbox" id="MadreEt" name="MadreEt">
+                                                <label class="form-check-label" for="">
+                                                    Madre en etapa postnatal.
+                                                </label>
+                                            </div>
+                                            <div class="row">
+                                                <input class="form-check-input" type="checkbox" id="Postnatal" name="Postnatal">
+                                                <label class="form-check-label" for="">
+                                                    Postnatal recién nacido.
+                                                </label>
+                                            </div>
+                                            <div class="row">
+                                                <input class="form-check-input" type="checkbox" id="Cuidador6meses" name="Cuidador6meses">
+                                                <label class="form-check-label" for="">
+                                                    Cuidador o tutor del menor de 6 meses.
+                                                </label>
+                                            </div>
+                                            <div class="row">
+                                                <input class="form-check-input" type="checkbox" id="Cuidador6a12meses" name="Cuidador6a12meses">
+                                                <label class="form-check-label" for="">
+                                                    Cuidador o tutor del menor de 6 a 12 meses.
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="row">
+                                                <input class="form-check-input" type="checkbox" id="Cuidador1a4anios" name="Cuidador1a4anios">
+                                                <label class="form-check-label" for="">
+                                                    Cuidador o tutor del menor de 1 a 4 años.
+                                                </label>
+                                            </div>
+                                            <div class="row">
+                                                <input class="form-check-input" type="checkbox" id="Cuidador5a9anios" name="Cuidador5a9anios">
+                                                <label class="form-check-label" for="">
+                                                    Cuidador o tutor de 5 a 9 años.
+                                                </label>
+                                            </div>
+                                            <div class="row">
+                                                <input class="form-check-input" type="checkbox" id="10a19anios" name="10a19anios">
+                                                <label class="form-check-label" for="">
+                                                    De 10 a 19 años.
+                                                </label>
+                                            </div>
+                                            <div class="row">
+                                                <input class="form-check-input" type="checkbox" id="20a59anios" name="20a59anios">
+                                                <label class="form-check-label" for="">
+                                                    De 20 a 59 años.
+                                                </label>
+                                            </div>
+                                            <div class="row">
+                                                <input class="form-check-input" type="checkbox" id="60anios" name="60anios">
+                                                <label class="form-check-label" for="">
+                                                    De 60 años y más.
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h4>Evaluación de la educación. Selecciona 1.</h4>
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="row">
+                                                <input class="form-check-input" type="checkbox" id="SeCompleta" name="SeCompleta">
+                                                <label class="form-check-label" for="">
+                                                    Se completa exitosamente.
+                                                </label>
+                                            </div>
+                                            <div class="row">
+                                                <input class="form-check-input" type="checkbox" id="SinCompletar" name="SinCompletar">
+                                                <label class="form-check-label" for="">
+                                                    Sin completar.
+                                                </label>
+                                            </div>
+                                            <div class="row">
+                                                <input class="form-check-input" type="checkbox" id="ReforzarParte" name="ReforzarParte">
+                                                <label class="form-check-label" for="">
+                                                    Reforzar parte de la educación.
+                                                </label>
+                                            </div>
+                                            <div class="row">
+                                                <input class="form-check-input" type="checkbox" id="ReforzarToda" name="ReforzarToda">
+                                                <label class="form-check-label" for="">
+                                                    Reforzar toda la educación.
+                                                </label>
+                                            </div>
+                                            <div class="row">
+                                                <input class="form-check-input" type="checkbox" id="Rechazo" name="Rechazo">
+                                                <label class="form-check-label" for="">
+                                                    Rechazo de la educación.
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="text-right">
+                                        <button id="Btn_EducacionIn" type="submit" class="btn btn-primary">Guardar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="ImpresionDiag" class="tab-pane fade">
+                        <div class="card card-table mb-0">
+                            <div class="card-body">
+                                <form id="F_ImpresionDiag">
+                                    <div class="row">
+
+                                        <div class="col-12 p-2">
+
+                                            <div class="row mt-5 ml-0 mr-0 mb-0" id="diagnosticoBusqueda">
+                                                <div class="col-md-12 p-2 text-left">
+                                                    <h6>Buscar otro diagnostico</h6>
+                                                    <input style="width:90%;" id="diagnosticoTxt" placeholder="Escribe aquí la descripción o clave y da clic en el boton de buscar" />
+                                                    <a class="btn btn-buscar">
+                                                        <img src="~/Content/assets/img/search1.png" class="btnbuscapac">
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                            <div class="row m-0 mt-5" id="diagnosticoBusquedaLista"></div>
+                                            <p style="color:red;" id="diagnosticoBusquedaAlert"></p>
+                                            <div class="row m-0 mt-5" id="diagnosticoBusquedaListaHistorial"></div>
+
+                                            <div class="row m-0">
+                                                <div class="col-md-12 p-2">
+                                                    <div class="diaginfo">1. Diagnóstico</div>
+                                                </div>
+                                                <div class="col-md-9 m-auto p-2">
+                                                    <textarea class="resumenText" id="diagnostico1" name="diagnostico1" readonly></textarea>
+                                                    <input id="clave1" type="hidden" />
+                                                </div>
+                                                <div class="col-md-3 m-auto p-0">
+                                                    <div class="row m-0">
+                                                        <div class="col-9 p-2">
+                                                            <select class="form-control tipoconsulta" id="tipoconsulta1" name="tipo_diagnostico1" required>
+                                                                <option disabled selected>Seleccionar opción</option>
+                                                                @*<option value="2">Subsecuente</option>*@
+                                                                <option value="1">Primera Vez</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-3 text-center p-2">
+                                                            <img class="borrardiag" id="borrardiag1" src="~/Content/assets/img/trashcan.png" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row m-0">
+                                                <div class="col-md-12 p-2">
+                                                    <div class="diaginfo">2. Diagnóstico</div>
+                                                </div>
+                                                <div class="col-md-9 m-auto p-2">
+                                                    <textarea class="resumenText" id="diagnostico2" name="diagnostico2" readonly></textarea>
+                                                    <input id="clave2" type="hidden" />
+                                                </div>
+                                                <div class="col-md-3 m-auto p-0">
+                                                    <div class="row m-0">
+                                                        <div class="col-9 p-2">
+                                                            <select class="form-control tipoconsulta" id="tipoconsulta2" name="tipo_diagnostico2" required>
+                                                                <option disabled selected>Seleccionar opción</option>
+                                                                @*<option value="2">Subsecuente</option>*@
+                                                                <option value="1">Primera Vez</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-3 text-center p-2">
+                                                            <img class="borrardiag" id="borrardiag2" src="~/Content/assets/img/trashcan.png" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row m-0">
+                                                <div class="col-md-12 p-2">
+                                                    <div class="diaginfo">3. Diagnóstico</div>
+                                                </div>
+                                                <div class="col-md-9 m-auto p-2">
+                                                    <textarea class="resumenText" id="diagnostico3" name="diagnostico3" readonly></textarea>
+                                                    <input id="clave3" type="hidden" />
+                                                </div>
+                                                <div class="col-md-3 m-auto p-0">
+                                                    <div class="row m-0">
+                                                        <div class="col-9 p-2">
+                                                            <select class="form-control tipoconsulta" id="tipoconsulta3" name="tipo_diagnostico3" required>
+                                                                <option disabled selected>Seleccionar opción</option>
+                                                                @*<option value="2">Subsecuente</option>*@
+                                                                <option value="1">Primera Vez</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-3 text-center p-2">
+                                                            <img class="borrardiag" id="borrardiag3" src="~/Content/assets/img/trashcan.png" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row m-0">
+                                                <div class="col-md-12 p-2">
+                                                    <div class="diaginfo">4. Diagnóstico</div>
+                                                </div>
+                                                <div class="col-md-9 m-auto p-2">
+                                                    <textarea class="resumenText" id="diagnostico4" name="diagnostico4" readonly></textarea>
+                                                    <input id="clave4" type="hidden" />
+                                                </div>
+                                                <div class="col-md-3 m-auto p-0">
+                                                    <div class="row m-0">
+                                                        <div class="col-9 p-2">
+                                                            <select class="form-control tipoconsulta" id="tipoconsulta4" name="tipo_diagnostico4" required>
+                                                                <option disabled selected>Seleccionar opción</option>
+                                                                @*<option value="2">Subsecuente</option>*@
+                                                                <option value="1">Primera Vez</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-3 text-center p-2">
+                                                            <img class="borrardiag" id="borrardiag4" src="~/Content/assets/img/trashcan.png" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row m-0">
+                                                <div class="col-md-12 p-2">
+                                                    <div class="diaginfo">5. Diagnóstico</div>
+                                                </div>
+                                                <div class="col-md-9 m-auto p-2">
+                                                    <textarea class="resumenText" id="diagnostico5" name="diagnostico5" readonly></textarea>
+                                                    <input id="clave5" type="hidden" />
+                                                </div>
+                                                <div class="col-md-3 m-auto p-0">
+                                                    <div class="row m-0">
+                                                        <div class="col-9 p-2">
+                                                            <select class="form-control tipoconsulta" id="tipoconsulta5" name="tipo_diagnostico5" required>
+                                                                <option disabled selected>Seleccionar opción</option>
+                                                                @*<option value="2">Subsecuente</option>*@
+                                                                <option value="1">Primera Vez</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-3 text-center p-2">
+                                                            <img class="borrardiag" id="borrardiag5" src="~/Content/assets/img/trashcan.png" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <div class="text-right">
+                                        <button id="Btn_ImpresionDiag" type="submit" class="btn btn-primary">Guardar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="Plan" class="tab-pane fade">
+                        <div class="card card-table mb-0">
+                            <div class="card-body">
+                                <form id="F_plan">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label>Describa</label>
+                                            <textarea class="form-control" placeholder="" id="Plan" name="Plan" maxlength="199"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <button id="Btn_Plan" type="submit" class="btn btn-primary">Guardar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="Pronostico" class="tab-pane fade">
+                        <div class="card card-table mb-0">
+                            <div class="card-body">
+                                <form id="F_pronostico">
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="row">
+                                                <label>Selecciona</label>
+                                            </div>
+                                            <div class="row">
+                                                <input class="form-check-input" type="checkbox" id="LigadoEvolucion" name="LigadoEvolucion">
+                                                <label class="form-check-label" for="">
+                                                    Ligado a Evolucion
+                                                </label>
+                                            </div>
+                                            <div class="row">
+                                                <input class="form-check-input" type="checkbox" id="Favorable" name="Favorable">
+                                                <label class="form-check-label" for="">
+                                                    Favorable
+                                                </label>
+                                            </div>
+                                            <div class="row">
+                                                <input class="form-check-input" type="checkbox" id="Desfavorable" name="Desfavorable">
+                                                <label class="form-check-label" for="">
+                                                    Desfavorable
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <button id="Btn_Pronostico" type="submit" class="btn btn-primary">Guardar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="Otros1">
+                        <div class="card card-table mb-0">
+                            <div class="card-body">
+                                <form id="F_Otros">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>¿Requiere interconsulta?</label>
+                                            <select class="form-control showoptions" id="Interconsulta" name="Interconsulta">
+                                                <option value="">Seleccionar</option>
+                                                <option value="Si">Si</option>
+                                                <option value="No">No</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6" id="">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>¿Se proporcionan indicaciones de urgencias... relacionados con el padecimiento actual?</label>
+                                            <select class="form-control showoptions" id="PadecimientoActual" name="PadecimientoActual">
+                                                <option value="">Seleccionar</option>
+                                                <option value="Si">Si</option>
+                                                <option value="No aplica">No aplica</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6" id="EspPadecimientoActual">
+                                            <div class="form-group">
+                                                <label>Especifique</label>
+                                                <input type="text" class="form-control" id="Especifica_PadecimientoActual" name="Especifica_PadecimientoActual" maxlength="199">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Próxima cita</label>
+                                            <select class="form-control showoptions" id="ProximaCita" name="ProximaCita">
+                                                <option value="">Seleccionar</option>
+                                                <option value="1 a 3 dias">1 a 3 dias</option>
+                                                <option value="3 a 7">3 a 7</option>
+                                                <option value="1 semana">1 semana</option>
+                                                <option value="2 semana">2 semana</option>
+                                                <option value="3 semana">3 semana</option>
+                                                <option value="1 mes">1 mes</option>
+                                                <option value="más de un mes">más de un mes</option>
+                                                <option value="3 meses">3 meses</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <button id="Btn_Otros" type="submit" class="btn btn-primary">Guardar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Areas/Admin/assets/js/jquery-3.2.1.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+
+    $(document).ready(function () {
+
+        //Ocultamos div donde se muestra la info del px ya que aún no se ha buscado
+        $("#InfoPX").hide();
+
+        var table = $('#TblPaciente').DataTable();
+        table.destroy();
+        table = $('#TblPaciente').DataTable({
+            paging: false,
+            scroller: false,
+            responsive: true,
+            searching: false,
+            info: true,
+            lengthChange: false,
+            pageLength: 20,
+            language: {
+                "zeroRecords": " ",
+                "info": "_TOTAL_ px",
+                "search": "Buscar:",
+                "infoEmpty": "",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Último",
+                    "next": "Siguiente",
+                    "previous": "Anterior",
+                },
+                "select": {
+                    "rows": " %d filas seleccionadas"
+                },
+            }
+        });
+
+        // #region BOTONES de Guardar HC
+        $("#Btn_ResultadoLab").css("display", "none");
+        $("#Btn_EtapaCam").css("display", "none");
+        $("#Btn_DatosDiet").css("display", "none");
+        $("#Btn_AlimentacionIn").css("display", "none");
+        $("#Btn_Recordatorio").css("display", "none");
+        $("#Btn_FrecuenciaAlimen").css("display", "none");
+        $("#Btn_EvaluacionAntro").css("display", "none");
+        $("#Btn_EducacionIn").css("display", "none");
+        $("#Btn_ImpresionDiag").css("display", "none");
+        $("#Btn_Plan").css("display", "none");
+        $("#Btn_Pronostico").css("display", "none");
+        $("#Btn_Otros").css("display", "none");
+        // #endregion
+
+        // #region PESTAÑAS: Elementos de la H.C. que nacerán ocultos y se mostrarán hasta que se seleccione o se haga alguna acción
+        //ResultadosLab
+        $("#EspResultado").css("display", "none");
+        //DatosDieteticos
+        $("#EspSuplementos").css("display", "none");
+        $("#EspConsumoAgua").css("display", "none");
+        $("#EspTipoAF").css("display", "none");
+        $("#EspTiempoAF").css("display", "none");
+        $("#EspFrecuenciaAF").css("display", "none");
+        //AlimentacionInicio
+        $("#EspLactancia").css("display", "none");
+        $("#EspSucedaneo").css("display", "none");
+        $("#EspAlimentacionEdad").css("display", "none");
+        $("#EspAlimentacionMotivo").css("display", "none");
+        //Otros
+        $("#EspPadecimientoActual").css("display", "none");
+        // #endregion
+
+        let timerInterval
+        Swal.fire({
+            title: 'Busque al px. y selecciónalo para crearle la h.c.',
+            timer: 3500,
+            timerProgressBar: true,
+            willClose: () => {
+                clearInterval(timerInterval)
+            }
+        });
+    });
+
+    // #region Pestañas: Elementos de la H.C. que se mostrarán hasta que se seleccione o se haga alguna acción
+
+    //ResultadoLab
+    $("#Resultado").change(function () {
+        var combo = document.getElementById("Resultado");
+        var selected = combo.options[combo.selectedIndex].text;
+        if (selected == "Si") {
+            $("#EspResultado").css("display", "");
+        } else {
+            $("#EspResultado").css("display", "none");
+        }
+    });
+    //DatosDiet
+    $("#Suplementos").change(function () {
+        var combo = document.getElementById("Suplementos");
+        var selected = combo.options[combo.selectedIndex].text;
+        if (selected == "Si") {
+            $("#EspSuplementos").css("display", "");
+        } else {
+            $("#EspSuplementos").css("display", "none");
+        }
+    });
+    $("#ConsumoAgua").change(function () {
+        var combo = document.getElementById("ConsumoAgua");
+        var selected = combo.options[combo.selectedIndex].text;
+        if (selected == "Si") {
+            $("#EspConsumoAgua").css("display", "");
+        } else {
+            $("#EspConsumoAgua").css("display", "none");
+        }
+    });
+    $("#ActividadFisica").change(function () {
+        var combo = document.getElementById("ActividadFisica");
+        var selected = combo.options[combo.selectedIndex].text;
+        if (selected == "Si") {
+            $("#EspTipoAF").css("display", "");
+            $("#EspTiempoAF").css("display", "");
+            $("#EspFrecuenciaAF").css("display", "");
+        } else {
+            $("#EspTipoAF").css("display", "none");
+            $("#EspTiempoAF").css("display", "none");
+            $("#EspFrecuenciaAF").css("display", "none");
+        }
+    });
+    //AlimentacionInicio
+    $("#LactanciaMaterna").change(function () {
+        var combo = document.getElementById("LactanciaMaterna");
+        var selected = combo.options[combo.selectedIndex].text;
+        if (selected == "Si") {
+            $("#EspLactancia").css("display", "");
+        } else {
+            $("#EspLactancia").css("display", "none");
+        }
+    });
+    $("#Sucedaneo").change(function () {
+        var combo = document.getElementById("Sucedaneo");
+        var selected = combo.options[combo.selectedIndex].text;
+        if (selected == "Si") {
+            $("#EspSucedaneo").css("display", "");
+        } else {
+            $("#EspSucedaneo").css("display", "none");
+        }
+    });
+    $("#AlimentacionComp").change(function () {
+        var combo = document.getElementById("AlimentacionComp");
+        var selected = combo.options[combo.selectedIndex].text;
+        if (selected == "Si") {
+            $("#EspAlimentacionEdad").css("display", "");
+            $("#EspAlimentacionMotivo").css("display", "");
+        } else {
+            $("#EspAlimentacionEdad").css("display", "none");
+            $("#EspAlimentacionMotivo").css("display", "none");
+        }
+    });
+
+    // #endregion
+
+    //Si dan click en Enter en los inputs de Nombre/Expediente
+    $('.BuscarPX').on("keypress", function (e) {
+        if (e.keyCode == 13) {
+            FuncionBuscarPX();
+            return false;
+        }
+    });
+
+    //Si dan click en el botón de Buscar
+    function BtnBuscarPX() {
+        FuncionBuscarPX();
+    };
+
+    function FuncionBuscarPX() {
+	    var NombrePX = $("#NombrePX").val();
+	    var ExpedientePX = $("#ExpedientePX").val();
+
+	    Swal.fire({
+		    title: 'Cargando... Espere por favor',
+		    timer: 1000,
+		    timerProgressBar: true,
+	    });
+
+	    $.ajax({
+		    url: '@Url.Action("BuscarPaciente", "Derechohabiente")',
+		    method: 'POST',
+		    dataType: 'json',
+		    data: {
+                NombrePX: NombrePX,
+                ExpedientePX: ExpedientePX
+		    },
+		    success: function(data) {
+                if (data.MENSAJE.substring(0, 6) == "Succe:") {
+                    LlenaTablaPX(data.PACIENTES);
+			    }
+			    if (data.MENSAJE.substring(0, 6) == "Error:") {
+				    Swal.fire({
+					    icon: 'error',
+					    title: '¡Error!',
+					    text: data.MENSAJE.substring(7),
+				    });
+			    }
+		    },
+		    error: function(ex) {
+			    Swal.fire({
+				    icon: 'error',
+				    title: '¡Error!',
+			    });
+		    }
+	    });
+
+    };
+
+    function LlenaTablaPX(PX) {
+        var table = $('#TblPaciente').DataTable();
+        table.destroy();
+
+        table = $('#TblPaciente').DataTable({
+            responsive: true,
+            searching: false,
+            info: true,
+            deferRender: true,
+            scroller: false,
+            scrollColapse: true,
+            paging: false,
+            lengthChange: false,
+            language: {
+                "zeroRecords": "No se encontraron PX",
+                "info": "",
+                "search": "",
+                "infoEmpty": "",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Último",
+                    "next": "Siguiente",
+                    "previous": "Anterior",
+                },
+                "select": {
+                    "rows": " %d filas seleccionadas"
+                },
+            },
+            data: PX,
+            columns: [
+                { 'data': 'Nombre', className: "text-center" },
+                { 'data': 'PrimerApellido', className: "text-center" },
+                { 'data': 'SegundoApellido', className: "text-center" },
+                {
+                    "data": "UnidadAfiliacion", className: "text-center", render: function (data, type, row) {
+                        if (row.UnidadAfiliacion == 1 ) {
+                            return '<h8 style="color:black; ">Unidad habitacional I.</h8>';
+                        }
+                        if (row.UnidadAfiliacion == 2) {
+                            return '<h8 style="color:black; ">Módulo dental Apodaca</h8>';
+                        }
+                        if (row.UnidadAfiliacion == 3) {
+                            return '<h8 style="color:black; ">Pueblo Nuevo</h8>';
+                        }
+                        if (row.UnidadAfiliacion == 4) {
+                            return '<h8 style="color:black; ">Vicente Guerrero</h8>';
+                        }
+                        if (row.UnidadAfiliacion == 5) {
+                            return '<h8 style="color:black; ">San Rafael</h8>';
+                        }
+                        if (row.UnidadAfiliacion == 6) {
+                            return '<h8 style="color:black; ">21 de enero</h8>';
+                        }
+                        if (row.UnidadAfiliacion == 7) {
+                            return '<h8 style="color:black; ">Clínica de atención int.</h8>';
+                        }
+                        if (row.UnidadAfiliacion == 8) {
+                            return '<h8 style="color:black; ">Módulo dental Guadalupe</h8>';
+                        }
+                        if (row.UnidadAfiliacion == 9) {
+                            return '<h8 style="color:black; ">Ciénega de Flores</h8>';
+                        }
+                    }
+                },
+                { 'data': 'Expediente', className: "text-center" },
+                {
+                    "className": 'text-center',
+                    "orderable": false,
+                    "data": null,
+                    "defaultContent": '<button title="Seleccionar px" id="VerDetalle" class="btn btn-success fa fa-check" data-toggle="modal" ></button>',
+                    "target": -2
+                }
+            ]
+        });
+    }
+
+    $('#TblPaciente tbody').on('click', '#VerDetalle', function () {
+        // #region
+        var tr = $(this).closest('tr');
+        row = $('#TblPaciente').DataTable().row(tr);
+
+        var Nombre = row.data().Nombre;
+        var PrimerA = row.data().PrimerApellido;
+        var SegundoA = row.data().SegundoApellido;
+        var Exp = row.data().Expediente;
+        var Edad = row.data().Edad;
+        var Sexo = row.data().Sexo;
+        var FechaN = row.data().FechaNacimiento;
+
+        //Dividir fecha de nacimiento
+        var splitFechaN = FechaN.split('/');
+        const anioNacimiento = parseInt(splitFechaN[2]);
+        const mesNacimiento = parseInt(splitFechaN[1]);
+        const diaNacimiento = parseInt(splitFechaN[0]);
+
+        // Obtiene la fecha actual
+        const fechaActual = new Date();
+
+        // Obtiene el año, mes y día actual
+        const anioActual = fechaActual.getFullYear();
+        const mesActual = fechaActual.getMonth() + 1; // Los meses en JavaScript van de 0 a 11
+        const diaActual = fechaActual.getDate();
+
+        // Calcula la edad
+        let edad = anioActual - anioNacimiento;
+        let edadMeses = mesActual - mesNacimiento;
+
+        // Verifica si aún no ha llegado el cumpleaños de este año
+        if (mesActual < mesNacimiento || (mesActual === mesNacimiento && diaActual < diaNacimiento)) {
+            edad--;
+        }
+
+        document.getElementById("Nombre").innerHTML = Nombre + " " + PrimerA + " " + SegundoA;
+        document.getElementById("Exp").innerHTML = Exp;
+        document.getElementById("Edad").innerHTML = edad + ' años ' + edadMeses + ' meses';
+        document.getElementById("Sexo").innerHTML = Sexo;
+        document.getElementById("FechaNac").innerHTML = FechaN;
+
+        //ocultamos div de la busqueda del px
+        $("#BusquedaPX").hide();
+        //mostramos div de la info del px
+        $("#InfoPX").show();
+        // #endregion
+
+        // #region Mostrar botones de Guardar HC ya que ya se buscó el px
+        $("#Btn_ResultadoLab").css("display", "");
+        $("#Btn_EtapaCam").css("display", "");
+        $("#Btn_DatosDiet").css("display", "");
+        $("#Btn_AlimentacionIn").css("display", "");
+        $("#Btn_Recordatorio").css("display", "");
+        $("#Btn_FrecuenciaAlimen").css("display", "");
+        $("#Btn_EvaluacionAntro").css("display", "");
+        $("#Btn_EducacionIn").css("display", "");
+        $("#Btn_ImpresionDiag").css("display", "");
+        $("#Btn_Plan").css("display", "");
+        $("#Btn_Pronostico").css("display", "");
+        $("#Btn_Otros").css("display", "");
+        // #endregion
+    });
+
+    // #region Guardar cada pestaña/sección
+    $("#PadecimientoActual").change(function () {
+        var combo = document.getElementById("PadecimientoActual");
+        var selected = combo.options[combo.selectedIndex].text;
+        if (selected == "Si") {
+            $("#EspPadecimientoActual").css("display", "");
+        } else {
+            $("#EspPadecimientoActual").css("display", "none");
+        }
+    });
+    // #endregion
+
+</script>
+
+<script>
+    
+    //Buscar un nuevo diagnostico
+    $('#diagnosticoBusqueda').on('click', '.btn-buscar', function() {
+
+	    if ($("#diagnosticoTxt").val().length >= 3) {
+		    $('#diagnosticoBusquedaLista').empty();
+		    $('#diagnosticoBusquedaAlert').text('');
+		    $.ajax({
+			    url: '@Url.Action("BuscarDiagnosticos", "NotaEvolucion")',
+			    dataType: "json",
+			    data: {
+				    diagnostico: $("#diagnosticoTxt").val()
+			    },
+			    success: function(data) {
+				    //console.log(data);
+				    $.each(data, function(i, item) {
+					    //console.log(item.DesCorta);
+					    $('#diagnosticoBusquedaLista').append('<div class="col-md-2 p-2"><div class="shadow p-2 mb-2 rounded diagnostico-select" data-clave="' + item.clave + '">' + item.diagnostico + '</div></div>');
+				    });
+			    },
+			    error: function(xhr, status, error) {
+				    Swal.fire({
+					    position: 'center',
+					    icon: 'error',
+					    showConfirmButton: false,
+					    timer: 10000
+				    });
+			    }
+		    });
+	    } else {
+		    $('#diagnosticoBusquedaLista').empty();
+		    $('#diagnosticoBusquedaAlert').text('¡Escribe más de dos caracteres!');
+	    }
+
+    });
+
+    $("#tipoconsulta1").attr('disabled', 'disabled');
+    $("#tipoconsulta2").attr('disabled', 'disabled');
+    $("#tipoconsulta3").attr('disabled', 'disabled');
+
+    //Al dar click en los diagnoticos que se ponga en los cuadros de abajo
+    $(document).on('click', '.diagnostico-select', function(event) {
+	    //console.log(event.data.nombre);
+	    // imprime 'juan'
+	    var clave = $(this).attr('data-clave');
+	    var desCorta = $(this).text();
+	    //alert(clave);
+	    if ($(this).hasClass("diagnostico-active")) {
+
+		    $(this).removeClass('diagnostico-active');
+
+		    if ($('#clave1').val() == clave) {
+			    $('#diagnostico1').val('');
+			    $('#clave1').val('');
+			    $("#tipoconsulta1").attr('disabled', 'disabled');
+			    $('#borrardiag1').css('filter', 'grayscale(100%)');
+
+			    //Si hay un valor en el diagnostico2
+			    if ($('#clave2').val()) {
+				    $('#diagnostico1').val($('#diagnostico2').val());
+				    $('#clave1').val($('#clave2').val());
+				    $("#tipoconsulta1").removeAttr('disabled');
+				    $('#borrardiag1').css('filter', 'none');
+				    $("#tipoconsulta2").attr('disabled', 'disabled');
+				    $('#borrardiag2').css('filter', 'grayscale(100%)');
+				    $('#diagnostico2').val('');
+				    $('#clave2').val('');
+
+				    $("#tipoconsulta1 option").each(function() {
+					    var val = $(this).val();
+					    if (val == $('#tipoconsulta2').val()) {
+						    $(this).prop('selected', true);
+					    }
+				    });
+
+				    $("#tipoconsulta2").val($("#tipoconsulta2 option:first").val());
+
+			    }
+
+			    //Si hay un valor en el diagnostico3
+			    if ($('#clave3').val()) {
+				    $('#diagnostico2').val($('#diagnostico3').val());
+				    $('#clave2').val($('#clave3').val());
+				    $("#tipoconsulta2").removeAttr('disabled');
+				    $('#borrardiag2').css('filter', 'none');
+				    $("#tipoconsulta3").attr('disabled', 'disabled');
+				    $('#borrardiag3').css('filter', 'grayscale(100%)');
+				    $('#diagnostico3').val('');
+				    $('#clave3').val('');
+
+				    $("#tipoconsulta2 option").each(function() {
+					    var val = $(this).val();
+					    if (val == $('#tipoconsulta3').val()) {
+						    $(this).prop('selected', true);
+					    }
+				    });
+
+				    $("#tipoconsulta3").val($("#tipoconsulta3 option:first").val());
+			    }
+
+			    //Si hay un valor en el diagnostico4
+			    if ($('#clave4').val()) {
+				    alert('if1');
+				    $('#diagnostico3').val($('#diagnostico4').val());
+				    $('#clave3').val($('#clave4').val());
+				    $("#tipoconsulta3").removeAttr('disabled');
+				    $('#borrardiag3').css('filter', 'none');
+				    $("#tipoconsulta4").attr('disabled', 'disabled');
+				    $('#borrardiag4').css('filter', 'grayscale(100%)');
+				    $('#diagnostico4').val('');
+				    $('#clave4').val('');
+
+				    $("#tipoconsulta3 option").each(function() {
+					    var val = $(this).val();
+					    if (val == $('#tipoconsulta4').val()) {
+						    $(this).prop('selected', true);
+					    }
+				    });
+
+				    $("#tipoconsulta3").val($("#tipoconsulta3 option:first").val());
+			    }
+
+			    //Si hay un valor en el diagnostico4
+			    if ($('#clave5').val()) {
+				    $('#diagnostico4').val($('#diagnostico5').val());
+				    $('#clave4').val($('#clave5').val());
+				    $("#tipoconsulta4").removeAttr('disabled');
+				    $('#borrardiag4').css('filter', 'none');
+				    $("#tipoconsulta5").attr('disabled', 'disabled');
+				    $('#borrardiag5').css('filter', 'grayscale(100%)');
+				    $('#diagnostico5').val('');
+				    $('#clave5').val('');
+
+				    $("#tipoconsulta4 option").each(function() {
+					    var val = $(this).val();
+					    if (val == $('#tipoconsulta5').val()) {
+						    $(this).prop('selected', true);
+					    }
+				    });
+
+				    $("#tipoconsulta4").val($("#tipoconsulta4 option:first").val());
+			    }
+
+			    //No hay ni diagnostico 1 ni 2
+			    if (!$('#clave1').val()) {
+				    $("#tipoconsulta1").val($("#tipoconsulta1 option:first").val());
+			    }
+
+		    } else {
+			    if ($('#clave2').val() == clave) {
+				    $('#diagnostico2').val('');
+				    $('#clave2').val('');
+				    $("#tipoconsulta2").attr('disabled', 'disabled');
+				    $('#borrardiag2').css('filter', 'grayscale(100%)');
+
+				    //Si hay un valor en el diagnostico3
+				    if ($('#clave3').val()) {
+					    $('#diagnostico2').val($('#diagnostico3').val());
+					    $('#clave2').val($('#clave3').val());
+					    $("#tipoconsulta2").removeAttr('disabled');
+					    $('#borrardiag2').css('filter', 'none');
+					    $("#tipoconsulta3").attr('disabled', 'disabled');
+					    $('#borrardiag3').css('filter', 'grayscale(100%)');
+					    $('#diagnostico3').val('');
+					    $('#clave3').val('');
+
+					    $("#tipoconsulta2 option").each(function() {
+						    var val = $(this).val();
+						    if (val == $('#tipoconsulta3').val()) {
+							    $(this).prop('selected', true);
+						    }
+					    });
+				    }
+
+				    if ($('#clave4').val()) {
+					    alert('if2');
+					    $('#diagnostico3').val($('#diagnostico4').val());
+					    $('#clave3').val($('#clave4').val());
+					    $("#tipoconsulta3").removeAttr('disabled');
+					    $('#borrardiag3').css('filter', 'none');
+					    $("#tipoconsulta4").attr('disabled', 'disabled');
+					    $('#borrardiag4').css('filter', 'grayscale(100%)');
+					    $('#diagnostico4').val('');
+					    $('#clave4').val('');
+
+					    $("#tipoconsulta3 option").each(function() {
+						    var val = $(this).val();
+						    if (val == $('#tipoconsulta4').val()) {
+							    $(this).prop('selected', true);
+						    }
+					    });
+				    }
+
+				    if ($('#clave5').val()) {
+					    $('#diagnostico4').val($('#diagnostico5').val());
+					    $('#clave4').val($('#clave5').val());
+					    $("#tipoconsulta4").removeAttr('disabled');
+					    $('#borrardiag4').css('filter', 'none');
+					    $("#tipoconsulta5").attr('disabled', 'disabled');
+					    $('#borrardiag5').css('filter', 'grayscale(100%)');
+					    $('#diagnostico5').val('');
+					    $('#clave5').val('');
+
+					    $("#tipoconsulta4 option").each(function() {
+						    var val = $(this).val();
+						    if (val == $('#tipoconsulta5').val()) {
+							    $(this).prop('selected', true);
+						    }
+					    });
+				    }
+
+				    if (!$('#clave2').val()) {
+					    $("#tipoconsulta2").val($("#tipoconsulta2 option:first").val());
+				    }
+
+				    $("#tipoconsulta3").val($("#tipoconsulta3 option:first").val());
+				    $("#tipoconsulta4").val($("#tipoconsulta4 option:first").val());
+				    $("#tipoconsulta5").val($("#tipoconsulta5 option:first").val());
+
+			    } else {
+				    if ($('#clave3').val() == clave) {
+					    $('#diagnostico3').val('');
+					    $('#clave3').val('');
+					    $("#tipoconsulta3").attr('disabled', 'disabled');
+					    $('#borrardiag3').css('filter', 'grayscale(100%)');
+					    $("#tipoconsulta3").val($("#tipoconsulta3 option:first").val());
+
+					    if ($('#clave4').val()) {
+						    alert('if3');
+						    $('#diagnostico3').val($('#diagnostico4').val());
+						    $('#clave3').val($('#clave4').val());
+						    $("#tipoconsulta3").removeAttr('disabled');
+						    $('#borrardiag3').css('filter', 'none');
+						    $("#tipoconsulta4").attr('disabled', 'disabled');
+						    $('#borrardiag4').css('filter', 'grayscale(100%)');
+						    $('#diagnostico4').val('');
+						    $('#clave4').val('');
+
+						    $("#tipoconsulta3 option").each(function() {
+							    var val = $(this).val();
+							    if (val == $('#tipoconsulta4').val()) {
+								    $(this).prop('selected', true);
+							    }
+						    });
+					    }
+
+					    if ($('#clave5').val()) {
+						    $('#diagnostico4').val($('#diagnostico5').val());
+						    $('#clave4').val($('#clave5').val());
+						    $("#tipoconsulta4").removeAttr('disabled');
+						    $('#borrardiag4').css('filter', 'none');
+						    $("#tipoconsulta5").attr('disabled', 'disabled');
+						    $('#borrardiag5').css('filter', 'grayscale(100%)');
+						    $('#diagnostico5').val('');
+						    $('#clave5').val('');
+
+						    $("#tipoconsulta4 option").each(function() {
+							    var val = $(this).val();
+							    if (val == $('#tipoconsulta5').val()) {
+								    $(this).prop('selected', true);
+							    }
+						    });
+					    }
+
+					    if (!$('#clave3').val()) {
+						    $("#tipoconsulta3").val($("#tipoconsulta3 option:first").val());
+					    }
+
+					    $("#tipoconsulta4").val($("#tipoconsulta4 option:first").val());
+					    $("#tipoconsulta5").val($("#tipoconsulta5 option:first").val());
+
+
+				    } else {
+					    if ($('#clave4').val() == clave) {
+						    //alert('if4');
+						    $('#diagnostico4').val('');
+						    $('#clave4').val('');
+						    $("#tipoconsulta4").attr('disabled', 'disabled');
+						    $('#borrardiag4').css('filter', 'grayscale(100%)');
+						    $("#tipoconsulta4").val($("#tipoconsulta4 option:first").val());
+
+
+						    if ($('#clave5').val()) {
+							    $('#diagnostico4').val($('#diagnostico5').val());
+							    $('#clave4').val($('#clave5').val());
+							    $("#tipoconsulta4").removeAttr('disabled');
+							    $('#borrardiag4').css('filter', 'none');
+							    $("#tipoconsulta5").attr('disabled', 'disabled');
+							    $('#borrardiag5').css('filter', 'grayscale(100%)');
+							    $('#diagnostico5').val('');
+							    $('#clave5').val('');
+
+							    $("#tipoconsulta4 option").each(function() {
+								    var val = $(this).val();
+								    if (val == $('#tipoconsulta5').val()) {
+									    $(this).prop('selected', true);
+								    }
+							    });
+						    }
+
+						    if (!$('#clave4').val()) {
+							    $("#tipoconsulta4").val($("#tipoconsulta4 option:first").val());
+						    }
+
+						    $("#tipoconsulta5").val($("#tipoconsulta5 option:first").val());
+
+					    } else {
+						    if ($('#clave5').val() == clave) {
+							    $('#diagnostico5').val('');
+							    $('#clave5').val('');
+							    $("#tipoconsulta5").attr('disabled', 'disabled');
+							    $('#borrardiag5').css('filter', 'grayscale(100%)');
+							    $("#tipoconsulta5").val($("#tipoconsulta5 option:first").val());
+						    }
+					    }
+				    }
+			    }
+		    }
+
+	    } else {
+
+		    $('#finalizar').attr('disabled', 'disabled');
+		    $('#finalizar').css('background-color', 'lightgray');
+
+		    var numItems = $('.diagnostico-active').length;
+		    if (numItems < 5) {
+			    if (numItems == 0) {
+				    $('#diagnostico1').val(desCorta);
+				    $('#clave1').val(clave);
+				    $("#tipoconsulta1").removeAttr('disabled');
+				    $('#borrardiag1').css('filter', 'none');
+				    $(this).addClass('diagnostico-active');
+
+			    } else {
+				    if (numItems == 1) {
+					    if ($("#tipoconsulta1").val() == null) {
+						    $('#diaginfo1').show();
+					    } else {
+						    //$('#diaginfo1').hide();
+						    $('#diagnostico2').val(desCorta);
+						    $('#clave2').val(clave);
+						    $("#tipoconsulta2").removeAttr('disabled');
+						    $('#borrardiag2').css('filter', 'none');
+						    $(this).addClass('diagnostico-active');
+					    }
+
+				    } else {
+					    if (numItems == 2) {
+						    if ($("#tipoconsulta2").val() == null) {
+							    $('#diaginfo2').show();
+						    } else {
+							    //$('#diaginfo2').hide();
+							    $('#diagnostico3').val(desCorta);
+							    $('#clave3').val(clave);
+							    $("#tipoconsulta3").removeAttr('disabled');
+							    $('#borrardiag3').css('filter', 'none');
+							    $(this).addClass('diagnostico-active');
+						    }
+					    } else {
+						    if (numItems == 3) {
+							    if ($("#tipoconsulta3").val() == null) {
+								    $('#diaginfo3').show();
+							    } else {
+								    //$('#diaginfo2').hide();
+								    $('#diagnostico4').val(desCorta);
+								    $('#clave4').val(clave);
+								    $("#tipoconsulta4").removeAttr('disabled');
+								    $('#borrardiag4').css('filter', 'none');
+								    $(this).addClass('diagnostico-active');
+							    }
+						    } else {
+							    if (numItems == 4) {
+								    if ($("#tipoconsulta4").val() == null) {
+									    $('#diaginfo4').show();
+								    } else {
+									    //$('#diaginfo2').hide();
+									    $('#diagnostico5').val(desCorta);
+									    $('#clave5').val(clave);
+									    $("#tipoconsulta5").removeAttr('disabled');
+									    $('#borrardiag5').css('filter', 'none');
+									    $(this).addClass('diagnostico-active');
+								    }
+							    }
+						    }
+					    }
+
+				    }
+			    }
+
+		    }
+	    }
+
+	    var hash = "#diagnosticoBusquedaListaHistorial";
+	    $('html, body').animate({
+		    scrollTop: $(hash).offset().top
+	    }, 800, function() {
+		    window.location.href = "#diagnosticoBusquedaListaHistorial"
+	    });
+
+    });
+
+    $("#borrardiag1").click(function () {
+        $(".diagnostico-active").each(function (index) {
+            if ($(this).attr('data-clave') == $('#clave1').val()) {
+                $(this).removeClass('diagnostico-active');
+                $('#diagnostico1').val('');
+                $('#clave1').val('');
+                $('#borrardiag1').css('filter', 'grayscale(100%)');
+                $("#tipoconsulta1").attr('disabled', 'disabled');
+            }
+        });
+
+        if ($('#clave2').val()) {
+            $('#diagnostico1').val($('#diagnostico2').val());
+            $('#clave1').val($('#clave2').val());
+            $('#borrardiag1').css('filter', 'none');
+            $("#tipoconsulta1").removeAttr('disabled');
+            var opcionSeleccionada = $("#tipoconsulta2 option:selected").val();
+            $("#tipoconsulta1").val(opcionSeleccionada);
+
+            $('#diagnostico2').val('');
+            $('#clave2').val('');
+            $('#borrardiag2').css('filter', 'grayscale(100%)');
+            $("#tipoconsulta2").val($("#tipoconsulta2 option:first").val());
+
+        }
+
+    });
+
+    $("#borrardiag2").click(function () {
+        $(".diagnostico-active").each(function (index) {
+            if ($(this).attr('data-clave') == $('#clave2').val()) {
+                $(this).removeClass('diagnostico-active');
+                $('#diagnostico2').val('');
+                $('#clave2').val('');
+                $('#borrardiag2').css('filter', 'grayscale(100%)');
+                $("#tipoconsulta2").attr('disabled', 'disabled');
+            }
+        });
+
+        if ($('#clave3').val()) {
+            $('#diagnostico2').val($('#diagnostico3').val());
+            $('#clave2').val($('#clave3').val());
+            $('#borrardiag2').css('filter', 'none');
+            $("#tipoconsulta2").removeAttr('disabled');
+            var opcionSeleccionada = $("#tipoconsulta3 option:selected").val();
+            //alert(opcionSeleccionada);
+            $("#tipoconsulta2").val(opcionSeleccionada);
+
+            $('#diagnostico3').val('');
+            $('#clave3').val('');
+            $('#borrardiag3').css('filter', 'grayscale(100%)');
+            $("#tipoconsulta3").val($("#tipoconsulta3 option:first").val());
+        }
+
+    });
+
+    $("#borrardiag3").click(function () {
+        $(".diagnostico-active").each(function (index) {
+            if ($(this).attr('data-clave') == $('#clave3').val()) {
+                $(this).removeClass('diagnostico-active');
+                $('#diagnostico3').val('');
+                $('#clave3').val('');
+                $('#borrardiag3').css('filter', 'grayscale(100%)');
+                $("#tipoconsulta3").attr('disabled', 'disabled');
+            }
+        });
+
+        if ($('#clave4').val()) {
+            $('#diagnostico3').val($('#diagnostico4').val());
+            $('#clave3').val($('#clave4').val());
+            $('#borrardiag3').css('filter', 'none');
+            $("#tipoconsulta3").removeAttr('disabled');
+            var opcionSeleccionada = $("#tipoconsulta4 option:selected").val();
+            $("#tipoconsulta3").val(opcionSeleccionada);
+
+            $('#diagnostico4').val('');
+            $('#clave4').val('');
+            $('#borrardiag4').css('filter', 'grayscale(100%)');
+            $("#tipoconsulta4").val($("#tipoconsulta4 option:first").val());
+
+        }
+
+    });
+
+    $("#borrardiag4").click(function () {
+        $(".diagnostico-active").each(function (index) {
+            if ($(this).attr('data-clave') == $('#clave4').val()) {
+                $(this).removeClass('diagnostico-active');
+                $('#diagnostico4').val('');
+                $('#clave4').val('');
+                $('#borrardiag4').css('filter', 'grayscale(100%)');
+                $("#tipoconsulta4").attr('disabled', 'disabled');
+            }
+        });
+
+        if ($('#clave5').val()) {
+            $('#diagnostico4').val($('#diagnostico5').val());
+            $('#clave4').val($('#clave5').val());
+            $('#borrardiag4').css('filter', 'none');
+            $("#tipoconsulta4").removeAttr('disabled');
+            var opcionSeleccionada = $("#tipoconsulta5 option:selected").val();
+            $("#tipoconsulta4").val(opcionSeleccionada);
+
+            $('#diagnostico5').val('');
+            $('#clave5').val('');
+            $('#borrardiag5').css('filter', 'grayscale(100%)');
+            $("#tipoconsulta5").val($("#tipoconsulta5 option:first").val());
+
+        }
+
+    });
+
+    $("#borrardiag5").click(function () {
+        $(".diagnostico-active").each(function (index) {
+            if ($(this).attr('data-clave') == $('#clave5').val()) {
+                $(this).removeClass('diagnostico-active');
+                $('#diagnostico5').val('');
+                $('#clave5').val('');
+                $('#borrardiag5').css('filter', 'grayscale(100%)');
+                $("#tipoconsulta5").attr('disabled', 'disabled');
+            }
+        });
+
+        $("#tipoconsulta5").val($("#tipoconsulta5 option:first").val());
+
+    });
+</script>
