@@ -1813,6 +1813,304 @@ namespace CUS.Areas.Admin.Controllers
 
         #endregion
 
+        public class Propiedades_HC
+        {
+            //ResultadoLab	
+            public string Resultado { get; set; }
+            public string Especifica_Resultado { get; set; }
+            //EtapaCambio	
+            public string Viene { get; set; }
+            public string DeseaLograr { get; set; }
+            public bool? Precontemplacion { get; set; }
+            public bool? Contemplacion { get; set; }
+            public bool? Preparacion { get; set; }
+            public bool? Mantenimiento { get; set; }
+            public bool? Terminacion { get; set; }
+            //DatosDieteticos	
+            public string Comidas { get; set; }
+            public bool? Desayuno { get; set; }
+            public bool? Comidas2 { get; set; }
+            public bool? Cena { get; set; }
+            public bool? ColacionMat { get; set; }
+            public bool? ColacionVes { get; set; }
+            public string TiempoConsumir { get; set; }
+            public string Suplementos { get; set; }
+            public string Especifica_Supl { get; set; }
+            public string AlimentosDisgustan { get; set; }
+            public string AlimentosFavoritos { get; set; }
+            public string ConsumoAgua { get; set; }
+            public string Especifica_ConsumoAgua { get; set; }
+            public string HorasSuenio { get; set; }
+            public string ActividadFisica { get; set; }
+            public string Tipo_ActividadFisica { get; set; }
+            public string Tiempo_ActividadFisica { get; set; }
+            public string Frec_ActividadFisica { get; set; }
+            //AlimentacionInicial	
+            public string LactanciaMaterna { get; set; }
+            public string Tiempo_LactanciaM { get; set; }
+            public string Sucedaneo { get; set; }
+            public string Cual_Sucedaneo { get; set; }
+            public string AlimentacionComp { get; set; }
+            public string Edad_AlimentacionC { get; set; }
+            public string Motivo_AlimentacionC { get; set; }
+            //Recordatorio	
+            public string Desayuno_Hora { get; set; }
+            public string Desayuno_Preparacion { get; set; }
+            public string Desayuno_Alimento { get; set; }
+            public string Desayuno_Cantidad { get; set; }
+            public string ColacionDes_Hora { get; set; }
+            public string ColacionDes_Preparacion { get; set; }
+            public string ColacionDes_Alimento { get; set; }
+            public string ColacionDes_Cantidad { get; set; }
+            public string Comida_Hora { get; set; }
+            public string Comida_Preparacion { get; set; }
+            public string Comida_Alimento { get; set; }
+            public string Comida_Cantidad { get; set; }
+            public string ColacionCom_Hora { get; set; }
+            public string ColacionCom_Preparacion { get; set; }
+            public string ColacionCom_Alimento { get; set; }
+            public string ColacionCom_Cantidad { get; set; }
+            public string Cena_Hora { get; set; }
+            public string Cena_Preparacion { get; set; }
+            public string Cena_Alimento { get; set; }
+            public string Cena_Cantidad { get; set; }
+            //FrecuenciaAlimen	
+            public bool? Leche { get; set; }
+            public string Frecuencia_Leche { get; set; }
+            public bool? Verdura { get; set; }
+            public string Frecuencia_Verdura { get; set; }
+            public bool? Fruta { get; set; }
+            public string Frecuencia_Fruta { get; set; }
+            public bool? Cereales { get; set; }
+            public string Frecuencia_Cereales { get; set; }
+            public bool? Leguminosas { get; set; }
+            public string Frecuencia_Leguminosas { get; set; }
+            public bool? Carne { get; set; }
+            public string Frecuencia_Carne { get; set; }
+            public bool? Grasa { get; set; }
+            public string Frecuencia_Grasa { get; set; }
+            public bool? Azucar { get; set; }
+            public string Frecuencia_Azucar { get; set; }
+            public bool? BebidasAzucar { get; set; }
+            public string Frecuencia_BebidasAzucar { get; set; }
+            public bool? BebidasDiet { get; set; }
+            public string Frecuencia_BebidasDiet { get; set; }
+            public bool? BebidasAlt { get; set; }
+            public string Frecuencia_BebidasAlt { get; set; }
+            public bool? Cafe { get; set; }
+            public string Frecuencia_Cafe { get; set; }
+            public bool? Te { get; set; }
+            public string Frecuencia_Te { get; set; }
+            public bool? Cerveza { get; set; }
+            public string Frecuencia_Cerveza { get; set; }
+            public bool? ProductosPan { get; set; }
+            public string Frecuencia_ProductosPan { get; set; }
+            public bool? Confiteria { get; set; }
+            public string Frecuencia_Confiteria { get; set; }
+            public bool? Embutidos { get; set; }
+            public string Frecuencia_Embutidos { get; set; }
+            public bool? AlimentosEnla { get; set; }
+            public string Frecuencia_AlimentosEnla { get; set; }
+            public bool? Sopas { get; set; }
+            public string Frecuencia_Sopas { get; set; }
+            public bool? Verduras { get; set; }
+            public string Frecuencia_Verduras { get; set; }
+            public bool? ComidaRap { get; set; }
+            public string Frecuencia_ComidaRap { get; set; }
+            public bool? ComidaGras { get; set; }
+            public string Frecuencia_ComidaGras { get; set; }
+            public bool? ProductosChat { get; set; }
+            public string Frecuencia_ProductosChat { get; set; }
+            public bool? Consome { get; set; }
+            public string Frecuencia_Consome { get; set; }
+            public bool? Sal { get; set; }
+            public string Frecuencia_Sal { get; set; }
+            public bool? sucedaneo { get; set; }
+            public string Frecuencia_Sucedaneo { get; set; }
+            public bool? Otros { get; set; }
+            public string Frecuencia_Otros { get; set; }
+            //EvaluacionAntro	
+            public string S4Anios_PesoN { get; set; }
+            public string S4Anios_TallaN { get; set; }
+            public string S4Anios_PesoA { get; set; }
+            public string S4Anios_TallaA { get; set; }
+            public string S4Tabla_MedPeso { get; set; }
+            public string S4Tabla_MedTalla { get; set; }
+            public string S4Tabla_MedPeTa { get; set; }
+            public string S4Tabla_MedPeId { get; set; }
+            public string S4Tabla_DesPeso { get; set; }
+            public string S4Tabla_DesTalla { get; set; }
+            public string S4Tabla_DesPeTa { get; set; }
+            public string S4Tabla_DesPeId { get; set; }
+            public string S4Tabla_RanPeso { get; set; }
+            public string S4Tabla_RanTalla { get; set; }
+            public string S4Tabla_RanPeTa { get; set; }
+            public string S4Tabla_RanPeId { get; set; }
+            public string S4Tabla_ClaPeso { get; set; }
+            public string S4Tabla_ClaTalla { get; set; }
+            public string S4Tabla_ClaPeTa { get; set; }
+            public string S4Tabla_ClaPeId { get; set; }
+            public string S4Anios_Interpretacion { get; set; }
+            public string S4Anios_Observaciones { get; set; }
+            public string S5Anios_PesoA { get; set; }
+            public string S5Anios_TallaA { get; set; }
+            public string S5Anios_Indice { get; set; }
+            public string S5Anios_Desviacion { get; set; }
+            public string S5Anios_Diagnostico { get; set; }
+            public string S5Anios_PesoId { get; set; }
+            public string S5Anios_Circunf { get; set; }
+            public string S5Anios_Percentil { get; set; }
+            public string S5Anios_Interpretacion { get; set; }
+            public string S5Anios_Observaciones { get; set; }
+            public string S10Anios_PesoA { get; set; }
+            public string S10Anios_TallaA { get; set; }
+            public string S10Anios_Indice { get; set; }
+            public string S10Anios_Desviacion { get; set; }
+            public string S10Anios_Diagnostico { get; set; }
+            public string S10Anios_PesoId { get; set; }
+            public string S10Anios_Circunf { get; set; }
+            public string S10Anios_Percentil { get; set; }
+            public string S10Anios_Interpretacion { get; set; }
+            public string S10Anios_Observaciones { get; set; }
+            public string S20Anios_PesoA { get; set; }
+            public string S20Anios_TallaA { get; set; }
+            public string S20Anios_Indice { get; set; }
+            public string S20Anios_Diagnostico { get; set; }
+            public string S20Anios_CircunfMu { get; set; }
+            public string S20Anios_Complexion { get; set; }
+            public string S20Anios_PesoId { get; set; }
+            public string S20Anios_CircunfCin { get; set; }
+            public string S20Anios_CircunfCad { get; set; }
+            public string S20Anios_IndiceCin { get; set; }
+            public string S20Anios_Riesgo { get; set; }
+            public string S20Anios_Observaciones { get; set; }
+            public string S60Anios_PesoA { get; set; }
+            public string S60Anios_TallaA { get; set; }
+            public string S60Anios_Indice { get; set; }
+            public string S60Anios_Diagnostico { get; set; }
+            public string S60Anios_CircunfMu { get; set; }
+            public string S60Anios_Complexion { get; set; }
+            public string S60Anios_PesoId { get; set; }
+            public string S60Anios_PesoAj { get; set; }
+            public string S60Anios_CircunfCin { get; set; }
+            public string S60Anios_CircunfCad { get; set; }
+            public string S60Anios_IndiceCin { get; set; }
+            public string S60Anios_CircunfBra { get; set; }
+            public string S60Anios_CircunfPan { get; set; }
+            public string S60Anios_Observaciones { get; set; }
+            public string SEmbaraz_PesoA { get; set; }
+            public string SEmbaraz_TallaA { get; set; }
+            public string SEmbaraz_Gestacion { get; set; }
+            public string SEmbaraz_CircunfBra { get; set; }
+            public string SEmbaraz_PesoPreges { get; set; }
+            public string SEmbaraz_Indice { get; set; }
+            public string SEmbaraz_Diagnostico { get; set; }
+            public string SEmbaraz_GanPesoDesd { get; set; }
+            public string SEmbaraz_GanPesoAct { get; set; }
+            public string SEmbaraz_Observaciones { get; set; }
+            //EducacionInicial	
+            public bool? CriteriosGen { get; set; }
+            public bool? PrevencionEnf { get; set; }
+            public bool? EducacionMat { get; set; }
+            public bool? PlanificacionDis { get; set; }
+            public bool? AdopcionPat { get; set; }
+            public bool? EducacionMej { get; set; }
+            public bool? EjercicioAd { get; set; }
+            public bool? EducacionRel { get; set; }
+            public bool? EdRelAlimentos { get; set; }
+            public bool? AdherenciaTrat { get; set; }
+            public bool? DudasInq { get; set; }
+            public string Especifica_Dudas { get; set; }
+            public bool? Oral { get; set; }
+            public bool? Escrito { get; set; }
+            public bool? Video { get; set; }
+            public bool? Demostracion { get; set; }
+            public bool? Mujeremb { get; set; }
+            public bool? MadreEt { get; set; }
+            public bool? Postnatal { get; set; }
+            public bool? Cuidador6meses { get; set; }
+            public bool? Cuidador6a12meses { get; set; }
+            public bool? Cuidador1a4anios { get; set; }
+            public bool? Cuidador5a9anios { get; set; }
+            public bool? C10a19anios { get; set; }
+            public bool? C20a59anios { get; set; }
+            public bool? C60anios { get; set; }
+            public bool? SeCompleta { get; set; }
+            public bool? SinCompletar { get; set; }
+            public bool? ReforzarParte { get; set; }
+            public bool? ReforzarToda { get; set; }
+            public bool? Rechazo { get; set; }
+            //ImpresionDiag
+            public string Diagnostico1 { get; set; }
+            public string Diagnostico2 { get; set; }
+            public string Diagnostico3 { get; set; }
+            public string Diagnostico4 { get; set; }
+            public string Diagnostico5 { get; set; }
+            //Plan
+            public string Plan { get; set; }
+            //Pronostico
+            public bool? LigadoEvolucion { get; set; }
+            public bool? Favorable { get; set; }
+            public bool? Desfavorable { get; set; }
+            //Otros
+            public string Interconsulta { get; set; }
+            public string PadecimientoActual { get; set; }
+            public string Especifica_PadecimientoActual { get; set; }
+            public string ProximaCita { get; set; }
+        }
+
+        //********      Función para buscar el detalle de la H.C. en el MODAL
+        [HttpPost]
+        public ActionResult ConsultarHC_Nut(string Clave_hc_px, string TipoHistoria)//Este parametro lo recivimos de la vista, "Clave_hc_px" viene siendo el Identificador armado de la HC que se desea ver
+        {
+            try
+            {
+                Propiedades_HC HC = new Propiedades_HC();
+
+                string query =
+                    "SELECT RL.Resultado, RL.Especifica_Resultado, " +
+                    "EC.Viene, EC.DeseaLograr, EC.Precontemplacion, EC.Contemplacion, EC.Preparacion, EC.Mantenimiento, EC.Terminacion, " +
+                    "DD.Comidas, DD.Desayuno, DD.Comidas2, DD.Cena, DD.ColacionMat, DD.ColacionVes, DD.TiempoConsumir, DD.Suplementos, DD.Especifica_Supl, DD.AlimentosDisgustan, DD.AlimentosFavoritos, DD.ConsumoAgua, DD.Especifica_ConsumoAgua, DD.HorasSuenio, DD.ActividadFisica, DD.Tipo_ActividadFisica, DD.Tiempo_ActividadFisica, DD.Frec_ActividadFisica, " +
+                    "AI.LactanciaMaterna, AI.Tiempo_LactanciaM, AI.Sucedaneo, AI.Cual_Sucedaneo, AI.AlimentacionComp, AI.Edad_AlimentacionC, AI.Motivo_AlimentacionC, " +
+                    "R.Desayuno_Hora, R.Desayuno_Preparacion, R.Desayuno_Alimento, R.Desayuno_Cantidad, R.ColacionDes_Hora, R.ColacionDes_Preparacion, R.ColacionDes_Alimento, R.ColacionDes_Cantidad, R.Comida_Hora, R.Comida_Preparacion, R.Comida_Alimento, R.Comida_Cantidad, R.ColacionCom_Hora, R.ColacionCom_Preparacion, R.ColacionCom_Alimento, R.ColacionCom_Cantidad, R.Cena_Hora, R.Cena_Preparacion, R.Cena_Alimento, R.Cena_Cantidad, " +
+                    "FA.Leche, FA.Frecuencia_Leche, FA.Verdura, FA.Frecuencia_Verdura, FA.Fruta, FA.Frecuencia_Fruta, FA.Cereales, FA.Frecuencia_Cereales, FA.Leguminosas, FA.Frecuencia_Leguminosas, FA.Carne, FA.Frecuencia_Carne, FA.Grasa, FA.Frecuencia_Grasa, FA.Azucar, FA.Frecuencia_Azucar, FA.BebidasAzucar, FA.Frecuencia_BebidasAzucar, FA.BebidasDiet, FA.Frecuencia_BebidasDiet, FA.BebidasAlt, FA.Frecuencia_BebidasAlt, FA.Cafe, FA.Frecuencia_Cafe, FA.Te, " +
+                    "FA.Frecuencia_Te, FA.Cerveza, FA.Frecuencia_Cerveza, FA.ProductosPan, FA.Frecuencia_ProductosPan, FA.Confiteria, FA.Frecuencia_Confiteria, FA.Embutidos, FA.Frecuencia_Embutidos, FA.AlimentosEnla, FA.Frecuencia_AlimentosEnla, FA.Sopas, FA.Frecuencia_Sopas, FA.Verduras, FA.Frecuencia_Verduras, FA.ComidaRap, FA.Frecuencia_ComidaRap, FA.ComidaGras, FA.Frecuencia_ComidaGras, FA.ProductosChat, FA.Frecuencia_ProductosChat, FA.Consome, FA.Frecuencia_Consome, FA.Sal, " +
+                    "FA.Frecuencia_Sal, FA.sucedaneo, FA.Frecuencia_Sucedaneo, FA.Otros, FA.Frecuencia_Otros, " +
+                    "EA.S4Anios_PesoN, EA.S4Anios_TallaN, EA.S4Anios_PesoA, EA.S4Anios_TallaA, EA.S4Tabla_MedPeso, EA.S4Tabla_MedTalla, EA.S4Tabla_MedPeTa, EA.S4Tabla_MedPeId, EA.S4Tabla_DesPeso, EA.S4Tabla_DesTalla, EA.S4Tabla_DesPeTa, EA.S4Tabla_DesPeId, EA.S4Tabla_RanPeso, EA.S4Tabla_RanTalla, EA.S4Tabla_RanPeTa, EA.S4Tabla_RanPeId, EA.S4Tabla_ClaPeso, EA.S4Tabla_ClaTalla, EA.S4Tabla_ClaPeTa, EA.S4Tabla_ClaPeId, EA.S4Anios_Interpretacion, EA.S4Anios_Observaciones, EA.S5Anios_PesoA, EA.S5Anios_TallaA, " +
+                    "EA.S5Anios_Indice, EA.S5Anios_Desviacion, EA.S5Anios_Diagnostico, EA.S5Anios_PesoId, EA.S5Anios_Circunf, EA.S5Anios_Percentil, EA.S5Anios_Interpretacion, EA.S5Anios_Observaciones, EA.S10Anios_PesoA, EA.S10Anios_TallaA, EA.S10Anios_Indice, EA.S10Anios_Desviacion, EA.S10Anios_Diagnostico, EA.S10Anios_PesoId, EA.S10Anios_Circunf, EA.S10Anios_Percentil, EA.S10Anios_Interpretacion, EA.S10Anios_Observaciones, EA.S20Anios_PesoA, EA.S20Anios_TallaA, EA.S20Anios_Indice, EA.S20Anios_Diagnostico, EA.S20Anios_CircunfMu, " +
+                    "EA.S20Anios_Complexion, EA.S20Anios_PesoId, EA.S20Anios_CircunfCin, EA.S20Anios_CircunfCad, EA.S20Anios_IndiceCin, EA.S20Anios_Riesgo, EA.S20Anios_Observaciones, EA.S60Anios_PesoA, EA.S60Anios_TallaA, EA.S60Anios_Indice, EA.S60Anios_Diagnostico, EA.S60Anios_CircunfMu, EA.S60Anios_Complexion, EA.S60Anios_PesoId, EA.S60Anios_PesoAj, EA.S60Anios_CircunfCin, EA.S60Anios_CircunfCad, EA.S60Anios_IndiceCin, EA.S60Anios_CircunfBra, EA.S60Anios_CircunfPan, EA.S60Anios_Observaciones, EA.SEmbaraz_PesoA, EA.SEmbaraz_TallaA, EA.SEmbaraz_Gestacion, " +
+                    "EA.SEmbaraz_CircunfBra, EA.SEmbaraz_PesoPreges, EA.SEmbaraz_Indice, EA.SEmbaraz_Diagnostico, EA.SEmbaraz_GanPesoDesd, EA.SEmbaraz_GanPesoAct, EA.SEmbaraz_Observaciones, " +
+                    "EI.CriteriosGen, EI.PrevencionEnf, EI.EducacionMat, EI.PlanificacionDis, EI.AdopcionPat, EI.EducacionMej, EI.EjercicioAd, EI.EducacionRel, EI.EdRelAlimentos, EI.AdherenciaTrat, EI.DudasInq, EI.Especifica_Dudas, EI.Oral, EI.Escrito, EI.Video, EI.Demostracion, EI.Mujeremb, EI.MadreEt, EI.Postnatal, EI.Cuidador6meses, EI.Cuidador6a12meses, EI.Cuidador1a4anios, EI.Cuidador5a9anios, EI.C10a19anios, EI.C20a59anios, EI.C60anios, EI.SeCompleta, EI.SinCompletar, EI.ReforzarParte, EI.ReforzarToda, EI.Rechazo, " +
+                    "ID.Diagnostico1, ID.Diagnostico2, ID.Diagnostico3, ID.Diagnostico4, ID.Diagnostico5, " +
+                    "PL.[Plan], " +
+                    "PR.LigadoEvolucion, PR.Favorable, PR.Desfavorable, " +
+                    "O.Interconsulta, O.PadecimientoActual, O.Especifica_PadecimientoActual, O.ProximaCita " +
+                                    "FROM HistoriaClinica HCli " +
+                                    "LEFT JOIN hc_NUT_ResultadoLab RL ON RL.Clave_hc_px = HCli.Clave_hc_px " +
+                                    "LEFT JOIN hc_NUT_EtapaCambio EC ON EC.Clave_hc_px = HCli.Clave_hc_px " +
+                                    "LEFT JOIN hc_NUT_DatosDieteticos DD ON DD.Clave_hc_px = HCli.Clave_hc_px " +
+                                    "LEFT JOIN hc_NUT_AlimentacionInicial AI ON AI.Clave_hc_px = HCli.Clave_hc_px " +
+                                    "LEFT JOIN hc_NUT_Recordatorio R ON R.Clave_hc_px = HCli.Clave_hc_px " +
+                                    "LEFT JOIN hc_NUT_FrecuenciaAlimen FA ON FA.Clave_hc_px = HCli.Clave_hc_px " +
+                                    "LEFT JOIN hc_NUT_EvaluacionAntro EA ON EA.Clave_hc_px = HCli.Clave_hc_px " +
+                                    "LEFT JOIN hc_NUT_EducacionInicial EI ON EI.Clave_hc_px = HCli.Clave_hc_px " +
+                                    "LEFT JOIN hc_NUT_ImpresionDiag ID ON ID.Clave_hc_px = HCli.Clave_hc_px " +
+                                    "LEFT JOIN hc_NUT_Plan PL ON PL.Clave_hc_px = HCli.Clave_hc_px " +
+                                    "LEFT JOIN hc_NUT_Pronostico PR ON PR.Clave_hc_px = HCli.Clave_hc_px " +
+                                    "LEFT JOIN hc_NUT_Otros O ON O.Clave_hc_px = HCli.Clave_hc_px " +
+                                    "WHERE HCli.Clave_hc_px = '" + Clave_hc_px + "' ";
+
+                var result = hcNut.Database.SqlQuery<Propiedades_HC>(query);
+                HC = result.FirstOrDefault();
+
+                return new JsonResult { Data = HC, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            }
+            catch (Exception ex)
+            {
+                return Json(new { MENSAJE = "Error: Error de sistema: " + ex.Message }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
 
     }
 }

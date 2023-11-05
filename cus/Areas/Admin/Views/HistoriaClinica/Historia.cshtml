@@ -163,6 +163,10 @@
     Psicologia {
         display: none;
     }
+
+    #Nutricion {
+        display: none;
+    }
 </style>
 
 <div class="page-wrapper">
@@ -1950,6 +1954,830 @@
                                     </div>
                                 </div>
 
+                                <div id="Nutricion">
+                                    <p>
+                                        <h4 class="collapsed" data-toggle="collapse" data-target="#collapseResultadosLab" aria-expanded="false" aria-controls="collapseResultadosLab">
+                                            Resultado de Laboratorio <i class="fa fa-plus-circle"></i>
+                                        </h4>
+                                    </p>
+                                    <div class="collapse" id="collapseResultadosLab">
+                                        <div class="card card-body">
+                                            <p>
+                                                Resultado: <span id="Resultado"></span>
+                                            </p>
+                                            <p>
+                                                Especifica resultado: <span id="Especifica_Resultado"></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <p>
+                                        <h4 class="collapsed" data-toggle="collapse" data-target="#collapseEtapaCamb" aria-expanded="false" aria-controls="collapseEtapaCamb">
+                                            Etapa de cambio <i class="fa fa-plus-circle"></i>
+                                        </h4>
+                                    </p>
+                                    <div class="collapse" id="collapseEtapaCamb">
+                                        <div class="card card-body">
+                                            <p>
+                                                Viene por: <span id="Viene"></span>
+                                            </p>
+                                            <p>
+                                                ¿Qué desea lograr?: <span id="DeseaLograr"></span>
+                                            </p>
+                                            <p>
+                                                Etapa cambio Precontemplación: <span id="Precontemplacion" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Etapa cambio Contemplación: <span id="Contemplacion" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Etapa cambio Preparación: <span id="Preparacion" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Etapa cambio Mantenimiento: <span id="Mantenimiento" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Etapa cambio Terminación: <span id="Terminacion" class="estado"></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <p>
+                                        <h4 class="collapsed" data-toggle="collapse" data-target="#collapseDatosDieteticos" aria-expanded="false" aria-controls="collapseDatosDieteticos">
+                                            Datos diet. y estilo de vida <i class="fa fa-plus-circle"></i>
+                                        </h4>
+                                    </p>
+                                    <div class="collapse" id="collapseDatosDieteticos">
+                                        <div class="card card-body">
+                                            <p>
+                                                Comidas al día: <span id="Comidas"></span>
+                                            </p>
+                                            <p>
+                                                Desayuno: <span id="Desayuno" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Comida: <span id="Comidas2" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Cena: <span id="Cena" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Colación mat.: <span id="ColacionMat" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Colación ves.: <span id="ColacionVes" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Tiempo en consumir: <span id="TiempoConsumir"></span>
+                                            </p>
+                                            <p>
+                                                Toma suplementos: <span id="Suplementos"></span>
+                                            </p>
+                                            <p>
+                                                Especifica suplementos: <span id="Especifica_Supl"></span>
+                                            </p>
+                                            <p>
+                                                Alimentos que disgustan: <span id="AlimentosDisgustan"></span>
+                                            </p>
+                                            <p>
+                                                Alimentos favoritos: <span id="AlimentosFavoritos"></span>
+                                            </p>
+                                            <p>
+                                                Consumo de agua: <span id="ConsumoAgua"></span>
+                                            </p>
+                                            <p>
+                                                Especifica consumo agua: <span id="Especifica_ConsumoAgua"></span>
+                                            </p>
+                                            <p>
+                                                Horas de sueño: <span id="HorasSuenio1"></span>
+                                            </p>
+                                            <p>
+                                                Realiza act. física: <span id="ActividadFisica1"></span>
+                                            </p>
+                                            <p>
+                                                Tipo act. física: <span id="Tipo_ActividadFisica"></span>
+                                            </p>
+                                            <p>
+                                                Tiempo act. física: <span id="Tiempo_ActividadFisica"></span>
+                                            </p>
+                                            <p>
+                                                Frecuencia act. física: <span id="Frec_ActividadFisica"></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <p>
+                                        <h4 class="collapsed" data-toggle="collapse" data-target="#collapseAlimentacionIn" aria-expanded="false" aria-controls="collapseAlimentacionIn">
+                                            Alimentación inicial <i class="fa fa-plus-circle"></i>
+                                        </h4>
+                                    </p>
+                                    <div class="collapse" id="collapseAlimentacionIn">
+                                        <div class="card card-body">
+                                            <p>
+                                                Lactancia materna: <span id="LactanciaMaterna"></span>
+                                            </p>
+                                            <p>
+                                                Tiempo: <span id="Tiempo_LactanciaM"></span>
+                                            </p>
+                                            <p>
+                                                Sucedáneo de la leche: <span id="Sucedaneo"></span>
+                                            </p>
+                                            <p>
+                                                Cual Sucedáneo: <span id="Cual_Sucedaneo"></span>
+                                            </p>
+                                            <p>
+                                                Alimentación complementaria: <span id="AlimentacionComp"></span>
+                                            </p>
+                                            <p>
+                                                Edad inicio alim. complementaria: <span id="Edad_AlimentacionC"></span>
+                                            </p>
+                                            <p>
+                                                Motivo: <span id="Motivo_AlimentacionC"></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <p>
+                                        <h4 class="collapsed" data-toggle="collapse" data-target="#collapseRecordatorio" aria-expanded="false" aria-controls="collapseRecordatorio">
+                                            Recordatorio 24 horas <i class="fa fa-plus-circle"></i>
+                                        </h4>
+                                    </p>
+                                    <div class="collapse" id="collapseRecordatorio">
+                                        <div class="card card-body">
+                                            <p>
+                                                Desayuno hora: <span id="Desayuno_Hora"></span>
+                                            </p>
+                                            <p>
+                                                Desayuno preparación: <span id="Desayuno_Preparacion"></span>
+                                            </p>
+                                            <p>
+                                                Desayuno alimento: <span id="Desayuno_Alimento"></span>
+                                            </p>
+                                            <p>
+                                                Desayuno cantidad: <span id="Desayuno_Cantidad"></span>
+                                            </p>
+                                            <p>
+                                                Colación desayuno hora: <span id="ColacionDes_Hora"></span>
+                                            </p>
+                                            <p>
+                                                Colación desayuno prep.: <span id="ColacionDes_Preparacion"></span>
+                                            </p>
+                                            <p>
+                                                Colación desayuno alimento: <span id="ColacionDes_Alimento"></span>
+                                            </p>
+                                            <p>
+                                                Colación desayuno cantidad: <span id="ColacionDes_Cantidad"></span>
+                                            </p>
+                                            <p>
+                                                Comida hora: <span id="Comida_Hora"></span>
+                                            </p>
+                                            <p>
+                                                Comida preparación: <span id="Comida_Preparacion"></span>
+                                            </p>
+                                            <p>
+                                                Comida alimento: <span id="Comida_Alimento"></span>
+                                            </p>
+                                            <p>
+                                                Comida cantidad: <span id="Comida_Cantidad"></span>
+                                            </p>
+                                            <p>
+                                                Colación comida hora: <span id="ColacionCom_Hora"></span>
+                                            </p>
+                                            <p>
+                                                Colación comida prep.: <span id="ColacionCom_Preparacion"></span>
+                                            </p>
+                                            <p>
+                                                Colación comida alimento: <span id="ColacionCom_Alimento"></span>
+                                            </p>
+                                            <p>
+                                                Colación comida cantidad: <span id="ColacionCom_Cantidad"></span>
+                                            </p>
+                                            <p>
+                                                Cena hora: <span id="Cena_Hora"></span>
+                                            </p>
+                                            <p>
+                                                Cena preparación: <span id="Cena_Preparacion"></span>
+                                            </p>
+                                            <p>
+                                                Cena alimento: <span id="Cena_Alimento"></span>
+                                            </p>
+                                            <p>
+                                                Cena cantidad: <span id="Cena_Cantidad"></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <p>
+                                        <h4 class="collapsed" data-toggle="collapse" data-target="#collapseFAS" aria-expanded="false" aria-controls="collapseFAS">
+                                            Frecuencia alimentaria semanal <i class="fa fa-plus-circle"></i>
+                                        </h4>
+                                    </p>
+                                    <div class="collapse" id="collapseFAS">
+                                        <div class="card card-body">
+                                            <p>
+                                                Leche: <span id="Leche" class="estado1"></span>
+                                            </p>
+                                            <p>
+                                                Frecuencia leche: <span id="Frecuencia_Leche"></span>
+                                            </p>
+                                            <p>
+                                                Verdura: <span id="Verdura" class="estado1"></span>
+                                            </p>
+                                            <p>
+                                                Frecuencia verdura: <span id="Frecuencia_Verdura"></span>
+                                            </p>
+                                            <p>
+                                                Fruta: <span id="Fruta" class="estado1"></span>
+                                            </p>
+                                            <p>
+                                                Frecuencia fruta: <span id="Frecuencia_Fruta"></span>
+                                            </p>
+                                            <p>
+                                                Cereales: <span id="Cereales" class="estado1"></span>
+                                            </p>
+                                            <p>
+                                                Frecuencia cereales: <span id="Frecuencia_Cereales"></span>
+                                            </p>
+                                            <p>
+                                                Leguminosas: <span id="Leguminosas" class="estado1"></span>
+                                            </p>
+                                            <p>
+                                                Frecuencia leguminosas: <span id="Frecuencia_Leguminosas"></span>
+                                            </p>
+                                            <p>
+                                                Carne: <span id="Carne" class="estado1"></span>
+                                            </p>
+                                            <p>
+                                                Frecuencia carne: <span id="Frecuencia_Carne"></span>
+                                            </p>
+                                            <p>
+                                                Grasa: <span id="Grasa" class="estado1"></span>
+                                            </p>
+                                            <p>
+                                                Frecuencia grasa: <span id="Frecuencia_Grasa"></span>
+                                            </p>
+                                            <p>
+                                                Azúcar: <span id="Azucar" class="estado1"></span>
+                                            </p>
+                                            <p>
+                                                Frecuencia azúcar: <span id="Frecuencia_Azucar"></span>
+                                            </p>
+                                            <p>
+                                                Bebidas azucaradas: <span id="BebidasAzucar" class="estado1"></span>
+                                            </p>
+                                            <p>
+                                                Frecuencia bebidas azucaradas: <span id="Frecuencia_BebidasAzucar"></span>
+                                            </p>
+                                            <p>
+                                                Bebidas dietéticas: <span id="BebidasDiet" class="estado1"></span>
+                                            </p>
+                                            <p>
+                                                Frecuencia bebidas dietéticas: <span id="Frecuencia_BebidasDiet"></span>
+                                            </p>
+                                            <p>
+                                                Bebidas alternativas: <span id="BebidasAlt" class="estado1"></span>
+                                            </p>
+                                            <p>
+                                                Frecuencia bebidas alternativas: <span id="Frecuencia_BebidasAlt"></span>
+                                            </p>
+                                            <p>
+                                                Café: <span id="Cafe" class="estado1"></span>
+                                            </p>
+                                            <p>
+                                                Frecuencia café: <span id="Frecuencia_Cafe"></span>
+                                            </p>
+                                            <p>
+                                                Té: <span id="Te" class="estado1"></span>
+                                            </p>
+                                            <p>
+                                                Frecuencia té: <span id="Frecuencia_Te"></span>
+                                            </p>
+                                            <p>
+                                                Cerveza: <span id="Cerveza" class="estado1"></span>
+                                            </p>
+                                            <p>
+                                                Frecuencia cerveza: <span id="Frecuencia_Cerveza"></span>
+                                            </p>
+                                            <p>
+                                                Productos panadería: <span id="ProductosPan" class="estado1"></span>
+                                            </p>
+                                            <p>
+                                                Frecuencia productos panadería: <span id="Frecuencia_ProductosPan"></span>
+                                            </p>
+                                            <p>
+                                                Confitería: <span id="Confiteria" class="estado1"></span>
+                                            </p>
+                                            <p>
+                                                Frecuencia confitería: <span id="Frecuencia_Confiteria"></span>
+                                            </p>
+                                            <p>
+                                                Embutidos: <span id="Embutidos" class="estado1"></span>
+                                            </p>
+                                            <p>
+                                                Frecuencia embutidos: <span id="Frecuencia_Embutidos"></span>
+                                            </p>
+                                            <p>
+                                                Alimentos enlatados: <span id="AlimentosEnla" class="estado1"></span>
+                                            </p>
+                                            <p>
+                                                Frecuencia alimentos enlatados: <span id="Frecuencia_AlimentosEnla"></span>
+                                            </p>
+                                            <p>
+                                                Sopas instantáneas: <span id="Sopas" class="estado1"></span>
+                                            </p>
+                                            <p>
+                                                Frecuencia sopas instantáneas: <span id="Frecuencia_Sopas"></span>
+                                            </p>
+                                            <p>
+                                                Verduras precocidas: <span id="Verduras" class="estado1"></span>
+                                            </p>
+                                            <p>
+                                                Frecuencia verduras precocidas: <span id="Frecuencia_Verduras"></span>
+                                            </p>
+                                            <p>
+                                                Comida rápida: <span id="ComidaRap" class="estado1"></span>
+                                            </p>
+                                            <p>
+                                                Frecuencia comida rápida: <span id="Frecuencia_ComidaRap"></span>
+                                            </p>
+                                            <p>
+                                                Comidas grasosas: <span id="ComidaGras" class="estado1"></span>
+                                            </p>
+                                            <p>
+                                                Frecuencia comidas grasosas: <span id="Frecuencia_ComidaGras"></span>
+                                            </p>
+                                            <p>
+                                                Productos chatarra: <span id="ProductosChat" class="estado1"></span>
+                                            </p>
+                                            <p>
+                                                Frecuencia productos chatarra: <span id="Frecuencia_ProductosChat"></span>
+                                            </p>
+                                            <p>
+                                                Consomé: <span id="Consome" class="estado1"></span>
+                                            </p>
+                                            <p>
+                                                Frecuencia consomé: <span id="Frecuencia_Consome"></span>
+                                            </p>
+                                            <p>
+                                                Sal: <span id="Sal" class="estado1"></span>
+                                            </p>
+                                            <p>
+                                                Frecuencia sal: <span id="Frecuencia_Sal"></span>
+                                            </p>
+                                            <p>
+                                                Sucedáneo leche: <span id="Sucedaneo1" class="estado1"></span>
+                                            </p>
+                                            <p>
+                                                Frecuencia Sucedáneo leche: <span id="Frecuencia_Sucedaneo"></span>
+                                            </p>
+                                            <p>
+                                                Otros: <span id="Otros" class="estado1"></span>
+                                            </p>
+                                            <p>
+                                                Frecuencia otros: <span id="Frecuencia_Otros"></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <p>
+                                        <h4 class="collapsed" data-toggle="collapse" data-target="#collapseEvaluacionAntro" aria-expanded="false" aria-controls="collapseEvaluacionAntro">
+                                            Evaluación Antropométrica <i class="fa fa-plus-circle"></i>
+                                        </h4>
+                                    </p>
+                                    <div class="collapse" id="collapseEvaluacionAntro">
+                                        <div class="card card-body">
+                                            <h5 style="color:blue">Menores 4 años 11 meses</h5>
+                                            <p>
+                                                Peso al nacer: <span id="S4Anios_PesoN"></span>
+                                            </p>
+                                            <p>
+                                                Talla al nacer: <span id="S4Anios_TallaN"></span>
+                                            </p>
+                                            <p>
+                                                Peso actual: <span id="S4Anios_PesoA"></span>
+                                            </p>
+                                            <p>
+                                                Talla actual: <span id="S4Anios_TallaA"></span>
+                                            </p>
+                                            <hr size="2px" color="blue" />
+                                            <p>
+                                                Mediana: Peso/edad <span id="S4Tabla_MedPeso"></span>
+                                            </p>
+                                            <p>
+                                                Mediana: Talla/edad <span id="S4Tabla_MedTalla"></span>
+                                            </p>
+                                            <p>
+                                                Mediana: Peso/talla <span id="S4Tabla_MedPeTa"></span>
+                                            </p>
+                                            <p>
+                                                Mediana: Peso ideal <span id="S4Tabla_MedPeId"></span>
+                                            </p>
+                                            <p>
+                                                Desviaciones: Peso/edad <span id="S4Tabla_DesPeso"></span>
+                                            </p>
+                                            <p>
+                                                Desviaciones: Talla/edad <span id="S4Tabla_DesTalla"></span>
+                                            </p>
+                                            <p>
+                                                Desviaciones: Peso/talla <span id="S4Tabla_DesPeTa"></span>
+                                            </p>
+                                            <p>
+                                                Desviaciones: Peso ideal <span id="S4Tabla_DesPeId"></span>
+                                            </p>
+                                            <p>
+                                                Rango: Peso/edad <span id="S4Tabla_RanPeso"></span>
+                                            </p>
+                                            <p>
+                                                Rango: Talla/edad <span id="S4Tabla_RanTalla"></span>
+                                            </p>
+                                            <p>
+                                                Rango: Peso/talla <span id="S4Tabla_RanPeTa"></span>
+                                            </p>
+                                            <p>
+                                                Rango: Peso ideal <span id="S4Tabla_RanPeId"></span>
+                                            </p>
+                                            <p>
+                                                Clasificación: Peso/edad <span id="S4Tabla_ClaPeso"></span>
+                                            </p>
+                                            <p>
+                                                Clasificación: Talla/edad <span id="S4Tabla_ClaTalla"></span>
+                                            </p>
+                                            <p>
+                                                Clasificación: Peso/talla <span id="S4Tabla_ClaPeTa"></span>
+                                            </p>
+                                            <p>
+                                                Clasificación: Peso ideal <span id="S4Tabla_ClaPeId"></span>
+                                            </p>
+                                            <hr size="2px" color="blue" />
+                                            <p>
+                                                Int. global de los 3 indicadores: <span id="S4Anios_Interpretacion"></span>
+                                            </p>
+                                            <p>
+                                                Observaciones: <span id="S4Anios_Observaciones"></span>
+                                            </p>
+                                            <h5 style="color:blue">Igual o mayor de 5 años 11 meses</h5>
+                                            <p>
+                                                Peso actual: <span id="S5Anios_PesoA"></span>
+                                            </p>
+                                            <p>
+                                                Talla actual: <span id="S5Anios_TallaA"></span>
+                                            </p>
+                                            <p>
+                                                IMC: <span id="S5Anios_Indice"></span>
+                                            </p>
+                                            <p>
+                                                Desviación est.: <span id="S5Anios_Desviacion"></span>
+                                            </p>
+                                            <p>
+                                                Diagnóstico: <span id="S5Anios_Diagnostico"></span>
+                                            </p>
+                                            <p>
+                                                Peso ideal: <span id="S5Anios_PesoId"></span>
+                                            </p>
+                                            <p>
+                                                Circunferencia cintura: <span id="S5Anios_Circunf"></span>
+                                            </p>
+                                            <p>
+                                                Percentil: <span id="S5Anios_Percentil"></span>
+                                            </p>
+                                            <p>
+                                                Interpretación: <span id="S5Anios_Interpretacion"></span>
+                                            </p>
+                                            <p>
+                                                Observaciones: <span id="S5Anios_Observaciones"></span>
+                                            </p>
+                                            <h5 style="color:blue">Igual o mayor de 10 a 19 años 11 meses</h5>
+                                            <p>
+                                                Peso actual: <span id="S10Anios_PesoA"></span>
+                                            </p>
+                                            <p>
+                                                Talla actual: <span id="S10Anios_TallaA"></span>
+                                            </p>
+                                            <p>
+                                                IMC: <span id="S10Anios_Indice"></span>
+                                            </p>
+                                            <p>
+                                                Desviación est.: <span id="S10Anios_Desviacion"></span>
+                                            </p>
+                                            <p>
+                                                Diagnóstico: <span id="S10Anios_Diagnostico"></span>
+                                            </p>
+                                            <p>
+                                                Peso ideal: <span id="S10Anios_PesoId"></span>
+                                            </p>
+                                            <p>
+                                                Circunferencia cintura: <span id="S10Anios_Circunf"></span>
+                                            </p>
+                                            <p>
+                                                Percentil: <span id="S10Anios_Percentil"></span>
+                                            </p>
+                                            <p>
+                                                Interpretación: <span id="S10Anios_Interpretacion"></span>
+                                            </p>
+                                            <p>
+                                                Observaciones: <span id="S10Anios_Observaciones"></span>
+                                            </p>
+                                            <h5 style="color:blue">Igual o mayor de 20 a 59 años 11 meses</h5>
+                                            <p>
+                                                Peso actual: <span id="S20Anios_PesoA"></span>
+                                            </p>
+                                            <p>
+                                                Talla actual: <span id="S20Anios_TallaA"></span>
+                                            </p>
+                                            <p>
+                                                IMC: <span id="S20Anios_Indice"></span>
+                                            </p>
+                                            <p>
+                                                Diagnóstico: <span id="S20Anios_Diagnostico"></span>
+                                            </p>
+                                            <p>
+                                                Circunferencia muñeca: <span id="S20Anios_CircunfMu"></span>
+                                            </p>
+                                            <p>
+                                                Complexión: <span id="S20Anios_Complexion"></span>
+                                            </p>
+                                            <p>
+                                                Peso ideal: <span id="S20Anios_PesoId"></span>
+                                            </p>
+                                            <p>
+                                                Circunferencia cintura: <span id="S20Anios_CircunfCin"></span>
+                                            </p>
+                                            <p>
+                                                Circunferencia cadera: <span id="S20Anios_CircunfCad"></span>
+                                            </p>
+                                            <p>
+                                                Ind. cintura y cadera/Diag.: <span id="S20Anios_IndiceCin"></span>
+                                            </p>
+                                            <p>
+                                                Riesgo cardio. según cintura: <span id="S20Anios_Riesgo"></span>
+                                            </p>
+                                            <p>
+                                                Observaciones: <span id="S20Anios_Observaciones"></span>
+                                            </p>
+                                            <h5 style="color:blue">Igual o mayor de 60 años</h5>
+                                            <p>
+                                                Peso actual: <span id="S60Anios_PesoA"></span>
+                                            </p>
+                                            <p>
+                                                Talla actual: <span id="S60Anios_TallaA"></span>
+                                            </p>
+                                            <p>
+                                                IMC: <span id="S60Anios_Indice"></span>
+                                            </p>
+                                            <p>
+                                                Diagnóstico: <span id="S60Anios_Diagnostico"></span>
+                                            </p>
+                                            <p>
+                                                Circunferencia muñeca: <span id="S60Anios_CircunfMu"></span>
+                                            </p>
+                                            <p>
+                                                Complexión: <span id="S60Anios_Complexion"></span>
+                                            </p>
+                                            <p>
+                                                Peso ideal: <span id="S60Anios_PesoId"></span>
+                                            </p>
+                                            <p>
+                                                Peso ajustado: <span id="S60Anios_PesoAj"></span>
+                                            </p>
+                                            <p>
+                                                Circunferencia cintura: <span id="S60Anios_CircunfCin"></span>
+                                            </p>
+                                            <p>
+                                                Circunferencia cadera: <span id="S60Anios_CircunfCad"></span>
+                                            </p>
+                                            <p>
+                                                Ind. cintura y cadera/Diag.: <span id="S60Anios_IndiceCin"></span>
+                                            </p>
+                                            <p>
+                                                Circunferencia brazo: <span id="S60Anios_CircunfBra"></span>
+                                            </p>
+                                            <p>
+                                                Circunferencia pantorrilla: <span id="S60Anios_CircunfPan"></span>
+                                            </p>
+                                            <p>
+                                                Observaciones: <span id="S60Anios_Observaciones"></span>
+                                            </p>
+                                            <h5 style="color:blue">Embarazada</h5>
+                                            <p>
+                                                Peso actual: <span id="SEmbaraz_PesoA"></span>
+                                            </p>
+                                            <p>
+                                                Talla actual: <span id="SEmbaraz_TallaA"></span>
+                                            </p>
+                                            <p>
+                                                Mes/semanas gestación: <span id="SEmbaraz_Gestacion"></span>
+                                            </p>
+                                            <p>
+                                                Circunferencia brazo: <span id="SEmbaraz_CircunfBra"></span>
+                                            </p>
+                                            <p>
+                                                Peso pregestacional: <span id="SEmbaraz_PesoPreges"></span>
+                                            </p>
+                                            <p>
+                                                IMC pregestacional: <span id="SEmbaraz_Indice"></span>
+                                            </p>
+                                            <p>
+                                                Diagnóstico pregestacional: <span id="SEmbaraz_Diagnostico"></span>
+                                            </p>
+                                            <p>
+                                                Ganancia peso deseable durante emb.: <span id="SEmbaraz_GanPesoDesd"></span>
+                                            </p>
+                                            <p>
+                                                Ganancia peso actual durante emb.: <span id="SEmbaraz_GanPesoAct"></span>
+                                            </p>
+                                            <p>
+                                                Observaciones: <span id="SEmbaraz_Observaciones"></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <p>
+                                        <h4 class="collapsed" data-toggle="collapse" data-target="#collapseEducacionIn" aria-expanded="false" aria-controls="collapseEducacionIn">
+                                            Educación Inicial <i class="fa fa-plus-circle"></i>
+                                        </h4>
+                                    </p>
+                                    <div class="collapse" id="collapseEducacionIn">
+                                        <div class="card card-body">
+                                            <h5 style="color:blue">Tema de educación impartido</h5>
+                                            <p>
+                                                Criterios grales. de la alimentación: <span id="CriteriosGen" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Prevención de enf. relacionadas con la alim.: <span id="PrevencionEnf" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Educación en materia de alim. correcta: <span id="EducacionMat" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Planificación y dist. de la dieta de acuerdo a la etapa de vida: <span id="PlanificacionDis" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Adopción de patrones de alimentación saludables: <span id="AdopcionPat" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Educación para mejorar los hábitos alimentarios en la fam. <span id="EducacionMej" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Ejercicio adecuado: <span id="EjercicioAd" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Educación rel. para lograr hábitos alimentarios correctos. <span id="EducacionRel" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Adherencia al tratamiento: <span id="AdherenciaTrat" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Educación rel. con alimentos o nutrientes que influyen: <span id="EdRelAlimentos" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Dudas o inquietudes del px: <span id="DudasInq" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Esp. Dudas o inquietudes del px <span id="Especifica_Dudas"></span>
+                                            </p>
+                                            <h5 style="color:blue">Método utilizado</h5>
+                                            <p>
+                                                Oral: <span id="Oral" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Escrito: <span id="Escrito" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Video: <span id="Video" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Demostración: <span id="Demostracion" class="estado"></span>
+                                            </p>
+                                            <h5 style="color:blue">Etapa de la vida</h5>
+                                            <p>
+                                                Mujer embarazada: <span id="Mujeremb" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Madre en etapa postnatal <span id="MadreEt" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Postnatal recién nacido: <span id="Postnatal" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Cuidador o tut. del menor de 6 meses: <span id="Cuidador6meses" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Cuidador o tut. del menor de 6-12 meses: <span id="Cuidador6a12meses" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Cuidador o tut. del menor de 1-4 años: <span id="Cuidador1a4anios" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Cuidador o tut. del menor de 5-9 años: <span id="Cuidador5a9anios" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                De 10 a 19 años: <span id="C10a19anios" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                De 20 a 59 años: <span id="C20a59anios" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                De 60 años y más: <span id="C60anios" class="estado"></span>
+                                            </p>
+                                            <h5 style="color:blue">Evaluación de la educación</h5>
+                                            <p>
+                                                Se completa exitósamente: <span id="SeCompleta" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Sin completar: <span id="SinCompletar" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Reforzar parte de la educación: <span id="ReforzarParte" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Reforzar toda la educación: <span id="ReforzarToda" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Rechazo de la educación: <span id="Rechazo" class="estado"></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <p>
+                                        <h4 class="collapsed" data-toggle="collapse" data-target="#collapseImpresionDia" aria-expanded="false" aria-controls="collapseImpresionDia">
+                                            Impresión Giagnóstica <i class="fa fa-plus-circle"></i>
+                                        </h4>
+                                    </p>
+                                    <div class="collapse" id="collapseImpresionDia">
+                                        <div class="card card-body">
+                                            <p>
+                                                Diagnóstico 1: <span id="diagnostico1PS"></span>
+                                            </p>
+                                            <p>
+                                                Diagnóstico 2: <span id="diagnostico2PS"></span>
+                                            </p>
+                                            <p>
+                                                diagnóstico 3: <span id="diagnostico3PS"></span>
+                                            </p>
+                                            <p>
+                                                Diagnóstico 4: <span id="diagnostico4PS"></span>
+                                            </p>
+                                            <p>
+                                                Diagnóstico 5: <span id="diagnostico5PS"></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <p>
+                                        <h4 class="collapsed" data-toggle="collapse" data-target="#collapsePla" aria-expanded="false" aria-controls="collapsePla">
+                                            Plan <i class="fa fa-plus-circle"></i>
+                                        </h4>
+                                    </p>
+                                    <div class="collapse" id="collapsePla">
+                                        <div class="card card-body">
+                                            <p>
+                                                Plan: <span id="PlanPS"></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <p>
+                                        <h4 class="collapsed" data-toggle="collapse" data-target="#collapsePron" aria-expanded="false" aria-controls="collapsePron">
+                                            Pronóstico <i class="fa fa-plus-circle"></i>
+                                        </h4>
+                                    </p>
+                                    <div class="collapse" id="collapsePron">
+                                        <div class="card card-body">
+                                            <p>
+                                                Ligado evolucion: <span id="LigadoEvolucionPS" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Favorable: <span id="FavorablePS" class="estado"></span>
+                                            </p>
+                                            <p>
+                                                Desfavorable: <span id="DesfavorablePS" class="estado"></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <p>
+                                        <h4 class="collapsed" data-toggle="collapse" data-target="#collapseOtro" aria-expanded="false" aria-controls="collapseOtro">
+                                            Otros <i class="fa fa-plus-circle"></i>
+                                        </h4>
+                                    </p>
+                                    <div class="collapse" id="collapseOtro">
+                                        <div class="card card-body">
+                                            <p>
+                                                Interconsulta: <span id="InterconsultaPS"></span>
+                                            </p>
+                                            <p>
+                                                Padecimiento actual: <span id="PadecimientoActualPS"></span>
+                                            </p>
+                                            <p>
+                                                Especifica padecimiento actual: <span id="Especifica_PadecimientoActualPS"></span>
+                                            </p>
+                                            <p>
+                                                Próxima cita: <span id="ProximaCitaPS"></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </fieldset>
                     </div>
@@ -1995,18 +2823,6 @@
             }
         });
 
-        /*
-        let timerInterval
-        Swal.fire({
-            title: 'Busque al px. y seleccione la H.C. que desea ver',
-            timer: 3500,
-            timerProgressBar: true,
-            willClose: () => {
-                clearInterval(timerInterval)
-            }
-        });
-        */
-
         $(".tabs").click(function () {
             $(".tabs").removeClass("active");
             $(".tabs h6").removeClass("font-weight-bold");
@@ -2036,10 +2852,10 @@
             });
         });
 
+        FuncionBuscarPX();
     });
 
     //Si dan click en Enter en los inputs de Nombre/Expediente
-    
     $('.BuscarPX').on("keypress", function (e) {
         if (e.keyCode == 13) {
             FuncionBuscarPX();
@@ -2047,7 +2863,7 @@
         }
     });
 
-    FuncionBuscarPX();
+    //FuncionBuscarPX();
 
     //Si dan click en el botón de Buscar
     function BtnBuscarPX() {
@@ -2059,8 +2875,6 @@
     function FuncionBuscarPX() {
 
         ExpedientePX = "@Model.Expediente";
-
-        //alert(ExpedientePX);
 
 	    Swal.fire({
 		    title: 'Cargando... Espere por favor',
@@ -2830,7 +3644,298 @@
             $('#Psicologia').hide();
             $('#Nutricion').show();
 
+            $.ajax({
+		        url: '@Url.Action("ConsultarHC_Nut", "HistoriaNutricion")',
+		        method: 'POST',
+		        dataType: 'json',
+                data: { Clave_hc_px: Clave_hc_px, TipoHistoria: TipoHistoria },
+                success: function (data) {
 
+                    // #region Seteo de valor con input del MODAL
+                    //ResultadoLab
+                    $("#Resultado").text(data.Resultado);
+                    $("#Especifica_Resultado").text(data.Especifica_Resultado);
+                    //EtapaCambio
+                    $("#Viene").text(data.Viene);
+                    $("#DeseaLograr").text(data.DeseaLograr);
+                    $("#Precontemplacion").text(data.Precontemplacion);
+                    $("#Contemplacion").text(data.Contemplacion);
+                    $("#Preparacion").text(data.Preparacion);
+                    $("#Mantenimiento").text(data.Mantenimiento);
+                    $("#Terminacion").text(data.Terminacion);
+                    //DatosDieteticos
+                    $("#Comidas").text(data.Comidas);
+                    $("#Desayuno").text(data.Desayuno);
+                    $("#Comidas2").text(data.Comidas2);
+                    $("#Cena").text(data.Cena);
+                    $("#ColacionMat").text(data.ColacionMat);
+                    $("#ColacionVes").text(data.ColacionVes);
+                    $("#TiempoConsumir").text(data.TiempoConsumir);
+                    $("#Suplementos").text(data.Suplementos);
+                    $("#Especifica_Supl").text(data.Especifica_Supl);
+                    $("#AlimentosDisgustan").text(data.AlimentosDisgustan);
+                    $("#AlimentosFavoritos").text(data.AlimentosFavoritos);
+                    $("#ConsumoAgua").text(data.ConsumoAgua);
+                    $("#Especifica_ConsumoAgua").text(data.Especifica_ConsumoAgua);
+                    $("#HorasSuenio1").text(data.HorasSuenio);
+                    $("#ActividadFisica1").text(data.ActividadFisica);
+                    $("#Tipo_ActividadFisica").text(data.Tipo_ActividadFisica);
+                    $("#Tiempo_ActividadFisica").text(data.Tiempo_ActividadFisica);
+                    $("#Frec_ActividadFisica").text(data.Frec_ActividadFisica);
+                    //AlimentacionInicial
+                    $("#LactanciaMaterna").text(data.LactanciaMaterna);
+                    $("#Tiempo_LactanciaM").text(data.Tiempo_LactanciaM);
+                    $("#Sucedaneo").text(data.Sucedaneo);
+                    $("#Cual_Sucedaneo").text(data.Cual_Sucedaneo);
+                    $("#AlimentacionComp").text(data.AlimentacionComp);
+                    $("#Edad_AlimentacionC").text(data.Edad_AlimentacionC);
+                    $("#Motivo_AlimentacionC").text(data.Motivo_AlimentacionC);
+                    //Recordatorio
+                    $("#Desayuno_Hora").text(data.Desayuno_Hora);
+                    $("#Desayuno_Preparacion").text(data.Desayuno_Preparacion);
+                    $("#Desayuno_Alimento").text(data.Desayuno_Alimento);
+                    $("#Desayuno_Cantidad").text(data.Desayuno_Cantidad);
+                    $("#ColacionDes_Hora").text(data.ColacionDes_Hora);
+                    $("#ColacionDes_Preparacion").text(data.ColacionDes_Preparacion);
+                    $("#ColacionDes_Alimento").text(data.ColacionDes_Alimento);
+                    $("#ColacionDes_Cantidad").text(data.ColacionDes_Cantidad);
+                    $("#Comida_Hora").text(data.Comida_Hora);
+                    $("#Comida_Preparacion").text(data.Comida_Preparacion);
+                    $("#Comida_Alimento").text(data.Comida_Alimento);
+                    $("#Comida_Cantidad").text(data.Comida_Cantidad);
+                    $("#ColacionCom_Hora").text(data.ColacionCom_Hora);
+                    $("#ColacionCom_Preparacion").text(data.ColacionCom_Preparacion);
+                    $("#ColacionCom_Alimento").text(data.ColacionCom_Alimento);
+                    $("#ColacionCom_Cantidad").text(data.ColacionCom_Cantidad);
+                    $("#Cena_Hora").text(data.Cena_Hora);
+                    $("#Cena_Preparacion").text(data.Cena_Preparacion);
+                    $("#Cena_Alimento").text(data.Cena_Alimento);
+                    $("#Cena_Cantidad").text(data.Cena_Cantidad);
+                    //FrecuenciaAlimen
+                    $("#Leche").text(data.Leche);
+                    $("#Frecuencia_Leche").text(data.Frecuencia_Leche);
+                    $("#Verdura").text(data.Verdura);
+                    $("#Frecuencia_Verdura").text(data.Frecuencia_Verdura);
+                    $("#Fruta").text(data.Fruta);
+                    $("#Frecuencia_Fruta").text(data.Frecuencia_Fruta);
+                    $("#Cereales").text(data.Cereales);
+                    $("#Frecuencia_Cereales").text(data.Frecuencia_Cereales);
+                    $("#Leguminosas").text(data.Leguminosas);
+                    $("#Frecuencia_Leguminosas").text(data.Frecuencia_Leguminosas);
+                    $("#Carne").text(data.Carne);
+                    $("#Frecuencia_Carne").text(data.Frecuencia_Carne);
+                    $("#Grasa").text(data.Grasa);
+                    $("#Frecuencia_Grasa").text(data.Frecuencia_Grasa);
+                    $("#Azucar").text(data.Azucar);
+                    $("#Frecuencia_Azucar").text(data.Frecuencia_Azucar);
+                    $("#BebidasAzucar").text(data.BebidasAzucar);
+                    $("#Frecuencia_BebidasAzucar").text(data.Frecuencia_BebidasAzucar);
+                    $("#BebidasDiet").text(data.BebidasDiet);
+                    $("#Frecuencia_BebidasDiet").text(data.Frecuencia_BebidasDiet);
+                    $("#BebidasAlt").text(data.BebidasAlt);
+                    $("#Frecuencia_BebidasAlt").text(data.Frecuencia_BebidasAlt);
+                    $("#Cafe").text(data.Cafe);
+                    $("#Frecuencia_Cafe").text(data.Frecuencia_Cafe);
+                    $("#Te").text(data.Te);
+                    $("#Frecuencia_Te").text(data.Frecuencia_Te);
+                    $("#Cerveza").text(data.Cerveza);
+                    $("#Frecuencia_Cerveza").text(data.Frecuencia_Cerveza);
+                    $("#ProductosPan").text(data.ProductosPan);
+                    $("#Frecuencia_ProductosPan").text(data.Frecuencia_ProductosPan);
+                    $("#Confiteria").text(data.Confiteria);
+                    $("#Frecuencia_Confiteria").text(data.Frecuencia_Confiteria);
+                    $("#Embutidos").text(data.Embutidos);
+                    $("#Frecuencia_Embutidos").text(data.Frecuencia_Embutidos);
+                    $("#AlimentosEnla").text(data.AlimentosEnla);
+                    $("#Frecuencia_AlimentosEnla").text(data.Frecuencia_AlimentosEnla);
+                    $("#Sopas").text(data.Sopas);
+                    $("#Frecuencia_Sopas").text(data.Frecuencia_Sopas);
+                    $("#Verduras").text(data.Verduras);
+                    $("#Frecuencia_Verduras").text(data.Frecuencia_Verduras);
+                    $("#ComidaRap").text(data.ComidaRap);
+                    $("#Frecuencia_ComidaRap").text(data.Frecuencia_ComidaRap);
+                    $("#ComidaGras").text(data.ComidaGras);
+                    $("#Frecuencia_ComidaGras").text(data.Frecuencia_ComidaGras);
+                    $("#ProductosChat").text(data.ProductosChat);
+                    $("#Frecuencia_ProductosChat").text(data.Frecuencia_ProductosChat);
+                    $("#Consome").text(data.Consome);
+                    $("#Frecuencia_Consome").text(data.Frecuencia_Consome);
+                    $("#Sal").text(data.Sal);
+                    $("#Frecuencia_Sal").text(data.Frecuencia_Sal);
+                    $("#Sucedaneo1").text(data.Sucedaneo);
+                    $("#Frecuencia_Sucedaneo").text(data.Frecuencia_Sucedaneo);
+                    $("#Otros").text(data.Otros);
+                    $("#Frecuencia_Otros").text(data.Frecuencia_Otros);
+                    //EvaluacionAntro
+                    $("#S4Anios_PesoN").text(data.S4Anios_PesoN);
+                    $("#S4Anios_TallaN").text(data.S4Anios_TallaN);
+                    $("#S4Anios_PesoA").text(data.S4Anios_PesoA);
+                    $("#S4Anios_TallaA").text(data.S4Anios_TallaA);
+                    $("#S4Tabla_MedPeso").text(data.S4Tabla_MedPeso);
+                    $("#S4Tabla_MedTalla").text(data.S4Tabla_MedTalla);
+                    $("#S4Tabla_MedPeTa").text(data.S4Tabla_MedPeTa);
+                    $("#S4Tabla_MedPeId").text(data.S4Tabla_MedPeId);
+                    $("#S4Tabla_DesPeso").text(data.S4Tabla_DesPeso);
+                    $("#S4Tabla_DesTalla").text(data.S4Tabla_DesTalla);
+                    $("#S4Tabla_DesPeTa").text(data.S4Tabla_DesPeTa);
+                    $("#S4Tabla_DesPeId").text(data.S4Tabla_DesPeId);
+                    $("#S4Tabla_RanPeso").text(data.S4Tabla_RanPeso);
+                    $("#S4Tabla_RanTalla").text(data.S4Tabla_RanTalla);
+                    $("#S4Tabla_RanPeTa").text(data.S4Tabla_RanPeTa);
+                    $("#S4Tabla_RanPeId").text(data.S4Tabla_RanPeId);
+                    $("#S4Tabla_ClaPeso").text(data.S4Tabla_ClaPeso);
+                    $("#S4Tabla_ClaTalla").text(data.S4Tabla_ClaTalla);
+                    $("#S4Tabla_ClaPeTa").text(data.S4Tabla_ClaPeTa);
+                    $("#S4Tabla_ClaPeId").text(data.S4Tabla_ClaPeId);
+                    $("#S4Anios_Interpretacion").text(data.S4Anios_Interpretacion);
+                    $("#S4Anios_Observaciones").text(data.S4Anios_Observaciones);
+                    $("#S5Anios_PesoA").text(data.S5Anios_PesoA);
+                    $("#S5Anios_TallaA").text(data.S5Anios_TallaA);
+                    $("#S5Anios_Indice").text(data.S5Anios_Indice);
+                    $("#S5Anios_Desviacion").text(data.S5Anios_Desviacion);
+                    $("#S5Anios_Diagnostico").text(data.S5Anios_Diagnostico);
+                    $("#S5Anios_PesoId").text(data.S5Anios_PesoId);
+                    $("#S5Anios_Circunf").text(data.S5Anios_Circunf);
+                    $("#S5Anios_Percentil").text(data.S5Anios_Percentil);
+                    $("#S5Anios_Interpretacion").text(data.S5Anios_Interpretacion);
+                    $("#S5Anios_Observaciones").text(data.S5Anios_Observaciones);
+                    $("#S10Anios_PesoA").text(data.S10Anios_PesoA);
+                    $("#S10Anios_TallaA").text(data.S10Anios_TallaA);
+                    $("#S10Anios_Indice").text(data.S10Anios_Indice);
+                    $("#S10Anios_Desviacion").text(data.S10Anios_Desviacion);
+                    $("#S10Anios_Diagnostico").text(data.S10Anios_Diagnostico);
+                    $("#S10Anios_PesoId").text(data.S10Anios_PesoId);
+                    $("#S10Anios_Circunf").text(data.S10Anios_Circunf);
+                    $("#S10Anios_Percentil").text(data.S10Anios_Percentil);
+                    $("#S10Anios_Interpretacion").text(data.S10Anios_Interpretacion);
+                    $("#S10Anios_Observaciones").text(data.S10Anios_Observaciones);
+                    $("#S20Anios_PesoA").text(data.S20Anios_PesoA);
+                    $("#S20Anios_TallaA").text(data.S20Anios_TallaA);
+                    $("#S20Anios_Indice").text(data.S20Anios_Indice);
+                    $("#S20Anios_Diagnostico").text(data.S20Anios_Diagnostico);
+                    $("#S20Anios_CircunfMu").text(data.S20Anios_CircunfMu);
+                    $("#S20Anios_Complexion").text(data.S20Anios_Complexion);
+                    $("#S20Anios_PesoId").text(data.S20Anios_PesoId);
+                    $("#S20Anios_CircunfCin").text(data.S20Anios_CircunfCin);
+                    $("#S20Anios_CircunfCad").text(data.S20Anios_CircunfCad);
+                    $("#S20Anios_IndiceCin").text(data.S20Anios_IndiceCin);
+                    $("#S20Anios_Riesgo").text(data.S20Anios_Riesgo);
+                    $("#S20Anios_Observaciones").text(data.S20Anios_Observaciones);
+                    $("#S60Anios_PesoA").text(data.S60Anios_PesoA);
+                    $("#S60Anios_TallaA").text(data.S60Anios_TallaA);
+                    $("#S60Anios_Indice").text(data.S60Anios_Indice);
+                    $("#S60Anios_Diagnostico").text(data.S60Anios_Diagnostico);
+                    $("#S60Anios_CircunfMu").text(data.S60Anios_CircunfMu);
+                    $("#S60Anios_Complexion").text(data.S60Anios_Complexion);
+                    $("#S60Anios_PesoId").text(data.S60Anios_PesoId);
+                    $("#S60Anios_PesoAj").text(data.S60Anios_PesoAj);
+                    $("#S60Anios_CircunfCin").text(data.S60Anios_CircunfCin);
+                    $("#S60Anios_CircunfCad").text(data.S60Anios_CircunfCad);
+                    $("#S60Anios_IndiceCin").text(data.S60Anios_IndiceCin);
+                    $("#S60Anios_CircunfBra").text(data.S60Anios_CircunfBra);
+                    $("#S60Anios_CircunfPan").text(data.S60Anios_CircunfPan);
+                    $("#S60Anios_Observaciones").text(data.S60Anios_Observaciones);
+                    $("#SEmbaraz_PesoA").text(data.SEmbaraz_PesoA);
+                    $("#SEmbaraz_TallaA").text(data.SEmbaraz_TallaA);
+                    $("#SEmbaraz_Gestacion").text(data.SEmbaraz_Gestacion);
+                    $("#SEmbaraz_CircunfBra").text(data.SEmbaraz_CircunfBra);
+                    $("#SEmbaraz_PesoPreges").text(data.SEmbaraz_PesoPreges);
+                    $("#SEmbaraz_Indice").text(data.SEmbaraz_Indice);
+                    $("#SEmbaraz_Diagnostico").text(data.SEmbaraz_Diagnostico);
+                    $("#SEmbaraz_GanPesoDesd").text(data.SEmbaraz_GanPesoDesd);
+                    $("#SEmbaraz_GanPesoAct").text(data.SEmbaraz_GanPesoAct);
+                    $("#SEmbaraz_Observaciones").text(data.SEmbaraz_Observaciones);
+                    //EducacionInicial
+                    $("#CriteriosGen").text(data.CriteriosGen);
+                    $("#PrevencionEnf").text(data.PrevencionEnf);
+                    $("#EducacionMat").text(data.EducacionMat);
+                    $("#PlanificacionDis").text(data.PlanificacionDis);
+                    $("#AdopcionPat").text(data.AdopcionPat);
+                    $("#EducacionMej").text(data.EducacionMej);
+                    $("#EjercicioAd").text(data.EjercicioAd);
+                    $("#EducacionRel").text(data.EducacionRel);
+                    $("#EdRelAlimentos").text(data.EdRelAlimentos);
+                    $("#AdherenciaTrat").text(data.AdherenciaTrat);
+                    $("#DudasInq").text(data.DudasInq);
+                    $("#Especifica_Dudas").text(data.Especifica_Dudas);
+                    $("#Oral").text(data.Oral);
+                    $("#Escrito").text(data.Escrito);
+                    $("#Video").text(data.Video);
+                    $("#Demostracion").text(data.Demostracion);
+                    $("#Mujeremb").text(data.Mujeremb);
+                    $("#MadreEt").text(data.MadreEt);
+                    $("#Postnatal").text(data.Postnatal);
+                    $("#Cuidador6meses").text(data.Cuidador6meses);
+                    $("#Cuidador6a12meses").text(data.Cuidador6a12meses);
+                    $("#Cuidador1a4anios").text(data.Cuidador1a4anios);
+                    $("#Cuidador5a9anios").text(data.Cuidador5a9anios);
+                    $("#C10a19anios").text(data.C10a19anios);
+                    $("#C20a59anios").text(data.C20a59anios);
+                    $("#C60anios").text(data.C60anios);
+                    $("#SeCompleta").text(data.SeCompleta);
+                    $("#SinCompletar").text(data.SinCompletar);
+                    $("#ReforzarParte").text(data.ReforzarParte);
+                    $("#ReforzarToda").text(data.ReforzarToda);
+                    $("#Rechazo").text(data.Rechazo);
+                    //ImpresionDiag
+                    $("#diagnostico1PS").text(data.Diagnostico1);
+                    $("#diagnostico2PS").text(data.Diagnostico2);
+                    $("#diagnostico3PS").text(data.Diagnostico3);
+                    $("#diagnostico4PS").text(data.Diagnostico4);
+                    $("#diagnostico5PS").text(data.Diagnostico5);
+                    //Plan
+                    $("#PlanPS").text(data.Plan);
+                    //Pronostico
+                    $("#LigadoEvolucionPS").text(data.LigadoEvolucion);
+                    $("#FavorablePS").text(data.Favorable);
+                    $("#DesfavorablePS").text(data.Desfavorable);
+                    //Otros
+                    $("#InterconsultaPS").text(data.Interconsulta);
+                    $("#PadecimientoActualPS").text(data.PadecimientoActual);
+                    $("#Especifica_PadecimientoActualPS").text(data.Especifica_PadecimientoActual);
+                    $("#ProximaCitaPS").text(data.ProximaCita);
+                    // #endregion
+
+                    // Obtener todos los elementos con la clase "estado"
+                    var elementosEstado = document.querySelectorAll(".estado");
+                    // Función para cambiar el texto basado en el contenido
+                    function cambiarTexto(spanElement) {
+                        var contenido = spanElement.textContent; // Obtener el contenido del <span>
+                        if (contenido === "true") {
+                            spanElement.textContent = "seleccionado";
+                        } else if (contenido === "false") {
+                            spanElement.textContent = "no seleccionado";
+                        }
+                    }
+                    // Iterar a través de los elementos y aplicar la función
+                    elementosEstado.forEach(function (elemento) {
+                        cambiarTexto(elemento);
+                    });
+
+
+                    // Obtener todos los elementos con la clase "estado"
+                    var elementosEstado1 = document.querySelectorAll(".estado1");
+                    // Función para cambiar el texto basado en el contenido
+                    function cambiarTexto1(spanElement) {
+                        var contenido1 = spanElement.textContent; // Obtener el contenido del <span>
+                        if (contenido1 === "true") {
+                            spanElement.textContent = "Si";
+                        } else if (contenido1 === "false") {
+                            spanElement.textContent = "No";
+                        }
+                    }
+                    // Iterar a través de los elementos y aplicar la función
+                    elementosEstado1.forEach(function (elemento) {
+                        cambiarTexto1(elemento);
+                    });
+		        },
+		        error: function(ex) {
+			        Swal.fire({
+				        icon: 'error',
+				        title: '¡Error!',
+			        });
+		        }
+            });
 
             $('#Odontologia').hide();
         } else
