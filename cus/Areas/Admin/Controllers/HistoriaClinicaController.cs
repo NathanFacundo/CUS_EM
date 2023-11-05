@@ -1781,7 +1781,6 @@ namespace CUS.Areas.Admin.Controllers
             }
         }
 
-
         public class _exploracion
         {
             public string Check_Craneo_Si { get; set; }

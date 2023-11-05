@@ -113,7 +113,7 @@ namespace CUS.Areas.Admin.Controllers
                     else
                     {
                         DateTime fechaActual = DateTime.Now;
-                        DateTime fechaL = fechaActual.AddHours(-3);
+                        DateTime fechaL = fechaActual.AddHours(-1.5);
                         //utilizar fechaLimite para verificar si el paciente tiene un registro dentro de las últimas 3 horas y tambien validar el TIPO DE HISTORIA
                         pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
                         .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC >= fechaL && r.FechaRegistroHC <= fechaActual && r.TipoHistoria == "Medicina");
@@ -196,7 +196,7 @@ namespace CUS.Areas.Admin.Controllers
                     else
                     {
                         DateTime fechaActual = DateTime.Now;
-                        DateTime fechaL = fechaActual.AddHours(-3);
+                        DateTime fechaL = fechaActual.AddHours(-1.5);
                         //utilizar fechaLimite para verificar si el paciente tiene un registro dentro de las últimas 3 horas y tambien validar el TIPO DE HISTORIA
                         pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
                         .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC >= fechaL && r.FechaRegistroHC <= fechaActual && r.TipoHistoria == "Medicina");
@@ -276,7 +276,7 @@ namespace CUS.Areas.Admin.Controllers
                     else
                     {
                         DateTime fechaActual = DateTime.Now;
-                        DateTime fechaL = fechaActual.AddHours(-3);
+                        DateTime fechaL = fechaActual.AddHours(-1.5);
                         //utilizar fechaLimite para verificar si el paciente tiene un registro dentro de las últimas 3 horas y tambien validar el TIPO DE HISTORIA
                         pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
                         .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC >= fechaL && r.FechaRegistroHC <= fechaActual && r.TipoHistoria == "Medicina");
@@ -369,7 +369,7 @@ namespace CUS.Areas.Admin.Controllers
                     else
                     {
                         DateTime fechaActual = DateTime.Now;
-                        DateTime fechaL = fechaActual.AddHours(-3);
+                        DateTime fechaL = fechaActual.AddHours(-1.5);
                         //utilizar fechaLimite para verificar si el paciente tiene un registro dentro de las últimas 3 horas y tambien validar el TIPO DE HISTORIA
                         pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
                         .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC >= fechaL && r.FechaRegistroHC <= fechaActual && r.TipoHistoria == "Medicina");
@@ -444,7 +444,7 @@ namespace CUS.Areas.Admin.Controllers
                     else
                     {
                         DateTime fechaActual = DateTime.Now;
-                        DateTime fechaL = fechaActual.AddHours(-3);
+                        DateTime fechaL = fechaActual.AddHours(-1.5);
                         //utilizar fechaLimite para verificar si el paciente tiene un registro dentro de las últimas 3 horas y tambien validar el TIPO DE HISTORIA
                         pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
                         .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC >= fechaL && r.FechaRegistroHC <= fechaActual && r.TipoHistoria == "Medicina");
@@ -522,7 +522,7 @@ namespace CUS.Areas.Admin.Controllers
                     else
                     {
                         DateTime fechaActual = DateTime.Now;
-                        DateTime fechaL = fechaActual.AddHours(-3);
+                        DateTime fechaL = fechaActual.AddHours(-1.5);
                         //utilizar fechaLimite para verificar si el paciente tiene un registro dentro de las últimas 3 horas y tambien validar el TIPO DE HISTORIA
                         pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
                         .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC >= fechaL && r.FechaRegistroHC <= fechaActual && r.TipoHistoria == "Medicina");
@@ -598,7 +598,7 @@ namespace CUS.Areas.Admin.Controllers
                     else
                     {
                         DateTime fechaActual = DateTime.Now;
-                        DateTime fechaL = fechaActual.AddHours(-3);
+                        DateTime fechaL = fechaActual.AddHours(-1.5);
                         //utilizar fechaLimite para verificar si el paciente tiene un registro dentro de las últimas 3 horas y tambien validar el TIPO DE HISTORIA
                         pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
                         .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC >= fechaL && r.FechaRegistroHC <= fechaActual && r.TipoHistoria == "Medicina");
@@ -727,7 +727,7 @@ namespace CUS.Areas.Admin.Controllers
                     else
                     {
                         DateTime fechaActual = DateTime.Now;
-                        DateTime fechaL = fechaActual.AddHours(-3);
+                        DateTime fechaL = fechaActual.AddHours(-1.5);
                         //utilizar fechaLimite para verificar si el paciente tiene un registro dentro de las últimas 3 horas y tambien validar el TIPO DE HISTORIA
                         pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
                         .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC >= fechaL && r.FechaRegistroHC <= fechaActual && r.TipoHistoria == "Medicina");
@@ -892,7 +892,7 @@ namespace CUS.Areas.Admin.Controllers
                     else
                     {
                         DateTime fechaActual = DateTime.Now;
-                        DateTime fechaL = fechaActual.AddHours(-3);
+                        DateTime fechaL = fechaActual.AddHours(-1.5);
                         //utilizar fechaLimite para verificar si el paciente tiene un registro dentro de las últimas 3 horas y tambien validar el TIPO DE HISTORIA
                         pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
                         .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC >= fechaL && r.FechaRegistroHC <= fechaActual && r.TipoHistoria == "Medicina");
@@ -967,7 +967,7 @@ namespace CUS.Areas.Admin.Controllers
                     else
                     {
                         DateTime fechaActual = DateTime.Now;
-                        DateTime fechaL = fechaActual.AddHours(-3);
+                        DateTime fechaL = fechaActual.AddHours(-1.5);
                         //utilizar fechaLimite para verificar si el paciente tiene un registro dentro de las últimas 3 horas y tambien validar el TIPO DE HISTORIA
                         pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
                         .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC >= fechaL && r.FechaRegistroHC <= fechaActual && r.TipoHistoria == "Medicina");
@@ -1040,7 +1040,7 @@ namespace CUS.Areas.Admin.Controllers
                     else
                     {
                         DateTime fechaActual = DateTime.Now;
-                        DateTime fechaL = fechaActual.AddHours(-3);
+                        DateTime fechaL = fechaActual.AddHours(-1.5);
                         //utilizar fechaLimite para verificar si el paciente tiene un registro dentro de las últimas 3 horas y tambien validar el TIPO DE HISTORIA
                         pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
                         .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC >= fechaL && r.FechaRegistroHC <= fechaActual && r.TipoHistoria == "Medicina");
@@ -1114,7 +1114,7 @@ namespace CUS.Areas.Admin.Controllers
                     else
                     {
                         DateTime fechaActual = DateTime.Now;
-                        DateTime fechaL = fechaActual.AddHours(-3);
+                        DateTime fechaL = fechaActual.AddHours(-1.5);
                         //utilizar fechaLimite para verificar si el paciente tiene un registro dentro de las últimas 3 horas y tambien validar el TIPO DE HISTORIA
                         pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
                         .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC >= fechaL && r.FechaRegistroHC <= fechaActual && r.TipoHistoria == "Medicina");
@@ -1191,7 +1191,7 @@ namespace CUS.Areas.Admin.Controllers
                     else
                     {
                         DateTime fechaActual = DateTime.Now;
-                        DateTime fechaL = fechaActual.AddHours(-3);
+                        DateTime fechaL = fechaActual.AddHours(-1.5);
                         //utilizar fechaLimite para verificar si el paciente tiene un registro dentro de las últimas 3 horas y tambien validar el TIPO DE HISTORIA
                         pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
                         .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC >= fechaL && r.FechaRegistroHC <= fechaActual && r.TipoHistoria == "Medicina");
@@ -1271,7 +1271,7 @@ namespace CUS.Areas.Admin.Controllers
                     else
                     {
                         DateTime fechaActual = DateTime.Now;
-                        DateTime fechaL = fechaActual.AddHours(-3);
+                        DateTime fechaL = fechaActual.AddHours(-1.5);
                         //utilizar fechaLimite para verificar si el paciente tiene un registro dentro de las últimas 3 horas y tambien validar el TIPO DE HISTORIA
                         pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
                         .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC >= fechaL && r.FechaRegistroHC <= fechaActual && r.TipoHistoria == "Medicina");
@@ -1368,7 +1368,7 @@ namespace CUS.Areas.Admin.Controllers
                     else
                     {
                         DateTime fechaActual = DateTime.Now;
-                        DateTime fechaL = fechaActual.AddHours(-3);
+                        DateTime fechaL = fechaActual.AddHours(-1.5);
                         //utilizar fechaLimite para verificar si el paciente tiene un registro dentro de las últimas 3 horas y tambien validar el TIPO DE HISTORIA
                         pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
                         .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC >= fechaL && r.FechaRegistroHC <= fechaActual && r.TipoHistoria == "Medicina");

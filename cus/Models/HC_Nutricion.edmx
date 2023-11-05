@@ -280,6 +280,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Plan" Type="varchar" MaxLength="200" />
           <Property Name="Id_Paciente" Type="int" Nullable="false" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="hc_NUT_Pronostico">
           <Key>
@@ -584,6 +585,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Plan" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="hc_NUT_Pronostico">
           <Key>
@@ -932,6 +934,7 @@
           <EntitySetMapping Name="hc_NUT_Plan">
             <EntityTypeMapping TypeName="Models.hc_NUT_Plan">
               <MappingFragment StoreEntitySet="hc_NUT_Plan">
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Plan" ColumnName="Plan" />
                 <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />

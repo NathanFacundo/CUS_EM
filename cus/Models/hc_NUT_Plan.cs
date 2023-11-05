@@ -17,5 +17,6 @@ namespace CUS.Models
         public int Id { get; set; }
         public string Plan { get; set; }
         public int Id_Paciente { get; set; }
+        public string Clave_hc_px { get; set; }
     }
 }
