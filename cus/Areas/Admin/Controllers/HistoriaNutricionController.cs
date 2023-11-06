@@ -13,9 +13,20 @@ namespace CUS.Areas.Admin.Controllers
         Models.HC_Nutricion hcNut = new Models.HC_Nutricion();
 
         // GET: Admin/HistoriaNutricion
-        public ActionResult Index()
+        public ActionResult Index(string expediente)
         {
-            return View();
+            if (expediente != null)
+            {
+                var paciente = (from a in db.Paciente
+                                where a.Expediente == expediente
+                                select a).FirstOrDefault();
+
+                return View(paciente);
+            }
+            else
+            {
+                return RedirectToAction("BuscarPaciente", "DerechoHabiente");
+            }
         }
 
         //********      Función para Guarda nueva HC NUTRICION

@@ -13,6 +13,8 @@
     int Months = 0;
     int Days = 0;
 
+    var nacimiento = string.Format("{0:dd/MM/yyyy}", Model.FechaNacimiento);
+
     if ((today.Year - fnac.Year) > 0 ||
     (((today.Year - fnac.Year) == 0) && ((fnac.Month < today.Month) ||
     ((fnac.Month == today.Month) && (fnac.Day <= today.Day)))))
@@ -214,7 +216,7 @@
         width: 100%;
         max-width: 100%;
         box-sizing: border-box;
-        color: #20c0f3;
+        color: black;
         font-size: 16px;
         letter-spacing: 1px;
         background-color: white;
@@ -499,7 +501,7 @@
                             <a id="Edad"></a><br />
                             <h10 style="font-weight:bold;">Sexo: @Model.Sexo</h10>
                             <a id="Sexo"></a><br />
-                                             <h10 style="font-weight:bold;">Fecha Nac.: @Model.FechaNacimiento</h10>
+                                             <h10 style="font-weight:bold;">Fecha Nac.: @nacimiento</h10>
                             <a id="FechaNac"></a>
                         </div>
                     </div>
@@ -1528,8 +1530,8 @@
 
         } else {
 
-            $('#finalizar').attr('disabled', 'disabled');
-            $('#finalizar').css('background-color', 'lightgray');
+            //$('#finalizar').attr('disabled', 'disabled');
+            //$('#finalizar').css('background-color', 'lightgray');
 
             var numItems = $('.diagnostico-active').length;
             if (numItems < 5) {
@@ -1785,18 +1787,16 @@
 </script>
 
 
-
+@if (TempData["message_success"] != null)
+{
 <script>
 
-    /*
-    //Buscar si existe un soap llenado en las ultimas 3 horas
-    $(document).ready(function () {
-        $(this).scrollTop(0);
-    });
-    */
-
-    //Buscar informacion del derechohabiente 
+    Swal.fire({
+        icon: 'success',
+        title: 'Nota Guardada',
+        showConfirmButton: false,
+        timer: 1600
+    })
     
-
-
 </script>
+}

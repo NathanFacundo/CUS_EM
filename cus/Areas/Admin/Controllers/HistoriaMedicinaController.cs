@@ -1121,6 +1121,7 @@ namespace CUS.Areas.Admin.Controllers
                     }
 
                     var Id_claveHC = "";
+
                     if (pacienteTieneRegistroEnUltimas3Horas)// El paciente ya tiene un registro en las últimas 3 horas
                     {
                         //Obtenemos los datos del registro del px

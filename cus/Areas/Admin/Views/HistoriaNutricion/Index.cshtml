@@ -1,5 +1,67 @@
-﻿
+﻿@Model CUS.Models.CUS
 @{
+    ViewBag.Title = "Historia Clínica";
+
+    int edad = 0;
+    int meses = 0;
+    var fecha = DateTime.Now.ToString("yyyy-MM-ddT00:00:00.000");
+    var fechaDT = DateTime.Parse(fecha);
+
+    var today = fechaDT;
+    DateTime fnac = (DateTime)Model.FechaNacimiento;
+    int Years = 0;
+    int Months = 0;
+    int Days = 0;
+
+    var nacimiento = string.Format("{0:dd/MM/yyyy}", Model.FechaNacimiento);
+
+    if ((today.Year - fnac.Year) > 0 ||
+    (((today.Year - fnac.Year) == 0) && ((fnac.Month < today.Month) ||
+    ((fnac.Month == today.Month) && (fnac.Day <= today.Day)))))
+    {
+        int DaysInBdayMonth = DateTime.DaysInMonth(fnac.Year, fnac.Month);
+        int DaysRemain = today.Day + (DaysInBdayMonth - fnac.Day);
+
+        if (today.Month > fnac.Month)
+        {
+            Years = today.Year - fnac.Year;
+            Months = today.Month - (fnac.Month + 1) + Math.Abs(DaysRemain / DaysInBdayMonth);
+            Days = (DaysRemain % DaysInBdayMonth + DaysInBdayMonth) % DaysInBdayMonth;
+        }
+        else if (today.Month == fnac.Month)
+        {
+            if (today.Day >= fnac.Day)
+            {
+                Years = today.Year - fnac.Year;
+                Months = 0;
+                Days = today.Day - fnac.Day;
+            }
+            else
+            {
+                Years = (today.Year - 1) - fnac.Year;
+                Months = 11;
+                Days = DateTime.DaysInMonth(fnac.Year, fnac.Month) - (fnac.Day - today.Day);
+            }
+        }
+        else
+        {
+            Years = (today.Year - 1) - fnac.Year;
+            Months = today.Month + (11 - fnac.Month) + Math.Abs(DaysRemain / DaysInBdayMonth);
+            Days = (DaysRemain % DaysInBdayMonth + DaysInBdayMonth) % DaysInBdayMonth;
+        }
+    }
+
+    if (Years >= 99)
+    {
+        edad = 99;
+    }
+    else
+    {
+        edad = Years;
+    }
+
+    meses = Months;
+
 }
 
 <style>
@@ -207,24 +269,23 @@
         width: 100%;
     }
 
-    /* Estilo para las celdas */
-    #tbl td, th {
-        border: 1px solid #000;
-        padding: 8px;
-        text-align: left;
-    }
+        /* Estilo para las celdas */
+        #tbl td, th {
+            border: 1px solid #000;
+            padding: 8px;
+            text-align: left;
+        }
 
-    /* Estilo para las etiquetas */
-    #tbl label {
-        display: block; /* Para que las etiquetas estén en una línea separada */
-    }
+        /* Estilo para las etiquetas */
+        #tbl label {
+            display: block; /* Para que las etiquetas estén en una línea separada */
+        }
 
-    /* Estilo para el encabezado (thead) */
+        /* Estilo para el encabezado (thead) */
         #tbl thead {
             /*background-color: #f0f0f0;*/ /* Cambia el color de fondo según tus preferencias */
             border: 1px solid #000;
         }
-
 </style>
 
 <div class="page-wrapper">
@@ -237,71 +298,25 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-12" id="InfoPX">
+            <div class="col-sm-12 p-0">
                 <div class="profile-header">
                     <div class="row align-items-center">
                         <div class="col-auto profile-image">
                             <a href="#">
+                                @*<img class="rounded-circle" alt="User Image" src="~/Content/assets/img/profiles/avatar-04.jpg">*@
                             </a>
                         </div>
                         <div class="col ml-md-n2 profile-user-info">
-                            <h10 style="font-weight:bold;">Nombre: </h10>
+                            <h10 style="font-weight:bold;">Nombre: @Model.Nombre @Model.PrimerApellido @Model.SegundoApellido </h10>
                             <a id="Nombre"></a><br />
-                            <h10 style="font-weight:bold;">Expediente: </h10>
-                            <a id="Exp"></a><br />
-                            <h10 style="font-weight:bold;">Edad: </h10>
+                            <h10 style="font-weight:bold;">Expediente: <span id="Exp">@Model.Expediente</span> </h10>
+                            <h10 style="font-weight:bold;">Edad: @edad años @meses meses</h10>
                             <a id="Edad"></a><br />
-                            <h10 style="font-weight:bold;">Sexo: </h10>
+                            <h10 style="font-weight:bold;">Sexo: @Model.Sexo</h10>
                             <a id="Sexo"></a><br />
-                            <h10 style="font-weight:bold;">Fecha Nac.: </h10>
+                            <h10 style="font-weight:bold;">Fecha Nac.: @nacimiento</h10>
                             <a id="FechaNac"></a>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-12" id="BusquedaPX">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h4>Busque al px.</h4>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3 mb-3">
-                        <input type="text" class="form-control BuscarPX" id="NombrePX" placeholder="Nombre PX" required>
-                    </div>
-                    <div class="col-md-3 mb-3">
-                        <input type="text" class="form-control BuscarPX" id="ExpedientePX" placeholder="Expediente PX" required>
-                    </div>
-                    <div class="col-md-3 mb-2">
-                        <button class="btn btn-primary" onclick="BtnBuscarPX()">Buscar</button>
-                    </div>
-                </div>
-                <div>
-                    <div class="table-responsive">
-                        <table id="TblPaciente" class="datatable table table-stripped">
-                            <thead>
-                                <tr>
-                                    <th style="text-align:center">
-                                        Nombre
-                                    </th>
-                                    <th style="text-align:center">
-                                        Primer Apellido
-                                    </th>
-                                    <th style="text-align:center">
-                                        Segundo Apellido
-                                    </th>
-                                    <th style="text-align:center">
-                                        Unidad de Afiliacion
-                                    </th>
-                                    <th style="text-align:center">
-                                        Expediente
-                                    </th>
-                                    <th style="width:5px">Seleccionar</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
                     </div>
                 </div>
             </div>
@@ -330,8 +345,8 @@
                             <a class="nav-link" href="#EvaluacionAntro" data-toggle="tab">Evaluación<br />Antropométrica</a>
                         </li>
                         @*<li class="nav-item text-left">
-                            <a class="nav-link" href="#PlanNutricio" data-toggle="tab">Del Plan<br />Nutricio</a>
-                        </li>*@
+                                <a class="nav-link" href="#PlanNutricio" data-toggle="tab">Del Plan<br />Nutricio</a>
+                            </li>*@
                         <li class="nav-item text-left">
                             <a class="nav-link" href="#EducacionIn" data-toggle="tab">Educación<br />Inicial</a>
                         </li>
@@ -1997,23 +2012,9 @@
                                                 <div class="col-md-12 p-2">
                                                     <div class="diaginfo">1. Diagnóstico</div>
                                                 </div>
-                                                <div class="col-md-9 m-auto p-2">
+                                                <div class="col-md-12 m-auto p-2">
                                                     <textarea class="resumenText" id="diagnostico1" name="diagnostico1" readonly></textarea>
                                                     <input id="clave1" type="hidden" />
-                                                </div>
-                                                <div class="col-md-3 m-auto p-0">
-                                                    <div class="row m-0">
-                                                        <div class="col-9 p-2">
-                                                            <select class="form-control tipoconsulta" id="tipoconsulta1" name="tipo_diagnostico1" required>
-                                                                <option disabled selected>Seleccionar opción</option>
-                                                                @*<option value="2">Subsecuente</option>*@
-                                                                <option value="1">Primera Vez</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="col-3 text-center p-2">
-                                                            <img class="borrardiag" id="borrardiag1" src="~/Content/assets/img/trashcan.png" />
-                                                        </div>
-                                                    </div>
                                                 </div>
                                             </div>
 
@@ -2021,23 +2022,9 @@
                                                 <div class="col-md-12 p-2">
                                                     <div class="diaginfo">2. Diagnóstico</div>
                                                 </div>
-                                                <div class="col-md-9 m-auto p-2">
+                                                <div class="col-md-12 m-auto p-2">
                                                     <textarea class="resumenText" id="diagnostico2" name="diagnostico2" readonly></textarea>
                                                     <input id="clave2" type="hidden" />
-                                                </div>
-                                                <div class="col-md-3 m-auto p-0">
-                                                    <div class="row m-0">
-                                                        <div class="col-9 p-2">
-                                                            <select class="form-control tipoconsulta" id="tipoconsulta2" name="tipo_diagnostico2" required>
-                                                                <option disabled selected>Seleccionar opción</option>
-                                                                @*<option value="2">Subsecuente</option>*@
-                                                                <option value="1">Primera Vez</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="col-3 text-center p-2">
-                                                            <img class="borrardiag" id="borrardiag2" src="~/Content/assets/img/trashcan.png" />
-                                                        </div>
-                                                    </div>
                                                 </div>
                                             </div>
 
@@ -2045,23 +2032,9 @@
                                                 <div class="col-md-12 p-2">
                                                     <div class="diaginfo">3. Diagnóstico</div>
                                                 </div>
-                                                <div class="col-md-9 m-auto p-2">
+                                                <div class="col-md-12 m-auto p-2">
                                                     <textarea class="resumenText" id="diagnostico3" name="diagnostico3" readonly></textarea>
                                                     <input id="clave3" type="hidden" />
-                                                </div>
-                                                <div class="col-md-3 m-auto p-0">
-                                                    <div class="row m-0">
-                                                        <div class="col-9 p-2">
-                                                            <select class="form-control tipoconsulta" id="tipoconsulta3" name="tipo_diagnostico3" required>
-                                                                <option disabled selected>Seleccionar opción</option>
-                                                                @*<option value="2">Subsecuente</option>*@
-                                                                <option value="1">Primera Vez</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="col-3 text-center p-2">
-                                                            <img class="borrardiag" id="borrardiag3" src="~/Content/assets/img/trashcan.png" />
-                                                        </div>
-                                                    </div>
                                                 </div>
                                             </div>
 
@@ -2069,23 +2042,9 @@
                                                 <div class="col-md-12 p-2">
                                                     <div class="diaginfo">4. Diagnóstico</div>
                                                 </div>
-                                                <div class="col-md-9 m-auto p-2">
+                                                <div class="col-md-12 m-auto p-2">
                                                     <textarea class="resumenText" id="diagnostico4" name="diagnostico4" readonly></textarea>
                                                     <input id="clave4" type="hidden" />
-                                                </div>
-                                                <div class="col-md-3 m-auto p-0">
-                                                    <div class="row m-0">
-                                                        <div class="col-9 p-2">
-                                                            <select class="form-control tipoconsulta" id="tipoconsulta4" name="tipo_diagnostico4" required>
-                                                                <option disabled selected>Seleccionar opción</option>
-                                                                @*<option value="2">Subsecuente</option>*@
-                                                                <option value="1">Primera Vez</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="col-3 text-center p-2">
-                                                            <img class="borrardiag" id="borrardiag4" src="~/Content/assets/img/trashcan.png" />
-                                                        </div>
-                                                    </div>
                                                 </div>
                                             </div>
 
@@ -2093,23 +2052,9 @@
                                                 <div class="col-md-12 p-2">
                                                     <div class="diaginfo">5. Diagnóstico</div>
                                                 </div>
-                                                <div class="col-md-9 m-auto p-2">
+                                                <div class="col-md-12 m-auto p-2">
                                                     <textarea class="resumenText" id="diagnostico5" name="diagnostico5" readonly></textarea>
                                                     <input id="clave5" type="hidden" />
-                                                </div>
-                                                <div class="col-md-3 m-auto p-0">
-                                                    <div class="row m-0">
-                                                        <div class="col-9 p-2">
-                                                            <select class="form-control tipoconsulta" id="tipoconsulta5" name="tipo_diagnostico5" required>
-                                                                <option disabled selected>Seleccionar opción</option>
-                                                                @*<option value="2">Subsecuente</option>*@
-                                                                <option value="1">Primera Vez</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="col-3 text-center p-2">
-                                                            <img class="borrardiag" id="borrardiag5" src="~/Content/assets/img/trashcan.png" />
-                                                        </div>
-                                                    </div>
                                                 </div>
                                             </div>
 
@@ -2282,6 +2227,7 @@
             }
         });
 
+        /*
         // #region BOTONES de Guardar HC
         $("#Btn_ResultadoLab").css("display", "none");
         $("#Btn_EtapaCam").css("display", "none");
@@ -2324,6 +2270,7 @@
                 clearInterval(timerInterval)
             }
         });
+        */
     });
 
     // #region Pestañas: Elementos de la H.C. que se mostrarán hasta que se seleccione o se haga alguna acción
@@ -2947,7 +2894,7 @@
 </script>
 
 <script>
-    
+
     //Buscar un nuevo diagnostico
     $('#diagnosticoBusqueda').on('click', '.btn-buscar', function() {
 
@@ -3015,15 +2962,6 @@
 				    $('#diagnostico2').val('');
 				    $('#clave2').val('');
 
-				    $("#tipoconsulta1 option").each(function() {
-					    var val = $(this).val();
-					    if (val == $('#tipoconsulta2').val()) {
-						    $(this).prop('selected', true);
-					    }
-				    });
-
-				    $("#tipoconsulta2").val($("#tipoconsulta2 option:first").val());
-
 			    }
 
 			    //Si hay un valor en el diagnostico3
@@ -3036,15 +2974,6 @@
 				    $('#borrardiag3').css('filter', 'grayscale(100%)');
 				    $('#diagnostico3').val('');
 				    $('#clave3').val('');
-
-				    $("#tipoconsulta2 option").each(function() {
-					    var val = $(this).val();
-					    if (val == $('#tipoconsulta3').val()) {
-						    $(this).prop('selected', true);
-					    }
-				    });
-
-				    $("#tipoconsulta3").val($("#tipoconsulta3 option:first").val());
 			    }
 
 			    //Si hay un valor en el diagnostico4
@@ -3058,15 +2987,6 @@
 				    $('#borrardiag4').css('filter', 'grayscale(100%)');
 				    $('#diagnostico4').val('');
 				    $('#clave4').val('');
-
-				    $("#tipoconsulta3 option").each(function() {
-					    var val = $(this).val();
-					    if (val == $('#tipoconsulta4').val()) {
-						    $(this).prop('selected', true);
-					    }
-				    });
-
-				    $("#tipoconsulta3").val($("#tipoconsulta3 option:first").val());
 			    }
 
 			    //Si hay un valor en el diagnostico4
@@ -3080,14 +3000,6 @@
 				    $('#diagnostico5').val('');
 				    $('#clave5').val('');
 
-				    $("#tipoconsulta4 option").each(function() {
-					    var val = $(this).val();
-					    if (val == $('#tipoconsulta5').val()) {
-						    $(this).prop('selected', true);
-					    }
-				    });
-
-				    $("#tipoconsulta4").val($("#tipoconsulta4 option:first").val());
 			    }
 
 			    //No hay ni diagnostico 1 ni 2
@@ -3113,12 +3025,6 @@
 					    $('#diagnostico3').val('');
 					    $('#clave3').val('');
 
-					    $("#tipoconsulta2 option").each(function() {
-						    var val = $(this).val();
-						    if (val == $('#tipoconsulta3').val()) {
-							    $(this).prop('selected', true);
-						    }
-					    });
 				    }
 
 				    if ($('#clave4').val()) {
@@ -3132,12 +3038,6 @@
 					    $('#diagnostico4').val('');
 					    $('#clave4').val('');
 
-					    $("#tipoconsulta3 option").each(function() {
-						    var val = $(this).val();
-						    if (val == $('#tipoconsulta4').val()) {
-							    $(this).prop('selected', true);
-						    }
-					    });
 				    }
 
 				    if ($('#clave5').val()) {
@@ -3150,12 +3050,6 @@
 					    $('#diagnostico5').val('');
 					    $('#clave5').val('');
 
-					    $("#tipoconsulta4 option").each(function() {
-						    var val = $(this).val();
-						    if (val == $('#tipoconsulta5').val()) {
-							    $(this).prop('selected', true);
-						    }
-					    });
 				    }
 
 				    if (!$('#clave2').val()) {
@@ -3185,12 +3079,6 @@
 						    $('#diagnostico4').val('');
 						    $('#clave4').val('');
 
-						    $("#tipoconsulta3 option").each(function() {
-							    var val = $(this).val();
-							    if (val == $('#tipoconsulta4').val()) {
-								    $(this).prop('selected', true);
-							    }
-						    });
 					    }
 
 					    if ($('#clave5').val()) {
@@ -3203,12 +3091,6 @@
 						    $('#diagnostico5').val('');
 						    $('#clave5').val('');
 
-						    $("#tipoconsulta4 option").each(function() {
-							    var val = $(this).val();
-							    if (val == $('#tipoconsulta5').val()) {
-								    $(this).prop('selected', true);
-							    }
-						    });
 					    }
 
 					    if (!$('#clave3').val()) {
@@ -3239,12 +3121,7 @@
 							    $('#diagnostico5').val('');
 							    $('#clave5').val('');
 
-							    $("#tipoconsulta4 option").each(function() {
-								    var val = $(this).val();
-								    if (val == $('#tipoconsulta5').val()) {
-									    $(this).prop('selected', true);
-								    }
-							    });
+
 						    }
 
 						    if (!$('#clave4').val()) {
@@ -3282,53 +3159,33 @@
 
 			    } else {
 				    if (numItems == 1) {
-					    if ($("#tipoconsulta1").val() == null) {
-						    $('#diaginfo1').show();
-					    } else {
-						    //$('#diaginfo1').hide();
-						    $('#diagnostico2').val(desCorta);
-						    $('#clave2').val(clave);
-						    $("#tipoconsulta2").removeAttr('disabled');
-						    $('#borrardiag2').css('filter', 'none');
-						    $(this).addClass('diagnostico-active');
-					    }
+                        $('#diagnostico2').val(desCorta);
+                        $('#clave2').val(clave);
+                        $("#tipoconsulta2").removeAttr('disabled');
+                        $('#borrardiag2').css('filter', 'none');
+                        $(this).addClass('diagnostico-active');
 
 				    } else {
 					    if (numItems == 2) {
-						    if ($("#tipoconsulta2").val() == null) {
-							    $('#diaginfo2').show();
-						    } else {
-							    //$('#diaginfo2').hide();
-							    $('#diagnostico3').val(desCorta);
-							    $('#clave3').val(clave);
-							    $("#tipoconsulta3").removeAttr('disabled');
-							    $('#borrardiag3').css('filter', 'none');
-							    $(this).addClass('diagnostico-active');
-						    }
+                            $('#diagnostico3').val(desCorta);
+                            $('#clave3').val(clave);
+                            $("#tipoconsulta3").removeAttr('disabled');
+                            $('#borrardiag3').css('filter', 'none');
+                            $(this).addClass('diagnostico-active');
 					    } else {
 						    if (numItems == 3) {
-							    if ($("#tipoconsulta3").val() == null) {
-								    $('#diaginfo3').show();
-							    } else {
-								    //$('#diaginfo2').hide();
-								    $('#diagnostico4').val(desCorta);
-								    $('#clave4').val(clave);
-								    $("#tipoconsulta4").removeAttr('disabled');
-								    $('#borrardiag4').css('filter', 'none');
-								    $(this).addClass('diagnostico-active');
-							    }
+                                $('#diagnostico4').val(desCorta);
+                                $('#clave4').val(clave);
+                                $("#tipoconsulta4").removeAttr('disabled');
+                                $('#borrardiag4').css('filter', 'none');
+                                $(this).addClass('diagnostico-active');
 						    } else {
 							    if (numItems == 4) {
-								    if ($("#tipoconsulta4").val() == null) {
-									    $('#diaginfo4').show();
-								    } else {
-									    //$('#diaginfo2').hide();
-									    $('#diagnostico5').val(desCorta);
-									    $('#clave5').val(clave);
-									    $("#tipoconsulta5").removeAttr('disabled');
-									    $('#borrardiag5').css('filter', 'none');
-									    $(this).addClass('diagnostico-active');
-								    }
+                                    $('#diagnostico5').val(desCorta);
+                                    $('#clave5').val(clave);
+                                    $("#tipoconsulta5").removeAttr('disabled');
+                                    $('#borrardiag5').css('filter', 'none');
+                                    $(this).addClass('diagnostico-active');
 							    }
 						    }
 					    }

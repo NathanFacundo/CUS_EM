@@ -13,6 +13,8 @@
     int Months = 0;
     int Days = 0;
 
+    var nacimiento = string.Format("{0:dd/MM/yyyy}", Model.FechaNacimiento);
+
     if ((today.Year - fnac.Year) > 0 ||
     (((today.Year - fnac.Year) == 0) && ((fnac.Month < today.Month) ||
     ((fnac.Month == today.Month) && (fnac.Day <= today.Day)))))
@@ -193,13 +195,12 @@
                         <div class="col ml-md-n2 profile-user-info">
                             <h10 style="font-weight:bold;">Nombre: @Model.Nombre @Model.PrimerApellido @Model.SegundoApellido </h10>
                             <a id="Nombre"></a><br />
-                            <h10 style="font-weight:bold;">Expediente:@Model.Expediente </h10>
-                            <a id="Exp"></a><br />
+                            <h10 style="font-weight:bold;">Expediente: <span id="Exp">@Model.Expediente</span> </h10>
                             <h10 style="font-weight:bold;">Edad: @edad años @meses meses</h10>
                             <a id="Edad"></a><br />
                             <h10 style="font-weight:bold;">Sexo: @Model.Sexo</h10>
                             <a id="Sexo"></a><br />
-                            <h10 style="font-weight:bold;">Fecha Nac.: @Model.FechaNacimiento</h10>
+                            <h10 style="font-weight:bold;">Fecha Nac.: @nacimiento</h10>
                             <a id="FechaNac"></a>
                         </div>
                     </div>
