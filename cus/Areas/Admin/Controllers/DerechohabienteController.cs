@@ -48,19 +48,12 @@ namespace CUS.Areas.Admin.Controllers
         }
 
         // GET: Admin/Derechohabiente/Create
-        public ActionResult Create(string expediente)
+        public ActionResult Create()
         {
 
-            if (expediente != null)
-            {
-                ViewBag.UNIDADES = new SelectList(db.UnidadAfiliacion.ToList(), "Id", "NombreUnidad");
+            ViewBag.UNIDADES = new SelectList(db.UnidadAfiliacion.ToList(), "Id", "NombreUnidad");
 
-                return View();
-            }
-            else
-            {
-                return RedirectToAction("BuscarPaciente", "DerechoHabiente");
-            }
+            return View();
 
         }
 
