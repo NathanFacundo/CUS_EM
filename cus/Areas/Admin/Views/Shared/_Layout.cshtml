@@ -113,6 +113,7 @@
                                     <li><a href="@Url.Action("BuscarPaciente", "Derechohabiente")">Mis Pacientes.</a></li>
                                     @if (Model != null)
                                     {
+                                        <li><a href="@Url.Action("Index", "Enfermeria", new { expediente = Model.Expediente })">Enfermería</a></li>
                                         <li><a href="@Url.Action("Index", "NotaEvolucion", new { expediente = Model.Expediente })">Nota de Evolución</a></li>
 
                                         <li class="submenu">
