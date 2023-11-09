@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -41,6 +42,23 @@ namespace CUS.Areas.Admin.Controllers
                 return RedirectToAction("BuscarPaciente", "DerechoHabiente");
             }
             
+        }
+
+
+        public ActionResult Create(string expediente)
+        {
+            if (expediente != null)
+            {
+                var paciente = (from a in db.Paciente
+                                where a.Expediente == expediente
+                                select a).FirstOrDefault();
+
+                return View(paciente);
+            }
+            else
+            {
+                return RedirectToAction("BuscarPaciente", "DerechoHabiente");
+            }
         }
 
 
@@ -257,7 +275,27 @@ namespace CUS.Areas.Admin.Controllers
                                                 .OrderByDescending(r => r.fecha)
                                                 .FirstOrDefault();
 
-                        //Actualiza la nota
+                        // Actualiza el último registro con los datos proporcionados
+                        registroReciente.nota_subjetivo = notaEvolucion.nota_subjetivo;
+                        registroReciente.nota_objetivo = notaEvolucion.nota_objetivo;
+                        registroReciente.nota_plan = notaEvolucion.nota_plan;
+                        registroReciente.diagnostico1 = notaEvolucion.diagnostico1;
+                        registroReciente.diagnostico2 = notaEvolucion.diagnostico2;
+                        registroReciente.diagnostico3 = notaEvolucion.diagnostico3;
+                        registroReciente.diagnostico4 = notaEvolucion.diagnostico4;
+                        registroReciente.diagnostico5 = notaEvolucion.diagnostico5;
+                        registroReciente.tipo_diagnostico1 = notaEvolucion.tipo_diagnostico1;
+                        registroReciente.tipo_diagnostico2 = notaEvolucion.tipo_diagnostico2;
+                        registroReciente.tipo_diagnostico3 = notaEvolucion.tipo_diagnostico3;
+                        registroReciente.tipo_diagnostico4 = notaEvolucion.tipo_diagnostico4;
+                        registroReciente.tipo_diagnostico5 = notaEvolucion.tipo_diagnostico5;
+                        registroReciente.num_exp = paciente.Expediente;
+                        registroReciente.fecha = fechaDT;
+                        db.Entry(registroReciente).State = EntityState.Modified;
+                        db.SaveChanges();
+
+                        TempData["message_success"] = "Nota de evolución editada con éxito";
+                        return Redirect(Request.UrlReferrer.ToString());
 
                         //Id_claveHC = registroReciente.Clave_hc_px;
                     }
@@ -286,11 +324,17 @@ namespace CUS.Areas.Admin.Controllers
                         db.SaveChanges();
                     }
 
-                  
+
+                    TempData["message_success"] = "Nota de evolución terminada con éxito";
+                    return Redirect(Request.UrlReferrer.ToString());
+
                 }
-                //return Json(new { MENSAJE = "Succe: " }, JsonRequestBehavior.AllowGet);
-                TempData["message_success"] = "Nota médica terminada con éxito";
-                return Redirect(Request.UrlReferrer.ToString());
+                else
+                {
+                    TempData["message_error"] = "Paciente no encontrado";
+                    return Redirect(Request.UrlReferrer.ToString());
+                }
+
 
             }
             catch (Exception ex)
