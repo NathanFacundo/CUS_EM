@@ -1,0 +1,1537 @@
+﻿
+@Model CUS.Models.CUS
+@{
+    ViewBag.Title = "Historia Clínica";
+
+    int edad = 0;
+    int meses = 0;
+    var fecha = DateTime.Now.ToString("yyyy-MM-ddT00:00:00.000");
+    var fechaDT = DateTime.Parse(fecha);
+
+    var today = fechaDT;
+    DateTime fnac = (DateTime)Model.FechaNacimiento;
+    int Years = 0;
+    int Months = 0;
+    int Days = 0;
+
+    var nacimiento = string.Format("{0:dd/MM/yyyy}", Model.FechaNacimiento);
+
+    if ((today.Year - fnac.Year) > 0 ||
+    (((today.Year - fnac.Year) == 0) && ((fnac.Month < today.Month) ||
+    ((fnac.Month == today.Month) && (fnac.Day <= today.Day)))))
+    {
+        int DaysInBdayMonth = DateTime.DaysInMonth(fnac.Year, fnac.Month);
+        int DaysRemain = today.Day + (DaysInBdayMonth - fnac.Day);
+
+        if (today.Month > fnac.Month)
+        {
+            Years = today.Year - fnac.Year;
+            Months = today.Month - (fnac.Month + 1) + Math.Abs(DaysRemain / DaysInBdayMonth);
+            Days = (DaysRemain % DaysInBdayMonth + DaysInBdayMonth) % DaysInBdayMonth;
+        }
+        else if (today.Month == fnac.Month)
+        {
+            if (today.Day >= fnac.Day)
+            {
+                Years = today.Year - fnac.Year;
+                Months = 0;
+                Days = today.Day - fnac.Day;
+            }
+            else
+            {
+                Years = (today.Year - 1) - fnac.Year;
+                Months = 11;
+                Days = DateTime.DaysInMonth(fnac.Year, fnac.Month) - (fnac.Day - today.Day);
+            }
+        }
+        else
+        {
+            Years = (today.Year - 1) - fnac.Year;
+            Months = today.Month + (11 - fnac.Month) + Math.Abs(DaysRemain / DaysInBdayMonth);
+            Days = (DaysRemain % DaysInBdayMonth + DaysInBdayMonth) % DaysInBdayMonth;
+        }
+    }
+
+    if (Years >= 99)
+    {
+        edad = 99;
+    }
+    else
+    {
+        edad = Years;
+    }
+
+    meses = Months;
+
+}
+
+<style>
+    .nav-tabs.nav-tabs-bottom > li {
+        margin-bottom: -1px;
+        width: 110px;
+        max-width: 110px;
+        font-size: 10px;
+    }
+
+    .user-tabs .nav-tabs > li > a {
+        padding: 5px;
+    }
+
+    .diaginfo {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 2px 15px;
+        background-color: #20c0f3;
+        color: white;
+        margin-left: -20px;
+        font-size: 15px;
+        font-weight: bolder;
+    }
+
+        .diaginfo:after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            width: 0;
+            height: 0;
+            border-top: solid 30px #20c0f3;
+            border-left: solid 50px transparent;
+            border-right: solid 50px transparent;
+        }
+
+    .diaginfo2 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 2px 15px;
+        background-color: #20c0f3;
+        color: white;
+        margin-left: -20px;
+        margin-top: -40px;
+        font-size: 12px;
+        font-weight: bolder;
+    }
+
+        .diaginfo2:after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            width: 0;
+            height: 0;
+            border-top: solid 20px #20c0f3;
+            border-left: solid 20px transparent;
+            border-right: solid 20px transparent;
+        }
+
+    .resumenTop {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 2.5vw;
+        height: 2.5vw;
+        border-radius: 2.5vw;
+        background-color: #20c0f3;
+        color: white;
+        font-size: 1.2vw;
+        line-height: 2.5vw;
+        text-align: center;
+    }
+
+    .resumenTopCheck {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 1.5vw;
+        height: 1.5vw;
+        border-radius: 100%;
+        background-color: #20c0f3;
+        color: white;
+        font-size: 0.8vw;
+        line-height: 1.5vw;
+        text-align: center;
+    }
+
+    .resumenText {
+        font-size: 0.8vw;
+        margin-top: 3vw;
+        color: #9E9E9E;
+        font-weight: bolder;
+        -moz-box-shadow: none !important;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+        border: none;
+        font-weight: bold;
+        border-bottom: 2px solid #FBC43D;
+        outline-width: 0;
+        width: 100%;
+        max-width: 100%;
+        background-color: transparent;
+    }
+
+    .tipoconsulta {
+        border-radius: 0px;
+        border: 2px solid #FBC43D;
+    }
+
+    .borrardiag {
+        width: 50%;
+        filter: grayscale(100%);
+    }
+
+    .borrarInt {
+        width: 50px;
+        filter: grayscale(100%);
+    }
+
+
+    #msform input,
+    #msform textarea,
+    #msform select {
+        padding: 10px 8px 4px 8px;
+        border: none;
+        border-bottom: 1px solid lightgray;
+        border-radius: 0px;
+        margin-top: 2px;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        color: #20c0f3;
+        font-size: 16px;
+        letter-spacing: 1px;
+        background-color: white;
+    }
+
+        #msform input:focus,
+        #msform textarea:focus,
+        #msform select:focus {
+            -moz-box-shadow: none !important;
+            -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+            border: none;
+            font-weight: bold;
+            border-bottom: 2px solid #20c0f3;
+            outline-width: 0
+        }
+
+    #notaevolucion {
+        background-color: white;
+    }
+
+    h1 {
+        position: absolute;
+        top: 60%;
+        left: 0;
+        margin: auto;
+        right: 0;
+        font-size: 1.5em;
+    }
+
+    .btn-buscar {
+        background-color: #20c0f3;
+        color: white !important;
+        width: 8%;
+    }
+
+        .btn-buscar:hover {
+            background-color: #20c0f3 !important;
+            color: white !important;
+        }
+
+    .btnbuscapac {
+        width: 20px;
+        -webkit-filter: invert(100%);
+        filter: invert(100%);
+    }
+
+    .profile-header {
+        padding-left: 0px;
+        margin-bottom: 20px;
+    }
+</style>
+
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3 class="page-title">Historia Clínica Odontología</h3>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 p-0">
+                <div class="profile-header">
+                    <div class="row align-items-center">
+                        <div class="col-auto profile-image">
+                            <a href="#">
+                                @*<img class="rounded-circle" alt="User Image" src="~/Content/assets/img/profiles/avatar-04.jpg">*@
+                            </a>
+                        </div>
+                        <div class="col ml-md-n2 profile-user-info">
+                            <h10 style="font-weight:bold;">Nombre: @Model.Nombre @Model.PrimerApellido @Model.SegundoApellido </h10>
+                            <a id="Nombre"></a><br />
+                            <h10 style="font-weight:bold;">Expediente: <span id="Exp">@Model.Expediente</span> </h10>
+                            <h10 style="font-weight:bold;">Edad: @edad años @meses meses</h10>
+                            <a id="Edad"></a><br />
+                            <h10 style="font-weight:bold;">Sexo: @Model.Sexo</h10>
+                            <a id="Sexo"></a><br />
+                            <h10 style="font-weight:bold;">Fecha Nac.: @nacimiento</h10>
+                            <a id="FechaNac"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <nav class="user-tabs mb-4">
+                    <ul class="nav nav-tabs nav-tabs-bottom nav-justified">
+                        <li class="nav-item text-left">
+                            <a class="nav-link active" href="#HistoriaDental" data-toggle="tab">Historia<br />Dental</a>
+                        </li>
+                        <li class="nav-item text-left">
+                            <a class="nav-link" href="#InfoPerinatal" data-toggle="tab"><span class="med-records">Información<br />Perinatal</span></a>
+                        </li>
+                        <li class="nav-item text-left">
+                            <a class="nav-link" href="#Habitos" data-toggle="tab">Hábitos<br /> </a>
+                        </li>
+                        <li class="nav-item text-left">
+                            <a class="nav-link" href="#EvaluacionFuncional" data-toggle="tab">Evaluación<br />Funcional</a>
+                        </li>
+                        <li class="nav-item text-left">
+                            <a class="nav-link" href="#AntecedentesObs" data-toggle="tab">Antecedentes<br />Obstétricos</a>
+                        </li>
+                        <li class="nav-item text-left">
+                            <a class="nav-link" href="#Riesgo" data-toggle="tab">Riesgo<br />   </a>
+                        </li>
+                        <li class="nav-item text-left">
+                            <a class="nav-link" href="#ResultadosLabGab" data-toggle="tab">Resultado de Lab.<br />y Gabinete Relevantes</a>
+                        </li>
+                        <li class="nav-item text-left">
+                            <a class="nav-link" href="#ImpresionDiag" data-toggle="tab">Impresión<br />Diagnóstica</a>
+                        </li>
+                        <li class="nav-item text-left">
+                            <a class="nav-link" href="#Plan" data-toggle="tab">Plan<br />  </a>
+                        </li>
+                        <li class="nav-item text-left">
+                            <a class="nav-link" href="#Pronostico" data-toggle="tab">Pronóstico<br />  </a>
+                        </li>
+                        <li class="nav-item text-left">
+                            <a class="nav-link" href="#Otros1" data-toggle="tab">Otros<br />  </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="tab-content pt-0">
+
+                    <div class="tab-pane fade show active" id="HistoriaDental">
+                        <div class="card card-table mb-0 p-3 mb-5">
+                            <div class="card-body">
+                                <form id="F_HistoriaDental">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>¿Es su primera visita al dentista?</label>
+                                                <select class="form-control" id="PrimeraVisitaODO" name="PrimeraVisitaODO">
+                                                    <option value="">Seleccionar</option>
+                                                    <option value="Si">Si</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8" id="EspPrimeraVisita">
+                                            <div class="form-group">
+                                                <label>Trat. realizados en consultas anteriores</label>
+                                                <input type="text" class="form-control" id="TratamientosRealizadoaODO" name="TratamientosRealizadoaODO" maxlength="299">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>¿Algún miembro de su familia ha padecido falta de dientes ó dientes de más?</label>
+                                                <select class="form-control" id="FamiliarPadecidoODO" name="FamiliarPadecidoODO">
+                                                    <option value="">Seleccionar</option>
+                                                    <option value="Si">Si</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>¿Se ha golpeado los dientes?</label>
+                                                <select class="form-control" id="GolpeadoDientesODO" name="GolpeadoDientesODO">
+                                                    <option value="">Seleccionar</option>
+                                                    <option value="Si">Si</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5" id="EspGolpeadoDientes">
+                                            <div class="form-group">
+                                                <label>¿Hace cuánto tiempo?</label>
+                                                <input type="text" class="form-control" id="Especifica_GolpeadoDienODO" name="Especifica_GolpeadoDienODO" maxlength="299">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>¿El px cooperó en citas anteriores?</label>
+                                                <select class="form-control" id="PacienteCooperoODO" name="PacienteCooperoODO">
+                                                    <option value="">Seleccionar</option>
+                                                    <option value="Si">Si</option>
+                                                    <option value="No">No</option>
+                                                    <option value="No aplica">N/A</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>¿Tiene interés por conservar sus dientes?</label>
+                                                <select class="form-control" id="InteresConservarDienODO" name="InteresConservarDienODO">
+                                                    <option value="">Seleccionar</option>
+                                                    <option value="Si">Si</option>
+                                                    <option value="No">No</option>
+                                                    <option value="No aplica">N/A</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>¿Está satisfecho con la apariencia de su boca?</label>
+                                                <select class="form-control" id="SatisfechoODO" name="SatisfechoODO">
+                                                    <option value="">Seleccionar</option>
+                                                    <option value="Si">Si</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12" id="EspSatisfecho">
+                                            <div class="form-group">
+                                                <label>¿Por qué?</label>
+                                                <input type="text" class="form-control" id="Especifica_SatisfechoODO" name="Especifica_SatisfechoODO" maxlength="299">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="text-right">
+                                        <button id="Btn_HistoriaDental" type="submit" class="btn btn-primary">Guardar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade show" id="InfoPerinatal">
+                        <div class="card card-table mb-0 p-3 mb-5">
+                            <div class="card-body">
+                                <form id="F_InfoPerinatal">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Embarazo a término</label>
+                                                <select class="form-control" id="EmbarazoTerminoODO" name="EmbarazoTerminoODO">
+                                                    <option value="">Seleccionar</option>
+                                                    <option value="Si">Si</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8" id="EspEmbarazoTermino">
+                                            <div class="form-group">
+                                                <label>Motivo</label>
+                                                <input type="text" class="form-control" id="Motivo_EmbarazoTerODO" name="Motivo_EmbarazoTerODO" maxlength="299">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Complicaciones durante el parto</label>
+                                                <input type="text" class="form-control" id="CompEmbarazoODO" name="CompEmbarazoODO" maxlength="299">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Peso al nacer(kg)</label>
+                                                <input type="text" class="form-control" id="PesoNacerODO" name="PesoNacerODO" maxlength="29">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Estatura al nacer(cm)</label>
+                                                <input type="text" class="form-control" id="EstaturaNacerODO" name="EstaturaNacerODO" maxlength="29">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Tipo de lactancia</label>
+                                                <select class="form-control" id="TipoLactanciaODO" name="TipoLactanciaODO">
+                                                    <option value="">Seleccionar</option>
+                                                    <option value="Materna exclusiva">Materna exclusiva</option>
+                                                    <option value="Artificial">Artificial</option>
+                                                    <option value="Mixta">Mixta</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Tiempo de lactancia(meses)</label>
+                                                <input type="text" class="form-control" id="TiempoLactanciaODO" name="TiempoLactanciaODO" maxlength="299">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>¿Mostró cartilla de vacunación?</label>
+                                                <select class="form-control" id="MostroCartillaODO" name="MostroCartillaODO">
+                                                    <option value="">Seleccionar</option>
+                                                    <option value="Si">Si</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Tiene esquema completo de vacunación</label>
+                                                <select class="form-control" id="EsquemaCompletoODO" name="EsquemaCompletoODO">
+                                                    <option value="">Seleccionar</option>
+                                                    <option value="Si">Si</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12" id="EspEsquemaVac">
+                                            <div class="form-group">
+                                                <label>Especifica que vacuna falta</label>
+                                                <input type="text" class="form-control" id="Especifica_EsquemaComODO" name="Especifica_EsquemaComODO" maxlength="299">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="text-right">
+                                        <button id="Btn_InfoPerinatal" type="submit" class="btn btn-primary">Guardar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade show" id="Habitos">
+                        <div class="card card-table mb-0 p-3 mb-5">
+                            <div class="card-body">
+                                <form id="F_Habitos">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>¿Consume carbohidratos?</label>
+                                                <select class="form-control" id="ConsCarbohidratosODO" name="ConsCarbohidratosODO">
+                                                    <option value="">Seleccionar</option>
+                                                    <option value="Poco">Poco</option>
+                                                    <option value="Regular">Regular</option>
+                                                    <option value="Exagerado">Exagerado</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Alimentos entre comidas</label>
+                                                <select class="form-control" id="AlimEntreComidasODO" name="AlimEntreComidasODO">
+                                                    <option value="">Seleccionar</option>
+                                                    <option value="Si">Si</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6" id="EspAlimentosEntreC">
+                                            <div class="form-group">
+                                                <label>Especifique alimentos entre comidas</label>
+                                                <input type="text" class="form-control" id="Especifica_AlimEntreComidasODO" name="Especifica_AlimEntreComidasODO" maxlength="299">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Higiene oral</label>
+                                                <select class="form-control" id="HigieneOralODO" name="HigieneOralODO">
+                                                    <option value="">Seleccionar</option>
+                                                    <option value="Si">Si</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2" id="EspHigieneFrec">
+                                            <div class="form-group">
+                                                <label>Frecuencia</label>
+                                                <input type="text" class="form-control" id="Frecuencia_HigieneOralODO" name="Frecuencia_HigieneOralODO" maxlength="299">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2" id="EspHigieneSolo">
+                                            <div class="form-group">
+                                                <input class="form-check-input" type="checkbox" id="Solo_HigieneOralODO" name="Solo_HigieneOralODO">
+                                                <label class="form-check-label" for="">
+                                                    Solo
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2" id="EspHigieneConAyuda">
+                                            <div class="form-group">
+                                                <input class="form-check-input" type="checkbox" id="ConAyuda_HigieneOralODO" name="ConAyuda_HigieneOralODO">
+                                                <label class="form-check-label" for="">
+                                                    Con ayuda
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2" id="EspHigieneTipoCep">
+                                            <div class="form-group">
+                                                <label>Tipo cepillo</label>
+                                                <input type="text" class="form-control" id="TipoCepillo_HigieneOralODO" name="TipoCepillo_HigieneOralODO" maxlength="299">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2" id="EspHigieneTipoPasta">
+                                            <div class="form-group">
+                                                <label>Tipo pasta dent.</label>
+                                                <input type="text" class="form-control" id="TipoPasta_HigieneOralODO" name="TipoPasta_HigieneOralODO" maxlength="299">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <h3>Selecciona los hábitos</h3>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-5">
+                                            <label><b> </b></label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label><b>Si</b></label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label><b>No</b></label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-5">
+                                            <label>Succión labial</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="SuccionLabialODO" name="SuccionLabialODO">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="SuccionLabialODO_No" name="SuccionLabialODO_No">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-5">
+                                            <label>Morder objetos</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="MorderObjetosODO" name="MorderObjetosODO">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="MorderObjetosODO_No" name="MorderObjetosODO_No">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-5">
+                                            <label>Respiración oral</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="RespiracionOralODO" name="RespiracionOralODO">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="RespiracionOralODO_No" name="RespiracionOralODO_No">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-5">
+                                            <label>Succión digital</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="SuccionDigitalODO" name="SuccionDigitalODO">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="SuccionDigitalODO_No" name="SuccionDigitalODO_No">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-5">
+                                            <label>Onicofagia</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="OnicofagiaODO" name="OnicofagiaODO">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="OnicofagiaODO_No" name="OnicofagiaODO_No">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-5">
+                                            <label>Bruxismo</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="BruxismoODO" name="BruxismoODO">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="BruxismoODO_No" name="BruxismoODO_No">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-5">
+                                            <label>Biberón</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="BiberonODO" name="BiberonODO">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="BiberonODO_No" name="BiberonODO_No">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-5">
+                                            <label>Chupón</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="ChuponODO" name="ChuponODO">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="ChuponODO_No" name="ChuponODO_No">
+                                        </div>
+                                    </div>
+
+                                    <div class="text-right">
+                                        <button id="Btn_Habitos" type="submit" class="btn btn-primary">Guardar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Areas/Admin/assets/js/jquery-3.2.1.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+
+    $(document).ready(function () {
+
+        //Ocultamos div donde se muestra la info del px ya que aún no se ha buscado
+        $("#InfoPX").hide();
+
+        var table = $('#TblPaciente').DataTable();
+        table.destroy();
+        table = $('#TblPaciente').DataTable({
+            paging: false,
+            scroller: false,
+            responsive: true,
+            searching: false,
+            info: true,
+            lengthChange: false,
+            pageLength: 20,
+            language: {
+                "zeroRecords": " ",
+                "info": "_TOTAL_ px",
+                "search": "Buscar:",
+                "infoEmpty": "",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Último",
+                    "next": "Siguiente",
+                    "previous": "Anterior",
+                },
+                "select": {
+                    "rows": " %d filas seleccionadas"
+                },
+            }
+        });
+
+        // #region PESTAÑAS: Elementos de la H.C. que nacerán ocultos y se mostrarán hasta que se seleccione o se haga alguna acción
+        //HistoriaDental
+        $("#EspPrimeraVisita").css("display", "none");
+        $("#EspGolpeadoDientes").css("display", "none");
+        $("#EspSatisfecho").css("display", "none");
+        //InfoPerinatal
+        $("#EspEmbarazoTermino").css("display", "none");
+        $("#EspEsquemaVac").css("display", "none");
+        //Habitos
+        $("#EspAlimentosEntreC").css("display", "none");
+        $("#EspHigieneFrec").css("display", "none");
+        $("#EspHigieneSolo").css("display", "none");
+        $("#EspHigieneConAyuda").css("display", "none");
+        $("#EspHigieneTipoCep").css("display", "none");
+        $("#EspHigieneTipoPasta").css("display", "none");
+
+        // #endregion
+
+    });
+
+    // #region Pestañas: Elementos de la H.C. que se mostrarán hasta que se seleccione o se haga alguna acción
+
+    //
+    $("#PrimeraVisitaODO").change(function () {
+        var combo = document.getElementById("PrimeraVisitaODO");
+        var selected = combo.options[combo.selectedIndex].text;
+        if (selected == "Si") {
+            $("#EspPrimeraVisita").css("display", "");
+        } else {
+            $("#EspPrimeraVisita").css("display", "none");
+        }
+    });
+    $("#GolpeadoDientesODO").change(function () {
+        var combo = document.getElementById("GolpeadoDientesODO");
+        var selected = combo.options[combo.selectedIndex].text;
+        if (selected == "Si") {
+            $("#EspGolpeadoDientes").css("display", "");
+        } else {
+            $("#EspGolpeadoDientes").css("display", "none");
+        }
+    });
+    $("#SatisfechoODO").change(function () {
+        var combo = document.getElementById("SatisfechoODO");
+        var selected = combo.options[combo.selectedIndex].text;
+        if (selected == "No") {
+            $("#EspSatisfecho").css("display", "");
+        } else {
+            $("#EspSatisfecho").css("display", "none");
+        }
+    });
+    //InfoPerinatal
+    $("#EmbarazoTerminoODO").change(function () {
+        var combo = document.getElementById("EmbarazoTerminoODO");
+        var selected = combo.options[combo.selectedIndex].text;
+        if (selected == "No") {
+            $("#EspEmbarazoTermino").css("display", "");
+        } else {
+            $("#EspEmbarazoTermino").css("display", "none");
+        }
+    });
+    $("#EsquemaCompletoODO").change(function () {
+        var combo = document.getElementById("EsquemaCompletoODO");
+        var selected = combo.options[combo.selectedIndex].text;
+        if (selected == "No") {
+            $("#EspEsquemaVac").css("display", "");
+        } else {
+            $("#EspEsquemaVac").css("display", "none");
+        }
+    });
+    //Habitos
+    $("#AlimEntreComidasODO").change(function () {
+        var combo = document.getElementById("AlimEntreComidasODO");
+        var selected = combo.options[combo.selectedIndex].text;
+        if (selected == "Si") {
+            $("#EspAlimentosEntreC").css("display", "");
+        } else {
+            $("#EspAlimentosEntreC").css("display", "none");
+        }
+    });
+    $("#HigieneOralODO").change(function () {
+        var combo = document.getElementById("HigieneOralODO");
+        var selected = combo.options[combo.selectedIndex].text;
+        if (selected == "Si") {
+            $("#EspHigieneFrec").css("display", "");
+            $("#EspHigieneSolo").css("display", "");
+            $("#EspHigieneConAyuda").css("display", "");
+            $("#EspHigieneTipoCep").css("display", "");
+            $("#EspHigieneTipoPasta").css("display", "");
+        } else {
+            $("#EspHigieneFrec").css("display", "none");
+            $("#EspHigieneSolo").css("display", "none");
+            $("#EspHigieneConAyuda").css("display", "none");
+            $("#EspHigieneTipoCep").css("display", "none");
+            $("#EspHigieneTipoPasta").css("display", "none");
+        }
+    });
+
+    // #endregion
+
+    //Si dan click en Enter en los inputs de Nombre/Expediente
+    $('.BuscarPX').on("keypress", function (e) {
+        if (e.keyCode == 13) {
+            FuncionBuscarPX();
+            return false;
+        }
+    });
+
+    //Si dan click en el botón de Buscar
+    function BtnBuscarPX() {
+        FuncionBuscarPX();
+    };
+
+    function FuncionBuscarPX() {
+	    var NombrePX = $("#NombrePX").val();
+	    var ExpedientePX = $("#ExpedientePX").val();
+
+	    Swal.fire({
+		    title: 'Cargando... Espere por favor',
+		    timer: 1000,
+		    timerProgressBar: true,
+	    });
+
+	    $.ajax({
+		    url: '@Url.Action("BuscarPaciente", "Derechohabiente")',
+		    method: 'POST',
+		    dataType: 'json',
+		    data: {
+                NombrePX: NombrePX,
+                ExpedientePX: ExpedientePX
+		    },
+		    success: function(data) {
+                if (data.MENSAJE.substring(0, 6) == "Succe:") {
+                    LlenaTablaPX(data.PACIENTES);
+			    }
+			    if (data.MENSAJE.substring(0, 6) == "Error:") {
+				    Swal.fire({
+					    icon: 'error',
+					    title: '¡Error!',
+					    text: data.MENSAJE.substring(7),
+				    });
+			    }
+		    },
+		    error: function(ex) {
+			    Swal.fire({
+				    icon: 'error',
+				    title: '¡Error!',
+			    });
+		    }
+	    });
+
+    };
+
+    function LlenaTablaPX(PX) {
+        var table = $('#TblPaciente').DataTable();
+        table.destroy();
+
+        table = $('#TblPaciente').DataTable({
+            responsive: true,
+            searching: false,
+            info: true,
+            deferRender: true,
+            scroller: false,
+            scrollColapse: true,
+            paging: false,
+            lengthChange: false,
+            language: {
+                "zeroRecords": "No se encontraron PX",
+                "info": "",
+                "search": "",
+                "infoEmpty": "",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Último",
+                    "next": "Siguiente",
+                    "previous": "Anterior",
+                },
+                "select": {
+                    "rows": " %d filas seleccionadas"
+                },
+            },
+            data: PX,
+            columns: [
+                { 'data': 'Nombre', className: "text-center" },
+                { 'data': 'PrimerApellido', className: "text-center" },
+                { 'data': 'SegundoApellido', className: "text-center" },
+                {
+                    "data": "UnidadAfiliacion", className: "text-center", render: function (data, type, row) {
+                        if (row.UnidadAfiliacion == 1 ) {
+                            return '<h8 style="color:black; ">Unidad habitacional I.</h8>';
+                        }
+                        if (row.UnidadAfiliacion == 2) {
+                            return '<h8 style="color:black; ">Módulo dental Apodaca</h8>';
+                        }
+                        if (row.UnidadAfiliacion == 3) {
+                            return '<h8 style="color:black; ">Pueblo Nuevo</h8>';
+                        }
+                        if (row.UnidadAfiliacion == 4) {
+                            return '<h8 style="color:black; ">Vicente Guerrero</h8>';
+                        }
+                        if (row.UnidadAfiliacion == 5) {
+                            return '<h8 style="color:black; ">San Rafael</h8>';
+                        }
+                        if (row.UnidadAfiliacion == 6) {
+                            return '<h8 style="color:black; ">21 de enero</h8>';
+                        }
+                        if (row.UnidadAfiliacion == 7) {
+                            return '<h8 style="color:black; ">Clínica de atención int.</h8>';
+                        }
+                        if (row.UnidadAfiliacion == 8) {
+                            return '<h8 style="color:black; ">Módulo dental Guadalupe</h8>';
+                        }
+                        if (row.UnidadAfiliacion == 9) {
+                            return '<h8 style="color:black; ">Ciénega de Flores</h8>';
+                        }
+                    }
+                },
+                { 'data': 'Expediente', className: "text-center" },
+                {
+                    "className": 'text-center',
+                    "orderable": false,
+                    "data": null,
+                    "defaultContent": '<button title="Seleccionar px" id="VerDetalle" class="btn btn-success fa fa-check" data-toggle="modal" ></button>',
+                    "target": -2
+                }
+            ]
+        });
+    }
+
+    $('#TblPaciente tbody').on('click', '#VerDetalle', function () {
+        // #region
+        var tr = $(this).closest('tr');
+        row = $('#TblPaciente').DataTable().row(tr);
+
+        var Nombre = row.data().Nombre;
+        var PrimerA = row.data().PrimerApellido;
+        var SegundoA = row.data().SegundoApellido;
+        var Exp = row.data().Expediente;
+        var Edad = row.data().Edad;
+        var Sexo = row.data().Sexo;
+        var FechaN = row.data().FechaNacimiento;
+
+        //Dividir fecha de nacimiento
+        var splitFechaN = FechaN.split('/');
+        const anioNacimiento = parseInt(splitFechaN[2]);
+        const mesNacimiento = parseInt(splitFechaN[1]);
+        const diaNacimiento = parseInt(splitFechaN[0]);
+
+        // Obtiene la fecha actual
+        const fechaActual = new Date();
+
+        // Obtiene el año, mes y día actual
+        const anioActual = fechaActual.getFullYear();
+        const mesActual = fechaActual.getMonth() + 1; // Los meses en JavaScript van de 0 a 11
+        const diaActual = fechaActual.getDate();
+
+        // Calcula la edad
+        let edad = anioActual - anioNacimiento;
+        let edadMeses = mesActual - mesNacimiento;
+
+        // Verifica si aún no ha llegado el cumpleaños de este año
+        if (mesActual < mesNacimiento || (mesActual === mesNacimiento && diaActual < diaNacimiento)) {
+            edad--;
+        }
+
+        document.getElementById("Nombre").innerHTML = Nombre + " " + PrimerA + " " + SegundoA;
+        document.getElementById("Exp").innerHTML = Exp;
+        document.getElementById("Edad").innerHTML = edad + ' años ' + edadMeses + ' meses';
+        document.getElementById("Sexo").innerHTML = Sexo;
+        document.getElementById("FechaNac").innerHTML = FechaN;
+
+        //ocultamos div de la busqueda del px
+        $("#BusquedaPX").hide();
+        //mostramos div de la info del px
+        $("#InfoPX").show();
+        // #endregion
+
+    });
+
+    // #region Guardar cada pestaña/sección
+    //
+    $("#Btn_ResultadoLab").click(function () {
+        let data = $("#F_ResultadoLab").serialize();
+        var expediente = $("#Exp").text();
+        if (expediente) {
+            $.post("@Url.Action("ResultadoLab", "HistoriaNutricion")?expediente=" + expediente, data).done(function (response) {
+                if (response.MENSAJE.substring(0, 6) == "Succe:") {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Sección guardada',
+                        showConfirmButton: false,
+                        timer: 1600
+                    })
+                    $("#Btn_ResultadoLab").css("display", "none");
+                }
+                if (response.MENSAJE.substring(0, 6) == "Error:") {
+                    Swal.fire({
+                        icon: 'error',
+                        title: '¡Error!',
+                        text: response.MENSAJE.substring(7),
+                    });
+                }
+            }).fail(function (response) {
+                console.log(response);
+            });
+            event.preventDefault();
+        }
+    });
+
+    // #endregion
+
+</script>
+
+<script>
+
+    //Buscar un nuevo diagnostico
+    $('#diagnosticoBusqueda').on('click', '.btn-buscar', function() {
+
+	    if ($("#diagnosticoTxt").val().length >= 3) {
+		    $('#diagnosticoBusquedaLista').empty();
+		    $('#diagnosticoBusquedaAlert').text('');
+		    $.ajax({
+			    url: '@Url.Action("BuscarDiagnosticos", "NotaEvolucion")',
+			    dataType: "json",
+			    data: {
+				    diagnostico: $("#diagnosticoTxt").val()
+			    },
+			    success: function(data) {
+				    //console.log(data);
+				    $.each(data, function(i, item) {
+					    //console.log(item.DesCorta);
+					    $('#diagnosticoBusquedaLista').append('<div class="col-md-2 p-2"><div class="shadow p-2 mb-2 rounded diagnostico-select" data-clave="' + item.clave + '">' + item.diagnostico + '</div></div>');
+				    });
+			    },
+			    error: function(xhr, status, error) {
+				    Swal.fire({
+					    position: 'center',
+					    icon: 'error',
+					    showConfirmButton: false,
+					    timer: 10000
+				    });
+			    }
+		    });
+	    } else {
+		    $('#diagnosticoBusquedaLista').empty();
+		    $('#diagnosticoBusquedaAlert').text('¡Escribe más de dos caracteres!');
+	    }
+
+    });
+
+    $("#tipoconsulta1").attr('disabled', 'disabled');
+    $("#tipoconsulta2").attr('disabled', 'disabled');
+    $("#tipoconsulta3").attr('disabled', 'disabled');
+
+    //Al dar click en los diagnoticos que se ponga en los cuadros de abajo
+    $(document).on('click', '.diagnostico-select', function(event) {
+	    //console.log(event.data.nombre);
+	    // imprime 'juan'
+	    var clave = $(this).attr('data-clave');
+	    var desCorta = $(this).text();
+	    //alert(clave);
+	    if ($(this).hasClass("diagnostico-active")) {
+
+		    $(this).removeClass('diagnostico-active');
+
+		    if ($('#clave1').val() == clave) {
+			    $('#diagnostico1').val('');
+			    $('#clave1').val('');
+			    $("#tipoconsulta1").attr('disabled', 'disabled');
+			    $('#borrardiag1').css('filter', 'grayscale(100%)');
+
+			    //Si hay un valor en el diagnostico2
+			    if ($('#clave2').val()) {
+				    $('#diagnostico1').val($('#diagnostico2').val());
+				    $('#clave1').val($('#clave2').val());
+				    $("#tipoconsulta1").removeAttr('disabled');
+				    $('#borrardiag1').css('filter', 'none');
+				    $("#tipoconsulta2").attr('disabled', 'disabled');
+				    $('#borrardiag2').css('filter', 'grayscale(100%)');
+				    $('#diagnostico2').val('');
+				    $('#clave2').val('');
+
+			    }
+
+			    //Si hay un valor en el diagnostico3
+			    if ($('#clave3').val()) {
+				    $('#diagnostico2').val($('#diagnostico3').val());
+				    $('#clave2').val($('#clave3').val());
+				    $("#tipoconsulta2").removeAttr('disabled');
+				    $('#borrardiag2').css('filter', 'none');
+				    $("#tipoconsulta3").attr('disabled', 'disabled');
+				    $('#borrardiag3').css('filter', 'grayscale(100%)');
+				    $('#diagnostico3').val('');
+				    $('#clave3').val('');
+			    }
+
+			    //Si hay un valor en el diagnostico4
+			    if ($('#clave4').val()) {
+				    alert('if1');
+				    $('#diagnostico3').val($('#diagnostico4').val());
+				    $('#clave3').val($('#clave4').val());
+				    $("#tipoconsulta3").removeAttr('disabled');
+				    $('#borrardiag3').css('filter', 'none');
+				    $("#tipoconsulta4").attr('disabled', 'disabled');
+				    $('#borrardiag4').css('filter', 'grayscale(100%)');
+				    $('#diagnostico4').val('');
+				    $('#clave4').val('');
+			    }
+
+			    //Si hay un valor en el diagnostico4
+			    if ($('#clave5').val()) {
+				    $('#diagnostico4').val($('#diagnostico5').val());
+				    $('#clave4').val($('#clave5').val());
+				    $("#tipoconsulta4").removeAttr('disabled');
+				    $('#borrardiag4').css('filter', 'none');
+				    $("#tipoconsulta5").attr('disabled', 'disabled');
+				    $('#borrardiag5').css('filter', 'grayscale(100%)');
+				    $('#diagnostico5').val('');
+				    $('#clave5').val('');
+
+			    }
+
+			    //No hay ni diagnostico 1 ni 2
+			    if (!$('#clave1').val()) {
+				    $("#tipoconsulta1").val($("#tipoconsulta1 option:first").val());
+			    }
+
+		    } else {
+			    if ($('#clave2').val() == clave) {
+				    $('#diagnostico2').val('');
+				    $('#clave2').val('');
+				    $("#tipoconsulta2").attr('disabled', 'disabled');
+				    $('#borrardiag2').css('filter', 'grayscale(100%)');
+
+				    //Si hay un valor en el diagnostico3
+				    if ($('#clave3').val()) {
+					    $('#diagnostico2').val($('#diagnostico3').val());
+					    $('#clave2').val($('#clave3').val());
+					    $("#tipoconsulta2").removeAttr('disabled');
+					    $('#borrardiag2').css('filter', 'none');
+					    $("#tipoconsulta3").attr('disabled', 'disabled');
+					    $('#borrardiag3').css('filter', 'grayscale(100%)');
+					    $('#diagnostico3').val('');
+					    $('#clave3').val('');
+
+				    }
+
+				    if ($('#clave4').val()) {
+					    alert('if2');
+					    $('#diagnostico3').val($('#diagnostico4').val());
+					    $('#clave3').val($('#clave4').val());
+					    $("#tipoconsulta3").removeAttr('disabled');
+					    $('#borrardiag3').css('filter', 'none');
+					    $("#tipoconsulta4").attr('disabled', 'disabled');
+					    $('#borrardiag4').css('filter', 'grayscale(100%)');
+					    $('#diagnostico4').val('');
+					    $('#clave4').val('');
+
+				    }
+
+				    if ($('#clave5').val()) {
+					    $('#diagnostico4').val($('#diagnostico5').val());
+					    $('#clave4').val($('#clave5').val());
+					    $("#tipoconsulta4").removeAttr('disabled');
+					    $('#borrardiag4').css('filter', 'none');
+					    $("#tipoconsulta5").attr('disabled', 'disabled');
+					    $('#borrardiag5').css('filter', 'grayscale(100%)');
+					    $('#diagnostico5').val('');
+					    $('#clave5').val('');
+
+				    }
+
+				    if (!$('#clave2').val()) {
+					    $("#tipoconsulta2").val($("#tipoconsulta2 option:first").val());
+				    }
+
+				    $("#tipoconsulta3").val($("#tipoconsulta3 option:first").val());
+				    $("#tipoconsulta4").val($("#tipoconsulta4 option:first").val());
+				    $("#tipoconsulta5").val($("#tipoconsulta5 option:first").val());
+
+			    } else {
+				    if ($('#clave3').val() == clave) {
+					    $('#diagnostico3').val('');
+					    $('#clave3').val('');
+					    $("#tipoconsulta3").attr('disabled', 'disabled');
+					    $('#borrardiag3').css('filter', 'grayscale(100%)');
+					    $("#tipoconsulta3").val($("#tipoconsulta3 option:first").val());
+
+					    if ($('#clave4').val()) {
+						    alert('if3');
+						    $('#diagnostico3').val($('#diagnostico4').val());
+						    $('#clave3').val($('#clave4').val());
+						    $("#tipoconsulta3").removeAttr('disabled');
+						    $('#borrardiag3').css('filter', 'none');
+						    $("#tipoconsulta4").attr('disabled', 'disabled');
+						    $('#borrardiag4').css('filter', 'grayscale(100%)');
+						    $('#diagnostico4').val('');
+						    $('#clave4').val('');
+
+					    }
+
+					    if ($('#clave5').val()) {
+						    $('#diagnostico4').val($('#diagnostico5').val());
+						    $('#clave4').val($('#clave5').val());
+						    $("#tipoconsulta4").removeAttr('disabled');
+						    $('#borrardiag4').css('filter', 'none');
+						    $("#tipoconsulta5").attr('disabled', 'disabled');
+						    $('#borrardiag5').css('filter', 'grayscale(100%)');
+						    $('#diagnostico5').val('');
+						    $('#clave5').val('');
+
+					    }
+
+					    if (!$('#clave3').val()) {
+						    $("#tipoconsulta3").val($("#tipoconsulta3 option:first").val());
+					    }
+
+					    $("#tipoconsulta4").val($("#tipoconsulta4 option:first").val());
+					    $("#tipoconsulta5").val($("#tipoconsulta5 option:first").val());
+
+
+				    } else {
+					    if ($('#clave4').val() == clave) {
+						    //alert('if4');
+						    $('#diagnostico4').val('');
+						    $('#clave4').val('');
+						    $("#tipoconsulta4").attr('disabled', 'disabled');
+						    $('#borrardiag4').css('filter', 'grayscale(100%)');
+						    $("#tipoconsulta4").val($("#tipoconsulta4 option:first").val());
+
+
+						    if ($('#clave5').val()) {
+							    $('#diagnostico4').val($('#diagnostico5').val());
+							    $('#clave4').val($('#clave5').val());
+							    $("#tipoconsulta4").removeAttr('disabled');
+							    $('#borrardiag4').css('filter', 'none');
+							    $("#tipoconsulta5").attr('disabled', 'disabled');
+							    $('#borrardiag5').css('filter', 'grayscale(100%)');
+							    $('#diagnostico5').val('');
+							    $('#clave5').val('');
+
+
+						    }
+
+						    if (!$('#clave4').val()) {
+							    $("#tipoconsulta4").val($("#tipoconsulta4 option:first").val());
+						    }
+
+						    $("#tipoconsulta5").val($("#tipoconsulta5 option:first").val());
+
+					    } else {
+						    if ($('#clave5').val() == clave) {
+							    $('#diagnostico5').val('');
+							    $('#clave5').val('');
+							    $("#tipoconsulta5").attr('disabled', 'disabled');
+							    $('#borrardiag5').css('filter', 'grayscale(100%)');
+							    $("#tipoconsulta5").val($("#tipoconsulta5 option:first").val());
+						    }
+					    }
+				    }
+			    }
+		    }
+
+	    } else {
+
+		    $('#finalizar').attr('disabled', 'disabled');
+		    $('#finalizar').css('background-color', 'lightgray');
+
+		    var numItems = $('.diagnostico-active').length;
+		    if (numItems < 5) {
+			    if (numItems == 0) {
+				    $('#diagnostico1').val(desCorta);
+				    $('#clave1').val(clave);
+				    $("#tipoconsulta1").removeAttr('disabled');
+				    $('#borrardiag1').css('filter', 'none');
+				    $(this).addClass('diagnostico-active');
+
+			    } else {
+				    if (numItems == 1) {
+                        $('#diagnostico2').val(desCorta);
+                        $('#clave2').val(clave);
+                        $("#tipoconsulta2").removeAttr('disabled');
+                        $('#borrardiag2').css('filter', 'none');
+                        $(this).addClass('diagnostico-active');
+
+				    } else {
+					    if (numItems == 2) {
+                            $('#diagnostico3').val(desCorta);
+                            $('#clave3').val(clave);
+                            $("#tipoconsulta3").removeAttr('disabled');
+                            $('#borrardiag3').css('filter', 'none');
+                            $(this).addClass('diagnostico-active');
+					    } else {
+						    if (numItems == 3) {
+                                $('#diagnostico4').val(desCorta);
+                                $('#clave4').val(clave);
+                                $("#tipoconsulta4").removeAttr('disabled');
+                                $('#borrardiag4').css('filter', 'none');
+                                $(this).addClass('diagnostico-active');
+						    } else {
+							    if (numItems == 4) {
+                                    $('#diagnostico5').val(desCorta);
+                                    $('#clave5').val(clave);
+                                    $("#tipoconsulta5").removeAttr('disabled');
+                                    $('#borrardiag5').css('filter', 'none');
+                                    $(this).addClass('diagnostico-active');
+							    }
+						    }
+					    }
+
+				    }
+			    }
+
+		    }
+	    }
+
+	    var hash = "#diagnosticoBusquedaListaHistorial";
+	    $('html, body').animate({
+		    scrollTop: $(hash).offset().top
+	    }, 800, function() {
+		    window.location.href = "#diagnosticoBusquedaListaHistorial"
+	    });
+
+    });
+
+    $("#borrardiag1").click(function () {
+        $(".diagnostico-active").each(function (index) {
+            if ($(this).attr('data-clave') == $('#clave1').val()) {
+                $(this).removeClass('diagnostico-active');
+                $('#diagnostico1').val('');
+                $('#clave1').val('');
+                $('#borrardiag1').css('filter', 'grayscale(100%)');
+                $("#tipoconsulta1").attr('disabled', 'disabled');
+            }
+        });
+
+        if ($('#clave2').val()) {
+            $('#diagnostico1').val($('#diagnostico2').val());
+            $('#clave1').val($('#clave2').val());
+            $('#borrardiag1').css('filter', 'none');
+            $("#tipoconsulta1").removeAttr('disabled');
+            var opcionSeleccionada = $("#tipoconsulta2 option:selected").val();
+            $("#tipoconsulta1").val(opcionSeleccionada);
+
+            $('#diagnostico2').val('');
+            $('#clave2').val('');
+            $('#borrardiag2').css('filter', 'grayscale(100%)');
+            $("#tipoconsulta2").val($("#tipoconsulta2 option:first").val());
+
+        }
+
+    });
+
+    $("#borrardiag2").click(function () {
+        $(".diagnostico-active").each(function (index) {
+            if ($(this).attr('data-clave') == $('#clave2').val()) {
+                $(this).removeClass('diagnostico-active');
+                $('#diagnostico2').val('');
+                $('#clave2').val('');
+                $('#borrardiag2').css('filter', 'grayscale(100%)');
+                $("#tipoconsulta2").attr('disabled', 'disabled');
+            }
+        });
+
+        if ($('#clave3').val()) {
+            $('#diagnostico2').val($('#diagnostico3').val());
+            $('#clave2').val($('#clave3').val());
+            $('#borrardiag2').css('filter', 'none');
+            $("#tipoconsulta2").removeAttr('disabled');
+            var opcionSeleccionada = $("#tipoconsulta3 option:selected").val();
+            //alert(opcionSeleccionada);
+            $("#tipoconsulta2").val(opcionSeleccionada);
+
+            $('#diagnostico3').val('');
+            $('#clave3').val('');
+            $('#borrardiag3').css('filter', 'grayscale(100%)');
+            $("#tipoconsulta3").val($("#tipoconsulta3 option:first").val());
+        }
+
+    });
+
+    $("#borrardiag3").click(function () {
+        $(".diagnostico-active").each(function (index) {
+            if ($(this).attr('data-clave') == $('#clave3').val()) {
+                $(this).removeClass('diagnostico-active');
+                $('#diagnostico3').val('');
+                $('#clave3').val('');
+                $('#borrardiag3').css('filter', 'grayscale(100%)');
+                $("#tipoconsulta3").attr('disabled', 'disabled');
+            }
+        });
+
+        if ($('#clave4').val()) {
+            $('#diagnostico3').val($('#diagnostico4').val());
+            $('#clave3').val($('#clave4').val());
+            $('#borrardiag3').css('filter', 'none');
+            $("#tipoconsulta3").removeAttr('disabled');
+            var opcionSeleccionada = $("#tipoconsulta4 option:selected").val();
+            $("#tipoconsulta3").val(opcionSeleccionada);
+
+            $('#diagnostico4').val('');
+            $('#clave4').val('');
+            $('#borrardiag4').css('filter', 'grayscale(100%)');
+            $("#tipoconsulta4").val($("#tipoconsulta4 option:first").val());
+
+        }
+
+    });
+
+    $("#borrardiag4").click(function () {
+        $(".diagnostico-active").each(function (index) {
+            if ($(this).attr('data-clave') == $('#clave4').val()) {
+                $(this).removeClass('diagnostico-active');
+                $('#diagnostico4').val('');
+                $('#clave4').val('');
+                $('#borrardiag4').css('filter', 'grayscale(100%)');
+                $("#tipoconsulta4").attr('disabled', 'disabled');
+            }
+        });
+
+        if ($('#clave5').val()) {
+            $('#diagnostico4').val($('#diagnostico5').val());
+            $('#clave4').val($('#clave5').val());
+            $('#borrardiag4').css('filter', 'none');
+            $("#tipoconsulta4").removeAttr('disabled');
+            var opcionSeleccionada = $("#tipoconsulta5 option:selected").val();
+            $("#tipoconsulta4").val(opcionSeleccionada);
+
+            $('#diagnostico5').val('');
+            $('#clave5').val('');
+            $('#borrardiag5').css('filter', 'grayscale(100%)');
+            $("#tipoconsulta5").val($("#tipoconsulta5 option:first").val());
+
+        }
+
+    });
+
+    $("#borrardiag5").click(function () {
+        $(".diagnostico-active").each(function (index) {
+            if ($(this).attr('data-clave') == $('#clave5').val()) {
+                $(this).removeClass('diagnostico-active');
+                $('#diagnostico5').val('');
+                $('#clave5').val('');
+                $('#borrardiag5').css('filter', 'grayscale(100%)');
+                $("#tipoconsulta5").attr('disabled', 'disabled');
+            }
+        });
+
+        $("#tipoconsulta5").val($("#tipoconsulta5 option:first").val());
+
+    });
+</script>

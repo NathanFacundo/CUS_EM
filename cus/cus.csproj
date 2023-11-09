@@ -176,6 +176,7 @@
     <Compile Include="Areas\Admin\Controllers\HistoriaNutricionController.cs" />
     <Compile Include="Areas\Admin\Controllers\HistoriaClinicaController.cs" />
     <Compile Include="Areas\Admin\Controllers\HistoriaMedicinaController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HistoriaOdontologiaController.cs" />
     <Compile Include="Areas\Admin\Controllers\HistoriaPsicologiaController.cs" />
     <Compile Include="Areas\Admin\Controllers\NotaEvolucionController.cs" />
     <Compile Include="Areas\Admin\Controllers\PacienteController.cs" />
@@ -699,6 +700,7 @@
       <DependentUpon>HC_Nutricion.edmx</DependentUpon>
     </Content>
     <Content Include="Areas\Admin\Views\HistoriaNutricion\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\HistoriaOdontologia\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
