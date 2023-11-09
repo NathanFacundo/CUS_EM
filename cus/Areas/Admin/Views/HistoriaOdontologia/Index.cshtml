@@ -312,7 +312,6 @@
                         <li class="nav-item text-left">
                             <a class="nav-link" href="#ResultadosLabGab" data-toggle="tab">Resultado de Lab.<br />y Gabinete Relevantes</a>
                         </li>
-
                         <li class="nav-item text-left">
                             <a class="nav-link" href="#ImpresionDiag" data-toggle="tab">Impresión<br />Diagnóstica</a>
                         </li>
@@ -531,6 +530,215 @@
                         </div>
                     </div>
 
+                    <div class="tab-pane fade show" id="Habitos">
+                        <div class="card card-table mb-0 p-3 mb-5">
+                            <div class="card-body">
+                                <form id="F_Habitos">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>¿Consume carbohidratos?</label>
+                                                <select class="form-control" id="ConsCarbohidratosODO" name="ConsCarbohidratosODO">
+                                                    <option value="">Seleccionar</option>
+                                                    <option value="Poco">Poco</option>
+                                                    <option value="Regular">Regular</option>
+                                                    <option value="Exagerado">Exagerado</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Alimentos entre comidas</label>
+                                                <select class="form-control" id="AlimEntreComidasODO" name="AlimEntreComidasODO">
+                                                    <option value="">Seleccionar</option>
+                                                    <option value="Si">Si</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6" id="EspAlimentosEntreC">
+                                            <div class="form-group">
+                                                <label>Especifique alimentos entre comidas</label>
+                                                <input type="text" class="form-control" id="Especifica_AlimEntreComidasODO" name="Especifica_AlimEntreComidasODO" maxlength="299">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Higiene oral</label>
+                                                <select class="form-control" id="HigieneOralODO" name="HigieneOralODO">
+                                                    <option value="">Seleccionar</option>
+                                                    <option value="Si">Si</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2" id="EspHigieneFrec">
+                                            <div class="form-group">
+                                                <label>Frecuencia</label>
+                                                <input type="text" class="form-control" id="Frecuencia_HigieneOralODO" name="Frecuencia_HigieneOralODO" maxlength="299">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2" id="EspHigieneSolo">
+                                            <div class="form-group">
+                                                <input class="form-check-input" type="checkbox" id="Solo_HigieneOralODO" name="Solo_HigieneOralODO">
+                                                <label class="form-check-label" for="">
+                                                    Solo
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2" id="EspHigieneConAyuda">
+                                            <div class="form-group">
+                                                <input class="form-check-input" type="checkbox" id="ConAyuda_HigieneOralODO" name="ConAyuda_HigieneOralODO">
+                                                <label class="form-check-label" for="">
+                                                    Con ayuda
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2" id="EspHigieneTipoCep">
+                                            <div class="form-group">
+                                                <label>Tipo cepillo</label>
+                                                <input type="text" class="form-control" id="TipoCepillo_HigieneOralODO" name="TipoCepillo_HigieneOralODO" maxlength="299">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2" id="EspHigieneTipoPasta">
+                                            <div class="form-group">
+                                                <label>Tipo pasta dent.</label>
+                                                <input type="text" class="form-control" id="TipoPasta_HigieneOralODO" name="TipoPasta_HigieneOralODO" maxlength="299">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <h3>Selecciona los hábitos</h3>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-5">
+                                            <label><b> </b></label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label><b>Si</b></label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label><b>No</b></label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-5">
+                                            <label>Succión labial</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="SuccionLabialODO" name="SuccionLabialODO">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="SuccionLabialODO_No" name="SuccionLabialODO_No">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-5">
+                                            <label>Morder objetos</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="MorderObjetosODO" name="MorderObjetosODO">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="MorderObjetosODO_No" name="MorderObjetosODO_No">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-5">
+                                            <label>Respiración oral</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="RespiracionOralODO" name="RespiracionOralODO">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="RespiracionOralODO_No" name="RespiracionOralODO_No">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-5">
+                                            <label>Succión digital</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="SuccionDigitalODO" name="SuccionDigitalODO">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="SuccionDigitalODO_No" name="SuccionDigitalODO_No">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-5">
+                                            <label>Onicofagia</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="OnicofagiaODO" name="OnicofagiaODO">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="OnicofagiaODO_No" name="OnicofagiaODO_No">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-5">
+                                            <label>Bruxismo</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="BruxismoODO" name="BruxismoODO">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="BruxismoODO_No" name="BruxismoODO_No">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-5">
+                                            <label>Biberón</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="BiberonODO" name="BiberonODO">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="BiberonODO_No" name="BiberonODO_No">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-5">
+                                            <label>Chupón</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="ChuponODO" name="ChuponODO">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input class="form-check-input" type="checkbox" id="ChuponODO_No" name="ChuponODO_No">
+                                        </div>
+                                    </div>
+
+                                    <div class="text-right">
+                                        <button id="Btn_Habitos" type="submit" class="btn btn-primary">Guardar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
 
 
                 </div>
@@ -584,6 +792,13 @@
         //InfoPerinatal
         $("#EspEmbarazoTermino").css("display", "none");
         $("#EspEsquemaVac").css("display", "none");
+        //Habitos
+        $("#EspAlimentosEntreC").css("display", "none");
+        $("#EspHigieneFrec").css("display", "none");
+        $("#EspHigieneSolo").css("display", "none");
+        $("#EspHigieneConAyuda").css("display", "none");
+        $("#EspHigieneTipoCep").css("display", "none");
+        $("#EspHigieneTipoPasta").css("display", "none");
 
         // #endregion
 
@@ -636,6 +851,33 @@
             $("#EspEsquemaVac").css("display", "");
         } else {
             $("#EspEsquemaVac").css("display", "none");
+        }
+    });
+    //Habitos
+    $("#AlimEntreComidasODO").change(function () {
+        var combo = document.getElementById("AlimEntreComidasODO");
+        var selected = combo.options[combo.selectedIndex].text;
+        if (selected == "Si") {
+            $("#EspAlimentosEntreC").css("display", "");
+        } else {
+            $("#EspAlimentosEntreC").css("display", "none");
+        }
+    });
+    $("#HigieneOralODO").change(function () {
+        var combo = document.getElementById("HigieneOralODO");
+        var selected = combo.options[combo.selectedIndex].text;
+        if (selected == "Si") {
+            $("#EspHigieneFrec").css("display", "");
+            $("#EspHigieneSolo").css("display", "");
+            $("#EspHigieneConAyuda").css("display", "");
+            $("#EspHigieneTipoCep").css("display", "");
+            $("#EspHigieneTipoPasta").css("display", "");
+        } else {
+            $("#EspHigieneFrec").css("display", "none");
+            $("#EspHigieneSolo").css("display", "none");
+            $("#EspHigieneConAyuda").css("display", "none");
+            $("#EspHigieneTipoCep").css("display", "none");
+            $("#EspHigieneTipoPasta").css("display", "none");
         }
     });
 
