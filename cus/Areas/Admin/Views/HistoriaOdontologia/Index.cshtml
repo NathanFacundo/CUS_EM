@@ -89,19 +89,19 @@
         font-weight: bolder;
     }
 
-        .diaginfo:after {
-            content: '';
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            margin: 0 auto;
-            width: 0;
-            height: 0;
-            border-top: solid 30px #20c0f3;
-            border-left: solid 50px transparent;
-            border-right: solid 50px transparent;
-        }
+    .diaginfo:after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        width: 0;
+        height: 0;
+        border-top: solid 30px #20c0f3;
+        border-left: solid 50px transparent;
+        border-right: solid 50px transparent;
+    }
 
     .diaginfo2 {
         position: absolute;
@@ -116,19 +116,19 @@
         font-weight: bolder;
     }
 
-        .diaginfo2:after {
-            content: '';
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            margin: 0 auto;
-            width: 0;
-            height: 0;
-            border-top: solid 20px #20c0f3;
-            border-left: solid 20px transparent;
-            border-right: solid 20px transparent;
-        }
+    .diaginfo2:after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        width: 0;
+        height: 0;
+        border-top: solid 20px #20c0f3;
+        border-left: solid 20px transparent;
+        border-right: solid 20px transparent;
+    }
 
     .resumenTop {
         position: absolute;
@@ -190,10 +190,7 @@
         filter: grayscale(100%);
     }
 
-
-    #msform input,
-    #msform textarea,
-    #msform select {
+    #msform input, #msform textarea, #msform select {
         padding: 10px 8px 4px 8px;
         border: none;
         border-bottom: 1px solid lightgray;
@@ -208,17 +205,15 @@
         background-color: white;
     }
 
-        #msform input:focus,
-        #msform textarea:focus,
-        #msform select:focus {
-            -moz-box-shadow: none !important;
-            -webkit-box-shadow: none !important;
-            box-shadow: none !important;
-            border: none;
-            font-weight: bold;
-            border-bottom: 2px solid #20c0f3;
-            outline-width: 0
-        }
+    #msform input:focus, #msform textarea:focus, #msform select:focus {
+        -moz-box-shadow: none !important;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+        border: none;
+        font-weight: bold;
+        border-bottom: 2px solid #20c0f3;
+        outline-width: 0
+    }
 
     #notaevolucion {
         background-color: white;
@@ -239,10 +234,10 @@
         width: 8%;
     }
 
-        .btn-buscar:hover {
-            background-color: #20c0f3 !important;
-            color: white !important;
-        }
+    .btn-buscar:hover {
+         background-color: #20c0f3 !important;
+         color: white !important;
+    }
 
     .btnbuscapac {
         width: 20px;
@@ -253,6 +248,17 @@
     .profile-header {
         padding-left: 0px;
         margin-bottom: 20px;
+    }
+    /* Estilo para las celdas */
+    #tbl td, th {
+        border: 1px solid #000;
+        padding: 8px;
+        text-align: left;
+    }
+    /* Estilo para el encabezado (thead) */
+    #tbl thead {
+        background-color: #f0f0f0;
+        Cambia el color de fondo según tus preferencias border: 1px solid #000;
     }
 </style>
 
@@ -609,131 +615,241 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="row">
-                                        <h3>Selecciona los hábitos</h3>
-                                    </div>
-                                    <br />
-                                    <div class="row">
-                                        <div class="col-md-1">
-                                        </div>
-                                        <div class="col-md-5">
-                                            <label><b> </b></label>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <label><b>Si</b></label>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <label><b>No</b></label>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-1">
-                                        </div>
-                                        <div class="col-md-5">
-                                            <label>Succión labial</label>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <input class="form-check-input" type="checkbox" id="SuccionLabialODO" name="SuccionLabialODO">
-                                        </div>
-                                        <div class="col-md-3">
-                                            <input class="form-check-input" type="checkbox" id="SuccionLabialODO_No" name="SuccionLabialODO_No">
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-1">
-                                        </div>
-                                        <div class="col-md-5">
-                                            <label>Morder objetos</label>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <input class="form-check-input" type="checkbox" id="MorderObjetosODO" name="MorderObjetosODO">
-                                        </div>
-                                        <div class="col-md-3">
-                                            <input class="form-check-input" type="checkbox" id="MorderObjetosODO_No" name="MorderObjetosODO_No">
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-1">
-                                        </div>
-                                        <div class="col-md-5">
-                                            <label>Respiración oral</label>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <input class="form-check-input" type="checkbox" id="RespiracionOralODO" name="RespiracionOralODO">
-                                        </div>
-                                        <div class="col-md-3">
-                                            <input class="form-check-input" type="checkbox" id="RespiracionOralODO_No" name="RespiracionOralODO_No">
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-1">
-                                        </div>
-                                        <div class="col-md-5">
-                                            <label>Succión digital</label>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <input class="form-check-input" type="checkbox" id="SuccionDigitalODO" name="SuccionDigitalODO">
-                                        </div>
-                                        <div class="col-md-3">
-                                            <input class="form-check-input" type="checkbox" id="SuccionDigitalODO_No" name="SuccionDigitalODO_No">
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-1">
-                                        </div>
-                                        <div class="col-md-5">
-                                            <label>Onicofagia</label>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <input class="form-check-input" type="checkbox" id="OnicofagiaODO" name="OnicofagiaODO">
-                                        </div>
-                                        <div class="col-md-3">
-                                            <input class="form-check-input" type="checkbox" id="OnicofagiaODO_No" name="OnicofagiaODO_No">
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-1">
-                                        </div>
-                                        <div class="col-md-5">
-                                            <label>Bruxismo</label>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <input class="form-check-input" type="checkbox" id="BruxismoODO" name="BruxismoODO">
-                                        </div>
-                                        <div class="col-md-3">
-                                            <input class="form-check-input" type="checkbox" id="BruxismoODO_No" name="BruxismoODO_No">
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-1">
-                                        </div>
-                                        <div class="col-md-5">
-                                            <label>Biberón</label>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <input class="form-check-input" type="checkbox" id="BiberonODO" name="BiberonODO">
-                                        </div>
-                                        <div class="col-md-3">
-                                            <input class="form-check-input" type="checkbox" id="BiberonODO_No" name="BiberonODO_No">
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-1">
-                                        </div>
-                                        <div class="col-md-5">
-                                            <label>Chupón</label>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <input class="form-check-input" type="checkbox" id="ChuponODO" name="ChuponODO">
-                                        </div>
-                                        <div class="col-md-3">
-                                            <input class="form-check-input" type="checkbox" id="ChuponODO_No" name="ChuponODO_No">
-                                        </div>
+                                        <table class="table table-bordered" id="tbl">
+                                            <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th></th>
+                                                    <th class="text-center p-3"><b>Si</b></th>
+                                                    <th class="text-center p-3"><b>No</b></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td></td>
+                                                    <td class="text-center p-3"><label>Succión labial</label></td>
+                                                    <td class="text-center p-3"><input class="form-check-input" type="checkbox" id="SuccionLabialODO" name="SuccionLabialODO"></td>
+                                                    <td class="text-center p-3"><input class="form-check-input" type="checkbox" id="SuccionLabialODO_No" name="SuccionLabialODO_No"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td class="text-center p-3"><label>Morder objetos</label></td>
+                                                    <td class="text-center p-3"><input class="form-check-input" type="checkbox" id="MorderObjetosODO" name="MorderObjetosODO"></td>
+                                                    <td class="text-center p-3"><input class="form-check-input" type="checkbox" id="MorderObjetosODO_No" name="MorderObjetosODO_No"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td class="text-center p-3"><label>Respiración oral</label></td>
+                                                    <td class="text-center p-3"><input class="form-check-input" type="checkbox" id="RespiracionOralODO" name="RespiracionOralODO"></td>
+                                                    <td class="text-center p-3"><input class="form-check-input" type="checkbox" id="RespiracionOralODO_No" name="RespiracionOralODO_No"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td class="text-center p-3"><label>Succión digital</label></td>
+                                                    <td class="text-center p-3"><input class="form-check-input" type="checkbox" id="SuccionDigitalODO" name="SuccionDigitalODO"></td>
+                                                    <td class="text-center p-3"><input class="form-check-input" type="checkbox" id="SuccionDigitalODO_No" name="SuccionDigitalODO_No"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td class="text-center p-3"><label>Onicofagia</label></td>
+                                                    <td class="text-center p-3"><input class="form-check-input" type="checkbox" id="OnicofagiaODO" name="OnicofagiaODO"></td>
+                                                    <td class="text-center p-3"><input class="form-check-input" type="checkbox" id="OnicofagiaODO_No" name="OnicofagiaODO_No"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td class="text-center p-3"><label>Bruxismo</label></td>
+                                                    <td class="text-center p-3"><input class="form-check-input" type="checkbox" id="BruxismoODO" name="BruxismoODO"></td>
+                                                    <td class="text-center p-3"><input class="form-check-input" type="checkbox" id="BruxismoODO_No" name="BruxismoODO_No"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td class="text-center p-3"><label>Biberón</label></td>
+                                                    <td class="text-center p-3"><input class="form-check-input" type="checkbox" id="BiberonODO" name="BiberonODO"></td>
+                                                    <td class="text-center p-3"><input class="form-check-input" type="checkbox" id="BiberonODO_No" name="BiberonODO_No"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td class="text-center p-3"><label>Chupón</label></td>
+                                                    <td class="text-center p-3"><input class="form-check-input" type="checkbox" id="ChuponODO" name="ChuponODO"></td>
+                                                    <td class="text-center p-3"><input class="form-check-input" type="checkbox" id="ChuponODO_No" name="ChuponODO_No"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
 
                                     <div class="text-right">
                                         <button id="Btn_Habitos" type="submit" class="btn btn-primary">Guardar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade show" id="EvaluacionFuncional">
+                        <div class="card card-table mb-0 p-3 mb-5">
+                            <div class="card-body">
+                                <form id="F_EvaluacionFuncional">
+                                    <div class="row">
+                                        <table class="table table-bordered" id="tbl">
+                                            <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th class="text-center p-3" colspan="2"><b>Forma de arcos</b></th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="text-center p-3">
+                                                        <label>Superior</label>
+                                                    </td>
+                                                    <td>
+                                                        <input class="form-check-input" type="checkbox" id="FA_Sup_Redondo" name="FA_Sup_Redondo">
+                                                        <label class="form-check-label" for="">
+                                                            Redondo
+                                                        </label>
+                                                    </td>
+                                                    <td>
+                                                        <input class="form-check-input" type="checkbox" id="FA_Sup_Triangular" name="FA_Sup_Triangular">
+                                                        <label class="form-check-label" for="">
+                                                            Triangular
+                                                        </label>
+                                                    </td>
+                                                    <td>
+                                                        <input class="form-check-input" type="checkbox" id="FA_Sup_Cuadrado" name="FA_Sup_Cuadrado">
+                                                        <label class="form-check-label" for="">
+                                                            Cuadrado
+                                                        </label>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center p-3">
+                                                        <label>Inferior</label>
+                                                    </td>
+                                                    <td>
+                                                        <input class="form-check-input" type="checkbox" id="FA_Inf_Redondo" name="FA_Inf_Redondo">
+                                                        <label class="form-check-label" for="">
+                                                            Redondo
+                                                        </label>
+                                                    </td>
+                                                    <td>
+                                                        <input class="form-check-input" type="checkbox" id="FA_Inf_Triangular" name="FA_Inf_Triangular">
+                                                        <label class="form-check-label" for="">
+                                                            Triangular
+                                                        </label>
+                                                    </td>
+                                                    <td>
+                                                        <input class="form-check-input" type="checkbox" id="FA_Inf_Cuadrado" name="FA_Inf_Cuadrado">
+                                                        <label class="form-check-label" for="">
+                                                            Cuadrado
+                                                        </label>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center p-3">
+                                                        <label>Mordida abierta</label>
+                                                    </td>
+                                                    <td>
+                                                        <input class="form-check-input" type="checkbox" id="FA_MA_Anterior" name="FA_MA_Anterior">
+                                                        <label class="form-check-label" for="">
+                                                            Anterior
+                                                        </label>
+                                                    </td>
+                                                    <td>
+                                                        <input class="form-check-input" type="checkbox" id="FA_MA_Posterior" name="FA_MA_Posterior">
+                                                        <label class="form-check-label" for="">
+                                                            Posterior
+                                                        </label>
+                                                    </td>
+                                                    <td>
+                                                        <input class="form-check-input" type="checkbox" id="FA_MA_NoAplica" name="FA_MA_NoAplica">
+                                                        <label class="form-check-label" for="">
+                                                            N/A
+                                                        </label>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center p-3">
+                                                        <label>Mordida cruzada</label>
+                                                    </td>
+                                                    <td>
+                                                        <input class="form-check-input" type="checkbox" id="FA_MC_Anterior" name="FA_MC_Anterior">
+                                                        <label class="form-check-label" for="">
+                                                            Anterior
+                                                        </label>
+                                                    </td>
+                                                    <td>
+                                                        <input class="form-check-input" type="checkbox" id="FA_MC_Posterior" name="FA_MC_Posterior">
+                                                        <label class="form-check-label" for="">
+                                                            Posterior
+                                                        </label>
+                                                    </td>
+                                                    <td>
+                                                        <input class="form-check-input" type="checkbox" id="FA_MC_NoAplica" name="FA_MC_NoAplica">
+                                                        <label class="form-check-label" for="">
+                                                            N/A
+                                                        </label>
+                                                    </td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <br />
+                                    <br />
+                                    <div class="row">
+                                        <table class="table table-bordered" id="tbl">
+                                            <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th class="text-center p-3" colspan="3"><b>Oclusión</b></th>
+                                                    <th></th>
+                                                </tr>
+                                                <tr>
+                                                    <th></th>
+                                                    <th class="text-center p-3" colspan="3"><b>Segundos molares infantiles</b></th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="text-center p-3">
+                                                        <label>Derecho</label>
+                                                    </td>
+                                                    <td>
+                                                        <input class="form-check-input" type="checkbox" id="SMI_Der_EscalonM" name="SMI_Der_EscalonM">
+                                                        <label class="form-check-label" for="">
+                                                            Escalón mesial
+                                                        </label>
+                                                    </td>
+                                                    <td>
+                                                        <input class="form-check-input" type="checkbox" id="SMI_Der_EscalonD" name="SMI_Der_EscalonD">
+                                                        <label class="form-check-label" for="">
+                                                            Escalón distal
+                                                        </label>
+                                                    </td>
+                                                    <td>
+                                                        <input class="form-check-input" type="checkbox" id="SMI_Der_PlanoRecto" name="SMI_Der_PlanoRecto">
+                                                        <label class="form-check-label" for="">
+                                                            Plano recto
+                                                        </label>
+                                                    </td>
+                                                    <td>
+                                                        <input class="form-check-input" type="checkbox" id="SMI_Der_NoAplica" name="SMI_Der_NoAplica">
+                                                        <label class="form-check-label" for="">
+                                                            N/A
+                                                        </label>
+                                                    </td>
+                                                </tr>
+                                                
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div class="text-right">
+                                        <button id="Btn_EvaluacionFuncional" type="submit" class="btn btn-primary">Guardar</button>
                                     </div>
                                 </form>
                             </div>
