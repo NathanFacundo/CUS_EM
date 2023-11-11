@@ -214,135 +214,135 @@
             <div class="col-12 pl-5 pr-5">
                 @using (Html.BeginForm("Create", "Enfermeria", FormMethod.Post, htmlAttributes: new { @id = "msform" }))
                 {
-                <div class="row m-0">
-                    <div class="col-md-4">
-                        <h3 class="mt-5"> <b>Escala del Dolor</b></h3>
-                        <div id="container">
-                            <svg width="500" height="300" viewBox="0 0 800 400" id="scale">
-                                <circle id="YAS" r="150" cx="50%" cy="50%">
-                                </circle>
-                                <circle id="Yeah" r="150" cx="50%" cy="50%"></circle>
-                                <circle id="Mmkay" r="150" cx="50%" cy="50%"></circle>
-                                <circle id="Ouch" r="150" cx="50%" cy="50%"></circle>
-                                <circle id="Owwwww" r="150" cx="50%" cy="50%"></circle>
-                                <circle id="AHHHHHHH" r="150" cx="50%" cy="50%"></circle>
-                                <polygon id="needle" points="390, 200 410,200 400, 340" />
+                    <div class="row m-0">
+                        <div class="col-md-4">
+                            <h3 class="mt-5"> <b>Escala del Dolor</b></h3>
+                            <div id="container">
+                                <svg width="500" height="300" viewBox="0 0 800 400" id="scale">
+                                    <circle id="YAS" r="150" cx="50%" cy="50%">
+                                    </circle>
+                                    <circle id="Yeah" r="150" cx="50%" cy="50%"></circle>
+                                    <circle id="Mmkay" r="150" cx="50%" cy="50%"></circle>
+                                    <circle id="Ouch" r="150" cx="50%" cy="50%"></circle>
+                                    <circle id="Owwwww" r="150" cx="50%" cy="50%"></circle>
+                                    <circle id="AHHHHHHH" r="150" cx="50%" cy="50%"></circle>
+                                    <polygon id="needle" points="390, 200 410,200 400, 340" />
+                                </svg>
+                                <h1>¿Cuánto dolor sientes?</h1>
+                                <input id="slider" type="range" min="0" max="100" value="50" />
+                                <label id="level" id="value">severe</label>
+                                <svg class="faces" viewBox="0 0 105 105" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+                                <g id="YAS">
+                                <circle id="face_0" cx="52.5" cy="52.5" r="50" style="fill:rgb(33,166,98);" />
+                                <path id="mouth_0" d="M36.391,64.422C36.391,64.422 37.32,82.444 52.5,82.19C67.313,81.942 69.171,64.379 69.085,64.268" style="fill:none;stroke:white;stroke-width:5px;" />
+                            </g>
+                                <g id="Yeah">
+                                <circle id="face_1" cx="52.5" cy="52.5" r="50" style="fill:rgb(141,217,149);" />
+                                <path id="mouth_1" d="M36.391,64.422C36.391,64.422 37.32,73.785 52.5,73.532C67.313,73.284 69.171,64.379 69.085,64.268" style="fill:none;stroke:white;stroke-width:5px;" />
+                            </g>
+                                <g id="Mmkay">
+                                <circle id="face_2" cx="52.5" cy="52.5" r="50" style="fill:rgb(231,228,122);" />
+                                <path id="mouth_2" d="M36.391,64.422C36.391,64.422 37.421,64.423 52.601,64.17C67.414,63.922 69.171,64.379 69.085,64.268" style="fill:none;stroke:white;stroke-width:5px;" />
+                            </g>
+                                <g id="Ouch">
+                                <circle id="face_3" cx="52.5" cy="52.5" r="50" style="fill:rgb(223,149,51);" />
+                                <path id="mouth_3" d="M34.293,69.676C34.293,69.676 37.421,64.423 52.601,64.17C67.414,63.922 72.612,69.21 72.526,69.099" style="fill:none;stroke:white;stroke-width:5px;" />
+                            </g>
+                                <g id="Owwwww">
+                                <circle id="face_4" cx="52.5" cy="52.5" r="50" style="fill:rgb(232,103,13);" />
+                                <path id="mouth_4" d="M35.202,72.615C35.202,72.615 37.421,64.423 52.601,64.17C67.414,63.922 73.549,70.769 73.949,71.595" style="fill:none;stroke:white;stroke-width:5px;" />
+                            </g>
+                                <g id="AHHHHHHH">
+                                <circle id="face_5" cx="52.5" cy="52.5" r="50" style="fill:rgb(193,72,37);" />
+                                <path id="mouth_5" d="M35.202,75.377C35.202,75.377 37.421,64.423 52.601,64.17C67.414,63.922 73.245,70.671 73.949,75.347" style="fill:none;stroke:white;stroke-width:5px;" />
+                            </g>
+                                <g id="base">
+                                <ellipse id="eye_r" cx="29.31" cy="42.488" rx="3.922" ry="3.923" style="fill:white;" />
+                                <ellipse id="eye_l" cx="75.706" cy="42.488" rx="3.922" ry="3.923" style="fill:white;" />
+                            </g>
                             </svg>
-                            <h1>¿Cuánto dolor sientes?</h1>
-                            <input id="slider" type="range" min="0" max="100" value="50" />
-                            <label id="level" id="value">severe</label>
-                            <svg class="faces" viewBox="0 0 105 105" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
-                            <g id="YAS">
-                            <circle id="face_0" cx="52.5" cy="52.5" r="50" style="fill:rgb(33,166,98);" />
-                            <path id="mouth_0" d="M36.391,64.422C36.391,64.422 37.32,82.444 52.5,82.19C67.313,81.942 69.171,64.379 69.085,64.268" style="fill:none;stroke:white;stroke-width:5px;" />
-                            </g>
-                            <g id="Yeah">
-                            <circle id="face_1" cx="52.5" cy="52.5" r="50" style="fill:rgb(141,217,149);" />
-                            <path id="mouth_1" d="M36.391,64.422C36.391,64.422 37.32,73.785 52.5,73.532C67.313,73.284 69.171,64.379 69.085,64.268" style="fill:none;stroke:white;stroke-width:5px;" />
-                            </g>
-                            <g id="Mmkay">
-                            <circle id="face_2" cx="52.5" cy="52.5" r="50" style="fill:rgb(231,228,122);" />
-                            <path id="mouth_2" d="M36.391,64.422C36.391,64.422 37.421,64.423 52.601,64.17C67.414,63.922 69.171,64.379 69.085,64.268" style="fill:none;stroke:white;stroke-width:5px;" />
-                            </g>
-                            <g id="Ouch">
-                            <circle id="face_3" cx="52.5" cy="52.5" r="50" style="fill:rgb(223,149,51);" />
-                            <path id="mouth_3" d="M34.293,69.676C34.293,69.676 37.421,64.423 52.601,64.17C67.414,63.922 72.612,69.21 72.526,69.099" style="fill:none;stroke:white;stroke-width:5px;" />
-                            </g>
-                            <g id="Owwwww">
-                            <circle id="face_4" cx="52.5" cy="52.5" r="50" style="fill:rgb(232,103,13);" />
-                            <path id="mouth_4" d="M35.202,72.615C35.202,72.615 37.421,64.423 52.601,64.17C67.414,63.922 73.549,70.769 73.949,71.595" style="fill:none;stroke:white;stroke-width:5px;" />
-                            </g>
-                            <g id="AHHHHHHH">
-                            <circle id="face_5" cx="52.5" cy="52.5" r="50" style="fill:rgb(193,72,37);" />
-                            <path id="mouth_5" d="M35.202,75.377C35.202,75.377 37.421,64.423 52.601,64.17C67.414,63.922 73.245,70.671 73.949,75.347" style="fill:none;stroke:white;stroke-width:5px;" />
-                            </g>
-                            <g id="base">
-                            <ellipse id="eye_r" cx="29.31" cy="42.488" rx="3.922" ry="3.923" style="fill:white;" />
-                            <ellipse id="eye_l" cx="75.706" cy="42.488" rx="3.922" ry="3.923" style="fill:white;" />
-                            </g>
-                            </svg>
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="col-md-8">
+                            <h3 class="mt-5"> <b>Signos Vitales</b></h3>
+                            <div class="row m-0">
+                                <div class="col-md-3 p-1">
+                                    <div class="form-group row m-0">
+                                        <label for="peso" class="col-3 p-1 m-auto col-form-label"><b>Peso:</b></label>
+                                        <div class="col-5 p-1 m-auto">
+                                            <input type="text" class="form-control" id="peso" maxlength="6" placeholder="">
+                                        </div>
+                                        <label for="peso" class="col-4 p-1 m-auto col-form-label">Kg</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 p-1">
+                                    <div class="form-group row m-0">
+                                        <label for="talla" class="col-4 p-1 m-auto col-form-label"><b>Talla:</b></label>
+                                        <div class="col-8 p-1 m-auto">
+                                            <input type="text" class="form-control" id="talla" maxlength="5" placeholder="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 p-1">
+                                    <div class="form-group row m-0">
+                                        <label for="temp" class="col-4 p-1 m-auto col-form-label"><b>Temp:</b></label>
+                                        <div class="col-5 p-1 m-auto">
+                                            <input type="text" class="form-control" id="temp" maxlength="5" placeholder="">
+                                        </div>
+                                        <label for="temp" class="col-3 p-1 m-auto col-form-label">°C</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 p-1">
+                                    <div class="form-group row m-0">
+                                        <label for="fresp1" class="col-4 p-1 m-auto col-form-label"><b>F.Resp:</b></label>
+                                        <div class="col-5 p-1 m-auto">
+                                            <input type="text" class="form-control" id="fresp1" maxlength="3" placeholder="">
+                                        </div>
+                                        <label for="fresp1" class="col-3 p-1 m-auto col-form-label">rpm</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 p-2">
+                                    <div class="form-group row m-0">
+                                        <label for="fcard1" class="col-4 p-1 m-auto col-form-label"><b>F.Card:</b></label>
+                                        <div class="col-5 p-1 m-auto">
+                                            <input type="text" class="form-control" id="fcard1" maxlength="3" placeholder="">
+                                        </div>
+                                        <label for="fcard1" class="col-3 p-1 m-auto col-form-label">ppm</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 p-2">
+                                    <div class="form-group row m-0">
+                                        <label for="ta" class="col-5 p-1 m-auto col-form-label"><b>T.A:</b></label>
+                                        <div class="col-3 p-1 m-auto">
+                                            <input type="text" class="form-control" id="t" maxlength="5" placeholder="">
+                                        </div>
+                                        <div class="col-1 p-1 m-auto">/</div>
+                                        <div class="col-3 p-1 m-auto">
+                                            <input type="text" class="form-control" id="a" maxlength="5" placeholder="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 p-2">
+                                    <div class="form-group row m-0">
+                                        <label for="destrostrix" class="col-7 p-1 m-auto col-form-label"><b>Destrostrix:</b></label>
+                                        <div class="col-5 p-1 m-auto">
+                                            <input type="text" class="form-control" id="destrostrix" maxlength="3" placeholder="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 text-right p-2">
+                                    <button class="btn btn-primary">Guardar</button>
+                                </div>
+                            </div>
                         </div>
 
 
                     </div>
-                
-
-                    <div class="col-md-8">
-                        <h3 class="mt-5"> <b>Signos Vitales</b></h3>
-                        <div class="row m-0">
-                            <div class="col-md-3 p-1">
-                                <div class="form-group row m-0">
-                                    <label for="peso" class="col-3 p-1 m-auto col-form-label"><b>Peso:</b></label>
-                                    <div class="col-5 p-1 m-auto">
-                                        <input type="text" class="form-control" id="peso" maxlength="6" placeholder="">
-                                    </div>
-                                    <label for="peso" class="col-4 p-1 m-auto col-form-label">Kg</label>
-                                </div>
-                            </div>
-                            <div class="col-md-3 p-1">
-                                <div class="form-group row m-0">
-                                    <label for="talla" class="col-4 p-1 m-auto col-form-label"><b>Talla:</b></label>
-                                    <div class="col-8 p-1 m-auto">
-                                        <input type="text" class="form-control" id="talla" maxlength="5" placeholder="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 p-1">
-                                <div class="form-group row m-0">
-                                    <label for="temp" class="col-4 p-1 m-auto col-form-label"><b>Temp:</b></label>
-                                    <div class="col-5 p-1 m-auto">
-                                        <input type="text" class="form-control" id="temp" maxlength="5" placeholder="">
-                                    </div>
-                                    <label for="temp" class="col-3 p-1 m-auto col-form-label">°C</label>
-                                </div>
-                            </div>
-                            <div class="col-md-3 p-1">
-                                <div class="form-group row m-0">
-                                    <label for="fresp1" class="col-4 p-1 m-auto col-form-label"><b>F.Resp:</b></label>
-                                    <div class="col-5 p-1 m-auto">
-                                        <input type="text" class="form-control" id="fresp1" maxlength="3" placeholder="">
-                                    </div>
-                                    <label for="fresp1" class="col-3 p-1 m-auto col-form-label">rpm</label>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4 p-2">
-                                <div class="form-group row m-0">
-                                    <label for="fcard1" class="col-4 p-1 m-auto col-form-label"><b>F.Card:</b></label>
-                                    <div class="col-5 p-1 m-auto">
-                                        <input type="text" class="form-control" id="fcard1" maxlength="3" placeholder="">
-                                    </div>
-                                    <label for="fcard1" class="col-3 p-1 m-auto col-form-label">ppm</label>
-                                </div>
-                            </div>
-                            <div class="col-md-4 p-2">
-                                <div class="form-group row m-0">
-                                    <label for="ta" class="col-5 p-1 m-auto col-form-label"><b>T.A:</b></label>
-                                    <div class="col-3 p-1 m-auto">
-                                        <input type="text" class="form-control" id="t" maxlength="5" placeholder="">
-                                    </div>
-                                    <div class="col-1 p-1 m-auto">/</div>
-                                    <div class="col-3 p-1 m-auto">
-                                        <input type="text" class="form-control" id="a" maxlength="5" placeholder="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 p-2">
-                                <div class="form-group row m-0">
-                                    <label for="destrostrix" class="col-7 p-1 m-auto col-form-label"><b>Destrostrix:</b></label>
-                                    <div class="col-5 p-1 m-auto">
-                                        <input type="text" class="form-control" id="destrostrix" maxlength="3" placeholder="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12 text-right p-2">
-                                <button class="btn btn-primary">Guardar</button>
-                            </div>
-                        </div>
-                    </div>
-
-
-                </div>
                 }
             </div>
         </div>
