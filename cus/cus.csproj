@@ -173,6 +173,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\DerechohabienteController.cs" />
+    <Compile Include="Areas\Admin\Controllers\EnfermeriaController.cs" />
     <Compile Include="Areas\Admin\Controllers\HistoriaNutricionController.cs" />
     <Compile Include="Areas\Admin\Controllers\HistoriaClinicaController.cs" />
     <Compile Include="Areas\Admin\Controllers\HistoriaMedicinaController.cs" />
@@ -701,6 +702,10 @@
     </Content>
     <Content Include="Areas\Admin\Views\HistoriaNutricion\Index.cshtml" />
     <Content Include="Areas\Admin\Views\HistoriaOdontologia\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Enfermeria\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Enfermeria\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Derechohabiente\BuscarPaciente.cshtml" />
+    <Content Include="Areas\Admin\Views\NotaEvolucion\Create.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

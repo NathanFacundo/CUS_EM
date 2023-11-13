@@ -331,6 +331,194 @@
           <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
           <Property Name="Id_Paciente" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="hc_ODO_AntecedentesObs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmbarazadaODO" Type="varchar" MaxLength="5" />
+          <Property Name="SemanaGestaODO" Type="varchar" MaxLength="300" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="20" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_ODO_EvaluacionFuncional">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FA_Sup_Redondo" Type="bit" />
+          <Property Name="FA_Sup_Triangular" Type="bit" />
+          <Property Name="FA_Sup_Cuadrado" Type="bit" />
+          <Property Name="FA_Inf_Redondo" Type="bit" />
+          <Property Name="FA_Inf_Triangular" Type="bit" />
+          <Property Name="FA_Inf_Cuadrado" Type="bit" />
+          <Property Name="FA_MA_Anterior" Type="bit" />
+          <Property Name="FA_MA_Posterior" Type="bit" />
+          <Property Name="FA_MA_NoAplica" Type="bit" />
+          <Property Name="FA_MC_Anterior" Type="bit" />
+          <Property Name="FA_MC_Posterior" Type="bit" />
+          <Property Name="FA_MC_NoAplica" Type="bit" />
+          <Property Name="SMI_Der_EscalonM" Type="bit" />
+          <Property Name="SMI_Der_EscalonD" Type="bit" />
+          <Property Name="SMI_Der_PlanoRecto" Type="bit" />
+          <Property Name="SMI_Der_NoAplica" Type="bit" />
+          <Property Name="SMI_Izq_EscalonM" Type="bit" />
+          <Property Name="SMI_Izq_EscalonD" Type="bit" />
+          <Property Name="SMI_Izq_PlanoRecto" Type="bit" />
+          <Property Name="SMI_Izq_NoAplica" Type="bit" />
+          <Property Name="CPri_Der_ClaseI" Type="bit" />
+          <Property Name="CPri_Der_ClaseII" Type="bit" />
+          <Property Name="CPri_Der_ClaseIII" Type="bit" />
+          <Property Name="CPri_Der_NoAplica" Type="bit" />
+          <Property Name="CPri_Izq_ClaseI" Type="bit" />
+          <Property Name="CPri_Izq_ClaseII" Type="bit" />
+          <Property Name="CPri_Izq_ClaseIII" Type="bit" />
+          <Property Name="CPri_Izq_NoAplica" Type="bit" />
+          <Property Name="PMP_Der_ClaseI" Type="bit" />
+          <Property Name="PMP_Der_ClaseII" Type="bit" />
+          <Property Name="PMP_Der_ClaseIII" Type="bit" />
+          <Property Name="PMP_Der_NoAplica" Type="bit" />
+          <Property Name="PMP_Izq_ClaseI" Type="bit" />
+          <Property Name="PMP_Izq_ClaseII" Type="bit" />
+          <Property Name="PMP_Izq_ClaseIII" Type="bit" />
+          <Property Name="PMP_Izq_NoAplica" Type="bit" />
+          <Property Name="CPer_Der_ClaseI" Type="bit" />
+          <Property Name="CPer_Der_ClaseII" Type="bit" />
+          <Property Name="CPer_Der_ClaseIII" Type="bit" />
+          <Property Name="CPer_Der_NoAplica" Type="bit" />
+          <Property Name="CPer_Izq_ClaseI" Type="bit" />
+          <Property Name="CPer_Izq_ClaseII" Type="bit" />
+          <Property Name="CPer_Izq_ClaseIII" Type="bit" />
+          <Property Name="CPer_Izq_NoAplica" Type="bit" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="20" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_ODO_Habitos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ConsCarbohidratosODO" Type="varchar" MaxLength="30" />
+          <Property Name="AlimEntreComidasODO" Type="varchar" MaxLength="5" />
+          <Property Name="Especifica_AlimEntreComidasODO" Type="varchar" MaxLength="300" />
+          <Property Name="HigieneOralODO" Type="varchar" MaxLength="5" />
+          <Property Name="Frecuencia_HigieneOralODO" Type="varchar" MaxLength="300" />
+          <Property Name="Solo_HigieneOralODO" Type="bit" />
+          <Property Name="ConAyuda_HigieneOralODO" Type="bit" />
+          <Property Name="TipoCepillo_HigieneOralODO" Type="varchar" MaxLength="300" />
+          <Property Name="TipoPasta_HigieneOralODO" Type="varchar" MaxLength="300" />
+          <Property Name="SuccionLabialODO" Type="bit" />
+          <Property Name="MorderObjetosODO" Type="bit" />
+          <Property Name="RespiracionOralODO" Type="bit" />
+          <Property Name="SuccionDigitalODO" Type="bit" />
+          <Property Name="OnicofagiaODO" Type="bit" />
+          <Property Name="BruxismoODO" Type="bit" />
+          <Property Name="BiberonODO" Type="bit" />
+          <Property Name="ChuponODO" Type="bit" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="20" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_ODO_HistoriaDental">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PrimeraVisitaODO" Type="varchar" MaxLength="5" />
+          <Property Name="TratamientosRealizadoaODO" Type="varchar" MaxLength="500" />
+          <Property Name="FamiliarPadecidoODO" Type="varchar" MaxLength="5" />
+          <Property Name="GolpeadoDientesODO" Type="varchar" MaxLength="5" />
+          <Property Name="Especifica_GolpeadoDienODO" Type="varchar" MaxLength="300" />
+          <Property Name="PacienteCooperoODO" Type="varchar" MaxLength="15" />
+          <Property Name="InteresConservarDienODO" Type="varchar" MaxLength="15" />
+          <Property Name="SatisfechoODO" Type="varchar" MaxLength="5" />
+          <Property Name="Especifica_SatisfechoODO" Type="varchar" MaxLength="300" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="20" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_ODO_ImpresionDiag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="diagnostico1ODO" Type="varchar" MaxLength="100" />
+          <Property Name="diagnostico2ODO" Type="varchar" MaxLength="100" />
+          <Property Name="diagnostico3ODO" Type="varchar" MaxLength="100" />
+          <Property Name="diagnostico4ODO" Type="varchar" MaxLength="100" />
+          <Property Name="diagnostico5ODO" Type="varchar" MaxLength="100" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="20" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_ODO_InformacionPeri">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmbarazoTerminoODO" Type="varchar" MaxLength="5" />
+          <Property Name="Motivo_EmbarazoTerODO" Type="varchar" MaxLength="300" />
+          <Property Name="CompEmbarazoODO" Type="varchar" MaxLength="300" />
+          <Property Name="PesoNacerODO" Type="varchar" MaxLength="30" />
+          <Property Name="EstaturaNacerODO" Type="varchar" MaxLength="30" />
+          <Property Name="TipoLactanciaODO" Type="varchar" MaxLength="30" />
+          <Property Name="TiempoLactanciaODO" Type="varchar" MaxLength="300" />
+          <Property Name="MostroCartillaODO" Type="varchar" MaxLength="5" />
+          <Property Name="EsquemaCompletoODO" Type="varchar" MaxLength="5" />
+          <Property Name="Especifica_EsquemaComODO" Type="varchar" MaxLength="300" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="20" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_ODO_Otros">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InterconsultaODO" Type="varchar" MaxLength="5" />
+          <Property Name="PadecimientoActualODO" Type="varchar" MaxLength="5" />
+          <Property Name="Especifica_PadecimientoActualODO" Type="varchar" MaxLength="200" />
+          <Property Name="ProximaCitaODO" Type="varchar" MaxLength="30" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="20" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_ODO_Plan">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PlanODO" Type="varchar" MaxLength="300" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="20" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_ODO_Pronostico">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LigadoEvolucionODO" Type="bit" />
+          <Property Name="FavorableODO" Type="bit" />
+          <Property Name="DesfavorableODO" Type="bit" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="20" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_ODO_ResultadoLaboratorio">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ResultadoODO" Type="varchar" MaxLength="15" />
+          <Property Name="Especifica_ResultadoODO" Type="varchar" MaxLength="300" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="20" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_ODO_Riesgo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HemodialisisODO" Type="varchar" MaxLength="5" />
+          <Property Name="TatuajesPerforacionesODO" Type="varchar" MaxLength="5" />
+          <Property Name="Tiempo_TatuajesPerfoODO" Type="varchar" MaxLength="300" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="20" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+        </EntityType>
         <EntityContainer Name="ModelsStoreContainer">
           <EntitySet Name="hc_NUT_AlimentacionInicial" EntityType="Self.hc_NUT_AlimentacionInicial" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hc_NUT_DatosDieteticos" EntityType="Self.hc_NUT_DatosDieteticos" Schema="dbo" store:Type="Tables" />
@@ -344,6 +532,17 @@
           <EntitySet Name="hc_NUT_Pronostico" EntityType="Self.hc_NUT_Pronostico" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hc_NUT_Recordatorio" EntityType="Self.hc_NUT_Recordatorio" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hc_NUT_ResultadoLab" EntityType="Self.hc_NUT_ResultadoLab" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_ODO_AntecedentesObs" EntityType="Self.hc_ODO_AntecedentesObs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_ODO_EvaluacionFuncional" EntityType="Self.hc_ODO_EvaluacionFuncional" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_ODO_Habitos" EntityType="Self.hc_ODO_Habitos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_ODO_HistoriaDental" EntityType="Self.hc_ODO_HistoriaDental" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_ODO_ImpresionDiag" EntityType="Self.hc_ODO_ImpresionDiag" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_ODO_InformacionPeri" EntityType="Self.hc_ODO_InformacionPeri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_ODO_Otros" EntityType="Self.hc_ODO_Otros" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_ODO_Plan" EntityType="Self.hc_ODO_Plan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_ODO_Pronostico" EntityType="Self.hc_ODO_Pronostico" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_ODO_ResultadoLaboratorio" EntityType="Self.hc_ODO_ResultadoLaboratorio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_ODO_Riesgo" EntityType="Self.hc_ODO_Riesgo" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -649,6 +848,17 @@
           <EntitySet Name="hc_NUT_Recordatorio" EntityType="Self.hc_NUT_Recordatorio" />
           <EntitySet Name="hc_NUT_ResultadoLab" EntityType="Self.hc_NUT_ResultadoLab" />
           <EntitySet Name="hc_NUT_EducacionInicial" EntityType="Models.hc_NUT_EducacionInicial" />
+          <EntitySet Name="hc_ODO_AntecedentesObs" EntityType="Models.hc_ODO_AntecedentesObs" />
+          <EntitySet Name="hc_ODO_EvaluacionFuncional" EntityType="Models.hc_ODO_EvaluacionFuncional" />
+          <EntitySet Name="hc_ODO_Habitos" EntityType="Models.hc_ODO_Habitos" />
+          <EntitySet Name="hc_ODO_HistoriaDental" EntityType="Models.hc_ODO_HistoriaDental" />
+          <EntitySet Name="hc_ODO_ImpresionDiag" EntityType="Models.hc_ODO_ImpresionDiag" />
+          <EntitySet Name="hc_ODO_InformacionPeri" EntityType="Models.hc_ODO_InformacionPeri" />
+          <EntitySet Name="hc_ODO_Otros" EntityType="Models.hc_ODO_Otros" />
+          <EntitySet Name="hc_ODO_Plan" EntityType="Models.hc_ODO_Plan" />
+          <EntitySet Name="hc_ODO_Pronostico" EntityType="Models.hc_ODO_Pronostico" />
+          <EntitySet Name="hc_ODO_ResultadoLaboratorio" EntityType="Models.hc_ODO_ResultadoLaboratorio" />
+          <EntitySet Name="hc_ODO_Riesgo" EntityType="Models.hc_ODO_Riesgo" />
         </EntityContainer>
         <EntityType Name="hc_NUT_EducacionInicial">
           <Key>
@@ -688,6 +898,194 @@
           <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
           <Property Name="EdRelAlimentos" Type="Boolean" />
           <Property Name="Especifica_Dudas" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="hc_ODO_AntecedentesObs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmbarazadaODO" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="SemanaGestaODO" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_ODO_EvaluacionFuncional">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FA_Sup_Redondo" Type="Boolean" />
+          <Property Name="FA_Sup_Triangular" Type="Boolean" />
+          <Property Name="FA_Sup_Cuadrado" Type="Boolean" />
+          <Property Name="FA_Inf_Redondo" Type="Boolean" />
+          <Property Name="FA_Inf_Triangular" Type="Boolean" />
+          <Property Name="FA_Inf_Cuadrado" Type="Boolean" />
+          <Property Name="FA_MA_Anterior" Type="Boolean" />
+          <Property Name="FA_MA_Posterior" Type="Boolean" />
+          <Property Name="FA_MA_NoAplica" Type="Boolean" />
+          <Property Name="FA_MC_Anterior" Type="Boolean" />
+          <Property Name="FA_MC_Posterior" Type="Boolean" />
+          <Property Name="FA_MC_NoAplica" Type="Boolean" />
+          <Property Name="SMI_Der_EscalonM" Type="Boolean" />
+          <Property Name="SMI_Der_EscalonD" Type="Boolean" />
+          <Property Name="SMI_Der_PlanoRecto" Type="Boolean" />
+          <Property Name="SMI_Der_NoAplica" Type="Boolean" />
+          <Property Name="SMI_Izq_EscalonM" Type="Boolean" />
+          <Property Name="SMI_Izq_EscalonD" Type="Boolean" />
+          <Property Name="SMI_Izq_PlanoRecto" Type="Boolean" />
+          <Property Name="SMI_Izq_NoAplica" Type="Boolean" />
+          <Property Name="CPri_Der_ClaseI" Type="Boolean" />
+          <Property Name="CPri_Der_ClaseII" Type="Boolean" />
+          <Property Name="CPri_Der_ClaseIII" Type="Boolean" />
+          <Property Name="CPri_Der_NoAplica" Type="Boolean" />
+          <Property Name="CPri_Izq_ClaseI" Type="Boolean" />
+          <Property Name="CPri_Izq_ClaseII" Type="Boolean" />
+          <Property Name="CPri_Izq_ClaseIII" Type="Boolean" />
+          <Property Name="CPri_Izq_NoAplica" Type="Boolean" />
+          <Property Name="PMP_Der_ClaseI" Type="Boolean" />
+          <Property Name="PMP_Der_ClaseII" Type="Boolean" />
+          <Property Name="PMP_Der_ClaseIII" Type="Boolean" />
+          <Property Name="PMP_Der_NoAplica" Type="Boolean" />
+          <Property Name="PMP_Izq_ClaseI" Type="Boolean" />
+          <Property Name="PMP_Izq_ClaseII" Type="Boolean" />
+          <Property Name="PMP_Izq_ClaseIII" Type="Boolean" />
+          <Property Name="PMP_Izq_NoAplica" Type="Boolean" />
+          <Property Name="CPer_Der_ClaseI" Type="Boolean" />
+          <Property Name="CPer_Der_ClaseII" Type="Boolean" />
+          <Property Name="CPer_Der_ClaseIII" Type="Boolean" />
+          <Property Name="CPer_Der_NoAplica" Type="Boolean" />
+          <Property Name="CPer_Izq_ClaseI" Type="Boolean" />
+          <Property Name="CPer_Izq_ClaseII" Type="Boolean" />
+          <Property Name="CPer_Izq_ClaseIII" Type="Boolean" />
+          <Property Name="CPer_Izq_NoAplica" Type="Boolean" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_ODO_Habitos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ConsCarbohidratosODO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="AlimEntreComidasODO" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Especifica_AlimEntreComidasODO" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="HigieneOralODO" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Frecuencia_HigieneOralODO" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Solo_HigieneOralODO" Type="Boolean" />
+          <Property Name="ConAyuda_HigieneOralODO" Type="Boolean" />
+          <Property Name="TipoCepillo_HigieneOralODO" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="TipoPasta_HigieneOralODO" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="SuccionLabialODO" Type="Boolean" />
+          <Property Name="MorderObjetosODO" Type="Boolean" />
+          <Property Name="RespiracionOralODO" Type="Boolean" />
+          <Property Name="SuccionDigitalODO" Type="Boolean" />
+          <Property Name="OnicofagiaODO" Type="Boolean" />
+          <Property Name="BruxismoODO" Type="Boolean" />
+          <Property Name="BiberonODO" Type="Boolean" />
+          <Property Name="ChuponODO" Type="Boolean" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_ODO_HistoriaDental">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PrimeraVisitaODO" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="TratamientosRealizadoaODO" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="FamiliarPadecidoODO" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="GolpeadoDientesODO" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Especifica_GolpeadoDienODO" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="PacienteCooperoODO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="InteresConservarDienODO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="SatisfechoODO" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Especifica_SatisfechoODO" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_ODO_ImpresionDiag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="diagnostico1ODO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="diagnostico2ODO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="diagnostico3ODO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="diagnostico4ODO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="diagnostico5ODO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_ODO_InformacionPeri">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmbarazoTerminoODO" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Motivo_EmbarazoTerODO" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="CompEmbarazoODO" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="PesoNacerODO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="EstaturaNacerODO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="TipoLactanciaODO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="TiempoLactanciaODO" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="MostroCartillaODO" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="EsquemaCompletoODO" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Especifica_EsquemaComODO" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_ODO_Otros">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InterconsultaODO" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="PadecimientoActualODO" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Especifica_PadecimientoActualODO" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ProximaCitaODO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_ODO_Plan">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PlanODO" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_ODO_Pronostico">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LigadoEvolucionODO" Type="Boolean" />
+          <Property Name="FavorableODO" Type="Boolean" />
+          <Property Name="DesfavorableODO" Type="Boolean" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_ODO_ResultadoLaboratorio">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ResultadoODO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Especifica_ResultadoODO" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_ODO_Riesgo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HemodialisisODO" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="TatuajesPerforacionesODO" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Tiempo_TatuajesPerfoODO" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1029,6 +1427,205 @@
                 <ScalarProperty Name="EducacionMat" ColumnName="EducacionMat" />
                 <ScalarProperty Name="PrevencionEnf" ColumnName="PrevencionEnf" />
                 <ScalarProperty Name="CriteriosGen" ColumnName="CriteriosGen" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_ODO_AntecedentesObs">
+            <EntityTypeMapping TypeName="Models.hc_ODO_AntecedentesObs">
+              <MappingFragment StoreEntitySet="hc_ODO_AntecedentesObs">
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="SemanaGestaODO" ColumnName="SemanaGestaODO" />
+                <ScalarProperty Name="EmbarazadaODO" ColumnName="EmbarazadaODO" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_ODO_EvaluacionFuncional">
+            <EntityTypeMapping TypeName="Models.hc_ODO_EvaluacionFuncional">
+              <MappingFragment StoreEntitySet="hc_ODO_EvaluacionFuncional">
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="CPer_Izq_NoAplica" ColumnName="CPer_Izq_NoAplica" />
+                <ScalarProperty Name="CPer_Izq_ClaseIII" ColumnName="CPer_Izq_ClaseIII" />
+                <ScalarProperty Name="CPer_Izq_ClaseII" ColumnName="CPer_Izq_ClaseII" />
+                <ScalarProperty Name="CPer_Izq_ClaseI" ColumnName="CPer_Izq_ClaseI" />
+                <ScalarProperty Name="CPer_Der_NoAplica" ColumnName="CPer_Der_NoAplica" />
+                <ScalarProperty Name="CPer_Der_ClaseIII" ColumnName="CPer_Der_ClaseIII" />
+                <ScalarProperty Name="CPer_Der_ClaseII" ColumnName="CPer_Der_ClaseII" />
+                <ScalarProperty Name="CPer_Der_ClaseI" ColumnName="CPer_Der_ClaseI" />
+                <ScalarProperty Name="PMP_Izq_NoAplica" ColumnName="PMP_Izq_NoAplica" />
+                <ScalarProperty Name="PMP_Izq_ClaseIII" ColumnName="PMP_Izq_ClaseIII" />
+                <ScalarProperty Name="PMP_Izq_ClaseII" ColumnName="PMP_Izq_ClaseII" />
+                <ScalarProperty Name="PMP_Izq_ClaseI" ColumnName="PMP_Izq_ClaseI" />
+                <ScalarProperty Name="PMP_Der_NoAplica" ColumnName="PMP_Der_NoAplica" />
+                <ScalarProperty Name="PMP_Der_ClaseIII" ColumnName="PMP_Der_ClaseIII" />
+                <ScalarProperty Name="PMP_Der_ClaseII" ColumnName="PMP_Der_ClaseII" />
+                <ScalarProperty Name="PMP_Der_ClaseI" ColumnName="PMP_Der_ClaseI" />
+                <ScalarProperty Name="CPri_Izq_NoAplica" ColumnName="CPri_Izq_NoAplica" />
+                <ScalarProperty Name="CPri_Izq_ClaseIII" ColumnName="CPri_Izq_ClaseIII" />
+                <ScalarProperty Name="CPri_Izq_ClaseII" ColumnName="CPri_Izq_ClaseII" />
+                <ScalarProperty Name="CPri_Izq_ClaseI" ColumnName="CPri_Izq_ClaseI" />
+                <ScalarProperty Name="CPri_Der_NoAplica" ColumnName="CPri_Der_NoAplica" />
+                <ScalarProperty Name="CPri_Der_ClaseIII" ColumnName="CPri_Der_ClaseIII" />
+                <ScalarProperty Name="CPri_Der_ClaseII" ColumnName="CPri_Der_ClaseII" />
+                <ScalarProperty Name="CPri_Der_ClaseI" ColumnName="CPri_Der_ClaseI" />
+                <ScalarProperty Name="SMI_Izq_NoAplica" ColumnName="SMI_Izq_NoAplica" />
+                <ScalarProperty Name="SMI_Izq_PlanoRecto" ColumnName="SMI_Izq_PlanoRecto" />
+                <ScalarProperty Name="SMI_Izq_EscalonD" ColumnName="SMI_Izq_EscalonD" />
+                <ScalarProperty Name="SMI_Izq_EscalonM" ColumnName="SMI_Izq_EscalonM" />
+                <ScalarProperty Name="SMI_Der_NoAplica" ColumnName="SMI_Der_NoAplica" />
+                <ScalarProperty Name="SMI_Der_PlanoRecto" ColumnName="SMI_Der_PlanoRecto" />
+                <ScalarProperty Name="SMI_Der_EscalonD" ColumnName="SMI_Der_EscalonD" />
+                <ScalarProperty Name="SMI_Der_EscalonM" ColumnName="SMI_Der_EscalonM" />
+                <ScalarProperty Name="FA_MC_NoAplica" ColumnName="FA_MC_NoAplica" />
+                <ScalarProperty Name="FA_MC_Posterior" ColumnName="FA_MC_Posterior" />
+                <ScalarProperty Name="FA_MC_Anterior" ColumnName="FA_MC_Anterior" />
+                <ScalarProperty Name="FA_MA_NoAplica" ColumnName="FA_MA_NoAplica" />
+                <ScalarProperty Name="FA_MA_Posterior" ColumnName="FA_MA_Posterior" />
+                <ScalarProperty Name="FA_MA_Anterior" ColumnName="FA_MA_Anterior" />
+                <ScalarProperty Name="FA_Inf_Cuadrado" ColumnName="FA_Inf_Cuadrado" />
+                <ScalarProperty Name="FA_Inf_Triangular" ColumnName="FA_Inf_Triangular" />
+                <ScalarProperty Name="FA_Inf_Redondo" ColumnName="FA_Inf_Redondo" />
+                <ScalarProperty Name="FA_Sup_Cuadrado" ColumnName="FA_Sup_Cuadrado" />
+                <ScalarProperty Name="FA_Sup_Triangular" ColumnName="FA_Sup_Triangular" />
+                <ScalarProperty Name="FA_Sup_Redondo" ColumnName="FA_Sup_Redondo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_ODO_Habitos">
+            <EntityTypeMapping TypeName="Models.hc_ODO_Habitos">
+              <MappingFragment StoreEntitySet="hc_ODO_Habitos">
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="ChuponODO" ColumnName="ChuponODO" />
+                <ScalarProperty Name="BiberonODO" ColumnName="BiberonODO" />
+                <ScalarProperty Name="BruxismoODO" ColumnName="BruxismoODO" />
+                <ScalarProperty Name="OnicofagiaODO" ColumnName="OnicofagiaODO" />
+                <ScalarProperty Name="SuccionDigitalODO" ColumnName="SuccionDigitalODO" />
+                <ScalarProperty Name="RespiracionOralODO" ColumnName="RespiracionOralODO" />
+                <ScalarProperty Name="MorderObjetosODO" ColumnName="MorderObjetosODO" />
+                <ScalarProperty Name="SuccionLabialODO" ColumnName="SuccionLabialODO" />
+                <ScalarProperty Name="TipoPasta_HigieneOralODO" ColumnName="TipoPasta_HigieneOralODO" />
+                <ScalarProperty Name="TipoCepillo_HigieneOralODO" ColumnName="TipoCepillo_HigieneOralODO" />
+                <ScalarProperty Name="ConAyuda_HigieneOralODO" ColumnName="ConAyuda_HigieneOralODO" />
+                <ScalarProperty Name="Solo_HigieneOralODO" ColumnName="Solo_HigieneOralODO" />
+                <ScalarProperty Name="Frecuencia_HigieneOralODO" ColumnName="Frecuencia_HigieneOralODO" />
+                <ScalarProperty Name="HigieneOralODO" ColumnName="HigieneOralODO" />
+                <ScalarProperty Name="Especifica_AlimEntreComidasODO" ColumnName="Especifica_AlimEntreComidasODO" />
+                <ScalarProperty Name="AlimEntreComidasODO" ColumnName="AlimEntreComidasODO" />
+                <ScalarProperty Name="ConsCarbohidratosODO" ColumnName="ConsCarbohidratosODO" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_ODO_HistoriaDental">
+            <EntityTypeMapping TypeName="Models.hc_ODO_HistoriaDental">
+              <MappingFragment StoreEntitySet="hc_ODO_HistoriaDental">
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="Especifica_SatisfechoODO" ColumnName="Especifica_SatisfechoODO" />
+                <ScalarProperty Name="SatisfechoODO" ColumnName="SatisfechoODO" />
+                <ScalarProperty Name="InteresConservarDienODO" ColumnName="InteresConservarDienODO" />
+                <ScalarProperty Name="PacienteCooperoODO" ColumnName="PacienteCooperoODO" />
+                <ScalarProperty Name="Especifica_GolpeadoDienODO" ColumnName="Especifica_GolpeadoDienODO" />
+                <ScalarProperty Name="GolpeadoDientesODO" ColumnName="GolpeadoDientesODO" />
+                <ScalarProperty Name="FamiliarPadecidoODO" ColumnName="FamiliarPadecidoODO" />
+                <ScalarProperty Name="TratamientosRealizadoaODO" ColumnName="TratamientosRealizadoaODO" />
+                <ScalarProperty Name="PrimeraVisitaODO" ColumnName="PrimeraVisitaODO" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_ODO_ImpresionDiag">
+            <EntityTypeMapping TypeName="Models.hc_ODO_ImpresionDiag">
+              <MappingFragment StoreEntitySet="hc_ODO_ImpresionDiag">
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="diagnostico5ODO" ColumnName="diagnostico5ODO" />
+                <ScalarProperty Name="diagnostico4ODO" ColumnName="diagnostico4ODO" />
+                <ScalarProperty Name="diagnostico3ODO" ColumnName="diagnostico3ODO" />
+                <ScalarProperty Name="diagnostico2ODO" ColumnName="diagnostico2ODO" />
+                <ScalarProperty Name="diagnostico1ODO" ColumnName="diagnostico1ODO" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_ODO_InformacionPeri">
+            <EntityTypeMapping TypeName="Models.hc_ODO_InformacionPeri">
+              <MappingFragment StoreEntitySet="hc_ODO_InformacionPeri">
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="Especifica_EsquemaComODO" ColumnName="Especifica_EsquemaComODO" />
+                <ScalarProperty Name="EsquemaCompletoODO" ColumnName="EsquemaCompletoODO" />
+                <ScalarProperty Name="MostroCartillaODO" ColumnName="MostroCartillaODO" />
+                <ScalarProperty Name="TiempoLactanciaODO" ColumnName="TiempoLactanciaODO" />
+                <ScalarProperty Name="TipoLactanciaODO" ColumnName="TipoLactanciaODO" />
+                <ScalarProperty Name="EstaturaNacerODO" ColumnName="EstaturaNacerODO" />
+                <ScalarProperty Name="PesoNacerODO" ColumnName="PesoNacerODO" />
+                <ScalarProperty Name="CompEmbarazoODO" ColumnName="CompEmbarazoODO" />
+                <ScalarProperty Name="Motivo_EmbarazoTerODO" ColumnName="Motivo_EmbarazoTerODO" />
+                <ScalarProperty Name="EmbarazoTerminoODO" ColumnName="EmbarazoTerminoODO" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_ODO_Otros">
+            <EntityTypeMapping TypeName="Models.hc_ODO_Otros">
+              <MappingFragment StoreEntitySet="hc_ODO_Otros">
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="ProximaCitaODO" ColumnName="ProximaCitaODO" />
+                <ScalarProperty Name="Especifica_PadecimientoActualODO" ColumnName="Especifica_PadecimientoActualODO" />
+                <ScalarProperty Name="PadecimientoActualODO" ColumnName="PadecimientoActualODO" />
+                <ScalarProperty Name="InterconsultaODO" ColumnName="InterconsultaODO" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_ODO_Plan">
+            <EntityTypeMapping TypeName="Models.hc_ODO_Plan">
+              <MappingFragment StoreEntitySet="hc_ODO_Plan">
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="PlanODO" ColumnName="PlanODO" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_ODO_Pronostico">
+            <EntityTypeMapping TypeName="Models.hc_ODO_Pronostico">
+              <MappingFragment StoreEntitySet="hc_ODO_Pronostico">
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="DesfavorableODO" ColumnName="DesfavorableODO" />
+                <ScalarProperty Name="FavorableODO" ColumnName="FavorableODO" />
+                <ScalarProperty Name="LigadoEvolucionODO" ColumnName="LigadoEvolucionODO" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_ODO_ResultadoLaboratorio">
+            <EntityTypeMapping TypeName="Models.hc_ODO_ResultadoLaboratorio">
+              <MappingFragment StoreEntitySet="hc_ODO_ResultadoLaboratorio">
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="Especifica_ResultadoODO" ColumnName="Especifica_ResultadoODO" />
+                <ScalarProperty Name="ResultadoODO" ColumnName="ResultadoODO" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_ODO_Riesgo">
+            <EntityTypeMapping TypeName="Models.hc_ODO_Riesgo">
+              <MappingFragment StoreEntitySet="hc_ODO_Riesgo">
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="Tiempo_TatuajesPerfoODO" ColumnName="Tiempo_TatuajesPerfoODO" />
+                <ScalarProperty Name="TatuajesPerforacionesODO" ColumnName="TatuajesPerforacionesODO" />
+                <ScalarProperty Name="HemodialisisODO" ColumnName="HemodialisisODO" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
