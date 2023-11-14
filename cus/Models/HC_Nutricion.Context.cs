@@ -48,5 +48,6 @@ namespace CUS.Models
         public virtual DbSet<hc_ODO_Pronostico> hc_ODO_Pronostico { get; set; }
         public virtual DbSet<hc_ODO_ResultadoLaboratorio> hc_ODO_ResultadoLaboratorio { get; set; }
         public virtual DbSet<hc_ODO_Riesgo> hc_ODO_Riesgo { get; set; }
+        public virtual DbSet<hc_ODO_Odontograma> hc_ODO_Odontograma { get; set; }
     }
 }

@@ -466,6 +466,122 @@
           <Property Name="Clave_hc_px" Type="varchar" MaxLength="20" />
           <Property Name="Id_Paciente" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="hc_ODO_Odontograma">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MasticaDientesODO" Type="varchar" MaxLength="5" />
+          <Property Name="CheckBox18" Type="bit" />
+          <Property Name="Input18" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox17" Type="bit" />
+          <Property Name="Input17" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox16" Type="bit" />
+          <Property Name="Input16" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox15" Type="bit" />
+          <Property Name="Input15" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox14" Type="bit" />
+          <Property Name="Input14" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox13" Type="bit" />
+          <Property Name="Input13" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox12" Type="bit" />
+          <Property Name="Input12" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox11" Type="bit" />
+          <Property Name="Input11" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox21" Type="bit" />
+          <Property Name="Input21" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox22" Type="bit" />
+          <Property Name="Input22" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox23" Type="bit" />
+          <Property Name="Input23" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox24" Type="bit" />
+          <Property Name="Input24" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox25" Type="bit" />
+          <Property Name="Input25" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox26" Type="bit" />
+          <Property Name="Input26" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox27" Type="bit" />
+          <Property Name="Input27" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox28" Type="bit" />
+          <Property Name="Input28" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox55" Type="bit" />
+          <Property Name="Input55" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox54" Type="bit" />
+          <Property Name="Input54" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox53" Type="bit" />
+          <Property Name="Input53" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox52" Type="bit" />
+          <Property Name="Input52" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox51" Type="bit" />
+          <Property Name="Input51" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox61" Type="bit" />
+          <Property Name="Input61" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox62" Type="bit" />
+          <Property Name="Input62" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox63" Type="bit" />
+          <Property Name="Input63" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox64" Type="bit" />
+          <Property Name="Input64" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox65" Type="bit" />
+          <Property Name="Input65" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox85" Type="bit" />
+          <Property Name="Input85" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox84" Type="bit" />
+          <Property Name="Input84" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox83" Type="bit" />
+          <Property Name="Input83" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox82" Type="bit" />
+          <Property Name="Input82" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox81" Type="bit" />
+          <Property Name="Input81" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox71" Type="bit" />
+          <Property Name="Input71" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox72" Type="bit" />
+          <Property Name="Input72" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox73" Type="bit" />
+          <Property Name="Input73" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox74" Type="bit" />
+          <Property Name="Input74" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox75" Type="bit" />
+          <Property Name="Input75" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox48" Type="bit" />
+          <Property Name="Input48" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox47" Type="bit" />
+          <Property Name="Input47" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox46" Type="bit" />
+          <Property Name="Input46" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox45" Type="bit" />
+          <Property Name="Input45" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox44" Type="bit" />
+          <Property Name="Input44" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox43" Type="bit" />
+          <Property Name="Input43" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox42" Type="bit" />
+          <Property Name="Input42" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox41" Type="bit" />
+          <Property Name="Input41" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox31" Type="bit" />
+          <Property Name="Input31" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox32" Type="bit" />
+          <Property Name="Input32" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox33" Type="bit" />
+          <Property Name="Input33" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox34" Type="bit" />
+          <Property Name="Input34" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox35" Type="bit" />
+          <Property Name="Input35" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox36" Type="bit" />
+          <Property Name="Input36" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox37" Type="bit" />
+          <Property Name="Input37" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox38" Type="bit" />
+          <Property Name="Input38" Type="varchar" MaxLength="500" />
+          <Property Name="AltaODO" Type="bit" />
+          <Property Name="MediaODO" Type="bit" />
+          <Property Name="BajaODO" Type="bit" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="20" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="hc_ODO_Otros">
           <Key>
             <PropertyRef Name="Id" />
@@ -538,6 +654,7 @@
           <EntitySet Name="hc_ODO_HistoriaDental" EntityType="Self.hc_ODO_HistoriaDental" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hc_ODO_ImpresionDiag" EntityType="Self.hc_ODO_ImpresionDiag" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hc_ODO_InformacionPeri" EntityType="Self.hc_ODO_InformacionPeri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_ODO_Odontograma" EntityType="Self.hc_ODO_Odontograma" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hc_ODO_Otros" EntityType="Self.hc_ODO_Otros" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hc_ODO_Plan" EntityType="Self.hc_ODO_Plan" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hc_ODO_Pronostico" EntityType="Self.hc_ODO_Pronostico" Schema="dbo" store:Type="Tables" />
@@ -859,6 +976,7 @@
           <EntitySet Name="hc_ODO_Pronostico" EntityType="Models.hc_ODO_Pronostico" />
           <EntitySet Name="hc_ODO_ResultadoLaboratorio" EntityType="Models.hc_ODO_ResultadoLaboratorio" />
           <EntitySet Name="hc_ODO_Riesgo" EntityType="Models.hc_ODO_Riesgo" />
+          <EntitySet Name="hc_ODO_Odontograma" EntityType="Models.hc_ODO_Odontograma" />
         </EntityContainer>
         <EntityType Name="hc_NUT_EducacionInicial">
           <Key>
@@ -1084,6 +1202,122 @@
           <Property Name="HemodialisisODO" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="TatuajesPerforacionesODO" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="Tiempo_TatuajesPerfoODO" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_ODO_Odontograma">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MasticaDientesODO" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox18" Type="Boolean" />
+          <Property Name="Input18" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox17" Type="Boolean" />
+          <Property Name="Input17" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox16" Type="Boolean" />
+          <Property Name="Input16" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox15" Type="Boolean" />
+          <Property Name="Input15" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox14" Type="Boolean" />
+          <Property Name="Input14" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox13" Type="Boolean" />
+          <Property Name="Input13" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox12" Type="Boolean" />
+          <Property Name="Input12" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox11" Type="Boolean" />
+          <Property Name="Input11" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox21" Type="Boolean" />
+          <Property Name="Input21" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox22" Type="Boolean" />
+          <Property Name="Input22" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox23" Type="Boolean" />
+          <Property Name="Input23" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox24" Type="Boolean" />
+          <Property Name="Input24" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox25" Type="Boolean" />
+          <Property Name="Input25" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox26" Type="Boolean" />
+          <Property Name="Input26" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox27" Type="Boolean" />
+          <Property Name="Input27" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox28" Type="Boolean" />
+          <Property Name="Input28" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox55" Type="Boolean" />
+          <Property Name="Input55" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox54" Type="Boolean" />
+          <Property Name="Input54" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox53" Type="Boolean" />
+          <Property Name="Input53" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox52" Type="Boolean" />
+          <Property Name="Input52" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox51" Type="Boolean" />
+          <Property Name="Input51" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox61" Type="Boolean" />
+          <Property Name="Input61" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox62" Type="Boolean" />
+          <Property Name="Input62" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox63" Type="Boolean" />
+          <Property Name="Input63" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox64" Type="Boolean" />
+          <Property Name="Input64" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox65" Type="Boolean" />
+          <Property Name="Input65" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox85" Type="Boolean" />
+          <Property Name="Input85" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox84" Type="Boolean" />
+          <Property Name="Input84" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox83" Type="Boolean" />
+          <Property Name="Input83" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox82" Type="Boolean" />
+          <Property Name="Input82" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox81" Type="Boolean" />
+          <Property Name="Input81" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox71" Type="Boolean" />
+          <Property Name="Input71" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox72" Type="Boolean" />
+          <Property Name="Input72" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox73" Type="Boolean" />
+          <Property Name="Input73" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox74" Type="Boolean" />
+          <Property Name="Input74" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox75" Type="Boolean" />
+          <Property Name="Input75" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox48" Type="Boolean" />
+          <Property Name="Input48" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox47" Type="Boolean" />
+          <Property Name="Input47" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox46" Type="Boolean" />
+          <Property Name="Input46" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox45" Type="Boolean" />
+          <Property Name="Input45" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox44" Type="Boolean" />
+          <Property Name="Input44" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox43" Type="Boolean" />
+          <Property Name="Input43" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox42" Type="Boolean" />
+          <Property Name="Input42" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox41" Type="Boolean" />
+          <Property Name="Input41" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox31" Type="Boolean" />
+          <Property Name="Input31" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox32" Type="Boolean" />
+          <Property Name="Input32" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox33" Type="Boolean" />
+          <Property Name="Input33" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox34" Type="Boolean" />
+          <Property Name="Input34" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox35" Type="Boolean" />
+          <Property Name="Input35" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox36" Type="Boolean" />
+          <Property Name="Input36" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox37" Type="Boolean" />
+          <Property Name="Input37" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox38" Type="Boolean" />
+          <Property Name="Input38" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="AltaODO" Type="Boolean" />
+          <Property Name="MediaODO" Type="Boolean" />
+          <Property Name="BajaODO" Type="Boolean" />
           <Property Name="Clave_hc_px" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
         </EntityType>
@@ -1626,6 +1860,123 @@
                 <ScalarProperty Name="Tiempo_TatuajesPerfoODO" ColumnName="Tiempo_TatuajesPerfoODO" />
                 <ScalarProperty Name="TatuajesPerforacionesODO" ColumnName="TatuajesPerforacionesODO" />
                 <ScalarProperty Name="HemodialisisODO" ColumnName="HemodialisisODO" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_ODO_Odontograma">
+            <EntityTypeMapping TypeName="Models.hc_ODO_Odontograma">
+              <MappingFragment StoreEntitySet="hc_ODO_Odontograma">
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="BajaODO" ColumnName="BajaODO" />
+                <ScalarProperty Name="MediaODO" ColumnName="MediaODO" />
+                <ScalarProperty Name="AltaODO" ColumnName="AltaODO" />
+                <ScalarProperty Name="Input38" ColumnName="Input38" />
+                <ScalarProperty Name="CheckBox38" ColumnName="CheckBox38" />
+                <ScalarProperty Name="Input37" ColumnName="Input37" />
+                <ScalarProperty Name="CheckBox37" ColumnName="CheckBox37" />
+                <ScalarProperty Name="Input36" ColumnName="Input36" />
+                <ScalarProperty Name="CheckBox36" ColumnName="CheckBox36" />
+                <ScalarProperty Name="Input35" ColumnName="Input35" />
+                <ScalarProperty Name="CheckBox35" ColumnName="CheckBox35" />
+                <ScalarProperty Name="Input34" ColumnName="Input34" />
+                <ScalarProperty Name="CheckBox34" ColumnName="CheckBox34" />
+                <ScalarProperty Name="Input33" ColumnName="Input33" />
+                <ScalarProperty Name="CheckBox33" ColumnName="CheckBox33" />
+                <ScalarProperty Name="Input32" ColumnName="Input32" />
+                <ScalarProperty Name="CheckBox32" ColumnName="CheckBox32" />
+                <ScalarProperty Name="Input31" ColumnName="Input31" />
+                <ScalarProperty Name="CheckBox31" ColumnName="CheckBox31" />
+                <ScalarProperty Name="Input41" ColumnName="Input41" />
+                <ScalarProperty Name="CheckBox41" ColumnName="CheckBox41" />
+                <ScalarProperty Name="Input42" ColumnName="Input42" />
+                <ScalarProperty Name="CheckBox42" ColumnName="CheckBox42" />
+                <ScalarProperty Name="Input43" ColumnName="Input43" />
+                <ScalarProperty Name="CheckBox43" ColumnName="CheckBox43" />
+                <ScalarProperty Name="Input44" ColumnName="Input44" />
+                <ScalarProperty Name="CheckBox44" ColumnName="CheckBox44" />
+                <ScalarProperty Name="Input45" ColumnName="Input45" />
+                <ScalarProperty Name="CheckBox45" ColumnName="CheckBox45" />
+                <ScalarProperty Name="Input46" ColumnName="Input46" />
+                <ScalarProperty Name="CheckBox46" ColumnName="CheckBox46" />
+                <ScalarProperty Name="Input47" ColumnName="Input47" />
+                <ScalarProperty Name="CheckBox47" ColumnName="CheckBox47" />
+                <ScalarProperty Name="Input48" ColumnName="Input48" />
+                <ScalarProperty Name="CheckBox48" ColumnName="CheckBox48" />
+                <ScalarProperty Name="Input75" ColumnName="Input75" />
+                <ScalarProperty Name="CheckBox75" ColumnName="CheckBox75" />
+                <ScalarProperty Name="Input74" ColumnName="Input74" />
+                <ScalarProperty Name="CheckBox74" ColumnName="CheckBox74" />
+                <ScalarProperty Name="Input73" ColumnName="Input73" />
+                <ScalarProperty Name="CheckBox73" ColumnName="CheckBox73" />
+                <ScalarProperty Name="Input72" ColumnName="Input72" />
+                <ScalarProperty Name="CheckBox72" ColumnName="CheckBox72" />
+                <ScalarProperty Name="Input71" ColumnName="Input71" />
+                <ScalarProperty Name="CheckBox71" ColumnName="CheckBox71" />
+                <ScalarProperty Name="Input81" ColumnName="Input81" />
+                <ScalarProperty Name="CheckBox81" ColumnName="CheckBox81" />
+                <ScalarProperty Name="Input82" ColumnName="Input82" />
+                <ScalarProperty Name="CheckBox82" ColumnName="CheckBox82" />
+                <ScalarProperty Name="Input83" ColumnName="Input83" />
+                <ScalarProperty Name="CheckBox83" ColumnName="CheckBox83" />
+                <ScalarProperty Name="Input84" ColumnName="Input84" />
+                <ScalarProperty Name="CheckBox84" ColumnName="CheckBox84" />
+                <ScalarProperty Name="Input85" ColumnName="Input85" />
+                <ScalarProperty Name="CheckBox85" ColumnName="CheckBox85" />
+                <ScalarProperty Name="Input65" ColumnName="Input65" />
+                <ScalarProperty Name="CheckBox65" ColumnName="CheckBox65" />
+                <ScalarProperty Name="Input64" ColumnName="Input64" />
+                <ScalarProperty Name="CheckBox64" ColumnName="CheckBox64" />
+                <ScalarProperty Name="Input63" ColumnName="Input63" />
+                <ScalarProperty Name="CheckBox63" ColumnName="CheckBox63" />
+                <ScalarProperty Name="Input62" ColumnName="Input62" />
+                <ScalarProperty Name="CheckBox62" ColumnName="CheckBox62" />
+                <ScalarProperty Name="Input61" ColumnName="Input61" />
+                <ScalarProperty Name="CheckBox61" ColumnName="CheckBox61" />
+                <ScalarProperty Name="Input51" ColumnName="Input51" />
+                <ScalarProperty Name="CheckBox51" ColumnName="CheckBox51" />
+                <ScalarProperty Name="Input52" ColumnName="Input52" />
+                <ScalarProperty Name="CheckBox52" ColumnName="CheckBox52" />
+                <ScalarProperty Name="Input53" ColumnName="Input53" />
+                <ScalarProperty Name="CheckBox53" ColumnName="CheckBox53" />
+                <ScalarProperty Name="Input54" ColumnName="Input54" />
+                <ScalarProperty Name="CheckBox54" ColumnName="CheckBox54" />
+                <ScalarProperty Name="Input55" ColumnName="Input55" />
+                <ScalarProperty Name="CheckBox55" ColumnName="CheckBox55" />
+                <ScalarProperty Name="Input28" ColumnName="Input28" />
+                <ScalarProperty Name="CheckBox28" ColumnName="CheckBox28" />
+                <ScalarProperty Name="Input27" ColumnName="Input27" />
+                <ScalarProperty Name="CheckBox27" ColumnName="CheckBox27" />
+                <ScalarProperty Name="Input26" ColumnName="Input26" />
+                <ScalarProperty Name="CheckBox26" ColumnName="CheckBox26" />
+                <ScalarProperty Name="Input25" ColumnName="Input25" />
+                <ScalarProperty Name="CheckBox25" ColumnName="CheckBox25" />
+                <ScalarProperty Name="Input24" ColumnName="Input24" />
+                <ScalarProperty Name="CheckBox24" ColumnName="CheckBox24" />
+                <ScalarProperty Name="Input23" ColumnName="Input23" />
+                <ScalarProperty Name="CheckBox23" ColumnName="CheckBox23" />
+                <ScalarProperty Name="Input22" ColumnName="Input22" />
+                <ScalarProperty Name="CheckBox22" ColumnName="CheckBox22" />
+                <ScalarProperty Name="Input21" ColumnName="Input21" />
+                <ScalarProperty Name="CheckBox21" ColumnName="CheckBox21" />
+                <ScalarProperty Name="Input11" ColumnName="Input11" />
+                <ScalarProperty Name="CheckBox11" ColumnName="CheckBox11" />
+                <ScalarProperty Name="Input12" ColumnName="Input12" />
+                <ScalarProperty Name="CheckBox12" ColumnName="CheckBox12" />
+                <ScalarProperty Name="Input13" ColumnName="Input13" />
+                <ScalarProperty Name="CheckBox13" ColumnName="CheckBox13" />
+                <ScalarProperty Name="Input14" ColumnName="Input14" />
+                <ScalarProperty Name="CheckBox14" ColumnName="CheckBox14" />
+                <ScalarProperty Name="Input15" ColumnName="Input15" />
+                <ScalarProperty Name="CheckBox15" ColumnName="CheckBox15" />
+                <ScalarProperty Name="Input16" ColumnName="Input16" />
+                <ScalarProperty Name="CheckBox16" ColumnName="CheckBox16" />
+                <ScalarProperty Name="Input17" ColumnName="Input17" />
+                <ScalarProperty Name="CheckBox17" ColumnName="CheckBox17" />
+                <ScalarProperty Name="Input18" ColumnName="Input18" />
+                <ScalarProperty Name="CheckBox18" ColumnName="CheckBox18" />
+                <ScalarProperty Name="MasticaDientesODO" ColumnName="MasticaDientesODO" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

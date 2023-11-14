@@ -28,6 +28,7 @@
         <EntityTypeShape EntityType="Models.hc_ODO_Pronostico" Width="1.5" PointX="17.375" PointY="1" />
         <EntityTypeShape EntityType="Models.hc_ODO_ResultadoLaboratorio" Width="1.5" PointX="15.375" PointY="0.75" />
         <EntityTypeShape EntityType="Models.hc_ODO_Riesgo" Width="1.5" PointX="15.375" PointY="3.125" />
+        <EntityTypeShape EntityType="Models.hc_ODO_Odontograma" Width="1.5" PointX="23.375" PointY="0.875" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
