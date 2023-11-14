@@ -77,7 +77,7 @@ namespace CUS.Areas.Admin.Controllers
             return claveHC;
         }
 
-        #region Guardar Pestañas de la H.C. Medicina
+        #region Guardar Pestañas de la H.C. Nutricion
         [HttpPost]
         public ActionResult ResultadoLab(Models.hc_NUT_ResultadoLab HistoriaClinica, string expediente)
         {
