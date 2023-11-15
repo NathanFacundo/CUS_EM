@@ -17,6 +17,18 @@
         <EntityTypeShape EntityType="Models.hc_NUT_Recordatorio" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Models.hc_NUT_ResultadoLab" Width="1.5" PointX="10.75" PointY="6.5" IsExpanded="true" />
         <EntityTypeShape EntityType="Models.hc_NUT_EducacionInicial" Width="1.5" PointX="4.875" PointY="0.875" />
+        <EntityTypeShape EntityType="Models.hc_ODO_AntecedentesObs" Width="1.5" PointX="19.25" PointY="0.75" />
+        <EntityTypeShape EntityType="Models.hc_ODO_EvaluacionFuncional" Width="1.5" PointX="21.375" PointY="1" />
+        <EntityTypeShape EntityType="Models.hc_ODO_Habitos" Width="1.5" PointX="17.25" PointY="3.75" />
+        <EntityTypeShape EntityType="Models.hc_ODO_HistoriaDental" Width="1.5" PointX="19.375" PointY="3.125" />
+        <EntityTypeShape EntityType="Models.hc_ODO_ImpresionDiag" Width="1.5" PointX="13.375" PointY="0.75" />
+        <EntityTypeShape EntityType="Models.hc_ODO_InformacionPeri" Width="1.5" PointX="13.375" PointY="3.625" />
+        <EntityTypeShape EntityType="Models.hc_ODO_Otros" Width="1.5" PointX="15.375" PointY="5.625" />
+        <EntityTypeShape EntityType="Models.hc_ODO_Plan" Width="1.5" PointX="15.375" PointY="8.375" />
+        <EntityTypeShape EntityType="Models.hc_ODO_Pronostico" Width="1.5" PointX="17.375" PointY="1" />
+        <EntityTypeShape EntityType="Models.hc_ODO_ResultadoLaboratorio" Width="1.5" PointX="15.375" PointY="0.75" />
+        <EntityTypeShape EntityType="Models.hc_ODO_Riesgo" Width="1.5" PointX="15.375" PointY="3.125" />
+        <EntityTypeShape EntityType="Models.hc_ODO_Odontograma" Width="1.5" PointX="23.375" PointY="0.875" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

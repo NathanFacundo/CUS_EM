@@ -331,6 +331,310 @@
           <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
           <Property Name="Id_Paciente" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="hc_ODO_AntecedentesObs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmbarazadaODO" Type="varchar" MaxLength="5" />
+          <Property Name="SemanaGestaODO" Type="varchar" MaxLength="300" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="20" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_ODO_EvaluacionFuncional">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FA_Sup_Redondo" Type="bit" />
+          <Property Name="FA_Sup_Triangular" Type="bit" />
+          <Property Name="FA_Sup_Cuadrado" Type="bit" />
+          <Property Name="FA_Inf_Redondo" Type="bit" />
+          <Property Name="FA_Inf_Triangular" Type="bit" />
+          <Property Name="FA_Inf_Cuadrado" Type="bit" />
+          <Property Name="FA_MA_Anterior" Type="bit" />
+          <Property Name="FA_MA_Posterior" Type="bit" />
+          <Property Name="FA_MA_NoAplica" Type="bit" />
+          <Property Name="FA_MC_Anterior" Type="bit" />
+          <Property Name="FA_MC_Posterior" Type="bit" />
+          <Property Name="FA_MC_NoAplica" Type="bit" />
+          <Property Name="SMI_Der_EscalonM" Type="bit" />
+          <Property Name="SMI_Der_EscalonD" Type="bit" />
+          <Property Name="SMI_Der_PlanoRecto" Type="bit" />
+          <Property Name="SMI_Der_NoAplica" Type="bit" />
+          <Property Name="SMI_Izq_EscalonM" Type="bit" />
+          <Property Name="SMI_Izq_EscalonD" Type="bit" />
+          <Property Name="SMI_Izq_PlanoRecto" Type="bit" />
+          <Property Name="SMI_Izq_NoAplica" Type="bit" />
+          <Property Name="CPri_Der_ClaseI" Type="bit" />
+          <Property Name="CPri_Der_ClaseII" Type="bit" />
+          <Property Name="CPri_Der_ClaseIII" Type="bit" />
+          <Property Name="CPri_Der_NoAplica" Type="bit" />
+          <Property Name="CPri_Izq_ClaseI" Type="bit" />
+          <Property Name="CPri_Izq_ClaseII" Type="bit" />
+          <Property Name="CPri_Izq_ClaseIII" Type="bit" />
+          <Property Name="CPri_Izq_NoAplica" Type="bit" />
+          <Property Name="PMP_Der_ClaseI" Type="bit" />
+          <Property Name="PMP_Der_ClaseII" Type="bit" />
+          <Property Name="PMP_Der_ClaseIII" Type="bit" />
+          <Property Name="PMP_Der_NoAplica" Type="bit" />
+          <Property Name="PMP_Izq_ClaseI" Type="bit" />
+          <Property Name="PMP_Izq_ClaseII" Type="bit" />
+          <Property Name="PMP_Izq_ClaseIII" Type="bit" />
+          <Property Name="PMP_Izq_NoAplica" Type="bit" />
+          <Property Name="CPer_Der_ClaseI" Type="bit" />
+          <Property Name="CPer_Der_ClaseII" Type="bit" />
+          <Property Name="CPer_Der_ClaseIII" Type="bit" />
+          <Property Name="CPer_Der_NoAplica" Type="bit" />
+          <Property Name="CPer_Izq_ClaseI" Type="bit" />
+          <Property Name="CPer_Izq_ClaseII" Type="bit" />
+          <Property Name="CPer_Izq_ClaseIII" Type="bit" />
+          <Property Name="CPer_Izq_NoAplica" Type="bit" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="20" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_ODO_Habitos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ConsCarbohidratosODO" Type="varchar" MaxLength="30" />
+          <Property Name="AlimEntreComidasODO" Type="varchar" MaxLength="5" />
+          <Property Name="Especifica_AlimEntreComidasODO" Type="varchar" MaxLength="300" />
+          <Property Name="HigieneOralODO" Type="varchar" MaxLength="5" />
+          <Property Name="Frecuencia_HigieneOralODO" Type="varchar" MaxLength="300" />
+          <Property Name="Solo_HigieneOralODO" Type="bit" />
+          <Property Name="ConAyuda_HigieneOralODO" Type="bit" />
+          <Property Name="TipoCepillo_HigieneOralODO" Type="varchar" MaxLength="300" />
+          <Property Name="TipoPasta_HigieneOralODO" Type="varchar" MaxLength="300" />
+          <Property Name="SuccionLabialODO" Type="bit" />
+          <Property Name="MorderObjetosODO" Type="bit" />
+          <Property Name="RespiracionOralODO" Type="bit" />
+          <Property Name="SuccionDigitalODO" Type="bit" />
+          <Property Name="OnicofagiaODO" Type="bit" />
+          <Property Name="BruxismoODO" Type="bit" />
+          <Property Name="BiberonODO" Type="bit" />
+          <Property Name="ChuponODO" Type="bit" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="20" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_ODO_HistoriaDental">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PrimeraVisitaODO" Type="varchar" MaxLength="5" />
+          <Property Name="TratamientosRealizadoaODO" Type="varchar" MaxLength="500" />
+          <Property Name="FamiliarPadecidoODO" Type="varchar" MaxLength="5" />
+          <Property Name="GolpeadoDientesODO" Type="varchar" MaxLength="5" />
+          <Property Name="Especifica_GolpeadoDienODO" Type="varchar" MaxLength="300" />
+          <Property Name="PacienteCooperoODO" Type="varchar" MaxLength="15" />
+          <Property Name="InteresConservarDienODO" Type="varchar" MaxLength="15" />
+          <Property Name="SatisfechoODO" Type="varchar" MaxLength="5" />
+          <Property Name="Especifica_SatisfechoODO" Type="varchar" MaxLength="300" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="20" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_ODO_ImpresionDiag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="diagnostico1ODO" Type="varchar" MaxLength="100" />
+          <Property Name="diagnostico2ODO" Type="varchar" MaxLength="100" />
+          <Property Name="diagnostico3ODO" Type="varchar" MaxLength="100" />
+          <Property Name="diagnostico4ODO" Type="varchar" MaxLength="100" />
+          <Property Name="diagnostico5ODO" Type="varchar" MaxLength="100" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="20" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_ODO_InformacionPeri">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmbarazoTerminoODO" Type="varchar" MaxLength="5" />
+          <Property Name="Motivo_EmbarazoTerODO" Type="varchar" MaxLength="300" />
+          <Property Name="CompEmbarazoODO" Type="varchar" MaxLength="300" />
+          <Property Name="PesoNacerODO" Type="varchar" MaxLength="30" />
+          <Property Name="EstaturaNacerODO" Type="varchar" MaxLength="30" />
+          <Property Name="TipoLactanciaODO" Type="varchar" MaxLength="30" />
+          <Property Name="TiempoLactanciaODO" Type="varchar" MaxLength="300" />
+          <Property Name="MostroCartillaODO" Type="varchar" MaxLength="5" />
+          <Property Name="EsquemaCompletoODO" Type="varchar" MaxLength="5" />
+          <Property Name="Especifica_EsquemaComODO" Type="varchar" MaxLength="300" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="20" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_ODO_Odontograma">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MasticaDientesODO" Type="varchar" MaxLength="5" />
+          <Property Name="CheckBox18" Type="bit" />
+          <Property Name="Input18" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox17" Type="bit" />
+          <Property Name="Input17" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox16" Type="bit" />
+          <Property Name="Input16" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox15" Type="bit" />
+          <Property Name="Input15" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox14" Type="bit" />
+          <Property Name="Input14" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox13" Type="bit" />
+          <Property Name="Input13" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox12" Type="bit" />
+          <Property Name="Input12" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox11" Type="bit" />
+          <Property Name="Input11" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox21" Type="bit" />
+          <Property Name="Input21" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox22" Type="bit" />
+          <Property Name="Input22" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox23" Type="bit" />
+          <Property Name="Input23" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox24" Type="bit" />
+          <Property Name="Input24" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox25" Type="bit" />
+          <Property Name="Input25" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox26" Type="bit" />
+          <Property Name="Input26" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox27" Type="bit" />
+          <Property Name="Input27" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox28" Type="bit" />
+          <Property Name="Input28" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox55" Type="bit" />
+          <Property Name="Input55" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox54" Type="bit" />
+          <Property Name="Input54" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox53" Type="bit" />
+          <Property Name="Input53" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox52" Type="bit" />
+          <Property Name="Input52" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox51" Type="bit" />
+          <Property Name="Input51" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox61" Type="bit" />
+          <Property Name="Input61" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox62" Type="bit" />
+          <Property Name="Input62" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox63" Type="bit" />
+          <Property Name="Input63" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox64" Type="bit" />
+          <Property Name="Input64" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox65" Type="bit" />
+          <Property Name="Input65" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox85" Type="bit" />
+          <Property Name="Input85" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox84" Type="bit" />
+          <Property Name="Input84" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox83" Type="bit" />
+          <Property Name="Input83" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox82" Type="bit" />
+          <Property Name="Input82" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox81" Type="bit" />
+          <Property Name="Input81" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox71" Type="bit" />
+          <Property Name="Input71" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox72" Type="bit" />
+          <Property Name="Input72" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox73" Type="bit" />
+          <Property Name="Input73" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox74" Type="bit" />
+          <Property Name="Input74" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox75" Type="bit" />
+          <Property Name="Input75" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox48" Type="bit" />
+          <Property Name="Input48" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox47" Type="bit" />
+          <Property Name="Input47" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox46" Type="bit" />
+          <Property Name="Input46" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox45" Type="bit" />
+          <Property Name="Input45" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox44" Type="bit" />
+          <Property Name="Input44" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox43" Type="bit" />
+          <Property Name="Input43" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox42" Type="bit" />
+          <Property Name="Input42" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox41" Type="bit" />
+          <Property Name="Input41" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox31" Type="bit" />
+          <Property Name="Input31" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox32" Type="bit" />
+          <Property Name="Input32" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox33" Type="bit" />
+          <Property Name="Input33" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox34" Type="bit" />
+          <Property Name="Input34" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox35" Type="bit" />
+          <Property Name="Input35" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox36" Type="bit" />
+          <Property Name="Input36" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox37" Type="bit" />
+          <Property Name="Input37" Type="varchar" MaxLength="500" />
+          <Property Name="CheckBox38" Type="bit" />
+          <Property Name="Input38" Type="varchar" MaxLength="500" />
+          <Property Name="AltaODO" Type="bit" />
+          <Property Name="MediaODO" Type="bit" />
+          <Property Name="BajaODO" Type="bit" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="20" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_ODO_Otros">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InterconsultaODO" Type="varchar" MaxLength="5" />
+          <Property Name="PadecimientoActualODO" Type="varchar" MaxLength="5" />
+          <Property Name="Especifica_PadecimientoActualODO" Type="varchar" MaxLength="200" />
+          <Property Name="ProximaCitaODO" Type="varchar" MaxLength="30" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="20" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_ODO_Plan">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PlanODO" Type="varchar" MaxLength="300" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="20" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_ODO_Pronostico">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LigadoEvolucionODO" Type="bit" />
+          <Property Name="FavorableODO" Type="bit" />
+          <Property Name="DesfavorableODO" Type="bit" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="20" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_ODO_ResultadoLaboratorio">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ResultadoODO" Type="varchar" MaxLength="15" />
+          <Property Name="Especifica_ResultadoODO" Type="varchar" MaxLength="300" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="20" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_ODO_Riesgo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HemodialisisODO" Type="varchar" MaxLength="5" />
+          <Property Name="TatuajesPerforacionesODO" Type="varchar" MaxLength="5" />
+          <Property Name="Tiempo_TatuajesPerfoODO" Type="varchar" MaxLength="300" />
+          <Property Name="Clave_hc_px" Type="varchar" MaxLength="20" />
+          <Property Name="Id_Paciente" Type="int" Nullable="false" />
+        </EntityType>
         <EntityContainer Name="ModelsStoreContainer">
           <EntitySet Name="hc_NUT_AlimentacionInicial" EntityType="Self.hc_NUT_AlimentacionInicial" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hc_NUT_DatosDieteticos" EntityType="Self.hc_NUT_DatosDieteticos" Schema="dbo" store:Type="Tables" />
@@ -344,6 +648,18 @@
           <EntitySet Name="hc_NUT_Pronostico" EntityType="Self.hc_NUT_Pronostico" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hc_NUT_Recordatorio" EntityType="Self.hc_NUT_Recordatorio" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hc_NUT_ResultadoLab" EntityType="Self.hc_NUT_ResultadoLab" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_ODO_AntecedentesObs" EntityType="Self.hc_ODO_AntecedentesObs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_ODO_EvaluacionFuncional" EntityType="Self.hc_ODO_EvaluacionFuncional" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_ODO_Habitos" EntityType="Self.hc_ODO_Habitos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_ODO_HistoriaDental" EntityType="Self.hc_ODO_HistoriaDental" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_ODO_ImpresionDiag" EntityType="Self.hc_ODO_ImpresionDiag" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_ODO_InformacionPeri" EntityType="Self.hc_ODO_InformacionPeri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_ODO_Odontograma" EntityType="Self.hc_ODO_Odontograma" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_ODO_Otros" EntityType="Self.hc_ODO_Otros" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_ODO_Plan" EntityType="Self.hc_ODO_Plan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_ODO_Pronostico" EntityType="Self.hc_ODO_Pronostico" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_ODO_ResultadoLaboratorio" EntityType="Self.hc_ODO_ResultadoLaboratorio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hc_ODO_Riesgo" EntityType="Self.hc_ODO_Riesgo" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -649,6 +965,18 @@
           <EntitySet Name="hc_NUT_Recordatorio" EntityType="Self.hc_NUT_Recordatorio" />
           <EntitySet Name="hc_NUT_ResultadoLab" EntityType="Self.hc_NUT_ResultadoLab" />
           <EntitySet Name="hc_NUT_EducacionInicial" EntityType="Models.hc_NUT_EducacionInicial" />
+          <EntitySet Name="hc_ODO_AntecedentesObs" EntityType="Models.hc_ODO_AntecedentesObs" />
+          <EntitySet Name="hc_ODO_EvaluacionFuncional" EntityType="Models.hc_ODO_EvaluacionFuncional" />
+          <EntitySet Name="hc_ODO_Habitos" EntityType="Models.hc_ODO_Habitos" />
+          <EntitySet Name="hc_ODO_HistoriaDental" EntityType="Models.hc_ODO_HistoriaDental" />
+          <EntitySet Name="hc_ODO_ImpresionDiag" EntityType="Models.hc_ODO_ImpresionDiag" />
+          <EntitySet Name="hc_ODO_InformacionPeri" EntityType="Models.hc_ODO_InformacionPeri" />
+          <EntitySet Name="hc_ODO_Otros" EntityType="Models.hc_ODO_Otros" />
+          <EntitySet Name="hc_ODO_Plan" EntityType="Models.hc_ODO_Plan" />
+          <EntitySet Name="hc_ODO_Pronostico" EntityType="Models.hc_ODO_Pronostico" />
+          <EntitySet Name="hc_ODO_ResultadoLaboratorio" EntityType="Models.hc_ODO_ResultadoLaboratorio" />
+          <EntitySet Name="hc_ODO_Riesgo" EntityType="Models.hc_ODO_Riesgo" />
+          <EntitySet Name="hc_ODO_Odontograma" EntityType="Models.hc_ODO_Odontograma" />
         </EntityContainer>
         <EntityType Name="hc_NUT_EducacionInicial">
           <Key>
@@ -688,6 +1016,310 @@
           <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
           <Property Name="EdRelAlimentos" Type="Boolean" />
           <Property Name="Especifica_Dudas" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="hc_ODO_AntecedentesObs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmbarazadaODO" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="SemanaGestaODO" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_ODO_EvaluacionFuncional">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FA_Sup_Redondo" Type="Boolean" />
+          <Property Name="FA_Sup_Triangular" Type="Boolean" />
+          <Property Name="FA_Sup_Cuadrado" Type="Boolean" />
+          <Property Name="FA_Inf_Redondo" Type="Boolean" />
+          <Property Name="FA_Inf_Triangular" Type="Boolean" />
+          <Property Name="FA_Inf_Cuadrado" Type="Boolean" />
+          <Property Name="FA_MA_Anterior" Type="Boolean" />
+          <Property Name="FA_MA_Posterior" Type="Boolean" />
+          <Property Name="FA_MA_NoAplica" Type="Boolean" />
+          <Property Name="FA_MC_Anterior" Type="Boolean" />
+          <Property Name="FA_MC_Posterior" Type="Boolean" />
+          <Property Name="FA_MC_NoAplica" Type="Boolean" />
+          <Property Name="SMI_Der_EscalonM" Type="Boolean" />
+          <Property Name="SMI_Der_EscalonD" Type="Boolean" />
+          <Property Name="SMI_Der_PlanoRecto" Type="Boolean" />
+          <Property Name="SMI_Der_NoAplica" Type="Boolean" />
+          <Property Name="SMI_Izq_EscalonM" Type="Boolean" />
+          <Property Name="SMI_Izq_EscalonD" Type="Boolean" />
+          <Property Name="SMI_Izq_PlanoRecto" Type="Boolean" />
+          <Property Name="SMI_Izq_NoAplica" Type="Boolean" />
+          <Property Name="CPri_Der_ClaseI" Type="Boolean" />
+          <Property Name="CPri_Der_ClaseII" Type="Boolean" />
+          <Property Name="CPri_Der_ClaseIII" Type="Boolean" />
+          <Property Name="CPri_Der_NoAplica" Type="Boolean" />
+          <Property Name="CPri_Izq_ClaseI" Type="Boolean" />
+          <Property Name="CPri_Izq_ClaseII" Type="Boolean" />
+          <Property Name="CPri_Izq_ClaseIII" Type="Boolean" />
+          <Property Name="CPri_Izq_NoAplica" Type="Boolean" />
+          <Property Name="PMP_Der_ClaseI" Type="Boolean" />
+          <Property Name="PMP_Der_ClaseII" Type="Boolean" />
+          <Property Name="PMP_Der_ClaseIII" Type="Boolean" />
+          <Property Name="PMP_Der_NoAplica" Type="Boolean" />
+          <Property Name="PMP_Izq_ClaseI" Type="Boolean" />
+          <Property Name="PMP_Izq_ClaseII" Type="Boolean" />
+          <Property Name="PMP_Izq_ClaseIII" Type="Boolean" />
+          <Property Name="PMP_Izq_NoAplica" Type="Boolean" />
+          <Property Name="CPer_Der_ClaseI" Type="Boolean" />
+          <Property Name="CPer_Der_ClaseII" Type="Boolean" />
+          <Property Name="CPer_Der_ClaseIII" Type="Boolean" />
+          <Property Name="CPer_Der_NoAplica" Type="Boolean" />
+          <Property Name="CPer_Izq_ClaseI" Type="Boolean" />
+          <Property Name="CPer_Izq_ClaseII" Type="Boolean" />
+          <Property Name="CPer_Izq_ClaseIII" Type="Boolean" />
+          <Property Name="CPer_Izq_NoAplica" Type="Boolean" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_ODO_Habitos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ConsCarbohidratosODO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="AlimEntreComidasODO" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Especifica_AlimEntreComidasODO" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="HigieneOralODO" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Frecuencia_HigieneOralODO" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Solo_HigieneOralODO" Type="Boolean" />
+          <Property Name="ConAyuda_HigieneOralODO" Type="Boolean" />
+          <Property Name="TipoCepillo_HigieneOralODO" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="TipoPasta_HigieneOralODO" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="SuccionLabialODO" Type="Boolean" />
+          <Property Name="MorderObjetosODO" Type="Boolean" />
+          <Property Name="RespiracionOralODO" Type="Boolean" />
+          <Property Name="SuccionDigitalODO" Type="Boolean" />
+          <Property Name="OnicofagiaODO" Type="Boolean" />
+          <Property Name="BruxismoODO" Type="Boolean" />
+          <Property Name="BiberonODO" Type="Boolean" />
+          <Property Name="ChuponODO" Type="Boolean" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_ODO_HistoriaDental">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PrimeraVisitaODO" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="TratamientosRealizadoaODO" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="FamiliarPadecidoODO" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="GolpeadoDientesODO" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Especifica_GolpeadoDienODO" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="PacienteCooperoODO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="InteresConservarDienODO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="SatisfechoODO" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Especifica_SatisfechoODO" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_ODO_ImpresionDiag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="diagnostico1ODO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="diagnostico2ODO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="diagnostico3ODO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="diagnostico4ODO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="diagnostico5ODO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_ODO_InformacionPeri">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmbarazoTerminoODO" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Motivo_EmbarazoTerODO" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="CompEmbarazoODO" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="PesoNacerODO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="EstaturaNacerODO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="TipoLactanciaODO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="TiempoLactanciaODO" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="MostroCartillaODO" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="EsquemaCompletoODO" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Especifica_EsquemaComODO" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_ODO_Otros">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InterconsultaODO" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="PadecimientoActualODO" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Especifica_PadecimientoActualODO" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ProximaCitaODO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_ODO_Plan">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PlanODO" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_ODO_Pronostico">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LigadoEvolucionODO" Type="Boolean" />
+          <Property Name="FavorableODO" Type="Boolean" />
+          <Property Name="DesfavorableODO" Type="Boolean" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_ODO_ResultadoLaboratorio">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ResultadoODO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Especifica_ResultadoODO" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_ODO_Riesgo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HemodialisisODO" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="TatuajesPerforacionesODO" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Tiempo_TatuajesPerfoODO" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hc_ODO_Odontograma">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MasticaDientesODO" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox18" Type="Boolean" />
+          <Property Name="Input18" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox17" Type="Boolean" />
+          <Property Name="Input17" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox16" Type="Boolean" />
+          <Property Name="Input16" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox15" Type="Boolean" />
+          <Property Name="Input15" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox14" Type="Boolean" />
+          <Property Name="Input14" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox13" Type="Boolean" />
+          <Property Name="Input13" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox12" Type="Boolean" />
+          <Property Name="Input12" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox11" Type="Boolean" />
+          <Property Name="Input11" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox21" Type="Boolean" />
+          <Property Name="Input21" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox22" Type="Boolean" />
+          <Property Name="Input22" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox23" Type="Boolean" />
+          <Property Name="Input23" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox24" Type="Boolean" />
+          <Property Name="Input24" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox25" Type="Boolean" />
+          <Property Name="Input25" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox26" Type="Boolean" />
+          <Property Name="Input26" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox27" Type="Boolean" />
+          <Property Name="Input27" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox28" Type="Boolean" />
+          <Property Name="Input28" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox55" Type="Boolean" />
+          <Property Name="Input55" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox54" Type="Boolean" />
+          <Property Name="Input54" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox53" Type="Boolean" />
+          <Property Name="Input53" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox52" Type="Boolean" />
+          <Property Name="Input52" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox51" Type="Boolean" />
+          <Property Name="Input51" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox61" Type="Boolean" />
+          <Property Name="Input61" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox62" Type="Boolean" />
+          <Property Name="Input62" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox63" Type="Boolean" />
+          <Property Name="Input63" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox64" Type="Boolean" />
+          <Property Name="Input64" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox65" Type="Boolean" />
+          <Property Name="Input65" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox85" Type="Boolean" />
+          <Property Name="Input85" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox84" Type="Boolean" />
+          <Property Name="Input84" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox83" Type="Boolean" />
+          <Property Name="Input83" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox82" Type="Boolean" />
+          <Property Name="Input82" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox81" Type="Boolean" />
+          <Property Name="Input81" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox71" Type="Boolean" />
+          <Property Name="Input71" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox72" Type="Boolean" />
+          <Property Name="Input72" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox73" Type="Boolean" />
+          <Property Name="Input73" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox74" Type="Boolean" />
+          <Property Name="Input74" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox75" Type="Boolean" />
+          <Property Name="Input75" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox48" Type="Boolean" />
+          <Property Name="Input48" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox47" Type="Boolean" />
+          <Property Name="Input47" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox46" Type="Boolean" />
+          <Property Name="Input46" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox45" Type="Boolean" />
+          <Property Name="Input45" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox44" Type="Boolean" />
+          <Property Name="Input44" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox43" Type="Boolean" />
+          <Property Name="Input43" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox42" Type="Boolean" />
+          <Property Name="Input42" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox41" Type="Boolean" />
+          <Property Name="Input41" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox31" Type="Boolean" />
+          <Property Name="Input31" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox32" Type="Boolean" />
+          <Property Name="Input32" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox33" Type="Boolean" />
+          <Property Name="Input33" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox34" Type="Boolean" />
+          <Property Name="Input34" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox35" Type="Boolean" />
+          <Property Name="Input35" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox36" Type="Boolean" />
+          <Property Name="Input36" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox37" Type="Boolean" />
+          <Property Name="Input37" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CheckBox38" Type="Boolean" />
+          <Property Name="Input38" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="AltaODO" Type="Boolean" />
+          <Property Name="MediaODO" Type="Boolean" />
+          <Property Name="BajaODO" Type="Boolean" />
+          <Property Name="Clave_hc_px" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1029,6 +1661,322 @@
                 <ScalarProperty Name="EducacionMat" ColumnName="EducacionMat" />
                 <ScalarProperty Name="PrevencionEnf" ColumnName="PrevencionEnf" />
                 <ScalarProperty Name="CriteriosGen" ColumnName="CriteriosGen" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_ODO_AntecedentesObs">
+            <EntityTypeMapping TypeName="Models.hc_ODO_AntecedentesObs">
+              <MappingFragment StoreEntitySet="hc_ODO_AntecedentesObs">
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="SemanaGestaODO" ColumnName="SemanaGestaODO" />
+                <ScalarProperty Name="EmbarazadaODO" ColumnName="EmbarazadaODO" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_ODO_EvaluacionFuncional">
+            <EntityTypeMapping TypeName="Models.hc_ODO_EvaluacionFuncional">
+              <MappingFragment StoreEntitySet="hc_ODO_EvaluacionFuncional">
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="CPer_Izq_NoAplica" ColumnName="CPer_Izq_NoAplica" />
+                <ScalarProperty Name="CPer_Izq_ClaseIII" ColumnName="CPer_Izq_ClaseIII" />
+                <ScalarProperty Name="CPer_Izq_ClaseII" ColumnName="CPer_Izq_ClaseII" />
+                <ScalarProperty Name="CPer_Izq_ClaseI" ColumnName="CPer_Izq_ClaseI" />
+                <ScalarProperty Name="CPer_Der_NoAplica" ColumnName="CPer_Der_NoAplica" />
+                <ScalarProperty Name="CPer_Der_ClaseIII" ColumnName="CPer_Der_ClaseIII" />
+                <ScalarProperty Name="CPer_Der_ClaseII" ColumnName="CPer_Der_ClaseII" />
+                <ScalarProperty Name="CPer_Der_ClaseI" ColumnName="CPer_Der_ClaseI" />
+                <ScalarProperty Name="PMP_Izq_NoAplica" ColumnName="PMP_Izq_NoAplica" />
+                <ScalarProperty Name="PMP_Izq_ClaseIII" ColumnName="PMP_Izq_ClaseIII" />
+                <ScalarProperty Name="PMP_Izq_ClaseII" ColumnName="PMP_Izq_ClaseII" />
+                <ScalarProperty Name="PMP_Izq_ClaseI" ColumnName="PMP_Izq_ClaseI" />
+                <ScalarProperty Name="PMP_Der_NoAplica" ColumnName="PMP_Der_NoAplica" />
+                <ScalarProperty Name="PMP_Der_ClaseIII" ColumnName="PMP_Der_ClaseIII" />
+                <ScalarProperty Name="PMP_Der_ClaseII" ColumnName="PMP_Der_ClaseII" />
+                <ScalarProperty Name="PMP_Der_ClaseI" ColumnName="PMP_Der_ClaseI" />
+                <ScalarProperty Name="CPri_Izq_NoAplica" ColumnName="CPri_Izq_NoAplica" />
+                <ScalarProperty Name="CPri_Izq_ClaseIII" ColumnName="CPri_Izq_ClaseIII" />
+                <ScalarProperty Name="CPri_Izq_ClaseII" ColumnName="CPri_Izq_ClaseII" />
+                <ScalarProperty Name="CPri_Izq_ClaseI" ColumnName="CPri_Izq_ClaseI" />
+                <ScalarProperty Name="CPri_Der_NoAplica" ColumnName="CPri_Der_NoAplica" />
+                <ScalarProperty Name="CPri_Der_ClaseIII" ColumnName="CPri_Der_ClaseIII" />
+                <ScalarProperty Name="CPri_Der_ClaseII" ColumnName="CPri_Der_ClaseII" />
+                <ScalarProperty Name="CPri_Der_ClaseI" ColumnName="CPri_Der_ClaseI" />
+                <ScalarProperty Name="SMI_Izq_NoAplica" ColumnName="SMI_Izq_NoAplica" />
+                <ScalarProperty Name="SMI_Izq_PlanoRecto" ColumnName="SMI_Izq_PlanoRecto" />
+                <ScalarProperty Name="SMI_Izq_EscalonD" ColumnName="SMI_Izq_EscalonD" />
+                <ScalarProperty Name="SMI_Izq_EscalonM" ColumnName="SMI_Izq_EscalonM" />
+                <ScalarProperty Name="SMI_Der_NoAplica" ColumnName="SMI_Der_NoAplica" />
+                <ScalarProperty Name="SMI_Der_PlanoRecto" ColumnName="SMI_Der_PlanoRecto" />
+                <ScalarProperty Name="SMI_Der_EscalonD" ColumnName="SMI_Der_EscalonD" />
+                <ScalarProperty Name="SMI_Der_EscalonM" ColumnName="SMI_Der_EscalonM" />
+                <ScalarProperty Name="FA_MC_NoAplica" ColumnName="FA_MC_NoAplica" />
+                <ScalarProperty Name="FA_MC_Posterior" ColumnName="FA_MC_Posterior" />
+                <ScalarProperty Name="FA_MC_Anterior" ColumnName="FA_MC_Anterior" />
+                <ScalarProperty Name="FA_MA_NoAplica" ColumnName="FA_MA_NoAplica" />
+                <ScalarProperty Name="FA_MA_Posterior" ColumnName="FA_MA_Posterior" />
+                <ScalarProperty Name="FA_MA_Anterior" ColumnName="FA_MA_Anterior" />
+                <ScalarProperty Name="FA_Inf_Cuadrado" ColumnName="FA_Inf_Cuadrado" />
+                <ScalarProperty Name="FA_Inf_Triangular" ColumnName="FA_Inf_Triangular" />
+                <ScalarProperty Name="FA_Inf_Redondo" ColumnName="FA_Inf_Redondo" />
+                <ScalarProperty Name="FA_Sup_Cuadrado" ColumnName="FA_Sup_Cuadrado" />
+                <ScalarProperty Name="FA_Sup_Triangular" ColumnName="FA_Sup_Triangular" />
+                <ScalarProperty Name="FA_Sup_Redondo" ColumnName="FA_Sup_Redondo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_ODO_Habitos">
+            <EntityTypeMapping TypeName="Models.hc_ODO_Habitos">
+              <MappingFragment StoreEntitySet="hc_ODO_Habitos">
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="ChuponODO" ColumnName="ChuponODO" />
+                <ScalarProperty Name="BiberonODO" ColumnName="BiberonODO" />
+                <ScalarProperty Name="BruxismoODO" ColumnName="BruxismoODO" />
+                <ScalarProperty Name="OnicofagiaODO" ColumnName="OnicofagiaODO" />
+                <ScalarProperty Name="SuccionDigitalODO" ColumnName="SuccionDigitalODO" />
+                <ScalarProperty Name="RespiracionOralODO" ColumnName="RespiracionOralODO" />
+                <ScalarProperty Name="MorderObjetosODO" ColumnName="MorderObjetosODO" />
+                <ScalarProperty Name="SuccionLabialODO" ColumnName="SuccionLabialODO" />
+                <ScalarProperty Name="TipoPasta_HigieneOralODO" ColumnName="TipoPasta_HigieneOralODO" />
+                <ScalarProperty Name="TipoCepillo_HigieneOralODO" ColumnName="TipoCepillo_HigieneOralODO" />
+                <ScalarProperty Name="ConAyuda_HigieneOralODO" ColumnName="ConAyuda_HigieneOralODO" />
+                <ScalarProperty Name="Solo_HigieneOralODO" ColumnName="Solo_HigieneOralODO" />
+                <ScalarProperty Name="Frecuencia_HigieneOralODO" ColumnName="Frecuencia_HigieneOralODO" />
+                <ScalarProperty Name="HigieneOralODO" ColumnName="HigieneOralODO" />
+                <ScalarProperty Name="Especifica_AlimEntreComidasODO" ColumnName="Especifica_AlimEntreComidasODO" />
+                <ScalarProperty Name="AlimEntreComidasODO" ColumnName="AlimEntreComidasODO" />
+                <ScalarProperty Name="ConsCarbohidratosODO" ColumnName="ConsCarbohidratosODO" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_ODO_HistoriaDental">
+            <EntityTypeMapping TypeName="Models.hc_ODO_HistoriaDental">
+              <MappingFragment StoreEntitySet="hc_ODO_HistoriaDental">
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="Especifica_SatisfechoODO" ColumnName="Especifica_SatisfechoODO" />
+                <ScalarProperty Name="SatisfechoODO" ColumnName="SatisfechoODO" />
+                <ScalarProperty Name="InteresConservarDienODO" ColumnName="InteresConservarDienODO" />
+                <ScalarProperty Name="PacienteCooperoODO" ColumnName="PacienteCooperoODO" />
+                <ScalarProperty Name="Especifica_GolpeadoDienODO" ColumnName="Especifica_GolpeadoDienODO" />
+                <ScalarProperty Name="GolpeadoDientesODO" ColumnName="GolpeadoDientesODO" />
+                <ScalarProperty Name="FamiliarPadecidoODO" ColumnName="FamiliarPadecidoODO" />
+                <ScalarProperty Name="TratamientosRealizadoaODO" ColumnName="TratamientosRealizadoaODO" />
+                <ScalarProperty Name="PrimeraVisitaODO" ColumnName="PrimeraVisitaODO" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_ODO_ImpresionDiag">
+            <EntityTypeMapping TypeName="Models.hc_ODO_ImpresionDiag">
+              <MappingFragment StoreEntitySet="hc_ODO_ImpresionDiag">
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="diagnostico5ODO" ColumnName="diagnostico5ODO" />
+                <ScalarProperty Name="diagnostico4ODO" ColumnName="diagnostico4ODO" />
+                <ScalarProperty Name="diagnostico3ODO" ColumnName="diagnostico3ODO" />
+                <ScalarProperty Name="diagnostico2ODO" ColumnName="diagnostico2ODO" />
+                <ScalarProperty Name="diagnostico1ODO" ColumnName="diagnostico1ODO" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_ODO_InformacionPeri">
+            <EntityTypeMapping TypeName="Models.hc_ODO_InformacionPeri">
+              <MappingFragment StoreEntitySet="hc_ODO_InformacionPeri">
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="Especifica_EsquemaComODO" ColumnName="Especifica_EsquemaComODO" />
+                <ScalarProperty Name="EsquemaCompletoODO" ColumnName="EsquemaCompletoODO" />
+                <ScalarProperty Name="MostroCartillaODO" ColumnName="MostroCartillaODO" />
+                <ScalarProperty Name="TiempoLactanciaODO" ColumnName="TiempoLactanciaODO" />
+                <ScalarProperty Name="TipoLactanciaODO" ColumnName="TipoLactanciaODO" />
+                <ScalarProperty Name="EstaturaNacerODO" ColumnName="EstaturaNacerODO" />
+                <ScalarProperty Name="PesoNacerODO" ColumnName="PesoNacerODO" />
+                <ScalarProperty Name="CompEmbarazoODO" ColumnName="CompEmbarazoODO" />
+                <ScalarProperty Name="Motivo_EmbarazoTerODO" ColumnName="Motivo_EmbarazoTerODO" />
+                <ScalarProperty Name="EmbarazoTerminoODO" ColumnName="EmbarazoTerminoODO" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_ODO_Otros">
+            <EntityTypeMapping TypeName="Models.hc_ODO_Otros">
+              <MappingFragment StoreEntitySet="hc_ODO_Otros">
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="ProximaCitaODO" ColumnName="ProximaCitaODO" />
+                <ScalarProperty Name="Especifica_PadecimientoActualODO" ColumnName="Especifica_PadecimientoActualODO" />
+                <ScalarProperty Name="PadecimientoActualODO" ColumnName="PadecimientoActualODO" />
+                <ScalarProperty Name="InterconsultaODO" ColumnName="InterconsultaODO" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_ODO_Plan">
+            <EntityTypeMapping TypeName="Models.hc_ODO_Plan">
+              <MappingFragment StoreEntitySet="hc_ODO_Plan">
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="PlanODO" ColumnName="PlanODO" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_ODO_Pronostico">
+            <EntityTypeMapping TypeName="Models.hc_ODO_Pronostico">
+              <MappingFragment StoreEntitySet="hc_ODO_Pronostico">
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="DesfavorableODO" ColumnName="DesfavorableODO" />
+                <ScalarProperty Name="FavorableODO" ColumnName="FavorableODO" />
+                <ScalarProperty Name="LigadoEvolucionODO" ColumnName="LigadoEvolucionODO" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_ODO_ResultadoLaboratorio">
+            <EntityTypeMapping TypeName="Models.hc_ODO_ResultadoLaboratorio">
+              <MappingFragment StoreEntitySet="hc_ODO_ResultadoLaboratorio">
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="Especifica_ResultadoODO" ColumnName="Especifica_ResultadoODO" />
+                <ScalarProperty Name="ResultadoODO" ColumnName="ResultadoODO" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_ODO_Riesgo">
+            <EntityTypeMapping TypeName="Models.hc_ODO_Riesgo">
+              <MappingFragment StoreEntitySet="hc_ODO_Riesgo">
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="Tiempo_TatuajesPerfoODO" ColumnName="Tiempo_TatuajesPerfoODO" />
+                <ScalarProperty Name="TatuajesPerforacionesODO" ColumnName="TatuajesPerforacionesODO" />
+                <ScalarProperty Name="HemodialisisODO" ColumnName="HemodialisisODO" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hc_ODO_Odontograma">
+            <EntityTypeMapping TypeName="Models.hc_ODO_Odontograma">
+              <MappingFragment StoreEntitySet="hc_ODO_Odontograma">
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
+                <ScalarProperty Name="Clave_hc_px" ColumnName="Clave_hc_px" />
+                <ScalarProperty Name="BajaODO" ColumnName="BajaODO" />
+                <ScalarProperty Name="MediaODO" ColumnName="MediaODO" />
+                <ScalarProperty Name="AltaODO" ColumnName="AltaODO" />
+                <ScalarProperty Name="Input38" ColumnName="Input38" />
+                <ScalarProperty Name="CheckBox38" ColumnName="CheckBox38" />
+                <ScalarProperty Name="Input37" ColumnName="Input37" />
+                <ScalarProperty Name="CheckBox37" ColumnName="CheckBox37" />
+                <ScalarProperty Name="Input36" ColumnName="Input36" />
+                <ScalarProperty Name="CheckBox36" ColumnName="CheckBox36" />
+                <ScalarProperty Name="Input35" ColumnName="Input35" />
+                <ScalarProperty Name="CheckBox35" ColumnName="CheckBox35" />
+                <ScalarProperty Name="Input34" ColumnName="Input34" />
+                <ScalarProperty Name="CheckBox34" ColumnName="CheckBox34" />
+                <ScalarProperty Name="Input33" ColumnName="Input33" />
+                <ScalarProperty Name="CheckBox33" ColumnName="CheckBox33" />
+                <ScalarProperty Name="Input32" ColumnName="Input32" />
+                <ScalarProperty Name="CheckBox32" ColumnName="CheckBox32" />
+                <ScalarProperty Name="Input31" ColumnName="Input31" />
+                <ScalarProperty Name="CheckBox31" ColumnName="CheckBox31" />
+                <ScalarProperty Name="Input41" ColumnName="Input41" />
+                <ScalarProperty Name="CheckBox41" ColumnName="CheckBox41" />
+                <ScalarProperty Name="Input42" ColumnName="Input42" />
+                <ScalarProperty Name="CheckBox42" ColumnName="CheckBox42" />
+                <ScalarProperty Name="Input43" ColumnName="Input43" />
+                <ScalarProperty Name="CheckBox43" ColumnName="CheckBox43" />
+                <ScalarProperty Name="Input44" ColumnName="Input44" />
+                <ScalarProperty Name="CheckBox44" ColumnName="CheckBox44" />
+                <ScalarProperty Name="Input45" ColumnName="Input45" />
+                <ScalarProperty Name="CheckBox45" ColumnName="CheckBox45" />
+                <ScalarProperty Name="Input46" ColumnName="Input46" />
+                <ScalarProperty Name="CheckBox46" ColumnName="CheckBox46" />
+                <ScalarProperty Name="Input47" ColumnName="Input47" />
+                <ScalarProperty Name="CheckBox47" ColumnName="CheckBox47" />
+                <ScalarProperty Name="Input48" ColumnName="Input48" />
+                <ScalarProperty Name="CheckBox48" ColumnName="CheckBox48" />
+                <ScalarProperty Name="Input75" ColumnName="Input75" />
+                <ScalarProperty Name="CheckBox75" ColumnName="CheckBox75" />
+                <ScalarProperty Name="Input74" ColumnName="Input74" />
+                <ScalarProperty Name="CheckBox74" ColumnName="CheckBox74" />
+                <ScalarProperty Name="Input73" ColumnName="Input73" />
+                <ScalarProperty Name="CheckBox73" ColumnName="CheckBox73" />
+                <ScalarProperty Name="Input72" ColumnName="Input72" />
+                <ScalarProperty Name="CheckBox72" ColumnName="CheckBox72" />
+                <ScalarProperty Name="Input71" ColumnName="Input71" />
+                <ScalarProperty Name="CheckBox71" ColumnName="CheckBox71" />
+                <ScalarProperty Name="Input81" ColumnName="Input81" />
+                <ScalarProperty Name="CheckBox81" ColumnName="CheckBox81" />
+                <ScalarProperty Name="Input82" ColumnName="Input82" />
+                <ScalarProperty Name="CheckBox82" ColumnName="CheckBox82" />
+                <ScalarProperty Name="Input83" ColumnName="Input83" />
+                <ScalarProperty Name="CheckBox83" ColumnName="CheckBox83" />
+                <ScalarProperty Name="Input84" ColumnName="Input84" />
+                <ScalarProperty Name="CheckBox84" ColumnName="CheckBox84" />
+                <ScalarProperty Name="Input85" ColumnName="Input85" />
+                <ScalarProperty Name="CheckBox85" ColumnName="CheckBox85" />
+                <ScalarProperty Name="Input65" ColumnName="Input65" />
+                <ScalarProperty Name="CheckBox65" ColumnName="CheckBox65" />
+                <ScalarProperty Name="Input64" ColumnName="Input64" />
+                <ScalarProperty Name="CheckBox64" ColumnName="CheckBox64" />
+                <ScalarProperty Name="Input63" ColumnName="Input63" />
+                <ScalarProperty Name="CheckBox63" ColumnName="CheckBox63" />
+                <ScalarProperty Name="Input62" ColumnName="Input62" />
+                <ScalarProperty Name="CheckBox62" ColumnName="CheckBox62" />
+                <ScalarProperty Name="Input61" ColumnName="Input61" />
+                <ScalarProperty Name="CheckBox61" ColumnName="CheckBox61" />
+                <ScalarProperty Name="Input51" ColumnName="Input51" />
+                <ScalarProperty Name="CheckBox51" ColumnName="CheckBox51" />
+                <ScalarProperty Name="Input52" ColumnName="Input52" />
+                <ScalarProperty Name="CheckBox52" ColumnName="CheckBox52" />
+                <ScalarProperty Name="Input53" ColumnName="Input53" />
+                <ScalarProperty Name="CheckBox53" ColumnName="CheckBox53" />
+                <ScalarProperty Name="Input54" ColumnName="Input54" />
+                <ScalarProperty Name="CheckBox54" ColumnName="CheckBox54" />
+                <ScalarProperty Name="Input55" ColumnName="Input55" />
+                <ScalarProperty Name="CheckBox55" ColumnName="CheckBox55" />
+                <ScalarProperty Name="Input28" ColumnName="Input28" />
+                <ScalarProperty Name="CheckBox28" ColumnName="CheckBox28" />
+                <ScalarProperty Name="Input27" ColumnName="Input27" />
+                <ScalarProperty Name="CheckBox27" ColumnName="CheckBox27" />
+                <ScalarProperty Name="Input26" ColumnName="Input26" />
+                <ScalarProperty Name="CheckBox26" ColumnName="CheckBox26" />
+                <ScalarProperty Name="Input25" ColumnName="Input25" />
+                <ScalarProperty Name="CheckBox25" ColumnName="CheckBox25" />
+                <ScalarProperty Name="Input24" ColumnName="Input24" />
+                <ScalarProperty Name="CheckBox24" ColumnName="CheckBox24" />
+                <ScalarProperty Name="Input23" ColumnName="Input23" />
+                <ScalarProperty Name="CheckBox23" ColumnName="CheckBox23" />
+                <ScalarProperty Name="Input22" ColumnName="Input22" />
+                <ScalarProperty Name="CheckBox22" ColumnName="CheckBox22" />
+                <ScalarProperty Name="Input21" ColumnName="Input21" />
+                <ScalarProperty Name="CheckBox21" ColumnName="CheckBox21" />
+                <ScalarProperty Name="Input11" ColumnName="Input11" />
+                <ScalarProperty Name="CheckBox11" ColumnName="CheckBox11" />
+                <ScalarProperty Name="Input12" ColumnName="Input12" />
+                <ScalarProperty Name="CheckBox12" ColumnName="CheckBox12" />
+                <ScalarProperty Name="Input13" ColumnName="Input13" />
+                <ScalarProperty Name="CheckBox13" ColumnName="CheckBox13" />
+                <ScalarProperty Name="Input14" ColumnName="Input14" />
+                <ScalarProperty Name="CheckBox14" ColumnName="CheckBox14" />
+                <ScalarProperty Name="Input15" ColumnName="Input15" />
+                <ScalarProperty Name="CheckBox15" ColumnName="CheckBox15" />
+                <ScalarProperty Name="Input16" ColumnName="Input16" />
+                <ScalarProperty Name="CheckBox16" ColumnName="CheckBox16" />
+                <ScalarProperty Name="Input17" ColumnName="Input17" />
+                <ScalarProperty Name="CheckBox17" ColumnName="CheckBox17" />
+                <ScalarProperty Name="Input18" ColumnName="Input18" />
+                <ScalarProperty Name="CheckBox18" ColumnName="CheckBox18" />
+                <ScalarProperty Name="MasticaDientesODO" ColumnName="MasticaDientesODO" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

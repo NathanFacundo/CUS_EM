@@ -376,6 +376,42 @@
     <Compile Include="Models\hc_NUT_ResultadoLab.cs">
       <DependentUpon>HC_Nutricion.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\hc_ODO_AntecedentesObs.cs">
+      <DependentUpon>HC_Nutricion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\hc_ODO_EvaluacionFuncional.cs">
+      <DependentUpon>HC_Nutricion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\hc_ODO_Habitos.cs">
+      <DependentUpon>HC_Nutricion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\hc_ODO_HistoriaDental.cs">
+      <DependentUpon>HC_Nutricion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\hc_ODO_ImpresionDiag.cs">
+      <DependentUpon>HC_Nutricion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\hc_ODO_InformacionPeri.cs">
+      <DependentUpon>HC_Nutricion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\hc_ODO_Odontograma.cs">
+      <DependentUpon>HC_Nutricion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\hc_ODO_Otros.cs">
+      <DependentUpon>HC_Nutricion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\hc_ODO_Plan.cs">
+      <DependentUpon>HC_Nutricion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\hc_ODO_Pronostico.cs">
+      <DependentUpon>HC_Nutricion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\hc_ODO_ResultadoLaboratorio.cs">
+      <DependentUpon>HC_Nutricion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\hc_ODO_Riesgo.cs">
+      <DependentUpon>HC_Nutricion.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\hc_PS_AreasAtencion.cs">
       <DependentUpon>HC_Medicina.tt</DependentUpon>
     </Compile>

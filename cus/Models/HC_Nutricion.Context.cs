@@ -37,5 +37,17 @@ namespace CUS.Models
         public virtual DbSet<hc_NUT_Recordatorio> hc_NUT_Recordatorio { get; set; }
         public virtual DbSet<hc_NUT_ResultadoLab> hc_NUT_ResultadoLab { get; set; }
         public virtual DbSet<hc_NUT_EducacionInicial> hc_NUT_EducacionInicial { get; set; }
+        public virtual DbSet<hc_ODO_AntecedentesObs> hc_ODO_AntecedentesObs { get; set; }
+        public virtual DbSet<hc_ODO_EvaluacionFuncional> hc_ODO_EvaluacionFuncional { get; set; }
+        public virtual DbSet<hc_ODO_Habitos> hc_ODO_Habitos { get; set; }
+        public virtual DbSet<hc_ODO_HistoriaDental> hc_ODO_HistoriaDental { get; set; }
+        public virtual DbSet<hc_ODO_ImpresionDiag> hc_ODO_ImpresionDiag { get; set; }
+        public virtual DbSet<hc_ODO_InformacionPeri> hc_ODO_InformacionPeri { get; set; }
+        public virtual DbSet<hc_ODO_Otros> hc_ODO_Otros { get; set; }
+        public virtual DbSet<hc_ODO_Plan> hc_ODO_Plan { get; set; }
+        public virtual DbSet<hc_ODO_Pronostico> hc_ODO_Pronostico { get; set; }
+        public virtual DbSet<hc_ODO_ResultadoLaboratorio> hc_ODO_ResultadoLaboratorio { get; set; }
+        public virtual DbSet<hc_ODO_Riesgo> hc_ODO_Riesgo { get; set; }
+        public virtual DbSet<hc_ODO_Odontograma> hc_ODO_Odontograma { get; set; }
     }
 }
