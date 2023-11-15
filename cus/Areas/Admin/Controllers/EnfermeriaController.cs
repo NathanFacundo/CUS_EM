@@ -69,14 +69,15 @@ namespace CUS.Areas.Admin.Controllers
                 //Buscamos si a ese px se le acaba de crear registro en la tbl NotaEvolucion.
                 if (paciente != null)
                 {
-                    var fechaUltimoRegistro = (from a in db.NotaEvolucion
-                                               where a.num_exp == paciente.Expediente
+                    var fechaUltimoRegistro = (from a in db.SignosVitales
+                                               where a.expediente == paciente.Expediente
                                                select a).
                               OrderByDescending(r => r.fecha)
                               .FirstOrDefault();
 
                     bool pacienteTieneRegistroEnUltimas3Horas;
                     DateTime fechaLimite = DateTime.Now;
+                    var userName = User.Identity.GetUserName();
 
                     //si NO existe registro en la bd en la tbl NotaEvolucion por default pacienteTieneRegistroEnUltimas3Horas será null, quiere decir que se creará un registro nuevo
                     if (fechaUltimoRegistro == null)
@@ -90,8 +91,8 @@ namespace CUS.Areas.Admin.Controllers
                         DateTime fechaL = fechaActual.AddHours(-3);
 
                         //utilizar fechaLimite para verificar si el paciente tiene un registro dentro de las últimas 3 horas
-                        pacienteTieneRegistroEnUltimas3Horas = db.NotaEvolucion
-                        .Any(r => r.num_exp == paciente.Expediente && r.fecha >= fechaL && r.fecha <= fechaActual);
+                        pacienteTieneRegistroEnUltimas3Horas = db.SignosVitales
+                        .Any(r => r.expediente == paciente.Expediente && r.fecha >= fechaL && r.fecha <= fechaActual);
                     }
 
                     if (pacienteTieneRegistroEnUltimas3Horas)// El paciente ya tiene un registro en las últimas 3 horas
@@ -104,7 +105,7 @@ namespace CUS.Areas.Admin.Controllers
 
                         // Actualiza el último registro con los datos proporcionados
                         registroSignos.expediente = signosVitales.expediente;
-                        registroSignos.usuario = User.Identity.GetUserName();
+                        registroSignos.usuario = userName;
                         registroSignos.escala_dolor = signosVitales.escala_dolor;
                         registroSignos.peso = signosVitales.peso;
                         registroSignos.talla = signosVitales.talla;
@@ -129,7 +130,7 @@ namespace CUS.Areas.Admin.Controllers
                         //Se crea la HC de esta sección/pestaña
                         SignosVitales signos = new SignosVitales();
                         signos.expediente = signosVitales.expediente;
-                        signos.usuario = User.Identity.GetUserName();
+                        signos.usuario = userName;
                         signos.escala_dolor = signosVitales.escala_dolor;
                         signos.peso = signosVitales.peso;
                         signos.talla = signosVitales.talla;
@@ -165,6 +166,13 @@ namespace CUS.Areas.Admin.Controllers
                 return Redirect(Request.UrlReferrer.ToString());
             }
 ;
+        }
+
+
+        public JsonResult ConsultarSignosVitales(string expediente)
+        {
+            var escala_dolor = 1;
+            return new JsonResult { Data = escala_dolor, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
 
     }
