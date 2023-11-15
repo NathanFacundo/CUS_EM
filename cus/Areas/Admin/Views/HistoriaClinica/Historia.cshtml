@@ -68,6 +68,8 @@
 <style>
     .modal {
         padding: 0 !important;
+
+        background-color: rgba(0,0,0,0.7);
     }
 
     #myModal .modal-dialog {
@@ -211,7 +213,6 @@
                 </div>
             </div>
 
-
             <div class="col-sm-12" id="BusquedaPX">
 
                 <div>
@@ -248,7 +249,7 @@
     <div class="row justify-content-center">
         <!-- Modal-->
         <div id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
-            <div role="document" class="modal-dialog">
+            <div role="document" class="modal-dialog modal-xl">
                 <div class="modal-content">
                     <div class="modal-header row d-flex justify-content-between mx-1 mx-sm-3 mb-0 pb-0 border-0">
                         <div class="tabs active" id="tab01">
@@ -3335,6 +3336,762 @@
                                             <p>
                                                 Desde hace cuanto tiempo: <span id="Tiempo_TatuajesPerfoODO"></span>
                                             </p>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <p>
+                                        <h4 class="collapsed" data-toggle="collapse" data-target="#collapseOdontogramaODO" aria-expanded="false" aria-controls="collapseOdontogramaODO">
+                                            Odontograma <i class="fa fa-plus-circle"></i>
+                                        </h4>
+                                    </p>
+                                    <div class="collapse" id="collapseOdontogramaODO">
+                                        <div class="card card-body">
+                                            <div class="row">
+                                                <p>
+                                                    ¿Mastica con todos sus dientes?: <span id="MasticaDientesODO"></span>
+                                                </p>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="row">
+                                                        <div class="col-md-1">
+                                                        </div>
+                                                        <div class="col-md-1">
+                                                            <div class="form-group">
+                                                                <label class="form-check-label" for="CheckBox18" style="margin-right: -6px;">18</label>
+                                                                <input class="form-check-input" type="checkbox" id="CheckBox18" name="CheckBox18" onclick="toggleInput(18)">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-1">
+                                                            <div class="form-group">
+                                                                <label class="form-check-label" for="CheckBox17" style="margin-right: -6px;">17</label>
+                                                                <input class="form-check-input" type="checkbox" id="CheckBox17" name="CheckBox17" onclick="toggleInput(17)">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-1">
+                                                            <div class="form-group">
+                                                                <label class="form-check-label" for="CheckBox16" style="margin-right: -6px;">16</label>
+                                                                <input class="form-check-input" type="checkbox" id="CheckBox16" name="CheckBox16" onclick="toggleInput(16)">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-1">
+                                                            <div class="form-group">
+                                                                <label class="form-check-label" for="CheckBox15" style="margin-right: -6px;">15</label>
+                                                                <input class="form-check-input" type="checkbox" id="CheckBox15" name="CheckBox15" onclick="toggleInput(15)">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-1">
+                                                            <div class="form-group">
+                                                                <label class="form-check-label" for="CheckBox14" style="margin-right: -6px;">14</label>
+                                                                <input class="form-check-input" type="checkbox" id="CheckBox14" name="CheckBox14" onclick="toggleInput(14)">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-1">
+                                                            <div class="form-group">
+                                                                <label class="form-check-label" for="CheckBox13" style="margin-right: -6px;">13</label>
+                                                                <input class="form-check-input" type="checkbox" id="CheckBox13" name="CheckBox13" onclick="toggleInput(13)">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-1">
+                                                            <div class="form-group">
+                                                                <label class="form-check-label" for="CheckBox12" style="margin-right: -6px;">12</label>
+                                                                <input class="form-check-input" type="checkbox" id="CheckBox12" name="CheckBox12" onclick="toggleInput(12)">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-1">
+                                                            <div class="form-group">
+                                                                <label class="form-check-label" for="CheckBox11" style="margin-right: -6px;">11</label>
+                                                                <input class="form-check-input" type="checkbox" id="CheckBox11" name="CheckBox11" onclick="toggleInput(11)">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-1">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="row">
+                                                        <div class="col-md-1">
+                                                        </div>
+                                                        <div class="col-md-1">
+                                                            <div class="form-group">
+                                                                <label class="form-check-label" for="CheckBox21" style="margin-right: -6px;">21</label>
+                                                                <input class="form-check-input" type="checkbox" id="CheckBox21" name="CheckBox21" onclick="toggleInput(21)">
+                                                            </div>
+                                                        </div>
+                                                        <input type="text" id="Input21" name="Input21" class="form-control" style="display:none;" placeholder="21" maxlength="500">
+                                                        <div class="col-md-1">
+                                                            <div class="form-group">
+                                                                <label class="form-check-label" for="CheckBox22" style="margin-right: -10px;">22</label>
+                                                                <input class="form-check-input" type="checkbox" id="CheckBox22" name="CheckBox22" onclick="toggleInput(22)">
+                                                            </div>
+                                                        </div>
+                                                        <input type="text" id="Input22" name="Input22" class="form-control" style="display:none;" placeholder="22" maxlength="500">
+                                                        <div class="col-md-1">
+                                                            <div class="form-group">
+                                                                <label class="form-check-label" for="CheckBox23" style="margin-right: -10px;">23</label>
+                                                                <input class="form-check-input" type="checkbox" id="CheckBox23" name="CheckBox23" onclick="toggleInput(23)">
+                                                            </div>
+                                                        </div>
+                                                        <input type="text" id="Input23" name="Input23" class="form-control" style="display:none;" placeholder="23" maxlength="500">
+                                                        <div class="col-md-1">
+                                                            <div class="form-group">
+                                                                <label class="form-check-label" for="CheckBox24" style="margin-right: -10px;">24</label>
+                                                                <input class="form-check-input" type="checkbox" id="CheckBox24" name="CheckBox24" onclick="toggleInput(24)">
+                                                            </div>
+                                                        </div>
+                                                        <input type="text" id="Input24" name="Input24" class="form-control" style="display:none;" placeholder="24" maxlength="500">
+                                                        <div class="col-md-1">
+                                                            <div class="form-group">
+                                                                <label class="form-check-label" for="CheckBox25" style="margin-right: -10px;">25</label>
+                                                                <input class="form-check-input" type="checkbox" id="CheckBox25" name="CheckBox25" onclick="toggleInput(25)">
+                                                            </div>
+                                                        </div>
+                                                        <input type="text" id="Input25" name="Input25" class="form-control" style="display:none;" placeholder="25" maxlength="500">
+                                                        <div class="col-md-1">
+                                                            <div class="form-group">
+                                                                <label class="form-check-label" for="CheckBox26" style="margin-right: -10px;">26</label>
+                                                                <input class="form-check-input" type="checkbox" id="CheckBox26" name="CheckBox26" onclick="toggleInput(26)">
+                                                            </div>
+                                                        </div>
+                                                        <input type="text" id="Input26" name="Input26" class="form-control" style="display:none;" placeholder="26" maxlength="500">
+                                                        <div class="col-md-1">
+                                                            <div class="form-group">
+                                                                <label class="form-check-label" for="CheckBox27" style="margin-right: -10px;">27</label>
+                                                                <input class="form-check-input" type="checkbox" id="CheckBox27" name="CheckBox27" onclick="toggleInput(27)">
+                                                            </div>
+                                                        </div>
+                                                        <input type="text" id="Input27" name="Input27" class="form-control" style="display:none;" placeholder="27" maxlength="500">
+                                                        <div class="col-md-1">
+                                                            <div class="form-group">
+                                                                <label class="form-check-label" for="CheckBox28" style="margin-right: -10px;">28</label>
+                                                                <input class="form-check-input" type="checkbox" id="CheckBox28" name="CheckBox28" onclick="toggleInput(28)">
+                                                            </div>
+                                                        </div>
+                                                        <input type="text" id="Input28" name="Input28" class="form-control" style="display:none;" placeholder="28" maxlength="500">
+                                                        <div class="col-md-1">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                        </div>
+                                                        <div class="col-md-1">
+                                                            <div class="form-group">
+                                                                <label class="form-check-label" for="CheckBox55" style="margin-right: -10px;">55</label>
+                                                                <input class="form-check-input" type="checkbox" id="CheckBox55" name="CheckBox55" onclick="toggleInput(55)">
+                                                            </div>
+                                                        </div>
+                                                        <input type="text" id="Input55" name="Input55" class="form-control" style="display:none;" placeholder="55" maxlength="500">
+                                                        <div class="col-md-1">
+                                                            <div class="form-group">
+                                                                <label class="form-check-label" for="CheckBox54" style="margin-right: -10px;">54</label>
+                                                                <input class="form-check-input" type="checkbox" id="CheckBox54" name="CheckBox54" onclick="toggleInput(54)">
+                                                            </div>
+                                                        </div>
+                                                        <input type="text" id="Input54" name="Input54" class="form-control" style="display:none;" placeholder="54" maxlength="500">
+                                                        <div class="col-md-1">
+                                                            <div class="form-group">
+                                                                <label class="form-check-label" for="CheckBox53" style="margin-right: -10px;">53</label>
+                                                                <input class="form-check-input" type="checkbox" id="CheckBox53" name="CheckBox53" onclick="toggleInput(53)">
+                                                            </div>
+                                                        </div>
+                                                        <input type="text" id="Input53" name="Input53" class="form-control" style="display:none;" placeholder="53" maxlength="500">
+                                                        <div class="col-md-1">
+                                                            <div class="form-group">
+                                                                <label class="form-check-label" for="CheckBox52" style="margin-right: -10px;">52</label>
+                                                                <input class="form-check-input" type="checkbox" id="CheckBox52" name="CheckBox52" onclick="toggleInput(52)">
+                                                            </div>
+                                                        </div>
+                                                        <input type="text" id="Input52" name="Input52" class="form-control" style="display:none;" placeholder="52" maxlength="500">
+                                                        <div class="col-md-1">
+                                                            <div class="form-group">
+                                                                <label class="form-check-label" for="CheckBox51" style="margin-right: -10px;">51</label>
+                                                                <input class="form-check-input" type="checkbox" id="CheckBox51" name="CheckBox51" onclick="toggleInput(51)">
+                                                            </div>
+                                                        </div>
+                                                        <input type="text" id="Input51" name="Input51" class="form-control" style="display:none;" placeholder="51" maxlength="500">
+                                                    </div>
+                                                    <div class="col-md-1">
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="row">
+                                                        <div class="col-md-1">
+                                                        </div>
+                                                        <div class="col-md-1">
+                                                            <div class="form-group">
+                                                                <label class="form-check-label" for="CheckBox61" style="margin-right: -7px;">61</label>
+                                                                <input class="form-check-input" type="checkbox" id="CheckBox61" name="CheckBox61" onclick="toggleInput(61)">
+                                                            </div>
+                                                        </div>
+                                                        <input type="text" id="Input61" name="Input61" class="form-control" style="display:none;" placeholder="61" maxlength="500">
+                                                        <div class="col-md-1">
+                                                            <div class="form-group">
+                                                                <label class="form-check-label" for="CheckBox62" style="margin-right: -10px;">62</label>
+                                                                <input class="form-check-input" type="checkbox" id="CheckBox62" name="CheckBox62" onclick="toggleInput(62)">
+                                                            </div>
+                                                        </div>
+                                                        <input type="text" id="Input62" name="Input62" class="form-control" style="display:none;" placeholder="62" maxlength="500">
+                                                        <div class="col-md-1">
+                                                            <div class="form-group">
+                                                                <label class="form-check-label" for="CheckBox63" style="margin-right: -10px;">63</label>
+                                                                <input class="form-check-input" type="checkbox" id="CheckBox63" name="CheckBox63" onclick="toggleInput(63)">
+                                                            </div>
+                                                        </div>
+                                                        <input type="text" id="Input63" name="Input63" class="form-control" style="display:none;" placeholder="63" maxlength="500">
+                                                        <div class="col-md-1">
+                                                            <div class="form-group">
+                                                                <label class="form-check-label" for="CheckBox64" style="margin-right: -10px;">64</label>
+                                                                <input class="form-check-input" type="checkbox" id="CheckBox64" name="CheckBox64" onclick="toggleInput(64)">
+                                                            </div>
+                                                        </div>
+                                                        <input type="text" id="Input64" name="Input64" class="form-control" style="display:none;" placeholder="64" maxlength="500">
+                                                        <div class="col-md-1">
+                                                            <div class="form-group">
+                                                                <label class="form-check-label" for="CheckBox65" style="margin-right: -10px;">65</label>
+                                                                <input class="form-check-input" type="checkbox" id="CheckBox65" name="CheckBox65" onclick="toggleInput(65)">
+                                                            </div>
+                                                        </div>
+                                                        <input type="text" id="Input65" name="Input65" class="form-control" style="display:none;" placeholder="65" maxlength="500">
+                                                        <div class="col-md-4">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                        </div>
+                                                        <div class="col-md-1">
+                                                            <div class="form-group">
+                                                                <label class="form-check-label" for="CheckBox85" style="margin-right: -10px;">85</label>
+                                                                <input class="form-check-input" type="checkbox" id="CheckBox85" name="CheckBox85" onclick="toggleInput(85)">
+                                                            </div>
+                                                        </div>
+                                                        <input type="text" id="Input85" name="Input85" class="form-control" style="display:none;" placeholder="85" maxlength="500">
+                                                        <div class="col-md-1">
+                                                            <div class="form-group">
+                                                                <label class="form-check-label" for="CheckBox84" style="margin-right: -10px;">84</label>
+                                                                <input class="form-check-input" type="checkbox" id="CheckBox84" name="CheckBox84" onclick="toggleInput(84)">
+                                                            </div>
+                                                        </div>
+                                                        <input type="text" id="Input84" name="Input84" class="form-control" style="display:none;" placeholder="84" maxlength="500">
+                                                        <div class="col-md-1">
+                                                            <div class="form-group">
+                                                                <label class="form-check-label" for="CheckBox83" style="margin-right: -10px;">83</label>
+                                                                <input class="form-check-input" type="checkbox" id="CheckBox83" name="CheckBox83" onclick="toggleInput(83)">
+                                                            </div>
+                                                        </div>
+                                                        <input type="text" id="Input83" name="Input83" class="form-control" style="display:none;" placeholder="83" maxlength="500">
+                                                        <div class="col-md-1">
+                                                            <div class="form-group">
+                                                                <label class="form-check-label" for="CheckBox82" style="margin-right: -10px;">82</label>
+                                                                <input class="form-check-input" type="checkbox" id="CheckBox82" name="CheckBox82" onclick="toggleInput(82)">
+                                                            </div>
+                                                        </div>
+                                                        <input type="text" id="Input82" name="Input82" class="form-control" style="display:none;" placeholder="82" maxlength="500">
+                                                        <div class="col-md-1">
+                                                            <div class="form-group">
+                                                                <label class="form-check-label" for="CheckBox81" style="margin-right: -10px;">81</label>
+                                                                <input class="form-check-input" type="checkbox" id="CheckBox81" name="CheckBox81" onclick="toggleInput(81)">
+                                                            </div>
+                                                        </div>
+                                                        <input type="text" id="Input81" name="Input81" class="form-control" style="display:none;" placeholder="81" maxlength="500">
+                                                    </div>
+                                                    <div class="col-md-1">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="row">
+                                                        <div class="col-md-1">
+                                                        </div>
+                                                        <div class="col-md-1">
+                                                            <div class="form-group">
+                                                                <label class="form-check-label" for="CheckBox71" style="margin-right: -6px;">71</label>
+                                                                <input class="form-check-input" type="checkbox" id="CheckBox71" name="CheckBox71" onclick="toggleInput(71)">
+                                                            </div>
+                                                        </div>
+                                                        <input type="text" id="Input71" name="Input71" class="form-control" style="display:none;" placeholder="71" maxlength="500">
+                                                        <div class="col-md-1">
+                                                            <div class="form-group">
+                                                                <label class="form-check-label" for="CheckBox72" style="margin-right: -10px;">72</label>
+                                                                <input class="form-check-input" type="checkbox" id="CheckBox72" name="CheckBox72" onclick="toggleInput(72)">
+                                                            </div>
+                                                        </div>
+                                                        <input type="text" id="Input72" name="Input72" class="form-control" style="display:none;" placeholder="72" maxlength="500">
+                                                        <div class="col-md-1">
+                                                            <div class="form-group">
+                                                                <label class="form-check-label" for="CheckBox73" style="margin-right: -10px;">73</label>
+                                                                <input class="form-check-input" type="checkbox" id="CheckBox73" name="CheckBox73" onclick="toggleInput(73)">
+                                                            </div>
+                                                        </div>
+                                                        <input type="text" id="Input73" name="Input73" class="form-control" style="display:none;" placeholder="73" maxlength="500">
+                                                        <div class="col-md-1">
+                                                            <div class="form-group">
+                                                                <label class="form-check-label" for="CheckBox74" style="margin-right: -10px;">74</label>
+                                                                <input class="form-check-input" type="checkbox" id="CheckBox74" name="CheckBox74" onclick="toggleInput(74)">
+                                                            </div>
+                                                        </div>
+                                                        <input type="text" id="Input74" name="Input74" class="form-control" style="display:none;" placeholder="74" maxlength="500">
+                                                        <div class="col-md-1">
+                                                            <div class="form-group">
+                                                                <label class="form-check-label" for="CheckBox75" style="margin-right: -10px;">75</label>
+                                                                <input class="form-check-input" type="checkbox" id="CheckBox75" name="CheckBox75" onclick="toggleInput(75)">
+                                                            </div>
+                                                        </div>
+                                                        <input type="text" id="Input75" name="Input75" class="form-control" style="display:none;" placeholder="75" maxlength="500">
+                                                        <div class="col-md-4">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="row">
+                                                        <div class="col-md-1">
+                                                        </div>
+                                                        <div class="col-md-1">
+                                                            <div class="form-group">
+                                                                <label class="form-check-label" for="CheckBox48" style="margin-right: -10px;">48</label>
+                                                                <input class="form-check-input" type="checkbox" id="CheckBox48" name="CheckBox48" onclick="toggleInput(48)">
+                                                            </div>
+                                                        </div>
+                                                        <input type="text" id="Input48" name="Input48" class="form-control" style="display:none;" placeholder="48" maxlength="500">
+                                                        <div class="col-md-1">
+                                                            <div class="form-group">
+                                                                <label class="form-check-label" for="CheckBox47" style="margin-right: -10px;">47</label>
+                                                                <input class="form-check-input" type="checkbox" id="CheckBox47" name="CheckBox47" onclick="toggleInput(47)">
+                                                            </div>
+                                                        </div>
+                                                        <input type="text" id="Input47" name="Input47" class="form-control" style="display:none;" placeholder="47" maxlength="500">
+                                                        <div class="col-md-1">
+                                                            <div class="form-group">
+                                                                <label class="form-check-label" for="CheckBox46" style="margin-right: -10px;">46</label>
+                                                                <input class="form-check-input" type="checkbox" id="CheckBox46" name="CheckBox46" onclick="toggleInput(46)">
+                                                            </div>
+                                                        </div>
+                                                        <input type="text" id="Input46" name="Input46" class="form-control" style="display:none;" placeholder="46" maxlength="500">
+                                                        <div class="col-md-1">
+                                                            <div class="form-group">
+                                                                <label class="form-check-label" for="CheckBox45" style="margin-right: -10px;">45</label>
+                                                                <input class="form-check-input" type="checkbox" id="CheckBox45" name="CheckBox45" onclick="toggleInput(45)">
+                                                            </div>
+                                                        </div>
+                                                        <input type="text" id="Input45" name="Input45" class="form-control" style="display:none;" placeholder="45" maxlength="500">
+                                                        <div class="col-md-1">
+                                                            <div class="form-group">
+                                                                <label class="form-check-label" for="CheckBox44" style="margin-right: -10px;">44</label>
+                                                                <input class="form-check-input" type="checkbox" id="CheckBox44" name="CheckBox44" onclick="toggleInput(44)">
+                                                            </div>
+                                                        </div>
+                                                        <input type="text" id="Input44" name="Input44" class="form-control" style="display:none;" placeholder="44" maxlength="500">
+                                                        <div class="col-md-1">
+                                                            <div class="form-group">
+                                                                <label class="form-check-label" for="CheckBox43" style="margin-right: -10px;">43</label>
+                                                                <input class="form-check-input" type="checkbox" id="CheckBox43" name="CheckBox43" onclick="toggleInput(43)">
+                                                            </div>
+                                                        </div>
+                                                        <input type="text" id="Input43" name="Input43" class="form-control" style="display:none;" placeholder="43" maxlength="500">
+                                                        <div class="col-md-1">
+                                                            <div class="form-group">
+                                                                <label class="form-check-label" for="CheckBox42" style="margin-right: -10px;">42</label>
+                                                                <input class="form-check-input" type="checkbox" id="CheckBox42" name="CheckBox42" onclick="toggleInput(42)">
+                                                            </div>
+                                                        </div>
+                                                        <input type="text" id="Input42" name="Input42" class="form-control" style="display:none;" placeholder="42" maxlength="500">
+                                                        <div class="col-md-1">
+                                                            <div class="form-group">
+                                                                <label class="form-check-label" for="CheckBox41" style="margin-right: -10px;">41</label>
+                                                                <input class="form-check-input" type="checkbox" id="CheckBox41" name="CheckBox41" onclick="toggleInput(41)">
+                                                            </div>
+                                                        </div>
+                                                        <input type="text" id="Input41" name="Input41" class="form-control" style="display:none;" placeholder="41" maxlength="500">
+                                                        <div class="col-md-1">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="row">
+                                                        <div class="col-md-1">
+                                                        </div>
+                                                        <div class="col-md-1">
+                                                            <div class="form-group">
+                                                                <label class="form-check-label" for="CheckBox31" style="margin-right: -7px;">31</label>
+                                                                <input class="form-check-input" type="checkbox" id="CheckBox31" name="CheckBox31" onclick="toggleInput(31)">
+                                                            </div>
+                                                        </div>
+                                                        <input type="text" id="Input31" name="Input31" class="form-control" style="display:none;" placeholder="31" maxlength="500">
+                                                        <div class="col-md-1">
+                                                            <div class="form-group">
+                                                                <label class="form-check-label" for="CheckBox32" style="margin-right: -10px;">32</label>
+                                                                <input class="form-check-input" type="checkbox" id="CheckBox32" name="CheckBox32" onclick="toggleInput(32)">
+                                                            </div>
+                                                        </div>
+                                                        <input type="text" id="Input32" name="Input32" class="form-control" style="display:none;" placeholder="32" maxlength="500">
+                                                        <div class="col-md-1">
+                                                            <div class="form-group">
+                                                                <label class="form-check-label" for="CheckBox33" style="margin-right: -10px;">33</label>
+                                                                <input class="form-check-input" type="checkbox" id="CheckBox33" name="CheckBox33" onclick="toggleInput(33)">
+                                                            </div>
+                                                        </div>
+                                                        <input type="text" id="Input33" name="Input33" class="form-control" style="display:none;" placeholder="33" maxlength="500">
+                                                        <div class="col-md-1">
+                                                            <div class="form-group">
+                                                                <label class="form-check-label" for="CheckBox34" style="margin-right: -10px;">34</label>
+                                                                <input class="form-check-input" type="checkbox" id="CheckBox34" name="CheckBox34" onclick="toggleInput(34)">
+                                                            </div>
+                                                        </div>
+                                                        <input type="text" id="Input34" name="Input34" class="form-control" style="display:none;" placeholder="34" maxlength="500">
+                                                        <div class="col-md-1">
+                                                            <div class="form-group">
+                                                                <label class="form-check-label" for="CheckBox35" style="margin-right: -10px;">35</label>
+                                                                <input class="form-check-input" type="checkbox" id="CheckBox35" name="CheckBox35" onclick="toggleInput(35)">
+                                                            </div>
+                                                        </div>
+                                                        <input type="text" id="Input35" name="Input35" class="form-control" style="display:none;" placeholder="35" maxlength="500">
+                                                        <div class="col-md-1">
+                                                            <div class="form-group">
+                                                                <label class="form-check-label" for="CheckBox36" style="margin-right: -10px;">36</label>
+                                                                <input class="form-check-input" type="checkbox" id="CheckBox36" name="CheckBox36" onclick="toggleInput(36)">
+                                                            </div>
+                                                        </div>
+                                                        <input type="text" id="Input36" name="Input36" class="form-control" style="display:none;" placeholder="36" maxlength="500">
+                                                        <div class="col-md-1">
+                                                            <div class="form-group">
+                                                                <label class="form-check-label" for="CheckBox37" style="margin-right: -10px;">37</label>
+                                                                <input class="form-check-input" type="checkbox" id="CheckBox37" name="CheckBox37" onclick="toggleInput(37)">
+                                                            </div>
+                                                        </div>
+                                                        <input type="text" id="Input37" name="Input37" class="form-control" style="display:none;" placeholder="37" maxlength="500">
+                                                        <div class="col-md-1">
+                                                            <div class="form-group">
+                                                                <label class="form-check-label" for="CheckBox38" style="margin-right: -10px;">38</label>
+                                                                <input class="form-check-input" type="checkbox" id="CheckBox38" name="CheckBox38" onclick="toggleInput(38)">
+                                                            </div>
+                                                        </div>
+                                                        <input type="text" id="Input38" name="Input38" class="form-control" style="display:none;" placeholder="38" maxlength="500">
+                                                        <div class="col-md-1">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="row">
+                                                        <p>
+                                                            18: <span id="Input18"></span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p>
+                                                            17: <span id="Input17"></span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p>
+                                                            16: <span id="Input16"></span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p>
+                                                            15: <span id="Input15"></span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p>
+                                                            14: <span id="Input14"></span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p>
+                                                            13: <span id="Input13"></span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p>
+                                                            12: <span id="Input12"></span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p>
+                                                            11: <span id="Input11"></span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="row">
+                                                        <p>
+                                                            21: <span id="Input21"></span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p>
+                                                            22: <span id="Input22"></span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p>
+                                                            23: <span id="Input23"></span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p>
+                                                            24: <span id="Input24"></span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p>
+                                                            25: <span id="Input25"></span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p>
+                                                            26: <span id="Input26"></span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p>
+                                                            27: <span id="Input27"></span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p>
+                                                            28: <span id="Input28"></span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="row">
+                                                        <p>
+                                                            55: <span id="Input55"></span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p>
+                                                            54: <span id="Input54"></span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p>
+                                                            53: <span id="Input53"></span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p>
+                                                            52: <span id="Input52"></span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p>
+                                                            51: <span id="Input51"></span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="row">
+                                                        <p>
+                                                            61: <span id="Input61"></span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p>
+                                                            62: <span id="Input62"></span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p>
+                                                            63: <span id="Input63"></span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p>
+                                                            64: <span id="Input64"></span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p>
+                                                            65: <span id="Input65"></span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="row">
+                                                        <p>
+                                                            85: <span id="Input85"></span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p>
+                                                            84: <span id="Input84"></span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p>
+                                                            83: <span id="Input83"></span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p>
+                                                            82: <span id="Input82"></span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p>
+                                                            81: <span id="Input81"></span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="row">
+                                                        <p>
+                                                            71: <span id="Input71"></span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p>
+                                                            72: <span id="Input72"></span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p>
+                                                            73: <span id="Input73"></span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p>
+                                                            74: <span id="Input74"></span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p>
+                                                            75: <span id="Input75"></span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="row">
+                                                        <p>
+                                                            48: <span id="Input48"></span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p>
+                                                            47: <span id="Input47"></span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p>
+                                                            46: <span id="Input46"></span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p>
+                                                            45: <span id="Input45"></span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p>
+                                                            44: <span id="Input44"></span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p>
+                                                            43: <span id="Input43"></span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p>
+                                                            42: <span id="Input42"></span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p>
+                                                            41: <span id="Input41"></span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="row">
+                                                        <p>
+                                                            31: <span id="Input31"></span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p>
+                                                            32: <span id="Input32"></span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p>
+                                                            33: <span id="Input33"></span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p>
+                                                            34: <span id="Input34"></span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p>
+                                                            35: <span id="Input35"></span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p>
+                                                            36: <span id="Input36"></span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p>
+                                                            37: <span id="Input37"></span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p>
+                                                            38: <span id="Input38"></span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <div class="row">
+                                                <p>
+                                                    Evaluación funcional - Alta: <span id="AltaODO"></span>
+                                                </p>
+                                            </div>
+                                            <div class="row">
+                                                <p>
+                                                    Evaluación funcional - Media: <span id="MediaODO"></span>
+                                                </p>
+                                            </div>
+                                            <div class="row">
+                                                <p>
+                                                    Evaluación funcional - Baja: <span id="BajaODO"></span>
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
                                     <hr />
