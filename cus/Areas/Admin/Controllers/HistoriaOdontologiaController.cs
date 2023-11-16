@@ -2183,6 +2183,281 @@ namespace CUS.Areas.Admin.Controllers
 
         #endregion
 
+        public class Propiedades_HC
+        {
+            //HISTORIA DENTAL
+            public string PrimeraVisitaODO { get; set; }
+            public string TratamientosRealizadoaODO { get; set; }
+            public string FamiliarPadecidoODO { get; set; }
+            public string GolpeadoDientesODO { get; set; }
+            public string Especifica_GolpeadoDienODO { get; set; }
+            public string PacienteCooperoODO { get; set; }
+            public string InteresConservarDienODO { get; set; }
+            public string SatisfechoODO { get; set; }
+            public string Especifica_SatisfechoODO { get; set; }
+            //INFORMACION PERI
+            public string EmbarazoTerminoODO { get; set; }
+            public string Motivo_EmbarazoTerODO { get; set; }
+            public string CompEmbarazoODO { get; set; }
+            public string PesoNacerODO { get; set; }
+            public string EstaturaNacerODO { get; set; }
+            public string TipoLactanciaODO { get; set; }
+            public string TiempoLactanciaODO { get; set; }
+            public string MostroCartillaODO { get; set; }
+            public string EsquemaCompletoODO { get; set; }
+            public string Especifica_EsquemaComODO { get; set; }
+            //HABITOS
+            public string ConsCarbohidratosODO { get; set; }
+            public string AlimEntreComidasODO { get; set; }
+            public string Especifica_AlimEntreComidasODO { get; set; }
+            public string HigieneOralODO { get; set; }
+            public string Frecuencia_HigieneOralODO { get; set; }
+            public bool? Solo_HigieneOralODO { get; set; }
+            public bool? ConAyuda_HigieneOralODO { get; set; }
+            public string TipoCepillo_HigieneOralODO { get; set; }
+            public string TipoPasta_HigieneOralODO { get; set; }
+            public bool? SuccionLabialODO { get; set; }
+            public bool? MorderObjetosODO { get; set; }
+            public bool? RespiracionOralODO { get; set; }
+            public bool? SuccionDigitalODO { get; set; }
+            public bool? OnicofagiaODO { get; set; }
+            public bool? BruxismoODO { get; set; }
+            public bool? BiberonODO { get; set; }
+            public bool? ChuponODO { get; set; }
+            //EVALUACION FUNCIONAL
+            public bool? FA_Sup_Redondo { get; set; }
+            public bool? FA_Sup_Triangular { get; set; }
+            public bool? FA_Sup_Cuadrado { get; set; }
+            public bool? FA_Inf_Redondo { get; set; }
+            public bool? FA_Inf_Triangular { get; set; }
+            public bool? FA_Inf_Cuadrado { get; set; }
+            public bool? FA_MA_Anterior { get; set; }
+            public bool? FA_MA_Posterior { get; set; }
+            public bool? FA_MA_NoAplica { get; set; }
+            public bool? FA_MC_Anterior { get; set; }
+            public bool? FA_MC_Posterior { get; set; }
+            public bool? FA_MC_NoAplica { get; set; }
+            public bool? SMI_Der_EscalonM { get; set; }
+            public bool? SMI_Der_EscalonD { get; set; }
+            public bool? SMI_Der_PlanoRecto { get; set; }
+            public bool? SMI_Der_NoAplica { get; set; }
+            public bool? SMI_Izq_EscalonM { get; set; }
+            public bool? SMI_Izq_EscalonD { get; set; }
+            public bool? SMI_Izq_PlanoRecto { get; set; }
+            public bool? SMI_Izq_NoAplica { get; set; }
+            public bool? CPri_Der_ClaseI { get; set; }
+            public bool? CPri_Der_ClaseII { get; set; }
+            public bool? CPri_Der_ClaseIII { get; set; }
+            public bool? CPri_Der_NoAplica { get; set; }
+            public bool? CPri_Izq_ClaseI { get; set; }
+            public bool? CPri_Izq_ClaseII { get; set; }
+            public bool? CPri_Izq_ClaseIII { get; set; }
+            public bool? CPri_Izq_NoAplica { get; set; }
+            public bool? PMP_Der_ClaseI { get; set; }
+            public bool? PMP_Der_ClaseII { get; set; }
+            public bool? PMP_Der_ClaseIII { get; set; }
+            public bool? PMP_Der_NoAplica { get; set; }
+            public bool? PMP_Izq_ClaseI { get; set; }
+            public bool? PMP_Izq_ClaseII { get; set; }
+            public bool? PMP_Izq_ClaseIII { get; set; }
+            public bool? PMP_Izq_NoAplica { get; set; }
+            public bool? CPer_Der_ClaseI { get; set; }
+            public bool? CPer_Der_ClaseII { get; set; }
+            public bool? CPer_Der_ClaseIII { get; set; }
+            public bool? CPer_Der_NoAplica { get; set; }
+            public bool? CPer_Izq_ClaseI { get; set; }
+            public bool? CPer_Izq_ClaseII { get; set; }
+            public bool? CPer_Izq_ClaseIII { get; set; }
+            public bool? CPer_Izq_NoAplica { get; set; }
+            //ANTECEDENTES OBS
+            public string EmbarazadaODO { get; set; }
+            public string SemanaGestaODO { get; set; }
+            //RIESGO
+            public string HemodialisisODO { get; set; }
+            public string TatuajesPerforacionesODO { get; set; }
+            public string Tiempo_TatuajesPerfoODO { get; set; }
+            //ODONTOGRAMA
+            public string MasticaDientesODO { get; set; }
+            public bool? CheckBox18 { get; set; }
+            public string Input18 { get; set; }
+            public bool? CheckBox17 { get; set; }
+            public string Input17 { get; set; }
+            public bool? CheckBox16 { get; set; }
+            public string Input16 { get; set; }
+            public bool? CheckBox15 { get; set; }
+            public string Input15 { get; set; }
+            public bool? CheckBox14 { get; set; }
+            public string Input14 { get; set; }
+            public bool? CheckBox13 { get; set; }
+            public string Input13 { get; set; }
+            public bool? CheckBox12 { get; set; }
+            public string Input12 { get; set; }
+            public bool? CheckBox11 { get; set; }
+            public string Input11 { get; set; }
+            public bool? CheckBox21 { get; set; }
+            public string Input21 { get; set; }
+            public bool? CheckBox22 { get; set; }
+            public string Input22 { get; set; }
+            public bool? CheckBox23 { get; set; }
+            public string Input23 { get; set; }
+            public bool? CheckBox24 { get; set; }
+            public string Input24 { get; set; }
+            public bool? CheckBox25 { get; set; }
+            public string Input25 { get; set; }
+            public bool? CheckBox26 { get; set; }
+            public string Input26 { get; set; }
+            public bool? CheckBox27 { get; set; }
+            public string Input27 { get; set; }
+            public bool? CheckBox28 { get; set; }
+            public string Input28 { get; set; }
+            public bool? CheckBox55 { get; set; }
+            public string Input55 { get; set; }
+            public bool? CheckBox54 { get; set; }
+            public string Input54 { get; set; }
+            public bool? CheckBox53 { get; set; }
+            public string Input53 { get; set; }
+            public bool? CheckBox52 { get; set; }
+            public string Input52 { get; set; }
+            public bool? CheckBox51 { get; set; }
+            public string Input51 { get; set; }
+            public bool? CheckBox61 { get; set; }
+            public string Input61 { get; set; }
+            public bool? CheckBox62 { get; set; }
+            public string Input62 { get; set; }
+            public bool? CheckBox63 { get; set; }
+            public string Input63 { get; set; }
+            public bool? CheckBox64 { get; set; }
+            public string Input64 { get; set; }
+            public bool? CheckBox65 { get; set; }
+            public string Input65 { get; set; }
+            public bool? CheckBox85 { get; set; }
+            public string Input85 { get; set; }
+            public bool? CheckBox84 { get; set; }
+            public string Input84 { get; set; }
+            public bool? CheckBox83 { get; set; }
+            public string Input83 { get; set; }
+            public bool? CheckBox82 { get; set; }
+            public string Input82 { get; set; }
+            public bool? CheckBox81 { get; set; }
+            public string Input81 { get; set; }
+            public bool? CheckBox71 { get; set; }
+            public string Input71 { get; set; }
+            public bool? CheckBox72 { get; set; }
+            public string Input72 { get; set; }
+            public bool? CheckBox73 { get; set; }
+            public string Input73 { get; set; }
+            public bool? CheckBox74 { get; set; }
+            public string Input74 { get; set; }
+            public bool? CheckBox75 { get; set; }
+            public string Input75 { get; set; }
+            public bool? CheckBox48 { get; set; }
+            public string Input48 { get; set; }
+            public bool? CheckBox47 { get; set; }
+            public string Input47 { get; set; }
+            public bool? CheckBox46 { get; set; }
+            public string Input46 { get; set; }
+            public bool? CheckBox45 { get; set; }
+            public string Input45 { get; set; }
+            public bool? CheckBox44 { get; set; }
+            public string Input44 { get; set; }
+            public bool? CheckBox43 { get; set; }
+            public string Input43 { get; set; }
+            public bool? CheckBox42 { get; set; }
+            public string Input42 { get; set; }
+            public bool? CheckBox41 { get; set; }
+            public string Input41 { get; set; }
+            public bool? CheckBox31 { get; set; }
+            public string Input31 { get; set; }
+            public bool? CheckBox32 { get; set; }
+            public string Input32 { get; set; }
+            public bool? CheckBox33 { get; set; }
+            public string Input33 { get; set; }
+            public bool? CheckBox34 { get; set; }
+            public string Input34 { get; set; }
+            public bool? CheckBox35 { get; set; }
+            public string Input35 { get; set; }
+            public bool? CheckBox36 { get; set; }
+            public string Input36 { get; set; }
+            public bool? CheckBox37 { get; set; }
+            public string Input37 { get; set; }
+            public bool? CheckBox38 { get; set; }
+            public string Input38 { get; set; }
+            public bool? AltaODO { get; set; }
+            public bool? MediaODO { get; set; }
+            public bool? BajaODO { get; set; }
+            //RESULTADOS LAB
+            public string ResultadoODO { get; set; }
+            public string Especifica_ResultadoODO { get; set; }
+            //IMPRESIÓN DIAGNOSTICA
+            public string diagnostico1ODO { get; set; }
+            public string diagnostico2ODO { get; set; }
+            public string diagnostico3ODO { get; set; }
+            public string diagnostico4ODO { get; set; }
+            public string diagnostico5ODO { get; set; }
+            //Plan
+            public string PlanODO { get; set; }
+            //Pronostico
+            public bool? LigadoEvolucionODO { get; set; }
+            public bool? FavorableODO { get; set; }
+            public bool? DesfavorableODO { get; set; }
+            //Otros
+            public string InterconsultaODO { get; set; }
+            public string PadecimientoActualODO { get; set; }
+            public string Especifica_PadecimientoActualODO { get; set; }
+            public string ProximaCitaODO { get; set; }
+        }
 
+        //********      Función para buscar el detalle de la H.C. en el MODAL
+        [HttpPost]
+        public ActionResult ConsultarHC_Odo(string Clave_hc_px, string TipoHistoria)//Este parametro lo recivimos de la vista, "Clave_hc_px" viene siendo el Identificador armado de la HC que se desea ver
+        {
+            try
+            {
+                Propiedades_HC HC = new Propiedades_HC();
+
+                string query =
+                "SELECT HD.PrimeraVisitaODO, HD.TratamientosRealizadoaODO, HD.FamiliarPadecidoODO, HD.GolpeadoDientesODO, HD.Especifica_GolpeadoDienODO, HD.PacienteCooperoODO, HD.InteresConservarDienODO, HD.SatisfechoODO, HD.Especifica_SatisfechoODO, " +
+                "InP.EmbarazoTerminoODO, InP.Motivo_EmbarazoTerODO, InP.CompEmbarazoODO, InP.PesoNacerODO, InP.EstaturaNacerODO, InP.TipoLactanciaODO, InP.TiempoLactanciaODO, InP.MostroCartillaODO, InP.EsquemaCompletoODO, InP.Especifica_EsquemaComODO, " +
+                "H.ConsCarbohidratosODO, H.AlimEntreComidasODO, H.Especifica_AlimEntreComidasODO, H.HigieneOralODO, H.Frecuencia_HigieneOralODO, H.Solo_HigieneOralODO, H.ConAyuda_HigieneOralODO, H.TipoCepillo_HigieneOralODO, H.TipoPasta_HigieneOralODO, H.SuccionLabialODO, H.MorderObjetosODO, H.RespiracionOralODO, H.SuccionDigitalODO, H.OnicofagiaODO, H.BruxismoODO, H.BiberonODO, H.ChuponODO, " +
+                "EF.FA_Sup_Redondo, EF.FA_Sup_Triangular, EF.FA_Sup_Cuadrado, EF.FA_Inf_Redondo, EF.FA_Inf_Triangular, EF.FA_Inf_Cuadrado, EF.FA_MA_Anterior, EF.FA_MA_Posterior, EF.FA_MA_NoAplica, EF.FA_MC_Anterior, EF.FA_MC_Posterior, EF.FA_MC_NoAplica, " +
+                "EF.SMI_Der_EscalonM, EF.SMI_Der_EscalonD, EF.SMI_Der_PlanoRecto, EF.SMI_Der_NoAplica, EF.SMI_Izq_EscalonM, EF.SMI_Izq_EscalonD, EF.SMI_Izq_PlanoRecto, EF.SMI_Izq_NoAplica, " +
+                "EF.CPri_Der_ClaseI, EF.CPri_Der_ClaseII, EF.CPri_Der_ClaseIII, EF.CPri_Der_NoAplica, EF.CPri_Izq_ClaseI, EF.CPri_Izq_ClaseII, EF.CPri_Izq_ClaseIII, EF.CPri_Izq_NoAplica, " +
+                "EF.PMP_Der_ClaseI, EF.PMP_Der_ClaseII, EF.PMP_Der_ClaseIII, EF.PMP_Der_NoAplica, EF.PMP_Izq_ClaseI, EF.PMP_Izq_ClaseII, EF.PMP_Izq_ClaseIII, EF.PMP_Izq_NoAplica, " +
+                "EF.CPer_Der_ClaseI, EF.CPer_Der_ClaseII, EF.CPer_Der_ClaseIII, EF.CPer_Der_NoAplica, EF.CPer_Izq_ClaseI, EF.CPer_Izq_ClaseII, EF.CPer_Izq_ClaseIII, EF.CPer_Izq_NoAplica, " +
+                "AO.EmbarazadaODO, AO.SemanaGestaODO, " +
+                "R.HemodialisisODO, R.TatuajesPerforacionesODO, R.Tiempo_TatuajesPerfoODO, " +
+                "Od.MasticaDientesODO,Od.CheckBox18,Od.Input18,Od.CheckBox17,Od.Input17,Od.CheckBox16,Od.Input16,Od.CheckBox15,Od.Input15,Od.CheckBox14,Od.Input14,Od.CheckBox13,Od.Input13,Od.CheckBox12,Od.Input12,Od.CheckBox11,Od.Input11,Od.CheckBox21,Od.Input21,Od.CheckBox22,Od.Input22,Od.CheckBox23,Od.Input23,Od.CheckBox24,Od.Input24,Od.CheckBox25,Od.Input25,Od.CheckBox26,Od.Input26,Od.CheckBox27,Od.Input27,Od.CheckBox28,Od.Input28,Od.CheckBox55,Od.Input55, " +
+                "Od.CheckBox54,Od.Input54,Od.CheckBox53,Od.Input53,Od.CheckBox52,Od.Input52,Od.CheckBox51,Od.Input51,Od.CheckBox61,Od.Input61,Od.CheckBox62,Od.Input62,Od.CheckBox63,Od.Input63,Od.CheckBox64,Od.Input64,Od.CheckBox65,Od.Input65,Od.CheckBox85,Od.Input85,Od.CheckBox84,Od.Input84,Od.CheckBox83,Od.Input83,Od.CheckBox82,Od.Input82,Od.CheckBox81,Od.Input81,Od.CheckBox71,Od.Input71,Od.CheckBox72,Od.Input72,Od.CheckBox73,Od.Input73,Od.CheckBox74,Od.Input74, " +
+                "Od.CheckBox75,Od.Input75,Od.CheckBox48,Od.Input48,Od.CheckBox47,Od.Input47,Od.CheckBox46,Od.Input46,Od.CheckBox45,Od.Input45,Od.CheckBox44,Od.Input44,Od.CheckBox43,Od.Input43,Od.CheckBox42,Od.Input42,Od.CheckBox41,Od.Input41,Od.CheckBox31,Od.Input31,Od.CheckBox32,Od.Input32,Od.CheckBox33,Od.Input33,Od.CheckBox34,Od.Input34,Od.CheckBox35,Od.Input35,Od.CheckBox36,Od.Input36,Od.CheckBox37,Od.Input37,Od.CheckBox38,Od.Input38,Od.AltaODO,Od.MediaODO,Od.BajaODO, " +
+                "RL.ResultadoODO, RL.Especifica_ResultadoODO, " +
+                "ID.diagnostico1ODO,ID.diagnostico2ODO,ID.diagnostico3ODO,ID.diagnostico4ODO,ID.diagnostico5ODO, " +
+                "PL.[PlanODO], " +
+                "PR.LigadoEvolucionODO, PR.FavorableODO, PR.DesfavorableODO, " +
+                "O.InterconsultaODO, O.PadecimientoActualODO, O.Especifica_PadecimientoActualODO, O.ProximaCitaODO " +
+                        "FROM HistoriaClinica HCli " +
+                                "LEFT JOIN hc_ODO_HistoriaDental      HD ON HD.Clave_hc_px = HCli.Clave_hc_px " +
+                                "LEFT JOIN hc_ODO_InformacionPeri     InP ON InP.Clave_hc_px = HCli.Clave_hc_px " +
+                                "LEFT JOIN hc_ODO_Habitos             H ON H.Clave_hc_px = HCli.Clave_hc_px " +
+                                "LEFT JOIN hc_ODO_EvaluacionFuncional EF ON EF.Clave_hc_px = HCli.Clave_hc_px " +
+                                "LEFT JOIN hc_ODO_AntecedentesObs     AO ON AO.Clave_hc_px = HCli.Clave_hc_px " +
+                                "LEFT JOIN hc_ODO_Riesgo              R ON R.Clave_hc_px = HCli.Clave_hc_px " +
+                                "LEFT JOIN hc_ODO_Odontograma         Od ON Od.Clave_hc_px = HCli.Clave_hc_px " +
+                                "LEFT JOIN hc_ODO_ResultadoLaboratorio RL ON RL.Clave_hc_px = HCli.Clave_hc_px " +
+                                "LEFT JOIN hc_ODO_ImpresionDiag        ID ON ID.Clave_hc_px = HCli.Clave_hc_px " +
+                                "LEFT JOIN hc_ODO_Plan                 PL ON PL.Clave_hc_px = HCli.Clave_hc_px " +
+                                "LEFT JOIN hc_ODO_Pronostico           PR ON PR.Clave_hc_px = HCli.Clave_hc_px " +
+                                "LEFT JOIN hc_ODO_Otros                O ON O.Clave_hc_px = HCli.Clave_hc_px " +
+                                        "WHERE HCli.Clave_hc_px = '" + Clave_hc_px + "' ";
+
+                var result = hcNut.Database.SqlQuery<Propiedades_HC>(query);
+                HC = result.FirstOrDefault();
+
+                return new JsonResult { Data = HC, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            }
+            catch (Exception ex)
+            {
+                return Json(new { MENSAJE = "Error: Error de sistema: " + ex.Message }, JsonRequestBehavior.AllowGet);
+            }
+        }
     }
 }
