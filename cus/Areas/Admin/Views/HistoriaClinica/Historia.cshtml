@@ -4213,6 +4213,19 @@
             });
         });
 
+        $('#exampleModal').on('hidden.bs.modal', function () {
+            // Establecer la pestaña activa en "tab01" cuando se cierra el modal
+            $(".tabs").removeClass("active");
+            $(".tabs h6").removeClass("font-weight-bold");
+            $(".tabs h6").addClass("text-muted");
+            $("#tab01").children("h6").removeClass("text-muted");
+            $("#tab01").children("h6").addClass("font-weight-bold");
+            $("#tab01").addClass("active");
+
+            $("fieldset").removeClass("show");
+            $("#tab011").addClass("show");
+        });
+
         FuncionBuscarPX();
     });
 
@@ -4628,21 +4641,6 @@
 			    });
 		    }
         });
-    });
-
-    $('#exampleModal').on('hidden.bs.modal', function () {
-        //// Establece la pestaña activa en "tab01" cuando se cierra el modal
-        //$(".tabs").removeClass("active");
-        //$(".tabs h6").removeClass("font-weight-bold");
-        //$(".tabs h6").addClass("text-muted");
-        //$("#tab01").children("h6").removeClass("text-muted");
-        //$("#tab01").children("h6").addClass("font-weight-bold");
-        //$("#tab01").addClass("active");
-        //$("fieldset").removeClass("show");
-        //$("#tab011").addClass("show");
-
-        //FuncionBuscarPX();
-        alert('hola');
     });
 
     function Tab2() {
