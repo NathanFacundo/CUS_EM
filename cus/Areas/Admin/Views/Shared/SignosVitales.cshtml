@@ -314,6 +314,7 @@
     }
 
     slider.oninput = function () {
+        //alert('dsds');
         $(level).css("visibility", "visible");
         var currentLevel = this.value;
         var painLevel = findPainLevel(currentLevel);
@@ -346,17 +347,32 @@
         morphFace(painLevel);
 
     }
-</script>
 
 
-<script>
-    var expediente = "@expediente";
+
+
+    var expediente = "@Model.Expediente";
     $.ajax({
         url: '@Url.Action("ConsultarSignosVitales", "Enfermeria")',
         dataType: 'json',
         data: { expediente: expediente},
         success: function (data) {
-            $("#peso").val(data);
+            //alert(data);
+            $("#slider").val(data.escala_dolor);
+            $("#peso").val(data.peso);
+            $("#talla").val(data.talla);
+            $("#temp").val(data.temperatura);
+            $("#fresp1").val(data.fresp);
+            $("#fcard1").val(data.fcard);
+            $("#t").val(data.ta1);
+            $("#a").val(data.ta2);
+            $("#destrostrix").val(data.dstx);
+
+            if (data != "") {
+                moveGauge(data.escala_dolor);
+            }
+
+
         },
         error: function(ex) {
             Swal.fire({
@@ -365,4 +381,9 @@
             });
         }
     });
+
+
+
 </script>
+
+

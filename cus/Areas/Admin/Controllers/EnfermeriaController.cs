@@ -171,8 +171,26 @@ namespace CUS.Areas.Admin.Controllers
 
         public JsonResult ConsultarSignosVitales(string expediente)
         {
-            var escala_dolor = 1;
-            return new JsonResult { Data = escala_dolor, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            //var escala_dolor = 1;
+
+            var ultimoRegistro = (from a in db.SignosVitales
+                                       where a.expediente == expediente
+                                  select a).
+                              OrderByDescending(r => r.fecha)
+                              .FirstOrDefault();
+
+            if(ultimoRegistro != null)
+            {
+                return new JsonResult { Data = ultimoRegistro, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+
+            }
+            else
+            {
+                return new JsonResult { Data = "", JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+
+            }
+
+
         }
 
     }
