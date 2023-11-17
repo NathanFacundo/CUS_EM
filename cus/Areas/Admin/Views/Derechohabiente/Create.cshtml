@@ -913,21 +913,21 @@
    //}
 
     //Cachar el valor de la Edad cuando se ingrese para MOSTRAR inputs si el px es MENOR DE EDAD
-    $(".EdadInput").keyup(function () {
+    //$(".EdadInput").keyup(function () {
 
-        var Edad = $('#Edad').val();
+    //    var Edad = $('#Edad').val();
 
-        if (Edad < 18) {
-            $("#Tutor1").css("display", "");
-            $("#Tutor2").css("display", "");
-            $("#Tutor3").css("display", "");
-        } else {
-            $("#Tutor1").css("display", "none");
-            $("#Tutor2").css("display", "none");
-            $("#Tutor3").css("display", "none");
-        }
+    //    if (Edad < 18) {
+    //        $("#Tutor1").css("display", "");
+    //        $("#Tutor2").css("display", "");
+    //        $("#Tutor3").css("display", "");
+    //    } else {
+    //        $("#Tutor1").css("display", "none");
+    //        $("#Tutor2").css("display", "none");
+    //        $("#Tutor3").css("display", "none");
+    //    }
 
-    });
+    //});
 
 </script>
 
@@ -1395,6 +1395,16 @@
             //alert(edad);
 
             $('#Edad').val(edad);
+
+            if (edad < 18) {
+                $("#Tutor1").css("display", "");
+                $("#Tutor2").css("display", "");
+                $("#Tutor3").css("display", "");
+            } else {
+                $("#Tutor1").css("display", "none");
+                $("#Tutor2").css("display", "none");
+                $("#Tutor3").css("display", "none");
+            }
 
         }
 
