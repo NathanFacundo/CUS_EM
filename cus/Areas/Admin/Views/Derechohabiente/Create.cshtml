@@ -245,7 +245,11 @@
                                             <div class="col-md-4">
                                                 <div class="form-group card-label">
                                                     @Html.LabelFor(model => model.Nacionalidad, htmlAttributes: new { @class = "control-label", style = "color:#000000" })
-                                                    @Html.EditorFor(model => model.Nacionalidad, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                                                    @Html.EditorFor(model => model.Nacionalidad, new { htmlAttributes = new { @class = "form-control", @required = "required", @list = "selectoptions" } })
+                                                    <input list="selectoptions" name="Nacionalidad" class="form-control" required>
+                                                    <datalist id="selectoptions">
+                                                        <option value="MEXICANO" />
+                                                    </datalist>
                                                     @Html.ValidationMessageFor(model => model.Nacionalidad, "", new { @class = "text-danger" })
                                                 </div>
                                             </div>
@@ -292,6 +296,7 @@
                                                     new SelectListItem { Text = "VERACRUZ", Value = "VZ"},
                                                     new SelectListItem { Text = "YUCATÁN", Value = "YN"},
                                                     new SelectListItem { Text = "ZACATECAS", Value = "ZS"},
+                                                    new SelectListItem { Text = "EXTRANJERO", Value = "EXT"},
                                                     }, "Seleccione",
                                                     new
                                                     {
@@ -1217,6 +1222,11 @@
 
             pad = zeropad.bind(null, 2);
             if (!estadoValido(param.estadonacimiento)) {
+                //alert('1');
+                $('#curpLabel').hide();
+                $('#curpLabelCalculado').show();
+                $('#curpLabelCalculadoMotivo').show();
+                $('#CheckCURP').prop("checked", true);
                 return false;
             }
 
@@ -1343,8 +1353,11 @@
         var re = /^([A-Z][AEIOUX][A-Z]{2}\d{2}(?:0\d|1[0-2])(?:[0-2]\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\d])(\d)$/,
             validado = curp.match(re);
 
-        if (!validado)  //Coincide con el formato general?
+        if (!validado) {
+            alert('2');
             return false;
+        }  //Coincide con el formato general?
+            
 
         //Validar que coincida el dígito verificador
         function digitoVerificador(curp17) {
@@ -1359,8 +1372,11 @@
                 return 0;
             return lngDigito;
         }
-        if (validado[2] != digitoVerificador(validado[1]))
+        if (validado[2] != digitoVerificador(validado[1])) {
+            alert('3');
             return false;
+        }
+            
 
         return true; //Validado
     }
