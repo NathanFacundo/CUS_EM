@@ -244,8 +244,23 @@
                                             
                                             <div class="col-md-4">
                                                 <div class="form-group card-label">
+                                                    @*@Html.LabelFor(model => model.Nacionalidad, htmlAttributes: new { @class = "control-label", style = "color:#000000" })
+        @Html.EditorFor(model => model.Nacionalidad, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+        @Html.ValidationMessageFor(model => model.Nacionalidad, "", new { @class = "text-danger" })*@
+
                                                     @Html.LabelFor(model => model.Nacionalidad, htmlAttributes: new { @class = "control-label", style = "color:#000000" })
-                                                    @Html.EditorFor(model => model.Nacionalidad, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                                                    @Html.DropDownListFor(model => model.Nacionalidad, new List
+                                                    <SelectListItem>
+                                                    {
+                                                    new SelectListItem { Text = "Mexicano", Value = "Mexicano"},
+                                                    new SelectListItem { Text = "Otro", Value = "Otro"},
+                                                    }, "Seleccione",
+                                                    new
+                                                    {
+                                                    @class = "form-control",
+                                                    @id = "",
+                                                    @name = ""
+                                                    })
                                                     @Html.ValidationMessageFor(model => model.Nacionalidad, "", new { @class = "text-danger" })
                                                 </div>
                                             </div>
@@ -292,6 +307,7 @@
                                                     new SelectListItem { Text = "VERACRUZ", Value = "VZ"},
                                                     new SelectListItem { Text = "YUCATÁN", Value = "YN"},
                                                     new SelectListItem { Text = "ZACATECAS", Value = "ZS"},
+                                                    new SelectListItem { Text = "EXTRANJERO", Value = "EXT"},
                                                     }, "Seleccione",
                                                     new
                                                     {
