@@ -118,14 +118,13 @@ namespace CUS.Areas.Admin.Controllers
                         paciente.Sexo = "Mujer";
                     }
 
+                    //***NOTA*** Se comenta esto ya que cuando sea 'sin curp' se pondrá comoquiera el curp que se arme al llenar datos (al: 18 noviembre 2023)
                     //                                                                                      CURP CALCULADO *Sin Curp*
                     //si la propiedad 'Curp_Calculado' es diferente de null quiere decir que el px no tiene curp
-                    if (paciente.Curp_Calculado != null)
-                    {
-                        paciente.CURP = "SIN CURP";
-                    }
-
-
+                    //if (paciente.Curp_Calculado != null)
+                    //{
+                    //    paciente.CURP = "SIN CURP";
+                    //}
 
                     //Convertimos a mayúsculas los datos del tutor en caso que el px sea menor de edad
                     if ((paciente.Nombre_Tutor != null) || (paciente.PrimerApellido_Tutor != null) || (paciente.SegundoApellido_Tutor != null))
@@ -139,8 +138,6 @@ namespace CUS.Areas.Admin.Controllers
                         if (paciente.SegundoApellido_Tutor != null || paciente.SegundoApellido_Tutor != "")
                             paciente.SegundoApellido_Tutor = paciente.SegundoApellido_Tutor.ToUpper();
                     }
-
-
 
                     //Convertir FechaNacimiento a Años-Meses-Dias
 
@@ -187,15 +184,10 @@ namespace CUS.Areas.Admin.Controllers
                     }
                     var edad = Years + " años con " + Months + " meses" + " y " + Days + " días";
 
-
-
-
-
                     db.Paciente.Add(paciente);
                     db.SaveChanges();
                     return Json(new { MENSAJE = "Succe1: " }, JsonRequestBehavior.AllowGet);
                 }
-
                 //return RedirectToAction("Index");
                 return Json(new { MENSAJE = "Succe2: "}, JsonRequestBehavior.AllowGet);
             }

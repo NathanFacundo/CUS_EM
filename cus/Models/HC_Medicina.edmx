@@ -170,7 +170,7 @@
           <Property Name="Agresivo" Type="varchar" MaxLength="5" />
           <Property Name="Temeroso" Type="varchar" MaxLength="5" />
           <Property Name="Irritable" Type="varchar" MaxLength="5" />
-          <Property Name="Marcha" Type="varchar" MaxLength="5" />
+          <Property Name="Marcha" Type="varchar" MaxLength="15" />
           <Property Name="Id_Paciente" Type="int" Nullable="false" />
           <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
         </EntityType>
@@ -580,7 +580,7 @@
           <Property Name="Agresivo" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="Temeroso" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="Irritable" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-          <Property Name="Marcha" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Marcha" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
           <Property Name="Clave_hc_px" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>

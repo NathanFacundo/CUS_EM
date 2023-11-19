@@ -77,7 +77,7 @@
                                             <div class="col-md-5" id="curpLabelCalculado">
                                                 <div class="form-group card-label">
                                                     @Html.LabelFor(model => model.Curp_Calculado, "CURP Provisional", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
-                                                    @Html.EditorFor(model => model.Curp_Calculado, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.EditorFor(model => model.Curp_Calculado, new { htmlAttributes = new { @class = "form-control", id = "Input_CurpProvisional" } })
                                                     @Html.ValidationMessageFor(model => model.Curp_Calculado, "", new { @class = "text-danger" })
                                                 </div>
                                             </div>
@@ -244,6 +244,10 @@
                                             
                                             <div class="col-md-4">
                                                 <div class="form-group card-label">
+                                                    @*@Html.LabelFor(model => model.Nacionalidad, htmlAttributes: new { @class = "control-label", style = "color:#000000" })
+        @Html.EditorFor(model => model.Nacionalidad, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+        @Html.ValidationMessageFor(model => model.Nacionalidad, "", new { @class = "text-danger" })*@
+
                                                     @Html.LabelFor(model => model.Nacionalidad, htmlAttributes: new { @class = "control-label", style = "color:#000000" })
                                                     @Html.EditorFor(model => model.Nacionalidad, new { htmlAttributes = new { @class = "form-control", @required = "required", @list = "selectoptions" } })
                                                     <input list="selectoptions" name="Nacionalidad" class="form-control" required>
@@ -1330,6 +1334,8 @@
 
 
         document.getElementById('curp').value = curp;
+        //poner el mismo curp en el CURP CALCULADO
+        document.getElementById('Input_CurpProvisional').value = curp;
     }
 
 
