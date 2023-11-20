@@ -386,6 +386,14 @@
           <Property Name="Id_Paciente" Type="int" Nullable="false" />
           <Property Name="Clave_hc_px" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="PacienteCopia">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Paciente" Type="int" />
+          <Property Name="FechaRegistro" Type="datetime" />
+        </EntityType>
         <EntityContainer Name="ModelsStoreContainer">
           <EntitySet Name="hc_MED_Alimentacion" EntityType="Self.hc_MED_Alimentacion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hc_MED_AntecedentesDes" EntityType="Self.hc_MED_AntecedentesDes" Schema="dbo" store:Type="Tables" />
@@ -410,6 +418,7 @@
           <EntitySet Name="hc_PS_MotivoConsulta" EntityType="Self.hc_PS_MotivoConsulta" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hc_PS_SignosAlarma" EntityType="Self.hc_PS_SignosAlarma" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="hc_PS_SintomatologiaActual" EntityType="Self.hc_PS_SintomatologiaActual" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PacienteCopia" EntityType="Self.PacienteCopia" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -670,6 +679,7 @@
           <EntitySet Name="hc_PS_SintomatologiaActual" EntityType="Models.hc_PS_SintomatologiaActual" />
           <EntitySet Name="hc_MED_ImpresionDiag" EntityType="Models.hc_MED_ImpresionDiag" />
           <EntitySet Name="hc_PS_DiagnosticoPres" EntityType="Models.hc_PS_DiagnosticoPres" />
+          <EntitySet Name="PacienteCopia" EntityType="Models.PacienteCopia" />
         </EntityContainer>
         <EntityType Name="hc_PS_AreasAtencion">
           <Key>
@@ -820,6 +830,14 @@
           <Property Name="Desfavorable" Type="Boolean" />
           <Property Name="Id_Paciente" Type="Int32" Nullable="false" />
           <Property Name="Clave_hc_px" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PacienteCopia">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Paciente" Type="Int32" />
+          <Property Name="FechaRegistro" Type="DateTime" Precision="3" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1227,6 +1245,15 @@
                 <ScalarProperty Name="diagnostico3" ColumnName="diagnostico3" />
                 <ScalarProperty Name="diagnostico2" ColumnName="diagnostico2" />
                 <ScalarProperty Name="diagnostico1" ColumnName="diagnostico1" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PacienteCopia">
+            <EntityTypeMapping TypeName="Models.PacienteCopia">
+              <MappingFragment StoreEntitySet="PacienteCopia">
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="Id_Paciente" ColumnName="Id_Paciente" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

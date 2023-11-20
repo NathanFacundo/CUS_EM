@@ -14,6 +14,7 @@ namespace CUS.Areas.Admin.Controllers
     public class DerechohabienteController : Controller
     {
         private Models.CUS db = new Models.CUS();
+        Models.HC_Medicina hcMed = new Models.HC_Medicina();
 
         // GET: Admin/Derechohabiente
         public ActionResult Index(string expediente)
@@ -50,11 +51,8 @@ namespace CUS.Areas.Admin.Controllers
         // GET: Admin/Derechohabiente/Create
         public ActionResult Create()
         {
-
             ViewBag.UNIDADES = new SelectList(db.UnidadAfiliacion.ToList(), "Id", "NombreUnidad");
-
             return View();
-
         }
 
         // POST: Admin/Derechohabiente/Create
@@ -186,6 +184,20 @@ namespace CUS.Areas.Admin.Controllers
 
                     db.Paciente.Add(paciente);
                     db.SaveChanges();
+
+                    //---------Guardamos el Id y FechaRegistro del Paciente que se está creando en la **tbl PacienteCopia**
+
+                    //Buscamos el px que se acaba de registrar (que es el de esta función) para obtener el Id y guardarlo en la tbl PacienteCopia
+                    var PxRegis = (from a in db.Paciente
+                                           where a.CURP == paciente.CURP
+                                           select a).FirstOrDefault();
+
+                    Models.PacienteCopia NuevoPX = new Models.PacienteCopia();
+                    NuevoPX.Id_Paciente = PxRegis.Id;
+                    NuevoPX.FechaRegistro = fechaDT;
+                    hcMed.PacienteCopia.Add(NuevoPX);
+                    hcMed.SaveChanges();
+
                     return Json(new { MENSAJE = "Succe1: " }, JsonRequestBehavior.AllowGet);
                 }
                 //return RedirectToAction("Index");
@@ -355,7 +367,6 @@ namespace CUS.Areas.Admin.Controllers
             {
                 return Json(new { MENSAJE = "Error: Error de sistema: " + ex.Message }, JsonRequestBehavior.AllowGet);
             }
-
         }
 
         public class Propiedades
@@ -494,18 +505,15 @@ namespace CUS.Areas.Admin.Controllers
                 };
                 result1.Add(resultado);
             }
-
             //return View(Paciente);
             return Json(new { MENSAJE = "Succe: ", PACIENTES = result1 }, JsonRequestBehavior.AllowGet);
         }
-
 
         public ActionResult BuscarPaciente()
         {
             // Tu lógica global aquí
             return View();
         }
-
 
     }
 }
