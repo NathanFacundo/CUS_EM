@@ -566,6 +566,7 @@
           <Property Name="status" Type="int" />
           <Property Name="id_unidad" Type="int" />
           <Property Name="escala_dolor" Type="varchar" MaxLength="50" />
+          <Property Name="usuario" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Paciente">
           <Key>
@@ -633,14 +634,14 @@
           <Property Name="expediente" Type="varchar" MaxLength="50" />
           <Property Name="usuario" Type="varchar" MaxLength="50" />
           <Property Name="escala_dolor" Type="varchar" MaxLength="50" />
-          <Property Name="peso" Type="int" />
-          <Property Name="talla" Type="int" />
-          <Property Name="temperatura" Type="int" />
-          <Property Name="fresp" Type="int" />
-          <Property Name="fcard" Type="int" />
-          <Property Name="ta1" Type="int" />
-          <Property Name="ta2" Type="int" />
-          <Property Name="dstx" Type="int" />
+          <Property Name="peso" Type="real" />
+          <Property Name="talla" Type="real" />
+          <Property Name="temperatura" Type="real" />
+          <Property Name="fresp" Type="real" />
+          <Property Name="fcard" Type="real" />
+          <Property Name="ta1" Type="real" />
+          <Property Name="ta2" Type="real" />
+          <Property Name="dstx" Type="real" />
           <Property Name="fecha" Type="datetime" />
           <Property Name="ip_realiza" Type="varchar" MaxLength="50" />
         </EntityType>
@@ -1955,6 +1956,7 @@
           <Property Name="status" Type="Int32" />
           <Property Name="id_unidad" Type="Int32" />
           <Property Name="escala_dolor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="SignosVitales">
           <Key>
@@ -1964,14 +1966,14 @@
           <Property Name="expediente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="escala_dolor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="peso" Type="Int32" />
-          <Property Name="talla" Type="Int32" />
-          <Property Name="temperatura" Type="Int32" />
-          <Property Name="fresp" Type="Int32" />
-          <Property Name="fcard" Type="Int32" />
-          <Property Name="ta1" Type="Int32" />
-          <Property Name="ta2" Type="Int32" />
-          <Property Name="dstx" Type="Int32" />
+          <Property Name="peso" Type="Single" />
+          <Property Name="talla" Type="Single" />
+          <Property Name="temperatura" Type="Single" />
+          <Property Name="fresp" Type="Single" />
+          <Property Name="fcard" Type="Single" />
+          <Property Name="ta1" Type="Single" />
+          <Property Name="ta2" Type="Single" />
+          <Property Name="dstx" Type="Single" />
           <Property Name="fecha" Type="DateTime" Precision="3" />
           <Property Name="ip_realiza" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
@@ -2609,6 +2611,7 @@
           <EntitySetMapping Name="NotaEvolucion">
             <EntityTypeMapping TypeName="CUSModel.NotaEvolucion">
               <MappingFragment StoreEntitySet="NotaEvolucion">
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
                 <ScalarProperty Name="escala_dolor" ColumnName="escala_dolor" />
                 <ScalarProperty Name="id_unidad" ColumnName="id_unidad" />
                 <ScalarProperty Name="status" ColumnName="status" />

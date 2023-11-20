@@ -18,14 +18,14 @@ namespace CUS.Models
         public string expediente { get; set; }
         public string usuario { get; set; }
         public string escala_dolor { get; set; }
-        public Nullable<int> peso { get; set; }
-        public Nullable<int> talla { get; set; }
-        public Nullable<int> temperatura { get; set; }
-        public Nullable<int> fresp { get; set; }
-        public Nullable<int> fcard { get; set; }
-        public Nullable<int> ta1 { get; set; }
-        public Nullable<int> ta2 { get; set; }
-        public Nullable<int> dstx { get; set; }
+        public Nullable<float> peso { get; set; }
+        public Nullable<float> talla { get; set; }
+        public Nullable<float> temperatura { get; set; }
+        public Nullable<float> fresp { get; set; }
+        public Nullable<float> fcard { get; set; }
+        public Nullable<float> ta1 { get; set; }
+        public Nullable<float> ta2 { get; set; }
+        public Nullable<float> dstx { get; set; }
         public Nullable<System.DateTime> fecha { get; set; }
         public string ip_realiza { get; set; }
     }
