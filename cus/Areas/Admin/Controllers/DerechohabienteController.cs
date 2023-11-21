@@ -16,19 +16,26 @@ namespace CUS.Areas.Admin.Controllers
         private Models.CUS db = new Models.CUS();
         Models.HC_Medicina hcMed = new Models.HC_Medicina();
 
-        // GET: Admin/Derechohabiente
-        public ActionResult Index(string expediente)
+        public class ItemViewModel
         {
-            if (expediente != null)
-            {
-                return View(db.Paciente.ToList());
-            }
-            else
-            {
-                return RedirectToAction("BuscarPaciente", "DerechoHabiente");
-            }
+            public Paciente SingleItem { get; set; }
+            public List<Paciente> ItemList { get; set; }
+        }
 
-            
+        // GET: Admin/Derechohabiente
+        public ActionResult Index()
+        {
+            return View(db.Paciente.ToList());
+
+            var viewModel = new ItemViewModel
+            {
+                SingleItem = new Paciente(),
+                ItemList = db.Paciente.ToList()
+            };
+
+            return View(viewModel);
+
+
         }
 
         // GET: Admin/Derechohabiente/Details/5
