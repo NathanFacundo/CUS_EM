@@ -53,5 +53,6 @@ namespace CUS.Models
         public virtual DbSet<Diagnosticos> Diagnosticos { get; set; }
         public virtual DbSet<NotaEvolucion> NotaEvolucion { get; set; }
         public virtual DbSet<SignosVitales> SignosVitales { get; set; }
+        public virtual DbSet<hc_SignosVitales> hc_SignosVitales { get; set; }
     }
 }
