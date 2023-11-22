@@ -31,7 +31,7 @@ namespace CUS.Areas.Admin.Controllers
             }
         }
 
-        //********      Función para buscar si existe la H.C. en el rango de 3 hrs al crear una SECCIÓN DE LA H.C.
+        //********      Crear registro en tbl HISTORIA CLINICA (nueva)
         public string buscaHisotriaClinica(int HistoriaClinica, string expediente)
         {
             //Buscar id del historia clinica
