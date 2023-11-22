@@ -1799,7 +1799,7 @@ namespace CUS.Areas.Admin.Controllers
             catch (Exception ex)
             {
                 //return Json(new { MENSAJE = "Error: Error de sistema: " + ex.Message }, JsonRequestBehavior.AllowGet);
-                TempData["message_success"] = "Error, vuelve a intentar";
+                TempData["message_err"] = "Error, vuelve a intentar";
                 return Redirect(Request.UrlReferrer.ToString());
             }
             ;
