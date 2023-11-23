@@ -83,6 +83,7 @@
         <div class="sidebar" id="sidebar">
             <div class="sidebar-inner slimscroll">
                 <div id="sidebar-menu" class="sidebar-menu">
+
                     <ul>
                         <li class="menu-title">
                             <span>Menú</span>
@@ -122,34 +123,34 @@
 
                             if (!esLista)
                             {
-                            <li class="submenu">
-                                <a href="#"><i class="fa fa-file-text-o"></i> <span>Nota de Evolución</span> <span class="menu-arrow"></span></a>
-                                <ul style="display: none;">
-                                    <li><a href="@Url.Action("Create", "NotaEvolucion", new { expediente = Model.Expediente })">Nueva</a></li>
-                                    <li><a href="@Url.Action("Index", "NotaEvolucion", new { expediente = Model.Expediente })">Mis notas</a></li>
+                                <li class="submenu">
+                                    <a href="#"><i class="fa fa-file-text-o"></i> <span>Nota de Evolución</span> <span class="menu-arrow"></span></a>
+                                    <ul style="display: none;">
+                                        <li><a href="@Url.Action("Create", "NotaEvolucion", new { expediente = Model.Expediente })">Nueva</a></li>
+                                        <li><a href="@Url.Action("Index", "NotaEvolucion", new { expediente = Model.Expediente })">Mis notas</a></li>
 
-                                </ul>
-                            </li>
+                                    </ul>
+                                </li>
 
-                            <li class="submenu">
-                                <a href="#"><i class="fe fe-folder-open"></i> <span>Historia Clínica</span> <span class="menu-arrow"></span></a>
-                                <ul style="display: none;">
-                                    <li><a href="@Url.Action("Historia", "HistoriaClinica", new { expediente = Model.Expediente })">Buscar Historia</a></li>
-                                    <li class="submenu">
-                                        <a href="#"><span>Nueva</span> <span class="menu-arrow"></span></a>
-                                        <ul style="display: none;">
-                                            <li><a href="@Url.Action("Index", "HistoriaClinica", new { expediente = Model.Expediente })">Datos Generales</a></li>
-                                            <li><a href="@Url.Action("Index", "HistoriaMedicina", new { expediente = Model.Expediente })">Medicina</a></li>
-                                            <li><a href="@Url.Action("Index", "HistoriaPsicologia", new { expediente = Model.Expediente })">Psicología</a></li>
-                                            <li><a href="@Url.Action("Index", "HistoriaNutricion", new { expediente = Model.Expediente })">Nutrición</a></li>
-                                            <li><a href="@Url.Action("Index", "HistoriaOdontologia", new { expediente = Model.Expediente })">Odontología</a></li>
-                                        </ul>
-                                    </li>
+                                <li class="submenu">
+                                    <a href="#"><i class="fe fe-folder-open"></i> <span>Historia Clínica</span> <span class="menu-arrow"></span></a>
+                                    <ul style="display: none;">
+                                        <li><a href="@Url.Action("Historia", "HistoriaClinica", new { expediente = Model.Expediente })">Buscar Historia</a></li>
+                                        <li class="submenu">
+                                            <a href="#"><span>Nueva</span> <span class="menu-arrow"></span></a>
+                                            <ul style="display: none;">
+                                                <li><a href="@Url.Action("Index", "HistoriaClinica", new { expediente = Model.Expediente })">Datos Generales</a></li>
+                                                <li class="hidden-list-item"><a href="@Url.Action("Index", "HistoriaMedicina", new { expediente = Model.Expediente })">Medicina</a></li>
+                                                <li class="hidden-list-item"><a href="@Url.Action("Index", "HistoriaPsicologia", new { expediente = Model.Expediente })">Psicología</a></li>
+                                                <li class="hidden-list-item"><a href="@Url.Action("Index", "HistoriaNutricion", new { expediente = Model.Expediente })">Nutrición</a></li>
+                                                <li class="hidden-list-item"><a href="@Url.Action("Index", "HistoriaOdontologia", new { expediente = Model.Expediente })">Odontología</a></li>
+                                            </ul>
+                                        </li>
 
-                                </ul>
-                            </li>
+                                    </ul>
+                                </li>
 
-                            <li><a href="@Url.Action("Create", "Enfermeria", new { expediente = Model.Expediente })"><i class="fe fe-document"></i>Enfermería</a></li>
+                                <li><a href="@Url.Action("Create", "Enfermeria", new { expediente = Model.Expediente })"><i class="fe fe-document"></i>Enfermería</a></li>
 
 
                             }
@@ -239,3 +240,54 @@
 
 <!-- Mirrored from dreamguys.co.in/demo/doccure/admin/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2019 04:12:34 GMT -->
 </html>
+
+
+@if (Model != null)
+{
+    <script>
+
+    $(document).ready(function () {
+
+        //$('.hidden-list-item').hide();
+
+        var ExpedientePX = "@Model.Expediente";
+
+        // Lógica para la llamada AJAX al cargar la página
+        $.ajax({
+            url: '@Url.Action("ValidarPxParaMostrarHistorias", "HistoriaClinica")',
+            method: 'POST',
+            dataType: 'json',
+            data: {
+                expediente: ExpedientePX
+            },
+            success: function (data) {
+                if (data.MENSAJE.substring(0, 6) == "Succe:") {
+                    if (data.Data == 1) {
+                        // Si la respuesta es True, mostrar el resto de la lista
+                        $('.hidden-list-item').show();
+                    } else {
+                        // Si la respuesta es False, ocultar el resto de la lista
+                        $('.hidden-list-item').hide();
+                    }
+                }
+                if (data.MENSAJE.substring(0, 6) == "Error:") {
+                    Swal.fire({
+                        icon: 'error',
+                        title: '¡Error!',
+                        text: data.MENSAJE.substring(7),
+                    });
+                }
+            },
+            error: function (ex) {
+                Swal.fire({
+                    icon: 'error',
+                    title: '¡Error!',
+                });
+            }
+        });
+
+
+    });
+
+    </script>
+}
