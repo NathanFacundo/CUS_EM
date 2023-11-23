@@ -116,7 +116,6 @@
                     </div>
                 </div>
             </div>
-           
 
             <div class="col-sm-12">
 
@@ -151,6 +150,9 @@
                         </li>
                         <li class="nav-item text-left">
                             <a class="nav-link" href="#interrogatorio" data-toggle="tab">Interrogatorio Aparatos y Sistemas</a>
+                        </li>
+                        <li class="nav-item text-left">
+                            <a class="nav-link" href="#SignosVit" data-toggle="tab">Signos Vitales</a>
                         </li>
                         <li class="nav-item text-left">
                             <a class="nav-link" href="#riesgo_caidas" data-toggle="tab">Riesgo de<br /> Caídas</a>
@@ -1582,6 +1584,96 @@
                         </div>
                     </div>
 
+                    <div id="SignosVit" class="tab-pane fade">
+                        @using (Html.BeginForm("SignosVitales", "HistoriaClinica", FormMethod.Post, htmlAttributes: new { @id = "msform" }))
+                        {
+                            <div class="card card-table mb-0 p-3 mb-5">
+                                <div class="card-body">
+                                    <form id="f_riescoCaidas">
+
+                                        <div class="row">
+                                            <input name="expediente" value="@Model.Expediente" type="hidden" />
+                                            <div class="col-md-12">
+                                                <h3 class="mt-5"> <b>Signos Vitales</b></h3>
+                                                <div class="row m-0">
+                                                    <div class="col-md-3 p-1">
+                                                        <div class="form-group row m-0">
+                                                            <label for="peso" class="col-3 p-1 m-auto col-form-label"><b>Peso:</b></label>
+                                                            <div class="col-5 p-1 m-auto">
+                                                                <input type="text" class="form-control" id="peso" name="peso" maxlength="6" placeholder="">
+                                                            </div>
+                                                            <label for="peso" class="col-4 p-1 m-auto col-form-label">Kg</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3 p-1">
+                                                        <div class="form-group row m-0">
+                                                            <label for="talla" class="col-4 p-1 m-auto col-form-label"><b>Talla:</b></label>
+                                                            <div class="col-8 p-1 m-auto">
+                                                                <input type="text" class="form-control" id="talla" name="talla" maxlength="5" placeholder="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3 p-1">
+                                                        <div class="form-group row m-0">
+                                                            <label for="temp" class="col-4 p-1 m-auto col-form-label"><b>Temp:</b></label>
+                                                            <div class="col-5 p-1 m-auto">
+                                                                <input type="text" class="form-control" id="temp" name="temperatura" maxlength="5" placeholder="">
+                                                            </div>
+                                                            <label for="temp" class="col-3 p-1 m-auto col-form-label">°C</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3 p-1">
+                                                        <div class="form-group row m-0">
+                                                            <label for="fresp1" class="col-4 p-1 m-auto col-form-label"><b>F.Resp:</b></label>
+                                                            <div class="col-5 p-1 m-auto">
+                                                                <input type="text" class="form-control" id="fresp1" name="fresp" maxlength="3" placeholder="">
+                                                            </div>
+                                                            <label for="fresp1" class="col-3 p-1 m-auto col-form-label">rpm</label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-4 p-2">
+                                                        <div class="form-group row m-0">
+                                                            <label for="fcard1" class="col-4 p-1 m-auto col-form-label"><b>F.Card:</b></label>
+                                                            <div class="col-5 p-1 m-auto">
+                                                                <input type="text" class="form-control" id="fcard1" name="fcard" maxlength="3" placeholder="">
+                                                            </div>
+                                                            <label for="fcard1" class="col-3 p-1 m-auto col-form-label">ppm</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 p-2">
+                                                        <div class="form-group row m-0">
+                                                            <label for="ta" class="col-5 p-1 m-auto col-form-label"><b>T.A:</b></label>
+                                                            <div class="col-3 p-1 m-auto">
+                                                                <input type="text" class="form-control" id="t" name="ta1" maxlength="5" placeholder="">
+                                                            </div>
+                                                            <div class="col-1 p-1 m-auto">/</div>
+                                                            <div class="col-3 p-1 m-auto">
+                                                                <input type="text" class="form-control" id="a" name="ta2" maxlength="5" placeholder="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 p-2">
+                                                        <div class="form-group row m-0">
+                                                            <label for="destrostrix" class="col-7 p-1 m-auto col-form-label"><b>Glucemia:</b></label>
+                                                            <div class="col-5 p-1 m-auto">
+                                                                <input type="text" class="form-control" id="destrostrix" name="dstx" maxlength="3" placeholder="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 text-right p-2">
+                                                        <button class="btn btn-primary" id="Btn_SignosV">Guardar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                        }
+                    </div>
+
                     <div id="riesgo_caidas" class="tab-pane fade">
                         <div class="card card-table mb-0 p-3 mb-5">
                             <div class="card-body">
@@ -1926,6 +2018,43 @@
 <script src="~/Areas/Admin/assets/js/jquery-3.2.1.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+@if (TempData["message_success"] != null)
+{
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: '@TempData["message_success"]',
+            showConfirmButton: false,
+            timer: 1600
+        })
+        $("#Btn_SignosV").css("display", "none");
+    </script>
+}
+
+@if (TempData["message_error"] != null)
+{
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: '@TempData["message_error"]',
+            showConfirmButton: false,
+            timer: 1600
+        })
+    </script>
+}
+
+@if (TempData["message_err"] != null)
+{
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: '@TempData["message_err"]',
+            showConfirmButton: false,
+            timer: 1600
+        })
+    </script>
+}
+
 <script>
 
     $(document).ready(function () {
@@ -1957,6 +2086,30 @@
                 "select": {
                     "rows": " %d filas seleccionadas"
                 },
+            }
+        });
+
+        var expediente = "@Model.Expediente";
+        $.ajax({
+            url: '@Url.Action("ConsultarSignosVitales", "HistoriaClinica")',
+            dataType: 'json',
+            data: { expediente: expediente},
+            success: function (data) {
+                $("#slider").val(data.escala_dolor);
+                $("#peso").val(data.peso);
+                $("#talla").val(data.talla);
+                $("#temp").val(data.temperatura);
+                $("#fresp1").val(data.fresp);
+                $("#fcard1").val(data.fcard);
+                $("#t").val(data.ta1);
+                $("#a").val(data.ta2);
+                $("#destrostrix").val(data.dstx);
+            },
+            error: function(ex) {
+                Swal.fire({
+	               icon: 'error',
+	               title: '¡Error!',
+                });
             }
         });
 
@@ -2133,15 +2286,6 @@
                 $("#EspInvolucrado").css("display", "none");
             }
         });
-        //$("#tieneHermanos").change(function () {
-        //    var combo = document.getElementById("tieneHermanos");
-        //    var selected = combo.options[combo.selectedIndex].text;
-        //    if (selected == "Si") {
-        //        $("#tieneHermanosSi").css("display", "");
-        //    } else {
-        //        $("#tieneHermanosSi").css("display", "none");
-        //    }
-        //});
         //Escolaridad
     $("#escolaridad").change(function () {
         var combo = document.getElementById("escolaridad");
@@ -2179,7 +2323,6 @@
                 $("#reprobadoespecifique").css("display", "none");
             }
     });
-
         $("#ActividadFisica").change(function () {
             var combo = document.getElementById("ActividadFisica");
             var selected = combo.options[combo.selectedIndex].text;
@@ -2254,7 +2397,6 @@
                 $("#CantidadDroga").css("display", "none");
             }
         });
-
     // #endregion
 
     //Si dan click en Enter en los inputs de Nombre/Expediente

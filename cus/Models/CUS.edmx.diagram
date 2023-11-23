@@ -51,6 +51,7 @@
         <EntityTypeShape EntityType="CUSModel.Diagnosticos" Width="1.5" PointX="16.375" PointY="7.75" />
         <EntityTypeShape EntityType="CUSModel.NotaEvolucion" Width="1.5" PointX="16.375" PointY="10.75" />
         <EntityTypeShape EntityType="CUSModel.SignosVitales" Width="1.5" PointX="14.375" PointY="16.75" />
+        <EntityTypeShape EntityType="CUSModel.hc_SignosVitales" Width="1.5" PointX="16.375" PointY="16.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -145,7 +145,6 @@ namespace CUS.Areas.Admin.Controllers
                     }
 
                     //Convertir FechaNacimiento a Años-Meses-Dias
-
                     var today = DateTime.Today;
                     DateTime fnac = (DateTime)paciente.FechaNacimiento;
                     int Years = 0;
@@ -189,6 +188,66 @@ namespace CUS.Areas.Admin.Controllers
                     }
                     var edad = Years + " años con " + Months + " meses" + " y " + Days + " días";
 
+
+                    //     ***EXPEDIENTE*** que se guardará (nuevo)
+                    var Unidad = (from a in db.UnidadAfiliacion
+                                  where a.Id == paciente.UnidadAfiliacion
+                                  select a).FirstOrDefault();
+
+                    //Buscamos el último paciente registrado de la Unidad para obtener el #exp de ese último paciente y así armar el consecutivo
+                    var PX = (from a in db.Paciente
+                              where a.UnidadAfiliacion == paciente.UnidadAfiliacion
+                              select a).OrderByDescending(u => u.Expediente).FirstOrDefault();
+
+                    //Obtenemos el prefijo de la Unidad
+                    var Prefijo = Unidad.Prefijo;
+                    //Obtener los espacios del prefijo
+                    var Pre = Prefijo.Length;
+
+                    int UltimoConsecutivo;
+                    int Conse;
+
+                    //Obtenemos el último consecutivo (el número)
+                    if (PX == null)
+                    {
+                        UltimoConsecutivo = 1;
+                        //Generamos el PRÓXIMO NUMERO consecutivo nuevo
+                        Conse = UltimoConsecutivo;
+                    }
+                    else
+                    {
+                        UltimoConsecutivo = Convert.ToInt32(PX.Expediente.Substring(Pre));
+                        //Generamos el PRÓXIMO *NUMERO* consecutivo nuevo
+                        Conse = ((UltimoConsecutivo) + 1);
+                    }
+
+                    var Conse1 = "";
+                    if (Conse < 1000)
+                    {
+                        if (Conse < 100)
+                        {
+                            if (Conse < 10)
+                            {
+                                Conse1 = "000" + Conse;
+                            }
+                            else
+                            {
+                                Conse1 = "00" + Conse;
+                            }
+                        }
+                        else
+                        {
+                            Conse1 = "0" + Conse;
+                        }
+                    }
+                    else
+                    {
+                        Conse1 = Conse.ToString();
+                    }
+                    //Nuevo expediente
+                    var ConsecutivoNuevo = Prefijo + Conse1;
+                    paciente.Expediente = ConsecutivoNuevo;
+
                     db.Paciente.Add(paciente);
                     db.SaveChanges();
 
@@ -212,9 +271,10 @@ namespace CUS.Areas.Admin.Controllers
             }
 
             ViewBag.UNIDADES = new SelectList(db.UnidadAfiliacion.ToList(), "Id", "NombreUnidad");
-            TempData["Error"] = "Ocurrio un problema, intente de nuevo";
+            //TempData["Error"] = "Ocurrio un problema, intente de nuevo";
+            return Json(new { MENSAJE = "Succe3: " }, JsonRequestBehavior.AllowGet);
 
-            return View();
+            //return View();
         }
 
         // GET: Admin/Derechohabiente/Edit/5

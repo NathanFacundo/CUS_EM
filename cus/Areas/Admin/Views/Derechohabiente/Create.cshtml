@@ -305,9 +305,10 @@
                                                     }, "Seleccione",
                                                     new
                                                     {
-                                                    @class = "form-control llenarcurp",
-                                                    @id = "estadonacimiento",
-                                                    @name = "EntidadNacimiento",
+                                                        @class = "form-control llenarcurp",
+                                                        @id = "estadonacimiento",
+                                                        @name = "EntidadNacimiento",
+                                                        required = "required"
                                                     })
                                                     @Html.ValidationMessageFor(model => model.EntidadNacimiento, "", new { @class = "text-danger" })
                                                 </div>
@@ -363,28 +364,28 @@
                                             <div class="col-md-1">
                                                 <div class="form-group card-label">
                                                     @Html.LabelFor(model => model.Dir_Numero, "Número", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
-                                                    @Html.EditorFor(model => model.Dir_Numero, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.EditorFor(model => model.Dir_Numero, new { htmlAttributes = new { @class = "form-control", required = "required" } })
                                                     @Html.ValidationMessageFor(model => model.Dir_Numero, "", new { @class = "text-danger" })
                                                 </div>
                                             </div>
                                             <div class="col-md-1">
                                                 <div class="form-group card-label">
                                                     @Html.LabelFor(model => model.Dir_CP, "C.P.", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
-                                                    @Html.EditorFor(model => model.Dir_CP, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.EditorFor(model => model.Dir_CP, new { htmlAttributes = new { @class = "form-control", required = "required" } })
                                                     @Html.ValidationMessageFor(model => model.Dir_CP, "", new { @class = "text-danger" })
                                                 </div>
                                             </div>
                                             <div class="col-md-2">
                                                 <div class="form-group card-label">
                                                     @Html.LabelFor(model => model.Dir_Colonia, "Colonia", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
-                                                    @Html.EditorFor(model => model.Dir_Colonia, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.EditorFor(model => model.Dir_Colonia, new { htmlAttributes = new { @class = "form-control", required = "required" } })
                                                     @Html.ValidationMessageFor(model => model.Dir_Colonia, "", new { @class = "text-danger" })
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
                                                 <div class="form-group card-label">
                                                     @Html.LabelFor(model => model.Dir_Municipio, "Municipio", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
-                                                    @Html.EditorFor(model => model.Dir_Municipio, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.EditorFor(model => model.Dir_Municipio, new { htmlAttributes = new { @class = "form-control", required = "required" } })
                                                     @Html.ValidationMessageFor(model => model.Dir_Municipio, "", new { @class = "text-danger" })
                                                 </div>
                                             </div>
@@ -432,7 +433,7 @@
                                                         @class = "form-control llenarcurp",
                                                         @id = "estado",
                                                         @name = "Dir_EntidadFed",
-                                                        @required = "",
+                                                        required = "required"
                                                     })
                                                     @Html.ValidationMessageFor(model => model.Dir_EntidadFed, "", new { @class = "text-danger" })
                                                 </div>
@@ -481,8 +482,8 @@
                                                     }, "Seleccione",
                                                     new
                                                     {
-                                                    @class = "form-control input-lg",
-                                                    required = "required"
+                                                        @class = "form-control input-lg",
+                                                        required = "required"
                                                     })
                                                     @Html.ValidationMessageFor(model => model.EstadoCivil, "", new { @class = "text-danger" })
                                                 </div>
@@ -502,8 +503,8 @@
                                                     }, "Seleccione",
                                                     new
                                                     {
-                                                    @class = "form-control input-lg",
-                                                    required = "required"
+                                                        @class = "form-control input-lg",
+                                                        required = "required"
                                                     })
                                                     @Html.ValidationMessageFor(model => model.Escolaridad, "", new { @class = "text-danger" })
                                                 </div>
@@ -524,8 +525,8 @@
                                                     }, "Seleccione",
                                                     new
                                                     {
-                                                    @class = "form-control input-lg",
-                                                    required = "required"
+                                                        @class = "form-control input-lg",
+                                                        required = "required"
                                                     })
                                                     @Html.ValidationMessageFor(model => model.Ocupacion, "", new { @class = "text-danger" })
                                                 </div>
@@ -832,26 +833,15 @@
 
         if ((document.getElementById('DE_1').checked || document.getElementById('DE_2').checked || document.getElementById('DE_3').checked || document.getElementById('DE_NA').checked) && (document.getElementById('BA_1').checked || document.getElementById('BA_2').checked || document.getElementById('BA_3').checked || document.getElementById('BA_4').checked || document.getElementById('BA_5').checked || document.getElementById('BA_6').checked || document.getElementById('BA_NA').checked)) {
 
-            $("#BtnGuardar").click(function (event) {
-                event.preventDefault();
-                $("#BtnGuardar").prop('disabled', true)
+            //$("#BtnGuardar").click(function (event) {
+            //    event.preventDefault();
+            //    $("#BtnGuardar").prop('disabled', true)
 
-                return false;
-            })
+            //    return false;
+            //})
 
             let data = $(this).serialize();
             $.post("@Url.Action("Create", "Derechohabiente")", data).done(function (response) {
-
-                @*Swal.fire({
-                    icon: 'success',
-                    title: '¡Éxito!',
-                    text: "El px se registro correctamente",
-                    showConfirmButton: true,
-                    willClose: () => {
-                        window.location = encodeURI('@Url.Action("Index", "Derechohabiente")')
-                    }
-                })*@
-
                 if (response.MENSAJE.substring(0, 6) == "Succe1") {
                     Swal.fire({
                         icon: 'success',
@@ -862,6 +852,7 @@
                             window.location = encodeURI('@Url.Action("Index", "Derechohabiente")')
                         }
                     });
+                    $("#BtnGuardar").prop('disabled', true)
                 }
                 if (response.MENSAJE.substring(0, 6) == "Succe2") {
                     Swal.fire({
@@ -874,14 +865,20 @@
                         }
                     });
                 }
-
+                if (response.MENSAJE.substring(0, 6) == "Succe3") {
+                    Swal.fire({
+                        icon: 'error',
+                        title: '',
+                        text: "Ocurrió un problema, verifique e intente de nuevo",
+                        showConfirmButton: true
+                    });
+                }
             }).fail(function (response) {
                 Swal.fire({
                     icon: 'error',
                     title: '¡Error!'
                 });
             });
-
         } else
         {
             Swal.fire({

@@ -909,6 +909,86 @@
                                     </div>
                                     <hr />
                                     <p>
+                                        <h4 data-toggle="collapse" data-target="#collapseSignosV" aria-expanded="false" aria-controls="collapseSignosV">
+                                            Signos Vitales <i class="fa fa-plus-circle"></i>
+                                        </h4>
+                                    </p>
+                                    <div class="collapse" id="collapseSignosV">
+                                        <div class="card card-body">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="row m-0">
+                                                        <div class="col-md-3 p-1">
+                                                            <div class="form-group row m-0">
+                                                                <label for="peso" class="col-3 p-1 m-auto col-form-label"><b>Peso:</b></label>
+                                                                <div class="col-5 p-1 m-auto">
+                                                                    <input type="text" class="form-control" id="peso" name="peso" maxlength="6" placeholder="">
+                                                                </div>
+                                                                <label for="peso" class="col-4 p-1 m-auto col-form-label">Kg</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-3 p-1">
+                                                            <div class="form-group row m-0">
+                                                                <label for="talla" class="col-4 p-1 m-auto col-form-label"><b>Talla:</b></label>
+                                                                <div class="col-8 p-1 m-auto">
+                                                                    <input type="text" class="form-control" id="talla" name="talla" maxlength="5" placeholder="">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-3 p-1">
+                                                            <div class="form-group row m-0">
+                                                                <label for="temp" class="col-4 p-1 m-auto col-form-label"><b>Temp:</b></label>
+                                                                <div class="col-5 p-1 m-auto">
+                                                                    <input type="text" class="form-control" id="temp" name="temperatura" maxlength="5" placeholder="">
+                                                                </div>
+                                                                <label for="temp" class="col-3 p-1 m-auto col-form-label">°C</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-3 p-1">
+                                                            <div class="form-group row m-0">
+                                                                <label for="fresp1" class="col-4 p-1 m-auto col-form-label"><b>F.Resp:</b></label>
+                                                                <div class="col-5 p-1 m-auto">
+                                                                    <input type="text" class="form-control" id="fresp1" name="fresp" maxlength="3" placeholder="">
+                                                                </div>
+                                                                <label for="fresp1" class="col-3 p-1 m-auto col-form-label">rpm</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4 p-2">
+                                                            <div class="form-group row m-0">
+                                                                <label for="fcard1" class="col-4 p-1 m-auto col-form-label"><b>F.Card:</b></label>
+                                                                <div class="col-5 p-1 m-auto">
+                                                                    <input type="text" class="form-control" id="fcard1" name="fcard" maxlength="3" placeholder="">
+                                                                </div>
+                                                                <label for="fcard1" class="col-3 p-1 m-auto col-form-label">ppm</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4 p-2">
+                                                            <div class="form-group row m-0">
+                                                                <label for="ta" class="col-5 p-1 m-auto col-form-label"><b>T.A:</b></label>
+                                                                <div class="col-3 p-1 m-auto">
+                                                                    <input type="text" class="form-control" id="t" name="ta1" maxlength="5" placeholder="">
+                                                                </div>
+                                                                <div class="col-1 p-1 m-auto">/</div>
+                                                                <div class="col-3 p-1 m-auto">
+                                                                    <input type="text" class="form-control" id="a" name="ta2" maxlength="5" placeholder="">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4 p-2">
+                                                            <div class="form-group row m-0">
+                                                                <label for="destrostrix" class="col-7 p-1 m-auto col-form-label"><b>Glucemia:</b></label>
+                                                                <div class="col-5 p-1 m-auto">
+                                                                    <input type="text" class="form-control" id="destrostrix" name="dstx" maxlength="3" placeholder="">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <p>
                                         <h4 data-toggle="collapse" data-target="#collapseExploracion" aria-expanded="false" aria-controls="collapseExploracion">
                                             Exploración Física <i class="fa fa-plus-circle"></i>
                                         </h4>
@@ -4641,6 +4721,32 @@
 			    });
 		    }
         });
+
+        //Al abrirl el modal y consultar en automatico los Datos Generales, consultar también los signos vitales del px, le pasamos la 'Clave_hc_px' para que lo filtre
+        var expediente = "@Model.Expediente";
+        $.ajax({
+            url: '@Url.Action("ConsultarSignosVitales_Guardados", "HistoriaClinica")',
+            dataType: 'json',
+            data: { expediente: expediente, Clave_hc_px: Clave_HCcomun},
+            success: function (data) {
+                $("#slider").val(data.escala_dolor);
+                $("#peso").val(data.peso);
+                $("#talla").val(data.talla);
+                $("#temp").val(data.temperatura);
+                $("#fresp1").val(data.fresp);
+                $("#fcard1").val(data.fcard);
+                $("#t").val(data.ta1);
+                $("#a").val(data.ta2);
+                $("#destrostrix").val(data.dstx);
+            },
+            error: function(ex) {
+                Swal.fire({
+	               icon: 'error',
+	               title: '¡Error!',
+                });
+            }
+        });
+
     });
 
     function Tab2() {
@@ -5414,7 +5520,7 @@
                     $("#TatuajesPerforacionesODO").text(data.TatuajesPerforacionesODO);
                     $("#Tiempo_TatuajesPerfoODO").text(data.Tiempo_TatuajesPerfoODO);
 
-	                //ODONTOGRAMA			
+	                //ODONTOGRAMA
                     $("#MasticaDientesODO").text(data.MasticaDientesODO);
 
                     var checkboxData2 = {
@@ -5585,215 +5691,6 @@
             $('#Nutricion').hide();
             $('#Odontologia').hide();
         }
-
-        // #region función antigua
-        @*if (NombreHC == "Medicina") {
-            $('#Medicina').show();
-
-            $.ajax({
-		        url: '@Url.Action("ConsultarHC_Med", "HistoriaMedicina")',
-		        method: 'POST',
-		        dataType: 'json',
-                data: { Clave_hc_px: Clave_hc_px, TipoHistoria: TipoHistoria },
-                success: function (data) {
-
-                    // #region Seteo de valor con input del MODAL
-                    //HabitusExterior
-                    $("#BuenEstadoGral").text(data.BuenEstadoGral);
-                    $("#Tranquilo").text(data.Tranquilo);
-                    $("#Cooperador").text(data.Cooperador);
-                    $("#Orientado").text(data.Orientado);
-                    $("#FaciesCaract").text(data.FaciesCaract);
-                    $("#Depresivo").text(data.Depresivo);
-                    $("#Ansioso").text(data.Ansioso);
-                    $("#Agresivo").text(data.Agresivo);
-                    $("#Temeroso").text(data.Temeroso);
-                    $("#Irritable").text(data.Irritable);
-                    $("#Marcha").text(data.Marcha);
-                    //Habitos
-                    $("#HorasSuenio").text(data.HorasSuenio);
-                    $("#TieneInsomnio").text(data.TieneInsomnio);
-                    $("#TieneEuresis").text(data.TieneEuresis);
-                    $("#TienePesadillas").text(data.TienePesadillas);
-                    $("#HorasOcio").text(data.HorasOcio);
-                    $("#ActividadFisica").text(data.ActividadFisica);
-                    $("#ActFi_Tiempo").text(data.ActFi_Tiempo);
-                    $("#ActFi_Frecuencia").text(data.ActFi_Frecuencia);
-                    //AntecedentesPeri
-                    $("#NumeroEmbarazo").text(data.NumeroEmbarazo);
-                    $("#EnfermedadesEmbarazo").text(data.EnfermedadesEmbarazo);
-                    $("#Especifica_EnfermedadesEmb").text(data.Especifica_EnfermedadesEmb);
-                    $("#TratamientosEmbarazo").text(data.TratamientosEmbarazo);
-                    $("#Especifica_TratamientosEmb").text(data.Especifica_TratamientosEmb);
-                    $("#LugarParto").text(data.LugarParto);
-                    $("#Otra_LugarParto").text(data.Otra_LugarParto);
-                    $("#EdadGestional").text(data.EdadGestional);
-                    $("#Especifica_EdadGes").text(data.Especifica_EdadGes);
-                    $("#Apgar").text(data.Apgar);
-                    $("#Especifica_Apgar").text(data.Especifica_Apgar);
-                    $("#TipoParto").text(data.TipoParto);
-                    $("#PartoFue_TipoParto").text(data.PartoFue_TipoParto);
-                    $("#Distocica_TipoParto").text(data.Distocica_TipoParto);
-                    $("#Cesaria_TipoParto").text(data.Cesaria_TipoParto);
-                    $("#ComplicacionAtenObst").text(data.ComplicacionAtenObst);
-                    $("#Especifica_Complicacion").text(data.Especifica_Complicacion);
-                    $("#TamizMetabolico").text(data.TamizMetabolico);
-                    $("#Seleccione_TamizMetabolico").text(data.Seleccione_TamizMetabolico);
-                    $("#TamizAuditivo").text(data.TamizAuditivo);
-                    $("#Seleccione_TamizAuditivo").text(data.Seleccione_TamizAuditivo);
-                    //Inmunizaciones
-                    $("#CartillaVacunacion").text(data.CartillaVacunacion);
-                    $("#EsquemaVacunacion").text(data.EsquemaVacunacion);
-                    $("#Especifica_EsquemaVac").text(data.Especifica_EsquemaVac);
-                    //Alimentacion
-                    $("#TipoLactancia").text(data.TipoLactancia);
-                    $("#TiempoLactancia").text(data.TiempoLactancia);
-                    $("#EdadAblactacion").text(data.EdadAblactacion);
-                    $("#AlimentosInicio").text(data.AlimentosInicio);
-                    $("#EdadIntegracion").text(data.EdadIntegracion);
-                    $("#MuertCuna").text(data.MuertCuna);
-                    //HabitosAlimentacion
-                    $("#HabitosAlimentacion").text(data.HabitosAlimentacion);
-                    $("#EspecificaBueno").text(data.EspecificaBueno);
-                    $("#EspecificaRegular").text(data.EspecificaRegular);
-                    $("#EspecificaMalo").text(data.EspecificaMalo);
-                    //AntecedentesDes
-                    $("#SostuvoCabeza").text(data.SostuvoCabeza);
-                    $("#Especifica_SostuvoCab").text(data.Especifica_SostuvoCab);
-                    $("#SeSento").text(data.SeSento);
-                    $("#Especifica_SeSento").text(data.Especifica_SeSento);
-                    $("#Camino").text(data.Camino);
-                    $("#Especifica_Camino").text(data.Especifica_Camino);
-                    $("#Habla").text(data.Habla);
-                    $("#Especifica_Habla").text(data.Especifica_Habla);
-                    $("#ControlEsfinteres").text(data.ControlEsfinteres);
-                    $("#Especifica_ControlEsfin").text(data.Especifica_ControlEsfin);
-                    $("#PruebaEDI").text(data.PruebaEDI);
-                    $("#Especifica_PruebaEDI").text(data.Especifica_PruebaEDI);
-                    //AntecedentesGinecoObs
-                    $("#Menarquia").text(data.Menarquia);
-                    $("#Motivo_Menarquia").text(data.Motivo_Menarquia);
-                    $("#Ritmo_Menarquia").text(data.Ritmo_Menarquia);
-                    $("#Tipo_Menarquia").text(data.Tipo_Menarquia);
-                    $("#Cantidad_Menarquia").text(data.Cantidad_Menarquia);
-                    $("#Coloracion_Menarquia").text(data.Coloracion_Menarquia);
-                    $("#Especifica_Coloracion").text(data.Especifica_Coloracion);
-                    $("#FenomenosAsoc").text(data.FenomenosAsoc);
-                    $("#DolorPelvico").text(data.DolorPelvico);
-                    $("#SangradoAnormal").text(data.SangradoAnormal);
-                    $("#UltimoMetodoAnti").text(data.UltimoMetodoAnti);
-                    $("#Especifica_UltimoMetodoAnti").text(data.Especifica_UltimoMetodoAnti);
-                    $("#SangradoPostcoito").text(data.SangradoPostcoito);
-                    $("#FlujoTransvaginal").text(data.FlujoTransvaginal);
-                    $("#Gesta").text(data.Gesta);
-                    $("#Partos").text(data.Partos);
-                    $("#Especifica_Partos").text(data.Especifica_Partos);
-                    $("#Cesarea").text(data.Cesarea);
-                    $("#Especifica_Cesarea").text(data.Especifica_Cesarea);
-                    $("#Abortos").text(data.Abortos);
-                    $("#Especifica_Abortos").text(data.Especifica_Abortos);
-                    $("#HijosTerminos").text(data.HijosTerminos);
-                    $("#Especifica_HijosTerminos").text(data.Especifica_HijosTerminos);
-                    $("#Prematuros").text(data.Prematuros);
-                    $("#Especifica_Prematuros").text(data.Especifica_Prematuros);
-                    $("#FechaUltimoParto").text(data.FechaUltimoParto);
-                    //$("#Especifica_FechaUltimoParto").text(data.Especifica_FechaUltimoParto);
-                    // Suponiendo que data.Especifica_FechaUltimoParto es "/Date(1012629600000)/"
-                    var fechaJson = data.Especifica_FechaUltimoParto;
-                    var fechaMilisegundos = parseInt(fechaJson.match(/\d+/)[0]); // Extraer los milisegundos
-                    var fecha = new Date(fechaMilisegundos);
-                    var fechaLegible = fecha.toLocaleDateString(); // O cualquier otro formato que desees
-                    // Luego, establece la fecha legible en tu vista
-                    $("#Especifica_FechaUltimoParto").text(fechaLegible);
-                    $("#FechaUltimaCesarea").text(data.FechaUltimaCesarea);
-                    //$("#Especifica_FechaUltimaCesarea").text(data.Especifica_FechaUltimaCesarea);
-                    var fechaJson1 = data.Especifica_FechaUltimaCesarea;
-                    var fechaMilisegundos1 = parseInt(fechaJson1.match(/\d+/)[0]);
-                    var fecha1 = new Date(fechaMilisegundos1);
-                    var fechaLegible1 = fecha1.toLocaleDateString();
-                    $("#Especifica_FechaUltimaCesarea").text(fechaLegible1);
-                    $("#Motivo_FechaUltimaCesarea").text(data.Motivo_FechaUltimaCesarea);
-                    $("#FechaUltimoAborto").text(data.FechaUltimoAborto);
-                    //$("#Especifica_FechaUltimoAborto").text(data.Especifica_FechaUltimoAborto);
-                    var fechaJson2 = data.Especifica_FechaUltimoAborto;
-                    var fechaMilisegundos2 = parseInt(fechaJson2.match(/\d+/)[0]);
-                    var fecha2 = new Date(fechaMilisegundos2);
-                    var fechaLegible2 = fecha2.toLocaleDateString();
-                    $("#Especifica_FechaUltimoAborto").text(fechaLegible2);
-                    $("#FechaUltimaMenstruacion").text(data.FechaUltimaMenstruacion);
-                    //$("#Especifica_FechaUltimaMenstruacion").text(data.Especifica_FechaUltimaMenstruacion);
-                    var fechaJson3 = data.Especifica_FechaUltimaMenstruacion;
-                    var fechaMilisegundos3 = parseInt(fechaJson3.match(/\d+/)[0]);
-                    var fecha3 = new Date(fechaMilisegundos3);
-                    var fechaLegible3 = fecha3.toLocaleDateString();
-                    $("#Especifica_FechaUltimaMenstruacion").text(fechaLegible3);
-                    $("#FechaProbableParto").text(data.FechaProbableParto);
-                    //$("#Especifica_FechaProbableParto").text(data.Especifica_FechaProbableParto);
-                    var fechaJson4 = data.Especifica_FechaProbableParto;
-                    var fechaMilisegundos4 = parseInt(fechaJson4.match(/\d+/)[0]);
-                    var fecha4 = new Date(fechaMilisegundos4);
-                    var fechaLegible4 = fecha4.toLocaleDateString();
-                    $("#Especifica_FechaProbableParto").text(fechaLegible4);
-                    $("#FechaUltimoPapanicolau").text(data.FechaUltimoPapanicolau);
-                    //$("#Especifica_FechaUltimoPapanicolau").text(data.Especifica_FechaUltimoPapanicolau);
-                    var fechaJson5 = data.Especifica_FechaUltimoPapanicolau;
-                    var fechaMilisegundos5 = parseInt(fechaJson5.match(/\d+/)[0]);
-                    var fecha5 = new Date(fechaMilisegundos5);
-                    var fechaLegible5 = fecha5.toLocaleDateString();
-                    $("#Especifica_FechaUltimoPapanicolau").text(fechaLegible5);
-                    $("#NoRecuerda_FechaUltimoPapanicolau").text(data.NoRecuerda_FechaUltimoPapanicolau);
-                    $("#Resultado_FechaUltimoPapanicolau").text(data.Resultado_FechaUltimoPapanicolau);
-                    //AntecedentesVidaSex
-                    $("#InicioVidaSexual").text(data.InicioVidaSexual);
-                    $("#Edad_InicioVidaSexual").text(data.Edad_InicioVidaSexual);
-                    $("#Numero_ParejasSexuales").text(data.Numero_ParejasSexuales);
-                    //PrincipioEvolEstado
-                    $("#PEE").text(data.PEE);
-                    //ResultadosLaboratorio
-                    $("#RLGR").text(data.RLGR);
-                    $("#Especifica_RLGR").text(data.Especifica_RLGR);
-                    //Plan
-                    $("#Plan").text(data.Plan);
-                    //Pronostico
-                    $("#LigadoEvolucion").text(data.LigadoEvolucion);
-                    $("#Favorable").text(data.Favorable);
-                    $("#Desfavorable").text(data.Desfavorable);
-                    //Otros
-                    $("#Interconsulta").text(data.Interconsulta);
-                    $("#PadecimientoActual").text(data.PadecimientoActual);
-                    $("#Especifica_PadecimientoActual").text(data.Especifica_PadecimientoActual);
-                    $("#ProximaCita").text(data.ProximaCita);
-                    // #endregion
-
-                    // Obtener todos los elementos con la clase "estado"
-                    var elementosEstado = document.querySelectorAll(".estado");
-                    // Función para cambiar el texto basado en el contenido
-                    function cambiarTexto(spanElement) {
-                        var contenido = spanElement.textContent; // Obtener el contenido del <span>
-                        if (contenido === "true") {
-                            spanElement.textContent = "seleccionado";
-                        } else if (contenido === "false") {
-                            spanElement.textContent = "no seleccionado";
-                        }
-                    }
-                    // Iterar a través de los elementos y aplicar la función
-                    elementosEstado.forEach(function (elemento) {
-                        cambiarTexto(elemento);
-                    });
-
-		        },
-		        error: function(ex) {
-			        Swal.fire({
-				        icon: 'error',
-				        title: '¡Error!',
-			        });
-		        }
-            });
-
-        } else {
-            $('#Medicina').hide();
-        }*@
-        // #endregion
 
     }
 
