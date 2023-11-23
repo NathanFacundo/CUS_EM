@@ -65,10 +65,10 @@
                                                         htmlAttributes = new
                                                         {
                                                             @class = "form-control",@*required = "required",*@@id = "curp",
-@oninput = "validarInput(this)",
-@pattern = "^[A-Z]{1}[AEIOU]{1}[A-Z]{2}[0-9]{2}(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])[HM]{1}(AS|BC|BS|CC|CS|CH|CL|CM|DF|DG|GT|GR|HG|JC|MC|MN|MS|NT|NL|OC|PL|QT|QR|SP|SL|SR|TC|TS|TL|VZ|YN|ZS|NE|EX)[B-DF-HJ-NP-TV-Z]{3}[0-9A-Z]{1}[0-9]{1}$"
-}
-})
+                                                            @oninput = "validarInput(this)",
+                                                            @pattern = "^[A-Z]{1}[AEIOU]{1}[A-Z]{2}[0-9]{2}(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])[HM]{1}(AS|BC|BS|CC|CS|CH|CL|CM|DF|DG|GT|GR|HG|JC|MC|MN|MS|NT|NL|OC|PL|QT|QR|SP|SL|SR|TC|TS|TL|VZ|YN|ZS|NE|EX)[B-DF-HJ-NP-TV-Z]{3}[0-9A-Z]{1}[0-9]{1}$"
+                                                            }
+                                                            })
                                                     @Html.ValidationMessageFor(model => model.CURP, "", new { @class = "text-danger" })
                                                     @*Validacion de CUPR*@
                                                     <pre id="resultado2"></pre>
@@ -190,7 +190,7 @@
                                             <div class="col-md-4">
                                                 <div class="form-group card-label">
                                                     @Html.LabelFor(model => model.FechaNacimiento, "Fecha de Nacimiento", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
-                                                    @Html.EditorFor(model => model.FechaNacimiento, new { htmlAttributes = new { @class = "form-control", @type = "hidden", @id = "FechaNacimiento" } })
+                                                    @Html.EditorFor(model => model.FechaNacimiento, new { htmlAttributes = new { @class = "form-control", @type = "hidden", @id = "FechaNacimiento", @required = "required" } })
                                                     <div class="row">
                                                         <div class="col-md-4">
                                                             <select name="dia" id="dia" class="form-control llenarcurp fnac">
@@ -272,13 +272,13 @@
                                                     {
                                                     new SelectListItem { Text = "AGUASCALIENTES", Value = "AC"},
                                                     new SelectListItem { Text = "BAJA CALIFORNIA", Value = "BC"},
-                                                    new SelectListItem { Text = "BAJA CALIFORNIA SUR", Value = "BCS"},
+                                                    new SelectListItem { Text = "BAJA CALIFORNIA SUR", Value = "BS"},
                                                     new SelectListItem { Text = "CAMPECHE", Value = "CE"},
                                                     new SelectListItem { Text = "COAHULIA", Value = "CH"},
                                                     new SelectListItem { Text = "COLIMA", Value = "CO"},
                                                     new SelectListItem { Text = "CHIAPAS", Value = "CS"},
                                                     new SelectListItem { Text = "CHIHUAHUA", Value = "CH"},
-                                                    new SelectListItem { Text = "CD. MÉXICO", Value = "CDMX"},
+                                                    new SelectListItem { Text = "CD. MÉXICO", Value = "DF"},
                                                     new SelectListItem { Text = "DURANGO", Value = "DG"},
                                                     new SelectListItem { Text = "GUANAJUATO", Value = "GT"},
                                                     new SelectListItem { Text = "GUERRERO", Value = "GR"},
@@ -301,7 +301,7 @@
                                                     new SelectListItem { Text = "VERACRUZ", Value = "VZ"},
                                                     new SelectListItem { Text = "YUCATÁN", Value = "YN"},
                                                     new SelectListItem { Text = "ZACATECAS", Value = "ZS"},
-                                                    new SelectListItem { Text = "EXTRANJERO", Value = "EX"},
+                                                    new SelectListItem { Text = "EXTRANJERO", Value = "NE"},
                                                     }, "Seleccione",
                                                     new
                                                     {
@@ -397,13 +397,13 @@
                                                     {
                                                     new SelectListItem { Text = "AGUASCALIENTES", Value = "AC"},
                                                     new SelectListItem { Text = "BAJA CALIFORNIA", Value = "BC"},
-                                                    new SelectListItem { Text = "BAJA CALIFORNIA SUR", Value = "BCS"},
+                                                    new SelectListItem { Text = "BAJA CALIFORNIA SUR", Value = "BS"},
                                                     new SelectListItem { Text = "CAMPECHE", Value = "CE"},
                                                     new SelectListItem { Text = "COAHULIA", Value = "CH"},
                                                     new SelectListItem { Text = "COLIMA", Value = "CO"},
                                                     new SelectListItem { Text = "CHIAPAS", Value = "CS"},
                                                     new SelectListItem { Text = "CHIHUAHUA", Value = "CH"},
-                                                    new SelectListItem { Text = "CD. MÉXICO", Value = "CDMX"},
+                                                    new SelectListItem { Text = "CD. MÉXICO", Value = "DF"},
                                                     new SelectListItem { Text = "DURANGO", Value = "DG"},
                                                     new SelectListItem { Text = "GUANAJUATO", Value = "GT"},
                                                     new SelectListItem { Text = "GUERRERO", Value = "GR"},
