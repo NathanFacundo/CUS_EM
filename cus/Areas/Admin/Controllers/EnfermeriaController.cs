@@ -88,7 +88,7 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         //calcular la fecha actual y luego restarle 3 horas para obtener la fecha límite para las últimas 3 horas.
                         DateTime fechaActual = DateTime.Now;
-                        DateTime fechaL = fechaActual.AddHours(-3);
+                        DateTime fechaL = fechaActual.AddHours(-1.5);
 
                         //utilizar fechaLimite para verificar si el paciente tiene un registro dentro de las últimas 3 horas
                         pacienteTieneRegistroEnUltimas3Horas = db.SignosVitales
