@@ -2888,5 +2888,41 @@ namespace CUS.Areas.Admin.Controllers
                 return new JsonResult { Data = "", JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
         }
+
+        public ActionResult ValidarPxParaMostrarHistorias(string expediente)
+        {
+            try
+            {
+                //Buscamos el px en la tabla 'Paciente'
+                var PX = (from a in db.Paciente
+                          where a.Expediente == expediente
+                          select a).FirstOrDefault();
+
+                //Buscamos si el px ya tiene registro de 'Datos Grales.'
+                var HC = (from a in db.HistoriaClinica
+                          where a.Id_Paciente == PX.Id
+                          where a.TipoHistoria == "Datos Grales."
+                          select a).FirstOrDefault();
+
+                var TieneHistoria = 0;
+
+                //Si tiene registro de Datos Grales. establecemos como '1' y si no como '0'
+                if (HC != null)
+                {
+                    TieneHistoria = 1;
+                }
+                else
+                {
+                    TieneHistoria = 0;
+                }
+                return Json(new { MENSAJE = "Succe: ", Data = TieneHistoria }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(new { MENSAJE = "Error: Error de sistema: " + ex.Message }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+
     }
 }
