@@ -1556,6 +1556,11 @@ namespace CUS.Areas.Admin.Controllers
                     Historia.diagnostico3 = HistoriaClinica.diagnostico3;
                     Historia.diagnostico4 = HistoriaClinica.diagnostico4;
                     Historia.diagnostico5 = HistoriaClinica.diagnostico5;
+                    Historia.tipo_diagnostico1 = HistoriaClinica.tipo_diagnostico1;
+                    Historia.tipo_diagnostico2 = HistoriaClinica.tipo_diagnostico2;
+                    Historia.tipo_diagnostico3 = HistoriaClinica.tipo_diagnostico3;
+                    Historia.tipo_diagnostico4 = HistoriaClinica.tipo_diagnostico4;
+                    Historia.tipo_diagnostico5 = HistoriaClinica.tipo_diagnostico5;
 
                     Historia.Id_Paciente = paciente.Id;
                     Historia.Clave_hc_px = Id_claveHC;
@@ -2057,6 +2062,11 @@ namespace CUS.Areas.Admin.Controllers
             public string Diagnostico3 { get; set; }
             public string Diagnostico4 { get; set; }
             public string Diagnostico5 { get; set; }
+            public string tipo_diagnostico1 { get; set; }
+            public string tipo_diagnostico2 { get; set; }
+            public string tipo_diagnostico3 { get; set; }
+            public string tipo_diagnostico4 { get; set; }
+            public string tipo_diagnostico5 { get; set; }
             //Plan
             public string Plan { get; set; }
             //Pronostico
@@ -2092,7 +2102,7 @@ namespace CUS.Areas.Admin.Controllers
                     "EA.S20Anios_Complexion, EA.S20Anios_PesoId, EA.S20Anios_CircunfCin, EA.S20Anios_CircunfCad, EA.S20Anios_IndiceCin, EA.S20Anios_Riesgo, EA.S20Anios_Observaciones, EA.S60Anios_PesoA, EA.S60Anios_TallaA, EA.S60Anios_Indice, EA.S60Anios_Diagnostico, EA.S60Anios_CircunfMu, EA.S60Anios_Complexion, EA.S60Anios_PesoId, EA.S60Anios_PesoAj, EA.S60Anios_CircunfCin, EA.S60Anios_CircunfCad, EA.S60Anios_IndiceCin, EA.S60Anios_CircunfBra, EA.S60Anios_CircunfPan, EA.S60Anios_Observaciones, EA.SEmbaraz_PesoA, EA.SEmbaraz_TallaA, EA.SEmbaraz_Gestacion, " +
                     "EA.SEmbaraz_CircunfBra, EA.SEmbaraz_PesoPreges, EA.SEmbaraz_Indice, EA.SEmbaraz_Diagnostico, EA.SEmbaraz_GanPesoDesd, EA.SEmbaraz_GanPesoAct, EA.SEmbaraz_Observaciones, " +
                     "EI.CriteriosGen, EI.PrevencionEnf, EI.EducacionMat, EI.PlanificacionDis, EI.AdopcionPat, EI.EducacionMej, EI.EjercicioAd, EI.EducacionRel, EI.EdRelAlimentos, EI.AdherenciaTrat, EI.DudasInq, EI.Especifica_Dudas, EI.Oral, EI.Escrito, EI.Video, EI.Demostracion, EI.Mujeremb, EI.MadreEt, EI.Postnatal, EI.Cuidador6meses, EI.Cuidador6a12meses, EI.Cuidador1a4anios, EI.Cuidador5a9anios, EI.C10a19anios, EI.C20a59anios, EI.C60anios, EI.SeCompleta, EI.SinCompletar, EI.ReforzarParte, EI.ReforzarToda, EI.Rechazo, " +
-                    "ID.Diagnostico1, ID.Diagnostico2, ID.Diagnostico3, ID.Diagnostico4, ID.Diagnostico5, " +
+                    "ID.Diagnostico1, ID.Diagnostico2, ID.Diagnostico3, ID.Diagnostico4, ID.Diagnostico5, ID.tipo_diagnostico1, ID.tipo_diagnostico2, ID.tipo_diagnostico3, ID.tipo_diagnostico4, ID.tipo_diagnostico5, " +
                     "PL.[Plan], " +
                     "PR.LigadoEvolucion, PR.Favorable, PR.Desfavorable, " +
                     "O.Interconsulta, O.PadecimientoActual, O.Especifica_PadecimientoActual, O.ProximaCita " +

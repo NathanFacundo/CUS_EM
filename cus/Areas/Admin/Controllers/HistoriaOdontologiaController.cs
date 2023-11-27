@@ -1915,6 +1915,11 @@ namespace CUS.Areas.Admin.Controllers
                     Historia.diagnostico3ODO = HistoriaClinica.diagnostico3ODO;
                     Historia.diagnostico4ODO = HistoriaClinica.diagnostico4ODO;
                     Historia.diagnostico5ODO = HistoriaClinica.diagnostico5ODO;
+                    Historia.tipo_diagnostico1 = HistoriaClinica.tipo_diagnostico1;
+                    Historia.tipo_diagnostico2 = HistoriaClinica.tipo_diagnostico2;
+                    Historia.tipo_diagnostico3 = HistoriaClinica.tipo_diagnostico3;
+                    Historia.tipo_diagnostico4 = HistoriaClinica.tipo_diagnostico4;
+                    Historia.tipo_diagnostico5 = HistoriaClinica.tipo_diagnostico5;
 
                     Historia.Id_Paciente = paciente.Id;
                     Historia.Clave_hc_px = Id_claveHC;
@@ -2394,6 +2399,11 @@ namespace CUS.Areas.Admin.Controllers
             public string diagnostico3ODO { get; set; }
             public string diagnostico4ODO { get; set; }
             public string diagnostico5ODO { get; set; }
+            public string tipo_diagnostico1 { get; set; }
+            public string tipo_diagnostico2 { get; set; }
+            public string tipo_diagnostico3 { get; set; }
+            public string tipo_diagnostico4 { get; set; }
+            public string tipo_diagnostico5 { get; set; }
             //Plan
             public string PlanODO { get; set; }
             //Pronostico
@@ -2430,7 +2440,7 @@ namespace CUS.Areas.Admin.Controllers
                 "Od.CheckBox54,Od.Input54,Od.CheckBox53,Od.Input53,Od.CheckBox52,Od.Input52,Od.CheckBox51,Od.Input51,Od.CheckBox61,Od.Input61,Od.CheckBox62,Od.Input62,Od.CheckBox63,Od.Input63,Od.CheckBox64,Od.Input64,Od.CheckBox65,Od.Input65,Od.CheckBox85,Od.Input85,Od.CheckBox84,Od.Input84,Od.CheckBox83,Od.Input83,Od.CheckBox82,Od.Input82,Od.CheckBox81,Od.Input81,Od.CheckBox71,Od.Input71,Od.CheckBox72,Od.Input72,Od.CheckBox73,Od.Input73,Od.CheckBox74,Od.Input74, " +
                 "Od.CheckBox75,Od.Input75,Od.CheckBox48,Od.Input48,Od.CheckBox47,Od.Input47,Od.CheckBox46,Od.Input46,Od.CheckBox45,Od.Input45,Od.CheckBox44,Od.Input44,Od.CheckBox43,Od.Input43,Od.CheckBox42,Od.Input42,Od.CheckBox41,Od.Input41,Od.CheckBox31,Od.Input31,Od.CheckBox32,Od.Input32,Od.CheckBox33,Od.Input33,Od.CheckBox34,Od.Input34,Od.CheckBox35,Od.Input35,Od.CheckBox36,Od.Input36,Od.CheckBox37,Od.Input37,Od.CheckBox38,Od.Input38,Od.AltaODO,Od.MediaODO,Od.BajaODO, " +
                 "RL.ResultadoODO, RL.Especifica_ResultadoODO, " +
-                "ID.diagnostico1ODO,ID.diagnostico2ODO,ID.diagnostico3ODO,ID.diagnostico4ODO,ID.diagnostico5ODO, " +
+                "ID.diagnostico1ODO,ID.diagnostico2ODO,ID.diagnostico3ODO,ID.diagnostico4ODO,ID.diagnostico5ODO, ID.tipo_diagnostico1, ID.tipo_diagnostico2, ID.tipo_diagnostico3, ID.tipo_diagnostico4, ID.tipo_diagnostico5, " +
                 "PL.[PlanODO], " +
                 "PR.LigadoEvolucionODO, PR.FavorableODO, PR.DesfavorableODO, " +
                 "O.InterconsultaODO, O.PadecimientoActualODO, O.Especifica_PadecimientoActualODO, O.ProximaCitaODO " +
