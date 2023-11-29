@@ -1,0 +1,111 @@
+﻿@Model CUS.Models.CUS
+@{
+    ViewBag.Title = "Nota de Evolución";
+
+    int edad = 0;
+    int meses = 0;
+    var fecha = DateTime.Now.ToString("yyyy-MM-ddT00:00:00.000");
+    var fechaDT = DateTime.Parse(fecha);
+
+    var today = fechaDT;
+    DateTime fnac = (DateTime)Model.FechaNacimiento;
+    int Years = 0;
+    int Months = 0;
+    int Days = 0;
+
+    var nacimiento = string.Format("{0:dd/MM/yyyy}", Model.FechaNacimiento);
+
+    if ((today.Year - fnac.Year) > 0 ||
+    (((today.Year - fnac.Year) == 0) && ((fnac.Month < today.Month) ||
+    ((fnac.Month == today.Month) && (fnac.Day <= today.Day)))))
+    {
+        int DaysInBdayMonth = DateTime.DaysInMonth(fnac.Year, fnac.Month);
+        int DaysRemain = today.Day + (DaysInBdayMonth - fnac.Day);
+
+        if (today.Month > fnac.Month)
+        {
+            Years = today.Year - fnac.Year;
+            Months = today.Month - (fnac.Month + 1) + Math.Abs(DaysRemain / DaysInBdayMonth);
+            Days = (DaysRemain % DaysInBdayMonth + DaysInBdayMonth) % DaysInBdayMonth;
+        }
+        else if (today.Month == fnac.Month)
+        {
+            if (today.Day >= fnac.Day)
+            {
+                Years = today.Year - fnac.Year;
+                Months = 0;
+                Days = today.Day - fnac.Day;
+            }
+            else
+            {
+                Years = (today.Year - 1) - fnac.Year;
+                Months = 11;
+                Days = DateTime.DaysInMonth(fnac.Year, fnac.Month) - (fnac.Day - today.Day);
+            }
+        }
+        else
+        {
+            Years = (today.Year - 1) - fnac.Year;
+            Months = today.Month + (11 - fnac.Month) + Math.Abs(DaysRemain / DaysInBdayMonth);
+            Days = (DaysRemain % DaysInBdayMonth + DaysInBdayMonth) % DaysInBdayMonth;
+        }
+    }
+
+    if (Years >= 99)
+    {
+        edad = 99;
+    }
+    else
+    {
+        edad = Years;
+    }
+
+    meses = Months;
+}
+
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="row">
+            <div class="col-sm-12 p-0">
+                <div class="profile-header">
+                    <div class="row align-items-center">
+                        <div class="col-auto profile-image">
+                            <a href="#">
+                                @*<img class="rounded-circle" alt="User Image" src="~/Content/assets/img/profiles/avatar-04.jpg">*@
+                            </a>
+                        </div>
+                        <div class="col ml-md-n2 profile-user-info">
+                            <h10 style="font-weight:bold;">Nombre: @Model.Nombre @Model.PrimerApellido @Model.SegundoApellido </h10>
+                            <a id="Nombre"></a><br />
+                            <h10 style="font-weight:bold;">Expediente:@Model.Expediente </h10>
+                            <a id="Exp"></a><br />
+                            <h10 style="font-weight:bold;">Edad: @edad años @meses meses</h10>
+                            <a id="Edad"></a><br />
+                            <h10 style="font-weight:bold;">Sexo: @Model.Sexo</h10>
+                            <a id="Sexo"></a><br />
+                            <h10 style="font-weight:bold;">Fecha Nac.: @nacimiento</h10>
+                            <a id="FechaNac"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Areas/Admin/assets/js/jquery-3.2.1.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+@if (TempData["message_success"] != null)
+{
+    <script>
+
+        Swal.fire({
+            icon: 'success',
+            title: '@TempData["message_success"]',
+            showConfirmButton: false,
+            timer: 1600
+        })
+
+    </script>
+}

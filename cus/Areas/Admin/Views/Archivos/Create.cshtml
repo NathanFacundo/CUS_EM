@@ -1,0 +1,338 @@
+﻿@Model CUS.Models.CUS
+@{
+    ViewBag.Title = "Nota de Evolución";
+
+    int edad = 0;
+    int meses = 0;
+    var fecha = DateTime.Now.ToString("yyyy-MM-ddT00:00:00.000");
+    var fechaDT = DateTime.Parse(fecha);
+
+    var today = fechaDT;
+    DateTime fnac = (DateTime)Model.FechaNacimiento;
+    int Years = 0;
+    int Months = 0;
+    int Days = 0;
+
+    var nacimiento = string.Format("{0:dd/MM/yyyy}", Model.FechaNacimiento);
+
+    if ((today.Year - fnac.Year) > 0 ||
+    (((today.Year - fnac.Year) == 0) && ((fnac.Month < today.Month) ||
+    ((fnac.Month == today.Month) && (fnac.Day <= today.Day)))))
+    {
+        int DaysInBdayMonth = DateTime.DaysInMonth(fnac.Year, fnac.Month);
+        int DaysRemain = today.Day + (DaysInBdayMonth - fnac.Day);
+
+        if (today.Month > fnac.Month)
+        {
+            Years = today.Year - fnac.Year;
+            Months = today.Month - (fnac.Month + 1) + Math.Abs(DaysRemain / DaysInBdayMonth);
+            Days = (DaysRemain % DaysInBdayMonth + DaysInBdayMonth) % DaysInBdayMonth;
+        }
+        else if (today.Month == fnac.Month)
+        {
+            if (today.Day >= fnac.Day)
+            {
+                Years = today.Year - fnac.Year;
+                Months = 0;
+                Days = today.Day - fnac.Day;
+            }
+            else
+            {
+                Years = (today.Year - 1) - fnac.Year;
+                Months = 11;
+                Days = DateTime.DaysInMonth(fnac.Year, fnac.Month) - (fnac.Day - today.Day);
+            }
+        }
+        else
+        {
+            Years = (today.Year - 1) - fnac.Year;
+            Months = today.Month + (11 - fnac.Month) + Math.Abs(DaysRemain / DaysInBdayMonth);
+            Days = (DaysRemain % DaysInBdayMonth + DaysInBdayMonth) % DaysInBdayMonth;
+        }
+    }
+
+    if (Years >= 99)
+    {
+        edad = 99;
+    }
+    else
+    {
+        edad = Years;
+    }
+
+    meses = Months;
+}
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
+<style>
+    .dropzone {
+        position: relative;
+        color: white;
+        height: 20vw;
+        line-height: 19vw;
+        margin: auto;
+        text-align: center;
+        width: 100%;
+        cursor: pointer;
+        background-color: #e2eaf1;
+        overflow: hidden;
+    }
+
+
+
+        .dropzone.hover {
+            border: 10px solid #FE5;
+            color: #FE5;
+        }
+
+
+
+        .dropzone .camara {
+            width: 4vw !important;
+            border-radius: 0px;
+        }
+
+
+        .dropzone div {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            color: #282828;
+        }
+
+
+
+        .dropzone img {
+            vertical-align: middle;
+            max-width: 100%;
+        }
+
+
+
+        .dropzone [type="file"] {
+            cursor: pointer;
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+</style>
+
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="row">
+            <div class="col-sm-12 p-0">
+                <div class="profile-header pl-0">
+                    <div class="row align-items-center">
+                        <div class="col-auto profile-image">
+                            <a href="#">
+                                @*<img class="rounded-circle" alt="User Image" src="~/Content/assets/img/profiles/avatar-04.jpg">*@
+                            </a>
+                        </div>
+                        <div class="col ml-md-n2 profile-user-info">
+                            <h10 style="font-weight:bold;">Nombre: @Model.Nombre @Model.PrimerApellido @Model.SegundoApellido </h10>
+                            <a id="Nombre"></a><br />
+                            <h10 style="font-weight:bold;">Expediente:@Model.Expediente </h10>
+                            <a id="Exp"></a><br />
+                            <h10 style="font-weight:bold;">Edad: @edad años @meses meses</h10>
+                            <a id="Edad"></a><br />
+                            <h10 style="font-weight:bold;">Sexo: @Model.Sexo</h10>
+                            <a id="Sexo"></a><br />
+                            <h10 style="font-weight:bold;">Fecha Nac.: @nacimiento</h10>
+                            <a id="FechaNac"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row p-3 mt-5" style="background-color:white">
+            <div class="col-md-12 p-2">
+                <h3 class="mt-3 mb-3"> <b>Subir un archivo</b></h3>
+            </div>
+            <div class="col-md-12 p-2">
+                <label for="titulo">Titulo</label>
+                <input class="form-control" name="titulo" id="titulo" maxlength="200" required />
+            </div>
+            <div class="col-md-12 p-2">
+                <label for="titulo">Tipo de archivo</label>
+                <select class="form-control" name="titulo" id="tipo_archivo" required>
+                    <option selected disabled>Selecciona</option>
+                    <option value="Tipo 1">Tipo 1</option>
+                    <option value="Tipo 2">Tipo 2</option>
+                    <option value="Tipo 3">Tipo 3</option>
+                    <option value="Tipo 4">Tipo 4</option>
+                </select>
+            </div>
+            <div class="col-md-12 p-2">
+                <label for="titulo">Fecha</label>
+                <input class="form-control" name="fecha" id="date" required />
+            </div>
+            <div class="col-md-12 p-2">
+                <div id="dropzone" class="dropzone">
+
+                    <div><img class="camara" src="~/Areas/Admin/assets/img/archivo.png" alt="camara"> <span>Da clic o arrastra elementos</span></div>
+
+                    <input type="file" name="imagen1" id="file" accept="image/png, image/jpeg, image/jpg, image/webp, application/pdf" />
+
+                </div>
+            </div>
+            <div class="col-md-12 p-2 mb-5 text-right">
+                <button class="btn btn-primary">Guardar</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<script src="~/Areas/Admin/assets/js/jquery-3.2.1.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="~/Areas/Admin/assets/js/jquery.maskedinput.min.js"></script>
+<script src="~/Areas/Admin/assets/js/mask.js"></script>
+
+@if (TempData["message_success"] != null)
+{
+    <script>
+
+        Swal.fire({
+            icon: 'success',
+            title: '@TempData["message_success"]',
+            showConfirmButton: false,
+            timer: 1600
+        })
+
+    </script>
+}
+
+
+
+<script>
+    //$(function() {
+    $(document).ready(function () {
+
+        $(document).on("dragover", "#dropzone", function () {
+            //$('#dropzone2').on('dragover', function() {
+
+            $(this).addClass('hover');
+
+        });
+
+
+        $(document).on("dragleave", "#dropzone", function () {
+            //$('#dropzone2').on('dragleave', function() {
+
+            $(this).removeClass('hover');
+
+        });
+
+
+        $(document).on("change", "#dropzone input", function () {
+            //$('#dropzone2 input').on('change', function(e) {
+
+            var file = this.files[0];
+
+            if (file.size < 2000000) {
+
+
+
+                var image = $(this).val().replace(/C:\\fakepath\\/i, '');
+
+                //alert(image);
+
+
+
+                $('#dropzone').removeClass('hover');
+
+
+
+                if (this.accept && $.inArray(file.type, this.accept.split(/, ?/)) == -1) {
+
+                    return alert('File type not allowed.');
+
+                }
+
+
+
+                $('#dropzone').addClass('dropped');
+
+                $('#dropzone img').remove();
+
+                $('#dropzone span').remove();
+
+
+
+                if ((/^image\/(jpg|png|jpeg|webp)$/i).test(file.type) || (/^application\/(pdf)$/i).test(file.type)) {
+
+                    var reader = new FileReader(file);
+
+
+
+                    //alert(file);
+
+
+
+                    reader.readAsDataURL(file);
+
+
+
+                    reader.onload = function (e) {
+
+                        var data = e.target.result;
+
+                        if ((/^application\/(pdf)$/i).test(file.type)) {
+
+                            $('#dropzone div').text(image);
+
+                        } else {
+
+
+                            $('#dropzone div').text('');
+
+                            $('#dropzone div').css('background-image', 'url(' + data + ')');
+
+                        }
+
+
+
+                    };
+
+                } else {
+
+                    var ext = file.name.split('.').pop();
+
+                    $('#dropzone div').html(ext);
+
+                }
+
+
+
+            } else {
+
+                Swal.fire({
+
+                    icon: 'error',
+
+                    title: "Imagen debe ser menor a 2MB",
+
+                });
+
+            }
+
+        });
+
+
+    });
+
+
+</script>

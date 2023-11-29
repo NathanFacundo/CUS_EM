@@ -344,20 +344,20 @@
                                     <div class="resumenTop" id="analisisLetra">A</div>
                                     <div class="resumenTopCheck" id="analisisCheck">✓</div>
                                     <!--div class="row mt-5 ml-0 mr-0 mb-0" id="diagnosticoMedico">
-                                        <div class="col-md-12 p-2 text-left">
-                                            <h6>Mis diagnósticos frecuentes <img class="flecha" src="~/Content/assets/img/flecha-abajo.png" /> </h6>
-                                        </div>
-                                    <-div>
-                                    <div class="row m-0 mt-5" id="diagnosticoPaciente">
-                                        <div class="col-md-12 p-2 text-left">
-                                            <h6>Diagnósticos frecuentes del paciente <img class="flecha" src="~/Content/assets/img/flecha-abajo.png" /> </h6>
-                                        </div>
-                                    </div>
-                                    <div class="row m-0 mt-5" id="diagnosticoEspecialidad">
-                                        <div class="col-md-12 p-2 text-left">
-                                            <h6>Diagnósticos frecuentes de especialidad <img class="flecha" src="~/Content/assets/img/flecha-abajo.png" /> </h6>
-                                        </div>
-                                    </div-->
+        <div class="col-md-12 p-2 text-left">
+            <h6>Mis diagnósticos frecuentes <img class="flecha" src="~/Content/assets/img/flecha-abajo.png" /> </h6>
+        </div>
+    <-div>
+    <div class="row m-0 mt-5" id="diagnosticoPaciente">
+        <div class="col-md-12 p-2 text-left">
+            <h6>Diagnósticos frecuentes del paciente <img class="flecha" src="~/Content/assets/img/flecha-abajo.png" /> </h6>
+        </div>
+    </div>
+    <div class="row m-0 mt-5" id="diagnosticoEspecialidad">
+        <div class="col-md-12 p-2 text-left">
+            <h6>Diagnósticos frecuentes de especialidad <img class="flecha" src="~/Content/assets/img/flecha-abajo.png" /> </h6>
+        </div>
+    </div-->
                                     <div class="row mt-5 ml-0 mr-0 mb-0" id="diagnosticoBusqueda">
                                         <div class="col-md-12 p-2 text-left">
                                             <h6>Buscar otro diagnostico</h6>
@@ -958,6 +958,8 @@
     $("#tipoconsulta1").attr('disabled', 'disabled');
     $("#tipoconsulta2").attr('disabled', 'disabled');
     $("#tipoconsulta3").attr('disabled', 'disabled');
+    $("#tipoconsulta4").attr('disabled', 'disabled');
+    $("#tipoconsulta5").attr('disabled', 'disabled');
     //$('#diaginfo1').hide();
     //$('#diaginfo2').hide();
     //Al dar click en los diagnoticos que se ponga en los cuadros de abajo
@@ -1255,28 +1257,6 @@
             }
 
 
-            //$.ajax({
-                //url: '@Url.Action("GuardaDiagSOAP", "ServiciosMedicos")',
-                /*dataType: "json",
-                data: { numemp: $("#numemp").val(), tipoconsulta1: $("#tipoconsulta1").val(), tipoconsulta2: $("#tipoconsulta2").val(), tipoconsulta3: $("#tipoconsulta3").val(), diagnostico1: $("#clave1").val(), diagnostico2: $("#clave2").val(), diagnostico3: $("#clave3").val() },
-                success: function (data) {
-                    infoSOAP();
-                },
-                error: function (xhr, status, error) {
-                    Swal.fire({
-                        position: 'center',
-                        icon: 'error',
-                        //stitle: 'Expediente no encontrado',
-                        showConfirmButton: false,
-                        timer: 10000
-                    });
-                }
-            });
-            */
-
-
-
-
         } else {
 
             //$('#finalizar').attr('disabled', 'disabled');
@@ -1361,29 +1341,12 @@
     });
 
 
-    /*
+    
     $(".tipoconsulta").change(function () {
         $('#diaginfo1').hide();
-        $('#diaginfo2').hide();
-        //$.ajax({
-            //url: '@Url.Action("GuardaDiagSOAP", "Nota")',
-            /*dataType: "json",
-            data: { numemp: $("#numemp").val(), tipoconsulta1: $("#tipoconsulta1").val(), tipoconsulta2: $("#tipoconsulta2").val(), tipoconsulta3: $("#tipoconsulta3").val(), diagnostico1: $("#clave1").val(), diagnostico2: $("#clave2").val(), diagnostico3: $("#clave3").val() },
-            success: function (data) {
-                infoSOAP();
-            },
-            error: function (xhr, status, error) {
-                Swal.fire({
-                    position: 'center',
-                    icon: 'error',
-                    //stitle: 'Expediente no encontrado',
-                    showConfirmButton: false,
-                    timer: 10000
-                });
-            }
-        });
+        
     });
-    */
+    
 
 
 </script>
@@ -1391,6 +1354,16 @@
 
 
 <script>
+
+    $(document).on('click', '#diagnosticoBusquedaLista .diagnostico-select', function (event) {
+        //alert('hola');
+        var clave = $(this).attr('data-clave');
+        var desCorta = $(this).text();
+        $('#diagnosticoBusquedaListaHistorial').append('<div class="col-md-2 p-2"><div class="shadow p-2 mb-2 rounded diagnostico-select diagnostico-active" data-clave="' + clave + '">' + desCorta + '</div></div>');
+        $(this).remove();
+
+    });
+
 
     $("#borrardiag1").click(function () {
         $(".diagnostico-active").each(function (index) {
