@@ -806,14 +806,10 @@
                                     <div class="row">
                                         <div class="col-12 p-2">
 
-                                            @*<div class="row mt-5 ml-0 mr-0 mb-0">
-            <h4>Seleccione diagnóstico CIE10:</h4>
-        </div>*@
-
                                             <div class="row mt-5 ml-0 mr-0 mb-0" id="diagnosticoBusqueda">
                                                 <div class="col-md-12 p-2 text-left">
-                                                    <h6>Buscar otro diagnostico</h6>
-                                                    <input style="width:90%;" id="diagnosticoTxt" placeholder="Escribe aquí la descripción o clave y da clic en el boton de buscar" />
+                                                    <h6>Buscar diagnóstico</h6>
+                                                    <input style="width:90%;" id="diagnosticoTxt" placeholder="Escribe aquí la descripción o clave y da clic en el botón de buscar" />
                                                     <a class="btn btn-buscar">
                                                         <img src="~/Content/assets/img/search1.png" class="btnbuscapac">
                                                     </a>
@@ -1531,6 +1527,8 @@
     $("#tipoconsulta1").attr('disabled', 'disabled');
     $("#tipoconsulta2").attr('disabled', 'disabled');
     $("#tipoconsulta3").attr('disabled', 'disabled');
+    $("#tipoconsulta4").attr('disabled', 'disabled');
+    $("#tipoconsulta5").attr('disabled', 'disabled');
     //$('#diaginfo1').hide();
     //$('#diaginfo2').hide();
     //Al dar click en los diagnoticos que se ponga en los cuadros de abajo
@@ -1828,28 +1826,6 @@
             }
 
 
-            //$.ajax({
-                //url: '@Url.Action("GuardaDiagSOAP", "ServiciosMedicos")',
-                /*dataType: "json",
-                data: { numemp: $("#numemp").val(), tipoconsulta1: $("#tipoconsulta1").val(), tipoconsulta2: $("#tipoconsulta2").val(), tipoconsulta3: $("#tipoconsulta3").val(), diagnostico1: $("#clave1").val(), diagnostico2: $("#clave2").val(), diagnostico3: $("#clave3").val() },
-                success: function (data) {
-                    infoSOAP();
-                },
-                error: function (xhr, status, error) {
-                    Swal.fire({
-                        position: 'center',
-                        icon: 'error',
-                        //stitle: 'Expediente no encontrado',
-                        showConfirmButton: false,
-                        timer: 10000
-                    });
-                }
-            });
-            */
-
-
-
-
         } else {
 
             //$('#finalizar').attr('disabled', 'disabled');
@@ -1930,6 +1906,13 @@
         }, 800, function () {
             window.location.href = "#diagnosticoBusquedaListaHistorial"
         });
+
+    });
+
+
+
+    $(".tipoconsulta").change(function () {
+        $('#diaginfo1').hide();
 
     });
 
@@ -2086,5 +2069,6 @@
         $("#tipoconsulta5").val($("#tipoconsulta5 option:first").val());
 
     });
+
 
 </script>

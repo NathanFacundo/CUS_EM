@@ -3217,6 +3217,8 @@
     $("#tipoconsulta1").attr('disabled', 'disabled');
     $("#tipoconsulta2").attr('disabled', 'disabled');
     $("#tipoconsulta3").attr('disabled', 'disabled');
+    $("#tipoconsulta4").attr('disabled', 'disabled');
+    $("#tipoconsulta5").attr('disabled', 'disabled');
     //$('#diaginfo1').hide();
     //$('#diaginfo2').hide();
     //Al dar click en los diagnoticos que se ponga en los cuadros de abajo
@@ -3514,28 +3516,6 @@
             }
 
 
-            //$.ajax({
-                //url: '@Url.Action("GuardaDiagSOAP", "ServiciosMedicos")',
-                /*dataType: "json",
-                data: { numemp: $("#numemp").val(), tipoconsulta1: $("#tipoconsulta1").val(), tipoconsulta2: $("#tipoconsulta2").val(), tipoconsulta3: $("#tipoconsulta3").val(), diagnostico1: $("#clave1").val(), diagnostico2: $("#clave2").val(), diagnostico3: $("#clave3").val() },
-                success: function (data) {
-                    infoSOAP();
-                },
-                error: function (xhr, status, error) {
-                    Swal.fire({
-                        position: 'center',
-                        icon: 'error',
-                        //stitle: 'Expediente no encontrado',
-                        showConfirmButton: false,
-                        timer: 10000
-                    });
-                }
-            });
-            */
-
-
-
-
         } else {
 
             //$('#finalizar').attr('disabled', 'disabled');
@@ -3616,6 +3596,13 @@
         }, 800, function () {
             window.location.href = "#diagnosticoBusquedaListaHistorial"
         });
+
+    });
+
+
+
+    $(".tipoconsulta").change(function () {
+        $('#diaginfo1').hide();
 
     });
 
@@ -3772,5 +3759,6 @@
         $("#tipoconsulta5").val($("#tipoconsulta5 option:first").val());
 
     });
+
 
 </script>
