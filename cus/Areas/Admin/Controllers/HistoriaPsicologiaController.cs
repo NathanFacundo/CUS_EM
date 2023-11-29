@@ -942,6 +942,11 @@ namespace CUS.Areas.Admin.Controllers
             public string D_LigadoEvol { get; set; }
             public string Diag_Favorable { get; set; }
             public string D_Desfavorable { get; set; }
+            public string tipo_diagnostico1 { get; set; }
+            public string tipo_diagnostico2 { get; set; }
+            public string tipo_diagnostico3 { get; set; }
+            public string tipo_diagnostico4 { get; set; }
+            public string tipo_diagnostico5 { get; set; }
         }
 
         [HttpPost]
@@ -1007,6 +1012,11 @@ namespace CUS.Areas.Admin.Controllers
                     Historia.diagnostico3 = HistoriaClinica.Diagnostico3;
                     Historia.diagnostico4 = HistoriaClinica.Diagnostico4;
                     Historia.diagnostico5 = HistoriaClinica.Diagnostico5;
+                    Historia.tipo_diagnostico1 = HistoriaClinica.tipo_diagnostico1;
+                    Historia.tipo_diagnostico2 = HistoriaClinica.tipo_diagnostico2;
+                    Historia.tipo_diagnostico3 = HistoriaClinica.tipo_diagnostico3;
+                    Historia.tipo_diagnostico4 = HistoriaClinica.tipo_diagnostico4;
+                    Historia.tipo_diagnostico5 = HistoriaClinica.tipo_diagnostico5;
 
                     if (HistoriaClinica.D_LigadoEvol == "on")
                     {
@@ -1202,6 +1212,11 @@ namespace CUS.Areas.Admin.Controllers
             public bool? LigadoEvolucion { get; set; }
             public bool? Favorable { get; set; }
             public bool? Desfavorable { get; set; }
+            public string tipo_diagnostico1 { get; set; }
+            public string tipo_diagnostico2 { get; set; }
+            public string tipo_diagnostico3 { get; set; }
+            public string tipo_diagnostico4 { get; set; }
+            public string tipo_diagnostico5 { get; set; }
             //IndicacionTerapeutica
             public string Plan { get; set; }
         }
@@ -1223,7 +1238,7 @@ namespace CUS.Areas.Admin.Controllers
                     "SA.CambioApetito_No, SA.CambioApetito_Esp, SA.ParteTiempo_Triste, SA.ParteTiempo_Enojado, SA.ParteTiempo_Miedo, SA.ParteTiempo_Angustiado, SA.ParteTiempo_Estresado, SA.ParteTiempo_Maniaco, SA.ParteTiempo_Otra, SA.ParteTiempo_OtraEsp, " +
                     "AA.Conductual, AA.Emocional, AA.RelacionesIn, AA.Neurologico, AA.Academico, " +
                     "SIG.Signo, SIG.Esp_Signo, " +
-                    "DP.Diagnostico1, DP.Diagnostico2, DP.Diagnostico3, DP.Diagnostico4, DP.Diagnostico5, DP.LigadoEvolucion, DP.Favorable, DP.Desfavorable, " +
+                    "DP.Diagnostico1, DP.Diagnostico2, DP.Diagnostico3, DP.Diagnostico4, DP.Diagnostico5, DP.LigadoEvolucion, DP.Favorable, DP.Desfavorable, DP.tipo_diagnostico1, DP.tipo_diagnostico2, DP.tipo_diagnostico3, DP.tipo_diagnostico4, DP.tipo_diagnostico5, " +
                     "IT.[Plan] " +
                                     "FROM HistoriaClinica HCli " +
                                     "LEFT JOIN hc_PS_Familia F ON F.Clave_hc_px = HCli.Clave_hc_px " +

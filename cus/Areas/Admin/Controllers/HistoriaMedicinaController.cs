@@ -1145,6 +1145,11 @@ namespace CUS.Areas.Admin.Controllers
                     Historia.diagnostico3 = HistoriaClinica.diagnostico3;
                     Historia.diagnostico4 = HistoriaClinica.diagnostico4;
                     Historia.diagnostico5 = HistoriaClinica.diagnostico5;
+                    Historia.tipo_diagnostico1 = HistoriaClinica.tipo_diagnostico1;
+                    Historia.tipo_diagnostico2 = HistoriaClinica.tipo_diagnostico2;
+                    Historia.tipo_diagnostico3 = HistoriaClinica.tipo_diagnostico3;
+                    Historia.tipo_diagnostico4 = HistoriaClinica.tipo_diagnostico4;
+                    Historia.tipo_diagnostico5 = HistoriaClinica.tipo_diagnostico5;
 
                     Historia.Id_Paciente = paciente.Id;
                     Historia.Clave_hc_px = Id_claveHC;
@@ -1544,6 +1549,11 @@ namespace CUS.Areas.Admin.Controllers
             public string Diagnostico3 { get; set; }
             public string Diagnostico4 { get; set; }
             public string Diagnostico5 { get; set; }
+            public string tipo_diagnostico1 { get; set; }
+            public string tipo_diagnostico2 { get; set; }
+            public string tipo_diagnostico3 { get; set; }
+            public string tipo_diagnostico4 { get; set; }
+            public string tipo_diagnostico5 { get; set; }
             //Plan
             public string Plan { get; set; }
             //Pronostico
@@ -1577,7 +1587,7 @@ namespace CUS.Areas.Admin.Controllers
                     "AVS.InicioVidaSexual, AVS.Edad_InicioVidaSexual, AVS.Numero_ParejasSexuales, " +
                     "PEE.PEE, " +
                     "RL.RLGR, RL.Especifica_RLGR, " +
-                    "ID.Diagnostico1, ID.Diagnostico2, ID.Diagnostico3, ID.Diagnostico4, ID.Diagnostico5, " +
+                    "ID.Diagnostico1, ID.Diagnostico2, ID.Diagnostico3, ID.Diagnostico4, ID.Diagnostico5, ID.tipo_diagnostico1, ID.tipo_diagnostico2, ID.tipo_diagnostico3, ID.tipo_diagnostico4, ID.tipo_diagnostico5, " +
                     "PL.[Plan], " +
                     "PR.LigadoEvolucion, PR.Favorable, PR.Desfavorable, " +
                     "O.Interconsulta, O.PadecimientoActual, O.Especifica_PadecimientoActual, O.ProximaCita " +

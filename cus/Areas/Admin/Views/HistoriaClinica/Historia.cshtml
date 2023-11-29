@@ -1670,16 +1670,31 @@
                                                 Diagnóstico 1: <span id="diagnostico1MED"></span>
                                             </p>
                                             <p>
+                                                Tipo: <span id="tipo_diagnostico1MED"></span>
+                                            </p>
+                                            <p>
                                                 Diagnóstico 2: <span id="diagnostico2MED"></span>
+                                            </p>
+                                            <p>
+                                                Tipo: <span id="tipo_diagnostico2MED"></span>
                                             </p>
                                             <p>
                                                 diagnóstico 3: <span id="diagnostico3MED"></span>
                                             </p>
                                             <p>
+                                                Tipo: <span id="tipo_diagnostico3MED"></span>
+                                            </p>
+                                            <p>
                                                 Diagnóstico 4: <span id="diagnostico4MED"></span>
                                             </p>
                                             <p>
+                                                Tipo: <span id="tipo_diagnostico4MED"></span>
+                                            </p>
+                                            <p>
                                                 Diagnóstico 5: <span id="diagnostico5MED"></span>
+                                            </p>
+                                            <p>
+                                                Tipo: <span id="tipo_diagnostico5MED"></span>
                                             </p>
                                         </div>
                                     </div>
@@ -2003,16 +2018,31 @@
                                                 Diagnóstico 1: <span id="Diagnostico1PSI"></span>
                                             </p>
                                             <p>
+                                                Tipo: <span id="tipo_diagnostico1PSI"></span>
+                                            </p>
+                                            <p>
                                                 Diagnóstico 2: <span id="Diagnostico2PSI"></span>
+                                            </p>
+                                            <p>
+                                                Tipo: <span id="tipo_diagnostico2PSI"></span>
                                             </p>
                                             <p>
                                                 Diagnóstico 3: <span id="Diagnostico3PSI"></span>
                                             </p>
                                             <p>
+                                                Tipo: <span id="tipo_diagnostico3PSI"></span>
+                                            </p>
+                                            <p>
                                                 Diagnóstico 4: <span id="Diagnostico4PSI"></span>
                                             </p>
                                             <p>
+                                                Tipo: <span id="tipo_diagnostico4PSI"></span>
+                                            </p>
+                                            <p>
                                                 Diagnóstico 5: <span id="Diagnostico5PSI"></span>
+                                            </p>
+                                            <p>
+                                                Tipo: <span id="tipo_diagnostico5PSI"></span>
                                             </p>
                                             <p>
                                                 Ligado a Evolución: <span id="D_LigadoEvolPSI" class="estado"></span>
@@ -2795,16 +2825,31 @@
                                                 Diagnóstico 1: <span id="diagnostico1NUT"></span>
                                             </p>
                                             <p>
+                                                Tipo: <span id="tipo_diagnostico1NUT"></span>
+                                            </p>
+                                            <p>
                                                 Diagnóstico 2: <span id="diagnostico2NUT"></span>
+                                            </p>
+                                            <p>
+                                                Tipo: <span id="tipo_diagnostico2NUT"></span>
                                             </p>
                                             <p>
                                                 diagnóstico 3: <span id="diagnostico3NUT"></span>
                                             </p>
                                             <p>
+                                                Tipo: <span id="tipo_diagnostico3NUT"></span>
+                                            </p>
+                                            <p>
                                                 Diagnóstico 4: <span id="diagnostico4NUT"></span>
                                             </p>
                                             <p>
+                                                Tipo: <span id="tipo_diagnostico4NUT"></span>
+                                            </p>
+                                            <p>
                                                 Diagnóstico 5: <span id="diagnostico5NUT"></span>
+                                            </p>
+                                            <p>
+                                                Tipo: <span id="tipo_diagnostico5NUT"></span>
                                             </p>
                                         </div>
                                     </div>
@@ -4150,16 +4195,31 @@
                                                 Diagnóstico 1: <span id="diagnostico1ODO"></span>
                                             </p>
                                             <p>
+                                                Tipo: <span id="tipo_diagnostico1ODO"></span>
+                                            </p>
+                                            <p>
                                                 Diagnóstico 2: <span id="diagnostico2ODO"></span>
+                                            </p>
+                                            <p>
+                                                Tipo: <span id="tipo_diagnostico2ODO"></span>
                                             </p>
                                             <p>
                                                 diagnóstico 3: <span id="diagnostico3ODO"></span>
                                             </p>
                                             <p>
+                                                Tipo: <span id="tipo_diagnostico3ODO"></span>
+                                            </p>
+                                            <p>
                                                 Diagnóstico 4: <span id="diagnostico4ODO"></span>
                                             </p>
                                             <p>
+                                                Tipo: <span id="tipo_diagnostico4ODO"></span>
+                                            </p>
+                                            <p>
                                                 Diagnóstico 5: <span id="diagnostico5ODO"></span>
+                                            </p>
+                                            <p>
+                                                Tipo: <span id="tipo_diagnostico5ODO"></span>
                                             </p>
                                         </div>
                                     </div>
@@ -4942,6 +5002,42 @@
                     $("#diagnostico3MED").text(data.Diagnostico3);
                     $("#diagnostico4MED").text(data.Diagnostico4);
                     $("#diagnostico5MED").text(data.Diagnostico5);
+                    
+                    if (data.tipo_diagnostico1 == "1") {
+                        $("#tipo_diagnostico1MED").text("Subsecuente");
+                    }
+                    if (data.tipo_diagnostico1 == "2") {
+                        $("#tipo_diagnostico1MED").text("Primera vez");
+                    }
+
+                    if (data.tipo_diagnostico2 == "1") {
+                        $("#tipo_diagnostico2MED").text("Subsecuente");
+                    } 
+                    if (data.tipo_diagnostico2 == "2") {
+                        $("#tipo_diagnostico2MED").text("Primera vez");
+                    }
+
+                    if (data.tipo_diagnostico3 == "1") {
+                        $("#tipo_diagnostico3MED").text("Subsecuente");
+                    } 
+                    if (data.tipo_diagnostico3 == "2") {
+                        $("#tipo_diagnostico3MED").text("Primera vez");
+                    }
+
+                    if (data.tipo_diagnostico4 == "1") {
+                        $("#tipo_diagnostico4MED").text("Subsecuente");
+                    } 
+                    if (data.tipo_diagnostico4 == "2") {
+                        $("#tipo_diagnostico4MED").text("Primera vez");
+                    }
+
+                    if (data.tipo_diagnostico5 == "1") {
+                        $("#tipo_diagnostico5MED").text("Subsecuente");
+                    } 
+                    if (data.tipo_diagnostico5 == "2") {
+                        $("#tipo_diagnostico5MED").text("Primera vez");
+                    }
+                    
                     //Plan
                     $("#PlanMED").text(data.Plan);
                     //Pronostico
@@ -5074,6 +5170,42 @@
                     $("#D_LigadoEvolPSI").text(data.LigadoEvolucion);
                     $("#Diag_FavorablePSI").text(data.Favorable);
                     $("#D_DesfavorablePSI").text(data.Desfavorable);
+                    
+                    if (data.tipo_diagnostico1 == "1") {
+                        $("#tipo_diagnostico1PSI").text("Subsecuente");
+                    } 
+                    if (data.tipo_diagnostico1 == "2") {
+                        $("#tipo_diagnostico1PSI").text("Primera vez");
+                    }
+
+                    if (data.tipo_diagnostico2 == "1") {
+                        $("#tipo_diagnostico2PSI").text("Subsecuente");
+                    } 
+                    if (data.tipo_diagnostico2 == "2") {
+                        $("#tipo_diagnostico2PSI").text("Primera vez");
+                    }
+
+                    if (data.tipo_diagnostico3 == "1") {
+                        $("#tipo_diagnostico3PSI").text("Subsecuente");
+                    } 
+                    if (data.tipo_diagnostico3 == "2") {
+                        $("#tipo_diagnostico3PSI").text("Primera vez");
+                    }
+
+                    if (data.tipo_diagnostico4 == "1") {
+                        $("#tipo_diagnostico4PSI").text("Subsecuente");
+                    } 
+                    if (data.tipo_diagnostico4 == "2") {
+                        $("#tipo_diagnostico4PSI").text("Primera vez");
+                    }
+
+                    if (data.tipo_diagnostico5 == "1") {
+                        $("#tipo_diagnostico5PSI").text("Subsecuente");
+                    } 
+                    if (data.tipo_diagnostico5 == "2") {
+                        $("#tipo_diagnostico5PSI").text("Primera vez");
+                    }
+                    
                     //Plan
                     $("#PlanPsPSI").text(data.Plan);
                     // #endregion
@@ -5348,6 +5480,42 @@
                     $("#diagnostico3NUT").text(data.Diagnostico3);
                     $("#diagnostico4NUT").text(data.Diagnostico4);
                     $("#diagnostico5NUT").text(data.Diagnostico5);
+
+                    if (data.tipo_diagnostico1 == "1") {
+                        $("#tipo_diagnostico1NUT").text("Subsecuente");
+                    } 
+                    if (data.tipo_diagnostico1 == "2") {
+                        $("#tipo_diagnostico1NUT").text("Primera vez");
+                    }
+
+                    if (data.tipo_diagnostico2 == "1") {
+                        $("#tipo_diagnostico2NUT").text("Subsecuente");
+                    } 
+                    if (data.tipo_diagnostico2 == "2") {
+                        $("#tipo_diagnostico2NUT").text("Primera vez");
+                    }
+
+                    if (data.tipo_diagnostico3 == "1") {
+                        $("#tipo_diagnostico3NUT").text("Subsecuente");
+                    } 
+                    if (data.tipo_diagnostico3 == "2") {
+                        $("#tipo_diagnostico3NUT").text("Primera vez");
+                    }
+
+                    if (data.tipo_diagnostico4 == "1") {
+                        $("#tipo_diagnostico4NUT").text("Subsecuente");
+                    } 
+                    if (data.tipo_diagnostico4 == "2") {
+                        $("#tipo_diagnostico4NUT").text("Primera vez");
+                    }
+
+                    if (data.tipo_diagnostico5 == "1") {
+                        $("#tipo_diagnostico5NUT").text("Subsecuente");
+                    } 
+                    if (data.tipo_diagnostico5 == "2") {
+                        $("#tipo_diagnostico5NUT").text("Primera vez");
+                    }
+                    
                     //Plan
                     $("#PlanNUT").text(data.Plan);
                     //Pronostico
@@ -5648,6 +5816,42 @@
                     $("#diagnostico3ODO").text(data.diagnostico3ODO);
                     $("#diagnostico4ODO").text(data.diagnostico4ODO);
                     $("#diagnostico5ODO").text(data.diagnostico5ODO);
+                    
+                    if (data.tipo_diagnostico1 == "1") {
+                        $("#tipo_diagnostico1ODO").text("Subsecuente");
+                    } 
+                    if (data.tipo_diagnostico1 == "2") {
+                        $("#tipo_diagnostico1ODO").text("Primera vez");
+                    }
+
+                    if (data.tipo_diagnostico2 == "1") {
+                        $("#tipo_diagnostico2ODO").text("Subsecuente");
+                    } 
+                    if (data.tipo_diagnostico2 == "2") {
+                        $("#tipo_diagnostico2ODO").text("Primera vez");
+                    }
+
+                    if (data.tipo_diagnostico3 == "1") {
+                        $("#tipo_diagnostico3ODO").text("Subsecuente");
+                    } 
+                    if (data.tipo_diagnostico3 == "2") {
+                        $("#tipo_diagnostico3ODO").text("Primera vez");
+                    }
+
+                    if (data.tipo_diagnostico4 == "1") {
+                        $("#tipo_diagnostico4ODO").text("Subsecuente");
+                    } 
+                    if (data.tipo_diagnostico4 == "2") {
+                        $("#tipo_diagnostico4ODO").text("Primera vez");
+                    }
+
+                    if (data.tipo_diagnostico5 == "1") {
+                        $("#tipo_diagnostico5ODO").text("Subsecuente");
+                    } 
+                    if (data.tipo_diagnostico5 == "2") {
+                        $("#tipo_diagnostico5ODO").text("Primera vez");
+                    }
+                    
                     //Plan
                     $("#PlanODO").text(data.PlanODO);
                     //Pronostico
