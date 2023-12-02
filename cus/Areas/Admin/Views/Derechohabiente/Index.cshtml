@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CUS.Models.Paciente>
+﻿@Model CUS.Models.CUS
 
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 
@@ -78,16 +78,16 @@
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 @*@if (TempData["Exito"] != null)
-{
-    var mensaje = TempData["Exito"];
-    <script>
-        Swal.fire({
-            icon: 'success',
-            title: 'Éxito',
-            text: '@mensaje',
-        });
-    </script>
-}*@
+    {
+        var mensaje = TempData["Exito"];
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Éxito',
+                text: '@mensaje',
+            });
+        </script>
+    }*@
 
 @if (TempData["Error"] != null)
 {

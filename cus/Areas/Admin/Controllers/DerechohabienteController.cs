@@ -25,15 +25,8 @@ namespace CUS.Areas.Admin.Controllers
         // GET: Admin/Derechohabiente
         public ActionResult Index()
         {
-            return View(db.Paciente.ToList());
-
-            var viewModel = new ItemViewModel
-            {
-                SingleItem = new Paciente(),
-                ItemList = db.Paciente.ToList()
-            };
-
-            return View(viewModel);
+            return View();
+            
 
 
         }
