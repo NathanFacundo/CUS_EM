@@ -28,7 +28,9 @@ namespace CUS.Areas.Admin.Controllers
             return View();
             
 
+            //return View(viewModel);
 
+            return View();
         }
 
         // GET: Admin/Derechohabiente/Details/5
@@ -327,7 +329,8 @@ namespace CUS.Areas.Admin.Controllers
             }
             //return View(paciente);
 
-            db.Paciente.Remove(paciente);
+            //db.Paciente.Remove(paciente);
+            paciente.PxEliminado = true;
             db.SaveChanges();
 
             return Json("PX eliminado exitósamente", JsonRequestBehavior.AllowGet);
@@ -340,7 +343,8 @@ namespace CUS.Areas.Admin.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Paciente paciente = db.Paciente.Find(id);
-            db.Paciente.Remove(paciente);
+            //db.Paciente.Remove(paciente);
+            paciente.PxEliminado = true;
             db.SaveChanges();
 
             return Json("PX eliminado exitósamente", JsonRequestBehavior.AllowGet);
@@ -544,6 +548,7 @@ namespace CUS.Areas.Admin.Controllers
             var result1 = new List<Propiedades>();
 
             var query = (from a in db.Paciente
+                         where a.PxEliminado != true
                          select a).OrderByDescending(a=>a.Id).Take(10).ToList();
 
             foreach (var q in query)
