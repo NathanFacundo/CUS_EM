@@ -155,43 +155,45 @@
             </div>
         </div>
 
+        @using (Html.BeginForm("Create", "Archivos", FormMethod.Post, htmlAttributes: new { @id = "msform", @enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="row p-3 mt-5" style="background-color:white">
+                <div class="col-md-12 p-2">
+                    <h3 class="mt-3 mb-3"> <b>Subir un archivo</b></h3>
+                </div>
+                <div class="col-md-12 p-2">
+                    <label for="titulo">Titulo</label>
+                    <input class="form-control" name="titulo" id="titulo" maxlength="200" required />
+                </div>
+                <div class="col-md-12 p-2">
+                    <label for="titulo">Tipo de archivo</label>
+                    <select class="form-control" name="titulo" id="tipo_archivo" required>
+                        <option selected disabled>Selecciona</option>
+                        <option value="Tipo 1">Tipo 1</option>
+                        <option value="Tipo 2">Tipo 2</option>
+                        <option value="Tipo 3">Tipo 3</option>
+                        <option value="Tipo 4">Tipo 4</option>
+                    </select>
+                </div>
+                <div class="col-md-12 p-2">
+                    <label for="titulo">Fecha</label>
+                    <input class="form-control" name="fecha" id="date" required />
+                </div>
+                <div class="col-md-12 p-2">
+                    <div id="dropzone" class="dropzone">
 
-        <div class="row p-3 mt-5" style="background-color:white">
-            <div class="col-md-12 p-2">
-                <h3 class="mt-3 mb-3"> <b>Subir un archivo</b></h3>
-            </div>
-            <div class="col-md-12 p-2">
-                <label for="titulo">Titulo</label>
-                <input class="form-control" name="titulo" id="titulo" maxlength="200" required />
-            </div>
-            <div class="col-md-12 p-2">
-                <label for="titulo">Tipo de archivo</label>
-                <select class="form-control" name="titulo" id="tipo_archivo" required>
-                    <option selected disabled>Selecciona</option>
-                    <option value="Tipo 1">Tipo 1</option>
-                    <option value="Tipo 2">Tipo 2</option>
-                    <option value="Tipo 3">Tipo 3</option>
-                    <option value="Tipo 4">Tipo 4</option>
-                </select>
-            </div>
-            <div class="col-md-12 p-2">
-                <label for="titulo">Fecha</label>
-                <input class="form-control" name="fecha" id="date" required />
-            </div>
-            <div class="col-md-12 p-2">
-                <div id="dropzone" class="dropzone">
+                        <div><img class="camara" src="~/Areas/Admin/assets/img/archivo.png" alt="camara"> <span>Da clic o arrastra elementos</span></div>
 
-                    <div><img class="camara" src="~/Areas/Admin/assets/img/archivo.png" alt="camara"> <span>Da clic o arrastra elementos</span></div>
+                        <input type="file" name="imagenSubida" id="file" accept="image/png, image/jpeg, image/jpg, image/webp, application/pdf" />
 
-                    <input type="file" name="imagen1" id="file" accept="image/png, image/jpeg, image/jpg, image/webp, application/pdf" />
-
+                    </div>
+                </div>
+                <div class="col-md-12 p-2 mb-5 text-right">
+                    <button class="btn btn-primary">Guardar</button>
                 </div>
             </div>
-            <div class="col-md-12 p-2 mb-5 text-right">
-                <button class="btn btn-primary">Guardar</button>
-            </div>
-        </div>
-
+        }
     </div>
 </div>
 
