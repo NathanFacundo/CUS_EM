@@ -594,6 +594,9 @@ namespace CUS.Areas.Admin.Controllers
                     Historia.SensacionAahogo = HistoriaClinica.SensacionAahogo;
                     Historia.MiedoPreocupacion = HistoriaClinica.MiedoPreocupacion;
                     Historia.IdeacionSuicida = HistoriaClinica.IdeacionSuicida;
+
+                    Historia.RiesgoPsico = HistoriaClinica.RiesgoPsico;
+
                     Historia.Id_Paciente = paciente.Id;
                     //Historia.Id_HistoriaClinica = Id_claveHC;
                     Historia.Clave_hc_px = Id_claveHC;
@@ -2629,6 +2632,7 @@ namespace CUS.Areas.Admin.Controllers
             public string SensacionAahogo { get; set; }
             public string MiedoPreocupacion { get; set; }
             public string IdeacionSuicida { get; set; }
+            public string RiesgoPsico { get; set; }
             //hc_habitos
             public bool? Check_Adicciones_Padre { get; set; }
             public bool? Check_Adicciones_Madre { get; set; }
@@ -2836,7 +2840,7 @@ namespace CUS.Areas.Admin.Controllers
                     "VF.mamaPaciente, VF.EdadMama, VF.GradoMama, VF.OcupacionMama, VF.TipoTrabajoMama, VF.papaPaciente, VF.EdadPapa, VF.GradoPapa, VF.OcupacionPapa, VF.TipoTrabajoPapa, VF.ViveCon, VF.tieneHermanos, VF.CuantosHermanos, VF.EspecifiqueEnf, VF.involucraTratamiento, VF.EspecifiqueInvol, VF.riesgoSocial, " +
                     "EE.beneficiarioPrograma, EE.EspecifiqueBeneficiario, EE.rolEconimico, EE.EspecifiqueRol, EE.riesgoEconomico, " +
                     "VC.perteneceReligion, VC.religion, VC.EspecifiqueReligion, VC.creenciaReligiosa, VC.EspecifiqueCreencia, VC.costumbreValores, VC.EspecifiqueCostumbres, " +
-                    "FRP.CambiosSueño, FRP.CambiosEnergia, FRP.CambiosApetito, FRP.Pesimismo, FRP.Irritabilidad, FRP.PerdidaPlacer, FRP.PalpitacionesFuertes, FRP.SensacionAahogo, FRP.MiedoPreocupacion, FRP.IdeacionSuicida, " +
+                    "FRP.CambiosSueño, FRP.CambiosEnergia, FRP.CambiosApetito, FRP.Pesimismo, FRP.Irritabilidad, FRP.PerdidaPlacer, FRP.PalpitacionesFuertes, FRP.SensacionAahogo, FRP.MiedoPreocupacion, FRP.IdeacionSuicida, FRP.RiesgoPsico, " +
                     "H.Check_Adicciones_Padre, H.Check_Adicciones_Madre, H.Check_Adicciones_Ambas, H.Check_Adicciones_NA, H.Check_Cardiopatia_Padre, H.Check_Cardiopatia_Madre, H.Check_Cardiopatia_Ambas, H.Check_Cardiopatia_NA, H.Check_Diabetes_Padre, H.Check_Diabetes_Madre, H.Check_Diabetes_Ambas, H.Check_Diabetes_NA, H.Check_Dislipidemias_Padre, H.Check_Dislipidemias_Madre, H.Check_Dislipidemias_Ambas, H.Check_Dislipidemias_NA, H.Check_Epilepsia_Padre, H.Check_Epilepsia_Madre, H.Check_Epilepsia_Ambas, H.Check_Epilepsia_NA, H.Check_Hipertension_Padre, H.Check_Hipertension_Madre, H.Check_Hipertension_Ambas, H.Check_Hipertension_NA, H.Check_Infectocontagiosas_Padre, H.Check_Infectocontagiosas_Madre, H.Check_Infectocontagiosas_Ambas, H.Check_Infectocontagiosas_NA, H.Check_Malformaciones_Padre, H.Check_Malformaciones_Madre, H.Check_Malformaciones_Ambas, H.Check_Malformaciones_NA, H.Check_Nefropatias_Padre, H.Check_Nefropatias_Madre, H.Check_Nefropatias_Ambas, H.Check_Nefropatias_NA, H.Check_Obesidad_Padre, H.Check_Obesidad_Madre, H.Check_Obesidad_Ambas, H.Check_Obesidad_NA, H.Check_Oncologicos_Padre, H.Check_Oncologicos_Madre, H.Check_Oncologicos_Ambas, H.Check_Oncologicos_NA, " +
                     "APA.Antecedentes, APA.PxHospitalizado, APA.EspecifiqueHospitalizado, APA.RealizadoCirugia, APA.EspecifiqueCirugia, APA.CheckRespiratorios, APA.CheckEndocrinologicos, APA.CheckCardiovasculares, APA.CheckOncologicos, APA.CheckSaludMental, APA.CheckNeurologicos, APA.CheckInfectoContagiosos, APA.CheckProblemasAparatoR, APA.CheckProblemasGastro, APA.CheckReumatologicos, APA.CheckNinguna, APA.DetallarRespiratorios, APA.DetallarEndocrinologicos, APA.DetallarCardiovasculares, APA.DetallarOncologicos, APA.DetallarSaludMental, APA.DetallarNeurologicos, APA.DetallarInfectoContagiosos, APA.DetallarProblemasAparatoR, APA.DetallarProblemasGastro, APA.DetallarReumatologicos, " +
                     "HC.TomaAlcohol, HC.TomaAlcoholFrecuencia, HC.CantidadAlcohol, HC.Fuma, HC.EdadInicio, HC.ActualmenteFuma, HC.TiempoInactividadFuma, HC.TipoFuma, HC.FrecuenciaFuma, HC.CantidadFuma, HC.ConsumeDroga, HC.TipoDrogaConsume, HC.FrecuenciaDroga, HC.CantidadDrogaConsume, " +
