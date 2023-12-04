@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNet.Identity
+<!DOCTYPE html>
 <html lang="en">
 
 <!-- Mirrored from dreamguys.co.in/demo/doccure/admin/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2019 04:12:20 GMT -->
@@ -101,20 +102,20 @@
                             </li>
                         }
 
-                        @if (HttpContext.Current.User.IsInRole("Recepcion") ||  HttpContext.Current.User.IsInRole("Expediente"))
+                        @if (HttpContext.Current.User.IsInRole("Recepcion") || HttpContext.Current.User.IsInRole("Expediente"))
                         {
                             <li class="submenu">
                                 <a href="#"><i class="fa fa-ambulance"></i> <span>Admon. PX.</span> <span class="menu-arrow"></span></a>
                                 <ul style="display: none;">
-                                     
+
                                     <li><a href="@Url.Action("BuscarPaciente", "Derechohabiente")">Buscar PX.</a></li>
                                     @if (HttpContext.Current.User.IsInRole("Recepcion"))
                                     {
-                                    <li><a href="@Url.Action("Index", "Derechohabiente")">Lista PX.</a></li>
+                                        <li><a href="@Url.Action("Index", "Derechohabiente")">Lista PX.</a></li>
                                     }
                                     @if (HttpContext.Current.User.IsInRole("Recepcion"))
                                     {
-                                    <li><a href="@Url.Action("Create", "Derechohabiente")">Nuevo PX.</a></li>
+                                        <li><a href="@Url.Action("Create", "Derechohabiente")">Nuevo PX.</a></li>
                                     }
                                 </ul>
                             </li>
@@ -165,7 +166,6 @@
                                         </ul>
                                     </li>
 
-                                    <li><a href="@Url.Action("Create", "Enfermeria", new { expediente = Model.Expediente })"><i class="fe fe-document"></i>Enfermería</a></li>
 
 
                                 }
@@ -174,53 +174,64 @@
 
                         }
 
+                        @if (HttpContext.Current.User.IsInRole("Recepcion")) 
+                        {
+                            if (Model != null)
+                            {
 
-                        <li><a href="@Url.Action("Create", "Enfermeria", new { expediente = Model.Expediente })"><i class="fe fe-document"></i>Enfermería</a></li>
+                                var esLista = Model.GetType().IsGenericType &&
+                                Model.GetType().GetGenericTypeDefinition() == typeof(List<>);
 
+                                if (!esLista)
+                                {
+                                    <li><a href="@Url.Action("Create", "Enfermeria", new { expediente = Model.Expediente })"><i class="fe fe-document"></i>Enfermería</a></li>
+                                    }
+                                }
+                        }
 
                         @*<li class="submenu">
-                            <a href="#"><i class="fe fe-folder-open"></i> <span>Historia Clínica</span> <span class="menu-arrow"></span></a>
-                                <ul style="display: none;">
-                                    <li><a href="@Url.Action("Historia", "HistoriaClinica")">Buscar Historia</a></li>
-                                    <li class="submenu">
-                                        <a href="#"><span>Nueva</span> <span class="menu-arrow"></span></a>
-                                        <ul style="display: none;">
-                                            <li><a href="@Url.Action("Index", "HistoriaClinica")">Común</a></li>
-                                            <li><a href="">Medicina</a></li>
-                                            <li><a href="">Psicología</a></li>
-                                            <li><a href="">Nutrición</a></li>
-                                            <li><a href="">Odontología</a></li>
-                                        </ul>
-                                    </li>
+        <a href="#"><i class="fe fe-folder-open"></i> <span>Historia Clínica</span> <span class="menu-arrow"></span></a>
+            <ul style="display: none;">
+                <li><a href="@Url.Action("Historia", "HistoriaClinica")">Buscar Historia</a></li>
+                <li class="submenu">
+                    <a href="#"><span>Nueva</span> <span class="menu-arrow"></span></a>
+                    <ul style="display: none;">
+                        <li><a href="@Url.Action("Index", "HistoriaClinica")">Común</a></li>
+                        <li><a href="">Medicina</a></li>
+                        <li><a href="">Psicología</a></li>
+                        <li><a href="">Nutrición</a></li>
+                        <li><a href="">Odontología</a></li>
+                    </ul>
+                </li>
 
-                                </ul>
-                            </li>*@
+            </ul>
+        </li>*@
 
-                                            @*
-                            <li class="submenu">
-                                <a href="#"><i class="fe fe-bookmark"></i> <span>Admon. Agendas</span> <span class="menu-arrow"></span></a>
-                                <ul style="display: none;">
-                                    <li><a href="@Url.Action("a", "a")">Algo</a></li>
-                                    <li><a href="@Url.Action("a", "a")">Algo</a></li>
-                                </ul>
-                            </li>
-                                            *@
-                                            @*<li class="submenu">
-                                <a href="#"><i class="fe fe-file-excel"></i> <span>Lista Espera PX.</span> <span class="menu-arrow"></span></a>
-                                <ul style="display: none;">
-                                    <li><a href="@Url.Action("a", "a")">Algo</a></li>
-                                    <li><a href="@Url.Action("a", "a")">Algo</a></li>
-                                </ul>
-                            </li>*@
-                                            @*
-                            <li class="submenu">
-                                <a href="#"><i class="fe fe-activity"></i> <span>Monitor Clínica</span> <span class="menu-arrow"></span></a>
-                                <ul style="display: none;">
-                                    <li><a href="@Url.Action("a", "a")">Algo</a></li>
-                                    <li><a href="@Url.Action("a", "a")">Algo</a></li>
-                                </ul>
-                            </li>
-                                            *@
+                        @*
+        <li class="submenu">
+            <a href="#"><i class="fe fe-bookmark"></i> <span>Admon. Agendas</span> <span class="menu-arrow"></span></a>
+            <ul style="display: none;">
+                <li><a href="@Url.Action("a", "a")">Algo</a></li>
+                <li><a href="@Url.Action("a", "a")">Algo</a></li>
+            </ul>
+        </li>
+                        *@
+                        @*<li class="submenu">
+            <a href="#"><i class="fe fe-file-excel"></i> <span>Lista Espera PX.</span> <span class="menu-arrow"></span></a>
+            <ul style="display: none;">
+                <li><a href="@Url.Action("a", "a")">Algo</a></li>
+                <li><a href="@Url.Action("a", "a")">Algo</a></li>
+            </ul>
+        </li>*@
+                        @*
+        <li class="submenu">
+            <a href="#"><i class="fe fe-activity"></i> <span>Monitor Clínica</span> <span class="menu-arrow"></span></a>
+            <ul style="display: none;">
+                <li><a href="@Url.Action("a", "a")">Algo</a></li>
+                <li><a href="@Url.Action("a", "a")">Algo</a></li>
+            </ul>
+        </li>
+                        *@
                     </ul>
                 </div>
             </div>
