@@ -52,8 +52,17 @@ namespace CUS.Areas.Admin.Controllers
                 var paciente = (from a in db.Paciente
                                 where a.Expediente == expediente
                                 select a).FirstOrDefault();
+                if (User.IsInRole("Enfermeria"))
+                {
+                    //return RedirectToAction("Create/" + expediente, "Enfermeria");
+                    return RedirectToAction("Create", "Enfermeria", new { expediente = expediente });
 
-                return View(paciente);
+                }
+                else
+                {
+                    return View(paciente);
+                }
+
             }
             else
             {

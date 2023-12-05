@@ -443,6 +443,7 @@ namespace CUS.Areas.Admin.Controllers
             public string SegundoApellido { get; set; }
             public string Sexo { get; set; }
             public string FechaNacimiento { get; set; }
+            public DateTime FechaNacimiento2 { get; set; }
             public int Edad { get; set; }
             public string Expediente { get; set; }
             public string Curp_Calculado { get; set; }
@@ -461,7 +462,7 @@ namespace CUS.Areas.Admin.Controllers
                 //Búsqueda de px por Expediente
                 if (NombrePX == null || NombrePX == "")
                 {
-                    //string query = "SELECT Id,UnidadAfiliacion,CURP,Nombre,PrimerApellido,SegundoApellido,Sexo,FechaNacimiento,Edad,Expediente,Curp_Calculado " +
+                    //string query = "SELECT Id,UnidadAfiliacion,CURP,Nombre,PrimerApellido,SegundoApellido,Sexo,FechaNacimiento,FechaNacimiento as FechaNacimiento2,Edad,Expediente,Curp_Calculado " +
                     //                "FROM Paciente " +
                     //                "WHERE Expediente LIKE '%" + ExpedientePX + "%'";
                     //var result = db.Database.SqlQuery<Propiedades>(query);
@@ -470,7 +471,7 @@ namespace CUS.Areas.Admin.Controllers
                     var query = (from a in db.Paciente
                                  where a.Expediente.Contains(ExpedientePX)
                                  select a).ToList();
-
+                    
                     foreach (var q in query)
                     {
                         var resultado = new Propiedades

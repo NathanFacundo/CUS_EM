@@ -1,4 +1,5 @@
-﻿@{
+﻿@using Microsoft.AspNet.Identity
+@{
     ViewBag.Title = "Nota de Evolución";
 }
 
@@ -664,7 +665,6 @@
             document.getElementById("Edad").innerHTML = edad + ' años ' + edadMeses + ' meses';
             document.getElementById("Sexo").innerHTML = Sexo;
             document.getElementById("FechaNac").innerHTML = FechaN;
-
 
             $('#consultar').attr('href', '@Url.Action("Create", "NotaEvolucion")?expediente=' + Exp)
 

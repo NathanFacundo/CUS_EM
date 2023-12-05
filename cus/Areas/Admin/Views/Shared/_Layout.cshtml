@@ -1,5 +1,4 @@
-﻿@using Microsoft.AspNet.Identity
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <!-- Mirrored from dreamguys.co.in/demo/doccure/admin/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 Nov 2019 04:12:20 GMT -->
@@ -102,7 +101,7 @@
                             </li>
                         }
 
-                        @if (HttpContext.Current.User.IsInRole("Recepcion") || HttpContext.Current.User.IsInRole("Expediente"))
+                        @if (HttpContext.Current.User.IsInRole("Recepcion") || HttpContext.Current.User.IsInRole("Expediente") || HttpContext.Current.User.IsInRole("Enfermeria"))
                         {
                             <li class="submenu">
                                 <a href="#"><i class="fa fa-ambulance"></i> <span>Admon. PX.</span> <span class="menu-arrow"></span></a>
@@ -174,7 +173,7 @@
 
                         }
 
-                        @if (HttpContext.Current.User.IsInRole("Recepcion")) 
+                        @if (HttpContext.Current.User.IsInRole("Enfermeria")) 
                         {
                             if (Model != null)
                             {

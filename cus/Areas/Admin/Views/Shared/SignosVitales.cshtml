@@ -296,7 +296,7 @@
         var scalePerDegree = (midScale - minScale) / maxDegree;
         var rotateValue = (midScale - scaledValue) / scalePerDegree;
         var rotation = rotate * rotateValue;
-        //console.log(input,scaledValue ,midScale, rotate, rotation);
+        console.log(value);
         var tl = new TimelineLite();
         tl.to(needle, 1, { rotation: rotateValue });
     }
