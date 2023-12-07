@@ -36,16 +36,20 @@ namespace CUS.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Create(string expediente)
         {
-            if (expediente != null)
-            {
-                var paciente = (from a in db.Paciente
-                                where a.Expediente == expediente
-                                select a).FirstOrDefault();
+            if (User.IsInRole("Enfermeria")) {
+                if (expediente != null)
+                {
+                    var paciente = (from a in db.Paciente
+                                    where a.Expediente == expediente
+                                    select a).FirstOrDefault();
 
-                return View(paciente);
-            }
-            else
-            {
+                    return View(paciente);
+                }
+                else
+                {
+                    return RedirectToAction("BuscarPaciente", "DerechoHabiente");
+                }
+            }else{
                 return RedirectToAction("BuscarPaciente", "DerechoHabiente");
             }
 
@@ -171,7 +175,8 @@ namespace CUS.Areas.Admin.Controllers
 
         public JsonResult ConsultarSignosVitales(string expediente)
         {
-            //var escala_dolor = 1;
+            DateTime fechaActual = DateTime.Now;
+            DateTime fechaL = fechaActual.AddHours(-1.5);
 
             var ultimoRegistro = (from a in db.SignosVitales
                                        where a.expediente == expediente
@@ -179,9 +184,14 @@ namespace CUS.Areas.Admin.Controllers
                               OrderByDescending(r => r.fecha)
                               .FirstOrDefault();
 
-            if(ultimoRegistro != null)
+            if (ultimoRegistro != null)
             {
-                return new JsonResult { Data = ultimoRegistro, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+                //Si hay un registro, revisa que sea dentro de la ultima hora y media
+                if (ultimoRegistro.fecha > fechaL)
+                {
+                    return new JsonResult { Data = ultimoRegistro, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+                }
+                return new JsonResult { Data = "", JsonRequestBehavior = JsonRequestBehavior.AllowGet };
 
             }
             else

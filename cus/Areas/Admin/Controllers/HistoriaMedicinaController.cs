@@ -16,17 +16,25 @@ namespace CUS.Areas.Admin.Controllers
         // GET: Admin/HistoriaMedicina
         public ActionResult Index(string expediente)
         {
-            if (expediente != null)
+            if (User.IsInRole("Expediente"))
             {
-                var paciente = (from a in db.Paciente
-                                where a.Expediente == expediente
-                                select a).FirstOrDefault();
+                if (expediente != null)
+                {
+                    var paciente = (from a in db.Paciente
+                                    where a.Expediente == expediente
+                                    select a).FirstOrDefault();
 
-                return View(paciente);
+                    return View(paciente);
+                }
+                else
+                {
+                    return RedirectToAction("BuscarPaciente", "DerechoHabiente");
+                }
             }
             else
             {
                 return RedirectToAction("BuscarPaciente", "DerechoHabiente");
+
             }
         }
 

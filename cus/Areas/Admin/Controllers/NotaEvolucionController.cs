@@ -47,27 +47,34 @@ namespace CUS.Areas.Admin.Controllers
 
         public ActionResult Create(string expediente)
         {
-            if (expediente != null)
-            {
-                var paciente = (from a in db.Paciente
-                                where a.Expediente == expediente
-                                select a).FirstOrDefault();
-                if (User.IsInRole("Enfermeria"))
+                if (expediente != null)
                 {
-                    //return RedirectToAction("Create/" + expediente, "Enfermeria");
-                    return RedirectToAction("Create", "Enfermeria", new { expediente = expediente });
+                    var paciente = (from a in db.Paciente
+                                    where a.Expediente == expediente
+                                    select a).FirstOrDefault();
+                    if (User.IsInRole("Enfermeria"))
+                    {
+                        //return RedirectToAction("Create/" + expediente, "Enfermeria");
+                        return RedirectToAction("Create", "Enfermeria", new { expediente = expediente });
+
+                    }
+                    else
+                    {
+                        if (User.IsInRole("Expediente"))
+                        {
+                            return View(paciente);
+                        }
+                        else
+                        {
+                            return RedirectToAction("BuscarPaciente", "DerechoHabiente");
+                        }
+                    }
 
                 }
                 else
                 {
-                    return View(paciente);
+                    return RedirectToAction("BuscarPaciente", "DerechoHabiente");
                 }
-
-            }
-            else
-            {
-                return RedirectToAction("BuscarPaciente", "DerechoHabiente");
-            }
         }
 
 

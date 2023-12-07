@@ -20,13 +20,20 @@ namespace CUS.Areas.Admin.Controllers
 
         public ActionResult Create(string expediente)
         {
-            if (expediente != null)
+            if (User.IsInRole("Expediente"))
             {
-                var paciente = (from a in db.Paciente
-                                where a.Expediente == expediente
-                                select a).FirstOrDefault();
+                if (expediente != null)
+                {
+                    var paciente = (from a in db.Paciente
+                                    where a.Expediente == expediente
+                                    select a).FirstOrDefault();
 
-                return View(paciente);
+                    return View(paciente);
+                }
+                else
+                {
+                    return RedirectToAction("BuscarPaciente", "DerechoHabiente");
+                }
             }
             else
             {

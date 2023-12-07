@@ -25,12 +25,15 @@ namespace CUS.Areas.Admin.Controllers
         // GET: Admin/Derechohabiente
         public ActionResult Index()
         {
-            return View();
-            
+            if (User.IsInRole("Recepcion"))
+            {
 
-            //return View(viewModel);
-
-            return View();
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("BuscarPaciente", "DerechoHabiente");
+            }
         }
 
         // GET: Admin/Derechohabiente/Details/5
@@ -53,8 +56,15 @@ namespace CUS.Areas.Admin.Controllers
         // GET: Admin/Derechohabiente/Create
         public ActionResult Create()
         {
-            ViewBag.UNIDADES = new SelectList(db.UnidadAfiliacion.ToList(), "Id", "NombreUnidad");
-            return View();
+            if (User.IsInRole("Recepcion"))
+            {
+                ViewBag.UNIDADES = new SelectList(db.UnidadAfiliacion.ToList(), "Id", "NombreUnidad");
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("BuscarPaciente", "DerechoHabiente");
+            }
         }
 
         // POST: Admin/Derechohabiente/Create
