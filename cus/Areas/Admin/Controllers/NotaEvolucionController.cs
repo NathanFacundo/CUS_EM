@@ -243,7 +243,7 @@ namespace CUS.Areas.Admin.Controllers
 
 
         [HttpPost]
-        public ActionResult Create(NotaEvolucion notaEvolucion, string expediente)
+        public ActionResult Create(NotaEvolucion notaEvolucion, string expediente, string clave1, string clave2, string clave3, string clave4, string clave5)
         {
             try
             {
@@ -295,11 +295,11 @@ namespace CUS.Areas.Admin.Controllers
                         registroReciente.nota_subjetivo = notaEvolucion.nota_subjetivo;
                         registroReciente.nota_objetivo = notaEvolucion.nota_objetivo;
                         registroReciente.nota_plan = notaEvolucion.nota_plan;
-                        registroReciente.diagnostico1 = notaEvolucion.diagnostico1;
-                        registroReciente.diagnostico2 = notaEvolucion.diagnostico2;
-                        registroReciente.diagnostico3 = notaEvolucion.diagnostico3;
-                        registroReciente.diagnostico4 = notaEvolucion.diagnostico4;
-                        registroReciente.diagnostico5 = notaEvolucion.diagnostico5;
+                        registroReciente.diagnostico1 = clave1;
+                        registroReciente.diagnostico2 = clave2;
+                        registroReciente.diagnostico3 = clave3;
+                        registroReciente.diagnostico4 = clave4;
+                        registroReciente.diagnostico5 = clave5;
                         registroReciente.tipo_diagnostico1 = notaEvolucion.tipo_diagnostico1;
                         registroReciente.tipo_diagnostico2 = notaEvolucion.tipo_diagnostico2;
                         registroReciente.tipo_diagnostico3 = notaEvolucion.tipo_diagnostico3;
@@ -322,11 +322,11 @@ namespace CUS.Areas.Admin.Controllers
                         nota.nota_subjetivo = notaEvolucion.nota_subjetivo;
                         nota.nota_objetivo = notaEvolucion.nota_objetivo;
                         nota.nota_plan = notaEvolucion.nota_plan;
-                        nota.diagnostico1 = notaEvolucion.diagnostico1;
-                        nota.diagnostico2 = notaEvolucion.diagnostico2;
-                        nota.diagnostico3 = notaEvolucion.diagnostico3;
-                        nota.diagnostico4 = notaEvolucion.diagnostico4;
-                        nota.diagnostico5 = notaEvolucion.diagnostico5;
+                        nota.diagnostico1 = clave1;
+                        nota.diagnostico2 = clave2;
+                        nota.diagnostico3 = clave3;
+                        nota.diagnostico4 = clave4;
+                        nota.diagnostico5 = clave5;
                         nota.tipo_diagnostico1 = notaEvolucion.tipo_diagnostico1;
                         nota.tipo_diagnostico2 = notaEvolucion.tipo_diagnostico2;
                         nota.tipo_diagnostico3 = notaEvolucion.tipo_diagnostico3;
