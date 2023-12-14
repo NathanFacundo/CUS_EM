@@ -144,6 +144,21 @@ namespace CUS.Areas.Admin.Controllers
                         Id_claveHC = claveHC;
                     }
 
+                    //                                                                              **EDITAR HC**
+                    //Cuando el dr. edita la sección de la hc.
+
+                    //Buscamos si la 'Id_claveHC' que se insertará ya existe en la tabla de la hc
+                    var hcHecha = (from a in hcMed.hc_MED_HabitusExterior
+                                   where a.Clave_hc_px == Id_claveHC
+                                   where a.Id_Paciente == paciente.Id
+                                   select a).FirstOrDefault();
+
+                    //Si ya existe la eliminaremos para que se cree una nueva (sobreescribir)
+                    if (hcHecha != null) 
+                    {
+                        hcMed.Database.ExecuteSqlCommand("DELETE FROM hc_MED_HabitusExterior WHERE Id= '" + hcHecha.Id + "';");
+                    }
+                    
                     //Se crea la HC de esta sección/pestaña
                     Models.hc_MED_HabitusExterior Historia = new Models.hc_MED_HabitusExterior();
                     Historia.BuenEstadoGral = HistoriaClinica.BuenEstadoGral;
@@ -227,6 +242,21 @@ namespace CUS.Areas.Admin.Controllers
                         Id_claveHC = claveHC;
                     }
 
+                    //                                                                              **EDITAR HC**
+                    //Cuando el dr. edita la sección de la hc.
+
+                    //Buscamos si la 'Id_claveHC' que se insertará ya existe en la tabla de la hc
+                    var hcHecha = (from a in hcMed.hc_MED_Habitos
+                                   where a.Clave_hc_px == Id_claveHC
+                                   where a.Id_Paciente == paciente.Id
+                                   select a).FirstOrDefault();
+
+                    //Si ya existe la eliminaremos para que se cree una nueva (sobreescribir)
+                    if (hcHecha != null)
+                    {
+                        hcMed.Database.ExecuteSqlCommand("DELETE FROM hc_MED_Habitos WHERE Id= '" + hcHecha.Id + "';");
+                    }
+
                     //Se crea la HC de esta sección/pestaña
                     Models.hc_MED_Habitos Historia = new Models.hc_MED_Habitos();
                     Historia.HorasSuenio = HistoriaClinica.HorasSuenio;
@@ -305,6 +335,21 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         string claveHC = buscaHisotriaClinica(expediente);
                         Id_claveHC = claveHC;
+                    }
+
+                    //                                                                              **EDITAR HC**
+                    //Cuando el dr. edita la sección de la hc.
+
+                    //Buscamos si la 'Id_claveHC' que se insertará ya existe en la tabla de la hc
+                    var hcHecha = (from a in hcMed.hc_MED_AntecedentesPeri
+                                   where a.Clave_hc_px == Id_claveHC
+                                   where a.Id_Paciente == paciente.Id
+                                   select a).FirstOrDefault();
+
+                    //Si ya existe la eliminaremos para que se cree una nueva (sobreescribir)
+                    if (hcHecha != null)
+                    {
+                        hcMed.Database.ExecuteSqlCommand("DELETE FROM hc_MED_AntecedentesPeri WHERE Id= '" + hcHecha.Id + "';");
                     }
 
                     //Se crea la HC de esta sección/pestaña
@@ -400,6 +445,21 @@ namespace CUS.Areas.Admin.Controllers
                         Id_claveHC = claveHC;
                     }
 
+                    //                                                                              **EDITAR HC**
+                    //Cuando el dr. edita la sección de la hc.
+
+                    //Buscamos si la 'Id_claveHC' que se insertará ya existe en la tabla de la hc
+                    var hcHecha = (from a in hcMed.hc_MED_Inmunizaciones
+                                   where a.Clave_hc_px == Id_claveHC
+                                   where a.Id_Paciente == paciente.Id
+                                   select a).FirstOrDefault();
+
+                    //Si ya existe la eliminaremos para que se cree una nueva (sobreescribir)
+                    if (hcHecha != null)
+                    {
+                        hcMed.Database.ExecuteSqlCommand("DELETE FROM hc_MED_Inmunizaciones WHERE Id= '" + hcHecha.Id + "';");
+                    }
+
                     //Se crea la HC de esta sección/pestaña
                     Models.hc_MED_Inmunizaciones Historia = new Models.hc_MED_Inmunizaciones();
                     Historia.CartillaVacunacion = HistoriaClinica.CartillaVacunacion;
@@ -473,6 +533,21 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         string claveHC = buscaHisotriaClinica(expediente);
                         Id_claveHC = claveHC;
+                    }
+
+                    //                                                                              **EDITAR HC**
+                    //Cuando el dr. edita la sección de la hc.
+
+                    //Buscamos si la 'Id_claveHC' que se insertará ya existe en la tabla de la hc
+                    var hcHecha = (from a in hcMed.hc_MED_Alimentacion
+                                   where a.Clave_hc_px == Id_claveHC
+                                   where a.Id_Paciente == paciente.Id
+                                   select a).FirstOrDefault();
+
+                    //Si ya existe la eliminaremos para que se cree una nueva (sobreescribir)
+                    if (hcHecha != null)
+                    {
+                        hcMed.Database.ExecuteSqlCommand("DELETE FROM hc_MED_Alimentacion WHERE Id= '" + hcHecha.Id + "';");
                     }
 
                     //Se crea la HC de esta sección/pestaña
@@ -553,6 +628,21 @@ namespace CUS.Areas.Admin.Controllers
                         Id_claveHC = claveHC;
                     }
 
+                    //                                                                              **EDITAR HC**
+                    //Cuando el dr. edita la sección de la hc.
+
+                    //Buscamos si la 'Id_claveHC' que se insertará ya existe en la tabla de la hc
+                    var hcHecha = (from a in hcMed.hc_MED_HabitosAlimentacion
+                                   where a.Clave_hc_px == Id_claveHC
+                                   where a.Id_Paciente == paciente.Id
+                                   select a).FirstOrDefault();
+
+                    //Si ya existe la eliminaremos para que se cree una nueva (sobreescribir)
+                    if (hcHecha != null)
+                    {
+                        hcMed.Database.ExecuteSqlCommand("DELETE FROM hc_MED_HabitosAlimentacion WHERE Id= '" + hcHecha.Id + "';");
+                    }
+
                     //Se crea la HC de esta sección/pestaña
                     Models.hc_MED_HabitosAlimentacion Historia = new Models.hc_MED_HabitosAlimentacion();
                     Historia.HabitosAlimentacion = HistoriaClinica.HabitosAlimentacion;
@@ -627,6 +717,21 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         string claveHC = buscaHisotriaClinica(expediente);
                         Id_claveHC = claveHC;
+                    }
+
+                    //                                                                              **EDITAR HC**
+                    //Cuando el dr. edita la sección de la hc.
+
+                    //Buscamos si la 'Id_claveHC' que se insertará ya existe en la tabla de la hc
+                    var hcHecha = (from a in hcMed.hc_MED_AntecedentesDes
+                                   where a.Clave_hc_px == Id_claveHC
+                                   where a.Id_Paciente == paciente.Id
+                                   select a).FirstOrDefault();
+
+                    //Si ya existe la eliminaremos para que se cree una nueva (sobreescribir)
+                    if (hcHecha != null)
+                    {
+                        hcMed.Database.ExecuteSqlCommand("DELETE FROM hc_MED_AntecedentesDes WHERE Id= '" + hcHecha.Id + "';");
                     }
 
                     //Se crea la HC de esta sección/pestaña
@@ -756,6 +861,21 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         string claveHC = buscaHisotriaClinica(expediente);
                         Id_claveHC = claveHC;
+                    }
+
+                    //                                                                              **EDITAR HC**
+                    //Cuando el dr. edita la sección de la hc.
+
+                    //Buscamos si la 'Id_claveHC' que se insertará ya existe en la tabla de la hc
+                    var hcHecha = (from a in hcMed.hc_MED_AntecedentesGinecoObs
+                                   where a.Clave_hc_px == Id_claveHC
+                                   where a.Id_Paciente == paciente.Id
+                                   select a).FirstOrDefault();
+
+                    //Si ya existe la eliminaremos para que se cree una nueva (sobreescribir)
+                    if (hcHecha != null)
+                    {
+                        hcMed.Database.ExecuteSqlCommand("DELETE FROM hc_MED_AntecedentesGinecoObs WHERE Id= '" + hcHecha.Id + "';");
                     }
 
                     //Se crea la HC de esta sección/pestaña
@@ -923,6 +1043,21 @@ namespace CUS.Areas.Admin.Controllers
                         Id_claveHC = claveHC;
                     }
 
+                    //                                                                              **EDITAR HC**
+                    //Cuando el dr. edita la sección de la hc.
+
+                    //Buscamos si la 'Id_claveHC' que se insertará ya existe en la tabla de la hc
+                    var hcHecha = (from a in hcMed.hc_MED_AntecedentesVidaSex
+                                   where a.Clave_hc_px == Id_claveHC
+                                   where a.Id_Paciente == paciente.Id
+                                   select a).FirstOrDefault();
+
+                    //Si ya existe la eliminaremos para que se cree una nueva (sobreescribir)
+                    if (hcHecha != null)
+                    {
+                        hcMed.Database.ExecuteSqlCommand("DELETE FROM hc_MED_AntecedentesVidaSex WHERE Id= '" + hcHecha.Id + "';");
+                    }
+
                     //Se crea la HC de esta sección/pestaña
                     Models.hc_MED_AntecedentesVidaSex Historia = new Models.hc_MED_AntecedentesVidaSex();
                     Historia.InicioVidaSexual = HistoriaClinica.InicioVidaSexual;
@@ -998,6 +1133,21 @@ namespace CUS.Areas.Admin.Controllers
                         Id_claveHC = claveHC;
                     }
 
+                    //                                                                              **EDITAR HC**
+                    //Cuando el dr. edita la sección de la hc.
+
+                    //Buscamos si la 'Id_claveHC' que se insertará ya existe en la tabla de la hc
+                    var hcHecha = (from a in hcMed.hc_MED_PrincipioEvolEstado
+                                   where a.Clave_hc_px == Id_claveHC
+                                   where a.Id_Paciente == paciente.Id
+                                   select a).FirstOrDefault();
+
+                    //Si ya existe la eliminaremos para que se cree una nueva (sobreescribir)
+                    if (hcHecha != null)
+                    {
+                        hcMed.Database.ExecuteSqlCommand("DELETE FROM hc_MED_PrincipioEvolEstado WHERE Id= '" + hcHecha.Id + "';");
+                    }
+
                     //Se crea la HC de esta sección/pestaña
                     Models.hc_MED_PrincipioEvolEstado Historia = new Models.hc_MED_PrincipioEvolEstado();
                     Historia.PEE = HistoriaClinica.PEE;
@@ -1069,6 +1219,21 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         string claveHC = buscaHisotriaClinica(expediente);
                         Id_claveHC = claveHC;
+                    }
+
+                    //                                                                              **EDITAR HC**
+                    //Cuando el dr. edita la sección de la hc.
+
+                    //Buscamos si la 'Id_claveHC' que se insertará ya existe en la tabla de la hc
+                    var hcHecha = (from a in hcMed.hc_MED_ResultadosLaboratorio
+                                   where a.Clave_hc_px == Id_claveHC
+                                   where a.Id_Paciente == paciente.Id
+                                   select a).FirstOrDefault();
+
+                    //Si ya existe la eliminaremos para que se cree una nueva (sobreescribir)
+                    if (hcHecha != null)
+                    {
+                        hcMed.Database.ExecuteSqlCommand("DELETE FROM hc_MED_ResultadosLaboratorio WHERE Id= '" + hcHecha.Id + "';");
                     }
 
                     //Se crea la HC de esta sección/pestaña
@@ -1144,6 +1309,21 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         string claveHC = buscaHisotriaClinica(expediente);
                         Id_claveHC = claveHC;
+                    }
+
+                    //                                                                              **EDITAR HC**
+                    //Cuando el dr. edita la sección de la hc.
+
+                    //Buscamos si la 'Id_claveHC' que se insertará ya existe en la tabla de la hc
+                    var hcHecha = (from a in hcMed.hc_MED_ImpresionDiag
+                                   where a.Clave_hc_px == Id_claveHC
+                                   where a.Id_Paciente == paciente.Id
+                                   select a).FirstOrDefault();
+
+                    //Si ya existe la eliminaremos para que se cree una nueva (sobreescribir)
+                    if (hcHecha != null)
+                    {
+                        hcMed.Database.ExecuteSqlCommand("DELETE FROM hc_MED_ImpresionDiag WHERE Id= '" + hcHecha.Id + "';");
                     }
 
                     //Se crea la HC de esta sección/pestaña
@@ -1228,6 +1408,21 @@ namespace CUS.Areas.Admin.Controllers
                         Id_claveHC = claveHC;
                     }
 
+                    //                                                                              **EDITAR HC**
+                    //Cuando el dr. edita la sección de la hc.
+
+                    //Buscamos si la 'Id_claveHC' que se insertará ya existe en la tabla de la hc
+                    var hcHecha = (from a in hcMed.hc_MED_Plan
+                                   where a.Clave_hc_px == Id_claveHC
+                                   where a.Id_Paciente == paciente.Id
+                                   select a).FirstOrDefault();
+
+                    //Si ya existe la eliminaremos para que se cree una nueva (sobreescribir)
+                    if (hcHecha != null)
+                    {
+                        hcMed.Database.ExecuteSqlCommand("DELETE FROM hc_MED_Plan WHERE Id= '" + hcHecha.Id + "';");
+                    }
+
                     //Se crea la HC de esta sección/pestaña
                     Models.hc_MED_Plan Historia = new Models.hc_MED_Plan();
                     Historia.Plan = HistoriaClinica.Plan;
@@ -1306,6 +1501,21 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         string claveHC = buscaHisotriaClinica(expediente);
                         Id_claveHC = claveHC;
+                    }
+
+                    //                                                                              **EDITAR HC**
+                    //Cuando el dr. edita la sección de la hc.
+
+                    //Buscamos si la 'Id_claveHC' que se insertará ya existe en la tabla de la hc
+                    var hcHecha = (from a in hcMed.hc_MED_Pronostico
+                                   where a.Clave_hc_px == Id_claveHC
+                                   where a.Id_Paciente == paciente.Id
+                                   select a).FirstOrDefault();
+
+                    //Si ya existe la eliminaremos para que se cree una nueva (sobreescribir)
+                    if (hcHecha != null)
+                    {
+                        hcMed.Database.ExecuteSqlCommand("DELETE FROM hc_MED_Pronostico WHERE Id= '" + hcHecha.Id + "';");
                     }
 
                     //Se crea la HC de esta sección/pestaña
@@ -1403,6 +1613,21 @@ namespace CUS.Areas.Admin.Controllers
                     {
                         string claveHC = buscaHisotriaClinica(expediente);
                         Id_claveHC = claveHC;
+                    }
+
+                    //                                                                              **EDITAR HC**
+                    //Cuando el dr. edita la sección de la hc.
+
+                    //Buscamos si la 'Id_claveHC' que se insertará ya existe en la tabla de la hc
+                    var hcHecha = (from a in hcMed.hc_MED_Otros
+                                   where a.Clave_hc_px == Id_claveHC
+                                   where a.Id_Paciente == paciente.Id
+                                   select a).FirstOrDefault();
+
+                    //Si ya existe la eliminaremos para que se cree una nueva (sobreescribir)
+                    if (hcHecha != null)
+                    {
+                        hcMed.Database.ExecuteSqlCommand("DELETE FROM hc_MED_Otros WHERE Id= '" + hcHecha.Id + "';");
                     }
 
                     //Se crea la HC de esta sección/pestaña
