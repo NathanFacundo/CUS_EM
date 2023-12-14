@@ -83,14 +83,20 @@
         padding: 5px;
     }
 
+    /*
     .table-responsive {
         display: none;
     }
+    */
 
 
     .profile-header {
         padding-left: 0px;
         margin-bottom: 20px;
+    }
+
+    .line{
+        width:100%;
     }
 
 </style>
@@ -138,15 +144,147 @@
         </div>
 
         <div class="row">
-            <div class="col-12">
-
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                            <div class="table-responsive">
+                                <table id="tblNota" class="datatable table table-hover table-center mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Medico</th>
+                                            <th>Fecha</th>
+                                            <th class="text-right"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
+
+<div id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
+    <div role="document" class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header row d-flex justify-content-between mx-1 mx-sm-3 mb-0 pb-0 border-0">
+                <div class="tabs active" id="tab01">
+                    <h3 class="font-weight-bold">Nota Evolución.</h3>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="line"></div>
+            <div class="modal-body p-0">
+                <div class="row m-0">
+                    <div class="col-12 p-4">
+                        <p>Subjetivo: <span id="nota_subjetivo"></span> </p>
+                        <p>Objetivo: <span id="nota_objetivo"></span> </p>
+                        <p class="m-0">Analisis: <ul id="nota_analisis"></ul> </p>
+                        <p>Plan: <span id="nota_plan"></span> </p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="line"></div>
+            <div class="modal-footer d-flex flex-column justify-content-center border-0">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
 <script src="~/Areas/Admin/assets/js/jquery-3.2.1.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    $(document).ready(function () {
+
+        var table2 = $('#tblNota').DataTable({
+            destroy: true,
+            searching: true,
+            responsive: true,
+            "ajax": {
+                "url": '@Url.Action("ListaNotaEvolucion", "NotaEvolucion", new { expediente = Model.Expediente })',
+                "dataSrc": "",
+            },
+            "language": {
+                "search": "Buscar registro:",
+                "zeroRecords": "No se encontró ningun registro",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Último",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                },
+                "select": {
+                    "rows": " %d filas seleccionadas"
+                },
+                "loadingRecords": "Un momento, cargando registros...",
+                "processing": "Procesando registros...",
+                "info": "Mostrando _START_ a _END_ de _TOTAL_ registros",
+                "lengthMenu": "Mostrando _MENU_ registros",
+            },
+            "columns": [
+                { "data": "Medico" },
+                { "data": "Fecha" },
+                { "data": "Boton" },
+            ],
+            "order": [[2, 'desc']],
+            "columnDefs": [
+                {
+
+                },
+            ],
+        });
+
+
+
+        $('#tblNota tbody').on('click', '.vermas', function () {
+
+            //alert('dsfs');
+            var id = $(this).attr('data-id');
+            $('#exampleModal').modal('show');
+
+
+            $.ajax({
+                url: '@Url.Action("DtsNotaEvolucion", "NotaEvolucion")',
+                method: 'POST',
+                dataType: 'json',
+                data: {
+                    id: id
+                },
+                success: function (data) {
+                    $('#exampleModal').modal('show');
+                    $('#nota_subjetivo').text(data.nota_subjetivo);
+                    $('#nota_objetivo').text(data.nota_objetivo);
+                    $('#nota_plan').text(data.nota_plan);
+                    $('#nota_analisis').html(data.nota_analisis);
+                    //console.log(data);
+                },
+                error: function (ex) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: '¡Error!',
+                    });
+                }
+            });
+
+
+
+
+
+        });
+    });
+
+</script>
 
 @if (TempData["message_success"] != null)
 {

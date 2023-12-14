@@ -3,6 +3,7 @@ using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -98,9 +99,6 @@ namespace CUS.Areas.Admin.Controllers
             
             return claveNE;
         }
-
-
-
 
 
         //Diagnosticos frecuentes del medico
@@ -255,6 +253,8 @@ namespace CUS.Areas.Admin.Controllers
                                 where a.Expediente == expediente
                                 select a).FirstOrDefault();
 
+                var username = User.Identity.GetUserName();
+
                 //Buscamos si a ese px se le acaba de crear registro en la tbl NotaEvolucion.
                 if (paciente != null)
                 {
@@ -306,6 +306,7 @@ namespace CUS.Areas.Admin.Controllers
                         registroReciente.tipo_diagnostico4 = notaEvolucion.tipo_diagnostico4;
                         registroReciente.tipo_diagnostico5 = notaEvolucion.tipo_diagnostico5;
                         registroReciente.num_exp = paciente.Expediente;
+                        registroReciente.medico = username;
                         registroReciente.fecha = fechaDT;
                         db.Entry(registroReciente).State = EntityState.Modified;
                         db.SaveChanges();
@@ -333,6 +334,7 @@ namespace CUS.Areas.Admin.Controllers
                         nota.tipo_diagnostico4 = notaEvolucion.tipo_diagnostico4;
                         nota.tipo_diagnostico5 = notaEvolucion.tipo_diagnostico5;
                         nota.num_exp = paciente.Expediente;
+                        nota.medico = username;
                         nota.fecha = fechaDT;
                         //Historia.Id_HistoriaClinica = Id_claveHC;
                         //nota.Clave_hc_px = Id_claveHC;
@@ -359,6 +361,138 @@ namespace CUS.Areas.Admin.Controllers
                 TempData["message_success"] = "Error, vuelve a intentar";
                 return Redirect(Request.UrlReferrer.ToString());
             }
+        }
+
+
+        public class NotaEvolucionLista
+        {
+            public string Expediente { get; set; }
+            public string Paciente { get; set; }
+            public string Medico { get; set; }
+            public string Fecha { get; set; }
+            public string Boton { get; set; }
+        }
+
+
+        public JsonResult ListaNotaEvolucion(string expediente)
+        {
+            var username = User.Identity.GetUserName();
+
+            var notas = (from ne in db.NotaEvolucion
+                                join pa in db.Paciente on ne.num_exp equals pa.Expediente into pax
+                                from paIn in pax.DefaultIfEmpty()
+                                where ne.medico == username
+                                where ne.num_exp == expediente
+                                select new
+                                {
+                                    Expediente = ne.num_exp,
+                                    Paciente = paIn.Nombre+" "+ paIn.PrimerApellido + " " + paIn.SegundoApellido,
+                                    Medico = ne.medico,
+                                    Fecha = ne.fecha,
+                                    Boton = ne.id,
+
+                                }).ToList().OrderByDescending(n => n.Fecha);
+
+
+
+            var listaNotas = new List<NotaEvolucionLista>();
+
+            foreach (var item in notas)
+            {
+
+                var listaLlenar = new NotaEvolucionLista
+                {
+                    //Expediente = item.Expediente,
+                    //Paciente = item.Paciente,
+                    Medico = item.Medico,
+                    Fecha = string.Format("{0:dddd, dd MMMM yyyy HH:mm}", item.Fecha, new CultureInfo("es-ES")),
+                    Boton = "<button data-id='" + item.Boton + "' class='btn btn-primary vermas'>Ver más</button>",
+                };
+
+                listaNotas.Add(listaLlenar);
+            }
+
+
+
+            return new JsonResult { Data = listaNotas, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+        }
+
+
+
+        public JsonResult DtsNotaEvolucion(int? id)
+        {
+
+            var nota = (from ne in db.NotaEvolucion
+                        join diag1 in db.Diagnosticos on ne.diagnostico1 equals diag1.clave into diagX1
+                        from diaIn1 in diagX1.DefaultIfEmpty()
+                        join diag2 in db.Diagnosticos on ne.diagnostico2 equals diag2.clave into diagX2
+                        from diaIn2 in diagX2.DefaultIfEmpty()
+                        join diag3 in db.Diagnosticos on ne.diagnostico3 equals diag3.clave into diagX3
+                        from diaIn3 in diagX3.DefaultIfEmpty()
+                        join diag4 in db.Diagnosticos on ne.diagnostico4 equals diag4.clave into diagX4
+                        from diaIn4 in diagX4.DefaultIfEmpty()
+                        join diag5 in db.Diagnosticos on ne.diagnostico5 equals diag5.clave into diagX5
+                        from diaIn5 in diagX5.DefaultIfEmpty()
+                        where ne.id == id
+                         select new
+                         {
+                             nota_subjetivo = ne.nota_subjetivo,
+                             nota_objetivo = ne.nota_objetivo,
+                             nota_plan = ne.nota_plan,
+                             diagnostico1 = diaIn1.diagnostico,
+                             diagnostico2 = diaIn2.diagnostico,
+                             diagnostico3 = diaIn3.diagnostico,
+                             diagnostico4 = diaIn4.diagnostico,
+                             diagnostico5 = diaIn5.diagnostico,
+
+                         }).FirstOrDefault();
+
+            var rst = new Object();
+
+            if(nota != null)
+            {
+
+                var diagnosticos = "";
+                if (nota.diagnostico5 != null && nota.diagnostico5 != "")
+                {
+                    diagnosticos = "<li>" + nota.diagnostico1 + "</li>" + "<li>" + nota.diagnostico2 + "</li>" + "<li>" + nota.diagnostico3 + "</li>" + "<li>" + nota.diagnostico4 + "</li>" + "<li>" + nota.diagnostico5 + "</li>";
+                }
+                else
+                {
+                    if (nota.diagnostico4 != null && nota.diagnostico4 != "")
+                    {
+                        diagnosticos = "<li>" + nota.diagnostico1 + "</li>" + "<li>" + nota.diagnostico2 + "</li>" + "<li>" + nota.diagnostico3 + "</li>" + "<li>" + nota.diagnostico4 + "</li>";
+                    }
+                    else
+                    {
+                        if (nota.diagnostico3 != null && nota.diagnostico3 != "")
+                        {
+                            diagnosticos = "<li>" + nota.diagnostico1 + "</li>" + "<li>" + nota.diagnostico2 + "</li>" + "<li>" + nota.diagnostico3 + "</li>";
+                        }
+                        else
+                        {
+                            if (nota.diagnostico2 != null && nota.diagnostico2 != "")
+                            {
+                                diagnosticos = "<li>" + nota.diagnostico1 + "</li>" + "<li>" + nota.diagnostico2 + "</li>";
+                            }
+                            else
+                            {
+                                diagnosticos = "<li>" + nota.diagnostico1 + "</li>";
+                            }
+                        }
+                    }
+                }
+
+                rst = new
+                {
+                    nota_subjetivo = nota.nota_subjetivo,
+                    nota_objetivo = nota.nota_objetivo,
+                    nota_plan = nota.nota_plan,
+                    nota_analisis = diagnosticos,
+                };
+            }
+
+            return new JsonResult { Data = rst, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
 
     }
