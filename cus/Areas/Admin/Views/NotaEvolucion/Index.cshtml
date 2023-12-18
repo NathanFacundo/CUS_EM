@@ -115,33 +115,6 @@
             </div>
         </div>
 
-        <div class="row">
-
-            <div class="col-sm-12 p-0">
-                <div class="profile-header">
-                    <div class="row align-items-center">
-                        <div class="col-auto profile-image">
-                            <a href="#">
-                                @*<img class="rounded-circle" alt="User Image" src="~/Content/assets/img/profiles/avatar-04.jpg">*@
-                            </a>
-                        </div>
-                        <div class="col ml-md-n2 profile-user-info">
-                            <h10 style="font-weight:bold;">Nombre: @Model.Nombre @Model.PrimerApellido @Model.SegundoApellido </h10>
-                            <a id="Nombre"></a><br />
-                            <h10 style="font-weight:bold;">Expediente:@Model.Expediente </h10>
-                            <a id="Exp"></a><br />
-                            <h10 style="font-weight:bold;">Edad: @edad años @meses meses</h10>
-                            <a id="Edad"></a><br />
-                            <h10 style="font-weight:bold;">Sexo: @Model.Sexo</h10>
-                            <a id="Sexo"></a><br />
-                                             <h10 style="font-weight:bold;">Fecha Nac.: @nacimiento</h10>
-                            <a id="FechaNac"></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
 
         <div class="row">
             <div class="col-sm-12">
@@ -151,7 +124,7 @@
                                 <table id="tblNota" class="datatable table table-hover table-center mb-0">
                                     <thead>
                                         <tr>
-                                            <th>Medico</th>
+                                            <th>Paciente</th>
                                             <th>Fecha</th>
                                             <th class="text-right"></th>
                                         </tr>
@@ -233,7 +206,7 @@
                 "lengthMenu": "Mostrando _MENU_ registros",
             },
             "columns": [
-                { "data": "Medico" },
+                { "data": "Paciente" },
                 { "data": "Fecha" },
                 { "data": "Boton" },
             ],

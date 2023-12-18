@@ -143,6 +143,7 @@
                                         <ul style="display: none;">
                                             <li><a href="@Url.Action("Create", "NotaEvolucion", new { expediente = Model.Expediente })">Nueva</a></li>
                                             <li><a href="@Url.Action("Index", "NotaEvolucion", new { expediente = Model.Expediente })">Mis notas</a></li>
+                                            <li><a href="@Url.Action("Paciente", "NotaEvolucion", new { expediente = Model.Expediente })">Notas de Px.</a></li>
 
                                         </ul>
                                     </li>
@@ -170,9 +171,10 @@
                                         <a href="#"><i class="fa fa-file-text-o"></i> <span>Archivos</span> <span class="menu-arrow"></span></a>
                                         <ul style="display: none;">
                                             <li><a href="@Url.Action("Create", "Archivos", new { expediente = Model.Expediente })">Nuevo</a></li>
-                                            <li><a href="@Url.Action("Index", "Archivos", new { expediente = Model.Expediente })">Mis archivos</a></li>
+                                            <!--li><a href="@Url.Action("Index", "Archivos", new { expediente = Model.Expediente })">Mis archivos</a></li>
+                                            <li><a href="@Url.Action("Paciente", "Archivos", new { expediente = Model.Expediente })">Archivos de Px</a></li>
 
-                                        </ul>
+                                        </ul-->
                                     </li>
                                 }
 

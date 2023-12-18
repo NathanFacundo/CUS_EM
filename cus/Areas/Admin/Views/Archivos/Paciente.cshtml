@@ -114,16 +114,43 @@
             </div>
         </div>
 
+        <div class="row">
+
+            <div class="col-sm-12 p-0">
+                <div class="profile-header">
+                    <div class="row align-items-center">
+                        <div class="col-auto profile-image">
+                            <a href="#">
+                                @*<img class="rounded-circle" alt="User Image" src="~/Content/assets/img/profiles/avatar-04.jpg">*@
+                            </a>
+                        </div>
+                        <div class="col ml-md-n2 profile-user-info">
+                            <h10 style="font-weight:bold;">Nombre: @Model.Nombre @Model.PrimerApellido @Model.SegundoApellido </h10>
+                            <a id="Nombre"></a><br />
+                            <h10 style="font-weight:bold;">Expediente:@Model.Expediente </h10>
+                            <a id="Exp"></a><br />
+                            <h10 style="font-weight:bold;">Edad: @edad años @meses meses</h10>
+                            <a id="Edad"></a><br />
+                            <h10 style="font-weight:bold;">Sexo: @Model.Sexo</h10>
+                            <a id="Sexo"></a><br />
+                            <h10 style="font-weight:bold;">Fecha Nac.: @nacimiento</h10>
+                            <a id="FechaNac"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
 
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="tblNota" class="datatable table table-hover table-center mb-0">
+                            <table id="tblArchivos" class="datatable table table-hover table-center mb-0">
                                 <thead>
                                     <tr>
-                                        <th>Paciente</th>
+                                        <th>Medico</th>
                                         <th>Fecha</th>
                                         <th class="text-right"></th>
                                     </tr>
@@ -156,7 +183,6 @@
                 <div class="row m-0">
                     <div class="col-12 p-4">
                         <p>Título: <span id="titulo"></span> </p>
-
                     </div>
                 </div>
             </div>
@@ -176,12 +202,12 @@
 <script>
     $(document).ready(function () {
 
-        var table2 = $('#tblArchivo').DataTable({
+        var table2 = $('#tblArchivos').DataTable({
             destroy: true,
             searching: true,
             responsive: true,
             "ajax": {
-                "url": '@Url.Action("ListaArchivos", "Archivos", new { expediente = Model.Expediente })',
+                "url": '@Url.Action("ListaArchivosPx", "Archivos", new { expediente = Model.Expediente })',
                 "dataSrc": "",
             },
             "language": {
@@ -202,7 +228,7 @@
                 "lengthMenu": "Mostrando _MENU_ registros",
             },
             "columns": [
-                { "data": "Paciente" },
+                { "data": "Medico" },
                 { "data": "Fecha" },
                 { "data": "Boton" },
             ],
@@ -216,7 +242,7 @@
 
 
 
-        $('#tblArchivo tbody').on('click', '.vermas', function () {
+        $('#tblNota tbody').on('click', '.vermas', function () {
 
             //alert('dsfs');
             var id = $(this).attr('data-id');
@@ -233,7 +259,6 @@
                 success: function (data) {
                     $('#exampleModal').modal('show');
                     $('#titulo').text(data.titulo);
-                    //console.log(data);
                 },
                 error: function (ex) {
                     Swal.fire({

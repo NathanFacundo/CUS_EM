@@ -46,6 +46,27 @@ namespace CUS.Areas.Admin.Controllers
         }
 
 
+
+        public ActionResult Paciente(string expediente)
+        {
+            //var mensajeGlobal = BuscarPaciente();
+            //var mensajeGlobal = _dhController.BuscarPaciente();
+            if (expediente != null)
+            {
+                var paciente = (from a in db.Paciente
+                                where a.Expediente == expediente
+                                select a).FirstOrDefault();
+
+                return View(paciente);
+            }
+            else
+            {
+                return RedirectToAction("BuscarPaciente", "DerechoHabiente");
+            }
+
+        }
+
+
         public ActionResult Create(string expediente)
         {
                 if (expediente != null)
@@ -382,7 +403,7 @@ namespace CUS.Areas.Admin.Controllers
                                 join pa in db.Paciente on ne.num_exp equals pa.Expediente into pax
                                 from paIn in pax.DefaultIfEmpty()
                                 where ne.medico == username
-                                where ne.num_exp == expediente
+                                //where ne.num_exp == expediente
                                 select new
                                 {
                                     Expediente = ne.num_exp,
@@ -403,7 +424,52 @@ namespace CUS.Areas.Admin.Controllers
                 var listaLlenar = new NotaEvolucionLista
                 {
                     //Expediente = item.Expediente,
-                    //Paciente = item.Paciente,
+                    Paciente = item.Paciente,
+                    Medico = item.Medico,
+                    Fecha = string.Format("{0:dddd, dd MMMM yyyy HH:mm}", item.Fecha, new CultureInfo("es-ES")),
+                    Boton = "<button data-id='" + item.Boton + "' class='btn btn-primary vermas'>Ver más</button>",
+                };
+
+                listaNotas.Add(listaLlenar);
+            }
+
+
+
+            return new JsonResult { Data = listaNotas, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+        }
+
+
+
+        public JsonResult ListaNotaEvolucionPx(string expediente)
+        {
+            var username = User.Identity.GetUserName();
+
+            var notas = (from ne in db.NotaEvolucion
+                         join pa in db.Paciente on ne.num_exp equals pa.Expediente into pax
+                         from paIn in pax.DefaultIfEmpty()
+                         where ne.medico == username
+                         where ne.num_exp == expediente
+                         select new
+                         {
+                             Expediente = ne.num_exp,
+                             Paciente = paIn.Nombre + " " + paIn.PrimerApellido + " " + paIn.SegundoApellido,
+                             Medico = ne.medico,
+                             Fecha = ne.fecha,
+                             Boton = ne.id,
+
+                         }).ToList().OrderByDescending(n => n.Fecha);
+
+
+
+            var listaNotas = new List<NotaEvolucionLista>();
+
+            foreach (var item in notas)
+            {
+
+                var listaLlenar = new NotaEvolucionLista
+                {
+                    //Expediente = item.Expediente,
+                    Paciente = item.Paciente,
                     Medico = item.Medico,
                     Fecha = string.Format("{0:dddd, dd MMMM yyyy HH:mm}", item.Fecha, new CultureInfo("es-ES")),
                     Boton = "<button data-id='" + item.Boton + "' class='btn btn-primary vermas'>Ver más</button>",

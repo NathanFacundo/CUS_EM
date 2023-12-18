@@ -169,7 +169,7 @@
                 </div>
                 <div class="col-md-12 p-2">
                     <label for="titulo">Tipo de archivo</label>
-                    <select class="form-control" name="titulo" id="tipo_archivo" required>
+                    <select class="form-control" name="tipo_archivo" id="tipo_archivo" required>
                         <option selected disabled>Selecciona</option>
                         <option value="Enfermeria">Enfermeria</option>
                         <option value="Laboratorio">Laboratorio</option>
@@ -183,9 +183,55 @@
 
                     </select>
                 </div>
-                <div class="col-md-12 p-2">
-                    <label for="titulo">Fecha</label>
-                    <input class="form-control" name="fecha" id="date" required />
+                <div class="col-md-12 p-0">
+                    <label class="p-2 m-0" for="titulo">Fecha</label>
+                    <div class="row m-0">
+                        <div class="col-2 p-2">
+                            <select name="dia" id="dia" class="form-control">
+                                <option disabled selected>Día</option>
+                                @for (int i = 1; i <= 31; i++)
+                                {
+                                    if (i < 10)
+                                    {
+                                        var num = "0" + i;
+                                        <option value="@num">@num</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@i">@i</option>
+                                    }
+
+                                }
+                            </select>
+                        </div>
+                        <div class="col-2 p-2">
+                            <select name="mes" id="mes" class="form-control">
+                                <option disabled selected>Mes</option>
+                                @for (int i = 1; i <= 12; i++)
+                                {
+                                    if (i < 10)
+                                    {
+                                        var num = "0" + i;
+                                        <option value="@num">@num</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@i">@i</option>
+                                    }
+
+                                }
+                            </select>
+                        </div>
+                        <div class="col-2 p-2">
+                            <select name="anio" id="anio" class="form-control">
+                                <option disabled selected>Año</option>
+                                @for (int i = 1900; i <= 2024; i++)
+                                {
+                                    <option value="@i">@i</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md-12 p-2">
                     <div id="dropzone" class="dropzone">
@@ -196,6 +242,9 @@
 
                     </div>
                 </div>
+
+                <input type="hidden" name="expediente" value="@Model.Expediente" />
+
                 <div class="col-md-12 p-2 mb-5 text-right">
                     <button class="btn btn-primary">Guardar</button>
                 </div>
@@ -217,6 +266,21 @@
         Swal.fire({
             icon: 'success',
             title: '@TempData["message_success"]',
+            showConfirmButton: false,
+            timer: 1600
+        })
+
+    </script>
+}
+
+
+@if (TempData["message_error"] != null)
+{
+    <script>
+
+        Swal.fire({
+            icon: 'success',
+            title: '@TempData["message_error"]',
             showConfirmButton: false,
             timer: 1600
         })

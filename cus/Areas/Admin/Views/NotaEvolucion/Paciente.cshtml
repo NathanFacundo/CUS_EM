@@ -1,6 +1,6 @@
 ﻿@Model CUS.Models.CUS
 @{
-    ViewBag.Title = "Archivos";
+    ViewBag.Title = "Nota de Evolución";
 
     int edad = 0;
     int meses = 0;
@@ -114,6 +114,33 @@
             </div>
         </div>
 
+        <div class="row">
+
+            <div class="col-sm-12 p-0">
+                <div class="profile-header">
+                    <div class="row align-items-center">
+                        <div class="col-auto profile-image">
+                            <a href="#">
+                                @*<img class="rounded-circle" alt="User Image" src="~/Content/assets/img/profiles/avatar-04.jpg">*@
+                            </a>
+                        </div>
+                        <div class="col ml-md-n2 profile-user-info">
+                            <h10 style="font-weight:bold;">Nombre: @Model.Nombre @Model.PrimerApellido @Model.SegundoApellido </h10>
+                            <a id="Nombre"></a><br />
+                            <h10 style="font-weight:bold;">Expediente:@Model.Expediente </h10>
+                            <a id="Exp"></a><br />
+                            <h10 style="font-weight:bold;">Edad: @edad años @meses meses</h10>
+                            <a id="Edad"></a><br />
+                            <h10 style="font-weight:bold;">Sexo: @Model.Sexo</h10>
+                            <a id="Sexo"></a><br />
+                            <h10 style="font-weight:bold;">Fecha Nac.: @nacimiento</h10>
+                            <a id="FechaNac"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
 
         <div class="row">
             <div class="col-sm-12">
@@ -123,7 +150,7 @@
                             <table id="tblNota" class="datatable table table-hover table-center mb-0">
                                 <thead>
                                     <tr>
-                                        <th>Paciente</th>
+                                        <th>Medico</th>
                                         <th>Fecha</th>
                                         <th class="text-right"></th>
                                     </tr>
@@ -145,7 +172,7 @@
         <div class="modal-content">
             <div class="modal-header row d-flex justify-content-between mx-1 mx-sm-3 mb-0 pb-0 border-0">
                 <div class="tabs active" id="tab01">
-                    <h3 class="font-weight-bold">Archivo.</h3>
+                    <h3 class="font-weight-bold">Nota Evolución.</h3>
                 </div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -155,7 +182,10 @@
             <div class="modal-body p-0">
                 <div class="row m-0">
                     <div class="col-12 p-4">
-                        <p>Título: <span id="titulo"></span> </p>
+                        <p>Subjetivo: <span id="nota_subjetivo"></span> </p>
+                        <p>Objetivo: <span id="nota_objetivo"></span> </p>
+                        <p class="m-0">Analisis: <ul id="nota_analisis"></ul> </p>
+                        <p>Plan: <span id="nota_plan"></span> </p>
 
                     </div>
                 </div>
@@ -176,12 +206,12 @@
 <script>
     $(document).ready(function () {
 
-        var table2 = $('#tblArchivo').DataTable({
+        var table2 = $('#tblNota').DataTable({
             destroy: true,
             searching: true,
             responsive: true,
             "ajax": {
-                "url": '@Url.Action("ListaArchivos", "Archivos", new { expediente = Model.Expediente })',
+                "url": '@Url.Action("ListaNotaEvolucionPx", "NotaEvolucion", new { expediente = Model.Expediente })',
                 "dataSrc": "",
             },
             "language": {
@@ -202,7 +232,7 @@
                 "lengthMenu": "Mostrando _MENU_ registros",
             },
             "columns": [
-                { "data": "Paciente" },
+                { "data": "Medico" },
                 { "data": "Fecha" },
                 { "data": "Boton" },
             ],
@@ -216,7 +246,7 @@
 
 
 
-        $('#tblArchivo tbody').on('click', '.vermas', function () {
+        $('#tblNota tbody').on('click', '.vermas', function () {
 
             //alert('dsfs');
             var id = $(this).attr('data-id');
@@ -224,7 +254,7 @@
 
 
             $.ajax({
-                url: '@Url.Action("DtsArchivos", "Archivos")',
+                url: '@Url.Action("DtsNotaEvolucion", "NotaEvolucion")',
                 method: 'POST',
                 dataType: 'json',
                 data: {
@@ -232,7 +262,10 @@
                 },
                 success: function (data) {
                     $('#exampleModal').modal('show');
-                    $('#titulo').text(data.titulo);
+                    $('#nota_subjetivo').text(data.nota_subjetivo);
+                    $('#nota_objetivo').text(data.nota_objetivo);
+                    $('#nota_plan').text(data.nota_plan);
+                    $('#nota_analisis').html(data.nota_analisis);
                     //console.log(data);
                 },
                 error: function (ex) {
