@@ -166,14 +166,21 @@
                                     </li>
 
 
+                                    <li class="submenu">
+                                        <a href="#"><i class="fa fa-file-text-o"></i> <span>Archivos</span> <span class="menu-arrow"></span></a>
+                                        <ul style="display: none;">
+                                            <li><a href="@Url.Action("Create", "Archivos", new { expediente = Model.Expediente })">Nuevo</a></li>
+                                            <li><a href="@Url.Action("Index", "Archivos", new { expediente = Model.Expediente })">Mis archivos</a></li>
 
+                                        </ul>
+                                    </li>
                                 }
 
                             }
 
                         }
 
-                        @if (HttpContext.Current.User.IsInRole("Enfermeria")) 
+                        @if (HttpContext.Current.User.IsInRole("Enfermeria"))
                         {
                             if (Model != null)
                             {
@@ -184,8 +191,8 @@
                                 if (!esLista)
                                 {
                                     <li><a href="@Url.Action("Create", "Enfermeria", new { expediente = Model.Expediente })"><i class="fe fe-document"></i>Enfermería</a></li>
-                                    }
                                 }
+                            }
                         }
 
                         @*<li class="submenu">

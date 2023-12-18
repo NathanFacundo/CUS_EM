@@ -51,7 +51,7 @@ namespace CUS.Areas.Admin.Controllers
                 if (imagenSubida != null && imagenSubida.ContentLength > 0)
                 {
                     var nombreArchivo = Path.GetFileName(imagenSubida.FileName);
-                    var path = Path.Combine(Server.MapPath("~/Content/"), nombreArchivo);
+                    var path = Path.Combine(Server.MapPath("~/Content/" + archivos.tipo_archivo + "/" + expediente + "/"), nombreArchivo);
                     imagenSubida.SaveAs(path);
 
                     var fecha = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
