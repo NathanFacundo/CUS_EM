@@ -163,7 +163,17 @@ namespace CUS.Areas.Admin.Controllers
                     Historia.NombreCompleto = HistoriaClinica.NombreCompleto;
                     Historia.Edad = HistoriaClinica.Edad;
                     Historia.Ocupacion = HistoriaClinica.Ocupacion;
-                    
+
+                    Historia.Parentesco2 = HistoriaClinica.Parentesco2;
+                    Historia.NombreCompleto2 = HistoriaClinica.NombreCompleto2;
+                    Historia.Edad2 = HistoriaClinica.Edad2;
+                    Historia.Ocupacion2 = HistoriaClinica.Ocupacion2;
+
+                    Historia.Parentesco3 = HistoriaClinica.Parentesco3;
+                    Historia.NombreCompleto3 = HistoriaClinica.NombreCompleto3;
+                    Historia.Edad3 = HistoriaClinica.Edad3;
+                    Historia.Ocupacion3 = HistoriaClinica.Ocupacion3;
+
                     Historia.Id_Paciente = paciente.Id;
                     Historia.Clave_hc_px = Id_claveHC;
                     hcMed.hc_PS_Familia.Add(Historia);
@@ -1265,6 +1275,14 @@ namespace CUS.Areas.Admin.Controllers
             public string NombreCompleto { get; set; }
             public string Edad { get; set; }
             public string Ocupacion { get; set; }
+            public string Parentesco2 { get; set; }
+            public string NombreCompleto2 { get; set; }
+            public string Edad2 { get; set; }
+            public string Ocupacion2 { get; set; }
+            public string Parentesco3 { get; set; }
+            public string NombreCompleto3 { get; set; }
+            public string Edad3 { get; set; }
+            public string Ocupacion3 { get; set; }
             //AtencionPsicologica
             public bool? Presencia_Voluntaria { get; set; }
             public bool? Presencia_Sugerida { get; set; }
@@ -1357,7 +1375,7 @@ namespace CUS.Areas.Admin.Controllers
                 Propiedades_HC HC = new Propiedades_HC();
 
                 string query =
-                    "SELECT F.Parentesco, F.NombreCompleto, F.Edad, F.Ocupacion, " +
+                    "SELECT F.Parentesco, F.NombreCompleto, F.Edad, F.Ocupacion, F.Parentesco2, F.NombreCompleto2, F.Edad2, F.Ocupacion2, F.Parentesco3, F.NombreCompleto3, F.Edad3, F.Ocupacion3, " +
                     "AP.Presencia_Voluntaria, AP.Presencia_Sugerida, AP.Presencia_Obligatoria, AP.AnteriormenteAtencion, " +
                     "MC.Motivo, " +
                     "SA.Sintomatologia, SA.DificultadRespirar_Si, SA.DificultadRespirar_No, SA.DificultadRespirar_Esp, SA.SensacionMorir_Si, SA.SensacionMorir_No, SA.SensacionMorir_Esp, SA.TemblorCuerpo_Si, SA.TemblorCuerpo_No, SA.TemblorCuerpo_Esp, SA.Desmayo_Si, SA.Desmayo_No, SA.Desmayo_Esp, SA.Lloras_Si, SA.Lloras_No, SA.Lloras_Esp, SA.DespiertasAnimo_Si, SA.DespiertasAnimo_No, SA.DespiertasAnimo_Esp, " +
