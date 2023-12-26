@@ -115,10 +115,11 @@ namespace CUS.Areas.Admin.Controllers
                     var fechaDT = DateTime.Parse(fecha);
                     var fechaArchivoSplit = DateTime.Now.ToString(anio + "-" + mes + "-" + dia + "THH:mm:ss");
                     var fechaArchivo = DateTime.Parse(fechaArchivoSplit);
-
+                    var username = User.Identity.GetUserName();
 
                     Archivos arch = new Archivos();
                     arch.titulo = archivos.titulo;
+                    arch.usuario = username;
                     arch.tipo_archivo = archivos.tipo_archivo;
                     arch.archivo = nombreArchivo;
                     //arch.fecha_archivo = archivos.fecha_archivo;
@@ -195,7 +196,7 @@ namespace CUS.Areas.Admin.Controllers
                     //Expediente = item.Expediente,
                     Paciente = item.Paciente,
                     Medico = item.Medico,
-                    Fecha_archivo = string.Format("{0:dddd, dd MMMM yyyy HH:mm}", item.Fecha_archivo, new CultureInfo("es-ES")),
+                    Fecha_archivo = string.Format("{0:dddd, dd MMMM yyyy}", item.Fecha_archivo, new CultureInfo("es-ES")),
                     Fecha_registro = string.Format("{0:dddd, dd MMMM yyyy HH:mm}", item.Fecha_registro, new CultureInfo("es-ES")),
                     Boton = "<button data-id='" + item.Boton + "' class='btn btn-primary vermas'>Ver más</button>",
                 };
@@ -218,7 +219,7 @@ namespace CUS.Areas.Admin.Controllers
                          join pa in db.Paciente on ne.expediente equals pa.Expediente into pax
                          from paIn in pax.DefaultIfEmpty()
                          where ne.usuario == username
-                         //where ne.num_exp == expediente
+                         where ne.expediente == expediente
                          select new
                          {
                              Expediente = ne.expediente,
@@ -254,6 +255,57 @@ namespace CUS.Areas.Admin.Controllers
 
             return new JsonResult { Data = listaNotas, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
+
+
+
+        public JsonResult DtsArchivos(int? id)
+        {
+
+            var archivo = (from ar in db.Archivos
+                        join paci in db.Paciente on ar.expediente equals paci.Expediente into paciX
+                        from paciIn in paciX.DefaultIfEmpty()
+                        where ar.id == id
+                        select new
+                        {
+                            archivo = ar.archivo,
+                            expediente = ar.expediente,
+                            titulo = ar.titulo,
+                            tipo_archivo = ar.tipo_archivo,
+                            fecha_archivo = ar.fecha_archivo,
+                            fecha_registro = ar.fecha_registro,
+
+                        }).FirstOrDefault();
+
+            var rst = new Object();
+
+            if (archivo != null)
+            {
+                var arch = "";
+                var archivoSplit = archivo.archivo.Split('.');
+
+                if(archivoSplit[1] == "pdf" || archivoSplit[1] == "docx")
+                {
+                    arch = "<a target='_blank' href='../Content/" + archivo.tipo_archivo + "/" + archivo.expediente + "/" + archivo.archivo + "' class='btn btn-primary'>Ver archivo</a>";
+                }
+                else
+                {
+                    arch = "<a target='_blank' href='../Content/" + archivo.tipo_archivo + "/" + archivo.expediente + "/" + archivo.archivo + "' class='btn btn-primary'>Ver archivo</a>";
+                }
+
+                rst = new
+                {
+                    arch = arch,
+                    titulo = archivo.titulo,
+                    tipo_archivo = archivo.tipo_archivo,
+                    fecha_archivo = string.Format("{0:dddd, dd MMMM yyyy}", archivo.fecha_archivo, new CultureInfo("es-ES")),
+                    fecha_registro = string.Format("{0:dddd, dd MMMM yyyy HH:mm}", archivo.fecha_registro, new CultureInfo("es-ES"))
+                };
+            }
+
+            return new JsonResult { Data = rst, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+        }
+
+
 
 
 

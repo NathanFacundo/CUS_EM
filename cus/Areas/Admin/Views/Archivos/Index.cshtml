@@ -120,7 +120,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="tblNota" class="datatable table table-hover table-center mb-0">
+                            <table id="tblArchivo" class="datatable table table-hover table-center mb-0">
                                 <thead>
                                     <tr>
                                         <th>Paciente</th>
@@ -156,7 +156,10 @@
                 <div class="row m-0">
                     <div class="col-12 p-4">
                         <p>Título: <span id="titulo"></span> </p>
-
+                        <p>Tipo archivo: <span id="tipo_archivo"></span> </p>
+                        <p>Fecha archivo: <span id="fecha_archivo"></span> </p>
+                        <p>Fecha registro: <span id="fecha_registro"></span> </p>
+                        <div id="arch"></div>
                     </div>
                 </div>
             </div>
@@ -203,7 +206,7 @@
             },
             "columns": [
                 { "data": "Paciente" },
-                { "data": "Fecha" },
+                { "data": "Fecha_registro" },
                 { "data": "Boton" },
             ],
             "order": [[2, 'desc']],
@@ -232,7 +235,11 @@
                 },
                 success: function (data) {
                     $('#exampleModal').modal('show');
+                    $('#arch').html(data.arch);
                     $('#titulo').text(data.titulo);
+                    $('#tipo_archivo').text(data.tipo_archivo);
+                    $('#fecha_archivo').text(data.fecha_archivo);
+                    $('#fecha_registro').text(data.fecha_registro);
                     //console.log(data);
                 },
                 error: function (ex) {
@@ -248,6 +255,8 @@
 
 
         });
+
+
     });
 
 </script>

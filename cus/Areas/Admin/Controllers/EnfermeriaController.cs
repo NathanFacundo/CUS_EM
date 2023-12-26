@@ -3,6 +3,7 @@ using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -54,6 +55,35 @@ namespace CUS.Areas.Admin.Controllers
             }
 
         }
+
+
+        [HttpGet]
+        public ActionResult Paciente(string expediente)
+        {
+            //var mensajeGlobal = BuscarPaciente();
+            //var mensajeGlobal = _dhController.BuscarPaciente();
+            if (User.IsInRole("Enfermeria"))
+            {
+                if (expediente != null)
+                {
+                    var paciente = (from a in db.Paciente
+                                    where a.Expediente == expediente
+                                    select a).FirstOrDefault();
+
+                    return View(paciente);
+                }
+                else
+                {
+                    return RedirectToAction("BuscarPaciente", "DerechoHabiente");
+                }
+            }
+            else
+            {
+                return RedirectToAction("BuscarPaciente", "DerechoHabiente");
+            }
+
+        }
+
 
 
         [HttpPost]
@@ -202,6 +232,156 @@ namespace CUS.Areas.Admin.Controllers
 
 
         }
+
+
+        public class SignosLista
+        {
+            public string Expediente { get; set; }
+            public string Paciente { get; set; }
+            public string Medico { get; set; }
+            public string Fecha { get; set; }
+            public string Boton { get; set; }
+
+        }
+
+
+        public JsonResult ListaSignosVitales(string expediente)
+        {
+            var username = User.Identity.GetUserName();
+
+            var notas = (from ne in db.SignosVitales
+                         join pa in db.Paciente on ne.expediente equals pa.Expediente into pax
+                         from paIn in pax.DefaultIfEmpty()
+                         where ne.usuario == username
+                         //where ne.num_exp == expediente
+                         select new
+                         {
+                             Expediente = ne.expediente,
+                             Paciente = paIn.Nombre + " " + paIn.PrimerApellido + " " + paIn.SegundoApellido,
+                             Medico = ne.usuario,
+                             fecha = ne.fecha,
+                             Boton = ne.id,
+
+                         }).ToList().OrderByDescending(n => n.fecha);
+
+
+
+            var listaNotas = new List<SignosLista>();
+
+            foreach (var item in notas)
+            {
+
+                var listaLlenar = new SignosLista
+                {
+                    //Expediente = item.Expediente,
+                    Paciente = item.Paciente,
+                    Medico = item.Medico,
+                    Fecha = string.Format("{0:dddd, dd MMMM yyyy HH:mm}", item.fecha, new CultureInfo("es-ES")),
+                    Boton = "<button data-id='" + item.Boton + "' class='btn btn-primary vermas'>Ver más</button>",
+                };
+
+                listaNotas.Add(listaLlenar);
+            }
+
+
+
+            return new JsonResult { Data = listaNotas, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+        }
+
+
+
+        public JsonResult ListaSignosVitalesPx(string expediente)
+        {
+            var username = User.Identity.GetUserName();
+
+            var notas = (from ne in db.SignosVitales
+                         join pa in db.Paciente on ne.expediente equals pa.Expediente into pax
+                         from paIn in pax.DefaultIfEmpty()
+                         where ne.usuario == username
+                         where ne.expediente == expediente
+                         select new
+                         {
+                             Expediente = ne.expediente,
+                             Paciente = paIn.Nombre + " " + paIn.PrimerApellido + " " + paIn.SegundoApellido,
+                             Medico = ne.usuario,
+                             Fecha = ne.fecha,
+                             Boton = ne.id,
+
+                         }).ToList().OrderByDescending(n => n.Fecha);
+
+
+
+            var listaNotas = new List<SignosLista>();
+
+            foreach (var item in notas)
+            {
+
+                var listaLlenar = new SignosLista
+                {
+                    //Expediente = item.Expediente,
+                    Paciente = item.Paciente,
+                    Medico = item.Medico,
+                    Fecha = string.Format("{0:dddd, dd MMMM yyyy HH:mm}", item.Fecha, new CultureInfo("es-ES")),
+                    Boton = "<button data-id='" + item.Boton + "' class='btn btn-primary vermas'>Ver más</button>",
+                };
+
+                listaNotas.Add(listaLlenar);
+            }
+
+
+
+            return new JsonResult { Data = listaNotas, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+        }
+
+
+
+        public JsonResult DtsSignosVitales(int? id)
+        {
+
+            var archivo = (from ar in db.SignosVitales
+                           join paci in db.Paciente on ar.expediente equals paci.Expediente into paciX
+                           from paciIn in paciX.DefaultIfEmpty()
+                           where ar.id == id
+                           select new
+                           {
+                               escala_dolor = ar.escala_dolor,
+                               peso = ar.peso,
+                               talla = ar.talla,
+                               temperatura = ar.temperatura,
+                               fresp = ar.fresp,
+                               fcard = ar.fcard,
+                               ta1 = ar.ta1,
+                               ta2 = ar.ta2,
+                               dstx = ar.dstx,
+                               fecha = ar.fecha,
+
+                           }).FirstOrDefault();
+
+            var rst = new Object();
+
+            if (archivo != null)
+            {
+
+                rst = new
+                {
+                    escala_dolor = archivo.escala_dolor,
+                    peso = archivo.peso,
+                    talla = archivo.talla,
+                    temperatura = archivo.temperatura,
+                    fresp = archivo.fresp,
+                    fcard = archivo.fcard,
+                    ta1 = archivo.ta1,
+                    ta2 = archivo.ta2,
+                    dstx = archivo.dstx,
+                    fecha = string.Format("{0:dddd, dd MMMM yyyy}", archivo.fecha, new CultureInfo("es-ES")),
+                };
+            }
+
+            return new JsonResult { Data = rst, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+        }
+
+
+
 
     }
 }

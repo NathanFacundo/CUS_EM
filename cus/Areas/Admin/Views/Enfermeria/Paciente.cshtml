@@ -1,6 +1,6 @@
 ﻿@Model CUS.Models.CUS
 @{
-    ViewBag.Title = "Archivos";
+    ViewBag.Title = "Signos vitales";
 
     int edad = 0;
     int meses = 0;
@@ -107,12 +107,13 @@
             <div class="row">
                 <div class="col-sm-12">
                     @*<ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="@Url.Action(" Index", "Admin" )">Dashboard</a></li>
-                            <li class="breadcrumb-item"><a href="@Url.Action(" Index", "HistoriaClinica" )">Historia Clínica</a></li>
-                        </ul>*@
+                        <li class="breadcrumb-item"><a href="@Url.Action(" Index", "Admin" )">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="@Url.Action(" Index", "HistoriaClinica" )">Historia Clínica</a></li>
+                    </ul>*@
                 </div>
             </div>
         </div>
+
 
         <div class="row">
 
@@ -142,15 +143,16 @@
 
         </div>
 
+
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="tblArchivos" class="datatable table table-hover table-center mb-0">
+                            <table id="tblSignos" class="datatable table table-hover table-center mb-0">
                                 <thead>
                                     <tr>
-                                        <th>Medico</th>
+                                        <th>Paciente</th>
                                         <th>Fecha</th>
                                         <th class="text-right"></th>
                                     </tr>
@@ -172,7 +174,7 @@
         <div class="modal-content">
             <div class="modal-header row d-flex justify-content-between mx-1 mx-sm-3 mb-0 pb-0 border-0">
                 <div class="tabs active" id="tab01">
-                    <h3 class="font-weight-bold">Archivo.</h3>
+                    <h3 class="font-weight-bold">Signos Vitales.</h3>
                 </div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -182,11 +184,17 @@
             <div class="modal-body p-0">
                 <div class="row m-0">
                     <div class="col-12 p-4">
-                        <p>Título: <span id="titulo"></span> </p>
-                        <p>Tipo archivo: <span id="tipo_archivo"></span> </p>
-                        <p>Fecha archivo: <span id="fecha_archivo"></span> </p>
-                        <p>Fecha registro: <span id="fecha_registro"></span> </p>
-                        <div id="arch"></div>
+
+                        <p>Escala de dolor: <span id="escala_dolor"></span> </p>
+                        <p>Peso: <span id="peso"></span> </p>
+                        <p>Talla: <span id="talla"></span> </p>
+                        <p>Temperatura: <span id="temperatura"></span> </p>
+                        <p>F.Resp: <span id="fresp"></span> </p>
+                        <p>F.Card: <span id="fcard"></span> </p>
+                        <p>T.A: <span id="ta1"></span> | <span id="ta2"></span> </p>
+                        <p>Glucemia: <span id="dstx"></span> </p>
+                        <p>Fecha: <span id="fecha"></span> </p>
+
                     </div>
                 </div>
             </div>
@@ -206,12 +214,12 @@
 <script>
     $(document).ready(function () {
 
-        var table2 = $('#tblArchivos').DataTable({
+        var table2 = $('#tblSignos').DataTable({
             destroy: true,
             searching: true,
             responsive: true,
             "ajax": {
-                "url": '@Url.Action("ListaArchivosPx", "Archivos", new { expediente = Model.Expediente })',
+                "url": '@Url.Action("ListaSignosVitalesPx", "Enfermeria", new { expediente = Model.Expediente })',
                 "dataSrc": "",
             },
             "language": {
@@ -232,8 +240,8 @@
                 "lengthMenu": "Mostrando _MENU_ registros",
             },
             "columns": [
-                { "data": "Medico" },
-                { "data": "Fecha_registro" },
+                { "data": "Paciente" },
+                { "data": "Fecha" },
                 { "data": "Boton" },
             ],
             "order": [[2, 'desc']],
@@ -246,15 +254,15 @@
 
 
 
-        $('#tblArchivos tbody').on('click', '.vermas', function () {
+        $('#tblSignos tbody').on('click', '.vermas', function () {
 
-            alert('dsfs');
+            //alert('dsfs');
             var id = $(this).attr('data-id');
             $('#exampleModal').modal('show');
 
 
             $.ajax({
-                url: '@Url.Action("DtsArchivos", "Archivos")',
+                url: '@Url.Action("DtsSignosVitales", "Enfermeria")',
                 method: 'POST',
                 dataType: 'json',
                 data: {
@@ -262,11 +270,16 @@
                 },
                 success: function (data) {
                     $('#exampleModal').modal('show');
-                    $('#arch').html(data.arch);
-                    $('#titulo').text(data.titulo);
-                    $('#tipo_archivo').text(data.tipo_archivo);
-                    $('#fecha_archivo').text(data.fecha_archivo);
-                    $('#fecha_registro').text(data.fecha_registro);
+                    $('#escala_dolor').text(data.escala_dolor);
+                    $('#peso').text(data.peso);
+                    $('#talla').text(data.talla);
+                    $('#temperatura').text(data.temperatura);
+                    $('#fresp').text(data.fresp);
+                    $('#fcard').text(data.fcard);
+                    $('#ta1').text(data.ta1);
+                    $('#ta2').text(data.ta2);
+                    $('#dstx').text(data.dstx);
+                    $('#fecha').text(data.fecha);
                     //console.log(data);
                 },
                 error: function (ex) {
@@ -282,9 +295,6 @@
 
 
         });
-
-
-
     });
 
 </script>
