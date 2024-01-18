@@ -63,6 +63,77 @@
     meses = Months;
 }
 
+
+<style>
+    .modal {
+        padding: 0 !important;
+    }
+
+    .modal-open .main-wrapper {
+        filter: none;
+    }
+
+    #medicamentosModal .modal-dialog {
+        max-width: 600px;
+    }
+
+    #medicamentosModal h3 {
+        font-size: 15px;
+    }
+
+    #medicamentosModal .modal-footer {
+        justify-content: center;
+    }
+
+    #medicamentosModal .input-group-text {
+        font-size: 0.8rem;
+        background: transparent;
+        border: none;
+        color: black;
+    }
+
+    #medicamentosModal select {
+        border: none;
+        font-size: 0.8rem;
+        border-bottom: 2px solid #FBC43D;
+        border-radius: 0px;
+        color: black;
+    }
+
+    .cantidad {
+        color: #FBC43D;
+    }
+
+    #inputGroupSelect01 {
+        border: none;
+        border-bottom: 2px solid #FBC43D;
+        padding: 1px;
+        font-size: 0.8rem;
+        color: black;
+        margin-right: 10px;
+    }
+
+    #medicamentosModal textarea {
+        padding: 0px 8px 4px 8px;
+        border: none;
+        border-bottom: 2px solid #FBC43D;
+        border-radius: 0px;
+        width: 100%;
+        max-width: 100%;
+        color: #2C3E50;
+        font-size: 15px;
+    }
+
+    .modal-content {
+        padding: 10px;
+    }
+
+    .imprimirUanl img{
+        width:200px;
+    }
+
+</style>
+
 <div class="page-wrapper">
     <div class="content container-fluid">
         <div class="row">
@@ -90,22 +161,659 @@
                 </div>
             </div>
         </div>
+
+
+        <div class="row">
+            <div class="col-md-12 p-2 mb-5" style="background-color:white">
+                <div class="row m-0">
+                    <div class="col-md-12 p-2">
+                        <table id="example" class="table table-bordered table-striped" width="100%">
+                            <!--caption style="caption-side: top">Selecciona un derechohabiente</caption-->
+                            <thead>
+                                <tr>
+                                    <th>Clave</th>
+                                    <th>Descripcion</th>
+                                    <th>Nivel</th>
+                                    <th>Grupo</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
+
+<div id="medicamentosModal" tabindex="-1" role="dialog" aria-labelledby="medicamentosModallLabel" aria-hidden="true" class="modal fade text-left">
+    <div role="document" class="modal-dialog modal-xl">
+        <div class="modal-content">
+            @using (Html.BeginForm("Create", "Recetas", FormMethod.Post))
+            {
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-10 m-auto">
+                            <input type="hidden" value="@Model.Expediente" id="numemp" name="Expediente" />
+                            <input type="hidden" value="" id="putNumero" name="medico" />
+                            <input type="hidden" value="1" name="unidad_medica" />
+                            <h3>Grupo: <b><span id="grupomodal"></span></b></h3>
+                            <!--h3>Sal: <b><span id="salmodal"></span></b></h3-->
+                            <h3>Presentación: <b><span id="premodal"></span></b></h3>
+                            <input type="hidden" value="" id="clavemodal" name="Codigo" />
+                            <input type="hidden" value="" id="unidadlimodal" name="unidad_licitacion" />
+                        </div>
+                        <div class="col-2 m-auto">
+                            <img style="width:100%; transform: rotate(20deg)" src="~/Imagenes/medicamento.png" />
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row m-0">
+                        <div class="col-md-12 p-1">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend pr-2">
+                                    <select required id="inputGroupSelect00" class="form-control"><option disabled selected>Seleccionar</option><option value="Tomar">Tomar</option><option value="Aplicar">Aplicar</option> </select>
+                                </div>
+                                <input id="inputGroupSelect01" type="number" min="0.5" max="300" value="1" onkeydown="return false;" step=".50" />
+
+                                <select class="form-control" id="inputGroupSelect04">
+                                    <option disabled selected>Seleccionar</option>
+                                    <option value="ampolleta(s)">ampolleta(s)</option>
+                                    <option value="tableta(s)">tableta(s)</option>
+                                    <option value="pastilla(s)">pastilla(s)</option>
+                                    <option value="capsula(s)">capsula(s)</option>
+                                    <option value="mililitro(s)">mililitro(s)</option>
+                                    <option value="inyeccion(es)">inyeccion(es)</option>
+                                    <option value="cucharada(s)">cucharada(s)</option>
+                                    <option value="gragea(s)">gragea(s)</option>
+                                    <option value="gota(s)">gota(s)</option>
+                                    <option value="miligramo(s)">miligramo(s)</option>
+                                    <option value="suspension(es)">suspension(es)</option>
+                                    <option value="inhalacion(es)">inhalacion(es)</option>
+                                    <option value="gel">gel</option>
+                                    <option value="crema">crema</option>
+                                    <option value="jarabe">jarabe</option>
+                                    <option value="gota(s) pediatrica(s)">gota(s) pediatrica(s)</option>
+                                    <option value="tableta(s) sublingual(es)">tableta(s) sublingual(es)</option>
+                                    <option value="parche(s)">parche(s)</option>
+                                    <option value="tableta(s) efervecente(s)">tableta(s) efervecente(s)</option>
+                                    <option value="frasco(s) ampula(s)">frasco(s) ampula(s)</option>
+                                    <option value="frasco(s)">frasco(s)</option>
+                                    <option value="vacuna(s)">vacuna(s)</option>
+                                    <option value="polvo(s)">polvo(s)</option>
+                                    <option value="solucion(es)">solucion(es)</option>
+                                    <option value="comprimido(s)">comprimido(s)</option>
+                                    <option value="bolsa(s)">bolsa(s)</option>
+                                    <option value="ungüento(s)">ungüento(s)</option>
+                                    <option value="implante(s)">implante(s)</option>
+                                    <option value="aerosol nasal">aerosol nasal</option>
+                                    <option value="aerosol bucal">aerosol bucal</option>
+                                    <option value="sobre(s)">sobre(s)</option>
+                                    <option value="leche en polvo">leche en polvo</option>
+                                    <option value="lata(s)">lata(s)</option>
+                                    <option value="locion(es)">locion(es)</option>
+                                    <option value="perla(s)">perla(s)</option>
+                                    <option value="plumas(s) precargada(s)">plumas(s) precargada(s)</option>
+                                    <option value="cartucho(s)">cartucho(s)</option>
+                                    <option value="ovulo(s)">ovulo(s)</option>
+                                    <option value="supositorio(s)">supositorio(s)</option>
+                                    <option value="spray">spray</option>
+                                    <option value="disparo(s)">disparo(s)</option>
+                                    <option value="unidad(es) (ui)">unidad(es) (ui)</option>
+                                    <option value="onza(s)">onza(s)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 p-1">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text p-1" for="inputGroupSelect02">cada</label>
+                                </div>
+                                <select class="custom-select" id="inputGroupSelect02">
+                                    @for (int i = 1; i < 25; i++)
+                                    {
+                                        @: <option value="@i">@i</option>
+                                    }
+                                </select>
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text p-1" for="inputGroupSelect02">horas</label>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-6 p-1">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text p-1" for="inputGroupSelect03">Tx.durante</label>
+                                </div>
+                                <select class="custom-select" id="inputGroupSelect03">
+                                    @for (int i = 1; i < 91; i++)
+                                    {
+                                        @: <option value="@i">@i</option>
+                                    }
+                                </select>
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text p-1" for="inputGroupSelect03">días</label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-md-8 p-1">
+                            <h3>Dosis</h3>
+                            <h3 id="dosisinfo"><span id="viainfo" contenteditable="true"></span> <span id="tomarinfo" contenteditable="true">1</span> <span id="presentacioninfo" contenteditable="true"></span> <span contenteditable="true">cada</span> <span id="horasinfo" contenteditable="true">1</span> <span contenteditable="true">hora(s) por</span> <span id="diasinfo">1</span> <span contenteditable="true">días</span></h3>
+                            <input type="hidden" id="dosis" name="Dosis" value="" />
+                        </div>
+
+                        <div class="col-md-4 p-1">
+                            <h3>Cantidad a surtir</h3>
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default btn-number p-0" data-type="plus" data-field="Cantidad">
+                                        <span class="material-icons cantidad">add</span>
+                                    </button>
+                                </span>
+                                <input type="text" name="Cantidad" id="cantidad" class="form-control input-number" value="1" min="1" max="300">
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default btn-number p-0" disabled="disabled" data-type="minus" data-field="Cantidad">
+                                        <span class="material-icons cantidad">remove</span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row m-0">
+                        <div class="col-md-12 p-1">
+                            <h3>Condiciones especiales de administración</h3>
+                            <textarea style="max-width:100%;" id="condiciones" name="Indicaciones" maxlength="100" class="form-control condiciones"></textarea>
+                            <h3 id="error-condiciones">Maximo de 100 caracteres en las condiciones</h3>
+                        </div>
+                    </div>
+
+                    <input type="hidden" name="meses_surtir" id="meses_surtir">
+                    <input type="hidden" name="folio_rc" id="folio_rc">
+
+                    <hr />
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button type="button" style="width:100%;" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        </div>
+                        <div class="col-md-6">
+                            <button type="submit" style="width:100%; background-color:rgba(0,74,143,1);" class="btn btn-success">Guardar</button>
+                        </div>
+                    </div>
+
+
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+<div id="resumenRecetaModal" tabindex="-1" role="dialog" aria-labelledby="resumenRecetaModalLabel" aria-hidden="true" class="modal fade text-left">
+    <div role="document" class="modal-dialog modal-xl">
+        <div class="modal-content">
+
+            <div class="modal-body imprimir-content">
+                <div class="row m-0 pt-4">
+                    <div class="col-3 m-auto imprimirUanl">
+                        <img src="~/Content/assets/img/CUS.png" />
+                    </div>
+                    <div class="col-6 m-auto imprimirTitulo">
+                        <h5>Clínica Universitaria: <span class="putUniversidad"></span></h5>
+                        <h5><span class="putUserName"></span></h5>
+                        <h5>Nombre de la carrera. Egresado (a): <span class="putEspecialidad"></span></h5>
+                        <h5>Cédula: <span class="putCedulaEsp"></span></h5>
+                    </div>
+                    <div class="col-3">
+                        <h5><b>Fecha  de emición:</b> @DateTime.Now.ToString("dddd, dd MMMM yyyy")</h5>
+                    </div>
+                </div>
+                <div class="row m-0 pt-2">
+                    <div class="col-7 p-0">
+                        <h5><b>Nombre de paciente:</b>  @Model.Nombre @Model.PrimerApellido @Model.SegundoApellido</h5>
+                    </div>
+                    <div class="col-5 text-right p-0">
+                        <h5><b>Expediente:</b> @Model.Expediente</h5>
+                        <svg id="barcode"></svg>
+
+                    </div>
+                </div>
+
+                <div class="row m-0" style="border:2px solid black; border-radius:2px">
+                    <div class="col-12 p-0">
+                        <div-- class="row m-0 p-2">
+                            <div class="col-12 p-0 btn-editarMed">
+
+                            </div>
+                    </div>
+                </div>
+
+                <div class="row m-0 pt-2 text-center">
+                    <div class="col-12 m-auto">
+                        <div class="lineafirma" style="width:100%; height:2px; background-color:#000000; margin-bottom:1vw; margin-top:4vw;"></div>
+                        <p>Firma del Médico</p>
+                    </div>
+                    <div class="col-12 m-auto">
+                        <p style="font-size:10px;" class="m-0"><b>U.A.N.L. SERVICIOS MÉDICOS</b></p>
+                        <p style="font-size:10px;" class="m-0"><b>GONZALITOS Y HAITI S/N COL. MITRAS CENTRO</b></p>
+                        <p style="font-size:10px;" class="m-0"><b>MONTERREY NUEVO LEÓN C.P. 66460 TEL.8113404860</b></p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row m-0 pt-4">
+                <div class="col-md-6 m-auto" id="agregarotro">
+                    <button type="button" style="width:100%;" class="btn btn-secondary agregarotro" data-dismiss="modal">Agregar otro medicamento</button>
+                </div>
+                <div class="col-md-6" id="terminar">
+                    @using (Html.BeginForm("TerminarReceta", "ServiciosMedicos", FormMethod.Post))
+                    {
+                        <input type="hidden" name="receta_id" />
+                        <input type="hidden" value="@Model.Expediente" id="expediente" name="expediente" />
+                        <button type="submit" style="width:100%; background-color:rgba(0,74,143,1);" class="btn btn-success terminar">Terminar</button>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <script src="~/Areas/Admin/assets/js/jquery-3.2.1.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+<script>
+    $(document).ready(function () {
+
+        (function () {
+
+            function removeAccents(data) {
+                if (data.normalize) {
+                    // Use I18n API if avaiable to split characters and accents, then remove
+                    // the accents wholesale. Note that we use the original data as well as
+                    // the new to allow for searching of either form.
+                    return data + ' ' + data
+                        .normalize('NFD')
+                        .replace(/[\u0300-\u036f]/g, '');
+                }
+
+                return data;
+            }
+
+            var searchType = jQuery.fn.DataTable.ext.type.search;
+
+            searchType.string = function (data) {
+                return !data ?
+                    '' :
+                    typeof data === 'string' ?
+                        removeAccents(data) :
+                        data;
+            };
+
+            searchType.html = function (data) {
+                return !data ?
+                    '' :
+                    typeof data === 'string' ?
+                        removeAccents(data.replace(/<.*?>/g, '')) :
+                        data;
+            };
+
+        }());
+
+        $.fn.dataTable.ext.order['dom-checkbox'] = function (settings, col) {
+            return this.api().column(col, { order: 'index' }).nodes().map(function (td, i) {
+                return $(td).closest('tr').hasClass('selected') ? '1' : '0';
+            });
+        }
+
+        var groupColumn = 3;
+        var table = $('#example').DataTable({
+            "ajax": {
+                "url": "@Url.Action("ListaMedicamentos", "Recetas", new { id = Model.Expediente })",
+                "dataSrc": "",
+            },
+            "language": {
+                "search": "Buscar medicamentos:",
+                "zeroRecords": "No se encontró ningun medicamento",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Último",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                },
+                "select": {
+                    "rows": " %d filas seleccionadas"
+                },
+                "loadingRecords": "Un momento, cargando medicamentos...",
+                "processing": "Procesando medicamentos...",
+                "info": "Mostrando _START_ a _END_ de _TOTAL_ medicamentos",
+                "lengthMenu": "Mostrando _MENU_ medicamentos",
+            },
+            "columns": [
+                { "data": "clave" },
+                { "data": "descripcion" },
+                { "data": "nivel" },
+                { "data": "grupo" },
+                { "data": "id" },
+            ],
+            "columnDefs": [
+                {
+                    className: 'select-checkbox',
+                    targets: 4,
+                    orderDataType: 'dom-checkbox',
+                    'checkboxes': {
+                        'selectRow': true
+                    },
+                    'render': function (data, type, full, meta) {
+                        return '<input type="button" id="' + data + '" class="btn btn-vermas" value="Agregar">';
+                    }
+                },
+
+            ],
+            "order": [[groupColumn, 'asc']],
+            "displayLength": 25,
+            "drawCallback": function (settings) {
+                var api = this.api();
+                var rows = api.rows({ page: 'current' }).nodes();
+                var last = null;
+
+                api.column(groupColumn, { page: 'current' }).data().each(function (group, i) {
+                    if (last !== group) {
+                        $(rows).eq(i).before(
+                            '<tr style="background-color:#FBC43D; color:white;" class="group"><td colspan="6">' + group + '</td></tr>'
+                        );
+
+                        last = group;
+                    }
+                });
+            },
+            "rowCallback": function (row, data, index) {
+                //var stock = data[0],
+
+                    //minimum = parseFloat(data[1]), //data[4]
+                    $node = this.api().row(row).nodes().to$();
+
+                //$node.addClass('pink')
+
+                //console.log(data.licitacionstatus)
+                /*
+                if (data.licitacionstatus == 2) {
+                    $node.addClass('pink')
+                }
+                */
+
+            },
+        });
+
+
+        $(document).on('click', '.btn-vermas', function () {
+            var id = $(this).attr('id');
+            $('#alertMediModal').hide();
+            $('#alergiasMedi').hide();
+            $('#espeMedi').hide();
+
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("MedicamentoDetalle", "Recetas")',
+                dataType: 'json',
+                data: { id: id },
+                cache: false,
+                success: function (data) {
+                    //alert(data.Descripcion_Sal);
+                    $('#grupomodal').text(data.Descripcion);
+                    //$('#premodal').text(data.Presentacion);
+                    $('#clavemodal').val(data.Clave);
+                    //$('#unidadlimodal').val(data.Unidadlicitacion);
+                    //alert(data.inhabmed);
+
+                    if (data.mensajeRcta == 0) {
+                        $('#medicamentosModal').modal("show");
+                    } else {
+                        if (data.mensajeRcta == 1) {
+                            swal.fire("Medicamento Faltante de Laboratorio", "Favor de buscar una alternativa de tratamiento. De antemano, gracias.", "warning");
+                        } else {
+                            if (data.mensajeRcta == 2) {
+                                swal.fire("Medicamento Faltante de Laboratorio", "Favor de buscar una alternativa de tratamiento. De antemano, gracias.", "warning");
+                            }
+                        }
+                        //swal.fire("Medicamento Faltante", "Favor de buscar una alternativa de tratamiento. De antemano, gracias.", "warning");
+
+                        $('#medicamentosModal').modal("hide");
+                    }
+                },
+                error: function (xhr, status, error) {
+                    //Swal.fire('Error', '', 'error');
+                }
+            });
+
+
+
+        });
+
+        $('#error-condiciones').hide();
+        $("#condiciones").keyup(function () {
+            var longitud = $(this).val().length;
+            if (longitud >= 100) {
+                $('#error-condiciones').show();
+            } else {
+                $('#error-condiciones').hide();
+            }
+        });
+
+
+        $('.btn-number').click(function (e) {
+            e.preventDefault();
+
+            fieldName = $(this).attr('data-field');
+            type = $(this).attr('data-type');
+            var input = $("input[name='" + fieldName + "']");
+            var currentVal = parseInt(input.val());
+            if (!isNaN(currentVal)) {
+                if (type == 'minus') {
+
+                    if (currentVal > input.attr('min')) {
+                        input.val(currentVal - 1).change();
+                    }
+                    if (parseInt(input.val()) == input.attr('min')) {
+                        $(this).attr('disabled', true);
+                    }
+
+                } else if (type == 'plus') {
+
+                    if (currentVal < input.attr('max')) {
+                        input.val(currentVal + 1).change();
+                    }
+                    if (parseInt(input.val()) == input.attr('max')) {
+                        $(this).attr('disabled', true);
+                    }
+
+                }
+            } else {
+                input.val(0);
+            }
+        });
+
+        $('.input-number').focusin(function () {
+            $(this).data('oldValue', $(this).val());
+        });
+
+
+        $('.input-number').change(function () {
+
+            minValue = parseInt($(this).attr('min'));
+            maxValue = parseInt($(this).attr('max'));
+            valueCurrent = parseInt($(this).val());
+
+            name = $(this).attr('name');
+            if (valueCurrent >= minValue) {
+                $(".btn-number[data-type='minus'][data-field='" + name + "']").removeAttr('disabled')
+            } else {
+                alert('Lo sentimos la cantidad debe ser mayor a 0');
+                $(this).val($(this).data('oldValue'));
+            }
+            if (valueCurrent <= maxValue) {
+                $(".btn-number[data-type='plus'][data-field='" + name + "']").removeAttr('disabled')
+            } else {
+                alert('Sorry, the maximum value was reached');
+                $(this).val($(this).data('oldValue'));
+            }
+
+        });
+
+
+        $('#inputGroupSelect00').change(function () {
+            var premodal = $('#inputGroupSelect04').val();
+            if (premodal == "ampolleta(s)" || premodal == "tableta(s)" || premodal == "pastilla(s)" || premodal == "capsula(s)" || premodal == "gragea(s)" || premodal == "tableta(s) sublingual(es)" || premodal == "tableta(s) efervecente(s)" || premodal == "supositorio(s)" || premodal == "sobre(s)") {
+                //var via = $('#inputGroupSelect00').val();
+                var tomar = $('#inputGroupSelect01').val();
+                var horas = $('#inputGroupSelect02').val();
+                var dias = $('#inputGroupSelect03').val();
+                var unidad = $('#unidadlimodal').val();
+                var horasDiv = 24 / horas;
+                if (unidad != 0) {
+                    var cantidadtotal = (tomar * dias * horasDiv) / unidad;
+                } else {
+                    var cantidadtotal = (tomar * dias * horasDiv);
+                }
+
+                //$('#cantidad').val(Math.ceil(cantidadtotal));
+
+            } else {
+                //$('#cantidad').val(1);
+            }
+            $('#viainfo').text($(this).val());
+            $('#dosis').val($('#dosisinfo').text());
+        });
+
+
+        $('#inputGroupSelect01').change(function () {
+            var premodal = $('#inputGroupSelect04').val();
+            if (premodal == "ampolleta(s)" || premodal == "tableta(s)" || premodal == "pastilla(s)" || premodal == "capsula(s)" || premodal == "gragea(s)" || premodal == "tableta(s) sublingual(es)" || premodal == "tableta(s) efervecente(s)" || premodal == "supositorio(s)" || premodal == "sobre(s)") {
+                var tomar = $('#inputGroupSelect01').val();
+                var horas = $('#inputGroupSelect02').val();
+                var dias = $('#inputGroupSelect03').val();
+                var unidad = $('#unidadlimodal').val();
+                var horasDiv = 24 / horas;
+                if (unidad != 0) {
+                    var cantidadtotal = (tomar * dias * horasDiv) / unidad;
+                } else {
+                    var cantidadtotal = (tomar * dias * horasDiv);
+                }
+                //$('#cantidad').val(Math.ceil(cantidadtotal));
+            } else {
+                //$('#cantidad').val(1);
+            }
+
+            if ($(this).val() == "0.25") {
+                $('#tomarinfo').text('1/4');
+            } else {
+                if ($(this).val() == "0.5") {
+                    $('#tomarinfo').text('1/2');
+                } else {
+                    $('#tomarinfo').text($(this).val());
+                }
+            }
+
+            //$('#tomarinfo').text($(this).val());
+            $('#dosis').val($('#dosisinfo').text());
+        });
+
+
+        $('#inputGroupSelect02').change(function () {
+            var premodal = $('#inputGroupSelect04').val();
+            if (premodal == "ampolleta(s)" || premodal == "tableta(s)" || premodal == "pastilla(s)" || premodal == "capsula(s)" || premodal == "gragea(s)" || premodal == "tableta(s) sublingual(es)" || premodal == "tableta(s) efervecente(s)" || premodal == "supositorio(s)" || premodal == "sobre(s)") {
+                var tomar = $('#inputGroupSelect01').val();
+                var horas = $('#inputGroupSelect02').val();
+                var dias = $('#inputGroupSelect03').val();
+                var unidad = $('#unidadlimodal').val();
+                var horasDiv = 24 / horas;
+                if (unidad != 0) {
+                    var cantidadtotal = (tomar * dias * horasDiv) / unidad;
+                } else {
+                    var cantidadtotal = (tomar * dias * horasDiv);
+                }
+                //$('#cantidad').val(Math.ceil(cantidadtotal));
+            } else {
+                //$('#cantidad').val(1);
+            }
+            $('#horasinfo').text($(this).val());
+            $('#dosis').val($('#dosisinfo').text());
+        });
+
+
+        $('#inputGroupSelect03').change(function () {
+            var premodal = $('#inputGroupSelect04').val();
+            if (premodal == "ampolleta(s)" || premodal == "tableta(s)" || premodal == "pastilla(s)" || premodal == "capsula(s)" || premodal == "gragea(s)" || premodal == "tableta(s) sublingual(es)" || premodal == "tableta(s) efervecente(s)" || premodal == "supositorio(s)" || premodal == "sobre(s)") {
+                var tomar = $('#inputGroupSelect01').val();
+                var horas = $('#inputGroupSelect02').val();
+                var dias = $('#inputGroupSelect03').val();
+                var unidad = $('#unidadlimodal').val();
+                var horasDiv = 24 / horas;
+                if (unidad != 0) {
+                    var cantidadtotal = (tomar * dias * horasDiv) / unidad;
+                } else {
+                    var cantidadtotal = (tomar * dias * horasDiv);
+                }
+                //$('#cantidad').val(Math.ceil(cantidadtotal));
+            } else {
+                //$('#cantidad').val(1);
+            }
+            $('#diasinfo').text($(this).val());
+            $('#dosis').val($('#dosisinfo').text());
+        });
+
+
+        $('#inputGroupSelect04').change(function () {
+            var premodal = $('#inputGroupSelect04').val();
+            if (premodal == "ampolleta(s)" || premodal == "tableta(s)" || premodal == "pastilla(s)" || premodal == "capsula(s)" || premodal == "gragea(s)" || premodal == "tableta(s) sublingual(es)" || premodal == "tableta(s) efervecente(s)" || premodal == "supositorio(s)" || premodal == "sobre(s)") {
+                var tomar = $('#inputGroupSelect01').val();
+                var horas = $('#inputGroupSelect02').val();
+                var dias = $('#inputGroupSelect03').val();
+                var unidad = $('#unidadlimodal').val();
+                var horasDiv = 24 / horas;
+                if (unidad != 0) {
+                    var cantidadtotal = (tomar * dias * horasDiv) / unidad;
+                } else {
+                    var cantidadtotal = (tomar * dias * horasDiv);
+                }
+                //$('#cantidad').val(Math.ceil(cantidadtotal));
+            } else {
+                //$('#cantidad').val(1);
+            }
+            $('#presentacioninfo').text($(this).val());
+            $('#dosis').val($('#dosisinfo').text());
+        });
+
+        $('#resumenRecetaModal').modal("show");
+
+    });
+</script>
+
 @if (TempData["message_success"] != null)
 {
-    <script>
+<script>
 
-        Swal.fire({
-            icon: 'success',
-            title: '@TempData["message_success"]',
-            showConfirmButton: false,
-            timer: 1600
-        })
+     $(document).ready(function () {
 
-    </script>
+         $('#resumenRecetaModal').modal("show");
+
+         Swal.fire({
+             icon: 'success',
+             title: '@TempData["message_success"]',
+             showConfirmButton: false,
+             timer: 1600
+         });
+
+     });
+
+</script>
 }

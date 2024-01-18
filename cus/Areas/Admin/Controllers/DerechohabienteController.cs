@@ -72,7 +72,7 @@ namespace CUS.Areas.Admin.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,UnidadAfiliacion,CURP,Nombre,PrimerApellido,SegundoApellido,Sexo,FechaNacimiento,Nacionalidad,EntidadNacimiento,Edad,Expediente,Dir_Calle,Dir_Numero,Dir_CP,Dir_Colonia,Dir_Municipio,Dir_EntidadFed,Telefono1,Telefono2,Email,RFC,EstadoCivil,Escolaridad,Ocupacion,ServicioSalud,ServicioSalud_Extra,DE_Indigena,DE_Migrante,DE_Afroamericano,BA_Visual,BA_Auditiva,BA_Fisica,BA_Mental,BA_Idioma,BA_Idioma_Nombre,BA_Analfabeta,CE_Nombre,CE_Calle,CE_Numero,CE_CP,CE_Colonia,CE_Municipio,CE_EntidadFed,CE_Telefono,Nombre_Tutor,PrimerApellido_Tutor,SegundoApellido_Tutor,Curp_Calculado,Curp_CalculadoMotivo, NA_DE, NA_BA")] Paciente paciente)
+        public ActionResult Create([Bind(Include = "Id,UnidadAfiliacion,CURP,Nombre,PrimerApellido,SegundoApellido,Sexo,FechaNacimiento,Nacionalidad,EntidadNacimiento,Edad,Expediente,Dir_Calle,Dir_Numero,Dir_CP,Dir_Colonia,Dir_Municipio,Dir_EntidadFed,Telefono1,Telefono2,Email,RFC,EstadoCivil,Escolaridad,Ocupacion,ServicioSalud,ServicioSalud_Extra,DE_Indigena,DE_Migrante,DE_Afroamericano,BA_Visual,BA_Auditiva,BA_Fisica,BA_Mental,BA_Idioma,BA_Idioma_Nombre,BA_Analfabeta,CE_Nombre,CE_Calle,CE_Numero,CE_CP,CE_Colonia,CE_Municipio,CE_EntidadFed,CE_Telefono,Nombre_Tutor,PrimerApellido_Tutor,SegundoApellido_Tutor,Curp_Calculado,Curp_CalculadoMotivo, NA_DE_ForCheckBox, NA_BA_ForCheckBox")] Paciente paciente) //NA_DE, NA_BA
         {
             if (ModelState.IsValid)
             {
@@ -303,7 +303,7 @@ namespace CUS.Areas.Admin.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,UnidadAfiliacion,CURP,Nombre,PrimerApellido,SegundoApellido,Sexo,FechaNacimiento,Nacionalidad,EntidadNacimiento,Edad,Expediente,Dir_Calle,Dir_Numero,Dir_CP,Dir_Colonia,Dir_Municipio,Dir_EntidadFed,Telefono1,Telefono2,Email,RFC,EstadoCivil,Escolaridad,Ocupacion,ServicioSalud,ServicioSalud_Extra,DE_Indigena,DE_Migrante,DE_Afroamericano,BA_Visual,BA_Auditiva,BA_Fisica,BA_Mental,BA_Idioma,BA_Idioma_Nombre,BA_Analfabeta,CE_Nombre,CE_Calle,CE_Numero,CE_CP,CE_Colonia,CE_Municipio,CE_EntidadFed,CE_Telefono,Nombre_Tutor,PrimerApellido_Tutor,SegundoApellido_Tutor,Curp_Calculado,Curp_CalculadoMotivo, NA_DE, NA_BA")] Paciente paciente)
+        public ActionResult Edit([Bind(Include = "Id,UnidadAfiliacion,CURP,Nombre,PrimerApellido,SegundoApellido,Sexo,FechaNacimiento,Nacionalidad,EntidadNacimiento,Edad,Expediente,Dir_Calle,Dir_Numero,Dir_CP,Dir_Colonia,Dir_Municipio,Dir_EntidadFed,Telefono1,Telefono2,Email,RFC,EstadoCivil,Escolaridad,Ocupacion,ServicioSalud,ServicioSalud_Extra,DE_Indigena,DE_Migrante,DE_Afroamericano,BA_Visual,BA_Auditiva,BA_Fisica,BA_Mental,BA_Idioma,BA_Idioma_Nombre,BA_Analfabeta,CE_Nombre,CE_Calle,CE_Numero,CE_CP,CE_Colonia,CE_Municipio,CE_EntidadFed,CE_Telefono,Nombre_Tutor,PrimerApellido_Tutor,SegundoApellido_Tutor,Curp_Calculado,Curp_CalculadoMotivo, NA_DE_ForCheckBox, NA_BA_ForCheckBox")] Paciente paciente) //NA_DE, NA_BA
         {
             if (ModelState.IsValid)
             {

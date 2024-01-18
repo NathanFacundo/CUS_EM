@@ -42,8 +42,8 @@
                                                     @*@Html.EditorFor(model => model.UnidadAfiliacion, new { htmlAttributes = new { @class = "form-control" } })*@
 
                                                     @Html.DropDownListFor(model => model.UnidadAfiliacion, (IEnumerable
-                                                    <SelectListItem>
-                                                    )ViewBag.UNIDADES, "Seleccione", new { @class = "form-control", id = "IdUnidad", required = "required" })
+     <SelectListItem>
+     )ViewBag.UNIDADES, "Seleccione", new { @class = "form-control", id = "IdUnidad", required = "required" })
 
                                                     @Html.ValidationMessageFor(model => model.UnidadAfiliacion, "", new { @class = "text-danger" })
                                                 </div>
@@ -61,14 +61,14 @@
                                                 <div class="form-group card-label">
                                                     @Html.LabelFor(model => model.CURP, htmlAttributes: new { @class = "control-label", style = "color:#000000" })
                                                     @Html.EditorFor(model => model.CURP, new
-                                                    {
-                                                        htmlAttributes = new
-                                                        {
-                                                            @class = "form-control",@*required = "required",*@@id = "curp",
-                                                            @oninput = "validarInput(this)",
-                                                            @pattern = "^[A-Z]{1}[AEIOU]{1}[A-Z]{2}[0-9]{2}(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])[HM]{1}(AS|BC|BS|CC|CS|CH|CL|CM|DF|DG|GT|GR|HG|JC|MC|MN|MS|NT|NL|OC|PL|QT|QR|SP|SL|SR|TC|TS|TL|VZ|YN|ZS|NE|EX)[B-DF-HJ-NP-TV-Z]{3}[0-9A-Z]{1}[0-9]{1}$"
-                                                            }
-                                                            })
+                                               {
+                                                   htmlAttributes = new
+                                                   {
+                                                       @class = "form-control",@*required = "required",*@@id = "curp",
+                                                       @oninput = "validarInput(this)",
+                                                       @pattern = "^[A-Z]{1}[AEIOU]{1}[A-Z]{2}[0-9]{2}(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])[HM]{1}(AS|BC|BS|CC|CS|CH|CL|CM|DF|DG|GT|GR|HG|JC|MC|MN|MS|NT|NL|OC|PL|QT|QR|SP|SL|SR|TC|TS|TL|VZ|YN|ZS|NE|EX)[B-DF-HJ-NP-TV-Z]{3}[0-9A-Z]{1}[0-9]{1}$"
+                                                   }
+                                               })
                                                     @Html.ValidationMessageFor(model => model.CURP, "", new { @class = "text-danger" })
                                                     @*Validacion de CUPR*@
                                                     <pre id="resultado2"></pre>
@@ -85,17 +85,17 @@
                                                 <div class="form-group card-label">
                                                     @Html.LabelFor(model => model.Curp_CalculadoMotivo, "Motivo", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
                                                     @Html.DropDownListFor(model => model.Curp_CalculadoMotivo, new List
-                                                    <SelectListItem>
+     <SelectListItem>
                                                     {
                                                     new SelectListItem { Text = "Recién Nacido", Value = "Recién Nacido"},
                                                     new SelectListItem { Text = "Inmigrante", Value = "Inmigrante"},
                                                     new SelectListItem { Text = "No Registrado", Value = "No Registrado"},
                                                     new SelectListItem { Text = "Otro", Value = "Otro"}
                                                     }, "Seleccione",
-                                                    new
-                                                    {
-                                                    @class = "form-control llenarcurp"
-                                                    })
+     new
+     {
+         @class = "form-control llenarcurp"
+     })
                                                     @Html.ValidationMessageFor(model => model.Curp_CalculadoMotivo, "", new { @class = "text-danger" })
                                                 </div>
                                             </div>
@@ -125,18 +125,18 @@
                                                     @Html.LabelFor(model => model.Sexo, htmlAttributes: new { @class = "control-label", style = "color:#000000" })
                                                     @*@Html.EditorFor(model => model.Sexo, new { htmlAttributes = new { @class = "form-control" } })*@
                                                     @Html.DropDownListFor(model => model.Sexo, new List
-                                                    <SelectListItem>
+     <SelectListItem>
                                                     {
                                                     new SelectListItem { Text = "Hombre", Value = "H"},
                                                     new SelectListItem { Text = "Mujer", Value = "M"},
                                                     }, "Seleccione",
-                                                    new
-                                                    {
-                                                    @class = "form-control llenarcurp",
-                                                    @id = "sexo",
-                                                    @name = "sexo",
-                                                    required = "required"
-                                                    })
+     new
+     {
+         @class = "form-control llenarcurp",
+         @id = "sexo",
+         @name = "sexo",
+         required = "required"
+     })
                                                     @Html.ValidationMessageFor(model => model.Sexo, "", new { @class = "text-danger" })
                                                 </div>
                                             </div>
@@ -268,7 +268,7 @@
                                                 <div class="form-group card-label">
                                                     @Html.LabelFor(model => model.EntidadNacimiento, "Entidad Nacimiento", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
                                                     @Html.DropDownListFor(model => model.EntidadNacimiento, new List
-                                                    <SelectListItem>
+     <SelectListItem>
                                                     {
                                                     new SelectListItem { Text = "AGUASCALIENTES", Value = "AC"},
                                                     new SelectListItem { Text = "BAJA CALIFORNIA", Value = "BC"},
@@ -303,13 +303,13 @@
                                                     new SelectListItem { Text = "ZACATECAS", Value = "ZS"},
                                                     new SelectListItem { Text = "EXTRANJERO", Value = "NE"},
                                                     }, "Seleccione",
-                                                    new
-                                                    {
-                                                        @class = "form-control llenarcurp",
-                                                        @id = "estadonacimiento",
-                                                        @name = "EntidadNacimiento",
-                                                        required = "required"
-                                                    })
+     new
+     {
+         @class = "form-control llenarcurp",
+         @id = "estadonacimiento",
+         @name = "EntidadNacimiento",
+         required = "required"
+     })
                                                     @Html.ValidationMessageFor(model => model.EntidadNacimiento, "", new { @class = "text-danger" })
                                                 </div>
 
@@ -394,7 +394,7 @@
                                                     @Html.LabelFor(model => model.Dir_EntidadFed, "Entidad Fed.", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
                                                     @*Html.EditorFor(model => model.Dir_EntidadFed, new { htmlAttributes = new { @class = "form-control" } })*@
                                                     @Html.DropDownListFor(model => model.Dir_EntidadFed, new List
-                                                    <SelectListItem>
+     <SelectListItem>
                                                     {
                                                     new SelectListItem { Text = "AGUASCALIENTES", Value = "AC"},
                                                     new SelectListItem { Text = "BAJA CALIFORNIA", Value = "BC"},
@@ -428,13 +428,13 @@
                                                     new SelectListItem { Text = "YUCATÁN", Value = "YN"},
                                                     new SelectListItem { Text = "ZACATECAS", Value = "ZS"},
                                                     }, "Seleccione",
-                                                    new
-                                                    {
-                                                        @class = "form-control llenarcurp",
-                                                        @id = "estado",
-                                                        @name = "Dir_EntidadFed",
-                                                        required = "required"
-                                                    })
+     new
+     {
+         @class = "form-control llenarcurp",
+         @id = "estado",
+         @name = "Dir_EntidadFed",
+         required = "required"
+     })
                                                     @Html.ValidationMessageFor(model => model.Dir_EntidadFed, "", new { @class = "text-danger" })
                                                 </div>
                                             </div>
@@ -471,7 +471,7 @@
                                                     @Html.LabelFor(model => model.EstadoCivil, "Estado Civil", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
                                                     @*@Html.EditorFor(model => model.EstadoCivil, new { htmlAttributes = new { @class = "form-control" } })*@
                                                     @Html.DropDownListFor(model => model.EstadoCivil, new List
-                                                    <SelectListItem>
+     <SelectListItem>
                                                     {
                                                     new SelectListItem { Text = "Soltero", Value = "Soltero"},
                                                     new SelectListItem { Text = "Casado", Value = "Casado"},
@@ -480,11 +480,11 @@
                                                     new SelectListItem { Text = "Viudo", Value = "Viudo"},
                                                     new SelectListItem { Text = "Concubinato", Value = "Concubinato"},
                                                     }, "Seleccione",
-                                                    new
-                                                    {
-                                                        @class = "form-control input-lg",
-                                                        required = "required"
-                                                    })
+     new
+     {
+         @class = "form-control input-lg",
+         required = "required"
+     })
                                                     @Html.ValidationMessageFor(model => model.EstadoCivil, "", new { @class = "text-danger" })
                                                 </div>
                                             </div>
@@ -493,7 +493,7 @@
                                                     @Html.LabelFor(model => model.Escolaridad, htmlAttributes: new { @class = "control-label", style = "color:#000000" })
                                                     @*@Html.EditorFor(model => model.Escolaridad, new { htmlAttributes = new { @class = "form-control" } })*@
                                                     @Html.DropDownListFor(model => model.Escolaridad, new List
-                                                    <SelectListItem>
+     <SelectListItem>
                                                     {
                                                     new SelectListItem { Text = "Básica", Value = "Básica"},
                                                     new SelectListItem { Text = "Medio superior", Value = "Medio superior"},
@@ -501,11 +501,11 @@
                                                     new SelectListItem { Text = "No escolarizado", Value = "No escolarizado"},
                                                     new SelectListItem { Text = "No aplica", Value = "No aplica"},
                                                     }, "Seleccione",
-                                                    new
-                                                    {
-                                                        @class = "form-control input-lg",
-                                                        required = "required"
-                                                    })
+     new
+     {
+         @class = "form-control input-lg",
+         required = "required"
+     })
                                                     @Html.ValidationMessageFor(model => model.Escolaridad, "", new { @class = "text-danger" })
                                                 </div>
                                             </div>
@@ -514,7 +514,7 @@
                                                     @Html.LabelFor(model => model.Ocupacion, "Ocupación", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
                                                     @*@Html.EditorFor(model => model.Ocupacion, new { htmlAttributes = new { @class = "form-control" } })*@
                                                     @Html.DropDownListFor(model => model.Ocupacion, new List
-                                                    <SelectListItem>
+     <SelectListItem>
                                                     {
                                                     new SelectListItem { Text = "Actividad empresarial", Value = "Actividad empresarial"},
                                                     new SelectListItem { Text = "Empleado", Value = "Empleado"},
@@ -523,11 +523,11 @@
                                                     new SelectListItem { Text = "Desempleado", Value = "Desempleado"},
                                                     new SelectListItem { Text = "No aplica", Value = "No aplica"},
                                                     }, "Seleccione",
-                                                    new
-                                                    {
-                                                        @class = "form-control input-lg",
-                                                        required = "required"
-                                                    })
+     new
+     {
+         @class = "form-control input-lg",
+         required = "required"
+     })
                                                     @Html.ValidationMessageFor(model => model.Ocupacion, "", new { @class = "text-danger" })
                                                 </div>
                                             </div>
@@ -536,7 +536,7 @@
                                                     @Html.LabelFor(model => model.ServicioSalud, "Servicio de Salud", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
                                                     @*@Html.EditorFor(model => model.ServicioSalud, new { htmlAttributes = new { @class = "form-control" } })*@
                                                     @Html.DropDownListFor(model => model.ServicioSalud, new List
-                                                    <SelectListItem>
+     <SelectListItem>
                                                     {
                                                     new SelectListItem { Text = "SSA", Value = "SSA"},
                                                     new SelectListItem { Text = "IMSS", Value = "IMSS"},
@@ -547,11 +547,11 @@
                                                     new SelectListItem { Text = "OTRA", Value = "OTRA"},
                                                     new SelectListItem { Text = "NINGUNA", Value = "NINGUNA"},
                                                     }, "Seleccione",
-                                                    new
-                                                    {
-                                                    @class = "form-control input-lg",
-                                                             id = "SS"
-                                                    })
+     new
+     {
+         @class = "form-control input-lg",
+         id = "SS"
+     })
                                                     @Html.ValidationMessageFor(model => model.ServicioSalud, "", new { @class = "text-danger" })
                                                 </div>
                                             </div>
@@ -598,9 +598,19 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group card-label">
+                                                            @*
                                                             @Html.LabelFor(model => model.NA_DE, "N/A", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
                                                             @Html.EditorFor(model => model.NA_DE, new { htmlAttributes = new { style = "transform: scale(0.5);", id = "DE_NA" } })
                                                             @Html.ValidationMessageFor(model => model.NA_DE, "", new { @class = "text-danger" })
+                                                            *@
+                                                            @Html.LabelFor(model => model.NA_DE, "N/A", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
+                                                            @*{ 
+                                                                bool? naDE = Model.NA_DE;
+                                                            }*@
+                                                            @Html.CheckBoxFor(model => model.NA_DE_ForCheckBox)
+                                                            @Html.HiddenFor(model => model.NA_DE, new { @Value = "false" }) <!-- Campo oculto para manejar el valor nulo -->
+                                                            @Html.ValidationMessageFor(model => model.NA_DE, "", new { @class = "text-danger" })
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -662,7 +672,8 @@
                                                 <div class="col-md-2">
                                                     <div class="form-group card-label">
                                                         @Html.LabelFor(model => model.NA_BA, "N/A", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
-                                                        @Html.EditorFor(model => model.NA_BA, new { htmlAttributes = new { style = "transform: scale(0.5);", id = "BA_NA" } })
+                                                        @Html.CheckBoxFor(model => model.NA_BA_ForCheckBox)
+                                                        @Html.HiddenFor(model => model.NA_BA, new { @Value = "false" })
                                                         @Html.ValidationMessageFor(model => model.NA_BA, "", new { @class = "text-danger" })
                                                     </div>
                                                 </div>
@@ -831,7 +842,7 @@
     $("form").submit(function (e) {
         e.preventDefault();
 
-        if ((document.getElementById('DE_1').checked || document.getElementById('DE_2').checked || document.getElementById('DE_3').checked || document.getElementById('DE_NA').checked) && (document.getElementById('BA_1').checked || document.getElementById('BA_2').checked || document.getElementById('BA_3').checked || document.getElementById('BA_4').checked || document.getElementById('BA_5').checked || document.getElementById('BA_6').checked || document.getElementById('BA_NA').checked)) {
+        if ((document.getElementById('DE_1').checked || document.getElementById('DE_2').checked || document.getElementById('DE_3').checked || document.getElementById('NA_DE_ForCheckBox').checked) && (document.getElementById('BA_1').checked || document.getElementById('BA_2').checked || document.getElementById('BA_3').checked || document.getElementById('BA_4').checked || document.getElementById('BA_5').checked || document.getElementById('BA_6').checked || document.getElementById('NA_BA_ForCheckBox').checked)) {
 
             //$("#BtnGuardar").click(function (event) {
             //    event.preventDefault();
