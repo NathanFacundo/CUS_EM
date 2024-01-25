@@ -182,6 +182,32 @@
 
                         }
 
+                        @if (HttpContext.Current.User.IsInRole("Recetas"))
+                        {
+                            if (Model != null)
+                            {
+
+                                var esLista = Model.GetType().IsGenericType &&
+                                Model.GetType().GetGenericTypeDefinition() == typeof(List<>);
+
+                                if (!esLista)
+                                {
+
+                                    <li class="submenu">
+                                        <a href="#"><i class="fa fa-file-text-o"></i> <span>Recetas</span> <span class="menu-arrow"></span></a>
+                                        <ul style="display: none;">
+                                            <li><a href="@Url.Action("Create", "Recetas", new { expediente = Model.Expediente })">Nueva</a></li>
+                                            <li><a href="@Url.Action("Index", "Recetas", new { expediente = Model.Expediente })">Recetas guardadas</a></li>
+                                            <li><a href="@Url.Action("Paciente", "Recetas", new { expediente = Model.Expediente })">Recetas de Px</a></li>
+
+                                        </ul>
+                                    </li>
+
+
+                                }
+                            }
+                        }
+
                         @if (HttpContext.Current.User.IsInRole("Enfermeria"))
                         {
                             if (Model != null)

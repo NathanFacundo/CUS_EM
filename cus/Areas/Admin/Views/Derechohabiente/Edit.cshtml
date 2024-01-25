@@ -406,7 +406,8 @@
                                                 <div class="form-group card-label">
                                                     @Html.LabelFor(model => model.NA_DE, "N/A", htmlAttributes: new { @class = "control-label" })
 
-                                                    @Html.EditorFor(model => model.NA_DE, new { htmlAttributes = new { style = "transform: scale(0.5);" } })
+                                                    @Html.CheckBoxFor(model => model.NA_DE_ForCheckBox)
+                                                    @Html.HiddenFor(model => model.NA_DE, new { @Value = "false" })
                                                     @Html.ValidationMessageFor(model => model.NA_DE, "", new { @class = "text-danger" })
                                                 </div>
                                             </div>
@@ -476,7 +477,8 @@
                                                 <div class="form-group card-label">
                                                     @Html.LabelFor(model => model.NA_BA, "N/A", htmlAttributes: new { @class = "control-label" })
 
-                                                    @Html.EditorFor(model => model.NA_BA, new { htmlAttributes = new { style = "transform: scale(0.5);" } })
+                                                    @Html.CheckBoxFor(model => model.NA_BA_ForCheckBox)
+                                                    @Html.HiddenFor(model => model.NA_BA, new { @Value = "false" })
                                                     @Html.ValidationMessageFor(model => model.NA_BA, "", new { @class = "text-danger" })
                                                 </div>
                                             </div>
