@@ -480,6 +480,7 @@ namespace CUS.Areas.Admin.Controllers
 
                     var query = (from a in db.Paciente
                                  where a.Expediente.Contains(ExpedientePX)
+                                 where a.PxEliminado != true
                                  select a).ToList();
                     
                     foreach (var q in query)
@@ -514,6 +515,7 @@ namespace CUS.Areas.Admin.Controllers
 
                     var query = (from a in db.Paciente
                                  where a.Nombre.Contains(NombrePX)
+                                 where a.PxEliminado != true
                                  select a).ToList();
 
                     foreach (var q in query)
