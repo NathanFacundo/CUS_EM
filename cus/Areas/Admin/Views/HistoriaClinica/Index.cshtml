@@ -587,7 +587,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-4">
-                                        <div class="form-group">
+                                        <div class="form-group" id="padeceEnfSi">
                                             <label>Padece alguna enfermedad</label>
                                             <input id="EspecifiqueEnf" type="text" name="EspecifiqueEnf" class="form-control" placeholder="" maxlength="4999">
 
@@ -1293,7 +1293,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-4">
-                                            <div class="form-group">
+                                            <div class="form-group" id="CantidadTomaSi">
                                                 <label>Cantidad</label>
                                                 <input type="text" class="form-control" id="CantidadAlcohol" name="CantidadAlcohol" placeholder="">
                                             </div>
@@ -1330,7 +1330,7 @@
                                             <label>Tiempo Inactividad</label>
                                             <input type="text" class="form-control" id="TiempoInactividadFuma" name="TiempoInactividadFuma" placeholder="">
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-4" id="TipoFumaSi">
                                             <div class="form-group">
                                                 <label>Tipo</label>
                                                 <select class="form-control showoptions" id="TipoFuma" name="TipoFuma">
@@ -1341,7 +1341,7 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-4" id="FrecFumaSi">
                                             <div class="form-group">
                                                 <label>Frecuencia</label>
                                                 <select class="form-control showoptions" id="FrecuenciaFuma" name="FrecuenciaFuma">
@@ -1355,7 +1355,7 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-4">
+                                        <div class="col-md-4" id="CanFumaSi">
                                             <label>Cantidad</label>
                                             <input type="text" class="form-control" id="CantidadFuma" name="CantidadFuma" placeholder="">
                                         </div>
@@ -1592,7 +1592,7 @@
                     </div>
 
                     <div id="SignosVit" class="tab-pane fade">
-                        @using (Html.BeginForm("SignosVitales", "HistoriaClinica", FormMethod.Post, htmlAttributes: new { @id = "msform" }))
+                        @*@using (Html.BeginForm("SignosVitales", "HistoriaClinica", FormMethod.Post, htmlAttributes: new { @id = "msform" }))
                         {
                             <div class="card card-table mb-0 p-3 mb-5">
                                 <div class="card-body">
@@ -1678,7 +1678,100 @@
                                     </form>
                                 </div>
                             </div>
+                        }*@
+
+
+
+                        @using (Html.BeginForm("SignosVitales", "HistoriaClinica", FormMethod.Post, htmlAttributes: new { @id = "msform", @class = "signosVitalesForm" }))
+                        {
+                            // ... resto del código del formulario ...
+                            <div class="card card-table mb-0 p-3 mb-5">
+                                <div class="card-body">
+                                    <form id="f_riescoCaidas">
+
+                                        <div class="row">
+                                            <input name="expediente" value="@Model.Expediente" type="hidden" />
+                                            <div class="col-md-12">
+                                                <h3 class="mt-5"> <b>Signos Vitales</b></h3>
+                                                <div class="row m-0">
+                                                    <div class="col-md-3 p-1">
+                                                        <div class="form-group row m-0">
+                                                            <label for="peso" class="col-3 p-1 m-auto col-form-label"><b>Peso:</b></label>
+                                                            <div class="col-5 p-1 m-auto">
+                                                                <input type="text" class="form-control" id="peso" name="peso" maxlength="6" placeholder="">
+                                                            </div>
+                                                            <label for="peso" class="col-4 p-1 m-auto col-form-label">Kg</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3 p-1">
+                                                        <div class="form-group row m-0">
+                                                            <label for="talla" class="col-4 p-1 m-auto col-form-label"><b>Talla:</b></label>
+                                                            <div class="col-8 p-1 m-auto">
+                                                                <input type="text" class="form-control" id="talla" name="talla" maxlength="5" placeholder="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3 p-1">
+                                                        <div class="form-group row m-0">
+                                                            <label for="temp" class="col-4 p-1 m-auto col-form-label"><b>Temp:</b></label>
+                                                            <div class="col-5 p-1 m-auto">
+                                                                <input type="text" class="form-control" id="temp" name="temperatura" maxlength="5" placeholder="">
+                                                            </div>
+                                                            <label for="temp" class="col-3 p-1 m-auto col-form-label">°C</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3 p-1">
+                                                        <div class="form-group row m-0">
+                                                            <label for="fresp1" class="col-4 p-1 m-auto col-form-label"><b>F.Resp:</b></label>
+                                                            <div class="col-5 p-1 m-auto">
+                                                                <input type="text" class="form-control" id="fresp1" name="fresp" maxlength="3" placeholder="">
+                                                            </div>
+                                                            <label for="fresp1" class="col-3 p-1 m-auto col-form-label">rpm</label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-4 p-2">
+                                                        <div class="form-group row m-0">
+                                                            <label for="fcard1" class="col-4 p-1 m-auto col-form-label"><b>F.Card:</b></label>
+                                                            <div class="col-5 p-1 m-auto">
+                                                                <input type="text" class="form-control" id="fcard1" name="fcard" maxlength="3" placeholder="">
+                                                            </div>
+                                                            <label for="fcard1" class="col-3 p-1 m-auto col-form-label">ppm</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 p-2">
+                                                        <div class="form-group row m-0">
+                                                            <label for="ta" class="col-5 p-1 m-auto col-form-label"><b>T.A:</b></label>
+                                                            <div class="col-3 p-1 m-auto">
+                                                                <input type="text" class="form-control" id="t" name="ta1" maxlength="5" placeholder="">
+                                                            </div>
+                                                            <div class="col-1 p-1 m-auto">/</div>
+                                                            <div class="col-3 p-1 m-auto">
+                                                                <input type="text" class="form-control" id="a" name="ta2" maxlength="5" placeholder="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 p-2">
+                                                        <div class="form-group row m-0">
+                                                            <label for="destrostrix" class="col-7 p-1 m-auto col-form-label"><b>Glucemia:</b></label>
+                                                            <div class="col-5 p-1 m-auto">
+                                                                <input type="text" class="form-control" id="destrostrix" name="dstx" maxlength="3" placeholder="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 text-right p-2">
+                                                        <button type="button" class="btn btn-primary" id="Btn_SignosV">Guardar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
                         }
+
+
                     </div>
 
                     <div id="riesgo_caidas" class="tab-pane fade">
@@ -2034,7 +2127,7 @@
             showConfirmButton: false,
             timer: 1600
         })
-        $("#Btn_SignosV").css("display", "none");
+        /*$("#Btn_SignosV").css("display", "none");*/
     </script>
 }
 
@@ -2143,6 +2236,7 @@
         $('#EspOcupaP').css("display", "none");
         $('#EspTipoTP').css("display", "none");
         $('#tieneHermanosSi').css("display", "none");
+        $('#padeceEnfSi').css("display", "none");
         $('#EspInvolucrado').css("display", "none");
         //Evaluacion economica
         $('#beneficiarioProgramaSi').css("display", "none");
@@ -2157,6 +2251,10 @@
         $("#EspCirugia").css("display", "none");
         //*consumo
         $("#Combo_TomaAlcoholFrecuencia").css("display", "none");
+        $("#CantidadTomaSi").css("display", "none");
+        $("#TipoFumaSi").css("display", "none");
+        $("#FrecFumaSi").css("display", "none");
+        $("#CanFumaSi").css("display", "none");
         $("#EdadIniFuma").css("display", "none");
         $("#Combo_ActualmenteFuma").css("display", "none");
         $("#InactividadFuma").css("display", "none");
@@ -2280,8 +2378,10 @@
             var selected = combo.options[combo.selectedIndex].text;
             if (selected == "Si") {
                 $("#tieneHermanosSi").css("display", "");
+                $("#padeceEnfSi").css("display", "");
             } else {
                 $("#tieneHermanosSi").css("display", "none");
+                $("#padeceEnfSi").css("display", "none");
             }
         });
         $("#involucraTratamiento").change(function () {
@@ -2366,8 +2466,10 @@
             var selected = combo.options[combo.selectedIndex].text;
             if (selected == "Si") {
                 $("#Combo_TomaAlcoholFrecuencia").css("display", "");
+                $("#CantidadTomaSi").css("display", "");
             } else {
                 $("#Combo_TomaAlcoholFrecuencia").css("display", "none");
+                $("#CantidadTomaSi").css("display", "none");
             }
         });
         $("#Fuma").change(function () {
@@ -2376,10 +2478,16 @@
             if (selected == "Si") {
                 $("#EdadIniFuma").css("display", "");
                 $("#Combo_ActualmenteFuma").css("display", "");
+                $("#TipoFumaSi").css("display", "");
+                $("#FrecFumaSi").css("display", "");
+                $("#CanFumaSi").css("display", "");
             } else {
                 $("#EdadIniFuma").css("display", "none");
                 $("#Combo_ActualmenteFuma").css("display", "none");
                 $("#InactividadFuma").css("display", "none");
+                $("#TipoFumaSi").css("display", "none");
+                $("#FrecFumaSi").css("display", "none");
+                $("#CanFumaSi").css("display", "none");
             }
         });
         $("#ActualmenteFuma").change(function () {
@@ -2612,7 +2720,7 @@
                         showConfirmButton: false,
                         timer: 1600
                     })
-                    $("#Btn_Save1").css("display", "none");
+                    /*$("#Btn_Save1").css("display", "none");*/
                 }
                 if (response.MENSAJE.substring(0, 6) == "Error:") {
                     Swal.fire({
@@ -2641,7 +2749,7 @@
                         showConfirmButton: false,
                         timer: 1600
                     })
-                    $("#Btn_Save2").css("display", "none");
+                    /*$("#Btn_Save2").css("display", "none");*/
                 }
                 if (response.MENSAJE.substring(0, 6) == "Error:") {
                     Swal.fire({
@@ -2672,7 +2780,7 @@
                         showConfirmButton: false,
                         timer: 1600
                     })
-                    $("#Btn_Save3").css("display", "none");
+                    /*$("#Btn_Save3").css("display", "none");*/
                 }
                 if (response.MENSAJE.substring(0, 6) == "Error:") {
                     Swal.fire({
@@ -2703,7 +2811,7 @@
                         showConfirmButton: false,
                         timer: 1600
                     })
-                    $("#Btn_Save4").css("display", "none");
+                    /*$("#Btn_Save4").css("display", "none");*/
                 }
                 if (response.MENSAJE.substring(0, 6) == "Error:") {
                     Swal.fire({
@@ -2733,7 +2841,7 @@
                         showConfirmButton: false,
                         timer: 1600
                     })
-                    $("#Btn_Save5").css("display", "none");
+                    /*$("#Btn_Save5").css("display", "none");*/
                 }
                 if (response.MENSAJE.substring(0, 6) == "Error:") {
                     Swal.fire({
@@ -2763,7 +2871,7 @@
                         showConfirmButton: false,
                         timer: 1600
                     })
-                    $("#Btn_Save6").css("display", "none");
+                    /*$("#Btn_Save6").css("display", "none");*/
                 }
                 if (response.MENSAJE.substring(0, 6) == "Error:") {
                     Swal.fire({
@@ -2793,7 +2901,7 @@
                         showConfirmButton: false,
                         timer: 1600
                     })
-                    $("#Btn_Save7").css("display", "none");
+                    /*$("#Btn_Save7").css("display", "none");*/
                 }
                 if (response.MENSAJE.substring(0, 6) == "Error:") {
                     Swal.fire({
@@ -2821,7 +2929,7 @@
                     showConfirmButton: false,
                     timer: 1600
                 })
-                $("#Btn_Save9").css("display", "none");
+                /*$("#Btn_Save9").css("display", "none");*/
             }
             if (response.MENSAJE.substring(0, 6) == "Error:") {
                 Swal.fire({
@@ -2847,7 +2955,7 @@
                     showConfirmButton: false,
                     timer: 1600
                 })
-                $("#Btn_Save11").css("display", "none");
+                /*$("#Btn_Save11").css("display", "none");*/
             }
             if (response.MENSAJE.substring(0, 6) == "Error:") {
                 Swal.fire({
@@ -2873,7 +2981,7 @@
                     showConfirmButton: false,
                     timer: 1600
                 })
-                $("#Btn_Save15").css("display", "none");
+                /*$("#Btn_Save15").css("display", "none");*/
             }
             if (response.MENSAJE.substring(0, 6) == "Error:") {
                 Swal.fire({
@@ -2899,7 +3007,7 @@
                     showConfirmButton: false,
                     timer: 1600
                 })
-                $("#Btn_Save16").css("display", "none");
+                /*$("#Btn_Save16").css("display", "none");*/
             }
             if (response.MENSAJE.substring(0, 6) == "Error:") {
                 Swal.fire({
@@ -2925,7 +3033,7 @@
                     showConfirmButton: false,
                     timer: 1600
                 })
-                $("#Btn_Save17").css("display", "none");
+                /*$("#Btn_Save17").css("display", "none");*/
             }
             if (response.MENSAJE.substring(0, 6) == "Error:") {
                 Swal.fire({
@@ -2940,4 +3048,36 @@
         event.preventDefault();
     });
 
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("#Btn_SignosV").on("click", function () {
+            // Obtener datos del formulario
+            var formData = $(".signosVitalesForm").serialize();
+
+            // Realizar la petición AJAX
+            $.ajax({
+                type: "POST",
+                url: "/HistoriaClinica/SignosVitales",
+                data: formData,
+                success: function (data) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Signos vitales guardados con éxito',
+                        showConfirmButton: false,
+                        timer: 1600
+                    })
+                },
+                error: function (error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error, vuelve a intentar',
+                        showConfirmButton: false,
+                        timer: 1600
+                    })
+                }
+            });
+        });
+    });
 </script>

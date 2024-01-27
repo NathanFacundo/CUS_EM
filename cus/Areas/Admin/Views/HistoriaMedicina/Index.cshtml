@@ -484,7 +484,7 @@
                             <h10 style="font-weight:bold;">Expediente: <span id="Exp">@Model.Expediente</span> </h10>
                             <h10 style="font-weight:bold;">Edad: @edad años @meses meses</h10>
                             <a id="Edad"></a><br />
-                            <h10 style="font-weight:bold;">Sexo: @Model.Sexo</h10>
+                            <h10 style="font-weight:bold;">Sexo: <span id="Sex">@Model.Sexo</span></h10>
                             <a id="Sexo"></a><br />
                             <h10 style="font-weight:bold;">Fecha Nac.: @nacimiento</h10>
                             <a id="FechaNac"></a>
@@ -519,7 +519,7 @@
                             <a class="nav-link" href="#AntecedentesDesarrollo" data-toggle="tab">Antecedentes <br />Desarrollo</a>
                         </li>
                         <li class="nav-item text-left">
-                            <a class="nav-link" href="#AntecedentesGineco" data-toggle="tab">Antecedentes <br />Gineco-Obstétricos</a>
+                            <a class="nav-link" href="#AntecedentesGineco" data-toggle="tab" id="AntecedentesGinecoMenu">Antecedentes <br />Gineco-Obstétricos</a>
                         </li>
                         <li class="nav-item text-left">
                             <a class="nav-link" href="#AntecedentesVidaSexual" data-toggle="tab">Antecedentes <br />Vida Sexual</a>
@@ -1993,6 +1993,14 @@
 
         //Ocultamos div donde se muestra la info del px ya que aún no se ha buscado
         $("#InfoPX").hide();
+
+        //Si el px es Hombre que oculte la seccion de Antecedentes-GinecoObstetricos
+        var SexoPX = $("#Sex").text();
+        var SexoPX = $("#Sex").text();
+        if (SexoPX !== "Mujer" && SexoPX !== "Femenino") {
+            $("#AntecedentesGinecoMenu").hide();
+            $("#AntecedentesGineco").hide();
+        }
 
         var table = $('#TblPaciente').DataTable();
         table.destroy();
