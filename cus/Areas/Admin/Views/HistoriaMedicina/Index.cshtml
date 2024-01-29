@@ -484,7 +484,7 @@
                             <h10 style="font-weight:bold;">Expediente: <span id="Exp">@Model.Expediente</span> </h10>
                             <h10 style="font-weight:bold;">Edad: @edad años @meses meses</h10>
                             <a id="Edad"></a><br />
-                            <h10 style="font-weight:bold;">Sexo: @Model.Sexo</h10>
+                            <h10 style="font-weight:bold;">Sexo: <span id="Sex">@Model.Sexo</span></h10>
                             <a id="Sexo"></a><br />
                             <h10 style="font-weight:bold;">Fecha Nac.: @nacimiento</h10>
                             <a id="FechaNac"></a>
@@ -519,7 +519,7 @@
                             <a class="nav-link" href="#AntecedentesDesarrollo" data-toggle="tab">Antecedentes <br />Desarrollo</a>
                         </li>
                         <li class="nav-item text-left">
-                            <a class="nav-link" href="#AntecedentesGineco" data-toggle="tab">Antecedentes <br />Gineco-Obstétricos</a>
+                            <a class="nav-link" href="#AntecedentesGineco" data-toggle="tab" id="AntecedentesGinecoMenu">Antecedentes <br />Gineco-Obstétricos</a>
                         </li>
                         <li class="nav-item text-left">
                             <a class="nav-link" href="#AntecedentesVidaSexual" data-toggle="tab">Antecedentes <br />Vida Sexual</a>
@@ -1269,7 +1269,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row" id="MenarquiaFila1No">
                                         <div class="col-md-3">
                                             <label>Tipo</label>
                                             <select class="form-control showoptions" id="Tipo_Menarquia" name="Tipo_Menarquia">
@@ -1308,7 +1308,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row" id="MenarquiaFila2No">
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Fenómenos Asociados</label>
@@ -1994,6 +1994,14 @@
         //Ocultamos div donde se muestra la info del px ya que aún no se ha buscado
         $("#InfoPX").hide();
 
+        //Si el px es Hombre que oculte la seccion de Antecedentes-GinecoObstetricos
+        var SexoPX = $("#Sex").text();
+        var SexoPX = $("#Sex").text();
+        if (SexoPX !== "Mujer" && SexoPX !== "Femenino") {
+            $("#AntecedentesGinecoMenu").hide();
+            $("#AntecedentesGineco").hide();
+        }
+
         var table = $('#TblPaciente').DataTable();
         table.destroy();
         table = $('#TblPaciente').DataTable({
@@ -2073,6 +2081,10 @@
         $("#EspPruebaEDI").css("display", "none");
         //Gineco
         $("#EspMenarquia").css("display", "none");
+
+        $("#MenarquiaFila1No").css("display", "none");
+        $("#MenarquiaFila2No").css("display", "none");
+
         $("#EspRitmo").css("display", "none");
         $("#EspColoracion").css("display", "none");
         $("#EspMetodoAntiCon").css("display", "none");
@@ -2376,9 +2388,15 @@
         if (selected == "Si") {
             $("#EspRitmo").css("display", "");
             $("#EspMenarquia").css("display", "none");
+
+            $("#MenarquiaFila1No").css("display", "");
+            $("#MenarquiaFila2No").css("display", "");
         } else {
             $("#EspMenarquia").css("display", "");
             $("#EspRitmo").css("display", "none");
+
+            $("#MenarquiaFila1No").css("display", "none");
+            $("#MenarquiaFila2No").css("display", "none");
         }
     });
     $("#Coloracion_Menarquia").change(function () {

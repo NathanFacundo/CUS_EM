@@ -480,6 +480,7 @@ namespace CUS.Areas.Admin.Controllers
 
                     var query = (from a in db.Paciente
                                  where a.Expediente.Contains(ExpedientePX)
+                                 where a.PxEliminado != true
                                  select a).ToList();
                     
                     foreach (var q in query)
@@ -514,6 +515,7 @@ namespace CUS.Areas.Admin.Controllers
 
                     var query = (from a in db.Paciente
                                  where a.Nombre.Contains(NombrePX)
+                                 where a.PxEliminado != true
                                  select a).ToList();
 
                     foreach (var q in query)
@@ -550,7 +552,6 @@ namespace CUS.Areas.Admin.Controllers
         public JsonResult BuscarPacienteIndex()
         {
             //List<Propiedades> Pac = new List<Propiedades>();
-
             //string query = "SELECT TOP(10) Id,UnidadAfiliacion,CURP,Nombre,PrimerApellido,SegundoApellido,Sexo,FechaNacimiento,Edad,Expediente,Curp_Calculado,FechaRegistro " +
             //                        "FROM Paciente ORDER BY Id DESC ";
             //var result = db.Database.SqlQuery<Propiedades>(query);
@@ -558,9 +559,13 @@ namespace CUS.Areas.Admin.Controllers
 
             var result1 = new List<Propiedades>();
 
+            //var query = (from a in db.Paciente
+            //             where a.PxEliminado != true
+            //             select a).OrderByDescending(a=>a.Id).Take(10).ToList();
+
             var query = (from a in db.Paciente
                          where a.PxEliminado != true
-                         select a).OrderByDescending(a=>a.Id).Take(10).ToList();
+                         select a).OrderByDescending(a => a.Id).ToList();
 
             foreach (var q in query)
             {
@@ -581,8 +586,14 @@ namespace CUS.Areas.Admin.Controllers
                 };
                 result1.Add(resultado);
             }
+
+            var json = new JsonResult { Data = result1, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            json.MaxJsonLength = 500000000;
+
             //return View(Paciente);
-            return Json(new { MENSAJE = "Succe: ", PACIENTES = result1 }, JsonRequestBehavior.AllowGet);
+
+            //return Json(new { MENSAJE = "Succe: ", PACIENTES = result1 }, JsonRequestBehavior.AllowGet);
+            return json;
         }
 
         public ActionResult BuscarPaciente()
