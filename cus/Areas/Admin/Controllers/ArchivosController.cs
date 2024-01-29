@@ -86,27 +86,29 @@ namespace CUS.Areas.Admin.Controllers
             {
                 if (imagenSubida != null && imagenSubida.ContentLength > 0)
                 {
-                    //var nombreArchivo = Path.GetFileName(imagenSubida.FileName);
-                    //var path = Path.Combine(Server.MapPath("~/Content/"), nombreArchivo);
 
-                    //var path = Path.Combine(Server.MapPath("~/Content/" + archivos.tipo_archivo + "/" + expediente + "/"), nombreArchivo);
-                    string rutaGuardado = Server.MapPath("~/Content/" + archivos.tipo_archivo + "/" + expediente + "/");
-                    
-                    if (!Directory.Exists(rutaGuardado))
-                    {
-                        Directory.CreateDirectory(rutaGuardado);
-                    }
+                    string rutaEscritorio = @"C:\Users\cusadmin\Desktop\ArchivosPrueba"; // Reemplaza con la ruta correcta
+
+                    // Obtener el nombre del archivo
+                    string nombreArchivo = Path.GetFileName(imagenSubida.FileName);
+
+                    // Combinar la ruta del escritorio con el nombre del archivo
+                    string rutaCompleta = Path.Combine(rutaEscritorio, nombreArchivo);
+
+                    // Guardar el archivo en el escritorio del servidor
+                    imagenSubida.SaveAs(rutaCompleta);
 
 
+                    /*
                     string nombreArchivo = "";
                     //HttpPostedFile archivoImagen = imagenSubida;
                     if (imagenSubida != null && imagenSubida.ContentLength > 0)
                     {
                         nombreArchivo = Path.GetFileName(imagenSubida.FileName);
-                        string rutaCompleta = Path.Combine(rutaGuardado, nombreArchivo);
-                        imagenSubida.SaveAs(rutaCompleta);
+                        //string rutaCompleta = Path.Combine(rutaGuardado, nombreArchivo);
+                        //imagenSubida.SaveAs(rutaCompleta);
                     }
-
+                    */
 
 
                     //imagenSubida.SaveAs(file);
