@@ -1269,7 +1269,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row" id="MenarquiaFila1No">
                                         <div class="col-md-3">
                                             <label>Tipo</label>
                                             <select class="form-control showoptions" id="Tipo_Menarquia" name="Tipo_Menarquia">
@@ -1308,7 +1308,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row" id="MenarquiaFila2No">
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Fenómenos Asociados</label>
@@ -2081,6 +2081,10 @@
         $("#EspPruebaEDI").css("display", "none");
         //Gineco
         $("#EspMenarquia").css("display", "none");
+
+        $("#MenarquiaFila1No").css("display", "none");
+        $("#MenarquiaFila2No").css("display", "none");
+
         $("#EspRitmo").css("display", "none");
         $("#EspColoracion").css("display", "none");
         $("#EspMetodoAntiCon").css("display", "none");
@@ -2384,9 +2388,15 @@
         if (selected == "Si") {
             $("#EspRitmo").css("display", "");
             $("#EspMenarquia").css("display", "none");
+
+            $("#MenarquiaFila1No").css("display", "");
+            $("#MenarquiaFila2No").css("display", "");
         } else {
             $("#EspMenarquia").css("display", "");
             $("#EspRitmo").css("display", "none");
+
+            $("#MenarquiaFila1No").css("display", "none");
+            $("#MenarquiaFila2No").css("display", "none");
         }
     });
     $("#Coloracion_Menarquia").change(function () {
