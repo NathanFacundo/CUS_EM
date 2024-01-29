@@ -142,7 +142,8 @@
             dataType: 'json',
             data: null,
             success: function (data) {
-                LlenaTablaPX(data.PACIENTES);
+                //LlenaTablaPX(data.PACIENTES);
+                LlenaTablaPX(data);
 		    },
 		    error: function(ex) {
 			    Swal.fire({
@@ -211,19 +212,26 @@
         table.destroy();
 
         table = $('#TblPaciente').DataTable({
+
+            scroller: true,
+            scrollColapse: true,
+            scrollY: 280,
+            pageLength: 5,
+            
             responsive: true,
             searching: false,
             info: true,
             deferRender: true,
-            scroller: false,
-            scrollColapse: true,
-            paging: false,
+            //scroller: false,
+            //scrollColapse: true,
+            //paging: false,
             lengthChange: false,
             language: {
                 "zeroRecords": "No se encontraron PX",
-                "info": "_TOTAL_  PX",
+                /*"info": "_TOTAL_  PX",*/
+                "info": "Total: _TOTAL_ Px",
                 "search": "",
-                "infoEmpty": "",
+                "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
                 "paginate": {
                     "first": "Primero",
                     "last": "Último",
