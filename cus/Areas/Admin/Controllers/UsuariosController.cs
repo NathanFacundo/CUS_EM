@@ -45,7 +45,7 @@ namespace CUS.Areas.Admin.Controllers
 
 
         [HttpPost]
-        public async Task<ActionResult> Agregar(RegisterViewModel model, string role1)
+        public async Task<ActionResult> Agregar(RegisterViewModel model/*, string role1*/)
         {
             //Guardar usuario
             var user = new ApplicationUser
