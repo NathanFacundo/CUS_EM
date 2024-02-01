@@ -18,10 +18,10 @@
             <div class="row">
                 <div class="col-sm-12">
                     <h3 class="page-title">Registro de Usuario</h3>
-                    <ul class="breadcrumb">
+                    @*<ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
                         <li class="breadcrumb-item active">Registro de Usuario</li>
-                    </ul>
+                    </ul>*@
                 </div>
             </div>
         </div>
@@ -46,7 +46,7 @@
                                 {
                                     <div class="form-row">
                                         <div class="col-md-4 mb-3">
-                                            @Html.LabelFor(model => model.Email, htmlAttributes: new { @for = "validationCustom01" })
+                                            @Html.LabelFor(model => model.Email, "Usuario (Email)", htmlAttributes: new { @for = "validationCustom01" })
                                             @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @id = "validationCustom01", @placeholder = "Email", @required = "@required" } })
                                             @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                                         </div>
@@ -75,7 +75,7 @@
                                                     @Html.CheckBox("adminusuarios", false, htmlAttributes: new { id = "invalidCheck", @class = "form-check-input" })
 
                                                     <label class="form-check-label" for="invalidCheck">
-                                                        Administrar Usuarios
+                                                        Administrador
                                                     </label>
 
                                                 </div>
@@ -85,7 +85,7 @@
                                                     @Html.CheckBox("adminpacientes", false, htmlAttributes: new { id = "invalidCheck2", @class = "form-check-input" })
 
                                                     <label class="form-check-label" for="invalidCheck2">
-                                                        Administrar Pacientes
+                                                        Registro de px.
                                                     </label>
 
                                                 </div>
@@ -97,6 +97,17 @@
 
                                                     <label class="form-check-label" for="invalidCheck3">
                                                         Expediente Médico
+                                                    </label>
+
+                                                </div>
+
+                                                <div class="col-md-3 p-0">
+
+
+                                                    @Html.CheckBox("enfermeria", false, htmlAttributes: new { id = "invalidCheck4", @class = "form-check-input" })
+
+                                                    <label class="form-check-label" for="invalidCheck4">
+                                                        Enfermería
                                                     </label>
 
                                                 </div>
