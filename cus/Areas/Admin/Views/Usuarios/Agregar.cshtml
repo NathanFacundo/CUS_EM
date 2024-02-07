@@ -19,9 +19,9 @@
                 <div class="col-sm-12">
                     <h3 class="page-title">Registro de Usuario</h3>
                     @*<ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Registro de Usuario</li>
-                    </ul>*@
+                            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                            <li class="breadcrumb-item active">Registro de Usuario</li>
+                        </ul>*@
                 </div>
             </div>
         </div>
@@ -64,11 +64,11 @@
                                         <div class="form-check">
                                             <div class="row m-0">
                                                 @*<div class="col-md-3 p-0">
-                                                    @Html.CheckBox("adminusuarios", false, htmlAttributes: new { id = "invalidCheck", @class = "form-check-input" })
-                                                    <label class="form-check-label" for="invalidCheck">
-                                                        Administrador
-                                                    </label>
-                                                </div>*@
+                                                        @Html.CheckBox("adminusuarios", false, htmlAttributes: new { id = "invalidCheck", @class = "form-check-input" })
+                                                        <label class="form-check-label" for="invalidCheck">
+                                                            Administrador
+                                                        </label>
+                                                    </div>*@
 
                                                 <div class="col-md-3 p-0">
                                                     @Html.CheckBoxFor(model => model.AdminUsuarios, new { @class = "form-check-input" })
@@ -78,11 +78,11 @@
                                                 </div>
 
                                                 @*<div class="col-md-3 p-0">
-                                                    @Html.CheckBox("adminpacientes", false, htmlAttributes: new { id = "invalidCheck2", @class = "form-check-input" })
-                                                    <label class="form-check-label" for="invalidCheck2">
-                                                        Registro de px.
-                                                    </label>
-                                                </div>*@
+                                                        @Html.CheckBox("adminpacientes", false, htmlAttributes: new { id = "invalidCheck2", @class = "form-check-input" })
+                                                        <label class="form-check-label" for="invalidCheck2">
+                                                            Registro de px.
+                                                        </label>
+                                                    </div>*@
 
                                                 <div class="col-md-3 p-0">
                                                     @Html.CheckBoxFor(model => model.AdminPacientes, new { @class = "form-check-input" })
@@ -92,11 +92,11 @@
                                                 </div>
 
                                                 @*<div class="col-md-3 p-0">
-                                                    @Html.CheckBox("expmedico", false, htmlAttributes: new { id = "invalidCheck3", @class = "form-check-input" })
-                                                    <label class="form-check-label" for="invalidCheck3">
-                                                        Expediente Médico
-                                                    </label>
-                                                </div>*@
+                                                        @Html.CheckBox("expmedico", false, htmlAttributes: new { id = "invalidCheck3", @class = "form-check-input" })
+                                                        <label class="form-check-label" for="invalidCheck3">
+                                                            Expediente Médico
+                                                        </label>
+                                                    </div>*@
 
                                                 <div class="col-md-3 p-0">
                                                     @Html.CheckBoxFor(model => model.ExpMedico, new { @class = "form-check-input" })
@@ -106,11 +106,11 @@
                                                 </div>
 
                                                 @*<div class="col-md-3 p-0">
-                                                    @Html.CheckBox("enfermeria", false, htmlAttributes: new { id = "invalidCheck4", @class = "form-check-input" })
-                                                    <label class="form-check-label" for="invalidCheck4">
-                                                        Enfermería
-                                                    </label>
-                                                </div>*@
+                                                        @Html.CheckBox("enfermeria", false, htmlAttributes: new { id = "invalidCheck4", @class = "form-check-input" })
+                                                        <label class="form-check-label" for="invalidCheck4">
+                                                            Enfermería
+                                                        </label>
+                                                    </div>*@
 
                                                 <div class="col-md-3 p-0">
                                                     @Html.CheckBoxFor(model => model.Enfermeria, new { @class = "form-check-input" })
@@ -299,3 +299,32 @@
     </body>
     </html>
 *@
+
+<script src="~/Areas/Admin/assets/js/jquery-3.2.1.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+@if (TempData["Mensaje"] != null)
+{
+    <script>
+         $(document).ready(function () {
+             Swal.fire({
+                 icon: 'success',
+                 title: '@TempData["Mensaje"]'
+             });
+         });
+    </script>
+}
+
+
+@if (TempData["MensajeError"] != null)
+{
+    <script>
+         $(document).ready(function () {
+             Swal.fire({
+                 icon: 'error',
+                 title: '@TempData["MensajeError"]'
+             });
+         });
+    </script>
+}
+
