@@ -598,16 +598,13 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group card-label">
-                                                            @*
-                                                            @Html.LabelFor(model => model.NA_DE, "N/A", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
-                                                            @Html.EditorFor(model => model.NA_DE, new { htmlAttributes = new { style = "transform: scale(0.5);", id = "DE_NA" } })
-                                                            @Html.ValidationMessageFor(model => model.NA_DE, "", new { @class = "text-danger" })
-                                                            *@
-                                                            @Html.LabelFor(model => model.NA_DE, "N/A", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
-                                                            @*{ 
-                                                                bool? naDE = Model.NA_DE;
-                                                            }*@
+                                                            @*@Html.LabelFor(model => model.NA_DE, "N/A", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
                                                             @Html.CheckBoxFor(model => model.NA_DE_ForCheckBox)
+                                                            @Html.HiddenFor(model => model.NA_DE, new { @Value = "false" })
+                                                            @Html.ValidationMessageFor(model => model.NA_DE, "", new { @class = "text-danger" })*@
+
+                                                            @Html.LabelFor(model => model.NA_DE, "N/A", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
+                                                            @Html.CheckBoxFor(model => model.NA_DE_ForCheckBox, new { @style = "zoom: 0.5; margin-right: 5px;" })
                                                             @Html.HiddenFor(model => model.NA_DE, new { @Value = "false" }) <!-- Campo oculto para manejar el valor nulo -->
                                                             @Html.ValidationMessageFor(model => model.NA_DE, "", new { @class = "text-danger" })
 
@@ -672,7 +669,7 @@
                                                 <div class="col-md-2">
                                                     <div class="form-group card-label">
                                                         @Html.LabelFor(model => model.NA_BA, "N/A", htmlAttributes: new { @class = "control-label", style = "color:#000000" })
-                                                        @Html.CheckBoxFor(model => model.NA_BA_ForCheckBox)
+                                                        @Html.CheckBoxFor(model => model.NA_BA_ForCheckBox, new { @style = "zoom: 0.5; margin-right: 5px;" })
                                                         @Html.HiddenFor(model => model.NA_BA, new { @Value = "false" })
                                                         @Html.ValidationMessageFor(model => model.NA_BA, "", new { @class = "text-danger" })
                                                     </div>

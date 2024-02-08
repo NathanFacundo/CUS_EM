@@ -79,6 +79,12 @@ namespace CUS.Models
         [Display(Name = "Confirmar contraseña")]
         [Compare("Password", ErrorMessage = "La contraseña y la contraseña de confirmación no coinciden.")]
         public string ConfirmPassword { get; set; }
+
+
+        public bool AdminUsuarios { get; set; }
+        public bool AdminPacientes { get; set; }
+        public bool ExpMedico { get; set; }
+        public bool Enfermeria { get; set; }
     }
 
     public class ResetPasswordViewModel
