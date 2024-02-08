@@ -87,6 +87,31 @@ namespace CUS.Areas.Admin.Controllers
                 }
                 else
                 {
+                    //if (model.AdminPacientes)// Recepción (registro de px)
+                    //{
+                    //    string userId = user.Id;
+                    //    string roleId = "1";
+
+                    //    string sqlQuery = $"INSERT INTO AspNetUserRoles (UserId, RoleId) VALUES ('{userId}', '{roleId}')";
+                    //    db.Database.ExecuteSqlCommand(sqlQuery);
+                    //}
+                    //else if (model.ExpMedico)// Expediente
+                    //{
+                    //    string userId = user.Id;
+                    //    string roleId = "2";
+
+                    //    string sqlQuery = $"INSERT INTO AspNetUserRoles (UserId, RoleId) VALUES ('{userId}', '{roleId}')";
+                    //    db.Database.ExecuteSqlCommand(sqlQuery);
+                    //}
+                    //else // Enfermeria
+                    //{
+                    //    string userId = user.Id;
+                    //    string roleId = "4";
+
+                    //    string sqlQuery = $"INSERT INTO AspNetUserRoles (UserId, RoleId) VALUES ('{userId}', '{roleId}')";
+                    //    db.Database.ExecuteSqlCommand(sqlQuery);
+                    //}
+
                     if (model.AdminPacientes)// Recepción (registro de px)
                     {
                         string userId = user.Id;
@@ -95,7 +120,7 @@ namespace CUS.Areas.Admin.Controllers
                         string sqlQuery = $"INSERT INTO AspNetUserRoles (UserId, RoleId) VALUES ('{userId}', '{roleId}')";
                         db.Database.ExecuteSqlCommand(sqlQuery);
                     }
-                    else if (model.ExpMedico)// Expediente
+                    if (model.ExpMedico)// Expediente
                     {
                         string userId = user.Id;
                         string roleId = "2";
@@ -103,7 +128,7 @@ namespace CUS.Areas.Admin.Controllers
                         string sqlQuery = $"INSERT INTO AspNetUserRoles (UserId, RoleId) VALUES ('{userId}', '{roleId}')";
                         db.Database.ExecuteSqlCommand(sqlQuery);
                     }
-                    else // Enfermeria
+                    if (model.Enfermeria)// Enfermeria
                     {
                         string userId = user.Id;
                         string roleId = "4";
@@ -111,6 +136,7 @@ namespace CUS.Areas.Admin.Controllers
                         string sqlQuery = $"INSERT INTO AspNetUserRoles (UserId, RoleId) VALUES ('{userId}', '{roleId}')";
                         db.Database.ExecuteSqlCommand(sqlQuery);
                     }
+
                     TempData["Mensaje"] = "Usuario creado exitosamente.";
                 }
             }
