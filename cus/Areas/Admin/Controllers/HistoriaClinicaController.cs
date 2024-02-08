@@ -1819,6 +1819,9 @@ namespace CUS.Areas.Admin.Controllers
         //Consultar los signos vitales que le tomaron al recién llegar al cus (estos no son de la historia)
         public JsonResult ConsultarSignosVitales(string expediente)
         {
+            DateTime fechaActual = DateTime.Now;
+            DateTime fechaL = fechaActual.AddHours(-1.5);
+
             var ultimoRegistro = (from a in db.SignosVitales
                                   where a.expediente == expediente
                                   select a).
@@ -1827,12 +1830,21 @@ namespace CUS.Areas.Admin.Controllers
 
             if (ultimoRegistro != null)
             {
-                return new JsonResult { Data = ultimoRegistro, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+                //Si hay un registro, revisa que sea dentro de la ultima hora y media
+                if (ultimoRegistro.fecha > fechaL)
+                {
+                    return new JsonResult { Data = ultimoRegistro, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+                }
+                return new JsonResult { Data = "", JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+
             }
             else
             {
                 return new JsonResult { Data = "", JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+
             }
+
+
         }
 
         [HttpPost]

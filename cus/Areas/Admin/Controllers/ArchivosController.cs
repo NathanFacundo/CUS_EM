@@ -87,28 +87,27 @@ namespace CUS.Areas.Admin.Controllers
                 if (imagenSubida != null && imagenSubida.ContentLength > 0)
                 {
 
-                    string rutaEscritorio = @"C:\Users\cusadmin\Desktop\ArchivosPrueba"; // Reemplaza con la ruta correcta
-
+                    //string rutaGuardado = "/Content/"; // Reemplaza con la ruta correcta
+                    string rutaGuardado = Server.MapPath("~/Content");
                     // Obtener el nombre del archivo
-                    string nombreArchivo = Path.GetFileName(imagenSubida.FileName);
+                    //string nombreArchivo = Path.GetFileName(imagenSubida.FileName);
 
                     // Combinar la ruta del escritorio con el nombre del archivo
-                    string rutaCompleta = Path.Combine(rutaEscritorio, nombreArchivo);
+                    //string rutaCompleta = Path.Combine(rutaEscritorio, nombreArchivo);
 
                     // Guardar el archivo en el escritorio del servidor
-                    imagenSubida.SaveAs(rutaCompleta);
+                    //imagenSubida.SaveAs(rutaCompleta);
 
 
-                    /*
                     string nombreArchivo = "";
                     //HttpPostedFile archivoImagen = imagenSubida;
                     if (imagenSubida != null && imagenSubida.ContentLength > 0)
                     {
                         nombreArchivo = Path.GetFileName(imagenSubida.FileName);
-                        //string rutaCompleta = Path.Combine(rutaGuardado, nombreArchivo);
-                        //imagenSubida.SaveAs(rutaCompleta);
+                        string rutaCompleta = Path.Combine(rutaGuardado, nombreArchivo);
+                        imagenSubida.SaveAs(rutaCompleta);
                     }
-                    */
+                    
 
 
                     //imagenSubida.SaveAs(file);
