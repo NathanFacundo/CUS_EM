@@ -65,8 +65,8 @@ namespace CUS.Models
     public class RegisterViewModel
     {
         [Required]
-        [EmailAddress]
-        [Display(Name = "Correo electrónico")]
+        //[EmailAddress]
+        [Display(Name = "Usuario")]
         public string Email { get; set; }
 
         [Required]
