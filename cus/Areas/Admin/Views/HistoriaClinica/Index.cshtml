@@ -241,7 +241,8 @@
                                                     <option value="Divorciado">Divorciado</option>
                                                     <option value="Viudo">Viudo</option>
                                                     <option value="Separado">Separado</option>
-                                                    <option value="Unión libre">Unión libre</option>
+                                                    <option value="Concubinato">Concubinato</option>
+                                                    <option value="Menor">Menor</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -299,6 +300,8 @@
                                                     <option value="Secundaria">Secundaria</option>
                                                     <option value="Bachillerato/Técnico">Bachillerato/Técnico</option>
                                                     <option value="Nivel Superior">Nivel Superior</option>
+                                                    <option value="No aplica">No aplica</option>
+                                                    <option value="No escolarizado">No escolarizado</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -900,7 +903,7 @@
                                             <label><b>Madre</b></label>
                                         </div>
                                         <div class="col-md-2">
-                                            <label><b>Ambas</b></label>
+                                            <label><b>Ambos</b></label>
                                         </div>
                                         <div class="col-md-2">
                                             <label><b>No Aplica</b></label>
@@ -1301,7 +1304,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <label>Fuma ó Fumó</label>
+                                            <label>Fuma o Fumó</label>
                                             <select class="form-control showoptions" id="Fuma" name="Fuma">
                                                 <option value="">Seleccionar</option>
                                                 <option value="Si">Si</option>
@@ -1592,7 +1595,7 @@
                     </div>
 
                     <div id="SignosVit" class="tab-pane fade">
-                        @*@using (Html.BeginForm("SignosVitales", "HistoriaClinica", FormMethod.Post, htmlAttributes: new { @id = "msform" }))
+                        @using (Html.BeginForm("SignosVitales", "HistoriaClinica", FormMethod.Post, htmlAttributes: new { @id = "msform" }))
                         {
                             <div class="card card-table mb-0 p-3 mb-5">
                                 <div class="card-body">
@@ -1678,11 +1681,11 @@
                                     </form>
                                 </div>
                             </div>
-                        }*@
+                        }
 
 
 
-                        @using (Html.BeginForm("SignosVitales", "HistoriaClinica", FormMethod.Post, htmlAttributes: new { @id = "msform", @class = "signosVitalesForm" }))
+                        @*@using (Html.BeginForm("SignosVitales", "HistoriaClinica", FormMethod.Post, htmlAttributes: new { @id = "msform", @class = "signosVitalesForm" }))
                         {
                             // ... resto del código del formulario ...
                             <div class="card card-table mb-0 p-3 mb-5">
@@ -1769,7 +1772,7 @@
                                     </form>
                                 </div>
                             </div>
-                        }
+                        }*@
 
 
                     </div>
@@ -3050,7 +3053,7 @@
 
 </script>
 
-<script>
+@*<script>
     $(document).ready(function () {
         $("#Btn_SignosV").on("click", function () {
             // Obtener datos del formulario
@@ -3080,4 +3083,4 @@
             });
         });
     });
-</script>
+</script>*@
