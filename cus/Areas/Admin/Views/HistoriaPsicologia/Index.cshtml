@@ -798,9 +798,9 @@
                                                 </label>
                                             </div>
                                             <div class="row">
-                                                <div class="form-group">
+                                                <div class="form-group" id="EspOtro">
                                                     <label>Especifique opción Otro</label>
-                                                    <input type="text" class="form-control" id="ParteTiempo_OtraEsp" name="ParteTiempo_OtraEsp" placeholder="Otro" maxlength="299">
+                                                    <input type="text" class="form-control" id="ParteTiempo_OtraEsp" name="ParteTiempo_OtraEsp" placeholder="Otro" maxlength="299" style="width: 600px;" >
                                                 </div>
                                             </div>
                                         </div>
@@ -884,7 +884,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <div class="form-group">
+                                            <div class="form-group" id="Esp_Otra_Signosalarma">
                                                 <label>Especifique opción 'Otra'</label>
                                                 <input type="text" class="form-control" id="Esp_Signo" name="Esp_Signo" placeholder="Describa otra" maxlength="4999">
                                             </div>
@@ -1173,7 +1173,36 @@
             }
         });
         */
+
+        // #region Pestañas: Elementos de la H.C. que nacerán ocultos y se mostrarán hasta que se seleccione o se haga alguna acción
+        //Sintomatologia Actual
+        $("#EspOtro").css("display", "none");
+        //Signos de Alarma
+        $("#Esp_Otra_Signosalarma").css("display", "none");
+        // #endregion
+
     });
+
+    // #region Pestañas: Elementos de la H.C. que se mostrarán hasta que se seleccione o se haga alguna acción
+    //Sintomatologia Actual
+    $("#ParteTiempo_Otra").change(function () {
+        if ($(this).is(":checked")) {
+            $("#EspOtro").css("display", "");
+        } else {
+            $("#EspOtro").css("display", "none");
+        }
+    });
+    //Signos de Alarma
+    $("#Signo").change(function () {
+        var combo = document.getElementById("Signo");
+        var selected = combo.options[combo.selectedIndex].text;
+        if (selected == "Otra") {
+            $("#Esp_Otra_Signosalarma").css("display", "");
+        } else {
+            $("#Esp_Otra_Signosalarma").css("display", "none");
+        }
+    });
+    // #endregion
 
     //Si dan click en Enter en los inputs de Nombre/Expediente
     $('.BuscarPX').on("keypress", function (e) {

@@ -2558,6 +2558,9 @@ namespace CUS.Areas.Admin.Controllers
                                         PxHC = hc.Id_Paciente,
                                         NombrePX = px.Nombre,
                                         PApellidoPX = px.PrimerApellido,
+
+                                        SApellidoPX = px.SegundoApellido,
+
                                         ExpPX = px.Expediente,
                                         TipoH = hc.TipoHistoria,
                                         Ident = hc.Ident_HCcomun
@@ -2574,6 +2577,9 @@ namespace CUS.Areas.Admin.Controllers
                             IdPX = q.PxHC,
                             Nombre = q.NombrePX,
                             PrimerApellido = q.PApellidoPX,
+
+                            SegundoApellido = q.SApellidoPX,
+
                             Expediente = q.ExpPX,
                             Tipo = q.TipoH,
                             Ident_HCcomun = q.Ident
