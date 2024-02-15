@@ -655,6 +655,12 @@
             // Verifica si aún no ha llegado el cumpleaños de este año
             if (mesActual < mesNacimiento || (mesActual === mesNacimiento && diaActual < diaNacimiento)) {
                 edad--;
+                edadMeses = 12 + edadMeses; // Ajusta los meses sumando 12
+            }
+
+            // Verifica si no han pasado los días exactos para determinar cuántos meses son
+            if (diaActual < diaNacimiento) {
+                edadMeses--;
             }
 
             //alert(edad + mesActual);

@@ -87,16 +87,12 @@ namespace CUS.Areas.Admin.Controllers
                 if (imagenSubida != null && imagenSubida.ContentLength > 0)
                 {
 
-                    //string rutaGuardado = "/Content/"; // Reemplaza con la ruta correcta
-                    string rutaGuardado = Server.MapPath("~/Content");
-                    // Obtener el nombre del archivo
-                    //string nombreArchivo = Path.GetFileName(imagenSubida.FileName);
+                    string rutaGuardado = Server.MapPath("~/Content/" + archivos.tipo_archivo + "/" + expediente + "/");
 
-                    // Combinar la ruta del escritorio con el nombre del archivo
-                    //string rutaCompleta = Path.Combine(rutaEscritorio, nombreArchivo);
-
-                    // Guardar el archivo en el escritorio del servidor
-                    //imagenSubida.SaveAs(rutaCompleta);
+                    if (!Directory.Exists(rutaGuardado))
+                    {
+                        Directory.CreateDirectory(rutaGuardado);
+                    }
 
 
                     string nombreArchivo = "";
