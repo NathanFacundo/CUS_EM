@@ -481,8 +481,8 @@
                         <div class="col ml-md-n2 profile-user-info">
                             <h10 style="font-weight:bold;">Nombre: @Model.Nombre @Model.PrimerApellido @Model.SegundoApellido </h10>
                             <a id="Nombre"></a><br />
-                            <h10 style="font-weight:bold;">Expediente: <span id="Exp">@Model.Expediente</span> </h10>
-                            <h10 style="font-weight:bold;">Edad: @edad años @meses meses</h10>
+                            <h10 style="font-weight:bold;">Expediente: <span id="Exp">@Model.Expediente</span> </h10><br />
+                            <h10 style="font-weight:bold;">Edad: <span id="Años_px"> @edad </span> años @meses meses</h10>
                             <a id="Edad"></a><br />
                             <h10 style="font-weight:bold;">Sexo: <span id="Sex">@Model.Sexo</span></h10>
                             <a id="Sexo"></a><br />
@@ -492,7 +492,6 @@
                     </div>
                 </div>
             </div>
-
             
             <div class="col-sm-12">
                 <nav class="user-tabs mb-4">
@@ -510,13 +509,13 @@
                             <a class="nav-link" href="#Inmunizaciones" data-toggle="tab">Inmunizaciones</a>
                         </li>
                         <li class="nav-item text-left">
-                            <a class="nav-link" href="#Alimentacion" data-toggle="tab">Alimentación</a>
+                            <a class="nav-link" href="#Alimentacion" data-toggle="tab" id="AlimentacionMenu">Alimentación</a>
                         </li>
                         <li class="nav-item text-left">
                             <a class="nav-link" href="#HabitosAlimenta" data-toggle="tab">Hábitos <br />Alimentación</a>
                         </li>
                         <li class="nav-item text-left">
-                            <a class="nav-link" href="#AntecedentesDesarrollo" data-toggle="tab">Antecedentes <br />Desarrollo</a>
+                            <a class="nav-link" href="#AntecedentesDesarrollo" data-toggle="tab" id="AntecedentesDesMenu">Antecedentes <br />Desarrollo</a>
                         </li>
                         <li class="nav-item text-left">
                             <a class="nav-link" href="#AntecedentesGineco" data-toggle="tab" id="AntecedentesGinecoMenu">Antecedentes <br />Gineco-Obstétricos</a>
@@ -710,7 +709,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-4">
-                                            <div class="form-group">
+                                            <div class="form-group" id="Menores20anios_Euresis">
                                                 <label>Tiene enuresis. Solo menores -20 años</label>
                                                 <select class="form-control showoptions" id="TieneEuresis" name="TieneEuresis">
                                                     <option value="">Seleccionar</option>
@@ -2003,6 +2002,24 @@
             $("#AntecedentesGineco").hide();
         }
 
+        //Ocultar secciones según la edad del px
+        var EdadPX = parseInt($("#Años_px").text().trim(), 10);
+
+        if (EdadPX < 20) {
+            $("#Menores20anios_Euresis").show();
+        } else {
+            $("#Menores20anios_Euresis").hide();
+        }
+
+        //Seccion/Pestaña Alimentación-Antecedentes Desarrollo
+        if (EdadPX < 10) {
+            $("#AlimentacionMenu").show();
+            $("#AntecedentesDesMenu").show();
+        } else {
+            $("#AlimentacionMenu").hide();
+            $("#AntecedentesDesMenu").hide();
+        }
+
         var table = $('#TblPaciente').DataTable();
         table.destroy();
         table = $('#TblPaciente').DataTable({
@@ -2029,7 +2046,6 @@
                 },
             }
         });
-
 
         /*
         // #region Botones de Guardar HC

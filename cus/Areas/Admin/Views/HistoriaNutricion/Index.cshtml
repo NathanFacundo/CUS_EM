@@ -309,8 +309,8 @@
                         <div class="col ml-md-n2 profile-user-info">
                             <h10 style="font-weight:bold;">Nombre: @Model.Nombre @Model.PrimerApellido @Model.SegundoApellido </h10>
                             <a id="Nombre"></a><br />
-                            <h10 style="font-weight:bold;">Expediente: <span id="Exp">@Model.Expediente</span> </h10>
-                            <h10 style="font-weight:bold;">Edad: @edad años @meses meses</h10>
+                            <h10 style="font-weight:bold;">Expediente: <span id="Exp">@Model.Expediente</span> </h10><br />
+                            <h10 style="font-weight:bold;">Edad: <span id="Años_px"> @edad </span> años @meses meses</h10>
                             <a id="Edad"></a><br />
                             <h10 style="font-weight:bold;">Sexo: @Model.Sexo</h10>
                             <a id="Sexo"></a><br />
@@ -333,7 +333,7 @@
                             <a class="nav-link" href="#DatosDiet" data-toggle="tab">Datos Dietéticos y<br />Estilo de Vida</a>
                         </li>
                         <li class="nav-item text-left">
-                            <a class="nav-link" href="#AlimentacionIn" data-toggle="tab">Alimentación<br />Inicial</a>
+                            <a class="nav-link" href="#AlimentacionIn" data-toggle="tab" id="AlimentacionInMenu">Alimentación<br />Inicial</a>
                         </li>
                         <li class="nav-item text-left">
                             <a class="nav-link" href="#Recordatorio" data-toggle="tab">Recordatorio de 24 hrs.</a>
@@ -2278,6 +2278,15 @@
 
         //Ocultamos div donde se muestra la info del px ya que aún no se ha buscado
         $("#InfoPX").hide();
+
+        //Ocultar secciones según la edad del px
+        var EdadPX = parseInt($("#Años_px").text().trim(), 10);
+
+        if (EdadPX < 2) {
+            $("#AlimentacionInMenu").show();
+        } else {
+            $("#AlimentacionInMenu").hide();
+        }
 
         var table = $('#TblPaciente').DataTable();
         table.destroy();

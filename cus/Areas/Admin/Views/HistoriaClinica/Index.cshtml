@@ -105,8 +105,8 @@
                         <div class="col ml-md-n2 profile-user-info">
                             <h10 style="font-weight:bold;">Nombre: @Model.Nombre @Model.PrimerApellido @Model.SegundoApellido </h10>
                             <a id="Nombre"></a><br />
-                            <h10 style="font-weight:bold;">Expediente: <span id="Exp">@Model.Expediente</span> </h10>
-                            <h10 style="font-weight:bold;">Edad: @edad años @meses meses</h10>
+                            <h10 style="font-weight:bold;">Expediente: <span id="Exp">@Model.Expediente</span> </h10><br />
+                            <h10 style="font-weight:bold;">Edad: <span id="Años_px"> @edad </span> años @meses meses</h10>
                             <a id="Edad"></a><br />
                             <h10 style="font-weight:bold;">Sexo: @Model.Sexo</h10>
                             <a id="Sexo"></a><br />
@@ -357,7 +357,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-4">
-                                            <div class="form-group">
+                                            <div class="form-group" id="Menor9anios">
                                                 <label>El px acude a guardería/estancia in. (Menor 9 años)</label>
                                                 <select class="form-control" name="Guarderia" id="Guarderia">
                                                     <option value="">Seleccionar</option>
@@ -421,13 +421,13 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <div class="form-group">
+                                            <div class="form-group" id="Menor10anios_Ocupacion">
                                                 <label class="mt-2">Ocupación (Mayor 10 años)</label>
                                                 <input id="Ocupacio" class="form-control" name="Ocupacio" maxlength="49" />
                                             </div>
                                         </div>
                                         <div class="col-md-4">
-                                            <div class="form-group">
+                                            <div class="form-group" id="Menor10anios_TipoTrabajo">
                                                 <label>Tipo de trabajo</label>
                                                 <select class="form-control" name="TipoTrab" id="TipoTrab">
                                                     <option value="">Seleccionar</option>
@@ -460,103 +460,109 @@
                     <div id="pat_billing" class="tab-pane fade">
                         <div class="card card-table mb-0 p-3 mb-5">
                             <form id="f_valoracionfamiliar">
-                                <h4>DE 0-9 AÑOS Y 11 MESES</h4>
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label>La mamá del px actualmente se encuentra</label>
-                                            <select class="form-control" name="mamaPaciente" id="mamaPaciente">
-                                                <option value="">Seleccionar</option>
-                                                <option value="Viva">Viva</option>
-                                                <option value="Finada">Finada</option>
-                                            </select>
+
+                                <div id="Menor9anios11meses">
+
+                                    <h4>DE 0-9 AÑOS Y 11 MESES</h4>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>La mamá del px actualmente se encuentra</label>
+                                                <select class="form-control" name="mamaPaciente" id="mamaPaciente">
+                                                    <option value="">Seleccionar</option>
+                                                    <option value="Viva">Viva</option>
+                                                    <option value="Finada">Finada</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <div class="form-group" id="EspEdad">
+                                                <label>Edad</label>
+                                                <input id="EdadMama" type="text" name="EdadMama" class="form-control" placeholder="" maxlength="14">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group" id="EspGradoE">
+                                                <label class="mt-2">Grado escolar de la mamá</label>
+                                                <select class="form-control" name="GradoMama" id="GradoMama">
+                                                    <option value="">Seleccionar</option>
+                                                    <option value="Prescolar">Prescolar</option>
+                                                    <option value="Primaria">Primaria</option>
+                                                    <option value="Secundaria">Secundaria</option>
+                                                    <option value="Bachillerato/Técnico">Bachillerato/Técnico</option>
+                                                    <option value="Nivel Superior">Nivel Superior</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group" id="EspOcupa">
+                                                <label>Ocupación</label>
+                                                <input id="OcupacionMama" type="text" name="OcupacionMama" class="form-control" placeholder="" maxlength="24">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group" id="EspTipoT">
+                                                <label class="mt-2"> Tipo de trabajo</label>
+                                                <select class="form-control" name="TipoTrabajoMama" id="TipoTrabajoMama">
+                                                    <option value="" selected disabled>Seleccionar</option>
+                                                    <option value="Fijo">Fijo</option>
+                                                    <option value="Eventual">Eventual</option>
+                                                    <option value="No aplica">No aplica</option>
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-1">
-                                        <div class="form-group" id="EspEdad">
-                                            <label>Edad</label>
-                                            <input id="EdadMama" type="text" name="EdadMama" class="form-control" placeholder="" maxlength="14">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>El papá del paciente actualmente se encuentra</label>
+                                                <select class="form-control" name="papaPaciente" id="papaPaciente">
+                                                    <option value="">Seleccionar</option>
+                                                    <option value="Vivo">Vivo</option>
+                                                    <option value="Finado">Finado</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <div class="form-group" id="EspEdadP">
+                                                <label>Edad</label>
+                                                <input id="EdadPapa" type="text" name="EdadPapa" class="form-control" placeholder="" maxlength="14">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group" id="EspGradoEP">
+                                                <label class="mt-2">Grado escolar del papá</label>
+                                                <select class="form-control" name="GradoPapa" id="GradoPapa">
+                                                    <option value="">Seleccionar</option>
+                                                    <option value="Prescolar">Prescolar</option>
+                                                    <option value="Primaria">Primaria</option>
+                                                    <option value="Secundaria">Secundaria</option>
+                                                    <option value="Bachillerato/Técnico">Bachillerato/Técnico</option>
+                                                    <option value="Nivel Superior">Nivel Superior</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group" id="EspOcupaP">
+                                                <label>Ocupación</label>
+                                                <input id="OcupacionPapa" type="text" name="OcupacionPapa" class="form-control" placeholder="" maxlength="49">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group" id="EspTipoTP">
+                                                <label class="mt-2"> Tipo de trabajo</label>
+                                                <select class="form-control" name="TipoTrabajoPapa" id="TipoTrabajoPapa">
+                                                    <option value="">Seleccionar</option>
+                                                    <option value="Fijo">Fijo</option>
+                                                    <option value="Eventual">Eventual</option>
+                                                    <option value="No aplica">No aplica</option>
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group" id="EspGradoE">
-                                            <label class="mt-2">Grado escolar de la mamá</label>
-                                            <select class="form-control" name="GradoMama" id="GradoMama">
-                                                <option value="">Seleccionar</option>
-                                                <option value="Prescolar">Prescolar</option>
-                                                <option value="Primaria">Primaria</option>
-                                                <option value="Secundaria">Secundaria</option>
-                                                <option value="Bachillerato/Técnico">Bachillerato/Técnico</option>
-                                                <option value="Nivel Superior">Nivel Superior</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="form-group" id="EspOcupa">
-                                            <label>Ocupación</label>
-                                            <input id="OcupacionMama" type="text" name="OcupacionMama" class="form-control" placeholder="" maxlength="24">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="form-group" id="EspTipoT">
-                                            <label class="mt-2"> Tipo de trabajo</label>
-                                            <select class="form-control" name="TipoTrabajoMama" id="TipoTrabajoMama">
-                                                <option value="" selected disabled>Seleccionar</option>
-                                                <option value="Fijo">Fijo</option>
-                                                <option value="Eventual">Eventual</option>
-                                                <option value="No aplica">No aplica</option>
-                                            </select>
-                                        </div>
-                                    </div>
+
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label>El papá del paciente actualmente se encuentra</label>
-                                            <select class="form-control" name="papaPaciente" id="papaPaciente">
-                                                <option value="">Seleccionar</option>
-                                                <option value="Vivo">Vivo</option>
-                                                <option value="Finado">Finado</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-1">
-                                        <div class="form-group" id="EspEdadP">
-                                            <label>Edad</label>
-                                            <input id="EdadPapa" type="text" name="EdadPapa" class="form-control" placeholder="" maxlength="14">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group" id="EspGradoEP">
-                                            <label class="mt-2">Grado escolar del papá</label>
-                                            <select class="form-control" name="GradoPapa" id="GradoPapa">
-                                                <option value="">Seleccionar</option>
-                                                <option value="Prescolar">Prescolar</option>
-                                                <option value="Primaria">Primaria</option>
-                                                <option value="Secundaria">Secundaria</option>
-                                                <option value="Bachillerato/Técnico">Bachillerato/Técnico</option>
-                                                <option value="Nivel Superior">Nivel Superior</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="form-group" id="EspOcupaP">
-                                            <label>Ocupación</label>
-                                            <input id="OcupacionPapa" type="text" name="OcupacionPapa" class="form-control" placeholder="" maxlength="49">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="form-group" id="EspTipoTP">
-                                            <label class="mt-2"> Tipo de trabajo</label>
-                                            <select class="form-control" name="TipoTrabajoPapa" id="TipoTrabajoPapa">
-                                                <option value="">Seleccionar</option>
-                                                <option value="Fijo">Fijo</option>
-                                                <option value="Eventual">Eventual</option>
-                                                <option value="No aplica">No aplica</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
+
                                 <hr />
                                 <h4>TODOS LOS PACIENTES</h4>
                                 <div class="row">
@@ -2164,6 +2170,24 @@
 
         //Ocultamos div donde se muestra la info del px ya que aún no se ha buscado
         $("#InfoPX").hide();
+
+        //Ocultar secciones según la edad del px
+        var EdadPX = parseInt($("#Años_px").text().trim(), 10);
+        if (EdadPX < 9) {
+            $("#Menor9anios").show(); 
+            $("#Menor9anios11meses").show();
+        } else {
+            $("#Menor9anios").hide();
+            $("#Menor9anios11meses").hide();
+        }
+
+        if (EdadPX > 10) {
+            $("#Menor10anios_Ocupacion").show();
+            $("#Menor10anios_TipoTrabajo").show();
+        } else {
+            $("#Menor10anios_Ocupacion").hide();
+            $("#Menor10anios_TipoTrabajo").hide();
+        }
 
         var table = $('#TblPaciente').DataTable();
         table.destroy();
