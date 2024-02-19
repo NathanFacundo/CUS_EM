@@ -312,7 +312,7 @@
                             <h10 style="font-weight:bold;">Expediente: <span id="Exp">@Model.Expediente</span> </h10><br />
                             <h10 style="font-weight:bold;">Edad: <span id="Años_px"> @edad </span> años @meses meses</h10>
                             <a id="Edad"></a><br />
-                            <h10 style="font-weight:bold;">Sexo: @Model.Sexo</h10>
+                            <h10 style="font-weight:bold;">Sexo: <span id="Sex">@Model.Sexo</span></h10>
                             <a id="Sexo"></a><br />
                             <h10 style="font-weight:bold;">Fecha Nac.: @nacimiento</h10>
                             <a id="FechaNac"></a>
@@ -1287,459 +1287,493 @@
                             <div class="card-body">
                                 <form id="F_EvaluacionAntro">
 
-                                    <h3>Menores 4 años 11 meses</h3>
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label>Peso al nacer(kg)</label>
-                                                <input type="text" class="form-control" id="S4Anios_PesoN" name="S4Anios_PesoN" maxlength="49">
+                                    <div id="Menor4anios_EvAn">
+
+                                        <h3>Menores 4 años 11 meses</h3>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>Peso al nacer(kg)</label>
+                                                    <input type="text" class="form-control" id="S4Anios_PesoN" name="S4Anios_PesoN" maxlength="49">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>Talla al nacer(m)</label>
+                                                    <input type="text" class="form-control" id="S4Anios_TallaN" name="S4Anios_TallaN" maxlength="49">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>Peso actual(kg)</label>
+                                                    <input type="text" class="form-control" id="S4Anios_PesoA" name="S4Anios_PesoA" maxlength="49">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>Talla actual(m)</label>
+                                                    <input type="text" class="form-control" id="S4Anios_TallaA" name="S4Anios_TallaA" maxlength="49">
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label>Talla al nacer(m)</label>
-                                                <input type="text" class="form-control" id="S4Anios_TallaN" name="S4Anios_TallaN" maxlength="49">
+                                        <div class="row">
+                                            <table class="table table-bordered" id="tbl">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Indicador</th>
+                                                        <th>Mediana</th>
+                                                        <th>Desviaciones est. con rel. a la mediana</th>
+                                                        <th>Rango</th>
+                                                        <th>Clasificación</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td><label for="cell1">Peso/edad</label></td>
+                                                        <td><input type="text" id="S4Tabla_MedPeso" name="S4Tabla_MedPeso" maxlength="198"></td>
+                                                        <td><input type="text" id="S4Tabla_DesPeso" name="S4Tabla_DesPeso" maxlength="198"></td>
+                                                        <td><input type="text" id="S4Tabla_RanPeso" name="S4Tabla_RanPeso" maxlength="198"></td>
+                                                        <td><input type="text" id="S4Tabla_ClaPeso" name="S4Tabla_ClaPeso" maxlength="198"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><label for="cell6">Talla/edad</label></td>
+                                                        <td><input type="text" id="S4Tabla_MedTalla" name="S4Tabla_MedTalla" maxlength="198"></td>
+                                                        <td><input type="text" id="S4Tabla_DesTalla" name="S4Tabla_DesTalla" maxlength="198"></td>
+                                                        <td><input type="text" id="S4Tabla_RanTalla" name="S4Tabla_RanTalla" maxlength="198"></td>
+                                                        <td><input type="text" id="S4Tabla_ClaTalla" name="S4Tabla_ClaTalla" maxlength="198"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><label for="cell6">Peso/talla</label></td>
+                                                        <td><input type="text" id="S4Tabla_MedPeTa" name="S4Tabla_MedPeTa" maxlength="198"></td>
+                                                        <td><input type="text" id="S4Tabla_DesPeTa" name="S4Tabla_DesPeTa" maxlength="198"></td>
+                                                        <td><input type="text" id="S4Tabla_RanPeTa" name="S4Tabla_RanPeTa" maxlength="198"></td>
+                                                        <td><input type="text" id="S4Tabla_ClaPeTa" name="S4Tabla_ClaPeTa" maxlength="198"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><label for="cell6">Peso Ideal</label></td>
+                                                        <td><input type="text" id="S4Tabla_MedPeId" name="S4Tabla_MedPeId" maxlength="198"></td>
+                                                        <td><input type="text" id="S4Tabla_DesPeId" name="S4Tabla_DesPeId" maxlength="198"></td>
+                                                        <td><input type="text" id="S4Tabla_RanPeId" name="S4Tabla_RanPeId" maxlength="198"></td>
+                                                        <td><input type="text" id="S4Tabla_ClaPeId" name="S4Tabla_ClaPeId" maxlength="198"></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Interpretación global de los 3 indicadores</label>
+                                                    <input type="text" class="form-control" id="S4Anios_Interpretacion" name="S4Anios_Interpretacion" maxlength="198">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Observaciones</label>
+                                                    <input type="text" class="form-control" id="S4Anios_Observaciones" name="S4Anios_Observaciones" maxlength="198">
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label>Peso actual(kg)</label>
-                                                <input type="text" class="form-control" id="S4Anios_PesoA" name="S4Anios_PesoA" maxlength="49">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label>Talla actual(m)</label>
-                                                <input type="text" class="form-control" id="S4Anios_TallaA" name="S4Anios_TallaA" maxlength="49">
-                                            </div>
-                                        </div>
+
                                     </div>
-                                    <div class="row">
-                                        <table class="table table-bordered" id="tbl">
-                                            <thead>
-                                                <tr>
-                                                    <th>Indicador</th>
-                                                    <th>Mediana</th>
-                                                    <th>Desviaciones est. con rel. a la mediana</th>
-                                                    <th>Rango</th>
-                                                    <th>Clasificación</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td><label for="cell1">Peso/edad</label></td>
-                                                    <td><input type="text" id="S4Tabla_MedPeso" name="S4Tabla_MedPeso" maxlength="198"></td>
-                                                    <td><input type="text" id="S4Tabla_DesPeso" name="S4Tabla_DesPeso" maxlength="198"></td>
-                                                    <td><input type="text" id="S4Tabla_RanPeso" name="S4Tabla_RanPeso" maxlength="198"></td>
-                                                    <td><input type="text" id="S4Tabla_ClaPeso" name="S4Tabla_ClaPeso" maxlength="198"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><label for="cell6">Talla/edad</label></td>
-                                                    <td><input type="text" id="S4Tabla_MedTalla" name="S4Tabla_MedTalla" maxlength="198"></td>
-                                                    <td><input type="text" id="S4Tabla_DesTalla" name="S4Tabla_DesTalla" maxlength="198"></td>
-                                                    <td><input type="text" id="S4Tabla_RanTalla" name="S4Tabla_RanTalla" maxlength="198"></td>
-                                                    <td><input type="text" id="S4Tabla_ClaTalla" name="S4Tabla_ClaTalla" maxlength="198"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><label for="cell6">Peso/talla</label></td>
-                                                    <td><input type="text" id="S4Tabla_MedPeTa" name="S4Tabla_MedPeTa" maxlength="198"></td>
-                                                    <td><input type="text" id="S4Tabla_DesPeTa" name="S4Tabla_DesPeTa" maxlength="198"></td>
-                                                    <td><input type="text" id="S4Tabla_RanPeTa" name="S4Tabla_RanPeTa" maxlength="198"></td>
-                                                    <td><input type="text" id="S4Tabla_ClaPeTa" name="S4Tabla_ClaPeTa" maxlength="198"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><label for="cell6">Peso Ideal</label></td>
-                                                    <td><input type="text" id="S4Tabla_MedPeId" name="S4Tabla_MedPeId" maxlength="198"></td>
-                                                    <td><input type="text" id="S4Tabla_DesPeId" name="S4Tabla_DesPeId" maxlength="198"></td>
-                                                    <td><input type="text" id="S4Tabla_RanPeId" name="S4Tabla_RanPeId" maxlength="198"></td>
-                                                    <td><input type="text" id="S4Tabla_ClaPeId" name="S4Tabla_ClaPeId" maxlength="198"></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Interpretación global de los 3 indicadores</label>
-                                                <input type="text" class="form-control" id="S4Anios_Interpretacion" name="S4Anios_Interpretacion" maxlength="198">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Observaciones</label>
-                                                <input type="text" class="form-control" id="S4Anios_Observaciones" name="S4Anios_Observaciones" maxlength="198">
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
                                     <hr size="2px" color="blue" />
-                                    <h3>Igual o mayor 5 años a 9 años 11 meses</h3>
-                                    <div class="row">
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label>Peso actual(kg)</label>
-                                                <input type="text" class="form-control" id="S5Anios_PesoA" name="S5Anios_PesoA" maxlength="198">
+
+                                    <div id="5anios9anios_EvAn">
+
+                                        <h3>Igual o mayor 5 años a 9 años 11 meses</h3>
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label>Peso actual(kg)</label>
+                                                    <input type="text" class="form-control" id="S5Anios_PesoA" name="S5Anios_PesoA" maxlength="198">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label>Talla actual(m)</label>
+                                                    <input type="text" class="form-control" id="S5Anios_TallaA" name="S5Anios_TallaA" maxlength="198">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label>IMC (kg/m2)</label>
+                                                    <input type="text" class="form-control" id="S5Anios_Indice" name="S5Anios_Indice" maxlength="198">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label>Desviación est.</label>
+                                                    <input type="text" class="form-control" id="S5Anios_Desviacion" name="S5Anios_Desviacion" maxlength="198">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Diagnóstico</label>
+                                                    <input type="text" class="form-control" id="S5Anios_Diagnostico" name="S5Anios_Diagnostico" maxlength="198">
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label>Talla actual(m)</label>
-                                                <input type="text" class="form-control" id="S5Anios_TallaA" name="S5Anios_TallaA" maxlength="198">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label>Peso ideal(kg)</label>
+                                                    <input type="text" class="form-control" id="S5Anios_PesoId" name="S5Anios_PesoId" maxlength="198">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label>Circunferencia cintura(cm)</label>
+                                                    <input type="text" class="form-control" id="S5Anios_Circunf" name="S5Anios_Circunf" maxlength="198">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label>Percentil</label>
+                                                    <input type="text" class="form-control" id="S5Anios_Percentil" name="S5Anios_Percentil" maxlength="198">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label>Interpretación</label>
+                                                    <input type="text" class="form-control" id="S5Anios_Interpretacion" name="S5Anios_Interpretacion" maxlength="198">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Observaciones</label>
+                                                    <input type="text" class="form-control" id="S5Anios_Observaciones" name="S5Anios_Observaciones" maxlength="198">
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label>IMC (kg/m2)</label>
-                                                <input type="text" class="form-control" id="S5Anios_Indice" name="S5Anios_Indice" maxlength="198">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label>Desviación est.</label>
-                                                <input type="text" class="form-control" id="S5Anios_Desviacion" name="S5Anios_Desviacion" maxlength="198">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Diagnóstico</label>
-                                                <input type="text" class="form-control" id="S5Anios_Diagnostico" name="S5Anios_Diagnostico" maxlength="198">
-                                            </div>
-                                        </div>
+
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label>Peso ideal(kg)</label>
-                                                <input type="text" class="form-control" id="S5Anios_PesoId" name="S5Anios_PesoId" maxlength="198">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label>Circunferencia cintura(cm)</label>
-                                                <input type="text" class="form-control" id="S5Anios_Circunf" name="S5Anios_Circunf" maxlength="198">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label>Percentil</label>
-                                                <input type="text" class="form-control" id="S5Anios_Percentil" name="S5Anios_Percentil" maxlength="198">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label>Interpretación</label>
-                                                <input type="text" class="form-control" id="S5Anios_Interpretacion" name="S5Anios_Interpretacion" maxlength="198">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Observaciones</label>
-                                                <input type="text" class="form-control" id="S5Anios_Observaciones" name="S5Anios_Observaciones" maxlength="198">
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
                                     <hr size="2px" color="blue" />
-                                    <h3>Igual o mayor 10 años a 19 años 11 meses</h3>
-                                    <div class="row">
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label>Peso actual(kg)</label>
-                                                <input type="text" class="form-control" id="S10Anios_PesoA" name="S10Anios_PesoA" maxlength="198">
+
+                                    <div id="10anios19anios_EvAn">
+
+                                        <h3>Igual o mayor 10 años a 19 años 11 meses</h3>
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label>Peso actual(kg)</label>
+                                                    <input type="text" class="form-control" id="S10Anios_PesoA" name="S10Anios_PesoA" maxlength="198">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label>Talla actual(m)</label>
+                                                    <input type="text" class="form-control" id="S10Anios_TallaA" name="S10Anios_TallaA" maxlength="198">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label>IMC(kg/m2)</label>
+                                                    <input type="text" class="form-control" id="S10Anios_Indice" name="S10Anios_Indice" maxlength="198">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label>Desviación estandar</label>
+                                                    <input type="text" class="form-control" id="S10Anios_Desviacion" name="S10Anios_Desviacion" maxlength="198">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Diagnóstico</label>
+                                                    <input type="text" class="form-control" id="S10Anios_Diagnostico" name="S10Anios_Diagnostico" maxlength="198">
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label>Talla actual(m)</label>
-                                                <input type="text" class="form-control" id="S10Anios_TallaA" name="S10Anios_TallaA" maxlength="198">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label>Peso ideal(kg)</label>
+                                                    <input type="text" class="form-control" id="S10Anios_PesoId" name="S10Anios_PesoId" maxlength="198">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label>Circunferencia (cm)</label>
+                                                    <input type="text" class="form-control" id="S10Anios_Circunf" name="S10Anios_Circunf" maxlength="198">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label>Percentil</label>
+                                                    <input type="text" class="form-control" id="S10Anios_Percentil" name="S10Anios_Percentil" maxlength="198">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label>Interpretación</label>
+                                                    <input type="text" class="form-control" id="S10Anios_Interpretacion" name="S10Anios_Interpretacion" maxlength="198">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Observaciones</label>
+                                                    <input type="text" class="form-control" id="S10Anios_Observaciones" name="S10Anios_Observaciones" maxlength="198">
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label>IMC(kg/m2)</label>
-                                                <input type="text" class="form-control" id="S10Anios_Indice" name="S10Anios_Indice" maxlength="198">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label>Desviación estandar</label>
-                                                <input type="text" class="form-control" id="S10Anios_Desviacion" name="S10Anios_Desviacion" maxlength="198">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Diagnóstico</label>
-                                                <input type="text" class="form-control" id="S10Anios_Diagnostico" name="S10Anios_Diagnostico" maxlength="198">
-                                            </div>
-                                        </div>
+
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label>Peso ideal(kg)</label>
-                                                <input type="text" class="form-control" id="S10Anios_PesoId" name="S10Anios_PesoId" maxlength="198">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label>Circunferencia (cm)</label>
-                                                <input type="text" class="form-control" id="S10Anios_Circunf" name="S10Anios_Circunf" maxlength="198">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label>Percentil</label>
-                                                <input type="text" class="form-control" id="S10Anios_Percentil" name="S10Anios_Percentil" maxlength="198">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label>Interpretación</label>
-                                                <input type="text" class="form-control" id="S10Anios_Interpretacion" name="S10Anios_Interpretacion" maxlength="198">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Observaciones</label>
-                                                <input type="text" class="form-control" id="S10Anios_Observaciones" name="S10Anios_Observaciones" maxlength="198">
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
                                     <hr size="2px" color="blue" />
-                                    <h3>Igual o mayor 20 años a 59 años 11 meses</h3>
-                                    <div class="row">
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label>Peso actual(kg)</label>
-                                                <input type="text" class="form-control" id="S20Anios_PesoA" name="S20Anios_PesoA" maxlength="198">
+
+                                    <div id="20anios59anios_EvAn">
+
+                                        <h3>Igual o mayor 20 años a 59 años 11 meses</h3>
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label>Peso actual(kg)</label>
+                                                    <input type="text" class="form-control" id="S20Anios_PesoA" name="S20Anios_PesoA" maxlength="198">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label>Talla actual(m)</label>
+                                                    <input type="text" class="form-control" id="S20Anios_TallaA" name="S20Anios_TallaA" maxlength="198">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label>IMC(kg/m2)</label>
+                                                    <input type="text" class="form-control" id="S20Anios_Indice" name="S20Anios_Indice" maxlength="198">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label>Diagnóstico</label>
+                                                    <input type="text" class="form-control" id="S20Anios_Diagnostico" name="S20Anios_Diagnostico" maxlength="198">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Circunferencia muñeca(cm)</label>
+                                                    <input type="text" class="form-control" id="S20Anios_CircunfMu" name="S20Anios_CircunfMu" maxlength="198">
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label>Talla actual(m)</label>
-                                                <input type="text" class="form-control" id="S20Anios_TallaA" name="S20Anios_TallaA" maxlength="198">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label>Complexión</label>
+                                                    <input type="text" class="form-control" id="S20Anios_Complexion" name="S20Anios_Complexion" maxlength="198">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label>Peso ideal(kg)</label>
+                                                    <input type="text" class="form-control" id="S20Anios_PesoId" name="S20Anios_PesoId" maxlength="198">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label>Circunferencia cintura(cm)</label>
+                                                    <input type="text" class="form-control" id="S20Anios_CircunfCin" name="S20Anios_CircunfCin" maxlength="198">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label>Circunferencia cadera(cm)</label>
+                                                    <input type="text" class="form-control" id="S20Anios_CircunfCad" name="S20Anios_CircunfCad" maxlength="198">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Índice cintura y cadera/diag.</label>
+                                                    <input type="text" class="form-control" id="S20Anios_IndiceCin" name="S20Anios_IndiceCin" maxlength="198">
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label>IMC(kg/m2)</label>
-                                                <input type="text" class="form-control" id="S20Anios_Indice" name="S20Anios_Indice" maxlength="198">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Riesgo cardio. según la cintura</label>
+                                                    <input type="text" class="form-control" id="S20Anios_Riesgo" name="S20Anios_Riesgo" maxlength="198">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Observaciones</label>
+                                                    <input type="text" class="form-control" id="S20Anios_Observaciones" name="S20Anios_Observaciones" maxlength="198">
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label>Diagnóstico</label>
-                                                <input type="text" class="form-control" id="S20Anios_Diagnostico" name="S20Anios_Diagnostico" maxlength="198">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Circunferencia muñeca(cm)</label>
-                                                <input type="text" class="form-control" id="S20Anios_CircunfMu" name="S20Anios_CircunfMu" maxlength="198">
-                                            </div>
-                                        </div>
+
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label>Complexión</label>
-                                                <input type="text" class="form-control" id="S20Anios_Complexion" name="S20Anios_Complexion" maxlength="198">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label>Peso ideal(kg)</label>
-                                                <input type="text" class="form-control" id="S20Anios_PesoId" name="S20Anios_PesoId" maxlength="198">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label>Circunferencia cintura(cm)</label>
-                                                <input type="text" class="form-control" id="S20Anios_CircunfCin" name="S20Anios_CircunfCin" maxlength="198">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label>Circunferencia cadera(cm)</label>
-                                                <input type="text" class="form-control" id="S20Anios_CircunfCad" name="S20Anios_CircunfCad" maxlength="198">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Índice cintura y cadera/diag.</label>
-                                                <input type="text" class="form-control" id="S20Anios_IndiceCin" name="S20Anios_IndiceCin" maxlength="198">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Riesgo cardio. según la cintura</label>
-                                                <input type="text" class="form-control" id="S20Anios_Riesgo" name="S20Anios_Riesgo" maxlength="198">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Observaciones</label>
-                                                <input type="text" class="form-control" id="S20Anios_Observaciones" name="S20Anios_Observaciones" maxlength="198">
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
                                     <hr size="2px" color="blue" />
-                                    <h3>Igual o mayor 60 años</h3>
-                                    <div class="row">
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label>Peso actual(kg)</label>
-                                                <input type="text" class="form-control" id="S60Anios_PesoA" name="S60Anios_PesoA" maxlength="198">
+
+                                    <div id="Mayor60anios_EvAn">
+
+                                        <h3>Igual o mayor 60 años</h3>
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label>Peso actual(kg)</label>
+                                                    <input type="text" class="form-control" id="S60Anios_PesoA" name="S60Anios_PesoA" maxlength="198">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label>Talla actual(m)</label>
+                                                    <input type="text" class="form-control" id="S60Anios_TallaA" name="S60Anios_TallaA" maxlength="198">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label>IMC(kg/m2)</label>
+                                                    <input type="text" class="form-control" id="S60Anios_Indice" name="S60Anios_Indice" maxlength="198">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label>Diagnóstico</label>
+                                                    <input type="text" class="form-control" id="S60Anios_Diagnostico" name="S60Anios_Diagnostico" maxlength="198">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Circunferencia muñeca(cm)</label>
+                                                    <input type="text" class="form-control" id="S60Anios_CircunfMu" name="S60Anios_CircunfMu" maxlength="198">
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label>Talla actual(m)</label>
-                                                <input type="text" class="form-control" id="S60Anios_TallaA" name="S60Anios_TallaA" maxlength="198">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label>Complexión</label>
+                                                    <input type="text" class="form-control" id="S60Anios_Complexion" name="S60Anios_Complexion" maxlength="198">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label>Peso ideal(kg)</label>
+                                                    <input type="text" class="form-control" id="S60Anios_PesoId" name="S60Anios_PesoId" maxlength="198">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label>Peso ajustado(kg)</label>
+                                                    <input type="text" class="form-control" id="S60Anios_PesoAj" name="S60Anios_PesoAj" maxlength="198">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label>Circunferencia cintura(cm)</label>
+                                                    <input type="text" class="form-control" id="S60Anios_CircunfCin" name="S60Anios_CircunfCin" maxlength="198">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Circunferencia cadera(cm)</label>
+                                                    <input type="text" class="form-control" id="S60Anios_CircunfCad" name="S60Anios_CircunfCad" maxlength="198">
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label>IMC(kg/m2)</label>
-                                                <input type="text" class="form-control" id="S60Anios_Indice" name="S60Anios_Indice" maxlength="198">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>Índice cintura y cadera/diag.</label>
+                                                    <input type="text" class="form-control" id="S60Anios_IndiceCin" name="S60Anios_IndiceCin" maxlength="198">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>Circunferencia brazo(cm)</label>
+                                                    <input type="text" class="form-control" id="S60Anios_CircunfBra" name="S60Anios_CircunfBra" maxlength="198">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>Circunferencia pantorrilla</label>
+                                                    <input type="text" class="form-control" id="S60Anios_CircunfPan" name="S60Anios_CircunfPan" maxlength="198">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>Observaciones</label>
+                                                    <input type="text" class="form-control" id="S60Anios_Observaciones" name="S60Anios_Observaciones" maxlength="198">
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label>Diagnóstico</label>
-                                                <input type="text" class="form-control" id="S60Anios_Diagnostico" name="S60Anios_Diagnostico" maxlength="198">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Circunferencia muñeca(cm)</label>
-                                                <input type="text" class="form-control" id="S60Anios_CircunfMu" name="S60Anios_CircunfMu" maxlength="198">
-                                            </div>
-                                        </div>
+
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label>Complexión</label>
-                                                <input type="text" class="form-control" id="S60Anios_Complexion" name="S60Anios_Complexion" maxlength="198">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label>Peso ideal(kg)</label>
-                                                <input type="text" class="form-control" id="S60Anios_PesoId" name="S60Anios_PesoId" maxlength="198">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label>Peso ajustado(kg)</label>
-                                                <input type="text" class="form-control" id="S60Anios_PesoAj" name="S60Anios_PesoAj" maxlength="198">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label>Circunferencia cintura(cm)</label>
-                                                <input type="text" class="form-control" id="S60Anios_CircunfCin" name="S60Anios_CircunfCin" maxlength="198">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Circunferencia cadera(cm)</label>
-                                                <input type="text" class="form-control" id="S60Anios_CircunfCad" name="S60Anios_CircunfCad" maxlength="198">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label>Índice cintura y cadera/diag.</label>
-                                                <input type="text" class="form-control" id="S60Anios_IndiceCin" name="S60Anios_IndiceCin" maxlength="198">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label>Circunferencia brazo(cm)</label>
-                                                <input type="text" class="form-control" id="S60Anios_CircunfBra" name="S60Anios_CircunfBra" maxlength="198">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label>Circunferencia pantorrilla</label>
-                                                <input type="text" class="form-control" id="S60Anios_CircunfPan" name="S60Anios_CircunfPan" maxlength="198">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label>Observaciones</label>
-                                                <input type="text" class="form-control" id="S60Anios_Observaciones" name="S60Anios_Observaciones" maxlength="198">
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
                                     <hr size="2px" color="blue" />
-                                    <h3>Embarazada</h3>
-                                    <div class="row">
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label>Peso actual(kg)</label>
-                                                <input type="text" class="form-control" id="SEmbaraz_PesoA" name="SEmbaraz_PesoA" maxlength="198">
+
+                                    <div id="Embarazada_EvAn">
+
+                                        <h3>Embarazada</h3>
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label>Peso actual(kg)</label>
+                                                    <input type="text" class="form-control" id="SEmbaraz_PesoA" name="SEmbaraz_PesoA" maxlength="198">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label>Talla actual(m)</label>
+                                                    <input type="text" class="form-control" id="SEmbaraz_TallaA" name="SEmbaraz_TallaA" maxlength="198">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label>Mes/semana de gestación</label>
+                                                    <input type="text" class="form-control" id="SEmbaraz_Gestacion" name="SEmbaraz_Gestacion" maxlength="198">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label>Circunferencia brazo(cm)</label>
+                                                    <input type="text" class="form-control" id="SEmbaraz_CircunfBra" name="SEmbaraz_CircunfBra" maxlength="198">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Peso pregestacional(kg)</label>
+                                                    <input type="text" class="form-control" id="SEmbaraz_PesoPreges" name="SEmbaraz_PesoPreges" maxlength="198">
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label>Talla actual(m)</label>
-                                                <input type="text" class="form-control" id="SEmbaraz_TallaA" name="SEmbaraz_TallaA" maxlength="198">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label>IMC pregestacional</label>
+                                                    <input type="text" class="form-control" id="SEmbaraz_Indice" name="SEmbaraz_Indice" maxlength="198">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label>Diagnóstico pregestacional</label>
+                                                    <input type="text" class="form-control" id="SEmbaraz_Diagnostico" name="SEmbaraz_Diagnostico" maxlength="198">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label>Ganancia peso deseable durante embarazo(kg)</label>
+                                                    <input type="text" class="form-control" id="SEmbaraz_GanPesoDesd" name="SEmbaraz_GanPesoDesd" maxlength="198">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label>Ganancia peso actual durante embarazo(kg)</label>
+                                                    <input type="text" class="form-control" id="SEmbaraz_GanPesoAct" name="SEmbaraz_GanPesoAct" maxlength="198">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Observaciones</label>
+                                                    <input type="text" class="form-control" id="SEmbaraz_Observaciones" name="SEmbaraz_Observaciones" maxlength="198">
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label>Mes/semana de gestación</label>
-                                                <input type="text" class="form-control" id="SEmbaraz_Gestacion" name="SEmbaraz_Gestacion" maxlength="198">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label>Circunferencia brazo(cm)</label>
-                                                <input type="text" class="form-control" id="SEmbaraz_CircunfBra" name="SEmbaraz_CircunfBra" maxlength="198">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Peso pregestacional(kg)</label>
-                                                <input type="text" class="form-control" id="SEmbaraz_PesoPreges" name="SEmbaraz_PesoPreges" maxlength="198">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label>IMC pregestacional</label>
-                                                <input type="text" class="form-control" id="SEmbaraz_Indice" name="SEmbaraz_Indice" maxlength="198">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label>Diagnóstico pregestacional</label>
-                                                <input type="text" class="form-control" id="SEmbaraz_Diagnostico" name="SEmbaraz_Diagnostico" maxlength="198">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label>Ganancia peso deseable durante embarazo(kg)</label>
-                                                <input type="text" class="form-control" id="SEmbaraz_GanPesoDesd" name="SEmbaraz_GanPesoDesd" maxlength="198">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <label>Ganancia peso actual durante embarazo(kg)</label>
-                                                <input type="text" class="form-control" id="SEmbaraz_GanPesoAct" name="SEmbaraz_GanPesoAct" maxlength="198">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Observaciones</label>
-                                                <input type="text" class="form-control" id="SEmbaraz_Observaciones" name="SEmbaraz_Observaciones" maxlength="198">
-                                            </div>
-                                        </div>
+
                                     </div>
 
                                     <div class="text-right">
@@ -2287,7 +2321,45 @@
         } else {
             $("#AlimentacionInMenu").hide();
         }
+        //Menor4 años 11 meses
+        if (EdadPX < 5) {
+            $("#Menor4anios_EvAn").show();
+        } else {
+            $("#Menor4anios_EvAn").hide();
+        }
+        //Igual o mayor 5 años a 9 años 11 meses
+        if (EdadPX >= 5 && EdadPX < 10) {
+            $("#5anios9anios_EvAn").show();
+        } else {
+            $("#5anios9anios_EvAn").hide();
+        }
+        //Igual o mayor 10 años a 19 años 11 meses
+        if (EdadPX >= 10 && EdadPX < 20) {
+            $("#10anios19anios_EvAn").show();
+        } else {
+            $("#10anios19anios_EvAn").hide();
+        }
+        //Igual o mayor 20 años a 59 años 11 meses
+        if (EdadPX >= 20 && EdadPX < 60) {
+            $("#20anios59anios_EvAn").show();
+        } else {
+            $("#20anios59anios_EvAn").hide();
+        }
+        //Igual o mayor 60 años
+        if (EdadPX >= 60) {
+            $("#Mayor60anios_EvAn").show();
+        } else {
+            $("#Mayor60anios_EvAn").hide();
+        }
 
+        //Embarazada
+        var SexoPX = $("#Sex").text();
+        if (SexoPX !== "Mujer" && SexoPX !== "Femenino") {
+            $("#Embarazada_EvAn").hide();
+        } else {
+            $("#Embarazada_EvAn").show();
+        }
+        
         var table = $('#TblPaciente').DataTable();
         table.destroy();
         table = $('#TblPaciente').DataTable({
