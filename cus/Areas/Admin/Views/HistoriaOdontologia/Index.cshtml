@@ -1979,7 +1979,7 @@
         var EdadPX = parseInt($("#Años_px").text().trim(), 10);
 
         if (EdadPX < 15) {
-            $("#InfoPerinatalMenu").show(); 
+            $("#InfoPerinatalMenu").show();
             $("#EvaluacionFunMenu").show();
         } else {
             $("#InfoPerinatalMenu").hide();
@@ -2581,28 +2581,80 @@
     $("#Btn_ImpresionDiag").click(function () {
         let data = $("#F_ImpresionDiag").serialize();
         var expediente = $("#Exp").text();
-        if (expediente) {
-            $.post("@Url.Action("ImpresionDia", "HistoriaOdontologia")?expediente=" + expediente, data).done(function (response) {
-                if (response.MENSAJE.substring(0, 6) == "Succe:") {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Sección guardada',
-                        showConfirmButton: false,
-                        timer: 1600
-                    })
-                    /*$("#Btn_ImpresionDiag").css("display", "none");*/
-                }
-                if (response.MENSAJE.substring(0, 6) == "Error:") {
-                    Swal.fire({
-                        icon: 'error',
-                        title: '¡Error!',
-                        text: response.MENSAJE.substring(7),
-                    });
-                }
-            }).fail(function (response) {
-                console.log(response);
-            });
-            event.preventDefault();
+
+        var Diag1 = $("#diagnostico1ODO").val();
+        var Tipo1 = $("#tipoconsulta1").val();
+        var Diag2 = $("#diagnostico2ODO").val();
+        var Tipo2 = $("#tipoconsulta2").val();
+        var Diag3 = $("#diagnostico3ODO").val();
+        var Tipo3 = $("#tipoconsulta3").val();
+        var Diag4 = $("#diagnostico4ODO").val();
+        var Tipo4 = $("#tipoconsulta4").val();
+        var Diag5 = $("#diagnostico5ODO").val();
+        var Tipo5 = $("#tipoconsulta5").val();
+
+        var Estatus = true;
+
+        //Si Diagnostico 1 está lleno
+        if (Diag1 !== "") {
+            //Si dejaron vacío el cambo del Diagnostico 1
+            if (Tipo1 == null) {
+                Estatus = false;
+            }
+        }
+        if (Diag2 !== "") {
+            if (Tipo2 == null) {
+                Estatus = false;
+            }
+        }
+        if (Diag3 !== "") {
+            if (Tipo3 == null) {
+                Estatus = false;
+            }
+        }
+        if (Diag4 !== "") {
+            if (Tipo4 == null) {
+                Estatus = false;
+            }
+        }
+        if (Diag5 !== "") {
+            if (Tipo5 == null) {
+                Estatus = false;
+            }
+        }
+
+        //Si se seleccionó en el combo se guarde todo bien.
+        if (Estatus == true) {
+            if (expediente) {
+                $.post("@Url.Action("ImpresionDia", "HistoriaOdontologia")?expediente=" + expediente, data).done(function (response) {
+                    if (response.MENSAJE.substring(0, 6) == "Succe:") {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Sección guardada',
+                            showConfirmButton: false,
+                            timer: 1600
+                        })
+                        /*$("#Btn_ImpresionDiag").css("display", "none");*/
+                    }
+                    if (response.MENSAJE.substring(0, 6) == "Error:") {
+                        Swal.fire({
+                            icon: 'error',
+                            title: '¡Error!',
+                            text: response.MENSAJE.substring(7),
+                        });
+                    }
+                }).fail(function (response) {
+                    console.log(response);
+                });
+                event.preventDefault();
+            }
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Debe seleccionar el Tipo de consulta',
+                showConfirmButton: true
+            })
+            return false;
         }
     });
     //Plan
