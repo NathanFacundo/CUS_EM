@@ -447,7 +447,7 @@ namespace CUS.Areas.Admin.Controllers
             var notas = (from ne in db.NotaEvolucion
                          join pa in db.Paciente on ne.num_exp equals pa.Expediente into pax
                          from paIn in pax.DefaultIfEmpty()
-                         where ne.medico == username
+                         //where ne.medico == username
                          where ne.num_exp == expediente
                          select new
                          {
