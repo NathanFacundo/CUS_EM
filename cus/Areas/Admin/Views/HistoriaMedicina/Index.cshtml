@@ -503,7 +503,7 @@
                             <a class="nav-link" href="#Habitos" data-toggle="tab"><span class="med-records">Hábitos</span></a>
                         </li>
                         <li class="nav-item text-left">
-                            <a class="nav-link" href="#AntecedentesPerinatales" data-toggle="tab">Antecedentes <br />Perinatales</a>
+                            <a class="nav-link" href="#AntecedentesPerinatales" data-toggle="tab" id="AntecedentesPeriMenu">Antecedentes <br />Perinatales</a>
                         </li>
                         <li class="nav-item text-left">
                             <a class="nav-link" href="#Inmunizaciones" data-toggle="tab">Inmunizaciones</a>
@@ -2015,9 +2015,11 @@
         if (EdadPX < 10) {
             $("#AlimentacionMenu").show();
             $("#AntecedentesDesMenu").show();
+            $("#AntecedentesPeriMenu").show();
         } else {
             $("#AlimentacionMenu").hide();
             $("#AntecedentesDesMenu").hide();
+            $("#AntecedentesPeriMenu").hide();
         }
 
         var table = $('#TblPaciente').DataTable();
