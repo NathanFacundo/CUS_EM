@@ -2253,6 +2253,9 @@
                                     <div class="collapse" id="collapseRecordatorio">
                                         <div class="card card-body">
                                             <p>
+                                                N/A Desayuno: <span id="Desayuno_NANUT" class="Recordatorio"></span>
+                                            </p>
+                                            <p>
                                                 Desayuno hora: <span id="Desayuno_HoraNUT"></span>
                                             </p>
                                             <p>
@@ -2263,6 +2266,9 @@
                                             </p>
                                             <p>
                                                 Desayuno cantidad: <span id="Desayuno_CantidadNUT"></span>
+                                            </p>
+                                            <p>
+                                                N/A Colación desayuno: <span id="Colacion_NANUT" class="Recordatorio"></span>
                                             </p>
                                             <p>
                                                 Colación desayuno hora: <span id="ColacionDes_HoraNUT"></span>
@@ -2277,6 +2283,9 @@
                                                 Colación desayuno cantidad: <span id="ColacionDes_CantidadNUT"></span>
                                             </p>
                                             <p>
+                                                N/A Comida: <span id="Comida_NANUT" class="Recordatorio"></span>
+                                            </p>
+                                            <p>
                                                 Comida hora: <span id="Comida_HoraNUT"></span>
                                             </p>
                                             <p>
@@ -2289,6 +2298,9 @@
                                                 Comida cantidad: <span id="Comida_CantidadNUT"></span>
                                             </p>
                                             <p>
+                                                N/A Colación comida: <span id="Colacion2_NANUT" class="Recordatorio"></span>
+                                            </p>
+                                            <p>
                                                 Colación comida hora: <span id="ColacionCom_HoraNUT"></span>
                                             </p>
                                             <p>
@@ -2299,6 +2311,9 @@
                                             </p>
                                             <p>
                                                 Colación comida cantidad: <span id="ColacionCom_CantidadNUT"></span>
+                                            </p>
+                                            <p>
+                                                N/A Cena: <span id="Cena_NANUT" class="Recordatorio"></span>
                                             </p>
                                             <p>
                                                 Cena hora: <span id="Cena_HoraNUT"></span>
@@ -5330,22 +5345,27 @@
                     $("#Edad_AlimentacionCNUT").text(data.Edad_AlimentacionC);
                     $("#Motivo_AlimentacionCNUT").text(data.Motivo_AlimentacionC);
                     //Recordatorio
+                    $("#Desayuno_NANUT").text(data.NA_Desayuno);
                     $("#Desayuno_HoraNUT").text(data.Desayuno_Hora);
                     $("#Desayuno_PreparacionNUT").text(data.Desayuno_Preparacion);
                     $("#Desayuno_AlimentoNUT").text(data.Desayuno_Alimento);
                     $("#Desayuno_CantidadNUT").text(data.Desayuno_Cantidad);
+                    $("#Colacion_NANUT").text(data.NA_Colacion);
                     $("#ColacionDes_HoraNUT").text(data.ColacionDes_Hora);
                     $("#ColacionDes_PreparacionNUT").text(data.ColacionDes_Preparacion);
                     $("#ColacionDes_AlimentoNUT").text(data.ColacionDes_Alimento);
                     $("#ColacionDes_CantidadNUT").text(data.ColacionDes_Cantidad);
+                    $("#Comida_NANUT").text(data.NA_Comida);
                     $("#Comida_HoraNUT").text(data.Comida_Hora);
                     $("#Comida_PreparacionNUT").text(data.Comida_Preparacion);
                     $("#Comida_AlimentoNUT").text(data.Comida_Alimento);
                     $("#Comida_CantidadNUT").text(data.Comida_Cantidad);
+                    $("#Colacion2_NANUT").text(data.NA_Colacion2);
                     $("#ColacionCom_HoraNUT").text(data.ColacionCom_Hora);
                     $("#ColacionCom_PreparacionNUT").text(data.ColacionCom_Preparacion);
                     $("#ColacionCom_AlimentoNUT").text(data.ColacionCom_Alimento);
                     $("#ColacionCom_CantidadNUT").text(data.ColacionCom_Cantidad);
+                    $("#Cena_NANUT").text(data.NA_Cena);
                     $("#Cena_HoraNUT").text(data.Cena_Hora);
                     $("#Cena_PreparacionNUT").text(data.Cena_Preparacion);
                     $("#Cena_AlimentoNUT").text(data.Cena_Alimento);
@@ -5602,6 +5622,23 @@
                     // Iterar a través de los elementos y aplicar la función
                     elementosEstado1.forEach(function (elemento) {
                         cambiarTexto1(elemento);
+                    });
+
+                    //SECCION *RECORDATORIO*
+                    // Obtener todos los elementos con la clase "estado"
+                    var elementosEstado2 = document.querySelectorAll(".Recordatorio");
+                    // Función para cambiar el texto basado en el contenido
+                    function cambiarTexto2(spanElement) {
+                        var contenido2 = spanElement.textContent; // Obtener el contenido del <span>
+                        if (contenido2 === "true") {
+                            spanElement.textContent = "No Aplica";
+                        } else if (contenido2 === "false") {
+                            spanElement.textContent = " ";
+                        }
+                    }
+                    // Iterar a través de los elementos y aplicar la función
+                    elementosEstado2.forEach(function (elemento) {
+                        cambiarTexto2(elemento);
                     });
 		        },
 		        error: function(ex) {

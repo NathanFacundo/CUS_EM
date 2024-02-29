@@ -571,8 +571,41 @@ namespace CUS.Areas.Admin.Controllers
             }
         }
 
+        public class RecordatorioPropiedades
+        {
+            public string chkDesayuno_NA_Recordatorio { get; set; }
+            public string Desayuno_Hora { get; set; }
+            public string Desayuno_Preparacion { get; set; }
+            public string Desayuno_Alimento { get; set; }
+            public string Desayuno_Cantidad { get; set; }
+
+            public string chkColacion_NA_Recordatorio { get; set; }
+            public string ColacionDes_Hora { get; set; }
+            public string ColacionDes_Preparacion { get; set; }
+            public string ColacionDes_Alimento { get; set; }
+            public string ColacionDes_Cantidad { get; set; }
+
+            public string chkComida_NA_Recordatorio { get; set; }
+            public string Comida_Hora { get; set; }
+            public string Comida_Preparacion { get; set; }
+            public string Comida_Alimento { get; set; }
+            public string Comida_Cantidad { get; set; }
+
+            public string chkColacion2_NA_Recordatorio { get; set; }
+            public string ColacionCom_Hora { get; set; }
+            public string ColacionCom_Preparacion { get; set; }
+            public string ColacionCom_Alimento { get; set; }
+            public string ColacionCom_Cantidad { get; set; }
+
+            public string chkCena_NA_Recordatorio { get; set; }
+            public string Cena_Hora { get; set; }
+            public string Cena_Preparacion { get; set; }
+            public string Cena_Alimento { get; set; }
+            public string Cena_Cantidad { get; set; }
+        }
+
         [HttpPost]
-        public ActionResult Recordatorio(Models.hc_NUT_Recordatorio HistoriaClinica, string expediente)
+        public ActionResult Recordatorio(RecordatorioPropiedades HistoriaClinica, string expediente)
         {
             try
             {
@@ -644,22 +677,67 @@ namespace CUS.Areas.Admin.Controllers
 
                     //Se crea la HC de esta sección/pestaña
                     Models.hc_NUT_Recordatorio Historia = new Models.hc_NUT_Recordatorio();
+
+                    if (HistoriaClinica.chkDesayuno_NA_Recordatorio == "on")
+                    {
+                        Historia.NA_Desayuno = true;
+                    }
+                    else
+                    {
+                        Historia.NA_Desayuno = false;
+                    }
                     Historia.Desayuno_Hora = HistoriaClinica.Desayuno_Hora;
                     Historia.Desayuno_Preparacion = HistoriaClinica.Desayuno_Preparacion;
                     Historia.Desayuno_Alimento = HistoriaClinica.Desayuno_Alimento;
                     Historia.Desayuno_Cantidad = HistoriaClinica.Desayuno_Cantidad;
+
+                    if (HistoriaClinica.chkColacion_NA_Recordatorio == "on")
+                    {
+                        Historia.NA_Colacion = true;
+                    }
+                    else
+                    {
+                        Historia.NA_Colacion = false;
+                    }
                     Historia.ColacionDes_Hora = HistoriaClinica.ColacionDes_Hora;
                     Historia.ColacionDes_Preparacion = HistoriaClinica.ColacionDes_Preparacion;
                     Historia.ColacionDes_Alimento = HistoriaClinica.ColacionDes_Alimento;
                     Historia.ColacionDes_Cantidad = HistoriaClinica.ColacionDes_Cantidad;
+
+                    if (HistoriaClinica.chkComida_NA_Recordatorio == "on")
+                    {
+                        Historia.NA_Comida = true;
+                    }
+                    else
+                    {
+                        Historia.NA_Comida = false;
+                    }
                     Historia.Comida_Hora = HistoriaClinica.Comida_Hora;
                     Historia.Comida_Preparacion = HistoriaClinica.Comida_Preparacion;
                     Historia.Comida_Alimento = HistoriaClinica.Comida_Alimento;
                     Historia.Comida_Cantidad = HistoriaClinica.Comida_Cantidad;
+
+                    if (HistoriaClinica.chkColacion2_NA_Recordatorio == "on")
+                    {
+                        Historia.NA_Colacion2 = true;
+                    }
+                    else
+                    {
+                        Historia.NA_Colacion2 = false;
+                    }
                     Historia.ColacionCom_Hora = HistoriaClinica.ColacionCom_Hora;
                     Historia.ColacionCom_Preparacion = HistoriaClinica.ColacionCom_Preparacion;
                     Historia.ColacionCom_Alimento = HistoriaClinica.ColacionCom_Alimento;
                     Historia.ColacionCom_Cantidad = HistoriaClinica.ColacionCom_Cantidad;
+
+                    if (HistoriaClinica.chkCena_NA_Recordatorio == "on")
+                    {
+                        Historia.NA_Cena = true;
+                    }
+                    else
+                    {
+                        Historia.NA_Cena = false;
+                    }
                     Historia.Cena_Hora = HistoriaClinica.Cena_Hora;
                     Historia.Cena_Preparacion = HistoriaClinica.Cena_Preparacion;
                     Historia.Cena_Alimento = HistoriaClinica.Cena_Alimento;
@@ -2058,22 +2136,27 @@ namespace CUS.Areas.Admin.Controllers
             public string Edad_AlimentacionC { get; set; }
             public string Motivo_AlimentacionC { get; set; }
             //Recordatorio	
+            public bool? NA_Desayuno { get; set; }
             public string Desayuno_Hora { get; set; }
             public string Desayuno_Preparacion { get; set; }
             public string Desayuno_Alimento { get; set; }
             public string Desayuno_Cantidad { get; set; }
+            public bool? NA_Colacion { get; set; }
             public string ColacionDes_Hora { get; set; }
             public string ColacionDes_Preparacion { get; set; }
             public string ColacionDes_Alimento { get; set; }
             public string ColacionDes_Cantidad { get; set; }
+            public bool? NA_Comida { get; set; }
             public string Comida_Hora { get; set; }
             public string Comida_Preparacion { get; set; }
             public string Comida_Alimento { get; set; }
             public string Comida_Cantidad { get; set; }
+            public bool? NA_Colacion2 { get; set; }
             public string ColacionCom_Hora { get; set; }
             public string ColacionCom_Preparacion { get; set; }
             public string ColacionCom_Alimento { get; set; }
             public string ColacionCom_Cantidad { get; set; }
+            public bool? NA_Cena { get; set; }
             public string Cena_Hora { get; set; }
             public string Cena_Preparacion { get; set; }
             public string Cena_Alimento { get; set; }
@@ -2281,7 +2364,7 @@ namespace CUS.Areas.Admin.Controllers
                     "EC.Viene, EC.DeseaLograr, EC.Precontemplacion, EC.Contemplacion, EC.Preparacion, EC.Mantenimiento, EC.Terminacion, " +
                     "DD.Comidas, DD.Desayuno, DD.Comidas2, DD.Cena, DD.ColacionMat, DD.ColacionVes, DD.TiempoConsumir, DD.Suplementos, DD.Especifica_Supl, DD.AlimentosDisgustan, DD.AlimentosFavoritos, DD.ConsumoAgua, DD.Especifica_ConsumoAgua, DD.HorasSuenio, DD.ActividadFisica, DD.Tipo_ActividadFisica, DD.Tiempo_ActividadFisica, DD.Frec_ActividadFisica, " +
                     "AI.LactanciaMaterna, AI.Tiempo_LactanciaM, AI.Sucedaneo, AI.Cual_Sucedaneo, AI.AlimentacionComp, AI.Edad_AlimentacionC, AI.Motivo_AlimentacionC, " +
-                    "R.Desayuno_Hora, R.Desayuno_Preparacion, R.Desayuno_Alimento, R.Desayuno_Cantidad, R.ColacionDes_Hora, R.ColacionDes_Preparacion, R.ColacionDes_Alimento, R.ColacionDes_Cantidad, R.Comida_Hora, R.Comida_Preparacion, R.Comida_Alimento, R.Comida_Cantidad, R.ColacionCom_Hora, R.ColacionCom_Preparacion, R.ColacionCom_Alimento, R.ColacionCom_Cantidad, R.Cena_Hora, R.Cena_Preparacion, R.Cena_Alimento, R.Cena_Cantidad, " +
+                    "R.NA_Desayuno, R.Desayuno_Hora, R.Desayuno_Preparacion, R.Desayuno_Alimento, R.Desayuno_Cantidad, R.NA_Colacion, R.ColacionDes_Hora, R.ColacionDes_Preparacion, R.ColacionDes_Alimento, R.ColacionDes_Cantidad, R.NA_Comida, R.Comida_Hora, R.Comida_Preparacion, R.Comida_Alimento, R.Comida_Cantidad, R.NA_Colacion2, R.ColacionCom_Hora, R.ColacionCom_Preparacion, R.ColacionCom_Alimento, R.ColacionCom_Cantidad, R.NA_Cena, R.Cena_Hora, R.Cena_Preparacion, R.Cena_Alimento, R.Cena_Cantidad, " +
                     "FA.Leche, FA.Frecuencia_Leche, FA.Verdura, FA.Frecuencia_Verdura, FA.Fruta, FA.Frecuencia_Fruta, FA.Cereales, FA.Frecuencia_Cereales, FA.Leguminosas, FA.Frecuencia_Leguminosas, FA.Carne, FA.Frecuencia_Carne, FA.Grasa, FA.Frecuencia_Grasa, FA.Azucar, FA.Frecuencia_Azucar, FA.BebidasAzucar, FA.Frecuencia_BebidasAzucar, FA.BebidasDiet, FA.Frecuencia_BebidasDiet, FA.BebidasAlt, FA.Frecuencia_BebidasAlt, FA.Cafe, FA.Frecuencia_Cafe, FA.Te, " +
                     "FA.Frecuencia_Te, FA.Cerveza, FA.Frecuencia_Cerveza, FA.ProductosPan, FA.Frecuencia_ProductosPan, FA.Confiteria, FA.Frecuencia_Confiteria, FA.Embutidos, FA.Frecuencia_Embutidos, FA.AlimentosEnla, FA.Frecuencia_AlimentosEnla, FA.Sopas, FA.Frecuencia_Sopas, FA.Verduras, FA.Frecuencia_Verduras, FA.ComidaRap, FA.Frecuencia_ComidaRap, FA.ComidaGras, FA.Frecuencia_ComidaGras, FA.ProductosChat, FA.Frecuencia_ProductosChat, FA.Consome, FA.Frecuencia_Consome, FA.Sal, " +
                     "FA.Frecuencia_Sal, FA.sucedaneo, FA.Frecuencia_Sucedaneo, FA.Otros, FA.Frecuencia_Otros, " +

@@ -725,7 +725,11 @@
                             <div class="card-body">
                                 <form id="F_Recordatorio">
 
-                                    <h4>Desayuno</h4>
+                                    <h4>
+                                        <label for="chkDesayuno"><strong>Desayuno | </strong> No Aplica</label>
+                                        <input type="checkbox" id="chkDesayuno_NA_Recordatorio" name="chkDesayuno_NA_Recordatorio" style="zoom: 1.5; ">
+                                    </h4>
+
                                     <div class="row">
                                         <div class="col-md-2">
                                             <div class="form-group">
@@ -753,7 +757,11 @@
                                         </div>
                                     </div>
 
-                                    <h4>Colación (Después del desayuno)</h4>
+                                    <h4>
+                                        <label for="chkColacion"><strong>Colación (Después del desayuno) | </strong> No Aplica</label>
+                                        <input type="checkbox" id="chkColacion_NA_Recordatorio" name="chkColacion_NA_Recordatorio" style="zoom: 1.5; ">
+                                    </h4>
+
                                     <div class="row">
                                         <div class="col-md-2">
                                             <div class="form-group">
@@ -781,7 +789,11 @@
                                         </div>
                                     </div>
 
-                                    <h4>Comida</h4>
+                                    <h4>
+                                        <label for="chkComida"><strong>Comida | </strong> No Aplica</label>
+                                        <input type="checkbox" id="chkComida_NA_Recordatorio" name="chkComida_NA_Recordatorio" style="zoom: 1.5; ">
+                                    </h4>
+
                                     <div class="row">
                                         <div class="col-md-2">
                                             <div class="form-group">
@@ -809,7 +821,11 @@
                                         </div>
                                     </div>
 
-                                    <h4>Colación (Después de la comida)</h4>
+                                    <h4>
+                                        <label for="chkColacion2"><strong>Colación (Después de la comida) | </strong> No Aplica</label>
+                                        <input type="checkbox" id="chkColacion2_NA_Recordatorio" name="chkColacion2_NA_Recordatorio" style="zoom: 1.5; ">
+                                    </h4>
+
                                     <div class="row">
                                         <div class="col-md-2">
                                             <div class="form-group">
@@ -837,7 +853,11 @@
                                         </div>
                                     </div>
 
-                                    <h4>Cena</h4>
+                                    <h4>
+                                        <label for="chkCena"><strong>Cena | </strong> No Aplica</label>
+                                        <input type="checkbox" id="chkCena_NA_Recordatorio" name="chkCena_NA_Recordatorio" style="zoom: 1.5; ">
+                                    </h4>
+
                                     <div class="row">
                                         <div class="col-md-2">
                                             <div class="form-group">
@@ -2309,7 +2329,6 @@
 <script>
 
     $(document).ready(function () {
-
         //Ocultamos div donde se muestra la info del px ya que aún no se ha buscado
         $("#InfoPX").hide();
 
@@ -2351,7 +2370,6 @@
         } else {
             $("#Mayor60anios_EvAn").hide();
         }
-
         //Embarazada
         var SexoPX = $("#Sex").text();
         if (SexoPX !== "Mujer" && SexoPX !== "Femenino") {
@@ -2387,23 +2405,6 @@
             }
         });
 
-        /*
-        // #region BOTONES de Guardar HC
-        $("#Btn_ResultadoLab").css("display", "none");
-        $("#Btn_EtapaCam").css("display", "none");
-        $("#Btn_DatosDiet").css("display", "none");
-        $("#Btn_AlimentacionIn").css("display", "none");
-        $("#Btn_Recordatorio").css("display", "none");
-        $("#Btn_FrecuenciaAlimen").css("display", "none");
-        $("#Btn_EvaluacionAntro").css("display", "none");
-        $("#Btn_EducacionIn").css("display", "none");
-        $("#Btn_ImpresionDiag").css("display", "none");
-        $("#Btn_Plan").css("display", "none");
-        $("#Btn_Pronostico").css("display", "none");
-        $("#Btn_Otros").css("display", "none");
-        // #endregion
-        */
-
         // #region PESTAÑAS: Elementos de la H.C. que nacerán ocultos y se mostrarán hasta que se seleccione o se haga alguna acción
         //ResultadosLab
         $("#EspResultado").css("display", "none");
@@ -2422,15 +2423,75 @@
         $("#EspPadecimientoActual").css("display", "none");
         // #endregion
 
-        //let timerInterval
-        //Swal.fire({
-        //    title: 'Busque al px. y selecciónalo para crearle la h.c.',
-        //    timer: 3500,
-        //    timerProgressBar: true,
-        //    willClose: () => {
-        //        clearInterval(timerInterval)
-        //    }
-        //});
+        $("#chkDesayuno_NA_Recordatorio").change(function () {
+            if ($(this).is(":checked")) {
+                $("#Desayuno_Hora").css("display", "none");
+                $("#Desayuno_Preparacion").css("display", "none");
+                $("#Desayuno_Alimento").css("display", "none");
+                $("#Desayuno_Cantidad").css("display", "none");
+            } else {
+                $("#Desayuno_Hora").css("display", "");
+                $("#Desayuno_Preparacion").css("display", "");
+                $("#Desayuno_Alimento").css("display", "");
+                $("#Desayuno_Cantidad").css("display", "");
+            }
+        });
+
+        $("#chkColacion_NA_Recordatorio").change(function () {
+            if ($(this).is(":checked")) {
+                $("#ColacionDes_Hora").css("display", "none");
+                $("#ColacionDes_Preparacion").css("display", "none");
+                $("#ColacionDes_Alimento").css("display", "none");
+                $("#ColacionDes_Cantidad").css("display", "none");
+            } else {
+                $("#ColacionDes_Hora").css("display", "");
+                $("#ColacionDes_Preparacion").css("display", "");
+                $("#ColacionDes_Alimento").css("display", "");
+                $("#ColacionDes_Cantidad").css("display", "");
+            }
+        });
+
+        $("#chkComida_NA_Recordatorio").change(function () {
+            if ($(this).is(":checked")) {
+                $("#Comida_Hora").css("display", "none");
+                $("#Comida_Preparacion").css("display", "none");
+                $("#Comida_Alimento").css("display", "none");
+                $("#Comida_Cantidad").css("display", "none");
+            } else {
+                $("#Comida_Hora").css("display", "");
+                $("#Comida_Preparacion").css("display", "");
+                $("#Comida_Alimento").css("display", "");
+                $("#Comida_Cantidad").css("display", "");
+            }
+        });
+
+        $("#chkColacion2_NA_Recordatorio").change(function () {
+            if ($(this).is(":checked")) {
+                $("#ColacionCom_Hora").css("display", "none");
+                $("#ColacionCom_Preparacion").css("display", "none");
+                $("#ColacionCom_Alimento").css("display", "none");
+                $("#ColacionCom_Cantidad").css("display", "none");
+            } else {
+                $("#ColacionCom_Hora").css("display", "");
+                $("#ColacionCom_Preparacion").css("display", "");
+                $("#ColacionCom_Alimento").css("display", "");
+                $("#ColacionCom_Cantidad").css("display", "");
+            }
+        });
+
+        $("#chkCena_NA_Recordatorio").change(function () {
+            if ($(this).is(":checked")) {
+                $("#Cena_Hora").css("display", "none");
+                $("#Cena_Preparacion").css("display", "none");
+                $("#Cena_Alimento").css("display", "none");
+                $("#Cena_Cantidad").css("display", "none");
+            } else {
+                $("#Cena_Hora").css("display", "");
+                $("#Cena_Preparacion").css("display", "");
+                $("#Cena_Alimento").css("display", "");
+                $("#Cena_Cantidad").css("display", "");
+            }
+        });
 
     });
 
