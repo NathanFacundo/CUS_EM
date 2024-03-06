@@ -1266,6 +1266,97 @@ namespace CUS.Areas.Admin.Controllers
             }
         }
 
+        [HttpPost]
+        public ActionResult Otros(Models.hc_PS_Otros HistoriaClinica, string expediente)
+        {
+            try
+            {
+                var fecha = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
+                var fechaDT = DateTime.Parse(fecha);
+
+                //Buscamos al px del que se le quiere hacer la H.C.
+                var paciente = (from a in db.Paciente
+                                where a.Expediente == expediente
+                                select a).FirstOrDefault();
+
+                //Buscamos si a ese px se le acaba de crear registro en la tbl HistoriaClinica
+                if (paciente != null)
+                {
+                    var fechaUltimoRegistro = (from a in db.HistoriaClinica
+                                               where a.Id_Paciente == paciente.Id
+                                               select a).
+                              OrderByDescending(r => r.FechaRegistroHC)
+                              .FirstOrDefault();
+
+                    bool pacienteTieneRegistroEnUltimas3Horas;
+                    DateTime fechaLimite = DateTime.Now;
+                    //si NO existe registro en la bd en la tbl HistoriaClinica por default 'pacienteTieneRegistroEnUltimas3Horas' será null,
+                    //quiere decir que se creará un registro nuevo
+                    if (fechaUltimoRegistro == null)
+                    {
+                        pacienteTieneRegistroEnUltimas3Horas = false;
+                    }
+                    else
+                    {
+                        DateTime fechaActual = DateTime.Now;
+                        DateTime fechaL = fechaActual.AddHours(-1.5);
+                        //utilizar fechaLimite para verificar si el paciente tiene un registro dentro de las últimas 3 horas y tambien validar el TIPO DE HISTORIA
+                        pacienteTieneRegistroEnUltimas3Horas = db.HistoriaClinica
+                        .Any(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC >= fechaL && r.FechaRegistroHC <= fechaActual && r.TipoHistoria == "Psicología");
+                    }
+
+                    var Id_claveHC = "";
+                    if (pacienteTieneRegistroEnUltimas3Horas)// El paciente ya tiene un registro en las últimas 3 horas
+                    {
+                        //Obtenemos los datos del registro del px
+                        var registroReciente = db.HistoriaClinica
+                                                .Where(r => r.Id_Paciente == paciente.Id && r.FechaRegistroHC <= fechaLimite && r.FechaRegistroHC <= fechaDT)
+                                                .OrderByDescending(r => r.FechaRegistroHC)
+                                                .FirstOrDefault();
+
+                        Id_claveHC = registroReciente.Clave_hc_px;
+                    }
+                    else// No hay registro reciente, puedes guardar el nuevo registro.
+                    {
+                        string claveHC = buscaHisotriaClinica(expediente);
+                        Id_claveHC = claveHC;
+                    }
+
+                    //                                                                              **EDITAR HC**
+                    //Cuando el dr. edita la sección de la hc.
+
+                    //Buscamos si la 'Id_claveHC' que se insertará ya existe en la tabla de la hc
+                    var hcHecha = (from a in hcMed.hc_PS_Otros
+                                   where a.Clave_hc_px == Id_claveHC
+                                   where a.Id_Paciente == paciente.Id
+                                   select a).FirstOrDefault();
+
+                    //Si ya existe la eliminaremos para que se cree una nueva (sobreescribir)
+                    if (hcHecha != null)
+                    {
+                        hcMed.Database.ExecuteSqlCommand("DELETE FROM hc_PS_Otros WHERE Id= '" + hcHecha.Id + "';");
+                    }
+
+                    //Se crea la HC de esta sección/pestaña
+                    Models.hc_PS_Otros Historia = new Models.hc_PS_Otros();
+                    Historia.Interconsulta = HistoriaClinica.Interconsulta;
+                    Historia.PadecimientoActual = HistoriaClinica.PadecimientoActual;
+                    Historia.Especifica_PadecimientoActual = HistoriaClinica.Especifica_PadecimientoActual;
+                    Historia.ProximaCita = HistoriaClinica.ProximaCita;
+
+                    Historia.Id_Paciente = paciente.Id;
+                    Historia.Clave_hc_px = Id_claveHC;
+                    hcMed.hc_PS_Otros.Add(Historia);
+                    hcMed.SaveChanges();
+                }
+                return Json(new { MENSAJE = "Succe: " }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(new { MENSAJE = "Error: Error de sistema: " + ex.Message }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
         #endregion
 
         public class Propiedades_HC
@@ -1364,6 +1455,11 @@ namespace CUS.Areas.Admin.Controllers
             public string tipo_diagnostico5 { get; set; }
             //IndicacionTerapeutica
             public string Plan { get; set; }
+            //Otros
+            public string Interconsulta { get; set; }
+            public string PadecimientoActual { get; set; }
+            public string Especifica_PadecimientoActual { get; set; }
+            public string ProximaCita { get; set; }
         }
 
         //********      Función para buscar el detalle de la H.C. en el MODAL
@@ -1384,7 +1480,8 @@ namespace CUS.Areas.Admin.Controllers
                     "AA.Conductual, AA.Emocional, AA.RelacionesIn, AA.Neurologico, AA.Academico, " +
                     "SIG.Signo, SIG.Esp_Signo, " +
                     "DP.Diagnostico1, DP.Diagnostico2, DP.Diagnostico3, DP.Diagnostico4, DP.Diagnostico5, DP.LigadoEvolucion, DP.Favorable, DP.Desfavorable, DP.tipo_diagnostico1, DP.tipo_diagnostico2, DP.tipo_diagnostico3, DP.tipo_diagnostico4, DP.tipo_diagnostico5, " +
-                    "IT.[Plan] " +
+                    "IT.[Plan], " +
+                    "O.Interconsulta, O.PadecimientoActual, O.Especifica_PadecimientoActual, O.ProximaCita " +
                                     "FROM HistoriaClinica HCli " +
                                     "LEFT JOIN hc_PS_Familia F ON F.Clave_hc_px = HCli.Clave_hc_px " +
                                     "LEFT JOIN hc_PS_AtencionPsicologica AP ON AP.Clave_hc_px = HCli.Clave_hc_px " +
@@ -1394,6 +1491,7 @@ namespace CUS.Areas.Admin.Controllers
                                     "LEFT JOIN hc_PS_SignosAlarma SIG ON SIG.Clave_hc_px = HCli.Clave_hc_px " +
                                     "LEFT JOIN hc_PS_DiagnosticoPres DP ON DP.Clave_hc_px = HCli.Clave_hc_px " +
                                     "LEFT JOIN hc_PS_IndicacionTerapeutica IT ON IT.Clave_hc_px = HCli.Clave_hc_px " +
+                                    "LEFT JOIN hc_PS_Otros O ON O.Clave_hc_px = HCli.Clave_hc_px " +
                                     "WHERE HCli.Clave_hc_px = '" + Clave_hc_px + "' ";
 
                 var result = hcMed.Database.SqlQuery<Propiedades_HC>(query);

@@ -317,6 +317,9 @@
                         <li class="nav-item text-left">
                             <a class="nav-link" href="#IndicacionTera" data-toggle="tab">Indicación <br />Terapéutica</a>
                         </li>
+                        <li class="nav-item text-left">
+                            <a class="nav-link" href="#Otros" data-toggle="tab">Otros<br />  </a>
+                        </li>
                     </ul>
                 </nav>
                 <div class="tab-content pt-0">
@@ -847,7 +850,7 @@
                                             <div class="row">
                                                 <div class="form-group" id="EspOtro">
                                                     <label>Especifique opción Otro</label>
-                                                    <input type="text" class="form-control" id="ParteTiempo_OtraEsp" name="ParteTiempo_OtraEsp" placeholder="Otro" maxlength="299" style="width: 600px;" >
+                                                    <input type="text" class="form-control" id="ParteTiempo_OtraEsp" name="ParteTiempo_OtraEsp" placeholder="Otro" maxlength="299" style="width: 600px;">
                                                 </div>
                                             </div>
                                         </div>
@@ -1155,6 +1158,64 @@
                         </div>
                     </div>
 
+                    <div id="Otros" class="tab-pane fade">
+                        <div class="card card-table mb-0">
+                            <div class="card-body">
+                                <form id="F_otros">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>¿Requiere interconsulta?</label>
+                                            <select class="form-control showoptions" id="Interconsulta" name="Interconsulta">
+                                                <option value="">Seleccionar</option>
+                                                <option value="Si">Si</option>
+                                                <option value="No">No</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6" id="">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>¿Se proporcionan indicaciones de urgencias... relacionados con el padecimiento actual?</label>
+                                            <select class="form-control showoptions" id="PadecimientoActual" name="PadecimientoActual">
+                                                <option value="">Seleccionar</option>
+                                                <option value="Si">Si</option>
+                                                <option value="No aplica">No aplica</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6" id="EspPadecimientoActual">
+                                            <div class="form-group">
+                                                <label>Especifique</label>
+                                                <input type="text" class="form-control" id="Especifica_PadecimientoActual" name="Especifica_PadecimientoActual" placeholder="" maxlength="4999">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Próxima cita</label>
+                                            <select class="form-control showoptions" id="ProximaCita" name="ProximaCita">
+                                                <option value="">Seleccionar</option>
+                                                <option value="1 a 3 dias">1 a 3 dias</option>
+                                                <option value="3 a 7">3 a 7</option>
+                                                <option value="1 semana">1 semana</option>
+                                                <option value="2 semana">2 semana</option>
+                                                <option value="3 semana">3 semana</option>
+                                                <option value="1 mes">1 mes</option>
+                                                <option value="más de un mes">más de un mes</option>
+                                                <option value="3 meses">3 meses</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <button id="Btn_Otros" type="submit" class="btn btn-primary">Guardar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -1198,34 +1259,13 @@
             }
         });
 
-        /*
-        // #region Botones de Guardar HC
-        $("#Btn_Familia").css("display", "none");
-        $("#Btn_AtencionPsi").css("display", "none");
-        $("#Btn_Motivo").css("display", "none");
-        $("#Btn_Sintomatologia").css("display", "none");
-        $("#Btn_AreasAtencion").css("display", "none");
-        $("#Btn_SignosAlarma").css("display", "none");
-        $("#Btn_DiagnosticoPres").css("display", "none");
-        $("#Btn_IndicacionTera").css("display", "none");
-        // #endregion
-
-        let timerInterval
-        Swal.fire({
-            title: 'Busque al px. y selecciónalo para crearle la h.c.',
-            timer: 3500,
-            timerProgressBar: true,
-            willClose: () => {
-                clearInterval(timerInterval)
-            }
-        });
-        */
-
         // #region Pestañas: Elementos de la H.C. que nacerán ocultos y se mostrarán hasta que se seleccione o se haga alguna acción
         //Sintomatologia Actual
         $("#EspOtro").css("display", "none");
         //Signos de Alarma
         $("#Esp_Otra_Signosalarma").css("display", "none");
+        //Otros
+        $("#EspPadecimientoActual").css("display", "none");
         // #endregion
 
     });
@@ -1247,6 +1287,16 @@
             $("#Esp_Otra_Signosalarma").css("display", "");
         } else {
             $("#Esp_Otra_Signosalarma").css("display", "none");
+        }
+    });
+    //Otros
+    $("#PadecimientoActual").change(function () {
+        var combo = document.getElementById("PadecimientoActual");
+        var selected = combo.options[combo.selectedIndex].text;
+        if (selected == "Si") {
+            $("#EspPadecimientoActual").css("display", "");
+        } else {
+            $("#EspPadecimientoActual").css("display", "none");
         }
     });
     // #endregion
@@ -1709,7 +1759,34 @@
             event.preventDefault();
         }
     });
-
+    //Otros
+    $("#Btn_Otros").click(function () {
+        let data = $("#F_otros").serialize();
+        var expediente = $("#Exp").text();
+        if (expediente) {
+            $.post("@Url.Action("Otros", "HistoriaPsicologia")?expediente=" + expediente, data).done(function (response) {
+                if (response.MENSAJE.substring(0, 6) == "Succe:") {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Sección guardada',
+                        showConfirmButton: false,
+                        timer: 1600
+                    })
+                    /*$("#Btn_Otros").css("display", "none");*/
+                }
+                if (response.MENSAJE.substring(0, 6) == "Error:") {
+                    Swal.fire({
+                        icon: 'error',
+                        title: '¡Error!',
+                        text: response.MENSAJE.substring(7),
+                    });
+                }
+            }).fail(function (response) {
+                console.log(response);
+            });
+            event.preventDefault();
+        }
+    });
     // #endregion
 
 </script>
