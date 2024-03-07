@@ -2100,6 +2100,28 @@
                                             </p>
                                         </div>
                                     </div>
+                                    <hr />
+                                    <p>
+                                        <h4 class="collapsed" data-toggle="collapse" data-target="#collapseO" aria-expanded="false" aria-controls="collapseO">
+                                            Otros <i class="fa fa-plus-circle"></i>
+                                        </h4>
+                                    </p>
+                                    <div class="collapse" id="collapseO">
+                                        <div class="card card-body">
+                                            <p>
+                                                Interconsulta: <span id="InterconsultaPSI"></span>
+                                            </p>
+                                            <p>
+                                                Padecimiento actual: <span id="PadecimientoActualPSI"></span>
+                                            </p>
+                                            <p>
+                                                Especifica padecimiento actual: <span id="Especifica_PadecimientoActualPSI"></span>
+                                            </p>
+                                            <p>
+                                                Próxima cita: <span id="ProximaCitaPSI"></span>
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div id="Nutricion">
@@ -5265,6 +5287,11 @@
                     
                     //Plan
                     $("#PlanPsPSI").text(data.Plan);
+                    //Otros
+                    $("#InterconsultaPSI").text(data.Interconsulta);
+                    $("#PadecimientoActualPSI").text(data.PadecimientoActual);
+                    $("#Especifica_PadecimientoActualPSI").text(data.Especifica_PadecimientoActual);
+                    $("#ProximaCitaPSI").text(data.ProximaCita);
                     // #endregion
 
                     // Obtener todos los elementos con la clase "estado"
