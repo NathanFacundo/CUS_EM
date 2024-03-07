@@ -10,6 +10,7 @@ using System.Web.Mvc;
 namespace CUS.Areas.Admin.Controllers
 {
 
+
     public class RecetasController : Controller
     {
 
@@ -204,6 +205,7 @@ namespace CUS.Areas.Admin.Controllers
                     db.Entry(registroReciente).State = EntityState.Modified;
                     db.SaveChanges();
 
+                    TempData["idreceta"] = registroReciente.id;
                     TempData["message_success"] = "Medicamento agregado con éxito";
                 }
             }
@@ -214,6 +216,48 @@ namespace CUS.Areas.Admin.Controllers
 
             return Redirect(Request.UrlReferrer.ToString());
 
+
+        }
+
+
+
+        public JsonResult DetalleReceta(int? idreceta)
+        {
+            
+            
+            var recetadetalle = (from a in db.Recetas
+                        join uniAfil in db.UnidadAfiliacion on a.unidad equals uniAfil.Id into uniAfilX
+                        from uniAfilIn in uniAfilX.DefaultIfEmpty()
+                        join usuario in db.AspNetUsers on a.usuario equals usuario.UserName into usuarioX
+                        from usuarioIn in usuarioX.DefaultIfEmpty()
+                        where a.id == idreceta
+                        select new
+                        {
+
+                            idreceta = a.id,
+                            expediente = a.expediente,
+                            unidad = uniAfilIn.NombreUnidad,
+                            medico = usuarioIn.Name
+
+                        }).FirstOrDefault();
+
+
+            var fecha = DateTime.Now.AddHours(-6).ToString("yyyy-MM-ddTHH:mm:ss.fff");
+            var fechaDT = DateTime.Parse(fecha);
+
+            //Buscar signos vitales de hoy
+            var signosvit = (from a in db.SignosVitales
+                             where a.expediente == recetadetalle.expediente
+                             where a.fecha >= fechaDT
+                             select new
+                             {
+                                talla = a.talla,
+                                peso = a.peso
+                             }).FirstOrDefault();
+
+            var resultdata = new { data1 = recetadetalle, data2 = signosvit };
+
+            return new JsonResult { Data = resultdata, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
 
         }
 

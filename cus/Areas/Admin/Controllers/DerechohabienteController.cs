@@ -81,6 +81,7 @@ namespace CUS.Areas.Admin.Controllers
                 //Buscamos si el px ya está registrado
                 var PxYaRegistrado1 = (from a in db.Paciente
                                        where a.CURP == paciente.CURP
+                                       where a.PxEliminado != true
                                        select a).FirstOrDefault();
 
                 //Si no se encontró px registrado con CURP ORIGINAL
