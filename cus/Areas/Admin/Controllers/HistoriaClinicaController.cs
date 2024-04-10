@@ -272,7 +272,7 @@ namespace CUS.Areas.Admin.Controllers
                     Historia.Ocupacio = HistoriaClinica.Ocupacio;
                     Historia.TipoTrab = HistoriaClinica.TipoTrab;
                     Historia.RiesgoSos = HistoriaClinica.RiesgoSos;
-                    Historia.ServicioSal = HistoriaClinica.ServicioSal;
+                    Historia.ServicioSal = HistoriaClinica.ServicioSal; 
 
                     Historia.Id_Paciente = paciente.Id;
                     //Historia.Id_HistoriaClinica = Id_claveHC;
