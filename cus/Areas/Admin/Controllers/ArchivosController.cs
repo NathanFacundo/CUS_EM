@@ -215,7 +215,7 @@ namespace CUS.Areas.Admin.Controllers
             var notas = (from ne in db.Archivos
                          join pa in db.Paciente on ne.expediente equals pa.Expediente into pax
                          from paIn in pax.DefaultIfEmpty()
-                         where ne.usuario == username
+                         //where ne.usuario == username
                          where ne.expediente == expediente
                          select new
                          {
@@ -282,11 +282,11 @@ namespace CUS.Areas.Admin.Controllers
 
                 if(archivoSplit[1] == "pdf" || archivoSplit[1] == "docx")
                 {
-                    arch = "<a target='_blank' href='../Content/" + archivo.tipo_archivo + "/" + archivo.expediente + "/" + archivo.archivo + "' class='btn btn-primary'>Ver archivo</a>";
+                    arch = "<a target='_blank' href='http://148.234.10.14/custest/Content/" + archivo.tipo_archivo + "/" + archivo.expediente + "/" + archivo.archivo + "' class='btn btn-primary'>Ver archivo</a>";
                 }
                 else
                 {
-                    arch = "<a target='_blank' href='../Content/" + archivo.tipo_archivo + "/" + archivo.expediente + "/" + archivo.archivo + "' class='btn btn-primary'>Ver archivo</a>";
+                    arch = "<a target='_blank' href='http://148.234.10.14/custest/Content/" + archivo.tipo_archivo + "/" + archivo.expediente + "/" + archivo.archivo + "' class='btn btn-primary'>Ver archivo</a>";
                 }
 
                 rst = new

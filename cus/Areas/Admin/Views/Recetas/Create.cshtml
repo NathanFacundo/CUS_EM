@@ -378,7 +378,8 @@
                 </div>
                 <div class="row m-0 pt-2">
                     <div class="col-7 p-0">
-                        <h5><b>Nombre de paciente:</b>  @Model.Nombre @Model.PrimerApellido @Model.SegundoApellido</h5>
+                        <h5><b>Nombre de paciente:</b>  @Model.Nombre @Model.PrimerApellido @Model.SegundoApellido  | <b>Edad</b> @edad  </h5>
+                        <h5><b>Fecha de Nacimiento:</b>  @Model.FechaNacimiento | <b>Sexo:</b> @Model.Sexo  </h5>
                     </div>
                     <div class="col-5 text-right p-0">
                         <h5><b>Expediente:</b> @Model.Expediente</h5>
@@ -802,7 +803,28 @@
 {
 <script>
 
-     $(document).ready(function () {
+    $(document).ready(function () {
+
+        //Buscr info de la receta
+        var idreceta = "@TempData["idreceta"]";
+
+        alert(idreceta);
+
+        $.ajax({
+            url: '@Url.Action("DetalleReceta", "Recetas")',
+            dataType: "json",
+            data: {
+                idreceta: idreceta,
+            },
+            async: false,
+            success: function (data) {
+                console.log(data);
+                $('.putUniversidad').text(data.unidad);
+                $('.putUserName').text(data.medico);
+            },error: function (xhr, status, error) {
+
+            }
+        });
 
          $('#resumenRecetaModal').modal("show");
 

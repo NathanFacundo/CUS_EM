@@ -116,7 +116,89 @@
                                             <div class="form-group card-label">
                                                 @Html.LabelFor(model => model.FechaNacimiento, "Fecha de Nacimiento", htmlAttributes: new { @class = "control-label" })
 
-                                                @Html.EditorFor(model => model.FechaNacimiento, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.EditorFor(model => model.FechaNacimiento, new { htmlAttributes = new { @class = "form-control", @type = "hidden", @id = "FechaNacimiento", @required = "required" } })
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <select name="dia" id="dia" class="form-control llenarcurp fnac">
+                                                            <option disabled selected>Día</option>
+                                                            @for (int i = 1; i <= 31; i++)
+                                                            {
+                                                                if (i < 10)
+                                                                {
+                                                                    var num = "0" + i;
+                                                                    if (Model.FechaNacimiento.Day == i)
+                                                                    {
+                                                                        <option value="@num" selected>@num</option>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <option value="@num">@num</option>
+                                                                    }
+                                                                }
+                                                                else
+                                                                {
+                                                                    if (Model.FechaNacimiento.Day == i)
+                                                                    {
+                                                                        <option value="@i" selected>@i</option>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <option value="@i">@i</option>
+                                                                    }
+
+                                                                }
+                                                            }
+                                                            </select>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <select name="mes" id="mes" class="form-control llenarcurp fnac">
+                                                            <option disabled selected>Mes</option>
+                                                            @for (int i = 1; i <= 12; i++)
+                                                            {
+                                                                if (i < 10)
+                                                                {
+                                                                    var num = "0" + i;
+                                                                    if (Model.FechaNacimiento.Month == i)
+                                                                    {
+                                                                        <option value="@i" selected>@i</option>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <option value="@num">@num</option>
+                                                                    }
+                                                                }
+                                                                else
+                                                                { 
+                                                                    if (Model.FechaNacimiento.Month == i)
+                                                                    {
+                                                                            <option value="@i" selected>@i</option>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <option value="@i">@i</option>
+                                                                    }
+                                                                }
+
+                                                            }
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <select name="anio" id="anio" class="form-control llenarcurp fnac">
+                                                            <option disabled selected>Año</option>
+                                                            @for (int i = 1900; i <= 2024; i++)
+                                                            {
+                                                                if (Model.FechaNacimiento.Year == i)
+                                                                {
+                                                                    <option value="@i" selected>@i</option>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <option value="@i">@i</option>
+                                                                }
+                                                            }
+                                                        </select>
+                                                    </div>
+                                                </div>
                                                 @Html.ValidationMessageFor(model => model.FechaNacimiento, "", new { @class = "text-danger" })
                                             </div>
                                         </div>
@@ -630,5 +712,19 @@
         window.location = encodeURI('@Url.Action("Index", "Derechohabiente")')
     }
 
+</script>
+
+
+<script>
+    $(document).ready(function () {
+        $(".fnac").change(function () {
+            var dia = $('#dia').val();
+            var mes = $('#mes').val();
+            var anio = $('#anio').val();
+
+            $('#FechaNacimiento').val(anio + '-' + mes + '-' + dia);
+
+        });
+    });
 </script>
 
