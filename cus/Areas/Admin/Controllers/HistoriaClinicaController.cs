@@ -256,7 +256,6 @@ namespace CUS.Areas.Admin.Controllers
                     Historia.estadocivil = HistoriaClinica.estadocivil;
                     Historia.numeropersonas = HistoriaClinica.numeropersonas;
                     Historia.numerohabitaciones = HistoriaClinica.numerohabitaciones;
-                    Historia.Ocupacio = HistoriaClinica.Ocupacio;
                     Historia.hacinamiento = HistoriaClinica.hacinamiento;
                     Historia.escolaridad = HistoriaClinica.escolaridad;
                     Historia.GradoEsc = HistoriaClinica.GradoEsc;
