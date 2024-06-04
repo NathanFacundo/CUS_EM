@@ -263,6 +263,19 @@ namespace CUS.Areas.Admin.Controllers
                     Historia.PromedioEsc = HistoriaClinica.PromedioEsc;
                     Historia.reprobado = HistoriaClinica.reprobado;
                     Historia.EspecifiqueReprobado = HistoriaClinica.EspecifiqueReprobado;
+
+                    Historia.Desercion = HistoriaClinica.Desercion;
+                    Historia.Guarderia = HistoriaClinica.Guarderia;
+                    Historia.Cuidador = HistoriaClinica.Cuidador;
+                    Historia.Problemas = HistoriaClinica.Problemas;
+                    Historia.ProblemasMaestros = HistoriaClinica.ProblemasMaestros;
+                    Historia.ProblemasMaestros = HistoriaClinica.ProblemasMaestros;
+                    Historia.Ocupacio = HistoriaClinica.Ocupacio;
+                    Historia.TipoTrab = HistoriaClinica.TipoTrab;
+                    Historia.RiesgoSos = HistoriaClinica.RiesgoSos;
+                    Historia.ServicioSal = HistoriaClinica.ServicioSal;
+
+
                     Historia.Id_Paciente = paciente.Id;
                     //Historia.Id_HistoriaClinica = Id_claveHC;
                     Historia.Clave_hc_px = Id_claveHC;

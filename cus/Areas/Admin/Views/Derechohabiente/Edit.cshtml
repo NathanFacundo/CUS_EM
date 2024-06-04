@@ -148,7 +148,7 @@
 
                                                                 }
                                                             }
-                                                            </select>
+                                                        </select>
                                                     </div>
                                                     <div class="col-md-4">
                                                         <select name="mes" id="mes" class="form-control llenarcurp fnac">
@@ -168,10 +168,10 @@
                                                                     }
                                                                 }
                                                                 else
-                                                                { 
+                                                                {
                                                                     if (Model.FechaNacimiento.Month == i)
                                                                     {
-                                                                            <option value="@i" selected>@i</option>
+                                                                        <option value="@i" selected>@i</option>
                                                                     }
                                                                     else
                                                                     {
@@ -654,11 +654,11 @@
                         </div>
 
                         @*<div class="row">
-                            <div class="submit-section submit-btn-bottom">
-                                <button type="submit" class="btn bg-success submit-btn" id="">Actualizar PX</button>
-                                <button onclick="BtnCancelar()" class="btn btn-danger submit-btn">Cancelar</button>
-                            </div>
-                        </div>*@
+                                <div class="submit-section submit-btn-bottom">
+                                    <button type="submit" class="btn bg-success submit-btn" id="">Actualizar PX</button>
+                                    <button onclick="BtnCancelar()" class="btn btn-danger submit-btn">Cancelar</button>
+                                </div>
+                            </div>*@
                     </div>
                 </div>
             </div>
@@ -727,4 +727,61 @@
         });
     });
 </script>
+
+
+
+<script>
+    $(".fnac").change(function () {
+
+        if ($('#dia').val() && $('#mes').val() && $('#anio').val()) {
+            // Obtén la fecha de nacimiento del usuario
+            const anioNacimiento = parseInt($('#anio').val());
+            const mesNacimiento = parseInt($('#mes').val());
+            const diaNacimiento = parseInt($('#dia').val());
+
+            // Obtiene la fecha actual
+            const fechaActual = new Date();
+
+            // Obtiene el año, mes y día actual
+            const anioActual = fechaActual.getFullYear();
+            const mesActual = fechaActual.getMonth() + 1; // Los meses en JavaScript van de 0 a 11
+            const diaActual = fechaActual.getDate();
+
+            // Calcula la edad
+            let edad = anioActual - anioNacimiento;
+
+            // Verifica si aún no ha llegado el cumpleaños de este año
+            if (mesActual < mesNacimiento || (mesActual === mesNacimiento && diaActual < diaNacimiento)) {
+                edad--;
+            }
+
+            //alert(edad);
+
+            $('#Edad').val(edad);
+
+            if (edad < 18) {
+                $("#Tutor1").css("display", "");
+                $("#Tutor2").css("display", "");
+                $("#Tutor3").css("display", "");
+            } else {
+                $("#Tutor1").css("display", "none");
+                $("#Tutor2").css("display", "none");
+                $("#Tutor3").css("display", "none");
+            }
+
+        }
+
+
+
+        $("#nacionalidadoptions").on('input', function () {
+            var val = this.value;
+            $('#Nacionalidad').val(val);
+        });
+
+
+
+
+    });
+</script>
+
 
