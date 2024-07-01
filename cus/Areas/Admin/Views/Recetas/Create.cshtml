@@ -1,6 +1,6 @@
 ﻿@Model CUS.Models.CUS
 @{
-    ViewBag.Title = "Nota de Evolución";
+    ViewBag.Title = "Recetas";
 
     int edad = 0;
     int meses = 0;
@@ -88,8 +88,19 @@
     #medicamentosModal .input-group-text {
         font-size: 0.8rem;
         background: transparent;
+        border-bottom: 2px solid #FBC43D;
         border: none;
         color: black;
+    }
+
+    #medicamentosModal #cantidad {
+        border: none;
+        font-size: 0.8rem;
+        border-bottom: 2px solid #FBC43D;
+        border-radius: 0px;
+        color: black;
+        height: 35px;
+        min-height: 35px;
     }
 
     #medicamentosModal select {
@@ -128,10 +139,23 @@
         padding: 10px;
     }
 
-    .imprimirUanl img{
-        width:200px;
+    .imprimirUanl img {
+        width: 200px;
     }
 
+
+    #resumenRecetaModal h5 {
+        font-family: "Poppins", sans-serif;
+    }
+
+    .btn-editarMed p {
+        margin-bottom: 0px
+    }
+
+
+    .botonimrprimir {
+        display: none;
+    }
 </style>
 
 <div class="page-wrapper">
@@ -202,7 +226,7 @@
                             <h3>Grupo: <b><span id="grupomodal"></span></b></h3>
                             <!--h3>Sal: <b><span id="salmodal"></span></b></h3-->
                             <h3>Presentación: <b><span id="premodal"></span></b></h3>
-                            <input type="hidden" value="" id="clavemodal" name="Codigo" />
+                            <input type="hidden" value="" id="clavemodal" name="clave" />
                             <input type="hidden" value="" id="unidadlimodal" name="unidad_licitacion" />
                         </div>
                         <div class="col-2 m-auto">
@@ -307,7 +331,7 @@
                         <div class="col-md-8 p-1">
                             <h3>Dosis</h3>
                             <h3 id="dosisinfo"><span id="viainfo" contenteditable="true"></span> <span id="tomarinfo" contenteditable="true">1</span> <span id="presentacioninfo" contenteditable="true"></span> <span contenteditable="true">cada</span> <span id="horasinfo" contenteditable="true">1</span> <span contenteditable="true">hora(s) por</span> <span id="diasinfo">1</span> <span contenteditable="true">días</span></h3>
-                            <input type="hidden" id="dosis" name="Dosis" value="" />
+                            <input type="hidden" id="dosis" name="dosis" value="" />
                         </div>
 
                         <div class="col-md-4 p-1">
@@ -318,7 +342,7 @@
                                         <span class="material-icons cantidad">add</span>
                                     </button>
                                 </span>
-                                <input type="text" name="Cantidad" id="cantidad" class="form-control input-number" value="1" min="1" max="300">
+                                <input type="text" name="cantidad" id="cantidad" class="form-control input-number" value="1" min="1" max="300">
                                 <span class="input-group-btn">
                                     <button type="button" class="btn btn-default btn-number p-0" disabled="disabled" data-type="minus" data-field="Cantidad">
                                         <span class="material-icons cantidad">remove</span>
@@ -331,7 +355,7 @@
                     <div class="row m-0">
                         <div class="col-md-12 p-1">
                             <h3>Condiciones especiales de administración</h3>
-                            <textarea style="max-width:100%;" id="condiciones" name="Indicaciones" maxlength="100" class="form-control condiciones"></textarea>
+                            <textarea style="max-width:100%;" id="condiciones" name="indicaciones" maxlength="100" class="form-control condiciones"></textarea>
                             <h3 id="error-condiciones">Maximo de 100 caracteres en las condiciones</h3>
                         </div>
                     </div>
@@ -363,43 +387,41 @@
 
             <div class="modal-body imprimir-content">
                 <div class="row m-0 pt-4">
-                    <div class="col-3 m-auto imprimirUanl">
+                    <div class="col-3 imprimirUanl">
                         <img src="~/Content/assets/img/CUS.png" />
                     </div>
-                    <div class="col-6 m-auto imprimirTitulo">
-                        <h5>Clínica Universitaria: <span class="putUniversidad"></span></h5>
-                        <h5><span class="putUserName"></span></h5>
-                        <h5>Nombre de la carrera. Egresado (a): <span class="putEspecialidad"></span></h5>
-                        <h5>Cédula: <span class="putCedulaEsp"></span></h5>
+                    <div class="col-6 m-auto imprimirTitulo text-center">
+                        <h5> <b> Clínica Universitaria:</b> <span class="putUniversidad"></span></h5>
+                        <h5><b> Medico:</b> <span class="putUserName"></span></h5>
+                        <h5><b> Nombre de la carrera. Egresado (a):</b> <span class="putEspecialidad"></span></h5>
+                        <h5><b> Cédula:</b> <span class="putCedula"></span></h5>
                     </div>
                     <div class="col-3">
                         <h5><b>Fecha  de emición:</b> @DateTime.Now.ToString("dddd, dd MMMM yyyy")</h5>
                     </div>
                 </div>
                 <div class="row m-0 pt-2">
-                    <div class="col-7 p-0">
-                        <h5><b>Nombre de paciente:</b>  @Model.Nombre @Model.PrimerApellido @Model.SegundoApellido  | <b>Edad</b> @edad  </h5>
-                        <h5><b>Fecha de Nacimiento:</b>  @Model.FechaNacimiento | <b>Sexo:</b> @Model.Sexo  </h5>
-                    </div>
-                    <div class="col-5 text-right p-0">
-                        <h5><b>Expediente:</b> @Model.Expediente</h5>
-                        <svg id="barcode"></svg>
-
+                    <div class="col-12 p-0">
+                        <h5>
+                            <span class="ml-2 mr-2"><b> Nombre de paciente:</b>  @Model.Nombre @Model.PrimerApellido @Model.SegundoApellido </span> <span class="ml-2 mr-2"><b>Edad</b> @edad </span>
+                            <span class="ml-2 mr-2"><b>Fecha de Nacimiento:</b>  @nacimiento </span> <span class="ml-2 mr-2"><b>Sexo:</b> @Model.Sexo  </span> <span class="ml-2 mr-2"><b>Expediente:</b> @Model.Expediente </span>
+                        </h5>
                     </div>
                 </div>
 
                 <div class="row m-0" style="border:2px solid black; border-radius:2px">
                     <div class="col-12 p-0">
-                        <div-- class="row m-0 p-2">
+                        <div class="row m-0 p-2">
                             <div class="col-12 p-0 btn-editarMed">
 
                             </div>
+                        </div>
                     </div>
                 </div>
 
                 <div class="row m-0 pt-2 text-center">
                     <div class="col-12 m-auto">
-                        <div class="lineafirma" style="width:100%; height:2px; background-color:#000000; margin-bottom:1vw; margin-top:4vw;"></div>
+                        <div class="lineafirma" style="width: 15%; height: 2px; background-color: #000000; margin-bottom: 1vw; margin-top: 4vw; margin-left: auto; margin-right: auto;"></div>
                         <p>Firma del Médico</p>
                     </div>
                     <div class="col-12 m-auto">
@@ -411,19 +433,30 @@
 
             </div>
 
-            <div class="row m-0 pt-4">
+            <div class="row m-0 pt-4 botonesrecetas">
                 <div class="col-md-6 m-auto" id="agregarotro">
                     <button type="button" style="width:100%;" class="btn btn-secondary agregarotro" data-dismiss="modal">Agregar otro medicamento</button>
                 </div>
                 <div class="col-md-6" id="terminar">
-                    @using (Html.BeginForm("TerminarReceta", "ServiciosMedicos", FormMethod.Post))
+                    @using (Html.BeginForm("TerminarReceta", "Recetas", FormMethod.Post))
                     {
-                        <input type="hidden" name="receta_id" />
+                        <input type="hidden" name="receta_id" id="receta_id" />
                         <input type="hidden" value="@Model.Expediente" id="expediente" name="expediente" />
                         <button type="submit" style="width:100%; background-color:rgba(0,74,143,1);" class="btn btn-success terminar">Terminar</button>
                     }
                 </div>
             </div>
+
+
+            <div class="row m-0 pt-4 botonimrprimir">
+                <div class="col-md-12 m-auto">
+
+                    <button type="button" style="width:100%; background-color:rgba(0,74,143,1);" class="btn btn-success imprimir">Imprimir</button>
+
+                </div>
+            </div>
+
+
         </div>
     </div>
 </div>
@@ -570,7 +603,8 @@
                 cache: false,
                 success: function (data) {
                     //alert(data.Descripcion_Sal);
-                    $('#grupomodal').text(data.Descripcion);
+                    $('#premodal').text(data.Descripcion);
+                    $('#grupomodal').text(data.Grupo);
                     //$('#premodal').text(data.Presentacion);
                     $('#clavemodal').val(data.Clave);
                     //$('#unidadlimodal').val(data.Unidadlicitacion);
@@ -794,21 +828,22 @@
             $('#dosis').val($('#dosisinfo').text());
         });
 
-        $('#resumenRecetaModal').modal("show");
+        //$('#resumenRecetaModal').modal("show");
 
     });
 </script>
 
-@if (TempData["message_success"] != null)
+@if (TempData["idreceta"] != null)
 {
-<script>
+    <script>
 
     $(document).ready(function () {
 
         //Buscr info de la receta
         var idreceta = "@TempData["idreceta"]";
+        //var idreceta = 10;
 
-        alert(idreceta);
+        //alert(idreceta);
 
         $.ajax({
             url: '@Url.Action("DetalleReceta", "Recetas")',
@@ -818,9 +853,43 @@
             },
             async: false,
             success: function (data) {
-                console.log(data);
-                $('.putUniversidad').text(data.unidad);
-                $('.putUserName').text(data.medico);
+                //console.log(data.data3);
+                $('.putUniversidad').text(data.data1.unidad);
+                $('.putUserName').text(data.data1.nombre);
+                $('.putEspecialidad').text(data.data1.especialidad);
+                $('.putCedula').text(data.data1.cedula_profesional);
+                $('#receta_id').val(idreceta);
+
+                if (data.data1.estatus == 2) {
+                    $('.botonesrecetas').hide();
+                    $('.botonimrprimir').show();
+                }
+
+                $.each(data.data3, function (i, item) {
+
+                    //console.log(item.clave);
+                    //$('.btn-editarMed').append('<input type="hidden" class="medicodigo" value="' + item.clave + '">');
+                    //$('.btn-editarMed').append('<input type="hidden" class="medidosis" data-cantidad="' + item.cantidad + '" data-indicaciones="' + item.indicaciones + '" id="' + item.clave + '" value="' + item.dosis + '">');
+                    $('.btn-editarMed').append('' +
+                        '<div class= "row m-0" >' +
+                        '<div class="col-5 text-left getMedicamento mt-2">' +
+                        '<p>' + item.medicamento + '</p>' +
+                        '<p>' + item.grupo + '</p>' +
+                        '<p>' + item.dosis + '</p>' +
+                        '<p>' + item.indicaciones + '</p>' +
+                        '</div>' +
+                        '<div class="col-7 text-left mt-2">' +
+                        '<button class= "btn btn-editar" data-id="' + item.id + '" data-idreceta="' + idreceta + '" style="color:rgba(0,74,143,1);" > Editar</button >' +
+                        '<button class="btn btn-eliminar" data-id="' + item.id + '" data-idreceta="' + idreceta + '" style="color:rgba(0,74,143,1);"> Eliminar</button>' +
+                        '</div>'+
+                        '</div > ')
+
+                });
+
+                //$('.btn-editarMed').append('<input type="hidden" class="medicodigo" value="' + data[i].Codigo + '">');
+                //$('.btn-editarMed').append('<input type="hidden" class="medidosis" data-cantidad="' + data[i].Cantidad + '" data-indicaciones="' + data[i].Indicaciones + '" id="' + data[i].Codigo + '" value="' + data[i].Dosis + '">');
+
+
             },error: function (xhr, status, error) {
 
             }
@@ -835,7 +904,111 @@
              timer: 1600
          });
 
+
+        //btn-editar
+        $(document).on("click", ".btn-editar", function () {
+            var id = $(this).attr('data-id');
+            var idreceta = $(this).attr('data-idreceta');
+            //alert(idreceta);
+            $('#resumenRecetaModal').modal("hide");
+
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("MedicamentoDetalle", "Recetas")',
+                dataType: 'json',
+                data: { id: id, idreceta: idreceta },
+                cache: false,
+                success: function (data) {
+                    //alert(data.Descripcion_Sal);
+                    $('#premodal').text(data.Descripcion);
+                    $('#grupomodal').text(data.Grupo);
+                    $('#clavemodal').val(data.Clave);
+                    $('#condiciones').val(data.Indicaciones)
+                    //$('#unidadlimodal').val(data.Unidadlicitacion);
+                    //alert(data.inhabmed);
+
+                    if (data.mensajeRcta == 0) {
+                        $('#medicamentosModal').modal("show");
+                    } else {
+                        if (data.mensajeRcta == 1) {
+                            swal.fire("Medicamento Faltante de Laboratorio", "Favor de buscar una alternativa de tratamiento. De antemano, gracias.", "warning");
+                        } else {
+                            if (data.mensajeRcta == 2) {
+                                swal.fire("Medicamento Faltante de Laboratorio", "Favor de buscar una alternativa de tratamiento. De antemano, gracias.", "warning");
+                            }
+                        }
+                        //swal.fire("Medicamento Faltante", "Favor de buscar una alternativa de tratamiento. De antemano, gracias.", "warning");
+
+                        $('#medicamentosModal').modal("hide");
+                    }
+                },
+                error: function (xhr, status, error) {
+                    //Swal.fire('Error', '', 'error');
+                }
+            });
+
+
+            //$('#medicamentosModal').modal("show");
+        });
+
+
+        //btn-eliminar
+        $(document).on("click", ".btn-eliminar", function () {
+            //var id = $(this).attr('data-id');
+            //var idreceta = $(this).attr('data-idreceta');
+
+
+            Swal.fire({
+                title: "¿Seguro que desea eliminar el medicamento?",
+                //text: "No podras revertir esta acción",
+                button: "Eliminar",
+                icon: "warning",
+                dangerMode: true,
+                showCancelButton: true,
+                //cancelButtonText: "Cancelar",
+                confirmButtonText: 'Eliminar',
+                denyButtonText: "Cancelar",
+            })
+            .then((result) => {
+                if (result.isConfirmed) {
+                    var id = $(this).attr('data-id');
+                    var idreceta = $(this).attr('data-idreceta');
+                    $.ajax({
+                        type: 'GET',
+                        url: '@Url.Action("DeleteMedicamento", "Recetas")',
+                        dataType: 'json',
+                        data: { id: id, idreceta: idreceta },
+                        cache: false,
+                        success: function (data) {
+                            swal.fire("¡Eliminado!", "Medicamento eliminado con éxito", "success");
+                            setTimeout(function () {
+                                window.location.reload(true);
+                            }, 1500);
+                            //$('#resumenRecetaModal').modal("show");
+                        },
+                        error: function (xhr, status, error) {
+                            Swal.fire('Error', '', 'error');
+                        }
+                    });
+                } else if (result.isDenied) {
+                    Swal.fire('Medicamento no eliminado', '', 'info');
+                }
+            });
+
+
+
+        });
+
+
+
      });
 
-</script>
+    </script>
 }
+
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jQuery.print/1.3.3/jQuery.print.min.js'></script>
+<script>
+    $('.botonimrprimir').on('click', function () {
+        $.print(".imprimir-content");
+</script>

@@ -112,7 +112,7 @@ namespace CUS.Areas.Admin.Controllers
 
 
 
-        public JsonResult MedicamentoDetalle(int? id)
+        public JsonResult MedicamentoDetalle(int? id, int? idreceta)
         {
 
             //string query = "select id_sustancia as id_sustancia, cactual as cactual from inv_mederos";
@@ -135,10 +135,30 @@ namespace CUS.Areas.Admin.Controllers
 
                         }).FirstOrDefault();
 
-            //System.Diagnostics.Debug.WriteLine(inventariofarmacia.Clave);
-
             if (res2 != null)
             {
+
+                var resDts = (from a in db.Receta_Detalles
+                              where a.id_receta == idreceta
+                              where a.clave == res2.Clave
+                              select new
+                              {
+
+                                  dosis = a.dosis,
+                                  indicaciones = a.indicaciones,
+
+                              }).FirstOrDefault();
+
+                var dosis = "";
+                var indicaciones = "";
+
+                if(resDts != null)
+                {
+                    dosis = resDts.dosis;
+                    indicaciones = resDts.indicaciones;
+                }
+
+
                 var resultNew = new Object();
 
                 resultNew = new
@@ -147,6 +167,8 @@ namespace CUS.Areas.Admin.Controllers
                     Clave = res2.Clave,
                     Descripcion = res2.Descripcion,
                     Grupo = res2.Grupo,
+                    Dosis = dosis,
+                    Indicaciones = indicaciones,
                     mensajeRcta = 0,
                 };
 
@@ -164,7 +186,7 @@ namespace CUS.Areas.Admin.Controllers
 
 
         [HttpPost]
-        public ActionResult Create(Recetas recetas, string expediente)
+        public ActionResult Create(Recetas recetas, string expediente, string clave, int? cantidad, string dosis, string indicaciones)
         {
             try
             {
@@ -205,6 +227,17 @@ namespace CUS.Areas.Admin.Controllers
                     db.Entry(registroReciente).State = EntityState.Modified;
                     db.SaveChanges();
 
+                    //Guardar detalle de receta
+                    Receta_Detalles rctaDts = new Receta_Detalles();
+                    rctaDts.id_receta = registroReciente.id;
+                    rctaDts.clave = clave;
+                    rctaDts.cantidad = cantidad;
+                    rctaDts.dosis = dosis;
+                    rctaDts.indicaciones = indicaciones;
+                    rctaDts.estatus = 1;
+                    db.Receta_Detalles.Add(rctaDts);
+                    db.SaveChanges();
+
                     TempData["idreceta"] = registroReciente.id;
                     TempData["message_success"] = "Medicamento agregado con éxito";
                 }
@@ -225,11 +258,15 @@ namespace CUS.Areas.Admin.Controllers
         {
             
             
-            var recetadetalle = (from a in db.Recetas
+            var receta = (from a in db.Recetas
                         join uniAfil in db.UnidadAfiliacion on a.unidad equals uniAfil.Id into uniAfilX
                         from uniAfilIn in uniAfilX.DefaultIfEmpty()
                         join usuario in db.AspNetUsers on a.usuario equals usuario.UserName into usuarioX
                         from usuarioIn in usuarioX.DefaultIfEmpty()
+                        join m in db.Medicos on a.usuario equals m.username into mX
+                        from mIn in mX.DefaultIfEmpty()
+                        join es in db.Especialidades on mIn.id_especialidad equals es.id into esX
+                        from esIn in esX.DefaultIfEmpty()
                         where a.id == idreceta
                         select new
                         {
@@ -237,7 +274,12 @@ namespace CUS.Areas.Admin.Controllers
                             idreceta = a.id,
                             expediente = a.expediente,
                             unidad = uniAfilIn.NombreUnidad,
-                            medico = usuarioIn.Name
+                            medico = usuarioIn.Name,
+                            titulo = mIn.titulo,
+                            nombre = mIn.nombre,
+                            especialidad = esIn.especialidad,
+                            cedula_profesional = mIn.cedula_profesional,
+                            estatus = a.estatus
 
                         }).FirstOrDefault();
 
@@ -245,9 +287,10 @@ namespace CUS.Areas.Admin.Controllers
             var fecha = DateTime.Now.AddHours(-6).ToString("yyyy-MM-ddTHH:mm:ss.fff");
             var fechaDT = DateTime.Parse(fecha);
 
+
             //Buscar signos vitales de hoy
             var signosvit = (from a in db.SignosVitales
-                             where a.expediente == recetadetalle.expediente
+                             where a.expediente == receta.expediente
                              where a.fecha >= fechaDT
                              select new
                              {
@@ -255,11 +298,77 @@ namespace CUS.Areas.Admin.Controllers
                                 peso = a.peso
                              }).FirstOrDefault();
 
-            var resultdata = new { data1 = recetadetalle, data2 = signosvit };
+
+            var recetadetalle = (from a in db.Receta_Detalles
+                                 join sus in db.Sustancias on a.clave equals sus.Clave into susX
+                                 from susIn in susX.DefaultIfEmpty()
+                                 join grusus in db.Grupo_Sustancia on susIn.Grupo equals grusus.id into grususX
+                                 from grususIn in grususX.DefaultIfEmpty()
+                                 where a.id_receta == idreceta
+                                 select new
+                                 {
+                                     clave = susIn.Clave,
+                                     id = susIn.id,
+                                     medicamento = susIn.Descripcion,
+                                     dosis = a.dosis,
+                                     grupo = grususIn.grupo,
+                                     cantidad = a.cantidad,
+                                     indicaciones = a.indicaciones,
+                                 }).ToList();
+
+
+
+
+            var resultdata = new { data1 = receta, data2 = signosvit, data3 = recetadetalle };
 
             return new JsonResult { Data = resultdata, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
 
         }
+
+
+
+
+
+        public JsonResult DeleteMedicamento(int idreceta, string id)
+        {
+            var recetas_count = (from r in db.Receta_Detalles
+                                 where r.id_receta == idreceta
+                                 //where r.clave == id
+                                 select r).Count();
+
+            //System.Diagnostics.Debug.WriteLine(recetas_count);
+
+            if (recetas_count > 1)
+            {
+                db.Database.ExecuteSqlCommand("DELETE FROM Receta_Detalles WHERE id_receta = " + idreceta + " AND clave = '" + id + "' ");
+                var claveDeleted = id;
+                return new JsonResult { Data = claveDeleted, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            }
+            else
+            {
+                db.Database.ExecuteSqlCommand("DELETE FROM Receta_Detalles WHERE id_receta = " + idreceta + " AND clave = '" + id + "' ");
+                db.Database.ExecuteSqlCommand("DELETE FROM Recetas WHERE id = " + idreceta + "");
+                var claveDeleted = id;
+                return new JsonResult { Data = claveDeleted, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            }
+
+            //return Redirect(Request.UrlReferrer.ToString());
+        }
+
+
+
+        [HttpPost]
+        public ActionResult TerminarReceta(int? receta_id)
+        {
+
+            db.Database.ExecuteSqlCommand("UPDATE Recetas SET estatus = 2 WHERE id = '" + receta_id + "' ");
+
+            TempData["idreceta"] = receta_id;
+            return Redirect(Request.UrlReferrer.ToString());
+
+        }
+
+
 
     }
 }
