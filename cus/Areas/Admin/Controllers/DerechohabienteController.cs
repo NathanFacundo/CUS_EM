@@ -119,14 +119,19 @@ namespace CUS.Areas.Admin.Controllers
                     var fechaDT = DateTime.Parse(fecha);
                     paciente.FechaRegistro = fechaDT;
 
-                    //      SEXO PX
-                    if (paciente.Sexo == "Masculino" || paciente.Sexo == "Hombre" || paciente.Sexo == "H")
+                    //SEXO PX
+                    if (paciente.Sexo == "H")
                     {
                         paciente.Sexo = "Hombre";
                     }
-                    else
+                    else if (paciente.Sexo == "M")
                     {
                         paciente.Sexo = "Mujer";
+                    }
+                    else
+                    {
+                        // Manejar el caso en el que el valor de `Sexo` no es ni "H" ni "M"
+                        // Esto podría ser una validación adicional o un manejo de errores
                     }
 
                     //***NOTA*** Se comenta esto ya que cuando sea 'sin curp' se pondrá comoquiera el curp que se arme al llenar datos (al: 18 noviembre 2023)

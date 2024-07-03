@@ -63,7 +63,7 @@
     meses = Months;
 }
 
-
+<link rel="stylesheet" href="~/Areas/Admin/assets/css/print.css">
 <style>
     .modal {
         padding: 0 !important;
@@ -156,6 +156,16 @@
     .botonimrprimir {
         display: none;
     }
+
+    #firma {
+        width: 200px;
+        height: 100px;
+        margin:auto;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+
 </style>
 
 <div class="page-wrapper">
@@ -222,7 +232,7 @@
                         <div class="col-10 m-auto">
                             <input type="hidden" value="@Model.Expediente" id="numemp" name="Expediente" />
                             <input type="hidden" value="" id="putNumero" name="medico" />
-                            <input type="hidden" value="1" name="unidad_medica" />
+                            <input type="hidden" value="6" name="unidad_medica" />
                             <h3>Grupo: <b><span id="grupomodal"></span></b></h3>
                             <!--h3>Sal: <b><span id="salmodal"></span></b></h3-->
                             <h3>Presentación: <b><span id="premodal"></span></b></h3>
@@ -385,10 +395,10 @@
     <div role="document" class="modal-dialog modal-xl">
         <div class="modal-content">
 
-            <div class="modal-body imprimir-content">
+            <div class="modal-body imprimir-content" id="imprimirContent">
                 <div class="row m-0 pt-4">
                     <div class="col-3 imprimirUanl">
-                        <img src="~/Content/assets/img/CUS.png" />
+                        <img style="width: 200px;" src="~/Content/assets/img/CUS.png" />
                     </div>
                     <div class="col-6 m-auto imprimirTitulo text-center">
                         <h5> <b> Clínica Universitaria:</b> <span class="putUniversidad"></span></h5>
@@ -421,13 +431,14 @@
 
                 <div class="row m-0 pt-2 text-center">
                     <div class="col-12 m-auto">
-                        <div class="lineafirma" style="width: 15%; height: 2px; background-color: #000000; margin-bottom: 1vw; margin-top: 4vw; margin-left: auto; margin-right: auto;"></div>
+                        <div id="firma" style="width: 200px; height: 100px; margin: auto; background-position: center; background-repeat: no-repeat; background-size: contain; "></div>
+                        <div class="lineafirma" style="width: 15%; height: 2px; background-color: #000000; margin-bottom: 1vw; margin-left: auto; margin-right: auto;"></div>
                         <p>Firma del Médico</p>
                     </div>
                     <div class="col-12 m-auto">
-                        <p style="font-size:10px;" class="m-0"><b>U.A.N.L. SERVICIOS MÉDICOS</b></p>
-                        <p style="font-size:10px;" class="m-0"><b>GONZALITOS Y HAITI S/N COL. MITRAS CENTRO</b></p>
-                        <p style="font-size:10px;" class="m-0"><b>MONTERREY NUEVO LEÓN C.P. 66460 TEL.8113404860</b></p>
+                        <p style="font-size:10px;" class="m-0"><b>6 de Noviembre 213</b></p>
+                        <p style="font-size:10px;" class="m-0"><b>Veintiuno de Enero</b></p>
+                        <p style="font-size:10px;" class="m-0"><b>67160 Guadalupe, N.L.</b></p>
                     </div>
                 </div>
 
@@ -436,6 +447,7 @@
             <div class="row m-0 pt-4 botonesrecetas">
                 <div class="col-md-6 m-auto" id="agregarotro">
                     <button type="button" style="width:100%;" class="btn btn-secondary agregarotro" data-dismiss="modal">Agregar otro medicamento</button>
+
                 </div>
                 <div class="col-md-6" id="terminar">
                     @using (Html.BeginForm("TerminarReceta", "Recetas", FormMethod.Post))
@@ -451,7 +463,7 @@
             <div class="row m-0 pt-4 botonimrprimir">
                 <div class="col-md-12 m-auto">
 
-                    <button type="button" style="width:100%; background-color:rgba(0,74,143,1);" class="btn btn-success imprimir">Imprimir</button>
+                    <button type="button" style="width:100%; background-color:rgba(0,74,143width: 200px;,1);" class="btn btn-success imprimir" onclick="printElement('imprimirContent')">Imprimir</button>
 
                 </div>
             </div>
@@ -833,10 +845,67 @@
     });
 </script>
 
+@if (TempData["idreceta"] == null) { 
+<script>
+     
+    $(document).ready(function () {
+
+        $('.btn-editarMed').empty();
+
+        $.ajax({
+            url: '@Url.Action("UltimaReceta", "Recetas")',
+            dataType: "json",
+            data: { num_exp: "@Model.Expediente" },
+            success: function (data) {
+                //console.log(data);
+
+                $('.putUniversidad').text(data.data1.unidad);
+                $('.putUserName').text(data.data1.nombre);
+                $('.putEspecialidad').text(data.data1.especialidad);
+                $('.putCedula').text(data.data1.cedula_profesional);
+                document.getElementById("firma").style.backgroundImage = "url('http://cusem.uanl.mx/custest/Content/firma/" + data.data1.firma +"')";
+
+                $('#receta_id').val(data.data1.idreceta);
+
+                if (data.data1.estatus == 2) {
+                    $('.botonesrecetas').hide();
+                    $('.botonimrprimir').show();
+                }
+
+                $.each(data.data3, function (i, item) {
+
+                    //console.log(item);
+                    $('.btn-editarMed').append('' +
+                        '<div class= "row m-0" >' +
+                        '<div class="col-5 text-left getMedicamento mt-2">' +
+                        '<p>' + item.medicamento + '</p>' +
+                        //'<p>' + item.grupo + '</p>' +
+                        '<p>' + item.dosis + '</p>' +
+                        '<p>' + item.indicaciones + '</p>' +
+                        '</div>' +
+                        '<div class="col-7 text-left mt-2">' +
+                        item.botoneditar +
+                        item.botoneliminar +
+                        '</div>' +
+                        '</div > ')
+
+                });
+
+                $('#resumenRecetaModal').modal("show");
+
+            },
+            error: function (xhr, status, error) {
+                alert("Error");
+            }
+        });
+    });
+
+</script>
+}
 @if (TempData["idreceta"] != null)
 {
     <script>
-
+        //alert('si tiene');
     $(document).ready(function () {
 
         //Buscr info de la receta
@@ -844,6 +913,7 @@
         //var idreceta = 10;
 
         //alert(idreceta);
+        $('.btn-editarMed').empty();
 
         $.ajax({
             url: '@Url.Action("DetalleReceta", "Recetas")',
@@ -853,11 +923,12 @@
             },
             async: false,
             success: function (data) {
-                //console.log(data.data3);
+                console.log(data);
                 $('.putUniversidad').text(data.data1.unidad);
                 $('.putUserName').text(data.data1.nombre);
                 $('.putEspecialidad').text(data.data1.especialidad);
                 $('.putCedula').text(data.data1.cedula_profesional);
+                document.getElementById("firma").style.backgroundImage = "url('http://cusem.uanl.mx/custest/Content/firma/" + data.data1.firma + "')";
                 $('#receta_id').val(idreceta);
 
                 if (data.data1.estatus == 2) {
@@ -868,26 +939,22 @@
                 $.each(data.data3, function (i, item) {
 
                     //console.log(item.clave);
-                    //$('.btn-editarMed').append('<input type="hidden" class="medicodigo" value="' + item.clave + '">');
-                    //$('.btn-editarMed').append('<input type="hidden" class="medidosis" data-cantidad="' + item.cantidad + '" data-indicaciones="' + item.indicaciones + '" id="' + item.clave + '" value="' + item.dosis + '">');
                     $('.btn-editarMed').append('' +
                         '<div class= "row m-0" >' +
                         '<div class="col-5 text-left getMedicamento mt-2">' +
                         '<p>' + item.medicamento + '</p>' +
-                        '<p>' + item.grupo + '</p>' +
+                        //'<p>' + item.grupo + '</p>' +
                         '<p>' + item.dosis + '</p>' +
                         '<p>' + item.indicaciones + '</p>' +
                         '</div>' +
                         '<div class="col-7 text-left mt-2">' +
-                        '<button class= "btn btn-editar" data-id="' + item.id + '" data-idreceta="' + idreceta + '" style="color:rgba(0,74,143,1);" > Editar</button >' +
-                        '<button class="btn btn-eliminar" data-id="' + item.id + '" data-idreceta="' + idreceta + '" style="color:rgba(0,74,143,1);"> Eliminar</button>' +
+                        item.botoneditar +
+                        item.botoneliminar +
                         '</div>'+
                         '</div > ')
 
                 });
 
-                //$('.btn-editarMed').append('<input type="hidden" class="medicodigo" value="' + data[i].Codigo + '">');
-                //$('.btn-editarMed').append('<input type="hidden" class="medidosis" data-cantidad="' + data[i].Cantidad + '" data-indicaciones="' + data[i].Indicaciones + '" id="' + data[i].Codigo + '" value="' + data[i].Dosis + '">');
 
 
             },error: function (xhr, status, error) {
@@ -905,7 +972,15 @@
          });
 
 
-        //btn-editar
+     });
+
+    </script>
+}
+
+
+<script>
+    //btn-editar
+    $(document).ready(function () {
         $(document).on("click", ".btn-editar", function () {
             var id = $(this).attr('data-id');
             var idreceta = $(this).attr('data-idreceta');
@@ -998,17 +1073,23 @@
 
 
         });
+    });
 
+</script>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://rawgit.com/DoersGuild/jQuery.print/master/jQuery.print.js"></script>
 
-     });
-
-    </script>
-}
-
-
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jQuery.print/1.3.3/jQuery.print.min.js'></script>
 <script>
-    $('.botonimrprimir').on('click', function () {
-        $.print(".imprimir-content");
+    function printElement(elementId) {
+        var printContent = document.getElementById(elementId).innerHTML;
+        var originalContent = document.body.innerHTML;
+
+        document.body.innerHTML = printContent;
+
+        window.print();
+
+        document.body.innerHTML = originalContent;
+        window.location.reload();
+    }
 </script>

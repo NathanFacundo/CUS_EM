@@ -54,6 +54,21 @@ namespace CUS.Areas.Admin.Controllers
 
         }
 
+
+        public class RctDtsList
+        {
+            public string clave { get; set; }
+            public int id { get; set; }
+            public string medicamento { get; set; }
+            public string dosis { get; set; }
+            public string grupo { get; set; }
+            public int? cantidad { get; set; }
+            public string indicaciones { get; set; }
+            public string botoneditar { get; set; }
+            public string botoneliminar { get; set; }
+
+        }
+
         public JsonResult ListaMedicamentos(string id)
         {
             //Models.SERVMEDEntities4 db4 = new Models.SERVMEDEntities4();
@@ -69,7 +84,7 @@ namespace CUS.Areas.Admin.Controllers
             var res = (from s in db.Sustancias
                        join g in db.Grupo_Sustancia on s.Grupo equals g.id into gX
                        from gIn in gX.DefaultIfEmpty()
-                       //where s.Descripcion != null && s.Descripcion != ""
+                           //where s.Descripcion != null && s.Descripcion != ""
                        select new
                        {
                            Id = s.id,
@@ -152,7 +167,7 @@ namespace CUS.Areas.Admin.Controllers
                 var dosis = "";
                 var indicaciones = "";
 
-                if(resDts != null)
+                if (resDts != null)
                 {
                     dosis = resDts.dosis;
                     indicaciones = resDts.indicaciones;
@@ -186,12 +201,14 @@ namespace CUS.Areas.Admin.Controllers
 
 
         [HttpPost]
-        public ActionResult Create(Recetas recetas, string expediente, string clave, int? cantidad, string dosis, string indicaciones)
+        public ActionResult Create(string expediente, string clave, int? cantidad, string dosis, string indicaciones)
         {
             try
             {
                 var fecha = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
+                var fecha2 = DateTime.Now.ToString("yyyy-MM-ddT00:00:00");
                 var fechaDT = DateTime.Parse(fecha);
+                var fechaDT2 = DateTime.Parse(fecha2);
 
                 //Buscamos al px del que se le quiere hacer la Nota de Evolucion.
                 var paciente = (from a in db.Paciente
@@ -206,40 +223,90 @@ namespace CUS.Areas.Admin.Controllers
                 //Buscamos si a ese px se le acaba de crear registro en la tbl NotaEvolucion.
                 if (paciente != null)
                 {
-                    //Se crea la receta 
-                    Recetas rcta = new Recetas();
-                    rcta.expediente = paciente.Expediente;
-                    rcta.usuario = username;
-                    rcta.fecha = fechaDT;
-                    rcta.ip_realiza = ip_realiza;
-                    rcta.estatus = 1;
-                    rcta.unidad = 6;
-                    db.Recetas.Add(rcta);
-                    db.SaveChanges();
+                    //Buscar si la receta ya tiene una existente sin terminar
+                    var recetaEx = (from a in db.Recetas
+                                    where a.expediente == expediente
+                                    where a.fecha >= fechaDT2
+                                    where a.estatus == 1
+                                    select a)
+                                    .OrderByDescending(r => r.fecha)
+                                    .FirstOrDefault();
 
-                    var registroReciente = (from a in db.Recetas
-                                               where a.expediente == paciente.Expediente
-                                               select a).
-                             OrderByDescending(r => r.fecha)
-                             .FirstOrDefault();
+                    if (recetaEx == null)
+                    {
+                        //Se crea la receta 
+                        Recetas rcta = new Recetas();
+                        rcta.expediente = paciente.Expediente;
+                        rcta.usuario = username;
+                        rcta.fecha = fechaDT;
+                        rcta.ip_realiza = ip_realiza;
+                        rcta.estatus = 1;
+                        rcta.unidad = 6;
+                        db.Recetas.Add(rcta);
+                        db.SaveChanges();
 
-                    registroReciente.folio = "21E"+registroReciente.id;
-                    db.Entry(registroReciente).State = EntityState.Modified;
-                    db.SaveChanges();
+                        var registroReciente = (from a in db.Recetas
+                                                where a.expediente == paciente.Expediente
+                                                select a).
+                                 OrderByDescending(r => r.fecha)
+                                 .FirstOrDefault();
 
-                    //Guardar detalle de receta
-                    Receta_Detalles rctaDts = new Receta_Detalles();
-                    rctaDts.id_receta = registroReciente.id;
-                    rctaDts.clave = clave;
-                    rctaDts.cantidad = cantidad;
-                    rctaDts.dosis = dosis;
-                    rctaDts.indicaciones = indicaciones;
-                    rctaDts.estatus = 1;
-                    db.Receta_Detalles.Add(rctaDts);
-                    db.SaveChanges();
+                        registroReciente.folio = "21E" + registroReciente.id;
+                        db.Entry(registroReciente).State = EntityState.Modified;
+                        db.SaveChanges();
 
-                    TempData["idreceta"] = registroReciente.id;
-                    TempData["message_success"] = "Medicamento agregado con éxito";
+                        //Guardar detalle de receta
+                        Receta_Detalles rctaDts = new Receta_Detalles();
+                        rctaDts.id_receta = registroReciente.id;
+                        rctaDts.clave = clave;
+                        rctaDts.cantidad = cantidad;
+                        rctaDts.dosis = dosis;
+                        rctaDts.indicaciones = indicaciones;
+                        rctaDts.estatus = 1;
+                        db.Receta_Detalles.Add(rctaDts);
+                        db.SaveChanges();
+
+                        TempData["idreceta"] = registroReciente.id;
+                        TempData["message_success"] = "Medicamento agregado con éxito";
+                    }
+                    else
+                    {
+
+                        //Guardar detalle de receta
+                        //Si ya tiene ese medicamento, entonces editalo
+                        var registroReciente = db.Receta_Detalles
+                                                .Where(r => r.id_receta == recetaEx.id && r.clave == clave)
+                                                .FirstOrDefault();
+
+                        if (registroReciente != null)
+                        {
+                            // Actualiza el último registro con los datos proporcionados
+                            registroReciente.cantidad = cantidad;
+                            registroReciente.dosis = dosis;
+                            registroReciente.indicaciones = indicaciones;
+                            db.Entry(registroReciente).State = EntityState.Modified;
+                            db.SaveChanges();
+                        }
+                        else
+                        {
+                            Receta_Detalles rctaDts = new Receta_Detalles();
+                            rctaDts.id_receta = recetaEx.id;
+                            rctaDts.clave = clave;
+                            rctaDts.cantidad = cantidad;
+                            rctaDts.dosis = dosis;
+                            rctaDts.indicaciones = indicaciones;
+                            rctaDts.estatus = 1;
+                            db.Receta_Detalles.Add(rctaDts);
+                            db.SaveChanges();
+                        }
+
+
+                        
+
+                        TempData["idreceta"] = recetaEx.id;
+                        TempData["message_success"] = "Medicamento agregado con éxito";
+                    }
+                    
                 }
             }
             catch (Exception ex)
@@ -256,32 +323,33 @@ namespace CUS.Areas.Admin.Controllers
 
         public JsonResult DetalleReceta(int? idreceta)
         {
-            
-            
+
+
             var receta = (from a in db.Recetas
-                        join uniAfil in db.UnidadAfiliacion on a.unidad equals uniAfil.Id into uniAfilX
-                        from uniAfilIn in uniAfilX.DefaultIfEmpty()
-                        join usuario in db.AspNetUsers on a.usuario equals usuario.UserName into usuarioX
-                        from usuarioIn in usuarioX.DefaultIfEmpty()
-                        join m in db.Medicos on a.usuario equals m.username into mX
-                        from mIn in mX.DefaultIfEmpty()
-                        join es in db.Especialidades on mIn.id_especialidad equals es.id into esX
-                        from esIn in esX.DefaultIfEmpty()
-                        where a.id == idreceta
-                        select new
-                        {
+                          join uniAfil in db.UnidadAfiliacion on a.unidad equals uniAfil.Id into uniAfilX
+                          from uniAfilIn in uniAfilX.DefaultIfEmpty()
+                          join usuario in db.AspNetUsers on a.usuario equals usuario.UserName into usuarioX
+                          from usuarioIn in usuarioX.DefaultIfEmpty()
+                          join m in db.Medicos on a.usuario equals m.username into mX
+                          from mIn in mX.DefaultIfEmpty()
+                          join es in db.Especialidades on mIn.id_especialidad equals es.id into esX
+                          from esIn in esX.DefaultIfEmpty()
+                          where a.id == idreceta
+                          select new
+                          {
 
-                            idreceta = a.id,
-                            expediente = a.expediente,
-                            unidad = uniAfilIn.NombreUnidad,
-                            medico = usuarioIn.Name,
-                            titulo = mIn.titulo,
-                            nombre = mIn.nombre,
-                            especialidad = esIn.especialidad,
-                            cedula_profesional = mIn.cedula_profesional,
-                            estatus = a.estatus
+                              idreceta = a.id,
+                              expediente = a.expediente,
+                              unidad = uniAfilIn.NombreUnidad,
+                              medico = usuarioIn.Name,
+                              titulo = mIn.titulo,
+                              nombre = mIn.nombre,
+                              especialidad = esIn.especialidad,
+                              cedula_profesional = mIn.cedula_profesional,
+                              estatus = a.estatus,
+                              firma = mIn.firma,
 
-                        }).FirstOrDefault();
+                          }).FirstOrDefault();
 
 
             var fecha = DateTime.Now.AddHours(-6).ToString("yyyy-MM-ddTHH:mm:ss.fff");
@@ -294,8 +362,8 @@ namespace CUS.Areas.Admin.Controllers
                              where a.fecha >= fechaDT
                              select new
                              {
-                                talla = a.talla,
-                                peso = a.peso
+                                 talla = a.talla,
+                                 peso = a.peso
                              }).FirstOrDefault();
 
 
@@ -317,15 +385,158 @@ namespace CUS.Areas.Admin.Controllers
                                  }).ToList();
 
 
+            var medicamentos = new List<RctDtsList>();
+
+            var botoneditar = "";
+            var botoneliminar = "";
+
+            foreach (var item in recetadetalle)
+            {
+
+                if(receta.estatus != 2)
+                {
+                    botoneditar = "<button class= 'btn btn-editar' data-id='" + item.id + "' data-idreceta='" + idreceta + "' style='color: rgba(0, 74, 143, 1);' > Editar</button >";
+                    botoneliminar = "<button class='btn btn-eliminar' data-id='" + item.id + "' data-idreceta='" + idreceta + "' style='color: rgba(0, 74, 143, 1);'> Eliminar</button>";
+                }
+
+                var listamedicamentos = new RctDtsList
+                {
+                    clave = item.clave,
+                    id = item.id,
+                    medicamento = item.medicamento,
+                    dosis = item.dosis,
+                    grupo = item.grupo,
+                    cantidad = item.cantidad,
+                    indicaciones = item.indicaciones,
+                    botoneditar = botoneditar,
+                    botoneliminar = botoneliminar,
+                };
+
+                medicamentos.Add(listamedicamentos);
+
+            }
 
 
-            var resultdata = new { data1 = receta, data2 = signosvit, data3 = recetadetalle };
+
+
+            var resultdata = new { data1 = receta, data2 = signosvit, data3 = medicamentos };
 
             return new JsonResult { Data = resultdata, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
 
         }
 
 
+        public JsonResult UltimaReceta(string num_exp)
+        {
+            var fecha2 = DateTime.Now.ToString("yyyy-MM-ddT00:00:00.000");
+            var fechaDT2 = DateTime.Parse(fecha2);
+
+            var receta = (from a in db.Recetas
+                          join uniAfil in db.UnidadAfiliacion on a.unidad equals uniAfil.Id into uniAfilX
+                          from uniAfilIn in uniAfilX.DefaultIfEmpty()
+                          join usuario in db.AspNetUsers on a.usuario equals usuario.UserName into usuarioX
+                          from usuarioIn in usuarioX.DefaultIfEmpty()
+                          join m in db.Medicos on a.usuario equals m.username into mX
+                          from mIn in mX.DefaultIfEmpty()
+                          join es in db.Especialidades on mIn.id_especialidad equals es.id into esX
+                          from esIn in esX.DefaultIfEmpty()
+                          where a.expediente == num_exp
+                          where a.estatus == 1
+                          where a.fecha >= fechaDT2
+                          select new
+                          {
+
+                              idreceta = a.id,
+                              expediente = a.expediente,
+                              unidad = uniAfilIn.NombreUnidad,
+                              medico = usuarioIn.Name,
+                              titulo = mIn.titulo,
+                              nombre = mIn.nombre,
+                              especialidad = esIn.especialidad,
+                              cedula_profesional = mIn.cedula_profesional,
+                              estatus = a.estatus,
+                              firma = mIn.firma,
+
+                          }).FirstOrDefault();
+
+
+            var fecha = DateTime.Now.AddHours(-6).ToString("yyyy-MM-ddTHH:mm:ss.fff");
+            var fechaDT = DateTime.Parse(fecha);
+
+
+            //Buscar signos vitales de hoy
+            var signosvit = (from a in db.SignosVitales
+                             where a.expediente == num_exp
+                             where a.fecha >= fechaDT
+                             select new
+                             {
+                                 talla = a.talla,
+                                 peso = a.peso
+                             }).FirstOrDefault();
+
+
+            var medicamentos = new List<RctDtsList>();
+
+            if (receta != null)
+            {
+
+                var recetadetalle = (from a in db.Receta_Detalles
+                                     join sus in db.Sustancias on a.clave equals sus.Clave into susX
+                                     from susIn in susX.DefaultIfEmpty()
+                                     join grusus in db.Grupo_Sustancia on susIn.Grupo equals grusus.id into grususX
+                                     from grususIn in grususX.DefaultIfEmpty()
+                                     where a.id_receta == receta.idreceta
+                                     select new
+                                     {
+                                         clave = susIn.Clave,
+                                         id = susIn.id, //
+                                         medicamento = susIn.Descripcion,
+                                         dosis = a.dosis,
+                                         grupo = grususIn.grupo,
+                                         cantidad = a.cantidad,
+                                         indicaciones = a.indicaciones,
+                                     }).ToList();
+
+
+                //var medicamentos = new List<RctDtsList>();
+
+                var botoneditar = "";
+                var botoneliminar = "";
+
+                foreach (var item in recetadetalle)
+                {
+
+                    if (receta.estatus != 2)
+                    {
+                        botoneditar = "<button class= 'btn btn-editar' data-id='" + item.id + "' data-idreceta='" + receta.idreceta + "' style='color: rgba(0, 74, 143, 1);' > Editar</button >";
+                        botoneliminar = "<button class='btn btn-eliminar' data-id='" + item.clave + "' data-idreceta='" + receta.idreceta + "' style='color: rgba(0, 74, 143, 1);'> Eliminar</button>";
+                    }
+
+                    var listamedicamentos = new RctDtsList
+                    {
+                        clave = item.clave,
+                        id = item.id,
+                        medicamento = item.medicamento,
+                        dosis = item.dosis,
+                        grupo = item.grupo,
+                        cantidad = item.cantidad,
+                        indicaciones = item.indicaciones,
+                        botoneditar = botoneditar,
+                        botoneliminar = botoneliminar,
+                    };
+
+                    medicamentos.Add(listamedicamentos);
+
+                }
+
+
+            }
+
+            var resultdata = new { data1 = receta, data2 = signosvit, data3 = medicamentos };
+
+            return new JsonResult { Data = resultdata, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+
+        }
 
 
 
